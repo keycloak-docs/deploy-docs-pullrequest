@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Getting Started Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.3"/><meta name="description" content="This guide consists of basic information and instructions to get started with Red Hat Single Sign-On 7.3"/><link rel="next" href="#overview" title="Chapter 1. Overview"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140612644188016"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On</span> <span class="productnumber">7.3</span></div><div><h1 class="title">Getting Started Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On 7.3</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140612642981616">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+				This guide consists of basic information and instructions to get started with Red Hat Single Sign-On 7.3
+			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="chapter"><a href="#overview">1. Overview</a></span></li><li><span class="chapter"><a href="#install-boot">2. Installing and Booting</a></span><ul><li><span class="section"><a href="#installing_the_server">2.1. Installing the Server</a></span></li><li><span class="section"><a href="#booting_the_server">2.2. Booting the Server</a></span></li><li><span class="section"><a href="#creating_the_admin_account">2.3. Creating the Admin Account</a></span></li><li><span class="section"><a href="#logging_in_to_the_admin_console">2.4. Logging in to the Admin Console</a></span></li></ul></li><li><span class="chapter"><a href="#creating_a_realm_and_user">3. Creating a Realm and User</a></span><ul><li><span class="section"><a href="#before_you_start">3.1. Before You Start</a></span></li><li><span class="section"><a href="#create-realm">3.2. Creating a New Realm</a></span></li><li><span class="section"><a href="#create-new-user">3.3. Creating a New User</a></span></li><li><span class="section"><a href="#user_account_service">3.4. User Account Service</a></span></li></ul></li><li><span class="chapter"><a href="#securing_a_jboss_servlet_application">4. Securing a JBoss Servlet Application</a></span><ul><li><span class="section"><a href="#before_you_start_2">4.1. Before You Start</a></span></li><li><span class="section"><a href="#installing_the_client_adapter">4.2. Installing the Client Adapter</a></span></li><li><span class="section"><a href="#downloading_building_and_deploying_application_code">4.3. Downloading, Building, and Deploying Application Code</a></span></li><li><span class="section"><a href="#creating_and_registering_the_client">4.4. Creating and Registering the Client</a></span></li><li><span class="section"><a href="#configuring_the_subsystem">4.5. Configuring the Subsystem</a></span></li></ul></li></ul></div><section class="chapter" id="overview"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Overview</h1></div></div></div><p>
+			The purpose of this guide is to get you up and running as quickly as possible so that you can play with and test-drive various features that Red Hat Single Sign-On has. It relies heavily on the default database and server configuration and does not cover any complex deployment options. If you want a more in-depth discussion of any features or configuration options, consult the various reference guides available.
+		</p><p>
+			Red Hat Single Sign-On is based on the open source <a class="link" href="https://www.keycloak.org/">Keycloak</a> community project, which has its documentation <a class="link" href="https://www.keycloak.org/documentation.html">here</a>.
+		</p></section><section class="chapter" id="install-boot"><div class="titlepage"><div><div><h1 class="title">Chapter 2. Installing and Booting</h1></div></div></div><p>
+			This very short tutorial walks you through booting up the server in standalone mode, setting up the initial admin user, and logging into the Red Hat Single Sign-On admin console.
+		</p><section class="section" id="installing_the_server"><div class="titlepage"><div><div><h2 class="title">2.1. Installing the Server</h2></div></div></div><p>
+				The Red Hat Single Sign-On Server is contained in one distribution file:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						'rh-sso-7.3.0.GA.GA.zip'
+					</li></ul></div><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+					This file can be downloaded in the Red Hat customer portal <a class="link" href="https://access.redhat.com/jbossnetwork/restricted/listSoftware.html?downloadType=distributions&amp;product=core.service.rhsso">Downloads</a>.
+				</p></div></div><p>
+				The 'rh-sso-7.3.0.GA.GA.zip' file is the server-only distribution. It contains only the scripts and binaries to run the Red Hat Single Sign-On server.
+			</p><p>
+				To unpack these files run the <code class="literal">unzip</code> or <code class="literal">gunzip</code> utilities.
+			</p></section><section class="section" id="booting_the_server"><div class="titlepage"><div><div><h2 class="title">2.2. Booting the Server</h2></div></div></div><p>
+				To boot the Red Hat Single Sign-On server, go to the <span class="emphasis"><em>bin/</em></span> directory of the server distribution.
+			</p><div class="formalpara"><p class="title"><strong>Standalone Boot Scripts</strong></p><p>
+					<span class="inlinemediaobject"><img src="images/rhsso-images/standalone-boot-files.png" alt="standalone boot files"/></span>
+				</p></div><p>
+				To boot the server:
+			</p><div class="formalpara"><p class="title"><strong>Linux/Unix</strong></p><p>
+					
+<pre class="screen">$ .../bin/standalone.sh</pre>
+				</p></div><div class="formalpara"><p class="title"><strong>Windows</strong></p><p>
+					
+<pre class="screen">&gt; ...\bin\standalone.bat</pre>
+				</p></div></section><section class="section" id="creating_the_admin_account"><div class="titlepage"><div><div><h2 class="title">2.3. Creating the Admin Account</h2></div></div></div><p>
+				After the server boots, open your browser and go to the <a class="link" href="http://localhost:8080/auth">http://localhost:8080/auth</a> URL. The page should look like this:
+			</p><div class="formalpara"><p class="title"><strong>Welcome Page</strong></p><p>
+					<span class="inlinemediaobject"><img src="images/rhsso-images/initial-welcome-page.png" alt="initial welcome page"/></span>
+				</p></div><p>
+				Red Hat Single Sign-On does not have a configured admin account by default. You must create one on the Welcome page. This account will allow you to create an admin that can log into the <span class="emphasis"><em>master</em></span> realm’s administration console so that you can start creating realms and users and registering applications to be secured by Red Hat Single Sign-On.
+			</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+					You can only create an initial admin user on the Welcome Page if you connect using <code class="literal">localhost</code>. This is a security precaution. You can also create the initial admin user at the command line with the <code class="literal">add-user-keycloak.sh</code> script. For more details see <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.3/html-single/server_installation_and_configuration_guide/">Server Installation and Configuration Guide</a> and <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.3/html-single/server_administration_guide/">Server Administration Guide</a>.
+				</p></div></div></section><section class="section" id="logging_in_to_the_admin_console"><div class="titlepage"><div><div><h2 class="title">2.4. Logging in to the Admin Console</h2></div></div></div><p>
+				After you create the initial admin account, you can log in to the Admin Console by completing the following steps:
+			</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+						At the bottom of the Welcome page click the <span class="emphasis"><em>Administration Console</em></span> link. Alternatively you can go to the console URL directly at <a class="link" href="http://localhost:8080/auth/admin/">http://localhost:8080/auth/admin/</a>
+					</p><div class="formalpara"><p class="title"><strong>Login Page</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/rhsso-images/login-page.png" alt="login page"/></span>
+						</p></div></li><li class="listitem"><p class="simpara">
+						Type the username and password you created on the Welcome page. The Red Hat Single Sign-On Admin Console page opens.
+					</p><div class="formalpara"><p class="title"><strong>Admin Console</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/rhsso-images/admin-console.png" alt="admin console"/></span>
+						</p></div></li></ol></div><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+					If you are curious about a certain feature, button, or field within the Admin Console, hover your mouse over the question mark <code class="literal">?</code> icon. This will pop up tooltip text to describe the area of the console you are interested in. The image above shows the tooltip in action.
+				</p></div></div></section></section><section class="chapter" id="creating_a_realm_and_user"><div class="titlepage"><div><div><h1 class="title">Chapter 3. Creating a Realm and User</h1></div></div></div><p>
+			This short tutorial walks you through creating a new realm within the Red Hat Single Sign-On Admin Console and adding a new user to that realm. With that new user you will log into your new realm and visit the built-in User Account service that all users have access to.
+		</p><section class="section" id="before_you_start"><div class="titlepage"><div><div><h2 class="title">3.1. Before You Start</h2></div></div></div><p>
+				Before you can participate in this tutorial, you need to complete the installation of Red Hat Single Sign-On and create the initial admin user as shown in the <a class="link" href="#install-boot" title="Chapter 2. Installing and Booting">Installing and Booting</a> tutorial.
+			</p></section><section class="section" id="create-realm"><div class="titlepage"><div><div><h2 class="title">3.2. Creating a New Realm</h2></div></div></div><p>
+				To create a new realm, complete the following steps:
+			</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+						Log in to the Red Hat Single Sign-On Admin Console using the account you created in the <a class="link" href="#install-boot" title="Chapter 2. Installing and Booting">Install and Boot</a> tutorial.
+					</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Admin Console Link</span></dt><dd>
+									<a class="link" href="http://localhost:8080/auth/admin/">http://localhost:8080/auth/admin/</a>
+								</dd></dl></div></li><li class="listitem"><p class="simpara">
+						In the top left corner dropdown menu that is titled <code class="literal">Master</code>, click <span class="strong strong"><strong>Add Realm</strong></span>. If you are logged in to the master realm this dropdown menu lists all the realms created. The Add Realm page opens.
+					</p><div class="formalpara"><p class="title"><strong>Add Realm Menu</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/rhsso-images/add-realm-menu.png" alt="add realm menu"/></span>
+						</p></div></li><li class="listitem"><p class="simpara">
+						You will be creating a brand new realm from scratch so type <code class="literal">demo</code> for the realm name and click <code class="literal">Create</code>.
+					</p><div class="formalpara"><p class="title"><strong>Create Realm</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/rhsso-images/create-realm.png" alt="create realm"/></span>
+						</p></div></li></ol></div><p>
+				After creating the realm the main Admin Console page opens. The current realm is now set to <code class="literal">demo</code>. You can switch between managing the <code class="literal">master</code> realm and the realm you just created by clicking the top left corner dropdown menu.
+			</p></section><section class="section" id="create-new-user"><div class="titlepage"><div><div><h2 class="title">3.3. Creating a New User</h2></div></div></div><p>
+				To create a new user in the <code class="literal">demo</code> realm as well as a temporary password for that account, complete the following steps:
+			</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+						In the left menu bar click <span class="strong strong"><strong>Users</strong></span>. The user list page opens.
+					</p><div class="formalpara"><p class="title"><strong>Users</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/rhsso-images/users.png" alt="users"/></span>
+						</p></div></li><li class="listitem"><p class="simpara">
+						On the right side of the empty user list, click <span class="strong strong"><strong>Add User</strong></span>.
+					</p><div class="formalpara"><p class="title"><strong>Add User</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/rhsso-images/add-user.png" alt="add user"/></span>
+						</p></div></li><li class="listitem">
+						The only required field is <code class="literal">Username</code>. When you are finished, click <span class="strong strong"><strong>Save</strong></span>. The management page for your new user opens.
+					</li><li class="listitem"><p class="simpara">
+						The next step is to define a temporary password for your new user. Click the <span class="strong strong"><strong>Credentials</strong></span> tab.
+					</p><div class="formalpara"><p class="title"><strong>Set Temporary Password</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/rhsso-images/credentials.png" alt="credentials"/></span>
+						</p></div></li><li class="listitem">
+						Type a new password and confirm it. A red <span class="strong strong"><strong>Reset Password</strong></span> button is displayed.
+					</li><li class="listitem">
+						Click <span class="strong strong"><strong>Reset Password</strong></span> to reset the user password to the new one you specified.
+					</li></ol></div><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+					This password is temporary and the user will be required to change it after first login. You can make it permanent by flipping the <span class="strong strong"><strong>Temporary</strong></span> switch from <span class="strong strong"><strong>On</strong></span> to <span class="strong strong"><strong>Off</strong></span> before clicking <span class="strong strong"><strong>Reset Password</strong></span>.
+				</p></div></div></section><section class="section" id="user_account_service"><div class="titlepage"><div><div><h2 class="title">3.4. User Account Service</h2></div></div></div><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						After creating the user, log out of the management console by clicking the right dropdown menu and selecting <span class="strong strong"><strong>Sign Off</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						Log in to the User Account Service of your <code class="literal">demo</code> realm with the user you just created by clicking this link:
+					</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">User Account Link</span></dt><dd>
+									<a class="link" href="http://localhost:8080/auth/realms/demo/account">http://localhost:8080/auth/realms/demo/account</a>
+								</dd></dl></div></li><li class="listitem"><p class="simpara">
+						Type the username and password you created previously. You must create a permanent password after you successfully log in if you didn’t toggle the Temporary switch to <span class="strong strong"><strong>Off</strong></span> previously.
+					</p><div class="formalpara"><p class="title"><strong>Update Password</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/rhsso-images/update-password.png" alt="update password"/></span>
+						</p></div></li></ol></div><p>
+				The User Account Service page opens. Every user in a realm has access to this Account Service by default. You can update profile information and change or add additional credentials. For more information on this service see the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.3/html-single/server_administration_guide/">Server Administration Guide</a>.
+			</p></section></section><section class="chapter" id="securing_a_jboss_servlet_application"><div class="titlepage"><div><div><h1 class="title">Chapter 4. Securing a JBoss Servlet Application</h1></div></div></div><p>
+			In this section you will learn how to secure a Java Servlet application on the JBoss EAP application server. You will learn how to install the Red Hat Single Sign-On Client Adapter onto a JBoss EAP application server distribution. You will create and register a client application in the Red Hat Single Sign-On Admin Console. Finally, you will configure the application to be secured by Red Hat Single Sign-On.
+		</p><section class="section" id="before_you_start_2"><div class="titlepage"><div><div><h2 class="title">4.1. Before You Start</h2></div></div></div><p>
+				Before you can participate in this tutorial, you need to complete the installation of Red Hat Single Sign-On and create the initial admin user as shown in the <a class="link" href="#install-boot" title="Chapter 2. Installing and Booting">Installing and Booting</a> tutorial. There is one caveat to this. You have to run a separate JBoss EAP instance on the same machine as the Red Hat Single Sign-On server. This separate instance will run your Java Servlet application. Because of this you will have to run the Red Hat Single Sign-On under a different port so that there are no port conflicts when running on the same machine. Use the <code class="literal">jboss.socket.binding.port-offset</code> system property on the command line. The value of this property is a number that will be added to the base value of every port opened by the Red Hat Single Sign-On server.
+			</p><p>
+				To boot the Red Hat Single Sign-On server:
+			</p><div class="formalpara"><p class="title"><strong>Linux/Unix</strong></p><p>
+					
+<pre class="screen">$ .../bin/standalone.sh -Djboss.socket.binding.port-offset=100</pre>
+				</p></div><div class="formalpara"><p class="title"><strong>Windows</strong></p><p>
+					
+<pre class="screen">&gt; ...\bin\standalone.bat -Djboss.socket.binding.port-offset=100</pre>
+				</p></div><p>
+				After booting up Red Hat Single Sign-On, you can then access the admin console at <a class="link" href="http://localhost:8180/auth/admin/">http://localhost:8180/auth/admin/</a>
+			</p></section><section class="section" id="installing_the_client_adapter"><div class="titlepage"><div><div><h2 class="title">4.2. Installing the Client Adapter</h2></div></div></div><p>
+				Download the JBoss EAP distribution and unzip it into a directory on your machine.
+			</p><p>
+				Next download the RH-SSO-7.3.0.GA-eap7-adapter.zip distribution.
+			</p><p>
+				Unzip this file into the root directory of your JBoss EAP distribution.
+			</p><p>
+				Next perform the following actions:
+			</p><div class="formalpara"><p class="title"><strong>WildFly 10 and Linux/Unix</strong></p><p>
+					
+<pre class="screen">$ cd bin
+$ ./jboss-cli.sh --file=adapter-install-offline.cli</pre>
+				</p></div><div class="formalpara"><p class="title"><strong>WildFly 10 and Windows</strong></p><p>
+					
+<pre class="screen">&gt; cd bin
+&gt; jboss-cli.bat --file=adapter-install-offline.cli</pre>
+				</p></div><p>
+				This script will make the appropriate edits to the <span class="emphasis"><em>…​/standalone/configuration/standalone.xml</em></span> file of your app server distribution. Finally, boot the application server.
+			</p><div class="formalpara"><p class="title"><strong>Linux/Unix</strong></p><p>
+					
+<pre class="screen">$ .../bin/standalone.sh</pre>
+				</p></div><div class="formalpara"><p class="title"><strong>Windows</strong></p><p>
+					
+<pre class="screen">&gt; ...\bin\standalone.bat</pre>
+				</p></div></section><section class="section" id="downloading_building_and_deploying_application_code"><div class="titlepage"><div><div><h2 class="title">4.3. Downloading, Building, and Deploying Application Code</h2></div></div></div><p>
+				The project and code for the application you are going to secure is available in <a class="link" href="https://github.com/redhat-developer/redhat-sso-quickstarts">Red Hat Single Sign-On Quickstarts Repository</a>. You will need the following installed on your machine and available in your PATH before you can continue:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						Java JDK 8
+					</li><li class="listitem">
+						Apache Maven 3.1.1 or higher
+					</li><li class="listitem">
+						Git
+					</li></ul></div><p>
+				You can obtain the code by cloning the repository at <a class="link" href="https://github.com/redhat-developer/redhat-sso-quickstarts">https://github.com/redhat-developer/redhat-sso-quickstarts</a>. Use the branch matching the version of Red Hat Single Sign-On in use.
+			</p><p>
+				Follow these steps to download the code, build it, and deploy it. Make sure your JBoss EAP application server is started before you run these steps.
+			</p><div class="formalpara"><p class="title"><strong>Clone Project</strong></p><p>
+					
+<pre class="screen">$ git clone https://github.com/redhat-developer/redhat-sso-quickstarts
+$ cd redhat-sso-quickstarts/app-profile-jee-vanilla
+$ mvn clean wildfly:deploy</pre>
+				</p></div><p>
+				You should see some text scroll down in the application server console window. After the application is successfully deployed go to:
+			</p><p>
+				<a class="link" href="http://localhost:8080/vanilla">http://localhost:8080/vanilla</a>
+			</p><div class="formalpara"><p class="title"><strong>Application Login Page</strong></p><p>
+					<span class="inlinemediaobject"><img src="images/rhsso-images/app-login-page.png" alt="app login page"/></span>
+				</p></div><p>
+				If you open up the application’s <span class="emphasis"><em>web.xml</em></span> file you would see that the application is secured via <code class="literal">BASIC</code> authentication. If you click on the login button on the login page, the browser will pop up a BASIC auth login dialog.
+			</p><div class="formalpara"><p class="title"><strong>Application Login Dialog</strong></p><p>
+					<span class="inlinemediaobject"><img src="images/rhsso-images/client-auth-required.png" alt="client auth required"/></span>
+				</p></div><p>
+				The application is not secured by any identity provider, so anything you enter in the dialog box will result in a <code class="literal">Forbidden</code> message being sent back by the server. The next section describes how you can take this deployed application and secure it.
+			</p></section><section class="section" id="creating_and_registering_the_client"><div class="titlepage"><div><div><h2 class="title">4.4. Creating and Registering the Client</h2></div></div></div><p>
+				The next step you have to do is to define and register the client in the Red Hat Single Sign-On Admin Console.
+			</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						Log into the Admin Console with your admin account as you did in previous tutorials.
+					</li><li class="listitem"><p class="simpara">
+						In the top left dropdown menu select and manage the <code class="literal">demo</code> realm. Click <code class="literal">Clients</code> in the left side menu. The Clients page opens.
+					</p><div class="formalpara"><p class="title"><strong>Clients</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/rhsso-images/clients.png" alt="clients"/></span>
+						</p></div></li><li class="listitem">
+						On the right click <span class="strong strong"><strong>Create</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						Complete the fields as shown below:
+					</p><div class="formalpara"><p class="title"><strong>Add Client</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/rhsso-images/add-client.png" alt="add client"/></span>
+						</p></div></li><li class="listitem"><p class="simpara">
+						After clicking the <code class="literal">Save</code> button your client application entry will be created. You now have to go back to the JBoss EAP instance that the application is deployed on and configure it so that this app is secured by Red Hat Single Sign-On. You can obtain a template for the configuration you need by going to the <code class="literal">Installation</code> tab in the client entry in the Red Hat Single Sign-On Admin Console.
+					</p><div class="formalpara"><p class="title"><strong>Installation Tab</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/rhsso-images/client-installation.png" alt="client installation"/></span>
+						</p></div></li><li class="listitem"><p class="simpara">
+						Select <span class="strong strong"><strong>Keycloak OIDC JBoss Subsystem XML</strong></span>. An XML template is generated that you’ll need to cut and paste.
+					</p><div class="formalpara"><p class="title"><strong>Template XML</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/rhsso-images/client-install-selected.png" alt="client install selected"/></span>
+						</p></div></li></ol></div></section><section class="section" id="configuring_the_subsystem"><div class="titlepage"><div><div><h2 class="title">4.5. Configuring the Subsystem</h2></div></div></div><p>
+				Now that you have copied the XML template from the Installation page, you need to paste this into the <span class="emphasis"><em>standalone.xml</em></span> file that resides in the <span class="emphasis"><em>standalone/configuration</em></span> directory of the application server instance on which your application is deployed.
+			</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+						Open the standalone/configuration/standalone.xml file and search for the following text:
+					</p><pre class="programlisting language-xml">&lt;subsystem xmlns="urn:jboss:domain:keycloak:1.1"/&gt;</pre></li><li class="listitem"><p class="simpara">
+						Modify this to prepare it for pasting in your template from the Installation page:
+					</p><pre class="programlisting language-xml">&lt;subsystem xmlns="urn:jboss:domain:keycloak:1.1"&gt;
+&lt;/subsystem&gt;</pre></li><li class="listitem"><p class="simpara">
+						Within the &lt;subsystem&gt; element, paste in the template. It will look something like this:
+					</p><pre class="programlisting language-xml">&lt;subsystem xmlns="urn:jboss:domain:keycloak:1.1"&gt;
+  &lt;secure-deployment name="WAR MODULE NAME.war"&gt;
+    &lt;realm&gt;demo&lt;/realm&gt;
+    &lt;auth-server-url&gt;http://localhost:8180/auth&lt;/auth-server-url&gt;
+    &lt;public-client&gt;true&lt;/public-client&gt;
+    &lt;ssl-required&gt;EXTERNAL&lt;/ssl-required&gt;
+    &lt;resource&gt;vanilla&lt;/resource&gt;
+  &lt;/secure-deployment&gt;
+&lt;/subsystem&gt;</pre></li><li class="listitem"><p class="simpara">
+						Change the <span class="strong strong"><strong>WAR MODULE NAME</strong></span> text to <span class="strong strong"><strong>vanilla</strong></span> as follows:
+					</p><pre class="programlisting language-xml">&lt;subsystem xmlns="urn:jboss:domain:keycloak:1.1"&gt;
+  &lt;secure-deployment name="vanilla.war"&gt;
+  ...
+&lt;/subsystem&gt;</pre></li><li class="listitem">
+						Reboot your application server.
+					</li><li class="listitem">
+						Go to <a class="link" href="http://localhost:8080/vanilla">http://localhost:8080/vanilla</a> and click <span class="strong strong"><strong>login</strong></span>. The Red Hat Single Sign-On login page opens. You can log in using the user you created in the <a class="link" href="#create-new-user" title="3.3. Creating a New User">Creating a New User</a> chapter.
+					</li></ol></div></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140612642981616"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+				Copyright <span class="trademark"/>© 2018 Red Hat, Inc.
+			</div><div class="para">
+				Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+			</div><div class="para">
+				<a class="ulink" href="http://www.apache.org/licenses/LICENSE-2.0"> http://www.apache.org/licenses/LICENSE-2.0</a>
+			</div><div class="para">
+				Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+			</div></div></div></div></div></div><script type="text/javascript">
+                        jQuery(document).ready(function() {
+                            initSwitchery();
+                            jQuery('pre[class*="language-"]').each(function(i, block){hljs.highlightBlock(block);});
+                        });
+                    </script></body></html>
