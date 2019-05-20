@@ -706,18 +706,17 @@ span.image img {
 <li><a href="#_spring_boot_adapter">2.1.6. Spring Boot Adapter</a></li>
 <li><a href="#_tomcat_adapter">2.1.7. Tomcat 6, 7 and 8 Adapters</a></li>
 <li><a href="#_jetty9_adapter">2.1.8. Jetty 9.x Adapters</a></li>
-<li><a href="#_jetty8_adapter">2.1.9. Jetty 8.1.x Adapter</a></li>
-<li><a href="#_spring_security_adapter">2.1.10. Spring Security Adapter</a></li>
-<li><a href="#_servlet_filter_adapter">2.1.11. Java Servlet Filter Adapter</a></li>
-<li><a href="#_jaas_adapter">2.1.12. JAAS plugin</a></li>
-<li><a href="#_installed_adapter">2.1.13. CLI / Desktop Applications</a></li>
-<li><a href="#security-context">2.1.14. Security Context</a></li>
-<li><a href="#_adapter_error_handling">2.1.15. Error Handling</a></li>
-<li><a href="#logout">2.1.16. Logout</a></li>
-<li><a href="#_params_forwarding">2.1.17. Parameters Forwarding</a></li>
-<li><a href="#_client_authentication_adapter">2.1.18. Client Authentication</a></li>
-<li><a href="#_multi_tenancy">2.1.19. Multi Tenancy</a></li>
-<li><a href="#_applicationclustering">2.1.20. Application Clustering</a></li>
+<li><a href="#_spring_security_adapter">2.1.9. Spring Security Adapter</a></li>
+<li><a href="#_servlet_filter_adapter">2.1.10. Java Servlet Filter Adapter</a></li>
+<li><a href="#_jaas_adapter">2.1.11. JAAS plugin</a></li>
+<li><a href="#_installed_adapter">2.1.12. CLI / Desktop Applications</a></li>
+<li><a href="#security-context">2.1.13. Security Context</a></li>
+<li><a href="#_adapter_error_handling">2.1.14. Error Handling</a></li>
+<li><a href="#logout">2.1.15. Logout</a></li>
+<li><a href="#_params_forwarding">2.1.16. Parameters Forwarding</a></li>
+<li><a href="#_client_authentication_adapter">2.1.17. Client Authentication</a></li>
+<li><a href="#_multi_tenancy">2.1.18. Multi Tenancy</a></li>
+<li><a href="#_applicationclustering">2.1.19. Application Clustering</a></li>
 </ul>
 </li>
 <li><a href="#_javascript_adapter">2.2. JavaScript Adapter</a>
@@ -734,8 +733,9 @@ span.image img {
 <li><a href="#installation-2">2.3.1. Installation</a></li>
 <li><a href="#usage-2">2.3.2. Usage</a></li>
 <li><a href="#installing-middleware">2.3.3. Installing Middleware</a></li>
-<li><a href="#protecting-resources">2.3.4. Protecting Resources</a></li>
-<li><a href="#additional-urls">2.3.5. Additional URLs</a></li>
+<li><a href="#checking-authentication">2.3.4. Checking Authentication</a></li>
+<li><a href="#protecting-resources">2.3.5. Protecting Resources</a></li>
+<li><a href="#additional-urls">2.3.6. Additional URLs</a></li>
 </ul>
 </li>
 <li><a href="#_keycloak_generic_adapter">2.4. Keycloak Gatekeeper</a>
@@ -771,12 +771,13 @@ span.image img {
 <li><a href="#known-issues">2.4.29. Known Issues</a></li>
 </ul>
 </li>
-<li><a href="#other-openid-connect-libraries">2.5. Other OpenID Connect Libraries</a>
+<li><a href="#_mod_auth_openidc">2.5. mod_auth_openidc Apache HTTPD Module</a></li>
+<li><a href="#other-openid-connect-libraries">2.6. Other OpenID Connect Libraries</a>
 <ul class="sectlevel3">
-<li><a href="#endpoints-2">2.5.1. Endpoints</a></li>
-<li><a href="#validating-access-tokens">2.5.2. Validating Access Tokens</a></li>
-<li><a href="#flows">2.5.3. Flows</a></li>
-<li><a href="#redirect-uris">2.5.4. Redirect URIs</a></li>
+<li><a href="#endpoints-2">2.6.1. Endpoints</a></li>
+<li><a href="#validating-access-tokens">2.6.2. Validating Access Tokens</a></li>
+<li><a href="#flows">2.6.3. Flows</a></li>
+<li><a href="#redirect-uris">2.6.4. Redirect URIs</a></li>
 </ul>
 </li>
 </ul>
@@ -907,7 +908,7 @@ decide is which of the two you are going to use. If you want you can also choose
 </div>
 <div class="paragraph">
 <p>To secure clients and services you are also going to need an adapter or library for the protocol you&#8217;ve selected. Keycloak comes with its own
-adapters for selected platforms, but it is also possible to use generic OpenID Connect Resource Provider and SAML Service Provider libraries.</p>
+adapters for selected platforms, but it is also possible to use generic OpenID Connect Relying Party and SAML Service Provider libraries.</p>
 </div>
 <div class="sect2">
 <h3 id="what-are-client-adapters"><a class="anchor" href="#what-are-client-adapters"></a>1.1. What are Client Adapters?</h3>
@@ -950,7 +951,7 @@ require less boilerplate code than what is typically required by a library.</p>
 <p><a href="#_tomcat_adapter">Tomcat</a></p>
 </li>
 <li>
-<p><a href="#_jetty8_adapter">Jetty 8</a></p>
+<p><a href="#_jetty9_adapter">Jetty 9</a></p>
 </li>
 <li>
 <p><a href="#_servlet_filter_adapter">Servlet Filter</a></p>
@@ -1163,7 +1164,7 @@ make implementing security in your web applications easier. For example, check o
 </div>
 <div class="paragraph">
 <p>This section describes how you can secure applications and services with OpenID Connect using either Keycloak adapters or generic OpenID Connect
-Resource Provider libraries.</p>
+Relying Party libraries.</p>
 </div>
 <div class="sect2">
 <h3 id="java-adapters"><a class="anchor" href="#java-adapters"></a>2.1. Java Adapters</h3>
@@ -1491,7 +1492,7 @@ if they only pass in an <code>access_token</code></p>
 <p>If set to <code>true</code>, then during authentication with the bearer token, the adapter will verify whether the token contains this
 client name (resource) as an audience. The option is especially useful for services, which primarily serve requests authenticated
 by the bearer token. This is set to <code>false</code> by default, however for improved security, it is recommended to enable this.
-See <a href="https://www.keycloak.org/docs/6.0/server_admin/#_audience">Audience Support</a> for more details about audience support.</p>
+See <a href="https://www.keycloak.org/docs/7.0/server_admin/#_audience">Audience Support</a> for more details about audience support.</p>
 </dd>
 </dl>
 </div>
@@ -1540,7 +1541,7 @@ The other alternative is to switch your applications from WildFly to the JBoss E
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>$ cd $WILDFLY_HOME
-$ unzip keycloak-wildfly-adapter-dist-6.0.0.zip</code></pre>
+$ unzip keycloak-wildfly-adapter-dist-7.0.0.zip</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1549,7 +1550,7 @@ $ unzip keycloak-wildfly-adapter-dist-6.0.0.zip</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>$ cd $WILDFLY_HOME
-$ unzip keycloak-wf8-adapter-dist-6.0.0.zip</code></pre>
+$ unzip keycloak-wf8-adapter-dist-7.0.0.zip</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1558,7 +1559,7 @@ $ unzip keycloak-wf8-adapter-dist-6.0.0.zip</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>$ cd $EAP_HOME
-$ unzip keycloak-eap7-adapter-dist-6.0.0.zip</code></pre>
+$ unzip keycloak-eap7-adapter-dist-7.0.0.zip</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1567,7 +1568,7 @@ $ unzip keycloak-eap7-adapter-dist-6.0.0.zip</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>$ cd $EAP_HOME
-$ unzip keycloak-eap6-adapter-dist-6.0.0.zip</code></pre>
+$ unzip keycloak-eap6-adapter-dist-7.0.0.zip</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1576,7 +1577,7 @@ $ unzip keycloak-eap6-adapter-dist-6.0.0.zip</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>$ cd $JBOSS_HOME
-$ unzip keycloak-as7-adapter-dist-6.0.0.zip</code></pre>
+$ unzip keycloak-as7-adapter-dist-7.0.0.zip</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2047,7 +2048,7 @@ All referenced web applications require injecting the Keycloak Jetty authenticat
 <p>Start JBoss Fuse 6.3.0 Rollup 5; then in the Karaf terminal type:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>features:addurl mvn:org.keycloak/keycloak-osgi-features/6.0.0/xml/features
+<pre class="CodeRay highlight"><code>features:addurl mvn:org.keycloak/keycloak-osgi-features/7.0.0/xml/features
 features:install keycloak</code></pre>
 </div>
 </div>
@@ -2058,18 +2059,6 @@ features:install keycloak</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code>features:install keycloak-jetty9-adapter</code></pre>
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If you are using JBoss Fuse 6.2 or later, use <code>keycloak-jetty8-adapter</code>. However, upgrading to JBoss Fuse 6.3.0 Rollup 5 is recommended.
-</td>
-</tr>
-</table>
 </div>
 </li>
 <li>
@@ -2104,7 +2093,7 @@ If you are using JBoss Fuse 6.2 or later, use <code>keycloak-jetty8-adapter</cod
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>cd /path-to-fuse/jboss-fuse-6.3.0.redhat-254
-unzip -q /path-to-adapter-zip/keycloak-fuse-adapter-6.0.0.zip</code></pre>
+unzip -q /path-to-adapter-zip/keycloak-fuse-adapter-7.0.0.zip</code></pre>
 </div>
 </div>
 </li>
@@ -2112,7 +2101,7 @@ unzip -q /path-to-adapter-zip/keycloak-fuse-adapter-6.0.0.zip</code></pre>
 <p>Start Fuse and run these commands in the fuse/karaf terminal:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>features:addurl mvn:org.keycloak/keycloak-osgi-features/6.0.0/xml/features
+<pre class="CodeRay highlight"><code>features:addurl mvn:org.keycloak/keycloak-osgi-features/7.0.0/xml/features
 features:install keycloak</code></pre>
 </div>
 </div>
@@ -2226,11 +2215,11 @@ Note that "*" resolution for the package does not import the <code>org.keycloak.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>org.keycloak.adapters.jetty;version="6.0.0",
-org.keycloak.adapters;version="6.0.0",
-org.keycloak.constants;version="6.0.0",
-org.keycloak.util;version="6.0.0",
-org.keycloak.*;version="6.0.0",
+<pre class="CodeRay highlight"><code>org.keycloak.adapters.jetty;version="7.0.0",
+org.keycloak.adapters;version="7.0.0",
+org.keycloak.constants;version="7.0.0",
+org.keycloak.util;version="7.0.0",
+org.keycloak.*;version="7.0.0",
 *;resolution:=optional</code></pre>
 </div>
 </div>
@@ -2344,11 +2333,11 @@ Note you don&#8217;t need the <code>web.xml</code> file as the security-constrai
 <p>The <code>Import-Package</code> in <code>META-INF/MANIFEST.MF</code> must contain at least these imports:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>org.keycloak.adapters.jetty;version="6.0.0",
-org.keycloak.adapters;version="6.0.0",
-org.keycloak.constants;version="6.0.0",
-org.keycloak.util;version="6.0.0",
-org.keycloak.*;version="6.0.0",
+<pre class="CodeRay highlight"><code>org.keycloak.adapters.jetty;version="7.0.0",
+org.keycloak.adapters;version="7.0.0",
+org.keycloak.constants;version="7.0.0",
+org.keycloak.util;version="7.0.0",
+org.keycloak.*;version="7.0.0",
 *;resolution:=optional</code></pre>
 </div>
 </div>
@@ -2452,10 +2441,10 @@ org.keycloak.*;version="6.0.0",
 javax.servlet.http;version="[3,4)",
 org.apache.camel.*,
 org.apache.camel;version="[2.13,3)",
-org.eclipse.jetty.security;version="[8,10)",
-org.eclipse.jetty.server.nio;version="[8,10)",
-org.eclipse.jetty.util.security;version="[8,10)",
-org.keycloak.*;version="6.0.0",
+org.eclipse.jetty.security;version="[9,10)",
+org.eclipse.jetty.server.nio;version="[9,10)",
+org.eclipse.jetty.util.security;version="[9,10)",
+org.keycloak.*;version="7.0.0",
 org.osgi.service.blueprint,
 org.osgi.service.blueprint.container,
 org.osgi.service.event,</code></pre>
@@ -2641,9 +2630,9 @@ org.apache.cxf.bus.resource;version="[2.7,3.2)",
 org.apache.cxf.transport.http;version="[2.7,3.2)",
 org.apache.cxf.*;version="[2.7,3.2)",
 org.springframework.beans.factory.config,
-org.eclipse.jetty.security;version="[8,10)",
-org.eclipse.jetty.util.security;version="[8,10)",
-org.keycloak.*;version="6.0.0"</code></pre>
+org.eclipse.jetty.security;version="[9,10)",
+org.eclipse.jetty.util.security;version="[9,10)",
+org.keycloak.*;version="7.0.0"</code></pre>
 </div>
 </div>
 </div>
@@ -2747,10 +2736,10 @@ META-INF.cxf.osgi;version="[2.7,3.2)";resolution:=optional,
 org.apache.cxf.transport.http;version="[2.7,3.2)",
 org.apache.cxf.*;version="[2.7,3.2)",
 com.fasterxml.jackson.jaxrs.json;version="[2.5,3)",
-org.eclipse.jetty.security;version="[8,10)",
-org.eclipse.jetty.util.security;version="[8,10)",
-org.keycloak.*;version="6.0.0",
-org.keycloak.adapters.jetty;version="6.0.0",
+org.eclipse.jetty.security;version="[9,10)",
+org.eclipse.jetty.util.security;version="[9,10)",
+org.keycloak.*;version="7.0.0",
+org.keycloak.adapters.jetty;version="7.0.0",
 *;resolution:=optional</code></pre>
 </div>
 </div>
@@ -2813,7 +2802,7 @@ This client needs to have <code>Direct Access Grants Enabled</code> selected to 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>features:addurl mvn:org.keycloak/keycloak-osgi-features/6.0.0/xml/features
+<pre class="CodeRay highlight"><code>features:addurl mvn:org.keycloak/keycloak-osgi-features/7.0.0/xml/features
 features:install keycloak-jaas</code></pre>
 </div>
 </div>
@@ -2944,7 +2933,7 @@ hawtio.rolePrincipalClasses=org.keycloak.adapters.jaas.RolePrincipal,org.apache.
 <p>Start JBoss Fuse 6.3.0 Rollup 5 and install the keycloak feature if you have not already done so. The commands in Karaf terminal are similar to this example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>features:addurl mvn:org.keycloak/keycloak-osgi-features/6.0.0/xml/features
+<pre class="CodeRay highlight"><code>features:addurl mvn:org.keycloak/keycloak-osgi-features/7.0.0/xml/features
 features:install keycloak</code></pre>
 </div>
 </div>
@@ -3063,8 +3052,8 @@ features:install keycloak</code></pre>
 </div>
 <div class="paragraph">
 <p>JBoss Fuse 7 leverages Undertow adapter which is essentially the same as
-<a href="#_jboss_adapter">EAP 7 / WildFly 10 Adapter</a>
-as JBoss Fuse 7.0.1 is bundled with <a href="http://undertow.io/">Undertow HTTP engine</a> under the covers and Undertow is used for running various kinds of web applications.</p>
+<a href="#_jboss_adapter">EAP 7 / WildFly Adapter</a>
+as JBoss Fuse 7.2.0 is bundled with <a href="http://undertow.io/">Undertow HTTP engine</a> under the covers and Undertow is used for running various kinds of web applications.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -3142,10 +3131,10 @@ All referenced web applications require injecting the Keycloak Undertow authenti
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Start JBoss Fuse 7.0.1; then in the Karaf terminal type:</p>
+<p>Start JBoss Fuse 7.2.0; then in the Karaf terminal type:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>feature:repo-add mvn:org.keycloak/keycloak-osgi-features/6.0.0/xml/features
+<pre class="CodeRay highlight"><code>feature:repo-add mvn:org.keycloak/keycloak-osgi-features/7.0.0/xml/features
 feature:install keycloak-pax-http-undertow keycloak-jaas</code></pre>
 </div>
 </div>
@@ -3185,12 +3174,12 @@ feature:install keycloak-pax-http-undertow keycloak-jaas</code></pre>
 <li>
 <p>Unzip it into the root directory of JBoss Fuse. The dependencies are then installed under the <code>system</code> directory. You can overwrite all existing jar files.</p>
 <div class="paragraph">
-<p>Use this for JBoss Fuse 7.0.1:</p>
+<p>Use this for JBoss Fuse 7.2.0:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>cd /path-to-fuse/jboss-fuse-7.0.z
-unzip -q /path-to-adapter-zip/keycloak-fuse-adapter-6.0.0.zip</code></pre>
+<pre class="CodeRay highlight"><code>cd /path-to-fuse/fuse-karaf-7.z
+unzip -q /path-to-adapter-zip/keycloak-fuse-adapter-7.0.0.zip</code></pre>
 </div>
 </div>
 </li>
@@ -3198,7 +3187,7 @@ unzip -q /path-to-adapter-zip/keycloak-fuse-adapter-6.0.0.zip</code></pre>
 <p>Start Fuse and run these commands in the fuse/karaf terminal:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>feature:repo-add mvn:org.keycloak/keycloak-osgi-features/6.0.0/xml/features
+<pre class="CodeRay highlight"><code>feature:repo-add mvn:org.keycloak/keycloak-osgi-features/7.0.0/xml/features
 feature:install keycloak-pax-http-undertow keycloak-jaas</code></pre>
 </div>
 </div>
@@ -3517,7 +3506,7 @@ javax.net.ssl,
 org.apache.camel.*,
 org.apache.camel;version="[2.13,3)",
 io.undertow.*,
-org.keycloak.*;version="6.0.0",
+org.keycloak.*;version="7.0.0",
 org.osgi.service.blueprint,
 org.osgi.service.blueprint.container</code></pre>
 </div>
@@ -3646,7 +3635,7 @@ org.apache.cxf.bus.resource;version="[2.7,3.3)",
 org.apache.cxf.transport.http;version="[2.7,3.3)",
 org.apache.cxf.*;version="[2.7,3.3)",
 org.springframework.beans.factory.config,
-org.keycloak.*;version="6.0.0"</code></pre>
+org.keycloak.*;version="7.0.0"</code></pre>
 </div>
 </div>
 </div>
@@ -3807,13 +3796,13 @@ This client needs to have <code>Direct Access Grants Enabled</code> selected to 
 </div>
 </li>
 <li>
-<p>Start Fuse and install the <code>keycloak</code> JAAS realm. The easiest way is to install the <code>keycloak-jaas</code> feature, which has the JAAS realm predefined. You can override the feature&#8217;s predefined realm by using your own <code>keycloak</code> JAAS realm with higher ranking. For details see the <a href="https://access.redhat.com/documentation/en-us/red_hat_fuse/7.0/html-single/security_guide/#ESBSecureContainer">JBoss Fuse documentation</a>.</p>
+<p>Start Fuse and install the <code>keycloak</code> JAAS realm. The easiest way is to install the <code>keycloak-jaas</code> feature, which has the JAAS realm predefined. You can override the feature&#8217;s predefined realm by using your own <code>keycloak</code> JAAS realm with higher ranking. For details see the <a href="https://access.redhat.com/documentation/en-us/red_hat_fuse/7.2/html-single/apache_karaf_security_guide/index#ESBSecureContainer">JBoss Fuse documentation</a>.</p>
 <div class="paragraph">
 <p>Use these commands in the Fuse terminal:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>features:addurl mvn:org.keycloak/keycloak-osgi-features/6.0.0/xml/features
+<pre class="CodeRay highlight"><code>features:addurl mvn:org.keycloak/keycloak-osgi-features/7.0.0/xml/features
 features:install keycloak-jaas</code></pre>
 </div>
 </div>
@@ -3838,7 +3827,7 @@ features:install keycloak-jaas</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-On some later operating systems, you might also need to use the SSH command&#8217;s -o option <code>-o HostKeyAlgorithms=+ssh-dss</code> because later SSH clients do not allow use of the <code>ssh-dss</code> algorithm, by default. However, by default, it is currently used in JBoss Fuse 7.0.1.
+On some later operating systems, you might also need to use the SSH command&#8217;s -o option <code>-o HostKeyAlgorithms=+ssh-dss</code> because later SSH clients do not allow use of the <code>ssh-dss</code> algorithm, by default. However, by default, it is currently used in JBoss Fuse 7.2.0.
 </td>
 </tr>
 </table>
@@ -3946,7 +3935,7 @@ On some later operating systems, you might also need to use the SSH command&#821
 </div>
 </li>
 <li>
-<p>Start JBoss Fuse 7.0.1, <a href="#_fuse7_install_feature">install the Keycloak feature</a>. Then type in the Karaf terminal:</p>
+<p>Start JBoss Fuse 7.2.0, <a href="#_fuse7_install_feature">install the Keycloak feature</a>. Then type in the Karaf terminal:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>system:property -p hawtio.keycloakEnabled true
@@ -4004,7 +3993,7 @@ To add it manually using Maven, add the following to your dependencies:</p>
     <span class="tag">&lt;dependency&gt;</span>
       <span class="tag">&lt;groupId&gt;</span>org.keycloak.bom<span class="tag">&lt;/groupId&gt;</span>
       <span class="tag">&lt;artifactId&gt;</span>keycloak-adapter-bom<span class="tag">&lt;/artifactId&gt;</span>
-      <span class="tag">&lt;version&gt;</span>6.0.0<span class="tag">&lt;/version&gt;</span>
+      <span class="tag">&lt;version&gt;</span>7.0.0<span class="tag">&lt;/version&gt;</span>
       <span class="tag">&lt;type&gt;</span>pom<span class="tag">&lt;/type&gt;</span>
       <span class="tag">&lt;scope&gt;</span>import<span class="tag">&lt;/scope&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
@@ -4190,7 +4179,7 @@ Here&#8217;s an example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak has a separate adapter for Jetty 9.1.x, Jetty 9.2.x and Jetty 9.3.x that you will have to install into your Jetty installation.
+<p>Keycloak has a separate adapter for Jetty 9.2.x, Jetty 9.3.x and Jetty 9.4.x that you will have to install into your Jetty installation.
 You then have to provide some extra configuration in each WAR you deploy to Jetty.
 Let&#8217;s go over these steps.</p>
 </div>
@@ -4256,7 +4245,7 @@ This is a Jetty specific config file and you must define a Keycloak specific aut
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-The Jetty 9.1.x adapter will not be able to find the <code>keycloak.json</code> file.
+The Jetty 9.x adapter will not be able to find the <code>keycloak.json</code> file.
 You will have to define all adapter settings within the <code>jetty-web.xml</code> file as described below.
 </td>
 </tr>
@@ -4345,61 +4334,7 @@ Here&#8217;s an example:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_jetty8_adapter"><a class="anchor" href="#_jetty8_adapter"></a>2.1.9. Jetty 8.1.x Adapter</h4>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/jetty8-adapter.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20securing_apps/topics/oidc/java/jetty8-adapter.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="paragraph">
-<p>Keycloak has a separate adapter for Jetty 8.1.x that you will have to install into your Jetty installation.
-You then have to provide some extra configuration in each WAR you deploy to Jetty.
-Let&#8217;s go over these steps.</p>
-</div>
-<div class="sect4">
-<h5 id="_jetty8_adapter_installation"><a class="anchor" href="#_jetty8_adapter_installation"></a>Adapter Installation</h5>
-<div class="paragraph">
-<p>Adapters are no longer included with the appliance or war distribution. Each adapter is a separate download on the Keycloak download site.
-They are also available as a maven artifact.</p>
-</div>
-<div class="paragraph">
-<p>You must unzip the Jetty 8.1.x  distro into Jetty 8.1.x&#8217;s root directory.
-Including adapter&#8217;s jars within your WEB-INF/lib directory will not work!</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>$ cd $JETTY_HOME
-$ unzip keycloak-jetty81-adapter-dist.zip</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Next, you will have to enable the keycloak option.
-Edit start.ini and add keycloak to the options</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>#===========================================================
-# Start classpath OPTIONS.
-# These control what classes are on the classpath
-# for a full listing do
-#   java -jar start.jar --list-options
-#-----------------------------------------------------------
-OPTIONS=Server,jsp,jmx,resources,websocket,ext,plus,annotations,keycloak</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="required-per-war-configuration-3"><a class="anchor" href="#required-per-war-configuration-3"></a>Required Per WAR Configuration</h5>
-<div class="paragraph">
-<p>Enabling Keycloak for your WARs is the same as the Jetty 9.x adapter.
-Our 8.1.x adapter supports both keycloak.json and the jboss-web.xml advanced configuration.
-See <a href="#_jetty9_per_war">Required Per WAR Configuration</a></p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_spring_security_adapter"><a class="anchor" href="#_spring_security_adapter"></a>2.1.10. Spring Security Adapter</h4>
+<h4 id="_spring_security_adapter"><a class="anchor" href="#_spring_security_adapter"></a>2.1.9. Spring Security Adapter</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/spring-security-adapter.adoc" target="_blank">Edit this section</a>
@@ -4424,7 +4359,7 @@ However, keycloak.json is still required.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.keycloak<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>keycloak-spring-security-adapter<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.0.0<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.0<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -4747,7 +4682,7 @@ Therefore, when running the Keycloak Spring Security adapter in a Spring Boot en
 </div>
 </div>
 <div class="sect3">
-<h4 id="_servlet_filter_adapter"><a class="anchor" href="#_servlet_filter_adapter"></a>2.1.11. Java Servlet Filter Adapter</h4>
+<h4 id="_servlet_filter_adapter"><a class="anchor" href="#_servlet_filter_adapter"></a>2.1.10. Java Servlet Filter Adapter</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc" target="_blank">Edit this section</a>
@@ -4832,7 +4767,7 @@ So, the Admin URL in this example should be <code>http[s]://hostname/{context-ro
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.keycloak<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>keycloak-servlet-filter-adapter<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.0.0<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>7.0.0<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -4851,7 +4786,7 @@ So, the Admin URL in this example should be <code>http[s]://hostname/{context-ro
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>karaf@root()&gt; feature:repo-add mvn:org.keycloak/keycloak-osgi-features/6.0.0/xml/features
+<pre class="CodeRay highlight"><code>karaf@root()&gt; feature:repo-add mvn:org.keycloak/keycloak-osgi-features/7.0.0/xml/features
 karaf@root()&gt; feature:install keycloak-servlet-filter-adapter</code></pre>
 </div>
 </div>
@@ -4954,7 +4889,7 @@ karaf@root()&gt; config:update</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_jaas_adapter"><a class="anchor" href="#_jaas_adapter"></a>2.1.12. JAAS plugin</h4>
+<h4 id="_jaas_adapter"><a class="anchor" href="#_jaas_adapter"></a>2.1.11. JAAS plugin</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/jaas.adoc" target="_blank">Edit this section</a>
@@ -5011,7 +4946,7 @@ parameter in the Resource Owner Password Credentials Grant request.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_installed_adapter"><a class="anchor" href="#_installed_adapter"></a>2.1.13. CLI / Desktop Applications</h4>
+<h4 id="_installed_adapter"><a class="anchor" href="#_installed_adapter"></a>2.1.12. CLI / Desktop Applications</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/installed-adapter.adoc" target="_blank">Edit this section</a>
@@ -5079,7 +5014,7 @@ id_token) which can then be used to call backend services.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>org.keycloak<span class="tag">&lt;/groupId&gt;</span>
         <span class="tag">&lt;artifactId&gt;</span>keycloak-installed-adapter<span class="tag">&lt;/artifactId&gt;</span>
-        <span class="tag">&lt;version&gt;</span>6.0.0<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;version&gt;</span>7.0.0<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -5210,7 +5145,7 @@ login / logout requests via the <code>loginResponseWriter</code> and <code>logou
 </div>
 </div>
 <div class="sect3">
-<h4 id="security-context"><a class="anchor" href="#security-context"></a>2.1.14. Security Context</h4>
+<h4 id="security-context"><a class="anchor" href="#security-context"></a>2.1.13. Security Context</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/adapter-context.adoc" target="_blank">Edit this section</a>
@@ -5241,7 +5176,7 @@ details from the token (such as user profile information) or you want to invoke 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_adapter_error_handling"><a class="anchor" href="#_adapter_error_handling"></a>2.1.15. Error Handling</h4>
+<h4 id="_adapter_error_handling"><a class="anchor" href="#_adapter_error_handling"></a>2.1.14. Error Handling</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/adapter_error_handling.adoc" target="_blank">Edit this section</a>
@@ -5284,7 +5219,7 @@ Reason reason = error.getReason();
 </div>
 </div>
 <div class="sect3">
-<h4 id="logout"><a class="anchor" href="#logout"></a>2.1.16. Logout</h4>
+<h4 id="logout"><a class="anchor" href="#logout"></a>2.1.15. Logout</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/logout.adoc" target="_blank">Edit this section</a>
@@ -5308,7 +5243,7 @@ the identity (alias) of the identity provider in question. This is useful when t
 </div>
 </div>
 <div class="sect3">
-<h4 id="_params_forwarding"><a class="anchor" href="#_params_forwarding"></a>2.1.17. Parameters Forwarding</h4>
+<h4 id="_params_forwarding"><a class="anchor" href="#_params_forwarding"></a>2.1.16. Parameters Forwarding</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/params_forwarding.adoc" target="_blank">Edit this section</a>
@@ -5338,7 +5273,7 @@ the particular parameter will be forwarded to the Keycloak authorization endpoin
 <div class="ulist">
 <ul>
 <li>
-<p>scope - Use a space-delimited list of scopes. A space-delimited list typically references <a href="https://www.keycloak.org/docs/6.0/server_admin/#_client_scopes">Client scopes</a>
+<p>scope - Use a space-delimited list of scopes. A space-delimited list typically references <a href="https://www.keycloak.org/docs/7.0/server_admin/#_client_scopes">Client scopes</a>
 defined on particular client. Note that the scope <code>openid</code> will be always be added to the list of scopes by the adapter. For example, if you
 enter the scope options <code>address phone</code>, then the request to Keycloak will contain the scope parameter <code>scope=openid address phone</code>.</p>
 </li>
@@ -5370,14 +5305,14 @@ from when the user authenticated. If user is authenticated longer than <code>max
 </li>
 <li>
 <p>kc_idp_hint - Used to tell Keycloak to skip showing login page and automatically redirect to specified identity provider instead.
-More info in the <a href="https://www.keycloak.org/docs/6.0/server_admin/#_client_suggested_idp">Identity Provider documentation</a>.</p>
+More info in the <a href="https://www.keycloak.org/docs/7.0/server_admin/#_client_suggested_idp">Identity Provider documentation</a>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>Most of the parameters are described in the <a href="https://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint">OIDC specification</a>.
 The only exception is parameter <code>kc_idp_hint</code>, which is specific to Keycloak and contains the name of the identity provider to automatically use.
-For more information see the <code>Identity Brokering</code> section in <a href="https://www.keycloak.org/docs/6.0/server_admin/">Server Administration Guide</a>.</p>
+For more information see the <code>Identity Brokering</code> section in <a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a>.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -5395,7 +5330,7 @@ the Keycloak login page if you are already authenticated to the application <cod
 </div>
 </div>
 <div class="sect3">
-<h4 id="_client_authentication_adapter"><a class="anchor" href="#_client_authentication_adapter"></a>2.1.18. Client Authentication</h4>
+<h4 id="_client_authentication_adapter"><a class="anchor" href="#_client_authentication_adapter"></a>2.1.17. Client Authentication</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/client-authentication.adoc" target="_blank">Edit this section</a>
@@ -5447,7 +5382,7 @@ Then you can choose to either:</p>
 <li>
 <p>Upload the client&#8217;s public key or certificate, either in PEM format, in JWK format, or from the keystore. With this option, the public key is hardcoded and must be changed when the client generates a new key pair.
 You can even generate your own keystore from the Keycloak admininstration console if you don&#8217;t have your own available.
-For more details on how to set up the Keycloak administration console see <a href="https://www.keycloak.org/docs/6.0/server_admin/">Server Administration Guide</a>.</p>
+For more details on how to set up the Keycloak administration console see <a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a>.</p>
 </li>
 </ul>
 </div>
@@ -5500,12 +5435,12 @@ you can point to any file on the file system where the client application is run
 <div class="sect4">
 <h5 id="add-your-own-client-authentication-method"><a class="anchor" href="#add-your-own-client-authentication-method"></a>Add Your Own Client Authentication Method</h5>
 <div class="paragraph">
-<p>You can add your own client authentication method as well. You will need to implement both client-side and server-side providers. For more details see the <code>Authentication SPI</code> section in <a href="https://www.keycloak.org/docs/6.0/server_development/">Server Developer Guide</a>.</p>
+<p>You can add your own client authentication method as well. You will need to implement both client-side and server-side providers. For more details see the <code>Authentication SPI</code> section in <a href="https://www.keycloak.org/docs/7.0/server_development/">Server Developer Guide</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_multi_tenancy"><a class="anchor" href="#_multi_tenancy"></a>2.1.19. Multi Tenancy</h4>
+<h4 id="_multi_tenancy"><a class="anchor" href="#_multi_tenancy"></a>2.1.18. Multi Tenancy</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/multi-tenancy.adoc" target="_blank">Edit this section</a>
@@ -5572,7 +5507,7 @@ and you may also want to select the realm based on something else than context-p
 </div>
 </div>
 <div class="sect3">
-<h4 id="_applicationclustering"><a class="anchor" href="#_applicationclustering"></a>2.1.20. Application Clustering</h4>
+<h4 id="_applicationclustering"><a class="anchor" href="#_applicationclustering"></a>2.1.19. Application Clustering</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/application-clustering.adoc" target="_blank">Edit this section</a>
@@ -5981,23 +5916,33 @@ But, the token is still sent in the URL, and the security vulnerability mentione
 <div class="sect3">
 <h4 id="hybrid-apps-with-cordova"><a class="anchor" href="#hybrid-apps-with-cordova"></a>2.2.3. Hybrid Apps with Cordova</h4>
 <div class="paragraph">
-<p>Keycloak support hybrid mobile apps developed with <a href="https://cordova.apache.org/">Apache Cordova</a>. The Javascript adapter has two modes for this: <code>cordova</code> and <code>cordova-native</code>:</p>
+<p>Keycloak support hybrid mobile apps developed with <a href="https://cordova.apache.org/">Apache Cordova</a>. The JavaScript adapter has two modes for this: <code>cordova</code> and <code>cordova-native</code>:</p>
 </div>
 <div class="paragraph">
 <p>The default is cordova, which the adapter will automatically select if no adapter type has been configured and window.cordova is present.
 When logging in, it will open an <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-inappbrowser/">InApp Browser</a> that lets the user interact with Keycloak and afterwards returns to the app by redirecting to <code><a href="http://localhost" class="bare">http://localhost</a></code>. Because of this, you must whitelist this URL as a valid redirect-uri in the client configuration section of the Administration Console.</p>
 </div>
 <div class="paragraph">
-<p>While this mode is easy to setup, it also has some disadvantages:
-* The InApp-Browser is a browser embedded in the app and is not the phone&#8217;s default browser. Therefore it will have different settings and stored credentials will not be available.
-* The InApp-Browser might also be slower, especially when rendering more complex themes.
-* There are security concerns to consider, before using this mode, such as that it is possible for the app to gain access to the credentials of the user, as it has full control of the browser rendering the login page, so do not allow its use in apps you do not trust.</p>
+<p>While this mode is easy to setup, it also has some disadvantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The InApp-Browser is a browser embedded in the app and is not the phone&#8217;s default browser. Therefore it will have different settings and stored credentials will not be available.</p>
+</li>
+<li>
+<p>The InApp-Browser might also be slower, especially when rendering more complex themes.</p>
+</li>
+<li>
+<p>There are security concerns to consider, before using this mode, such as that it is possible for the app to gain access to the credentials of the user, as it has full control of the browser rendering the login page, so do not allow its use in apps you do not trust.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Use this example app to help you get started: <a href="https://github.com/keycloak/keycloak/tree/master/examples/cordova" class="bare">https://github.com/keycloak/keycloak/tree/master/examples/cordova</a></p>
 </div>
 <div class="paragraph">
-<p>The alternative mode <code>cordova-nativei</code> takes a different approach.
+<p>The alternative mode <code>cordova-native</code> takes a different approach.
 It opens the login page using the system&#8217;s browser.
 After the user has authenticated, the browser redirects back into the app using a special URL.
 From there, the Keycloak adapter can finish the login by reading the code or token from the URL.</p>
@@ -6024,7 +5969,7 @@ From there, the Keycloak adapter can finish the login by reading the code or tok
 </ul>
 </div>
 <div class="paragraph">
-<p>The technical details for linking to an app differ on each plattform and special setup is needed.
+<p>The technical details for linking to an app differ on each platform and special setup is needed.
 Please refer to the Android and iOS sections of the <a href="https://github.com/e-imaxina/cordova-plugin-deeplinks/blob/master/README.md">deeplinks plugin documentation</a> for further instructions.</p>
 </div>
 <div class="paragraph">
@@ -6048,7 +5993,7 @@ We recommend that you use universal links, combined with a fallback site with a 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&lt;preference name="AndroidLaunchMode" value="singleTask" /&gt;</pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;preference</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">AndroidLaunchMode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">singleTask</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6209,7 +6154,7 @@ Available options:</p>
 <p>checkLoginIframeInterval - Set the interval to check login state (default is 5 seconds).</p>
 </li>
 <li>
-<p>responseMode - Set the OpenID Connect response mode send to Keycloak server at login request. Valid values are query or fragment . Default value is fragment, which means that after successful authentication will Keycloak redirect to javascript application with OpenID Connect parameters added in URL fragment. This is generally safer and recommended over query.</p>
+<p>responseMode - Set the OpenID Connect response mode send to Keycloak server at login request. Valid values are query or fragment. Default value is fragment, which means that after successful authentication will Keycloak redirect to JavaScript application with OpenID Connect parameters added in URL fragment. This is generally safer and recommended over query.</p>
 </li>
 <li>
 <p>flow - Set the OpenID Connect flow. Valid values are standard, implicit or hybrid.</p>
@@ -6249,19 +6194,19 @@ for the details and all the possible values of the <code>prompt</code> parameter
 </li>
 <li>
 <p>scope - Used to forward the scope parameter to the Keycloak login endpoint. Use a space-delimited list of scopes. Those typically
-reference <a href="https://www.keycloak.org/docs/6.0/server_admin/#_client_scopes">Client scopes</a> defined on particular client. Note that the scope <code>openid</code> will be
+reference <a href="https://www.keycloak.org/docs/7.0/server_admin/#_client_scopes">Client scopes</a> defined on particular client. Note that the scope <code>openid</code> will be
 always be added to the list of scopes by the adapter. For example, if you enter the scope options <code>address phone</code>, then the request
 to Keycloak will contain the scope parameter <code>scope=openid address phone</code>.</p>
 </li>
 <li>
 <p>idpHint - Used to tell Keycloak to skip showing the login page and automatically redirect to the specified identity
-provider instead. More info in the <a href="https://www.keycloak.org/docs/6.0/server_admin/#_client_suggested_idp">Identity Provider documentation</a>.</p>
+provider instead. More info in the <a href="https://www.keycloak.org/docs/7.0/server_admin/#_client_suggested_idp">Identity Provider documentation</a>.</p>
 </li>
 <li>
 <p>action - If value is 'register' then user is redirected to registration page, otherwise to login page.</p>
 </li>
 <li>
-<p>locale - Sets the 'ui_locales' query param in compliance with section 3.1.2.1 of the OIDC 1.0 specification.</p>
+<p>locale - Sets the 'ui_locales' query param in compliance with <a href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">section 3.1.2.1 of the OIDC 1.0 specification</a>.</p>
 </li>
 <li>
 <p>kcLocale - Specifies the desired Keycloak locale for the UI.  This differs from the locale param in that it tells the Keycloak server to set a cookie and update the user&#8217;s profile to a new preferred locale.</p>
@@ -6499,7 +6444,7 @@ This can be useful if application has detected the session was expired, for exam
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="json">    "dependencies": {
-        "keycloak-connect": "6.0.0"
+        "keycloak-connect": "7.0.0"
     }</code></pre>
 </div>
 </div>
@@ -6604,7 +6549,19 @@ session store that <code>express-session</code> is using.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="protecting-resources"><a class="anchor" href="#protecting-resources"></a>2.3.4. Protecting Resources</h4>
+<h4 id="checking-authentication"><a class="anchor" href="#checking-authentication"></a>2.3.4. Checking Authentication</h4>
+<div class="paragraph">
+<p>To check that a user is authenticated before accessing a resource,
+simply use <code>keycloak.checkSso()</code>. It will only authenticate if the user is already logged-in. If the user is not logged-in, the browser will be redirected back to the originally-requested URL and remain unauthenticated:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">    app.get( <span class="string"><span class="delimiter">'</span><span class="content">/check-sso</span><span class="delimiter">'</span></span>, keycloak.checkSso(), checkSsoHandler );</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="protecting-resources"><a class="anchor" href="#protecting-resources"></a>2.3.5. Protecting Resources</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Simple authentication</dt>
@@ -6650,6 +6607,97 @@ simply use a no-argument version of <code>keycloak.protect()</code>:</p>
 </div>
 <div class="dlist">
 <dl>
+<dt class="hdlist1">Resource-Based Authorization</dt>
+<dd>
+<p>Resource-Based Authorization allows you to protect resources, and their specific methods/actions,<strong>*</strong>* based on a set of policies defined in Keycloak, thus externalizing authorization from your application. This is achieved by exposing a <code>keycloak.enforcer</code> method which you can use to protect resources.*</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">    app.get(<span class="string"><span class="delimiter">'</span><span class="content">/apis/me</span><span class="delimiter">'</span></span>, keycloak.enforcer(<span class="string"><span class="delimiter">'</span><span class="content">user:profile</span><span class="delimiter">'</span></span>), userProfileHandler);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>keycloak-enforcer</code> method operates in two modes, depending on the value of the <code>response_mode</code> configuration option.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">    app.get(<span class="string"><span class="delimiter">'</span><span class="content">/apis/me</span><span class="delimiter">'</span></span>, keycloak.enforcer(<span class="string"><span class="delimiter">'</span><span class="content">user:profile</span><span class="delimiter">'</span></span>, {<span class="key">response_mode</span>: <span class="string"><span class="delimiter">'</span><span class="content">token</span><span class="delimiter">'</span></span>}), userProfileHandler);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If <code>response_mode</code> is set to <code>token</code>, permissions are obtained from the server on behalf of the subject represented by the bearer token that was sent to your application. In this case, a new access token is issued by Keycloak with the permissions granted by the server. If the server did not respond with a token with the expected permissions, the request is denied. When using this mode, you should be able to obtain the token from the request as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">    app.get(<span class="string"><span class="delimiter">'</span><span class="content">/apis/me</span><span class="delimiter">'</span></span>, keycloak.enforcer(<span class="string"><span class="delimiter">'</span><span class="content">user:profile</span><span class="delimiter">'</span></span>, {<span class="key">response_mode</span>: <span class="string"><span class="delimiter">'</span><span class="content">token</span><span class="delimiter">'</span></span>}), <span class="keyword">function</span> (req, res) {
+        <span class="keyword">var</span> token = <span class="keyword">var</span> token = req.kauth.grant.access_token.content;
+        <span class="keyword">var</span> permissions = token.authorization ? token.authorization.permissions : <span class="predefined-constant">undefined</span>;
+
+        <span class="comment">// show user profile</span>
+    });</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Prefer this mode when your application is using sessions and you want to cache previous decisions from the server, as well automatically handle refresh tokens. This mode is especially useful for applications acting as a client and resource server.</p>
+</div>
+<div class="paragraph">
+<p>If <code>response_mode</code> is set to <code>permissions</code> (default mode), the server only returns the list of granted permissions, without issuing a new access token. In addition to not issuing a new token, this method exposes the permissions granted by the server through the <code>request</code> as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">    app.get(<span class="string"><span class="delimiter">'</span><span class="content">/apis/me</span><span class="delimiter">'</span></span>, keycloak.enforcer(<span class="string"><span class="delimiter">'</span><span class="content">user:profile</span><span class="delimiter">'</span></span>, {<span class="key">response_mode</span>: <span class="string"><span class="delimiter">'</span><span class="content">token</span><span class="delimiter">'</span></span>}), <span class="keyword">function</span> (req, res) {
+        <span class="keyword">var</span> permissions = req.permissions;
+
+        <span class="comment">// show user profile</span>
+    });</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Regardless of the <code>response_mode</code> in use, the <code>keycloak.enforcer</code> method will first try to check the permissions within the bearer token that was sent to your application. If the bearer token already carries the expected permissions, there is no need
+to interact with the server to obtain a decision. This is specially useful when your clients are capable of obtaining access tokens from the server with the expected permissions before accessing a protected resource, so they can use some capabilities provided by Keycloak Authorization Services such as incremental authorization and avoid additional requests to the server when <code>keycloak.enforcer</code> is enforcing access to the resource.</p>
+</div>
+<div class="paragraph">
+<p>By default, the policy enforcer will use the <code>client_id</code> defined to the application (for instance, via <code>keycloak.json</code>) to
+ reference a client in Keycloak that supports Keycloak Authorization Services. In this case, the client can not be public given
+ that it is actually a resource server.</p>
+</div>
+<div class="paragraph">
+<p>If your application is acting as both a public client(frontend) and resource server(backend), you can use the following configuration to reference a different
+client in Keycloak with the policies that you want to enforce:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">      keycloak.enforcer(<span class="string"><span class="delimiter">'</span><span class="content">user:profile</span><span class="delimiter">'</span></span>, {<span class="key">resource_server_id</span>: <span class="string"><span class="delimiter">'</span><span class="content">my-apiserver</span><span class="delimiter">'</span></span>})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is recommended to use distinct clients in Keycloak to represent your frontend and backend.</p>
+</div>
+<div class="paragraph">
+<p>If the application you are protecting is enabled with Keycloak authorization services and you have defined client credentials
+ in <code>keycloak.json</code>, you can push additional claims to the server and make them available to your policies in order to make decisions.
+For that, you can define a <code>claims</code> configuration option which expects a <code>function</code> that returns a JSON with the claims you want to push:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">      app.get(<span class="string"><span class="delimiter">'</span><span class="content">/protected/resource</span><span class="delimiter">'</span></span>, keycloak.enforcer([<span class="string"><span class="delimiter">'</span><span class="content">resource:view</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">resource:write</span><span class="delimiter">'</span></span>], {
+          <span class="function">claims</span>: <span class="keyword">function</span>(request) {
+            <span class="keyword">return</span> {
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">http.uri</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">/protected/resource</span><span class="delimiter">&quot;</span></span>],
+              <span class="key"><span class="delimiter">&quot;</span><span class="content">user.agent</span><span class="delimiter">&quot;</span></span>: <span class="comment">// get user agent  from request</span>
+            }
+          }
+        }), <span class="keyword">function</span> (req, res) {
+          <span class="comment">// access granted</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more details about how to configure Keycloak to protected your application resources, please take a look at the <a href="https://www.keycloak.org/docs/7.0/authorization_services/">Authorization Services Guide</a>.</p>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1">Advanced authorization</dt>
 <dd>
 <p>To secure resources based on parts of the URL itself, assuming a role exists
@@ -6668,7 +6716,7 @@ for each section:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="additional-urls"><a class="anchor" href="#additional-urls"></a>2.3.5. Additional URLs</h4>
+<h4 id="additional-urls"><a class="anchor" href="#additional-urls"></a>2.3.6. Additional URLs</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Explicit user-triggered logout</dt>
@@ -7382,14 +7430,13 @@ X-Auth-Name: Beloved User</code></pre>
 </div>
 <div class="sect3">
 <h4 id="known-issues"><a class="anchor" href="#known-issues"></a>2.4.29. Known Issues</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>There is a known issue with the Keycloak server 4.7.0.Final in which Gatekeeper is unable to find the <em>client_id</em> in the <em>aud</em> claim. This is due to the fact the <em>client_id</em> is not in the audience anymore. The workaround is to add the "Audience" protocol mapper to the client with the audience pointed to the <em>client_id</em>. For more information, see <a href="https://issues.jboss.org/browse/KEYCLOAK-8954">KEYCLOAK-8954</a>.
-==== mod_auth_openidc Apache HTTPD Module</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>There is a known issue with the Keycloak server 4.7.0.Final in which Gatekeeper is unable to find the <em>client_id</em> in the <em>aud</em> claim. This is due to the fact the <em>client_id</em> is not in the audience anymore. The workaround is to add the "Audience" protocol mapper to the client with the audience pointed to the <em>client_id</em>. For more information, see <a href="https://issues.jboss.org/browse/KEYCLOAK-8954">KEYCLOAK-8954</a>.</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mod_auth_openidc"><a class="anchor" href="#_mod_auth_openidc"></a>2.5. mod_auth_openidc Apache HTTPD Module</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/mod-auth-openidc.adoc" target="_blank">Edit this section</a>
@@ -7461,9 +7508,8 @@ ServerName ${HOSTIP}
 project page.</p>
 </div>
 </div>
-</div>
 <div class="sect2">
-<h3 id="other-openid-connect-libraries"><a class="anchor" href="#other-openid-connect-libraries"></a>2.5. Other OpenID Connect Libraries</h3>
+<h3 id="other-openid-connect-libraries"><a class="anchor" href="#other-openid-connect-libraries"></a>2.6. Other OpenID Connect Libraries</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/oidc-generic.adoc" target="_blank">Edit this section</a>
@@ -7471,10 +7517,10 @@ project page.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak can be secured by supplied adapters that are usually easier to use and provide better integration with Keycloak. However, if an adapter is not available for your programming language, framework, or platform you might opt to use a generic OpenID Connect Resource Provider (RP) library instead. This chapter describes details specific to Keycloak and does not contain specific protocol details. For more information see the <a href="https://openid.net/connect/">OpenID Connect specifications</a> and <a href="https://tools.ietf.org/html/rfc6749">OAuth2 specification</a>.</p>
+<p>Keycloak can be secured by supplied adapters that are usually easier to use and provide better integration with Keycloak. However, if an adapter is not available for your programming language, framework, or platform you might opt to use a generic OpenID Connect Relying Party (RP) library instead. This chapter describes details specific to Keycloak and does not contain specific protocol details. For more information see the <a href="https://openid.net/connect/">OpenID Connect specifications</a> and <a href="https://tools.ietf.org/html/rfc6749">OAuth2 specification</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="endpoints-2"><a class="anchor" href="#endpoints-2"></a>2.5.1. Endpoints</h4>
+<h4 id="endpoints-2"><a class="anchor" href="#endpoints-2"></a>2.6.1. Endpoints</h4>
 <div class="paragraph">
 <p>The most important endpoint to understand is the <code>well-known</code> configuration endpoint. It lists endpoints and other configuration options relevant to the OpenID Connect implementation in Keycloak. The endpoint is:</p>
 </div>
@@ -7560,7 +7606,7 @@ The token endpoint is also used to obtain new access tokens when they expire.</p
 </div>
 </div>
 <div class="paragraph">
-<p>The certificate endpoint returns the public keys enabled by the realm, encoded as a JSON Web Key (JWK). Depending on the realm settings there can be one or more keys enabled for verifying tokens. For more information see the <a href="https://www.keycloak.org/docs/6.0/server_admin/">Server Administration Guide</a> and the <a href="https://tools.ietf.org/html/rfc7517">JSON Web Key specification</a>.</p>
+<p>The certificate endpoint returns the public keys enabled by the realm, encoded as a JSON Web Key (JWK). Depending on the realm settings there can be one or more keys enabled for verifying tokens. For more information see the <a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a> and the <a href="https://tools.ietf.org/html/rfc7517">JSON Web Key specification</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -7595,7 +7641,7 @@ It can only be invoked by confidential clients.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="validating-access-tokens"><a class="anchor" href="#validating-access-tokens"></a>2.5.2. Validating Access Tokens</h4>
+<h4 id="validating-access-tokens"><a class="anchor" href="#validating-access-tokens"></a>2.6.2. Validating Access Tokens</h4>
 <div class="paragraph">
 <p>If you need to manually validate access tokens issued by Keycloak you can invoke the <a href="#_token_introspection_endpoint">Introspection Endpoint</a>.
 The downside to this approach is that you have to make a network invocation to the Keycloak server.  This can be slow and possibily overload the
@@ -7606,7 +7652,7 @@ JWS.  Depending what language you code in, there are a multitude of third party 
 </div>
 </div>
 <div class="sect3">
-<h4 id="flows"><a class="anchor" href="#flows"></a>2.5.3. Flows</h4>
+<h4 id="flows"><a class="anchor" href="#flows"></a>2.6.3. Flows</h4>
 <div class="sect4">
 <h5 id="authorization-code"><a class="anchor" href="#authorization-code"></a>Authorization Code</h5>
 <div class="paragraph">
@@ -7719,7 +7765,7 @@ for example be useful for background services that applies changes to the system
 </div>
 </div>
 <div class="sect3">
-<h4 id="redirect-uris"><a class="anchor" href="#redirect-uris"></a>2.5.4. Redirect URIs</h4>
+<h4 id="redirect-uris"><a class="anchor" href="#redirect-uris"></a>2.6.4. Redirect URIs</h4>
 <div class="paragraph">
 <p>When using the redirect based flows it&#8217;s important to use valid redirect uris for your clients. The redirect uris should be as specific as possible. This
 especially applies to client-side (public clients) applications. Failing to do so could result in:</p>
@@ -9056,7 +9102,7 @@ Here&#8217;s an example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>To be able to secure WAR apps deployed on Jetty you must install the Keycloak Jetty 9.x or 8.x SAML adapter into your Jetty installation.
+<p>To be able to secure WAR apps deployed on Jetty you must install the Keycloak Jetty 9.x SAML adapter into your Jetty installation.
 You then have to provide some extra configuration in each WAR you deploy to Jetty.
 Let&#8217;s go over these steps.</p>
 </div>
@@ -9171,62 +9217,6 @@ Here&#8217;s an example:</p>
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="jetty-8-adapter-installation"><a class="anchor" href="#jetty-8-adapter-installation"></a>Jetty 8 Adapter Installation</h5>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/jetty-adapter/jetty8-installation.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20securing_apps/topics/saml/java/jetty-adapter/jetty8-installation.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="paragraph">
-<p>Keycloak has a separate SAML adapter for Jetty 8.1.x that you will have to install into your Jetty installation.
-You then have to provide some extra configuration in each WAR you deploy to Jetty.
-Let&#8217;s go over these steps.</p>
-</div>
-<div class="paragraph">
-<p>Adapters are no longer included with the appliance or war distribution. Each adapter is a separate download on the Keycloak download site.
-They are also available as a maven artifact.</p>
-</div>
-<div class="paragraph">
-<p>You must unzip the Jetty 8.1.x  distro into Jetty 8.1.x&#8217;s root directory.
-Including adapter&#8217;s jars within your WEB-INF/lib directory will not work!</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>$ cd $JETTY_HOME
-$ unzip keycloak-saml-jetty81-adapter-dist.zip</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Next, you will have to enable the keycloak option.
-Edit start.ini and add keycloak to the options</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>#===========================================================
-# Start classpath OPTIONS.
-# These control what classes are on the classpath
-# for a full listing do
-#   java -jar start.jar --list-options
-#-----------------------------------------------------------
-OPTIONS=Server,jsp,jmx,resources,websocket,ext,plus,annotations,keycloak</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="jetty-8-per-war-configuration"><a class="anchor" href="#jetty-8-per-war-configuration"></a>Jetty 8 Per WAR Configuration</h5>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/jetty-adapter/jetty8-per_war_config.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20securing_apps/topics/saml/java/jetty-adapter/jetty8-per_war_config.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="paragraph">
-<p>Enabling Keycloak for your WARs is the same as the Jetty 9.x adapter.
-See <a href="#_saml-jetty9-per-war">Jetty 9 Per War Configuration</a></p>
-</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="java-servlet-filter-adapter"><a class="anchor" href="#java-servlet-filter-adapter"></a>3.1.6. Java Servlet Filter Adapter</h4>
@@ -9322,7 +9312,7 @@ You must have a filter mapping that covers <code>/saml</code>.
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
    <span class="tag">&lt;groupId&gt;</span>org.keycloak<span class="tag">&lt;/groupId&gt;</span>
    <span class="tag">&lt;artifactId&gt;</span>keycloak-saml-servlet-filter-adapter<span class="tag">&lt;/artifactId&gt;</span>
-   <span class="tag">&lt;version&gt;</span>6.0.0<span class="tag">&lt;/version&gt;</span>
+   <span class="tag">&lt;version&gt;</span>7.0.0<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -10198,7 +10188,7 @@ Configtest is equivalent to the -t argument to apachectl. If the configuration t
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Docker authentication is disabled by default. To enable see <a href="https://www.keycloak.org/docs/6.0/server_installation/#profiles">Profiles</a>.
+Docker authentication is disabled by default. To enable see <a href="https://www.keycloak.org/docs/7.0/server_installation/#profiles">Profiles</a>.
 </td>
 </tr>
 </table>
@@ -10314,7 +10304,7 @@ it is recommended that you configure the Docker registry client in a realm other
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>[user ~]#??docker login localhost:5000 -u $username
+<pre>[user ~]# docker login localhost:5000 -u $username
 Password: *******
 Login Succeeded</pre>
 </div>
@@ -10371,7 +10361,7 @@ There is an alternative to register new client without any token as well, but th
 <div class="sect3">
 <h4 id="bearer-token"><a class="anchor" href="#bearer-token"></a>5.1.1. Bearer Token</h4>
 <div class="paragraph">
-<p>The bearer token can be issued on behalf of a user or a Service Account. The following permissions are required to invoke the endpoints (see <a href="https://www.keycloak.org/docs/6.0/server_admin/">Server Administration Guide</a> for more details):</p>
+<p>The bearer token can be issued on behalf of a user or a Service Account. The following permissions are required to invoke the endpoints (see <a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a> for more details):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -10387,7 +10377,7 @@ There is an alternative to register new client without any token as well, but th
 </ul>
 </div>
 <div class="paragraph">
-<p>If you are using a bearer token to create clients it&#8217;s recommend to use a token from a Service Account with only the <code>create-client</code> role (see <a href="https://www.keycloak.org/docs/6.0/server_admin/">Server Administration Guide</a> for more details).</p>
+<p>If you are using a bearer token to create clients it&#8217;s recommend to use a token from a Service Account with only the <code>create-client</code> role (see <a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a> for more details).</p>
 </div>
 </div>
 <div class="sect3">
@@ -10712,18 +10702,21 @@ This policy is not used by default even for anonymous registration.</p>
 </li>
 <li>
 <p>Strengthen the security by configuring the client <code class="filename">Access Type</code> as <code class="filename">Confidential</code> and selecting <strong>Credentials &gt; ClientId and Secret</strong>.</p>
-</li>
-</ol>
-</div>
-<div class="exampleblock">
-<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>You can configure either <code class="filename">Client Id and Secret</code> or <code class="filename">Signed JWT</code> under the <strong>Credentials</strong> tab .</p>
 </div>
+</td>
+</tr>
+</table>
 </div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Enable service accounts if you want to use a service account associated with the client by selecting a client to edit in the <strong>Clients</strong> section of the <code>Admin Console</code>.</p>
 <div class="olist loweralpha">
@@ -10888,7 +10881,7 @@ c:\&gt; kcreg get my_client</pre>
 <p>Regardless of the login method, the account that logs in needs proper permissions to be able to perform client registration operations. Keep in mind that any account in a non-master realm can only have permissions to manage clients within the same realm. If you need to manage different realms, you can either configure multiple users in different realms, or you can create a single user in the <code class="filename">master</code> realm and add roles for managing clients in different realms.</p>
 </div>
 <div class="paragraph">
-<p>You cannot configure users with the Client Registration CLI. Use the Admin Console web interface or the Admin Client CLI to configure users. See <a href="https://www.keycloak.org/docs/6.0/server_admin/">Server Administration Guide</a> for more details.</p>
+<p>You cannot configure users with the Client Registration CLI. Use the Admin Console web interface or the Admin Client CLI to configure users. See <a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a> for more details.</p>
 </div>
 <div class="paragraph">
 <p>When <code class="filename">kcreg</code> successfully logs in, it receives authorization tokens and saves them in a private configuration file so the tokens can be used for subsequent invocations. See <a href="#_working_with_alternative_configurations">Working with alternative configurations</a> for more information on configuration files.</p>
@@ -11276,7 +11269,7 @@ C:\&gt; kcreg update myclient -f myclient.json</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Q: When logging in, I get an error: *Parameter client_assertion_type is missing [invalid_client].</p>
+<p>Q: When logging in, I get an error: <strong>Parameter client_assertion_type is missing [invalid_client]</strong>.</p>
 <div class="paragraph">
 <p>A: This error means your client is configured with <code class="filename">Signed JWT</code> token credentials, which means you have to use the <code class="command">--keystore</code> parameter when logging in.</p>
 </div>
@@ -11308,7 +11301,7 @@ C:\&gt; kcreg update myclient -f myclient.json</pre>
 <div class="paragraph">
 <p>To enable start the server with <code>-Dkeycloak.profile=preview</code>
 or <code>-Dkeycloak.profile.feature.token_exchange=enabled</code>
-. For more details see <a href="https://www.keycloak.org/docs/6.0/server_installation/#profiles">Profiles</a>.</p>
+. For more details see <a href="https://www.keycloak.org/docs/7.0/server_installation/#profiles">Profiles</a>.</p>
 </div>
 </td>
 </tr>
@@ -11471,7 +11464,7 @@ for a client initiated link request.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Token exchange setup requires knowledge of fine grain admin permissions (See the <a href="https://www.keycloak.org/docs/6.0/server_admin/">Server Administration Guide</a> for more information).  You will need to grant clients
+Token exchange setup requires knowledge of fine grain admin permissions (See the <a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a> for more information).  You will need to grant clients
       permission to exchange.  This is discussed more later in this chapter.
 </td>
 </tr>
@@ -11591,7 +11584,7 @@ these conditions must be met:</p>
 <p>The user must have linked with the external identity provider through the User Account Service</p>
 </li>
 <li>
-<p>The user account was linked through the external identity provider using <a href="https://www.keycloak.org/docs/6.0/server_development/">Client Initiated Account Linking</a> API.</p>
+<p>The user account was linked through the external identity provider using <a href="https://www.keycloak.org/docs/7.0/server_development/">Client Initiated Account Linking</a> API.</p>
 </li>
 </ul>
 </div>
@@ -11699,7 +11692,7 @@ this JSON document:</p>
 </div>
 <div class="paragraph">
 <p>The <code>error</code> claim will be either <code>token_expired</code> or <code>not_linked</code>.  The <code>account-link-url</code> claim is provided
-so that the client can perform <a href="https://www.keycloak.org/docs/6.0/server_development/">Client Initiated Account Linking</a>.  Most (all?)
+so that the client can perform <a href="https://www.keycloak.org/docs/7.0/server_development/">Client Initiated Account Linking</a>.  Most (all?)
 providers are requiring linking through browser OAuth protocol.  With the <code>account-link-url</code> just add a <code>redirect_uri</code>
 query parameter to it and you can forward browsers to perform the link.</p>
 </div>
@@ -11817,7 +11810,7 @@ a problem.</p>
 <h4 id="granting-permission-for-the-exchange-2"><a class="anchor" href="#granting-permission-for-the-exchange-2"></a>7.4.1. Granting Permission for the Exchange</h4>
 <div class="paragraph">
 <p>The user that the subject token represents must have permission to impersonate other users.  See the
-<a href="https://www.keycloak.org/docs/6.0/server_admin/">Server Administration Guide</a> on how to enable this permission.  It can be done through a role or through
+<a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a> on how to enable this permission.  It can be done through a role or through
 fine grain admin permissions.</p>
 </div>
 </div>
@@ -11982,7 +11975,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-04-15 17:52:10 UTC
+Last updated 2019-05-20 18:37:10 UTC
 </div>
 </div>
 <ul id="globalnav">

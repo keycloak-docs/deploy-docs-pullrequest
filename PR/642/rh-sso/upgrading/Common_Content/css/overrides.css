@@ -1,11 +1,15 @@
-@charset "UTF-8";
+/* New Red Hat Font */
+@import url(rhfont.css);
 
+/* Books Icon Font */
 @font-face {
     font-family: "redhat-books-icons";
     font-style: normal;
     font-weight: normal;
     src: url("../icons/redhat-books-icons-a2efd68d1f13be356c9c4e5c29a64e69.eot?#iefix") format("embedded-opentype"), url("../icons/redhat-books-icons-a2efd68d1f13be356c9c4e5c29a64e69.woff") format("woff"), url("../icons/redhat-books-icons-a2efd68d1f13be356c9c4e5c29a64e69.ttf") format("truetype"), url("../icons/redhat-books-icons-a2efd68d1f13be356c9c4e5c29a64e69.svg?#redhat-books-icons") format("svg");
 }
+
+/* Overpass */
 
 @font-face {
     font-family: "Overpass";
@@ -26,8 +30,12 @@
     src: url("../fonts/overpass_light-web.eot?#iefix") format("embedded-opentype"), url("../fonts/overpass_light-web.woff") format("woff"), url("../fonts/overpass_light-web.ttf") format("truetype"), url("../fonts/overpass_light-web.svg#overpasslight") format("svg");
 }
 
+
+
+/* Begin styles */
+
 body {
-    font-family: "Open Sans","Helvetica Neue",sans-serif;
+    font-family: "Red Hat Text", "Overpass", "Helvetica Neue", sans-serif;
     font-size: 14px;
     color: #1a1a1a;
     line-height: 1.8em;
@@ -54,7 +62,7 @@ body.desktop .book > .toc {
 /* end desktop styles */
 
 h1, h2, h3, h4, h5, h6, .formalpara > .title, .para > .title, .titlepage .edition {
-    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-family: "Red Hat Display", "Overpass", "Helvetica Neue", sans-serif;
     font-weight: 600;
 }
 h1 {
@@ -103,7 +111,7 @@ h6 {
 }
 
 .producttitle {
-    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-family: "Red Hat Display", "Overpass", "Helvetica Neue", sans-serif;
     font-size: 1.75em;
     line-height: 1;
     margin-bottom: 1.02857em;
@@ -219,16 +227,10 @@ ul.docnav li.next a strong:after {
 
 ul.docnav li.next a strong,
 ul.docnav li.previous a strong {
-    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
     color: #aaa;
     background: none;
     line-height: 2.3em;
     padding: 0.3em 3em;
-}
-
-.toc * {
-    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif !important;
-
 }
 
 #poptoc div.toc {
@@ -359,7 +361,7 @@ table.fixed * {
 /* CCS-575 */
 span.callout,
 span.inlinecallout {
-    font-family: "dejavu sans mono","liberation mono","bitstream vera mono","dejavu mono",monospace;
+		font-family: Consolas, Monaco, 'Andale Mono', monospace;
     background-color: #9a9a9a;
     color: white;
     font-weight: bold;

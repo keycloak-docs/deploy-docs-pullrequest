@@ -818,23 +818,6 @@ span.image img {
 <li><a href="#clearing-caches-at-runtime">9.4. Clearing Caches at Runtime</a></li>
 </ul>
 </li>
-<li><a href="#_proxy">10. Keycloak Security Proxy</a>
-<ul class="sectlevel2">
-<li><a href="#proxy-install-and-run">10.1. Proxy Install and Run</a></li>
-<li><a href="#proxy-configuration">10.2. Proxy Configuration</a>
-<ul class="sectlevel3">
-<li><a href="#basic-config">10.2.1. Basic Config</a></li>
-</ul>
-</li>
-<li><a href="#application-config">10.3. Application Config</a>
-<ul class="sectlevel3">
-<li><a href="#constraint-config">10.3.1. Constraint Config</a></li>
-<li><a href="#header-names-config">10.3.2. Header Names Config</a></li>
-</ul>
-</li>
-<li><a href="#_identity_headers">10.4. Keycloak Identity Headers</a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
@@ -957,27 +940,27 @@ system property on startup to <code>file:/dev/urandom</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>'keycloak-6.0.0.[zip|tar.gz]'</p>
+<p>'keycloak-7.0.0.[zip|tar.gz]'</p>
 </li>
 <li>
-<p>'keycloak-overlay-6.0.0.[zip|tar.gz]'</p>
+<p>'keycloak-overlay-7.0.0.[zip|tar.gz]'</p>
 </li>
 <li>
-<p>'keycloak-demo-6.0.0.[zip|tar.gz]'</p>
+<p>'keycloak-demo-7.0.0.[zip|tar.gz]'</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The 'keycloak-6.0.0.[zip|tar.gz]' file is the server only distribution.  It contains nothing other than the scripts and binaries
+<p>The 'keycloak-7.0.0.[zip|tar.gz]' file is the server only distribution.  It contains nothing other than the scripts and binaries
 to run the Keycloak Server.  To unpack this file just run your operating system&#8217;s <code>unzip</code> or <code>gunzip</code> and <code>tar</code> utilities.</p>
 </div>
 <div class="paragraph">
-<p>The 'keycloak-overlay-6.0.0.[zip|tar.gz]' file is a WildFly add-on that allows you to install Keycloak Server on top of an existing
+<p>The 'keycloak-overlay-7.0.0.[zip|tar.gz]' file is a WildFly add-on that allows you to install Keycloak Server on top of an existing
 WildFly distribution.  We do not support users that want to run their applications and Keycloak on the same server instance.  To install the Keycloak Service Pack, just unzip it in the root directory
 of your WildFly distribution, open the bin directory in a shell and run <code>./jboss-cli.[sh|bat] --file=keycloak-install.cli</code>.</p>
 </div>
 <div class="paragraph">
-<p>The 'keycloak-demo-6.0.0.[zip|tar.gz]' contains the server binaries, all documentation and all examples.  It is preconfigured with both the
+<p>The 'keycloak-demo-7.0.0.[zip|tar.gz]' contains the server binaries, all documentation and all examples.  It is preconfigured with both the
 OIDC and SAML client application adapters and can deploy any of the distribution examples out of the box with no configuration.  This distribution is only
 recommended for those that want to test drive Keycloak.  We do not support users that run the demo distribution in production.</p>
 </div>
@@ -1019,7 +1002,7 @@ recommended for those that want to test drive Keycloak.  We do not support users
 </dd>
 <dt class="hdlist1"><em>providers/</em></dt>
 <dd>
-<p>If you are writing extensions to keycloak, you can put your extensions here.  See the <a href="https://www.keycloak.org/docs/6.0/server_development/">Server Developer Guide</a> for more information on this.</p>
+<p>If you are writing extensions to keycloak, you can put your extensions here.  See the <a href="https://www.keycloak.org/docs/7.0/server_development/">Server Developer Guide</a> for more information on this.</p>
 </dd>
 <dt class="hdlist1"><em>standalone/</em></dt>
 <dd>
@@ -1028,7 +1011,7 @@ recommended for those that want to test drive Keycloak.  We do not support users
 <dt class="hdlist1"><em>themes/</em></dt>
 <dd>
 <p>This directory contains all the html, style sheets, JavaScript files, and images used to display any UI screen displayed by the server.
-Here you can modify an existing theme or create your own.  See the <a href="https://www.keycloak.org/docs/6.0/server_development/">Server Developer Guide</a> for more information on this.</p>
+Here you can modify an existing theme or create your own.  See the <a href="https://www.keycloak.org/docs/7.0/server_development/">Server Developer Guide</a> for more information on this.</p>
 </dd>
 </dl>
 </div>
@@ -1616,7 +1599,7 @@ The add-user.sh does not add user to Keycloak server but to the underlying JBoss
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.keycloak.org/docs/6.0/server_installation/#_clustering">Clustering with Keycloak</a>
+<p><a href="https://www.keycloak.org/docs/7.0/server_installation/#_clustering">Clustering with Keycloak</a>
 When setting up for Cross-Datacenter Replication, you will use more independent Keycloak clusters, so you must understand how a cluster works and the basic concepts and requirements such as load balancing, shared databases, and multicasting.</p>
 </li>
 <li>
@@ -1671,10 +1654,10 @@ In some cases, the data may not be visible on <code>site2</code> at all.</p>
 <div class="sect3">
 <h4 id="requestprocessing"><a class="anchor" href="#requestprocessing"></a>3.4.3. Request processing</h4>
 <div class="paragraph">
-<p>An end user&#8217;s browser sends an HTTP request to the <a href="https://www.keycloak.org/docs/6.0/server_installation/#_setting-up-a-load-balancer-or-proxy">front end load balancer</a>. This load balancer is usually HTTPD or WildFly with mod_cluster, NGINX, HA Proxy, or perhaps some other kind of software or hardware load balancer.</p>
+<p>An end user&#8217;s browser sends an HTTP request to the <a href="https://www.keycloak.org/docs/7.0/server_installation/#_setting-up-a-load-balancer-or-proxy">front end load balancer</a>. This load balancer is usually HTTPD or WildFly with mod_cluster, NGINX, HA Proxy, or perhaps some other kind of software or hardware load balancer.</p>
 </div>
 <div class="paragraph">
-<p>The load balancer then forwards the HTTP requests it receives to the underlying Keycloak instances, which can be spread among multiple data centers. Load balancers typically offer support for <a href="https://www.keycloak.org/docs/6.0/server_installation/#sticky-sessions">sticky sessions</a>, which means that the load balancer is able to always forward all HTTP requests from the same user to the same Keycloak instance in same data center.</p>
+<p>The load balancer then forwards the HTTP requests it receives to the underlying Keycloak instances, which can be spread among multiple data centers. Load balancers typically offer support for <a href="https://www.keycloak.org/docs/7.0/server_installation/#sticky-sessions">sticky sessions</a>, which means that the load balancer is able to always forward all HTTP requests from the same user to the same Keycloak instance in same data center.</p>
 </div>
 <div class="paragraph">
 <p>HTTP requests that are sent from client applications to the load balancer are called <code>backchannel requests</code>.
@@ -1705,7 +1688,7 @@ It means that data need to be visible immediately on both sites and available to
 <div class="sect3">
 <h4 id="database"><a class="anchor" href="#database"></a>3.4.5. Database</h4>
 <div class="paragraph">
-<p>Keycloak uses a relational database management system (RDBMS) to persist some metadata about realms, clients, users, and so on. See <a href="https://www.keycloak.org/docs/6.0/server_installation/#_database">this chapter</a> of the server installation guide for more details. In a Cross-Datacenter Replication setup, we assume that either both data centers talk to the same database or that every data center has its own database node and both database nodes are synchronously replicated across the data centers. In both cases, it is required that when a Keycloak server on <code>site1</code> persists some data and commits the transaction, those data are immediately visible by subsequent DB transactions on <code>site2</code>.</p>
+<p>Keycloak uses a relational database management system (RDBMS) to persist some metadata about realms, clients, users, and so on. See <a href="https://www.keycloak.org/docs/7.0/server_installation/#_database">this chapter</a> of the server installation guide for more details. In a Cross-Datacenter Replication setup, we assume that either both data centers talk to the same database or that every data center has its own database node and both database nodes are synchronously replicated across the data centers. In both cases, it is required that when a Keycloak server on <code>site1</code> persists some data and commits the transaction, those data are immediately visible by subsequent DB transactions on <code>site2</code>.</p>
 </div>
 <div class="paragraph">
 <p>Details of DB setup are out-of-scope for Keycloak, however many RDBMS vendors like MariaDB and Oracle offer replicated databases and synchronous replication. We test Keycloak with these vendors:</p>
@@ -1732,7 +1715,7 @@ It means that data need to be visible immediately on both sites and available to
 </div>
 <div class="paragraph">
 <div class="title">Action tokens</div>
-<p>We also have the concept of <a href="https://www.keycloak.org/docs/6.0/server_development/#_action_token_spi">action tokens</a>, which are used typically for scenarios when the user needs to confirm an action asynchronously by email. For example, during the <code>forget password</code> flow the <code>actionTokens</code> Infinispan cache is used to track metadata about related action tokens, such as which action token was already used, so it can&#8217;t be reused second time. This usually needs to be replicated across data centers.</p>
+<p>We also have the concept of <a href="https://www.keycloak.org/docs/7.0/server_development/#_action_token_spi">action tokens</a>, which are used typically for scenarios when the user needs to confirm an action asynchronously by email. For example, during the <code>forget password</code> flow the <code>actionTokens</code> Infinispan cache is used to track metadata about related action tokens, such as which action token was already used, so it can&#8217;t be reused second time. This usually needs to be replicated across data centers.</p>
 </div>
 <div class="paragraph">
 <div class="title">Caching and invalidation of persistent data</div>
@@ -1753,7 +1736,7 @@ sessions, which are valid for the length of a user&#8217;s browser session. The 
 <div class="paragraph">
 <div class="title">Brute force protection</div>
 <p>Finally the <code>loginFailures</code> cache is used to track data about failed logins, such as how many times the user <code>john</code>
-entered a bad password. The details are described <a href="https://www.keycloak.org/docs/6.0/server_admin/#password-guess-brute-force-attacks">here</a>. It is up to the admin whether this cache should be replicated across data centers. To have an accurate count of login failures, the replication is needed. On the other hand, not replicating this data can save some performance. So if performance is more important than accurate counts of login failures, the replication can be avoided.</p>
+entered a bad password. The details are described <a href="https://www.keycloak.org/docs/7.0/server_admin/#password-guess-brute-force-attacks">here</a>. It is up to the admin whether this cache should be replicated across data centers. To have an accurate count of login failures, the replication is needed. On the other hand, not replicating this data can save some performance. So if performance is more important than accurate counts of login failures, the replication can be avoided.</p>
 </div>
 <div class="paragraph">
 <p>For more detail about how caches can be configured see <a href="#tuningcache">Tuning the JDG cache configuration</a>.</p>
@@ -2518,10 +2501,10 @@ More info about state transfer is available in the <a href="https://access.redha
 <p>After split-brain it is safe to manually clear caches in the Keycloak admin console. This is because there might be some data changed in the database on <code>site1</code> and because of the event, that the cache should be invalidated wasn&#8217;t transferred during split-brain to <code>site2</code>. Hence Keycloak nodes on <code>site2</code> may still have some stale data in their caches.</p>
 </div>
 <div class="paragraph">
-<p>To clear the caches, see <a href="https://www.keycloak.org/docs/6.0/server_admin/#_clear-cache">Clearing Server Caches</a>.</p>
+<p>To clear the caches, see <a href="https://www.keycloak.org/docs/7.0/server_admin/#_clear-cache">Clearing Server Caches</a>.</p>
 </div>
 <div class="paragraph">
-<p>When the network is back, it is sufficient to clear the cache just on one Keycloak node on any random site. The cache invalidation event will be sent to all the other Keycloak nodes in all sites. However, it needs to be done for all the caches (realms, users, keys). See <a href="https://www.keycloak.org/docs/6.0/server_admin/#_clear-cache">Clearing Server Caches</a> for more information.</p>
+<p>When the network is back, it is sufficient to clear the cache just on one Keycloak node on any random site. The cache invalidation event will be sent to all the other Keycloak nodes in all sites. However, it needs to be done for all the caches (realms, users, keys). See <a href="https://www.keycloak.org/docs/7.0/server_admin/#_clear-cache">Clearing Server Caches</a> for more information.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2699,7 +2682,7 @@ Node name: node11, Site name: site1</code></pre>
 </li>
 <li>
 <p>Check that Keycloak servers are in cluster as expected, including that only the Keycloak servers from the same data center are in cluster with each other.
-This can be also checked in JConsole through the GMS view. See <a href="https://www.keycloak.org/docs/6.0/server_installation/#troubleshooting">cluster troubleshooting</a> for additional details.</p>
+This can be also checked in JConsole through the GMS view. See <a href="https://www.keycloak.org/docs/7.0/server_installation/#troubleshooting">cluster troubleshooting</a> for additional details.</p>
 </li>
 <li>
 <p>If there are exceptions during startup of Keycloak server like this:</p>
@@ -2734,7 +2717,7 @@ Caused by: org.infinispan.client.hotrod.exceptions.TransportException:: Could no
 <p>Enable DEBUG logging as described <a href="#serversetup">Keycloak servers setup</a>. For example, if you log in and you think that the new session is not available on the second site, it&#8217;s good to check the Keycloak server logs and check that listeners were triggered as described in the <a href="#serversetup">Keycloak servers setup</a>. If you do not know and want to ask on keycloak-user mailing list, it is helpful to send the log files from Keycloak servers on both datacenters in the email. Either add the log snippets to the mails or put the logs somewhere and reference them in the email.</p>
 </li>
 <li>
-<p>If you updated the entity, such as <code>user</code>, on Keycloak server on <code>site1</code> and you do not see that entity updated on the Keycloak server on <code>site2</code>, then the issue can be either in the replication of the synchronous database itself or that Keycloak caches are not properly invalidated. You may try to temporarily disable the Keycloak caches as described <a href="https://www.keycloak.org/docs/6.0/server_installation/#disabling-caching">here</a> to nail down if the issue is at the database replication level. Also it may help to manually connect to the database and check if data are updated as expected. This is specific to every database, so you will need to consult the documentation for your database.</p>
+<p>If you updated the entity, such as <code>user</code>, on Keycloak server on <code>site1</code> and you do not see that entity updated on the Keycloak server on <code>site2</code>, then the issue can be either in the replication of the synchronous database itself or that Keycloak caches are not properly invalidated. You may try to temporarily disable the Keycloak caches as described <a href="https://www.keycloak.org/docs/7.0/server_installation/#disabling-caching">here</a> to nail down if the issue is at the database replication level. Also it may help to manually connect to the database and check if data are updated as expected. This is specific to every database, so you will need to consult the documentation for your database.</p>
 </li>
 <li>
 <p>Sometimes you may see the exceptions related to locks like this in Infinispan server log:</p>
@@ -3950,14 +3933,14 @@ Keycloak is not set up by default to handle SSL/HTTPS.
 </div>
 <div class="paragraph">
 <p>This default behavior is defined by the SSL/HTTPS mode of each Keycloak realm.  This is discussed in more detail in the
-<a href="https://www.keycloak.org/docs/6.0/server_admin/">Server Administration Guide</a>, but let&#8217;s give some context and a brief overview of these modes.</p>
+<a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a>, but let&#8217;s give some context and a brief overview of these modes.</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">external requests</dt>
 <dd>
 <p>Keycloak can run out of the box without SSL so long as you stick to private IP addresses like <code>localhost</code>, <code>127.0.0.1</code>, <code>10.0.x.x</code>, <code>192.168.x.x</code>, and <code>172.16.x.x</code>.
-If you don???t have SSL/HTTPS configured on the server or you try to access Keycloak over HTTP from a non-private IP adress you will get an error.</p>
+If you don&#8217;t have SSL/HTTPS configured on the server or you try to access Keycloak over HTTP from a non-private IP adress you will get an error.</p>
 </dd>
 <dt class="hdlist1">none</dt>
 <dd>
@@ -4201,7 +4184,7 @@ Not set by default.</p>
 <dt class="hdlist1">max-connection-idle-time-millis</dt>
 <dd>
 <p>Maximum time the connection might stay idle in the connection pool (900 seconds by default). Will start background cleaner thread of Apache HTTP client.
-Set to -<code>1</code> to disable this checking and the background thread.</p>
+Set to <code>-1</code> to disable this checking and the background thread.</p>
 </dd>
 <dt class="hdlist1">disable-cookies</dt>
 <dd>
@@ -4225,7 +4208,7 @@ This is <em>REQUIRED</em> if <code>client-keystore</code> is set.</p>
 </dd>
 <dt class="hdlist1">proxy-mappings</dt>
 <dd>
-<p>Dennotes proxy configurations for outgoing HTTP requests.
+<p>Denotes proxy configurations for outgoing HTTP requests.
 See the section on <a href="#_proxymappings">Proxy Mappings for Outgoing HTTP Requests</a> for more details.</p>
 </dd>
 </dl>
@@ -4285,7 +4268,7 @@ Note that you need to properly escape the regex-pattern as shown below.</p>
 </div>
 <div class="paragraph">
 <p>The <code>jboss-cli</code> command results in the following subsystem configuration.
-Note that one needs to encode <code>"</code> characters with <code>&quot;</code>.</p>
+Note that one needs to encode <code>"</code> characters with <code>&amp;quot;</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4533,7 +4516,7 @@ so that the actual client IP address is forwarded to and processed by the Keyclo
 <div class="paragraph">
 <p>Configuring your proxy to generate the <code>X-Forwarded-For</code> and <code>X-Forwarded-Proto</code> HTTP headers and preserving the
  original <code>Host</code> HTTP header is beyond the scope of this guide.  Take extra precautions to ensure that the
-<code>X-Forwared-For</code> header is set by your proxy.  If your proxy isn&#8217;t configured correctly, then <em>rogue</em> clients can set this header themselves and trick Keycloak
+<code>X-Forwarded-For</code> header is set by your proxy.  If your proxy isn&#8217;t configured correctly, then <em>rogue</em> clients can set this header themselves and trick Keycloak
 into thinking the client is connecting from a different IP address than it actually is.  This becomes really important if you are doing
 any black or white listing of IP addresses.</p>
 </div>
@@ -4697,7 +4680,7 @@ file and go to the undertow configuration in the <code>load-balancer</code> prof
 </div>
 <div class="paragraph">
 <p>The <code>output-socket-binding</code> is a logical name pointing to a <code>socket-binding</code> configured later in the <em>domain.xml</em> file.
-the <code>instance-id</code> attribute must also be unique to the new host as this value is used by a cookie to enable sticky
+The <code>instance-id</code> attribute must also be unique to the new host as this value is used by a cookie to enable sticky
 sessions when load balancing.</p>
 </div>
 <div class="paragraph">
@@ -5141,7 +5124,7 @@ without limit. If you see memory issues due to a large number of sessions, you c
 </li>
 <li>
 <p>Decrease session timeouts, which could be done individually for each realm in Keycloak admin console. But this could affect
-usability for end users. See <a href="https://www.keycloak.org/docs/6.0/server_admin/#_timeouts">Timeouts</a> for more details.</p>
+usability for end users. See <a href="https://www.keycloak.org/docs/7.0/server_admin/#_timeouts">Timeouts</a> for more details.</p>
 </li>
 </ul>
 </div>
@@ -5266,339 +5249,6 @@ The cache will be cleared for all realms!
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_proxy"><a class="anchor" href="#_proxy"></a>10. Keycloak Security Proxy</h2>
-<div class="sectionbody">
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/proxy.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/proxy.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="paragraph">
-<p>Keycloak has an HTTP(S) proxy that you can put in front of web applications and services where it is not possible to install the Keycloak adapter.
-You can set up URL filters so that certain URLs are secured either by browser login and/or bearer token authentication.
-You can also define role constraints for URL patterns within your applications.</p>
-</div>
-<div class="sect2">
-<h3 id="proxy-install-and-run"><a class="anchor" href="#proxy-install-and-run"></a>10.1. Proxy Install and Run</h3>
-<div class="paragraph">
-<p>Download the Keycloak proxy distribution from the Keycloak download pages and unzip it.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>$ unzip keycloak-proxy-dist.zip</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>To run it you must have a proxy config file (which we&#8217;ll discuss in a moment).</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>$ java -jar bin/launcher.jar [your-config.json]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you do not specify a path to the proxy config file, the launcher will look in the current working directory for the file named <code>proxy.json</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proxy-configuration"><a class="anchor" href="#proxy-configuration"></a>10.2. Proxy Configuration</h3>
-<div class="paragraph">
-<p>Here&#8217;s an example configuration file.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="json">{
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">target-url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8082</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">target-request-timeout</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">60000</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">send-access-token</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">bind-address</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">http-port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">8080</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">https-port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">8443</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">keystore</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">classpath:ssl.jks</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">keystore-password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">key-password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">applications</span><span class="delimiter">&quot;</span></span>: [
-        {
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">base-path</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/customer-portal</span><span class="delimiter">&quot;</span></span>,
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">error-page</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/error.html</span><span class="delimiter">&quot;</span></span>,
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">adapter-config</span><span class="delimiter">&quot;</span></span>: {
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">realm</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">demo</span><span class="delimiter">&quot;</span></span>,
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">resource</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customer-portal</span><span class="delimiter">&quot;</span></span>,
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">realm-public-key</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">MIGfMA0GCSqGSIb</span><span class="delimiter">&quot;</span></span>,
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">auth-server-url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8081/auth</span><span class="delimiter">&quot;</span></span>,
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">ssl-required</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">external</span><span class="delimiter">&quot;</span></span>,
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">principal-attribute</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>,
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">credentials</span><span class="delimiter">&quot;</span></span>: {
-                    <span class="key"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>
-                }
-            }
-            ,
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">constraints</span><span class="delimiter">&quot;</span></span>: [
-                {
-                    <span class="key"><span class="delimiter">&quot;</span><span class="content">pattern</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/users/*</span><span class="delimiter">&quot;</span></span>,
-                    <span class="key"><span class="delimiter">&quot;</span><span class="content">roles-allowed</span><span class="delimiter">&quot;</span></span>: [
-                        <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>
-                    ]
-                },
-                {
-                    <span class="key"><span class="delimiter">&quot;</span><span class="content">pattern</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/admins/*</span><span class="delimiter">&quot;</span></span>,
-                    <span class="key"><span class="delimiter">&quot;</span><span class="content">roles-allowed</span><span class="delimiter">&quot;</span></span>: [
-                        <span class="string"><span class="delimiter">&quot;</span><span class="content">admin</span><span class="delimiter">&quot;</span></span>
-                    ]
-                },
-                {
-                    <span class="key"><span class="delimiter">&quot;</span><span class="content">pattern</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/users/permit</span><span class="delimiter">&quot;</span></span>,
-                    <span class="key"><span class="delimiter">&quot;</span><span class="content">permit</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>
-                },
-                {
-                    <span class="key"><span class="delimiter">&quot;</span><span class="content">pattern</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/users/deny</span><span class="delimiter">&quot;</span></span>,
-                    <span class="key"><span class="delimiter">&quot;</span><span class="content">deny</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>
-                }
-            ]
-        }
-    ]
-}</code></pre>
-</div>
-</div>
-<div class="sect3">
-<h4 id="basic-config"><a class="anchor" href="#basic-config"></a>10.2.1. Basic Config</h4>
-<div class="paragraph">
-<p>The basic configuration options for the server are as follows:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">target-url</dt>
-<dd>
-<p>The URL this server is proxying. <em>REQUIRED</em>.</p>
-</dd>
-<dt class="hdlist1">target-request-timeout</dt>
-<dd>
-<p>The timeout (in ms) for the proxied request. <em>OPTIONAL</em>.
-Default is 30000.</p>
-</dd>
-<dt class="hdlist1">send-access-token</dt>
-<dd>
-<p>Boolean flag.
-If true, this will send the access token via the KEYCLOAK_ACCESS_TOKEN header to the proxied server. <em>OPTIONAL</em>.
-Default is false.</p>
-</dd>
-<dt class="hdlist1">bind-address</dt>
-<dd>
-<p>DNS name or IP address to bind the proxy server&#8217;s sockets to. <em>OPTIONAL</em>.
-The default value is <em>localhost</em></p>
-</dd>
-<dt class="hdlist1">http-port</dt>
-<dd>
-<p>Port to listen for HTTP requests.
-If you do not specify this value, then the proxy will not listen for regular HTTP requests. <em>OPTIONAL</em>.</p>
-</dd>
-<dt class="hdlist1">https-port</dt>
-<dd>
-<p>Port to listen for HTTPS requests.
-If you do not specify this value, then the proxy will not listen for HTTPS requests. <em>OPTIONAL</em>.</p>
-</dd>
-<dt class="hdlist1">keystore</dt>
-<dd>
-<p>Path to a Java keystore file that contains private key and certificate for the server to be able to handle HTTPS requests.
-Can be a file path, or, if you prefix it with <code>classpath:</code>                            it will look for this file in the classpath. <em>OPTIONAL</em>.
-If you have enabled HTTPS, but have not defined a keystore, the proxy will auto-generate a self-signed certificate and use that.</p>
-</dd>
-<dt class="hdlist1">buffer-size</dt>
-<dd>
-<p>HTTP server socket buffer size.
-Usually the default is good enough. <em>OPTIONAL</em>.</p>
-</dd>
-<dt class="hdlist1">buffers-per-region</dt>
-<dd>
-<p>HTTP server socket buffers per region.
-Usually the default is good enough. <em>OPTIONAL</em>.</p>
-</dd>
-<dt class="hdlist1">io-threads</dt>
-<dd>
-<p>Number of threads to handle IO.
-Usually default is good enough.
- <em>OPTIONAL</em>.
-The default is the number of available processors * 2.</p>
-</dd>
-<dt class="hdlist1">worker-threads</dt>
-<dd>
-<p>Number of threads to handle requests.
-Usually the default is good enough. <em>OPTIONAL</em>.
-The default is the number of available processors * 16.</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="application-config"><a class="anchor" href="#application-config"></a>10.3. Application Config</h3>
-<div class="paragraph">
-<p>Next under the <code>applications</code> array attribute, you can define one or more applications per host you are proxying.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">base-path</dt>
-<dd>
-<p>The base context root for the application.
-Must start with '/'. <em>REQUIRED</em>.</p>
-</dd>
-<dt class="hdlist1">error-page</dt>
-<dd>
-<p>If the proxy has an error, it will display the target application&#8217;s error page relative URL. <em>OPTIONAL</em>.
-This is a relative path to the base-path.
-In the example above it would be <code>/customer-portal/error.html</code>.</p>
-</dd>
-<dt class="hdlist1">adapter-config</dt>
-<dd>
-<p><em>REQUIRED</em>.
-Same configuration as any other Keycloak adapter.</p>
-</dd>
-<dt class="hdlist1">proxy-address-forwarding</dt>
-<dd>
-<p>Enable usage of X-Forwarded-For, X-Forwarded-Host, X-Forwarded-Proto when hosted behind another proxy/load-balancer.</p>
-</dd>
-</dl>
-</div>
-<div class="sect3">
-<h4 id="constraint-config"><a class="anchor" href="#constraint-config"></a>10.3.1. Constraint Config</h4>
-<div class="paragraph">
-<p>Next under each application you can define one or more constraints in the <code>constraints</code> array attribute.
-A constraint defines a URL pattern relative to the base-path.
-You can deny, permit, or require authentication for a specific URL pattern.
-You can specify roles allowed for that path as well.
-More specific constraints will take precedence over more general ones.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">pattern</dt>
-<dd>
-<p>URL pattern to match relative to the base-path of the application.
-Must start with '/'. <em>REQUIRED.</em>
-You may only have one wildcard and it must come at the end of the pattern.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Valid: <code>/foo/bar/*</code> and  <code>/foo/*.txt</code></p>
-</li>
-<li>
-<p>Not valid: <code>/*/foo/*</code>.</p>
-</li>
-</ul>
-</div>
-</dd>
-<dt class="hdlist1">roles-allowed</dt>
-<dd>
-<p>Array of strings of roles allowed to access this url pattern. <em>OPTIONAL</em>.</p>
-</dd>
-<dt class="hdlist1">methods</dt>
-<dd>
-<p>Array of strings of HTTP methods that will exclusively match this pattern and HTTP request. <em>OPTIONAL</em>.</p>
-</dd>
-<dt class="hdlist1">excluded-methods</dt>
-<dd>
-<p>Array of strings of HTTP methods that will be ignored when match this pattern. <em>OPTIONAL</em>.</p>
-</dd>
-<dt class="hdlist1">deny</dt>
-<dd>
-<p>Deny all access to this URL pattern. <em>OPTIONAL</em>.</p>
-</dd>
-<dt class="hdlist1">permit</dt>
-<dd>
-<p>Permit all access without requiring authentication or a role mapping. <em>OPTIONAL</em>.</p>
-</dd>
-<dt class="hdlist1">permit-and-inject</dt>
-<dd>
-<p>Permit all access, but inject the headers, if user is already authenticated. <em>OPTIONAL</em>.</p>
-</dd>
-<dt class="hdlist1">authenticate</dt>
-<dd>
-<p>Require authentication for this pattern, but no role mapping. <em>OPTIONAL</em>.</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect3">
-<h4 id="header-names-config"><a class="anchor" href="#header-names-config"></a>10.3.2. Header Names Config</h4>
-<div class="paragraph">
-<p>Next under the list of applications you can override the defaults for the names of the header fields injected by the proxy (see <a href="#_identity_headers">Keycloak Identity Headers</a>). This mapping is optional.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">keycloak-subject</dt>
-<dd>
-<p>e.g.
-MYAPP_USER_ID</p>
-</dd>
-<dt class="hdlist1">keycloak-username</dt>
-<dd>
-<p>e.g.
-MYAPP_USER_NAME</p>
-</dd>
-<dt class="hdlist1">keycloak-email</dt>
-<dd>
-<p>e.g.
-MYAPP_USER_EMAIL</p>
-</dd>
-<dt class="hdlist1">keycloak-name</dt>
-<dd>
-<p>e.g.
-MYAPP_USER_ID</p>
-</dd>
-<dt class="hdlist1">keycloak-access-token</dt>
-<dd>
-<p>e.g.
-MYAPP_ACCESS_TOKEN</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_identity_headers"><a class="anchor" href="#_identity_headers"></a>10.4. Keycloak Identity Headers</h3>
-<div class="paragraph">
-<p>When forwarding requests to the proxied server, Keycloak Proxy will set some additional headers with values from the OIDC identity token it received for authentication.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">KEYCLOAK_SUBJECT</dt>
-<dd>
-<p>User id.
-Corresponds to JWT <code>sub</code> and will be the user id Keycloak uses to store this user.</p>
-</dd>
-<dt class="hdlist1">KEYCLOAK_USERNAME</dt>
-<dd>
-<p>Username.
-Corresponds to JWT <code>preferred_username</code>.</p>
-</dd>
-<dt class="hdlist1">KEYCLOAK_EMAIL</dt>
-<dd>
-<p>Email address of user if set.</p>
-</dd>
-<dt class="hdlist1">KEYCLOAK_NAME</dt>
-<dd>
-<p>Full name of user if set.</p>
-</dd>
-<dt class="hdlist1">KEYCLOAK_ACCESS_TOKEN</dt>
-<dd>
-<p>Send the access token in this header if the proxy was configured to send it.
-This token can be used to make bearer token requests.             Header field names can be configured using a map of <code>header-names</code> in configuration file:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="json">{
-    <span class="string"><span class="delimiter">&quot;</span><span class="content">header-names</span><span class="delimiter">&quot;</span></span> {
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">keycloak-subject</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">MY_SUBJECT</span><span class="delimiter">&quot;</span></span>
-    }
-}</code></pre>
-</div>
-</div>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div id="footnotes">
 <hr>
@@ -5608,7 +5258,7 @@ This token can be used to make bearer token requests.             Header field n
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-04-15 17:52:24 UTC
+Last updated 2019-05-20 18:37:23 UTC
 </div>
 </div>
 <ul id="globalnav">

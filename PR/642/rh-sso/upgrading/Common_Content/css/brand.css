@@ -1,4 +1,7 @@
-@charset "UTF-8";
+/* New Red Hat Font */
+@import url(rhfont.css);
+
+/* Books Icon Font */
 @font-face {
     font-family: "redhat-books-icons";
     font-style: normal;
@@ -285,7 +288,7 @@
 }
 #main {
     color: #1A1A1A;
-    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-family: "Red Hat Text", "Overpass", "Helvetica Neue", sans-serif;
     font-size: 100%;
     line-height: 1.8em;
     text-rendering: optimizelegibility;
@@ -372,7 +375,7 @@
 #main .filename,
 #main .classname,
 #main .literal {
-    font-family: "Menlo","Monaco","Courier New",monospace;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
 }
 #main kbd,
 #main .keycap {
@@ -451,7 +454,7 @@
 #main .formalpara > .title,
 #main .para > .title,
 #main .titlepage .edition {
-    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-family: "Red Hat Display", "Overpass", "Helvetica Neue", sans-serif;
     font-weight: 600;
 }
 #main h1 {
@@ -650,7 +653,7 @@
     margin-bottom: 1.8em;
 }
 #main dl dt {
-    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-family: "Red Hat Text", "Overpass", "Helvetica Neue", sans-serif;
     font-weight: 600;
 }
 #main dl dd {
@@ -695,7 +698,7 @@
     box-sizing: border-box;
     color: #FFFFFF;
     display: inline-block;
-    font-family: "Open Sans","Helvetica Neue",sans-serif;
+    font-family: inherit;
     font-size: 100%;
     font-weight: 600;
     height: auto;
@@ -808,7 +811,7 @@
     box-sizing: border-box;
     color: #000000;
     display: block;
-    font-family: "Open Sans","Helvetica Neue",sans-serif;
+    font-family: inherit;
     font-size: 100%;
     font-weight: 400;
     line-height: 1.8em;
@@ -870,11 +873,11 @@
     color: #F2F2F2;
 }
 #main :-moz-placeholder {
-    font-family: "Open Sans","Helvetica Neue",sans-serif;
+    font-family: inherit;
     font-weight: 400;
 }
 #main *::-moz-placeholder {
-    font-family: "Open Sans","Helvetica Neue",sans-serif;
+    font-family: inherit;
     font-weight: 400;
 }
 #main img {
@@ -1140,7 +1143,7 @@
 #title .right {
     color: #000000;
     float: right;
-    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-family: inherit;
 }
 #title .right:before {
     content: "Documentation";
@@ -1154,7 +1157,7 @@
 }
 
 #main .docnav {
-    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-family: inherit;
     padding-bottom: 7.2em;
     padding-top: 3.6em;
     position: relative;
@@ -1175,7 +1178,7 @@
 #main .docnav .previous a,
 #main .docnav .next a {
     display: block;
-    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-family: inherit;
     font-weight: 400;
     line-height: 1em;
     text-transform: uppercase;
@@ -1287,7 +1290,7 @@
     padding: 0 0 0 1.35em;
 }
 #main .producttitle {
-    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-family: "Red Hat Display", "Overpass", "Helvetica Neue", sans-serif;
     font-size: 1.75em;
     line-height: 1;
     margin-bottom: 1.02857em;
@@ -1445,7 +1448,7 @@
     padding-left: 1.35em;
 }
 #main div.toc > ul.toc >  li {
-    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-family: inherit;
     font-weight: 700;
     text-transform: uppercase;
     list-style: none outside none;
@@ -1663,7 +1666,7 @@
 #main dl.calloutlist dt a,
 #main span.inlinecallout,
 #main dl.calloutlist dt > span.callout {
-    font-family: "liberation mono","bitstream vera mono","dejavu mono",monospace;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
     background-color: #9a9a9a;
     color: white;
     position: absolute;

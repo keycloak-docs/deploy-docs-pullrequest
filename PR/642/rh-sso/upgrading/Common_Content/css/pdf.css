@@ -1,3 +1,7 @@
+/* New Red Hat Font */
+@import url(rhfont.css);
+
+/* Books Icon Font */
 @font-face {
     font-family: "iconfont";
     src: url("../fonts/portal/nimbus/iconfont.eot");
@@ -17,7 +21,7 @@
 body {
     background-color: white;
     margin: 0 auto;
-    font-family: "Overpass", "Open Sans", "Liberation Sans", "Myriad ", "Bitstream Vera Sans", "Lucida Grande", "Luxi Sans", "Trebuchet MS", Helvetica, verdana, arial, sans-serif;
+    font-family: "Red Hat Text", "Overpass", "Helvetica Neue", sans-serif;
     font-size: 14px;
     max-width: 54em;
     color: #252525;
@@ -47,6 +51,7 @@ h1, h2, h3, h4, h5, h6, header .home, .title {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: "Red Hat Display", "Overpass", "Helvetica Neue", sans-serif;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
@@ -176,7 +181,7 @@ div.warning:before {
 
 /* Code examples */
 .command, .filename, .keycap, .classname, .literal, code {
-    font-family: "dejavu sans mono","liberation mono","bitstream vera mono","dejavu mono",monospace;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
     font-weight: bold;
 }
 
@@ -185,13 +190,13 @@ div.warning:before {
 }
 
 .computeroutput, .option {
-    font-family:  "dejavu sans mono","liberation mono","bitstream vera mono","dejavu mono",monospace;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
     font-weight: bold;
 }
 
 pre {
     padding: 0.5em 0 0.5em 1em;
-    font-family:  "dejavu sans mono","liberation mono","bitstream vera mono","dejavu mono",monospace;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
     font-size: medium;
     border-left: 0.5em solid #666666;
     white-space: pre-wrap;
@@ -637,7 +642,7 @@ dl.calloutlist dt a,
 span.inlinecallout,
 span.callout,
 span.inlinecallout {
-    font-family: "dejavu sans mono","liberation mono","bitstream vera mono","dejavu mono",monospace;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
     border: 1px solid #c00;
     background-color: #c00;
     color: white;

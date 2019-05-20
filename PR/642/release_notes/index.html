@@ -672,6 +672,8 @@ span.image img {
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
+<li><a href="#keycloak-6-0-0">Keycloak 6.0.0</a></li>
+<li><a href="#keycloak-5-0-0">Keycloak 5.0.0</a></li>
 <li><a href="#keycloak-4-8-0-final">Keycloak 4.8.0.Final</a></li>
 <li><a href="#keycloak-4-7-0-final">Keycloak 4.7.0.Final</a></li>
 <li><a href="#keycloak-4-6-0-final">Keycloak 4.6.0.Final</a></li>
@@ -685,6 +687,47 @@ span.image img {
 </div>
 </div>
 <div id="content">
+<div class="sect1">
+<h2 id="keycloak-6-0-0"><a class="anchor" href="#keycloak-6-0-0"></a>Keycloak 6.0.0</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="wildfly-16-upgrade"><a class="anchor" href="#wildfly-16-upgrade"></a>WildFly 16 Upgrade</h3>
+<div class="paragraph">
+<p>Keycloak server was upgraded to use WildFly 16 under the covers.</p>
+</div>
+<div class="sect3">
+<h4 id="smallrye-health-and-metrics-extensions"><a class="anchor" href="#smallrye-health-and-metrics-extensions"></a>SmallRye Health and Metrics extensions</h4>
+<div class="paragraph">
+<p>Keycloak now comes enabled with the SmallRye Health and Metrics extensions which provides standard health and metrics
+endpoints. We will add some documentation as well as Keycloak specific metrics soon.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ps256-support"><a class="anchor" href="#ps256-support"></a>PS256 support</h3>
+<div class="paragraph">
+<p>Thanks to <a href="https://github.com/tnorimat">tnorimat</a> Keycloak now has support for signing and verifying tokens with PS256.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mp-jwt-client-scope"><a class="anchor" href="#mp-jwt-client-scope"></a>MP-JWT Client Scope</h3>
+<div class="paragraph">
+<p>New built-in client scope to make it easy to issue tokens following the Eclipse MicroProfile specification.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="keycloak-5-0-0"><a class="anchor" href="#keycloak-5-0-0"></a>Keycloak 5.0.0</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="wildfly-15-upgrade"><a class="anchor" href="#wildfly-15-upgrade"></a>WildFly 15 Upgrade</h3>
+<div class="paragraph">
+<p>Keycloak server was upgraded to use WildFly 15 under the covers.</p>
+</div>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="keycloak-4-8-0-final"><a class="anchor" href="#keycloak-4-8-0-final"></a>Keycloak 4.8.0.Final</h2>
 <div class="sectionbody">
@@ -702,7 +745,7 @@ Service Accounts as OAuth clients as clients to Keycloak.</p>
 <h3 id="rules-drools-policy-marked-as-a-technology-preview-feature"><a class="anchor" href="#rules-drools-policy-marked-as-a-technology-preview-feature"></a>Rules/Drools Policy Marked as a Technology Preview Feature</h3>
 <div class="paragraph">
 <p>Until now, Drools policies were enabled by default. But now, this policy type is only available as a technology preview feature and
-to use it you need to enable the preview profile or the corresponding feature. Take a look at the <a href="https://www.keycloak.org/docs/6.0/authorization_services/">Authorization Services Guide</a> for more details.</p>
+to use it you need to enable the preview profile or the corresponding feature. Take a look at the <a href="https://www.keycloak.org/docs/7.0/authorization_services/">Authorization Services Guide</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
@@ -823,7 +866,7 @@ of audience on the adapter side.</p>
 <div class="paragraph">
 <p>The Keycloak server was upgraded to use WildFly 13 under the covers. This means update of the underlying dependencies and also
 some changes in the configuration. We now also support WildFly 13 adapter and we upgraded the underlying JDG/Infinispan server version for
-the Cross-DC setup. See <a href="https://www.keycloak.org/docs/6.0/upgrading/">Upgrading Guide</a> for more details.</p>
+the Cross-DC setup. See <a href="https://www.keycloak.org/docs/7.0/upgrading/">Upgrading Guide</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
@@ -866,7 +909,7 @@ is fixed, which allows configuring a fixed hostname. The latter makes sure that 
 used and also allows internal applications to invoke Keycloak through an alternative URL.</p>
 </div>
 <div class="paragraph">
-<p>For more details refer to the threat mitigation section in the <a href="https://www.keycloak.org/docs/6.0/server_admin/">Server Administration Guide</a>.</p>
+<p>For more details refer to the threat mitigation section in the <a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1192,7 +1235,7 @@ Thanks to <a href="https://github.com/looorent">loorent</a> for the contribution
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-04-15 17:51:25 UTC
+Last updated 2019-05-20 18:36:23 UTC
 </div>
 </div>
 <ul id="globalnav">
