@@ -4765,7 +4765,7 @@ This is a simple string with no whitespace in it.
 After this you can reference your client at the following URL: <code>root/auth/realms/{realm}/protocol/saml/clients/{url-name}</code></p>
 </div>
 <div class="paragraph">
-<p>The IDP initiated login implementation prefers <em>POST</em> over <em>REDIRECT</em> binding (check <a href="#saml-bindings">saml bindings</a> for more information).
+<p>The IDP initiated login implementation prefers <em>POST</em> over <em>REDIRECT</em> binding (check <a href="#_saml">saml bindings</a> for more information).
 Therefore the final binding and SP URL are selected in the following way:</p>
 </div>
 <div class="olist arabic">
@@ -7558,7 +7558,7 @@ You must define the OpenID Connect configuration options as well.  They basicall
  <code>prompt=none</code> to the default IDP so that it checks if the user is currently authenticated there. Because not all IDPs support requests with <code>prompt=none</code> this switch
  is used to indicate if the default IDP supports the param before redirecting the auth request.
 </p><p class="tableblock"> It is important to note that if the user is not authenticated in the IDP, the client will still get a <code>login_required</code> error. Even if the user is currently authenticated in the IDP,
- the client might still get an <code>interaction_required</code> error if authentication or consent pages requiring user interaction would be otherwise displayed. This include required actions
+ the client might still get an <code>interaction_required</code> error if authentication or consent pages requiring user interaction would be otherwise displayed. This includes required actions
  (e.g. change password), consent screens and any screens set to be displayed by the <code>first broker login</code> flow or <code>post broker login</code> flow.</p></td>
 </tr>
 <tr>
@@ -12592,7 +12592,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-20 18:37:15 UTC
+Last updated 2019-05-27 17:37:19 UTC
 </div>
 </div>
 <ul id="globalnav">
