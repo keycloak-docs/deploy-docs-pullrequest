@@ -4090,7 +4090,7 @@ If you plan to deploy your Spring Application as a WAR then you should not use t
 </div>
 </div>
 <div class="paragraph">
-<p>To be able to secure WAR apps deployed on Tomcat 7 and 8 you must install the Keycloak Tomcat 7 or 8 adapter into your Tomcat installation.
+<p>To be able to secure WAR apps deployed on Tomcat 7, 8 and 9 you must install the Keycloak Tomcat 7 adapter or Keycloak Tomcat adapter into your Tomcat installation.
 You then have to provide some extra configuration in each WAR you deploy to Tomcat.
 Let&#8217;s go over these steps.</p>
 </div>
@@ -4105,12 +4105,22 @@ They are also available as a maven artifact.</p>
 <p>You must unzip the adapter distro into Tomcat&#8217;s <code>lib/</code> directory.
 Including adapter&#8217;s jars within your WEB-INF/lib directory will not work!  The Keycloak adapter is implemented as a Valve and valve code must reside in Tomcat&#8217;s main lib/ directory.</p>
 </div>
+<div class="paragraph">
+<p>Install on Tomcat 7:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>$ cd $TOMCAT_HOME/lib
-$ unzip keycloak-tomcat7-adapter-dist.zip
-    or
-$ unzip keycloak-tomcat8-adapter-dist.zip</code></pre>
+$ unzip keycloak-tomcat7-adapter-dist.zip</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install on Tomcat 8 or 9:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>$ cd $TOMCAT_HOME/lib
+$ unzip keycloak-tomcat-adapter-dist.zip</code></pre>
 </div>
 </div>
 </div>
@@ -9028,7 +9038,7 @@ The rest of the configuration uses the same XML syntax as <code>keycloak-saml.xm
 </div>
 </div>
 <div class="paragraph">
-<p>To be able to secure WAR apps deployed on Tomcat 7 and 8 you must install the Keycloak Tomcat 7 or 8 SAML adapter into your Tomcat installation.
+<p>To be able to secure WAR apps deployed on Tomcat 7, 8 and 9 you must install the Keycloak Tomcat 7 SAML adapter or Keycloak Tomcat SAML adapter into your Tomcat installation.
 You then have to provide some extra configuration in each WAR you deploy to Tomcat.
 Let&#8217;s go over these steps.</p>
 </div>
@@ -9050,12 +9060,22 @@ They are also available as a maven artifact.</p>
 Including adapter&#8217;s jars within your WEB-INF/lib directory will not work!  The Keycloak SAML adapter is implemented as
 a Valve and valve code must reside in Tomcat&#8217;s main lib/ directory.</p>
 </div>
+<div class="paragraph">
+<p>Install on Tomcat 7:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>$ cd $TOMCAT_HOME/lib
-$ unzip keycloak-saml-tomcat7-adapter-dist.zip
-    or
-$ unzip keycloak-saml-tomcat8-adapter-dist.zip</code></pre>
+$ unzip keycloak-saml-tomcat7-adapter-dist.zip</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install on Tomcat 8 or 9:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>$ cd $TOMCAT_HOME/lib
+$ unzip keycloak-saml-tomcat-adapter-dist.zip</code></pre>
 </div>
 </div>
 </div>
@@ -12006,7 +12026,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-30 22:19:58 UTC
+Last updated 2019-06-05 11:31:14 UTC
 </div>
 </div>
 <ul id="globalnav">
