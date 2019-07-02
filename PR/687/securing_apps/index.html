@@ -5047,9 +5047,9 @@ id_token) which can then be used to call backend services.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>KeycloakInstalled</code> adapter supports the <code>PKCE</code> mechanism to provide additional protection during
+The <code>KeycloakInstalled</code> adapter supports the <code>PKCE</code> [RFC 7636] mechanism to provide additional protection during
 code to token exchanges in the <code>OIDC</code> protocol. PKCE can be enabled with the <code>"enable-pkce": true</code> setting
-in the adapter configuration. Enabling PKCE is highly recommended.
+in the adapter configuration. Enabling PKCE is highly recommended, to avoid code injection and code replay attacks.
 </td>
 </tr>
 </table>
@@ -12041,7 +12041,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-07-01 13:58:57 UTC
+Last updated 2019-07-02 07:22:55 UTC
 </div>
 </div>
 <ul id="globalnav">
