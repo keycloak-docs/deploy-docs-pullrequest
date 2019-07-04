@@ -4135,7 +4135,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <p><strong>Proof Key for Code Exchange (PKCE)</strong></p>
 </div>
 <div class="paragraph">
-<p>PKCE prevents an attacker who steals an authorization code issued to a legitimate client from receiving the tokens in return to their stealing authorization code.</p>
+<p>When an attacker steals an authorization code that was issued to a legitimate client, PKCE prevents the attacker from receiving the tokens that apply to that code.</p>
 </div>
 <div class="paragraph">
 <p>The administrator can select the following three options:</p>
@@ -4146,7 +4146,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <div class="ulist">
 <ul>
 <li>
-<p>(blank) : Keycloak does not apply PKCE unless the client sends PKCE&#8217;s parameters appropriately to keycloak&#8217;s authorization endpoint. It is default setting.</p>
+<p>(blank) : Keycloak does not apply PKCE unless the client sends PKCE&#8217;s parameters appropriately to keycloak&#8217;s authorization endpoint. It is the default setting.</p>
 </li>
 <li>
 <p>S256 : Keycloak applies to the client PKCE whose code challenge method is S256.</p>
@@ -12642,7 +12642,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-07-03 00:41:20 UTC
+Last updated 2019-07-04 00:24:21 UTC
 </div>
 </div>
 <ul id="globalnav">
