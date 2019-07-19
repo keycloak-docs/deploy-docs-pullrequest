@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Getting Started Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guide consists of basic information and instructions to get started with Red Hat Single Sign-On Continuous Delivery 7"/><link rel="next" href="#overview" title="Chapter 1. Overview"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140342775732976"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On Continuous Delivery</span> <span class="productnumber">7</span></div><div><h1 class="title">Getting Started Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On Continuous Delivery 7</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140342781580880">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
-				This guide consists of basic information and instructions to get started with Red Hat Single Sign-On Continuous Delivery 7
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Getting Started Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guide consists of basic information and instructions to get started with Red Hat Single Sign-On Continuous Delivery 6"/><link rel="next" href="#overview" title="Chapter 1. Overview"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140268923725488"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On Continuous Delivery</span> <span class="productnumber">6</span></div><div><h1 class="title">Getting Started Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On Continuous Delivery 6</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140268923727744">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+				This guide consists of basic information and instructions to get started with Red Hat Single Sign-On Continuous Delivery 6
 			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="chapter"><a href="#overview">1. Overview</a></span></li><li><span class="chapter"><a href="#install-boot">2. Installing and Booting</a></span><ul><li><span class="section"><a href="#installing_the_server">2.1. Installing the Server</a></span></li><li><span class="section"><a href="#booting_the_server">2.2. Booting the Server</a></span></li><li><span class="section"><a href="#creating_the_admin_account">2.3. Creating the Admin Account</a></span></li><li><span class="section"><a href="#logging_in_to_the_admin_console">2.4. Logging in to the Admin Console</a></span></li></ul></li><li><span class="chapter"><a href="#creating_a_realm_and_user">3. Creating a Realm and User</a></span><ul><li><span class="section"><a href="#before_you_start">3.1. Before You Start</a></span></li><li><span class="section"><a href="#create-realm">3.2. Creating a New Realm</a></span></li><li><span class="section"><a href="#create-new-user">3.3. Creating a New User</a></span></li><li><span class="section"><a href="#user_account_service">3.4. User Account Service</a></span></li></ul></li><li><span class="chapter"><a href="#securing_a_jboss_servlet_application">4. Securing a JBoss Servlet Application</a></span><ul><li><span class="section"><a href="#before_you_start_2">4.1. Before You Start</a></span></li><li><span class="section"><a href="#installing_the_client_adapter">4.2. Installing the Client Adapter</a></span></li><li><span class="section"><a href="#downloading_building_and_deploying_application_code">4.3. Downloading, Building, and Deploying Application Code</a></span></li><li><span class="section"><a href="#creating_and_registering_the_client">4.4. Creating and Registering the Client</a></span></li><li><span class="section"><a href="#configuring_the_subsystem">4.5. Configuring the Subsystem</a></span></li></ul></li></ul></div><section class="chapter" id="overview"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Overview</h1></div></div></div><p>
 			This guide helps you get started with Red Hat Single Sign-On. It covers server configuration and use of the default database. Advanced deployment options are not covered. For a deeper description of features or configuration options, consult the other reference guides.
 		</p><p>
@@ -11,19 +11,19 @@
 		</p><section class="section" id="installing_the_server"><div class="titlepage"><div><div><h2 class="title">2.1. Installing the Server</h2></div></div></div><p>
 				Download the Red Hat Single Sign-On Server:
 			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-						<span class="strong strong"><strong>rh-sso-7.zip</strong></span>
+						<span class="strong strong"><strong>rh-sso-6.zip</strong></span>
 					</li></ul></div><div class="admonition note"><div class="admonition_header">Note</div><div><p>
 					This file can be downloaded from <a class="link" href="https://access.redhat.com/jbossnetwork/restricted/listSoftware.html?downloadType=distributions&amp;product=core.service.rhsso">the Red Hat customer portal</a>.
 				</p></div></div><p>
-				The <span class="strong strong"><strong>rh-sso-7.zip</strong></span> file is the server-only distribution. It contains only the scripts and binaries to run the Red Hat Single Sign-On server.
+				The <span class="strong strong"><strong>rh-sso-6.zip</strong></span> file is the server-only distribution. It contains only the scripts and binaries to run the Red Hat Single Sign-On server.
 			</p><p>
 				Place the file in a directory you choose and use the <code class="literal">unzip</code> utility to unpack it, like this:
 			</p><div class="formalpara"><p class="title"><strong>Linux/Unix</strong></p><p>
 					
-<pre class="programlisting language-bash">$ jar xf rh-sso-7.zip</pre>
+<pre class="programlisting language-bash">$ jar xf rh-sso-6.zip</pre>
 				</p></div><div class="formalpara"><p class="title"><strong>Windows</strong></p><p>
 					
-<pre class="programlisting language-bash">&gt; unzip rh-sso-7.zip</pre>
+<pre class="programlisting language-bash">&gt; unzip rh-sso-6.zip</pre>
 				</p></div></section><section class="section" id="booting_the_server"><div class="titlepage"><div><div><h2 class="title">2.2. Booting the Server</h2></div></div></div><p>
 				To boot the Red Hat Single Sign-On server, go to the <code class="literal">bin</code> directory of the server distribution and run the <code class="literal">standalone</code> boot script:
 			</p><div class="formalpara"><p class="title"><strong>Linux/Unix</strong></p><p>
@@ -40,7 +40,7 @@ $ ./standalone.sh</pre>
 			</p><p>
 				This account will be permitted to log in to the <code class="literal">master</code> realm’s administration console, from which you will create realms and users and register applications to be secured by Red Hat Single Sign-On.
 			</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
-					You can only create an initial admin user on the Welcome Page if you connect using <code class="literal">localhost</code>. This is a security precaution. You can create the initial admin user at the command line with the <code class="literal">add-user-keycloak.sh</code> script. For more information, see the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on_continuous_delivery/7/html-single/server_installation_and_configuration_guide/">Server Installation and Configuration Guide</a> and the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on_continuous_delivery/7/html-single/server_administration_guide/">Server Administration Guide</a>.
+					You can only create an initial admin user on the Welcome Page if you connect using <code class="literal">localhost</code>. This is a security precaution. You can create the initial admin user at the command line with the <code class="literal">add-user-keycloak.sh</code> script. For more information, see the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on_continuous_delivery/6/html-single/server_installation_and_configuration_guide/">Server Installation and Configuration Guide</a> and the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on_continuous_delivery/6/html-single/server_administration_guide/">Server Administration Guide</a>.
 				</p></div></div></section><section class="section" id="logging_in_to_the_admin_console"><div class="titlepage"><div><div><h2 class="title">2.4. Logging in to the Admin Console</h2></div></div></div><p>
 				After you create the initial admin account, use the following steps to log in to the admin console:
 			</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
@@ -84,7 +84,7 @@ $ ./standalone.sh</pre>
 					</li><li class="listitem">
 						Type the username and password you created. You will be required to create a permanent password after you successfully log in, unless you changed the <span class="strong strong"><strong>Temporary</strong></span> setting to <span class="strong strong"><strong>Off</strong></span> when you created the password.
 					</li></ol></div><p>
-				The user account service page will open. Every user in a realm has access to this account service by default. From this page, you can update profile information and change or add additional credentials. For more information on this service see the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on_continuous_delivery/7/html-single/server_administration_guide/">Server Administration Guide</a>.
+				The user account service page will open. Every user in a realm has access to this account service by default. From this page, you can update profile information and change or add additional credentials. For more information on this service see the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on_continuous_delivery/6/html-single/server_administration_guide/">Server Administration Guide</a>.
 			</p></section></section><section class="chapter" id="securing_a_jboss_servlet_application"><div class="titlepage"><div><div><h1 class="title">Chapter 4. Securing a JBoss Servlet Application</h1></div></div></div><p>
 			This section describes how to secure a Java servlet application on the JBoss EAP application server by:
 		</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -113,7 +113,7 @@ $ ./standalone.sh -Djboss.socket.binding.port-offset=100</pre>
 			</p></section><section class="section" id="installing_the_client_adapter"><div class="titlepage"><div><div><h2 class="title">4.2. Installing the Client Adapter</h2></div></div></div><p>
 				Download the JBoss EAP distribution and extract it from the compressed file into a directory on your machine.
 			</p><p>
-				Download the RH-SSO-7-eap7-adapter.zip distribution.
+				Download the RH-SSO-6-eap7-adapter.zip distribution.
 			</p><p>
 				Extract the contents of this file into the root directory of your JBoss EAP distribution.
 			</p><p>
@@ -218,7 +218,7 @@ $ mvn clean wildfly:deploy</pre>
 						Reboot the application server.
 					</li><li class="listitem">
 						Go to <a class="link" href="http://localhost:8080/vanilla">http://localhost:8080/vanilla</a> and click <span class="strong strong"><strong>Login</strong></span>. When the Red Hat Single Sign-On login page opens, log in using the user you created in <a class="link" href="#create-new-user" title="3.3. Creating a New User">Creating a New User</a>.
-					</li></ol></div></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140342781580880"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+					</li></ol></div></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140268923727744"><h1 class="legalnotice">Legal Notice</h1><div class="para">
 				Copyright <span class="trademark"/>© 2019 Red Hat, Inc.
 			</div><div class="para">
 				Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
