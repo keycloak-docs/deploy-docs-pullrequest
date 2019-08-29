@@ -1250,6 +1250,18 @@ many Keycloak server instances will be started on that machine.  When the host c
 as many Keycloak server instances as it was configured to do.  These server instances pull their configuration
 from the domain controller.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In some environments, such as Microsoft Azure, the domain mode is not applicable. Please consult the WildFly documentation.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
 <h4 id="domain-configuration"><a class="anchor" href="#domain-configuration"></a>3.3.1. Domain Configuration</h4>
 <div class="paragraph">
@@ -5053,7 +5065,7 @@ server can detect password phishing and other attacks.  The data held in these c
 but is possibly replicated across the cluster.</p>
 </div>
 <div class="paragraph">
-<p>This chapter discusses some configuration options for these caches for both clustered a non-clustered deployments.</p>
+<p>This chapter discusses some configuration options for these caches for both clustered and non-clustered deployments.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5270,7 +5282,7 @@ The cache will be cleared for all realms!
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-08-01 04:47:13 UTC
+Last updated 2019-08-29 17:56:05 UTC
 </div>
 </div>
 <ul id="globalnav">

@@ -1774,24 +1774,7 @@ It provides an example XML file you can cut and paste.</p>
 <div class="sect4">
 <h5 id="security-domain"><a class="anchor" href="#security-domain"></a>Security Domain</h5>
 <div class="paragraph">
-<p>To propagate the security context to the EJB tier you need to configure it to use the "keycloak" security domain. This
-can be achieved with the @SecurityDomain annotation:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">org.jboss.ejb3.annotation.SecurityDomain</span>;
-...
-
-<span class="annotation">@Stateless</span>
-<span class="annotation">@SecurityDomain</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloak</span><span class="delimiter">&quot;</span></span>)
-<span class="directive">public</span> <span class="type">class</span> <span class="class">CustomerService</span> {
-
-    <span class="annotation">@RolesAllowed</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>)
-    <span class="directive">public</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; getCustomers() {
-        <span class="keyword">return</span> db.getCustomers();
-    }
-}</code></pre>
-</div>
+<p>The security context is propagated to the EJB tier automatically.</p>
 </div>
 </div>
 </div>
@@ -5827,6 +5810,38 @@ or display the login page if not. <code>check-sso</code> will only authenticate 
 redirected back to the application and remain unauthenticated.</p>
 </div>
 <div class="paragraph">
+<p>You can configure a <em>silent</em> <code>check-sso</code> option.
+With this feature enabled, your browser won&#8217;t do a full redirect to the Keycloak server and back to your application, but this action will be performed in a hidden iframe, so your application resources only need to be loaded and parsed once by the browser when the app is initialized and not again after the redirect back from Keycloak to your app.
+This is particular useful in case of SPAs (Single Page Applications).</p>
+</div>
+<div class="paragraph">
+<p>To enable the <em>silent</em> <code>check-sso</code>, you have to provide a <code>silentCheckSsoRedirectUri</code> attribute in the init method.
+This URI needs to be a valid endpoint in the application (and of course it must be configured as a valid redirect for the client in the Keycloak Administration Console):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">keycloak.init({ <span class="key">onLoad</span>: <span class="string"><span class="delimiter">'</span><span class="content">check-sso</span><span class="delimiter">'</span></span>, <span class="key">silentCheckSsoRedirectUri</span>: window.location.origin + <span class="string"><span class="delimiter">'</span><span class="content">/silent-check-sso.html</span><span class="delimiter">'</span></span>})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The page at the silent check-sso redirect uri is loaded in the iframe after successfully checking your authentication state and retrieving the tokens from the Keycloak server.
+It has no other task than sending the received tokens to the main application and should only look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;html&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+  <span class="tag">&lt;script&gt;</span>
+<span class="inline">    parent.postMessage(location.href, location.origin)</span>
+  <span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please keep in mind that this page at the specified location must be provided by the application itself and is <em>not</em> part of the JavaScript adapter!</p>
+</div>
+<div class="paragraph">
 <p>To enable <code>login-required</code> set <code>onLoad</code> to <code>login-required</code> and pass to the init method:</p>
 </div>
 <div class="listingblock">
@@ -6176,6 +6191,9 @@ Available options:</p>
 <ul>
 <li>
 <p>onLoad - Specifies an action to do on load. Supported values are 'login-required' or 'check-sso'.</p>
+</li>
+<li>
+<p>silentCheckSsoRedirectUri - Set the redirect uri for silent authentication check if onLoad is set to 'check-sso'.</p>
 </li>
 <li>
 <p>token - Set an initial value for the token.</p>
@@ -7914,7 +7932,7 @@ This is what one might look like:</p>
             <span class="tag">&lt;Attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Role</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
         <span class="tag">&lt;/RoleIdentifiers&gt;</span>
         <span class="tag">&lt;RoleMappingsProvider</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties-based-role-mapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-            <span class="tag">&lt;Property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties.file.location</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/WEB-INF/role-mappings.properties</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;Property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties.resource.location</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/WEB-INF/role-mappings.properties</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
         <span class="tag">&lt;/RoleMappingsProvider&gt;</span>
         <span class="tag">&lt;IDP</span> <span class="attribute-name">entityID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">idp</span><span class="delimiter">&quot;</span></span>
              <span class="attribute-name">signaturesRequired</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -8224,7 +8242,7 @@ You can define one or more <code>Attribute</code> elements to specify which SAML
 <code>org.keycloak.adapters.saml.RoleMappingsProvider</code> SPI implementation that is to be used by the SAML adapter.</p>
 </div>
 <div class="paragraph">
-<p>When Keycloak is used as the IDP, it is possible to use its role mappers to map any roles before adding them to the
+<p>When Keycloak is used as the IDP, it is possible to use the built in role mappers to map any roles before adding them to the
 SAML assertion. However, the SAML adapters can be used to send SAML requests to third party IDPs and in this case it might be
 necessary to map the roles extracted from the assertion into a different set of roles as required by the SP. The
 <code>RoleMappingsProvider</code> SPI allows for the configuration of pluggable role mappers that can be used to perform the necessary
@@ -8235,9 +8253,16 @@ mappings.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;RoleMappingsProvider</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties-based-role-mapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml">...
+<span class="tag">&lt;RoleIdentifiers&gt;</span>
+    ...
+<span class="tag">&lt;/RoleIdentifiers&gt;</span>
+<span class="tag">&lt;RoleMappingsProvider</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties-based-role-mapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;Property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties.file.location</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/WEB-INF/role-mappings.properties</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-<span class="tag">&lt;/RoleMappingsProvider&gt;</span></code></pre>
+<span class="tag">&lt;/RoleMappingsProvider&gt;</span>
+<span class="tag">&lt;IDP&gt;</span>
+    ...
+<span class="tag">&lt;/IDP&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8247,18 +8272,49 @@ to specify configuration properties for the provider.</p>
 <div class="sect5">
 <h6 id="properties-based-role-mappings-provider"><a class="anchor" href="#properties-based-role-mappings-provider"></a>Properties Based Role Mappings Provider</h6>
 <div class="paragraph">
-<p>Keycloak includes a <code>RoleMappingsProvider</code> implementation that performs the role mappings using a properties file. This
+<p>Keycloak includes a <code>RoleMappingsProvider</code> implementation that performs the role mappings using a <code>properties</code> file. This
 provider is identified by the id <code>properties-based-role-mapper</code> and is implemented by the <code>org.keycloak.adapters.saml.PropertiesBasedRoleMapper</code>
-class. This is the provider that is selected if no other provider is configured for the adapter. By default it looks for the
-<code>/WEB-INF/role-mappings.properties</code> file in the WAR but the file location can be specified using the <code>properties.file.location</code>
-configuration property. Failure to locate the properties file doesn&#8217;t result in an error - the provider simply logs the failure
-and performs no mappings on the assertion roles.</p>
+class.</p>
 </div>
 <div class="paragraph">
-<p>In a nutshell, this provider iterates through the list of roles obtained from the SAML assertion and, for each role, checks if
-an entry exists in the properties file. If it does, the role is mapped to zero or more roles (separated by comma). If it doesn&#8217;t
-the role is used as is. Additionally the provider checks if an entry exists for the principal extracted from the assertion. If it
-does, all the roles listed in the entry are also added to the final set of roles that will be assigned to the principal.</p>
+<p>This provider relies on two configuration properties that can be used to specify the location of the <code>properties</code> file
+that will be used. First, it checks if the <code>properties.file.location</code> property has been specified, using the configured
+value to locate the <code>properties</code> file in the filesystem. If the configured file is not located, the provider throws a
+<code>RuntimeException</code>. The following snippet shows an example of provider using the <code>properties.file.configuration</code>
+option to load the <code>roles.properties</code> file from the <code>/opt/mappers/</code> directory in the filesystem:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">    <span class="tag">&lt;RoleMappingsProvider</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties-based-role-mapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;Property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties.file.location</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/opt/mappers/roles.properties</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/RoleMappingsProvider&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the <code>properties.file.location</code> configuration has not been set, the provider checks the <code>properties.resource.location</code>
+property, using the configured value to load the <code>properties</code> file from the <code>WAR</code> resource. If this configuration property is
+also not present, the provider attempts to load the file from <code>/WEB-INF/role-mappings.properties</code> by default. Failure to load the file
+from the resource will result in the provider throwing a <code>RuntimeException</code>. The following snippet shows an example of provider
+using the <code>properties.resource.location</code> to load the <code>roles.properties</code> file from the application&#8217;s <code>/WEB-INF/conf/</code> directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">    <span class="tag">&lt;RoleMappingsProvider</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties-based-role-mapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;Property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties.resource.location</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/WEB-INF/conf/roles.properties</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/RoleMappingsProvider&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>properties</code> file can contain both roles and principals as keys, and a list of zero or more roles separated by comma
+as values. When invoked, the implementation iterates through the set of roles that were extracted from the assertion and checks,
+for each role, if a mapping exists. If the role maps to an empty role, it is discarded. If it maps to a set of one ore more
+different roles, then these roles are set in the result set. If no mapping is found for the role then it is included as is
+in the result set.</p>
+</div>
+<div class="paragraph">
+<p>Once the roles have been processed, the implementation checks if the principal extracted from the assertion contains an entry
+<code>properties</code> file. If a mapping for the principal exists, any roles listed as value are added to the result set. This
+allows the assignment of extra roles to a principal.</p>
 </div>
 <div class="paragraph">
 <p>As an example, let&#8217;s assume the provider has been configured with the following properties file:</p>
@@ -8274,7 +8330,7 @@ kc_user=roleZ</code></pre>
 <div class="paragraph">
 <p>If the principal <code>kc_user</code> is extracted from the assertion with roles <code>roleA</code>, <code>roleB</code> and <code>roleC</code>, the final set of roles
 assigned to the principal will be <code>roleC</code>, <code>roleX</code>, <code>roleY</code> and <code>roleZ</code> because <code>roleA</code> is being mapped into both <code>roleX</code>
-and <code>roleY</code>, <code>roleB</code> was mapped into an empty role - thus being discarded, <code>roleC</code> is used as is and finally an addional role
+and <code>roleY</code>, <code>roleB</code> was mapped into an empty role - thus being discarded, <code>roleC</code> is used as is and finally an additional role
 was added to the <code>kc_user</code> principal (<code>roleZ</code>).</p>
 </div>
 </div>
@@ -8774,44 +8830,7 @@ Otherwise this configuration is optional.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For example, if you have a JAX-RS service that is an EJB within your WEB-INF/classes directory,
-you&#8217;ll want to annotate it with the <code>@SecurityDomain</code> annotation as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">org.jboss.ejb3.annotation.SecurityDomain</span>;
-<span class="keyword">import</span> <span class="include">org.jboss.resteasy.annotations.cache.NoCache</span>;
-
-<span class="keyword">import</span> <span class="include">javax.annotation.security.RolesAllowed</span>;
-<span class="keyword">import</span> <span class="include">javax.ejb.EJB</span>;
-<span class="keyword">import</span> <span class="include">javax.ejb.Stateless</span>;
-<span class="keyword">import</span> <span class="include">javax.ws.rs.GET</span>;
-<span class="keyword">import</span> <span class="include">javax.ws.rs.Path</span>;
-<span class="keyword">import</span> <span class="include">javax.ws.rs.Produces</span>;
-<span class="keyword">import</span> <span class="include">java.util.ArrayList</span>;
-<span class="keyword">import</span> <span class="include">java.util.List</span>;
-
-<span class="annotation">@Path</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">customers</span><span class="delimiter">&quot;</span></span>)
-<span class="annotation">@Stateless</span>
-<span class="annotation">@SecurityDomain</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloak</span><span class="delimiter">&quot;</span></span>)
-<span class="directive">public</span> <span class="type">class</span> <span class="class">CustomerService</span> {
-
-    <span class="annotation">@EJB</span>
-    CustomerDB db;
-
-    <span class="annotation">@GET</span>
-    <span class="annotation">@Produces</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">application/json</span><span class="delimiter">&quot;</span></span>)
-    <span class="annotation">@NoCache</span>
-    <span class="annotation">@RolesAllowed</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">db_user</span><span class="delimiter">&quot;</span></span>)
-    <span class="directive">public</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; getCustomers() {
-        <span class="keyword">return</span> db.getCustomers();
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>We hope to improve our integration in the future so that you don&#8217;t have to specify the
-<code>@SecurityDomain</code> annotation when you want to propagate a keycloak security context to the EJB tier.</p>
+<p>The security context is propagated to the EJB tier automatically.</p>
 </div>
 </div>
 <div class="sect4">
@@ -12148,7 +12167,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-08-01 04:47:02 UTC
+Last updated 2019-08-29 17:55:52 UTC
 </div>
 </div>
 <ul id="globalnav">

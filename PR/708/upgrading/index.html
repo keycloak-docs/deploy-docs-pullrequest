@@ -1472,8 +1472,8 @@ not guaranteed as we don&#8217;t test it anymore.</p>
 the roles extracted from the SAML assertion into roles that exist in the SP application environment. This is particularly useful
 when the adapters need to communicate with third party IDPs and the roles set by the IDP in the assertion do not correspond to
 the roles that were defined for the SP application. The provider to be used can configured in the <code>keycloak-saml.xml</code>
-file or in the <code>keycloak-saml</code> subsystem. A default implementation that performs the role mappings based on the contents of
-a properties file was also added and is used by default when no other provider is specified in <code>keycloak-saml.xml</code>.</p>
+file or in the <code>keycloak-saml</code> subsystem. An implementation that performs the role mappings based on the contents of a properties
+file was also provided.</p>
 </div>
 <div class="paragraph">
 <p>Notice that when Keycloak acts as the IDP we can use the built-in role mappers to perform any necessary mappings
@@ -2707,7 +2707,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-08-01 04:47:16 UTC
+Last updated 2019-08-29 17:56:10 UTC
 </div>
 </div>
 <ul id="globalnav">

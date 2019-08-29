@@ -2095,6 +2095,18 @@ going to the <code>Authentication</code> left menu item, clicking on the <code>F
 <div class="paragraph">
 <p>If you do not want OTP reset, then just chose the <code>disabled</code> radio button to the right of <code>Reset OTP</code>.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Be sure to leave Update Password enabled on the Required Actions tab.  Otherwise, Forgot Password does not work.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="remember-me"><a class="anchor" href="#remember-me"></a>5.2. Remember Me</h3>
@@ -2963,13 +2975,13 @@ future versions and provide some more flexible mappings from Kerberos principals
 <p>Match IssuerDN using regular expression</p>
 </li>
 <li>
-<p>X500 Issuer&#8217;s e-mail attribute</p>
-</li>
-<li>
-<p>X500 Issuer&#8217;s Common Name attribute</p>
-</li>
-<li>
 <p>Certificate Serial Number</p>
+</li>
+<li>
+<p>Certificate Serial Number and IssuerDN</p>
+</li>
+<li>
+<p>SHA-256 Certificate thumbprint</p>
 </li>
 <li>
 <p>Full certificate in PEM format</p>
@@ -3007,6 +3019,30 @@ future versions and provide some more flexible mappings from Kerberos principals
 </td>
 <td class="content">
 Please notice that if we disable <code>Login with email</code> at realm settings, the same rules will be applied to certificate authentication. In other words, users won&#8217;t be able to log in using e-mail attribute.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Usage of <code>Certificate Serial Number and IssuerDN</code> as an identity source requires two custom attributes - one for serial number and the other for IssuerDN.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<code>SHA-256 Certificate thumbprint</code> is lowercase hexadecimal representation of SHA-256 certificate thumbprint.
 </td>
 </tr>
 </table>
@@ -3229,6 +3265,10 @@ The format is described in detail in the official <a href="https://docs.oracle.c
 This option only affects the two User Identity Sources <em>Match SubjectDN using regular expression</em> and <em>Match IssuerDN using regular expression</em>.
 If you setup a new keycloak instance it is recommended to enable this option. Leave this option disabled to remain beckward compatible with existing Keycloak instances.</p>
 </dd>
+<dt class="hdlist1"><code>Enable Serial Number hexadecimal representation</code> (optional)</dt>
+<dd>
+<p>An option to use hexadecimal representation of the Serial Number. See <a href="https://tools.ietf.org/html/rfc5280#section-4.1.2.2">RFC5280, Section-4.1.2.2</a>. Serial Number with sign bit set to 1 should be left padded with 00 octet. E.g. Serial number with decimal value <em>161</em>, or <em>a1</em> in hexadecimal representation according to RFC5280 must be encoded as <em>00a1</em>. More details can be found: <a href="https://tools.ietf.org/html/rfc5280#appendix-B">RFC5280, appendix-B</a>.</p>
+</dd>
 <dt class="hdlist1"><code>A regular expression</code> (optional)</dt>
 <dd>
 <p>Defines a regular expression to use as a filter to extract the certificate identity. The regular expression must contain a single group.</p>
@@ -3239,7 +3279,7 @@ If you setup a new keycloak instance it is recommended to enable this option. Le
 </dd>
 <dt class="hdlist1"><code>A name of user attribute</code> (optional)</dt>
 <dd>
-<p>A custom attribute which value will be matched against the certificate identity.</p>
+<p>A custom attribute which value will be matched against the certificate identity. Multiple custom attributes are relevant when attribute mapping is related to multiple values, e.g. 'Certificate Serial Number and IssuerDN'.</p>
 </dd>
 <dt class="hdlist1"><code>CRL Checking Enabled</code> (optional)</dt>
 <dd>
@@ -4173,6 +4213,72 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 </div>
 <div class="paragraph">
 <p>Please see <a href="https://tools.ietf.org/html/rfc7636">RFC 7636 Proof Key for Code Exchange by OAuth Public Clients</a> for more details.</p>
+</div>
+<div id="_jwe-id-token-encryption" class="paragraph">
+<p><strong>Signed and Encrypted ID Token Support</strong></p>
+</div>
+<div class="paragraph">
+<p>Keycloak can encrypt ID token according to <a href="https://tools.ietf.org/html/rfc7516">Json Web Encryption (JWE)</a> specification. The administrator can determine whether encrypting ID token or not per client. This feature is disabled as default.</p>
+</div>
+<div class="paragraph">
+<p>The key for encrypting ID token is called Content Encryption Key (CEK). Keycloak and a client need to negotiate which CEK is used and how to deliver it. The way to do so is called Key Management Mode.</p>
+</div>
+<div class="paragraph">
+<p>JWE specification determines 5 types of Key Management Mode. Keycloak supports Key Encryption among them.</p>
+</div>
+<div class="paragraph">
+<p>In Key Encryption, the client generates a key pair of asymmetric cryptography. The public key is used to encrypt CEK. Keycloak generates CEK per ID token, encrypts the ID token by this generated CEK and encrypts this CEK by this client&#8217;s public key. The client decrypts this encrypted CEK by their private key, and decrypt the ID token by decrypted CEK. Therefore, any party other than the client is not able to decrypt ID token.</p>
+</div>
+<div class="paragraph">
+<p>The client needs to pass their public key for encrypting CEK onto Keycloak. Keycloak supports downloading public keys from the URL the client provides. The client needs to provide their public keys according to <a href="https://tools.ietf.org/html/rfc7517">Json Web Keys (JWK)</a> specification. The way to do so is defined in <code>Signed JWT</code> of <a href="#_client-credentials">Confidential Client Credentials</a>. The detailed procedure is as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>open the client&#8217;s <code>Credentials</code> tab</p>
+</li>
+<li>
+<p>select <code>Signed Jwt</code> from <code>Client Authenticator</code> pulldown menu</p>
+</li>
+<li>
+<p>set ON to <code>JWKS URL</code> switch</p>
+</li>
+<li>
+<p>input the client&#8217;s public key providing URL on <code>JWKS URL</code> textbox</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Key Encryption&#8217;s algorithms are defined in <a href="https://tools.ietf.org/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports RSAES-PKCS1-v1_5(RSA1_5) and RSAES OAEP using default parameters (RSA-OAEP). The detailed procedure to select this algorithm is as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>open the client&#8217;s <code>Settings</code> tab</p>
+</li>
+<li>
+<p>open <code>Advanced Settings</code></p>
+</li>
+<li>
+<p>select <code>RSA1_5</code> or <code>RSA-OAEP</code> from <code>ID Token Encryption Key Management Algorithm</code> pulldown menu</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ID token encryption algorithms by CEK are also defined in <a href="https://tools.ietf.org/html/rfc7518#section-5.1">JWA</a> specification. Keycloak supports AES_128_CBC_HMAC_SHA_256 authenticated encryption (A128CBC-HS256) and AES GCM using 128-bit key (A128GCM). The detailed procedure to select this algorithm is as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>open the client&#8217;s <code>Settings</code> tab</p>
+</li>
+<li>
+<p>open <code>Advanced Settings</code></p>
+</li>
+<li>
+<p>select <code>A128CBC-HS256</code> or <code>A128GCM</code> from <code>ID Token Encryption Content Encryption Algorithm</code> pulldown menu</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -5937,7 +6043,7 @@ If you turn the <code>Permissions Enabled</code> switch to off, it will delete a
 <p><span class="image"><img src="./keycloak-images/fine-grain-client-permissions-tab-on.png" alt="fine grain client permissions tab on"></span></p>
 </div>
 <div class="paragraph">
-<p>When you witch <code>Permissions Enabled</code> to on, it initializes various permission objects behind the scenes
+<p>When you switch <code>Permissions Enabled</code> to on, it initializes various permission objects behind the scenes
 using <a href="https://www.keycloak.org/docs/8.0/authorization_services/">Authorization Services</a>.  For this example, we&#8217;re
 interested in the <code>manage</code> permission for the client.  Clicking on that will redirect you
 to the permission that handles the <code>manage</code> permission for the client.  All authorization
@@ -12665,7 +12771,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-08-01 04:47:07 UTC
+Last updated 2019-08-29 17:55:59 UTC
 </div>
 </div>
 <ul id="globalnav">

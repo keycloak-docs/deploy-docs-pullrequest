@@ -3622,7 +3622,7 @@ from the SAML assertion to set up the container&#8217;s security context.</p>
 </div>
 <div class="paragraph">
 <p>The <code>org.keycloak.adapters.saml.RoleMappingsProvider</code> SPI doesn&#8217;t impose any restrictions on the mappings that can be performed.
-Implementations can not only map roles into other roles but also add or remove roles (and thus augmenting/reducing the number of
+Implementations can not only map roles into other roles but also add or remove roles (and thus augment or reduce the set of
 roles assigned to the SAML principal) depending on the use case.</p>
 </div>
 <div class="paragraph">
@@ -3639,13 +3639,14 @@ of the custom implementation must be added to the archive that also contains the
 <div class="ulist">
 <ul>
 <li>
-<p>The SP application WAR file where the provider class is in WEB-INF/classes;</p>
+<p>The SP application WAR file where the provider class is included in WEB-INF/classes;</p>
 </li>
 <li>
 <p>A custom JAR file which will be added into WEB-INF/lib of the SP application WAR;</p>
 </li>
 <li>
-<p>(WildFly/JBoss EAP only) A custom JAR file configured as a jboss module and referenced in <code>jboss-deployment-structure.xml</code> of the SP application WAR.</p>
+<p>(WildFly/JBoss EAP only) A custom JAR file configured as a <code>jboss module</code> and referenced in <code>jboss-deployment-structure.xml</code>
+of the SP application WAR.</p>
 </li>
 </ul>
 </div>
@@ -5413,7 +5414,7 @@ before upgrading Keycloak. This will remove linked local imported copies of any 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-08-01 04:47:11 UTC
+Last updated 2019-08-29 17:56:03 UTC
 </div>
 </div>
 <ul id="globalnav">
