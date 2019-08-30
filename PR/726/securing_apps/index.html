@@ -1984,13 +1984,13 @@ The only supported version of Fuse 6 is the latest release. If you use earlier v
 <p>Servlets deployed on Fuse as OSGI services with Pax Web Whiteboard Extender</p>
 </li>
 <li>
-<p><a href="http://camel.apache.org/">Apache Camel</a> Jetty endpoints running with the <a href="http://camel.apache.org/jetty.html">Camel Jetty</a> component</p>
+<p><a href="https://camel.apache.org/">Apache Camel</a> Jetty endpoints running with the <a href="https://camel.apache.org/components/latest/jetty-component.html">Camel Jetty</a> component</p>
 </li>
 <li>
-<p><a href="http://cxf.apache.org/">Apache CXF</a> endpoints running on their own separate <a href="http://cxf.apache.org/docs/jetty-configuration.html">Jetty engine</a></p>
+<p><a href="https://cxf.apache.org/">Apache CXF</a> endpoints running on their own separate <a href="https://cxf.apache.org/docs/jetty-configuration.html">Jetty engine</a></p>
 </li>
 <li>
-<p><a href="http://cxf.apache.org/">Apache CXF</a> endpoints running on the default engine provided by the CXF servlet</p>
+<p><a href="https://cxf.apache.org/">Apache CXF</a> endpoints running on the default engine provided by the CXF servlet</p>
 </li>
 <li>
 <p>SSH and JMX admin access</p>
@@ -2344,7 +2344,7 @@ org.keycloak.*;version="8.0.0",
 </div>
 </div>
 <div class="paragraph">
-<p>You can secure Apache Camel endpoints implemented with the <a href="http://camel.apache.org/jetty.html">camel-jetty</a> component by adding securityHandler with <code>KeycloakJettyAuthenticator</code> and the proper security constraints injected. You can add the <code>OSGI-INF/blueprint/blueprint.xml</code> file to your Camel application with a similar configuration as below. The roles, security constraint mappings, and Keycloak adapter configuration might differ slightly depending on your environment and needs.</p>
+<p>You can secure Apache Camel endpoints implemented with the <a href="https://camel.apache.org/components/latest/jetty-component.html">camel-jetty</a> component by adding the securityHandler with <code>KeycloakJettyAuthenticator</code> and the proper security constraints injected. You can add the <code>OSGI-INF/blueprint/blueprint.xml</code> file to your Camel application with a similar configuration as below. The roles, security constraint mappings, and Keycloak adapter configuration might differ slightly depending on your environment and needs.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -3070,13 +3070,13 @@ The only supported version of Fuse 7 is the latest release. If you use earlier v
 org.osgi.service.http.HttpService#registerServlet() which is standard OSGi Enterprise HTTP Service</p>
 </li>
 <li>
-<p><a href="http://camel.apache.org/">Apache Camel</a> Undertow endpoints running with the <a href="http://camel.apache.org/undertow.html">Camel Undertow</a> component</p>
+<p><a href="https://camel.apache.org/">Apache Camel</a> Undertow endpoints running with the <a href="https://camel.apache.org/components/latest/undertow-component.html">Camel Undertow</a> component</p>
 </li>
 <li>
-<p><a href="http://cxf.apache.org/">Apache CXF</a> endpoints running on their own separate Undertow engine</p>
+<p><a href="https://cxf.apache.org/">Apache CXF</a> endpoints running on their own separate Undertow engine</p>
 </li>
 <li>
-<p><a href="http://cxf.apache.org/">Apache CXF</a> endpoints running on the default engine provided by the CXF servlet</p>
+<p><a href="https://cxf.apache.org/">Apache CXF</a> endpoints running on the default engine provided by the CXF servlet</p>
 </li>
 <li>
 <p>SSH and JMX admin access</p>
@@ -3431,7 +3431,7 @@ Note you don&#8217;t need the <code>web.xml</code> file as the security-constrai
 </div>
 </div>
 <div class="paragraph">
-<p>You can secure Apache Camel endpoints implemented with the <a href="http://camel.apache.org/undertow.html">camel-undertow</a> component by injecting the proper security constraints via blueprint and updating the used component to <code>undertow-keycloak</code>. You have to add the <code>OSGI-INF/blueprint/blueprint.xml</code> file to your Camel application with a similar configuration as below. The roles and security constraint mappings, and adapter configuration might differ slightly depending on your environment and needs.</p>
+<p>You can secure Apache Camel endpoints implemented with the <a href="https://camel.apache.org/components/latest/undertow-component.html">camel-undertow</a> component by injecting the proper security constraints via blueprint and updating the used component to <code>undertow-keycloak</code>. You have to add the <code>OSGI-INF/blueprint/blueprint.xml</code> file to your Camel application with a similar configuration as below. The roles, security constraint mappings, and adapter configuration might differ slightly depending on your environment and needs.</p>
 </div>
 <div class="paragraph">
 <p>Compared to the standard <code>undertow</code> component, <code>undertow-keycloak</code> component adds two new properties:</p>
@@ -12051,7 +12051,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-08-29 18:08:13 UTC
+Last updated 2019-08-30 21:44:35 UTC
 </div>
 </div>
 <ul id="globalnav">
