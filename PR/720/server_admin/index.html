@@ -7449,14 +7449,14 @@ Go back to Keycloak and specify those items.</p>
 </td>
 <td class="content">
 Prior to configuring OpenShift 4 Identity Provider, please locate the correct OpenShift 4 API URL up.
-In some scenarios, that URL might be hidden from users. The easiest way to obtain it is to invoke the following command <code>curl -s -k -H "Authorization: Bearer $(oc whoami -t)" <a href="https://&lt;openshift-user-facing-api-url&gt;/apis/config.openshift.io/v1/infrastructures/cluster" class="bare">https://&lt;openshift-user-facing-api-url&gt;/apis/config.openshift.io/v1/infrastructures/cluster</a> | jq ".status.apiServerURL"</code>. In most cases, the address will be protected by HTTPS. Therefore, it is essential to configure <code>X509_CA_BUNDLE</code> in the container and set it to <code>/var/run/secrets/kubernetes.io/serviceaccount/ca.crt</code>. Otherwise, Keycloak won&#8217;t be able to communicate
+In some scenarios, that URL might be hidden from users. The easiest way to obtain it is to invoke the following command (this might require installing <code>jq</code> command separately) <code>curl -s -k -H "Authorization: Bearer $(oc whoami -t)" https://&lt;openshift-user-facing-api-url&gt;/apis/config.openshift.io/v1/infrastructures/cluster | jq ".status.apiServerURL"</code>. In most cases, the address will be protected by HTTPS. Therefore, it is essential to configure <code>X509_CA_BUNDLE</code> in the container and set it to <code>/var/run/secrets/kubernetes.io/serviceaccount/ca.crt</code>. Otherwise, Keycloak won&#8217;t be able to communicate
  with the API Server.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>There are a just a few steps you have to complete to be able to enable login with OpenShift 4.  First, go to the <code>Identity Providers</code> left menu item and select <code>OpenShift</code> from the <code>Add provider</code> drop down list.  This will bring you to the <code>Add identity provider</code> page.</p>
+<p>There are a just a few steps you have to complete to be able to enable login with OpenShift 4.  First, go to the <code>Identity Providers</code> left menu item and select <code>OpenShift v4</code> from the <code>Add provider</code> drop down list.  This will bring you to the <code>Add identity provider</code> page.</p>
 </div>
 <div class="paragraph">
 <div class="title">Add Identity Provider</div>
@@ -7487,7 +7487,7 @@ grantMethod: prompt <i class="conum" data-value="4"></i><b>(4)</b>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>The <code>name</code> of your OAuth client. Passed as <code>client_id</code> request parameter when making requests to <code><em>&lt;openshift_master&gt;</em>/oauth/authorize</code> and <code><em>&lt;openshift_master&gt;</em>/oauth/token</code>. The <code>name</code> parameter needs to be the same
-in <code>OAuthClient</code> object as well as in Keycloak&#8217;s configuration.</td>
+in <code>OAuthClient</code> object as well as in Keycloak configuration.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -12860,7 +12860,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-02 07:58:41 UTC
+Last updated 2019-09-03 07:51:39 UTC
 </div>
 </div>
 <ul id="globalnav">
