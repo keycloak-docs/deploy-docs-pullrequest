@@ -5382,7 +5382,7 @@ before upgrading Keycloak. This will remove linked local imported copies of any 
 <p>The vault provider should respect realm, i.e. an expression <code>${vault.secret-id}</code> would evaluate generally to different values of a secret <code>secret-id</code>, depending on whether it was used in a realm <em>A</em> or realm <em>B</em>. This is to prevent secret leaking across realms. To differentiate between realms, the realm needs to be passed to the created <code>VaultProvider</code> instance from <code>VaultProviderFactory.create()</code> method where it is available from its the <code>KeycloakSession</code> parameter.</p>
 </li>
 <li>
-<p>The vault provider needs to implement a single method <code>obtainSecret</code> that returns either <code>byte[]</code> or <code>ByteBuffer</code> filled with the secret contents for the given secret name. Note that this buffer would be discarded after usage as explained below.</p>
+<p>The vault provider needs to implement a single method <code>obtainSecret</code> that returns a <code>VaultRawSecret</code> for the given secret name. That class holds the representation of the secret either in <code>byte[]</code> or <code>ByteBuffer</code> and is expected to convert between the two upon demand. Note that this buffer would be discarded after usage as explained below.</p>
 </li>
 </ul>
 </div>
@@ -5416,7 +5416,7 @@ before upgrading Keycloak. This will remove linked local imported copies of any 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-06 16:33:17 UTC
+Last updated 2019-09-09 07:48:17 UTC
 </div>
 </div>
 <ul id="globalnav">
