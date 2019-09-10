@@ -859,6 +859,12 @@ span.image img {
 </li>
 </ul>
 </li>
+<li><a href="#_vault-spi">13. Vault SPI</a>
+<ul class="sectlevel2">
+<li><a href="#vault-provider">13.1. Vault provider</a></li>
+<li><a href="#consuming-values-from-vault">13.2. Consuming values from vault</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -5411,10 +5417,82 @@ before upgrading Keycloak. This will remove linked local imported copies of any 
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_vault-spi"><a class="anchor" href="#_vault-spi"></a>13. Vault SPI</h2>
+<div class="sectionbody">
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/vault.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_development/topics/vault.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vault-provider"><a class="anchor" href="#vault-provider"></a>13.1. Vault provider</h3>
+<div class="paragraph">
+<p>You can use a vault SPI from <code>org.keycloak.vault</code> package to write custom extension for Keycloak to connect to arbitrary vault implementation.</p>
+</div>
+<div class="paragraph">
+<p>The built-in <code>plaintext</code> provider is an example of the implementation of this SPI. In general the following rules apply:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To prevent a secret from leaking across realms, you mey want to isolate or limit what secrets can be retrieved by a realm.
+In that case, your provider should take into account the realm name when looking up secrets, for example by prefixing
+entries with the realm name. For example, an expression <code>${vault.secret-id}</code> would then evaluate generally
+to different values of a secret <code>secret-id</code>, depending on whether it was used in a realm <em>A</em> or realm <em>B</em>.
+To differentiate between realms, the realm needs to be passed to the created <code>VaultProvider</code> instance from
+ <code>VaultProviderFactory.create()</code> method where it is available from its the <code>KeycloakSession</code> parameter.</p>
+</li>
+<li>
+<p>The vault provider needs to implement a single method <code>obtainSecret</code> that returns a <code>VaultRawSecret</code> for the given secret name. That class holds the representation of the secret either in <code>byte[]</code> or <code>ByteBuffer</code> and is expected to convert between the two upon demand. Note that this buffer would be discarded after usage as explained below.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For details on how to package and deploy a custom provider refer to the <a href="#_providers">Service Provider Interfaces</a> chapter.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="consuming-values-from-vault"><a class="anchor" href="#consuming-values-from-vault"></a>13.2. Consuming values from vault</h3>
+<div class="paragraph">
+<p>The vault contains sensitive data and Keycloak treats the secrets accordingly. When accessing a secret, the secret is obtained from the vault and retained in JVM memory only for the necessary time. Then all possible attempts to discard its content from JVM memory is done. This is achieved by using the vault secrets only within <code>try</code>-with-resources statement as outlined below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="type">char</span><span class="type">[]</span> c;
+    <span class="keyword">try</span> (VaultCharSecret cSecret = session.vault().getCharSecret(SECRET_NAME)) {
+        <span class="comment">// ... use cSecret</span>
+        c = cSecret.getAsArray().orElse(<span class="predefined-constant">null</span>);
+        <span class="comment">// if c != null, it now contains password</span>
+    }
+
+    <span class="comment">// if c != null, it now contains garbage</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The example uses <code>KeycloakSession.vault()</code> as the entrypoint for accessing
+the secrets. Using the <code>VaultProvider.obtainSecret</code> method directly is indeed
+also possible. However the <code>vault()</code> method has the benefit of ability
+to interpret the raw secret (which is generally a byte array)
+as a character array (via <code>vault().getCharSecret()</code>) or a <code>String</code>
+(via <code>vault().getStringSecret()</code>) in addition to obtaining the original
+uninterpreted value (via <code>vault().getRawSecret()</code> method).</p>
+</div>
+<div class="paragraph">
+<p>Note that since <code>String</code> objects are immutable, their content cannot be discarded
+by overriding with random garbage. Even though measures have been taken in the default
+<code>VaultStringSecret</code> implementation to prevent internalizing <code>String</code>s, the secrets
+stored in <code>String</code> objects would live at least to the next GC round. Thus using
+plain byte and character arrays and buffers is preferrable.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-05 20:25:13 UTC
+Last updated 2019-09-10 15:49:42 UTC
 </div>
 </div>
 <ul id="globalnav">
