@@ -9546,7 +9546,7 @@ Use this feature with caution, especially on a production system.
 <div class="paragraph">
 <p>To obtain a secret from a vault instead of entering it directly, enter
 the following specially crafted string into the appropriate field:
-<code><strong>${vault.</strong><em>vault.entry.name</em><strong>}</strong></code> where you replace the <code><em>vault.entry.name</em></code>
+<code><strong>${vault.</strong><em>entry-name</em><strong>}</strong></code> where you replace the <code><em>entry-name</em></code>
 with the name of the secret as recognized by the vault.</p>
 </div>
 <div class="paragraph">
@@ -9580,7 +9580,7 @@ implement your own provider. See the <a href="https://www.keycloak.org/docs/8.0/
 can be mounted as data volumes, and they appear as a directory with flat file structure, where each secret is represented by a file whose name is secret name, and contents of that file is the secret value.</p>
 </div>
 <div class="paragraph">
-<p>The files within this directory have to be named as secret name prefixed by realm name and an underscore. All underscores within the secret name or realm name have to be doubled in the file name. For example, for a field within a realm called <code>sso_realm</code>, a reference to a secret with name <code>secret-name</code> would be written as <code>${vault.secret-name}</code>, and the file name looked up would be <code>sso__realm_secret-name</code>.</p>
+<p>The files within this directory have to be named as secret name prefixed by realm name and an underscore. All underscores within the secret name or realm name have to be doubled in the file name. For example, for a field within a realm called <code>sso_realm</code>, a reference to a secret with name <code>secret-name</code> would be written as <code>${vault.secret-name}</code>, and the file name looked up would be <code>sso__realm_secret-name</code> (note the underscore doubled in realm name).</p>
 </div>
 <div class="paragraph">
 <p>To use this type of secret store, you have to declare the <code>plaintext</code> vault provider in standalone.xml, and set its parameter for directory which contains the mounted volume. The following example shows the <code>plaintext</code>
@@ -9614,7 +9614,9 @@ provider with the directory where vault files are searched for set to <code>stan
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-There is at most one vault provider active per Keycloak instance at any given time.
+There is at most one vault provider active per Keycloak instance
+at any given time, and the vault provider in each instance within the cluster
+have to be configured consistently.
 </td>
 </tr>
 </table>
@@ -12956,7 +12958,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-10 07:42:30 UTC
+Last updated 2019-09-10 08:34:55 UTC
 </div>
 </div>
 <ul id="globalnav">
