@@ -1984,13 +1984,13 @@ The only supported version of Fuse 6 is the latest release. If you use earlier v
 <p>Servlets deployed on Fuse as OSGI services with Pax Web Whiteboard Extender</p>
 </li>
 <li>
-<p><a href="http://camel.apache.org/">Apache Camel</a> Jetty endpoints running with the <a href="http://camel.apache.org/jetty.html">Camel Jetty</a> component</p>
+<p><a href="https://camel.apache.org/">Apache Camel</a> Jetty endpoints running with the <a href="https://camel.apache.org/components/latest/jetty-component.html">Camel Jetty</a> component</p>
 </li>
 <li>
-<p><a href="http://cxf.apache.org/">Apache CXF</a> endpoints running on their own separate <a href="http://cxf.apache.org/docs/jetty-configuration.html">Jetty engine</a></p>
+<p><a href="https://cxf.apache.org/">Apache CXF</a> endpoints running on their own separate <a href="https://cxf.apache.org/docs/jetty-configuration.html">Jetty engine</a></p>
 </li>
 <li>
-<p><a href="http://cxf.apache.org/">Apache CXF</a> endpoints running on the default engine provided by the CXF servlet</p>
+<p><a href="https://cxf.apache.org/">Apache CXF</a> endpoints running on the default engine provided by the CXF servlet</p>
 </li>
 <li>
 <p>SSH and JMX admin access</p>
@@ -2344,7 +2344,7 @@ org.keycloak.*;version="8.0.0",
 </div>
 </div>
 <div class="paragraph">
-<p>You can secure Apache Camel endpoints implemented with the <a href="http://camel.apache.org/jetty.html">camel-jetty</a> component by adding securityHandler with <code>KeycloakJettyAuthenticator</code> and the proper security constraints injected. You can add the <code>OSGI-INF/blueprint/blueprint.xml</code> file to your Camel application with a similar configuration as below. The roles, security constraint mappings, and Keycloak adapter configuration might differ slightly depending on your environment and needs.</p>
+<p>You can secure Apache Camel endpoints implemented with the <a href="https://camel.apache.org/components/latest/jetty-component.html">camel-jetty</a> component by adding the securityHandler with <code>KeycloakJettyAuthenticator</code> and the proper security constraints injected. You can add the <code>OSGI-INF/blueprint/blueprint.xml</code> file to your Camel application with a similar configuration as below. The roles, security constraint mappings, and Keycloak adapter configuration might differ slightly depending on your environment and needs.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -3070,13 +3070,13 @@ The only supported version of Fuse 7 is the latest release. If you use earlier v
 org.osgi.service.http.HttpService#registerServlet() which is standard OSGi Enterprise HTTP Service</p>
 </li>
 <li>
-<p><a href="http://camel.apache.org/">Apache Camel</a> Undertow endpoints running with the <a href="http://camel.apache.org/undertow.html">Camel Undertow</a> component</p>
+<p><a href="https://camel.apache.org/">Apache Camel</a> Undertow endpoints running with the <a href="https://camel.apache.org/components/latest/undertow-component.html">Camel Undertow</a> component</p>
 </li>
 <li>
-<p><a href="http://cxf.apache.org/">Apache CXF</a> endpoints running on their own separate Undertow engine</p>
+<p><a href="https://cxf.apache.org/">Apache CXF</a> endpoints running on their own separate Undertow engine</p>
 </li>
 <li>
-<p><a href="http://cxf.apache.org/">Apache CXF</a> endpoints running on the default engine provided by the CXF servlet</p>
+<p><a href="https://cxf.apache.org/">Apache CXF</a> endpoints running on the default engine provided by the CXF servlet</p>
 </li>
 <li>
 <p>SSH and JMX admin access</p>
@@ -3431,7 +3431,7 @@ Note you don&#8217;t need the <code>web.xml</code> file as the security-constrai
 </div>
 </div>
 <div class="paragraph">
-<p>You can secure Apache Camel endpoints implemented with the <a href="http://camel.apache.org/undertow.html">camel-undertow</a> component by injecting the proper security constraints via blueprint and updating the used component to <code>undertow-keycloak</code>. You have to add the <code>OSGI-INF/blueprint/blueprint.xml</code> file to your Camel application with a similar configuration as below. The roles and security constraint mappings, and adapter configuration might differ slightly depending on your environment and needs.</p>
+<p>You can secure Apache Camel endpoints implemented with the <a href="https://camel.apache.org/components/latest/undertow-component.html">camel-undertow</a> component by injecting the proper security constraints via blueprint and updating the used component to <code>undertow-keycloak</code>. You have to add the <code>OSGI-INF/blueprint/blueprint.xml</code> file to your Camel application with a similar configuration as below. The roles, security constraint mappings, and adapter configuration might differ slightly depending on your environment and needs.</p>
 </div>
 <div class="paragraph">
 <p>Compared to the standard <code>undertow</code> component, <code>undertow-keycloak</code> component adds two new properties:</p>
@@ -5810,6 +5810,38 @@ or display the login page if not. <code>check-sso</code> will only authenticate 
 redirected back to the application and remain unauthenticated.</p>
 </div>
 <div class="paragraph">
+<p>You can configure a <em>silent</em> <code>check-sso</code> option.
+With this feature enabled, your browser won&#8217;t do a full redirect to the Keycloak server and back to your application, but this action will be performed in a hidden iframe, so your application resources only need to be loaded and parsed once by the browser when the app is initialized and not again after the redirect back from Keycloak to your app.
+This is particularly useful in case of SPAs (Single Page Applications).</p>
+</div>
+<div class="paragraph">
+<p>To enable the <em>silent</em> <code>check-sso</code>, you have to provide a <code>silentCheckSsoRedirectUri</code> attribute in the init method.
+This URI needs to be a valid endpoint in the application (and of course it must be configured as a valid redirect for the client in the Keycloak Administration Console):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">keycloak.init({ <span class="key">onLoad</span>: <span class="string"><span class="delimiter">'</span><span class="content">check-sso</span><span class="delimiter">'</span></span>, <span class="key">silentCheckSsoRedirectUri</span>: window.location.origin + <span class="string"><span class="delimiter">'</span><span class="content">/silent-check-sso.html</span><span class="delimiter">'</span></span>})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The page at the silent check-sso redirect uri is loaded in the iframe after successfully checking your authentication state and retrieving the tokens from the Keycloak server.
+It has no other task than sending the received tokens to the main application and should only look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;html&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+  <span class="tag">&lt;script&gt;</span>
+<span class="inline">    parent.postMessage(location.href, location.origin)</span>
+  <span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please keep in mind that this page at the specified location must be provided by the application itself and is <em>not</em> part of the JavaScript adapter!</p>
+</div>
+<div class="paragraph">
 <p>To enable <code>login-required</code> set <code>onLoad</code> to <code>login-required</code> and pass to the init method:</p>
 </div>
 <div class="listingblock">
@@ -6158,10 +6190,13 @@ Available options:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>useNonce - Adds a <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">cryptographic nonce</a> to verify that the authentication response matches the request (default is true).</p>
+<p>useNonce - Adds a cryptographic nonce to verify that the authentication response matches the request (default is true).</p>
 </li>
 <li>
 <p>onLoad - Specifies an action to do on load. Supported values are 'login-required' or 'check-sso'.</p>
+</li>
+<li>
+<p>silentCheckSsoRedirectUri - Set the redirect uri for silent authentication check if onLoad is set to 'check-sso'.</p>
 </li>
 <li>
 <p>token - Set an initial value for the token.</p>
@@ -7899,6 +7934,9 @@ This is what one might look like:</p>
         <span class="tag">&lt;RoleIdentifiers&gt;</span>
             <span class="tag">&lt;Attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Role</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
         <span class="tag">&lt;/RoleIdentifiers&gt;</span>
+        <span class="tag">&lt;RoleMappingsProvider</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties-based-role-mapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;Property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties.resource.location</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/WEB-INF/role-mappings.properties</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/RoleMappingsProvider&gt;</span>
         <span class="tag">&lt;IDP</span> <span class="attribute-name">entityID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">idp</span><span class="delimiter">&quot;</span></span>
              <span class="attribute-name">signaturesRequired</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;SingleSignOnService</span> <span class="attribute-name">requestBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">POST</span><span class="delimiter">&quot;</span></span>
@@ -8192,6 +8230,119 @@ as role identifiers within the Java EE Security Context for the user.</p>
 <p>By default <code>Role</code> attribute values are converted to Java EE roles.
 Some IdPs send roles using a <code>member</code> or <code>memberOf</code> attribute assertion.
 You can define one or more <code>Attribute</code> elements to specify which SAML attributes must be converted into roles.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="rolemappingsprovider-element"><a class="anchor" href="#rolemappingsprovider-element"></a>RoleMappingsProvider Element</h5>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/sp_role_mappings_provider_element.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20securing_apps/topics/saml/java/general-config/sp_role_mappings_provider_element.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>RoleMappingsProvider</code> is an optional element that allows for the specification of the id and configuration of the
+<code>org.keycloak.adapters.saml.RoleMappingsProvider</code> SPI implementation that is to be used by the SAML adapter.</p>
+</div>
+<div class="paragraph">
+<p>When Keycloak is used as the IDP, it is possible to use the built in role mappers to map any roles before adding them to the
+SAML assertion. However, the SAML adapters can be used to send SAML requests to third party IDPs and in this case it might be
+necessary to map the roles extracted from the assertion into a different set of roles as required by the SP. The
+<code>RoleMappingsProvider</code> SPI allows for the configuration of pluggable role mappers that can be used to perform the necessary
+mappings.</p>
+</div>
+<div class="paragraph">
+<p>The configuration of the provider looks as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">...
+<span class="tag">&lt;RoleIdentifiers&gt;</span>
+    ...
+<span class="tag">&lt;/RoleIdentifiers&gt;</span>
+<span class="tag">&lt;RoleMappingsProvider</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties-based-role-mapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;Property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties.resource.location</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/WEB-INF/role-mappings.properties</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/RoleMappingsProvider&gt;</span>
+<span class="tag">&lt;IDP&gt;</span>
+    ...
+<span class="tag">&lt;/IDP&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>id</code> attribute identifies which of the installed providers is to be used. The <code>Property</code> sub-element can be used multiple times
+to specify configuration properties for the provider.</p>
+</div>
+<div class="sect5">
+<h6 id="properties-based-role-mappings-provider"><a class="anchor" href="#properties-based-role-mappings-provider"></a>Properties Based Role Mappings Provider</h6>
+<div class="paragraph">
+<p>Keycloak includes a <code>RoleMappingsProvider</code> implementation that performs the role mappings using a <code>properties</code> file. This
+provider is identified by the id <code>properties-based-role-mapper</code> and is implemented by the <code>org.keycloak.adapters.saml.PropertiesBasedRoleMapper</code>
+class.</p>
+</div>
+<div class="paragraph">
+<p>This provider relies on two configuration properties that can be used to specify the location of the <code>properties</code> file
+that will be used. First, it checks if the <code>properties.file.location</code> property has been specified, using the configured
+value to locate the <code>properties</code> file in the filesystem. If the configured file is not located, the provider throws a
+<code>RuntimeException</code>. The following snippet shows an example of provider using the <code>properties.file.configuration</code>
+option to load the <code>roles.properties</code> file from the <code>/opt/mappers/</code> directory in the filesystem:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">    <span class="tag">&lt;RoleMappingsProvider</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties-based-role-mapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;Property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties.file.location</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/opt/mappers/roles.properties</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/RoleMappingsProvider&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the <code>properties.file.location</code> configuration has not been set, the provider checks the <code>properties.resource.location</code>
+property, using the configured value to load the <code>properties</code> file from the <code>WAR</code> resource. If this configuration property is
+also not present, the provider attempts to load the file from <code>/WEB-INF/role-mappings.properties</code> by default. Failure to load the file
+from the resource will result in the provider throwing a <code>RuntimeException</code>. The following snippet shows an example of provider
+using the <code>properties.resource.location</code> to load the <code>roles.properties</code> file from the application&#8217;s <code>/WEB-INF/conf/</code> directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">    <span class="tag">&lt;RoleMappingsProvider</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties-based-role-mapper</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;Property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">properties.resource.location</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/WEB-INF/conf/roles.properties</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/RoleMappingsProvider&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>properties</code> file can contain both roles and principals as keys, and a list of zero or more roles separated by comma
+as values. When invoked, the implementation iterates through the set of roles that were extracted from the assertion and checks,
+for each role, if a mapping exists. If the role maps to an empty role, it is discarded. If it maps to a set of one ore more
+different roles, then these roles are set in the result set. If no mapping is found for the role then it is included as is
+in the result set.</p>
+</div>
+<div class="paragraph">
+<p>Once the roles have been processed, the implementation checks if the principal extracted from the assertion contains an entry
+<code>properties</code> file. If a mapping for the principal exists, any roles listed as value are added to the result set. This
+allows the assignment of extra roles to a principal.</p>
+</div>
+<div class="paragraph">
+<p>As an example, let&#8217;s assume the provider has been configured with the following properties file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>roleA=roleX,roleY
+roleB=
+
+kc_user=roleZ</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the principal <code>kc_user</code> is extracted from the assertion with roles <code>roleA</code>, <code>roleB</code> and <code>roleC</code>, the final set of roles
+assigned to the principal will be <code>roleC</code>, <code>roleX</code>, <code>roleY</code> and <code>roleZ</code> because <code>roleA</code> is being mapped into both <code>roleX</code>
+and <code>roleY</code>, <code>roleB</code> was mapped into an empty role - thus being discarded, <code>roleC</code> is used as is and finally an additional role
+was added to the <code>kc_user</code> principal (<code>roleZ</code>).</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="adding-your-own-role-mappings-provider"><a class="anchor" href="#adding-your-own-role-mappings-provider"></a>Adding Your Own Role Mappings Provider</h6>
+<div class="paragraph">
+<p>To add a custom role mappings provider one simply needs to implement the <code>org.keycloak.adapters.saml.RoleMappingsProvider</code> SPI.
+For more details see the <code>SAML Role Mappings SPI</code> section in <a href="https://www.keycloak.org/docs/8.0/server_development/">Server Developer Guide</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -10463,7 +10614,7 @@ Registration access tokens are only valid once, when it&#8217;s used the respons
 </div>
 <div class="paragraph">
 <p>If a client was created outside of the Client Registration Service it won&#8217;t have a registration access token associated with it.
-You can create one through the admin console. This can also be useful if you loose the token for a particular client.
+You can create one through the admin console. This can also be useful if you lose the token for a particular client.
 To create a new token find the client in the admin console and click on <code>Credentials</code>. Then click on <code>Generate registration access token</code>.</p>
 </div>
 </div>
@@ -11861,7 +12012,7 @@ fine grain admin permissions.</p>
 <div class="sect3">
 <h4 id="making-the-request-3"><a class="anchor" href="#making-the-request-3"></a>7.4.2. Making the Request</h4>
 <div class="paragraph">
-<p>Make the request as described in other chapters except additionally specify the <code>request_subject</code> parameter.  The
+<p>Make the request as described in other chapters except additionally specify the <code>requested_subject</code> parameter.  The
 value of this parameter must be a username or user id.</p>
 </div>
 <div class="listingblock">
@@ -12019,7 +12170,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-08-27 10:52:38 UTC
+Last updated 2019-09-12 12:02:42 UTC
 </div>
 </div>
 <ul id="globalnav">
