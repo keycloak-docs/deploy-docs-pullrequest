@@ -7780,6 +7780,12 @@ You must define the OpenID Connect configuration options as well.  They basicall
 <td class="tableblock halign-left valign-top"><p class="tableblock">User Info URL endpoint defined by the OIDC protocol.  This is an endpoint from which user profile information can be downloaded.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Client Authentication</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switch to define the Client Authentication method to be used with the Authorization Code Flow.  In the case of JWT signed with private key, the realm private key
+ is used.  In the other cases, a client secret has to be defined.
+ For more details, see the <a href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">Client Authentication specifications</a>.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Client ID</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This realm will act as an OIDC client to the external IDP.  Your realm will need an OIDC client ID when using the Authorization Code Flow
  to interact with the external IDP.</p></td>
@@ -12958,7 +12964,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-17 10:00:16 UTC
+Last updated 2019-09-19 10:28:49 UTC
 </div>
 </div>
 <ul id="globalnav">

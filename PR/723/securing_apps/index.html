@@ -6190,6 +6190,9 @@ Available options:</p>
 <div class="ulist">
 <ul>
 <li>
+<p>useNonce - Adds a cryptographic nonce to verify that the authentication response matches the request (default is true).</p>
+</li>
+<li>
 <p>onLoad - Specifies an action to do on load. Supported values are 'login-required' or 'check-sso'.</p>
 </li>
 <li>
@@ -6223,7 +6226,7 @@ Available options:</p>
 <p>promiseType - If set to <code>native</code> all methods returning a promise will return a native JavaScript promise. If not set will return Keycloak specific promise objects.</p>
 </li>
 <li>
-<p>disableLogging - Disables any information from being logged to the console (default is false).</p>
+<p>enableLogging - Enables logging messages from Keycloak to the console (default is false).</p>
 </li>
 </ul>
 </div>
@@ -7984,6 +7987,7 @@ For example <code>${jboss.server.config.dir}</code>.</p>
     <span class="attribute-name">nameIDPolicyFormat</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">format</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">forceAuthentication</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">isPassive</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">keepDOMAssertion</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">autodetectBearerOnly</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 ...
 <span class="tag">&lt;/SP&gt;</span></code></pre>
@@ -8046,6 +8050,14 @@ The default value is <em>false</em>.</p>
 the user is redirected after logout to that page using the HTTP <code>302</code> status code. If a link without scheme part is specified,
 such as <code>/logout.jsp</code>, the page is displayed after logout, <em>regardless of whether it lies in a protected area according
 to <code>security-constraint</code> declarations in web.xml</em>, and the page is resolved relative to the deployment context root.</p>
+</dd>
+<dt class="hdlist1">keepDOMAssertion</dt>
+<dd>
+<p>This attribute should be set to <em>true</em> to make the adapter store the DOM representation of the assertion in its
+original form inside the <code>SamlPrincipal</code> associated to the request. The assertion document can be retrieved using
+the method <code>getAssertionDocument</code> inside the principal. This is specially useful when re-playing a signed assertion.
+The returned document is the one that was generated parsing the SAML response received by the Keycloak server.
+This setting is <em>OPTIONAL</em> and its default value is <em>false</em> (the document is not saved inside the principal).</p>
 </dd>
 </dl>
 </div>
@@ -12170,7 +12182,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-17 10:00:11 UTC
+Last updated 2019-09-19 10:28:43 UTC
 </div>
 </div>
 <ul id="globalnav">
