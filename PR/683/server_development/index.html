@@ -794,64 +794,75 @@ span.image img {
 </ul>
 </li>
 <li><a href="#_events">10. Event Listener SPI</a></li>
-<li><a href="#_user-storage-spi">11. User Storage SPI</a>
+<li><a href="#_saml_role_mappings_spi">11. SAML Role Mappings SPI</a>
 <ul class="sectlevel2">
-<li><a href="#provider-interfaces">11.1. Provider Interfaces</a></li>
-<li><a href="#provider-capability-interfaces">11.2. Provider Capability Interfaces</a></li>
-<li><a href="#model-interfaces">11.3. Model Interfaces</a>
-<ul class="sectlevel3">
-<li><a href="#storage-ids">11.3.1. Storage Ids</a></li>
+<li><a href="#implementing-a-custom-role-mappings-provider">11.1. Implementing a Custom Role Mappings Provider</a></li>
 </ul>
 </li>
-<li><a href="#packaging-and-deployment">11.4. Packaging and Deployment</a></li>
-<li><a href="#simple-read-only-lookup-example">11.5. Simple Read-Only, Lookup Example</a>
+<li><a href="#_user-storage-spi">12. User Storage SPI</a>
+<ul class="sectlevel2">
+<li><a href="#provider-interfaces">12.1. Provider Interfaces</a></li>
+<li><a href="#provider-capability-interfaces">12.2. Provider Capability Interfaces</a></li>
+<li><a href="#model-interfaces">12.3. Model Interfaces</a>
 <ul class="sectlevel3">
-<li><a href="#provider-class">11.5.1. Provider Class</a></li>
-<li><a href="#provider-factory-implementation">11.5.2. Provider Factory Implementation</a></li>
-<li><a href="#packaging-and-deployment-2">11.5.3. Packaging and Deployment</a></li>
-<li><a href="#enabling-the-provider-in-the-administration-console">11.5.4. Enabling the Provider in the Administration Console</a></li>
+<li><a href="#storage-ids">12.3.1. Storage Ids</a></li>
 </ul>
 </li>
-<li><a href="#configuration-techniques">11.6. Configuration Techniques</a>
+<li><a href="#packaging-and-deployment">12.4. Packaging and Deployment</a></li>
+<li><a href="#simple-read-only-lookup-example">12.5. Simple Read-Only, Lookup Example</a>
 <ul class="sectlevel3">
-<li><a href="#configuration-example">11.6.1. Configuration Example</a></li>
-<li><a href="#configuring-the-provider-in-the-administration-console">11.6.2. Configuring the Provider in the Administration Console</a></li>
+<li><a href="#provider-class">12.5.1. Provider Class</a></li>
+<li><a href="#provider-factory-implementation">12.5.2. Provider Factory Implementation</a></li>
+<li><a href="#packaging-and-deployment-2">12.5.3. Packaging and Deployment</a></li>
+<li><a href="#enabling-the-provider-in-the-administration-console">12.5.4. Enabling the Provider in the Administration Console</a></li>
 </ul>
 </li>
-<li><a href="#add-remove-user-and-query-capability-interfaces">11.7. Add/Remove User and Query Capability interfaces</a>
+<li><a href="#configuration-techniques">12.6. Configuration Techniques</a>
 <ul class="sectlevel3">
-<li><a href="#implementing-userregistrationprovider">11.7.1. Implementing UserRegistrationProvider</a></li>
-<li><a href="#implementing-userqueryprovider">11.7.2. Implementing UserQueryProvider</a></li>
+<li><a href="#configuration-example">12.6.1. Configuration Example</a></li>
+<li><a href="#configuring-the-provider-in-the-administration-console">12.6.2. Configuring the Provider in the Administration Console</a></li>
 </ul>
 </li>
-<li><a href="#augmenting-external-storage">11.8. Augmenting External Storage</a>
+<li><a href="#add-remove-user-and-query-capability-interfaces">12.7. Add/Remove User and Query Capability interfaces</a>
 <ul class="sectlevel3">
-<li><a href="#augmentation-example">11.8.1. Augmentation Example</a></li>
+<li><a href="#implementing-userregistrationprovider">12.7.1. Implementing UserRegistrationProvider</a></li>
+<li><a href="#implementing-userqueryprovider">12.7.2. Implementing UserQueryProvider</a></li>
 </ul>
 </li>
-<li><a href="#import-implementation-strategy">11.9. Import Implementation Strategy</a>
+<li><a href="#augmenting-external-storage">12.8. Augmenting External Storage</a>
 <ul class="sectlevel3">
-<li><a href="#importeduservalidation-interface">11.9.1. ImportedUserValidation Interface</a></li>
-<li><a href="#importsynchronization-interface">11.9.2. ImportSynchronization Interface</a></li>
+<li><a href="#augmentation-example">12.8.1. Augmentation Example</a></li>
 </ul>
 </li>
-<li><a href="#user-caches">11.10. User Caches</a>
+<li><a href="#import-implementation-strategy">12.9. Import Implementation Strategy</a>
 <ul class="sectlevel3">
-<li><a href="#managing-the-user-cache">11.10.1. Managing the user cache</a></li>
-<li><a href="#onusercache-callback-interface">11.10.2. OnUserCache Callback Interface</a></li>
-<li><a href="#cache-policies">11.10.3. Cache Policies</a></li>
+<li><a href="#importeduservalidation-interface">12.9.1. ImportedUserValidation Interface</a></li>
+<li><a href="#importsynchronization-interface">12.9.2. ImportSynchronization Interface</a></li>
 </ul>
 </li>
-<li><a href="#leveraging-java-ee-2">11.11. Leveraging Java EE</a></li>
-<li><a href="#rest-management-api">11.12. REST Management API</a></li>
-<li><a href="#migrating-from-an-earlier-user-federation-spi">11.13. Migrating from an Earlier User Federation SPI</a>
+<li><a href="#user-caches">12.10. User Caches</a>
 <ul class="sectlevel3">
-<li><a href="#import-vs-non-import">11.13.1. Import vs. Non-Import</a></li>
-<li><a href="#userfederationprovider-vs-userstorageprovider">11.13.2. UserFederationProvider vs. UserStorageProvider</a></li>
-<li><a href="#userfederationproviderfactory-vs-userstorageproviderfactory">11.13.3. UserFederationProviderFactory vs. UserStorageProviderFactory</a></li>
-<li><a href="#upgrading-to-a-new-model">11.13.4. Upgrading to a New Model</a></li>
+<li><a href="#managing-the-user-cache">12.10.1. Managing the user cache</a></li>
+<li><a href="#onusercache-callback-interface">12.10.2. OnUserCache Callback Interface</a></li>
+<li><a href="#cache-policies">12.10.3. Cache Policies</a></li>
 </ul>
 </li>
+<li><a href="#leveraging-java-ee-2">12.11. Leveraging Java EE</a></li>
+<li><a href="#rest-management-api">12.12. REST Management API</a></li>
+<li><a href="#migrating-from-an-earlier-user-federation-spi">12.13. Migrating from an Earlier User Federation SPI</a>
+<ul class="sectlevel3">
+<li><a href="#import-vs-non-import">12.13.1. Import vs. Non-Import</a></li>
+<li><a href="#userfederationprovider-vs-userstorageprovider">12.13.2. UserFederationProvider vs. UserStorageProvider</a></li>
+<li><a href="#userfederationproviderfactory-vs-userstorageproviderfactory">12.13.3. UserFederationProviderFactory vs. UserStorageProviderFactory</a></li>
+<li><a href="#upgrading-to-a-new-model">12.13.4. Upgrading to a New Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_vault-spi">13. Vault SPI</a>
+<ul class="sectlevel2">
+<li><a href="#vault-provider">13.1. Vault provider</a></li>
+<li><a href="#consuming-values-from-vault">13.2. Consuming values from vault</a></li>
 </ul>
 </li>
 </ul>
@@ -904,14 +915,14 @@ This one is short</code></pre>
 </div>
 <div class="paragraph">
 <p>To invoke the API you need to obtain an access token with the appropriate permissions. The required permissions are described in
-<a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a>.</p>
+<a href="https://www.keycloak.org/docs/8.0/server_admin/">Server Administration Guide</a>.</p>
 </div>
 <div class="paragraph">
 <p>A token can be obtained by enabling authenticating to your application with Keycloak; see the
-<a href="https://www.keycloak.org/docs/7.0/securing_apps/">Securing Applications and Services Guide</a>. You can also use direct access grant to obtain an access token.</p>
+<a href="https://www.keycloak.org/docs/8.0/securing_apps/">Securing Applications and Services Guide</a>. You can also use direct access grant to obtain an access token.</p>
 </div>
 <div class="paragraph">
-<p>For complete documentation see <a href="https://www.keycloak.org/docs/7.0/api_documentation/">API Documentation</a>.</p>
+<p>For complete documentation see <a href="https://www.keycloak.org/docs/8.0/api_documentation/">API Documentation</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="example-using-curl"><a class="anchor" href="#example-using-curl"></a>2.1. Example using CURL</h3>
@@ -980,7 +991,7 @@ RealmRepresentation realm = keycloak.realm(<span class="string"><span class="del
 </div>
 </div>
 <div class="paragraph">
-<p>Complete Javadoc for the admin client is available at <a href="https://www.keycloak.org/docs/7.0/api_documentation/">API Documentation</a>.</p>
+<p>Complete Javadoc for the admin client is available at <a href="https://www.keycloak.org/docs/8.0/api_documentation/">API Documentation</a>.</p>
 </div>
 </div>
 </div>
@@ -1049,8 +1060,7 @@ refresh the page.
 </table>
 </div>
 <div class="paragraph">
-<p>To change the welcome theme you need to edit <code>standalone.xml</code>, <code>standalone-ha.xml</code>, or <code>domain.xml</code>.
-For more information on where these files reside see the <a href="https://www.keycloak.org/docs/7.0/server_installation/">Server Installation and Configuration Guide</a>.</p>
+<p>To change the welcome theme you need to edit <code>standalone.xml</code>, <code>standalone-ha.xml</code>, or <code>domain.xml</code>.</p>
 </div>
 <div class="paragraph">
 <p>Add <code>welcomeTheme</code> to the theme element, for example:</p>
@@ -1308,7 +1318,7 @@ of the realm.</p>
 <div class="sect3">
 <h4 id="internationalization"><a class="anchor" href="#internationalization"></a>3.4.6. Internationalization</h4>
 <div class="paragraph">
-<p>Keycloak supports internationalization. To enable internationalization for a realm see <a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a>. This
+<p>Keycloak supports internationalization. To enable internationalization for a realm see <a href="https://www.keycloak.org/docs/8.0/server_admin/">Server Administration Guide</a>. This
 section describes how you can add your own language.</p>
 </div>
 <div class="paragraph">
@@ -1504,14 +1514,14 @@ provider.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When implementing custom providers in Keycloak there may often be a need to add additional templates and resources.</p>
+<p>When implementing custom providers in Keycloak there may often be a need to add additional templates, resources and messages bundles.</p>
 </div>
 <div class="paragraph">
 <p>An example use-case would be a <a href="#_auth_spi">custom authenticator</a> that requires additional templates and resources.</p>
 </div>
 <div class="paragraph">
 <p>The easiest way to load additional theme resources is to create a JAR with templates in <code>theme-resources/templates</code>
-and resources in <code>theme-resources/resources</code> and drop it into the <code>standalone/deployments/</code> directory of Keycloak.</p>
+resources in <code>theme-resources/resources</code> and messages bundles in <code>theme-resources/messages</code> and drop it into the <code>standalone/deployments/</code> directory of Keycloak.</p>
 </div>
 <div class="paragraph">
 <p>If you want a more flexible way to load templates and resources that can be achieved through the ThemeResourceSPI.
@@ -1941,9 +1951,7 @@ Provider instances are created by calling create on the factory for each request
 </div>
 </div>
 <div class="paragraph">
-<p>You can configure your provider through <code>standalone.xml</code>, <code>standalone-ha.xml</code>, or <code>domain.xml</code>.
-See the <a href="https://www.keycloak.org/docs/7.0/server_installation/">Server Installation and Configuration Guide</a> for more details on
-where to find these files.</p>
+<p>You can configure your provider through <code>standalone.xml</code>, <code>standalone-ha.xml</code>, or <code>domain.xml</code>.</p>
 </div>
 <div class="paragraph">
 <p>For example by adding the following to <code>standalone.xml</code>:</p>
@@ -1974,7 +1982,7 @@ where to find these files.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MyThemeSelectorProvider</span> <span class="directive">implements</span> EventListenerProvider {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MyThemeSelectorProvider</span> <span class="directive">implements</span> ThemeSelectorProvider {
 
     <span class="directive">private</span> KeycloakSession session;
 
@@ -3266,7 +3274,7 @@ In other words, add your custom authenticator after the "Send Reset Email" authe
 <div class="paragraph">
 <p>First Broker Login flow is used during first login with some identity provider.
 Term <code>First Login</code> means that there is not yet existing Keycloak account linked with the particular authenticated identity provider account.
-For more details about this flow see the <code>Identity Brokering</code> chapter in <a href="https://www.keycloak.org/docs/7.0/server_admin/">Server Administration Guide</a> .</p>
+For more details about this flow see the <code>Identity Brokering</code> chapter in <a href="https://www.keycloak.org/docs/8.0/server_admin/">Server Administration Guide</a> .</p>
 </div>
 </div>
 <div class="sect2">
@@ -3279,7 +3287,7 @@ But the client authentication can be also used directly by you during <code>Dire
 or during <code>Service account</code> authentication (represented by OAuth2 <code>Client Credentials Flow</code>).</p>
 </div>
 <div class="paragraph">
-<p>For more details about Keycloak adapter and OAuth2 flows see <a href="https://www.keycloak.org/docs/7.0/securing_apps/">Securing Applications and Services Guide</a>.</p>
+<p>For more details about Keycloak adapter and OAuth2 flows see <a href="https://www.keycloak.org/docs/8.0/securing_apps/">Securing Applications and Services Guide</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="default-implementations"><a class="anchor" href="#default-implementations"></a>8.8.1. Default implementations</h4>
@@ -3604,7 +3612,60 @@ and examples for complete details on how to do this.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_user-storage-spi"><a class="anchor" href="#_user-storage-spi"></a>11. User Storage SPI</h2>
+<h2 id="_saml_role_mappings_spi"><a class="anchor" href="#_saml_role_mappings_spi"></a>11. SAML Role Mappings SPI</h2>
+<div class="sectionbody">
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/saml-role-mappings-spi.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_development/topics/saml-role-mappings-spi.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>Keycloak defines a SPI for mapping SAML roles into roles that exist in the SP environment. The roles returned by
+a third-party IDP might not always correspond to the roles that were defined for the SP application so there is a need for a
+mechanism that allows mapping the SAML roles into different roles. It is used by the SAML adapter after it extracts the roles
+from the SAML assertion to set up the container&#8217;s security context.</p>
+</div>
+<div class="paragraph">
+<p>The <code>org.keycloak.adapters.saml.RoleMappingsProvider</code> SPI doesn&#8217;t impose any restrictions on the mappings that can be performed.
+Implementations can not only map roles into other roles but also add or remove roles (and thus augment or reduce the set of
+roles assigned to the SAML principal) depending on the use case.</p>
+</div>
+<div class="paragraph">
+<p>For details about the configuration of the role mappings provider for the SAML adapter as well as a description of the default
+implementations available see the <a href="https://www.keycloak.org/docs/8.0/securing_apps/">Securing Applications and Services Guide</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="implementing-a-custom-role-mappings-provider"><a class="anchor" href="#implementing-a-custom-role-mappings-provider"></a>11.1. Implementing a Custom Role Mappings Provider</h3>
+<div class="paragraph">
+<p>To implement a custom role mappings provider one first needs to implement the <code>org.keycloak.adapters.saml.RoleMappingsProvider</code>
+interface. Then, a <code>META-INF/services/org.keycloak.adapters.saml.RoleMappingsProvider</code> file containing the fully qualified name
+of the custom implementation must be added to the archive that also contains the implementation class. This archive can be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The SP application WAR file where the provider class is included in WEB-INF/classes;</p>
+</li>
+<li>
+<p>A custom JAR file which will be added into WEB-INF/lib of the SP application WAR;</p>
+</li>
+<li>
+<p>(WildFly/JBoss EAP only) A custom JAR file configured as a <code>jboss module</code> and referenced in <code>jboss-deployment-structure.xml</code>
+of the SP application WAR.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When the SP application is deployed, the role mappings provider that will be used is selected by the id that was set in
+<code>keycloak-saml.xml</code> or in the <code>keycloak-saml</code> subsystem. So to enable your custom provider simply make sure that its id is
+properly set in the adapter configuration.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user-storage-spi"><a class="anchor" href="#_user-storage-spi"></a>12. User Storage SPI</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -3625,7 +3686,7 @@ and examples for complete details on how to do this.</p>
 <p>User Storage SPI provider implementations are packaged and deployed similarly to (and often are) Java EE components. They are not enabled by default, but instead must be enabled and configured per realm under the <code>User Federation</code> tab in the administration console.</p>
 </div>
 <div class="sect2">
-<h3 id="provider-interfaces"><a class="anchor" href="#provider-interfaces"></a>11.1. Provider Interfaces</h3>
+<h3 id="provider-interfaces"><a class="anchor" href="#provider-interfaces"></a>12.1. Provider Interfaces</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/provider-interfaces.adoc" target="_blank">Edit this section</a>
@@ -3752,7 +3813,7 @@ for it when you enabled through the admin console.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="provider-capability-interfaces"><a class="anchor" href="#provider-capability-interfaces"></a>11.2. Provider Capability Interfaces</h3>
+<h3 id="provider-capability-interfaces"><a class="anchor" href="#provider-capability-interfaces"></a>12.2. Provider Capability Interfaces</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/provider-capability-interfaces.adoc" target="_blank">Edit this section</a>
@@ -3802,7 +3863,7 @@ for it when you enabled through the admin console.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="model-interfaces"><a class="anchor" href="#model-interfaces"></a>11.3. Model Interfaces</h3>
+<h3 id="model-interfaces"><a class="anchor" href="#model-interfaces"></a>12.3. Model Interfaces</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/model-interfaces.adoc" target="_blank">Edit this section</a>
@@ -3841,7 +3902,7 @@ for it when you enabled through the admin console.</p>
 <p>There are other model classes within the <code>org.keycloak.models</code> package that represent other parts of the Keycloak metamodel: <code>RealmModel</code>, <code>RoleModel</code>, <code>GroupModel</code>, and <code>ClientModel</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="storage-ids"><a class="anchor" href="#storage-ids"></a>11.3.1. Storage Ids</h4>
+<h4 id="storage-ids"><a class="anchor" href="#storage-ids"></a>12.3.1. Storage Ids</h4>
 <div class="paragraph">
 <p>One important method of <code>UserModel</code> is the <code>getId()</code> method. When implementing <code>UserModel</code> developers must be aware of the user id format. The format must be:</p>
 </div>
@@ -3867,7 +3928,7 @@ for it when you enabled through the admin console.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="packaging-and-deployment"><a class="anchor" href="#packaging-and-deployment"></a>11.4. Packaging and Deployment</h3>
+<h3 id="packaging-and-deployment"><a class="anchor" href="#packaging-and-deployment"></a>12.4. Packaging and Deployment</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/packaging.adoc" target="_blank">Edit this section</a>
@@ -3891,7 +3952,7 @@ org.keycloak.examples.federation.properties.FilePropertiesStorageFactory</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="simple-read-only-lookup-example"><a class="anchor" href="#simple-read-only-lookup-example"></a>11.5. Simple Read-Only, Lookup Example</h3>
+<h3 id="simple-read-only-lookup-example"><a class="anchor" href="#simple-read-only-lookup-example"></a>12.5. Simple Read-Only, Lookup Example</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/simple-example.adoc" target="_blank">Edit this section</a>
@@ -3902,7 +3963,7 @@ org.keycloak.examples.federation.properties.FilePropertiesStorageFactory</pre>
 <p>To illustrate the basics of implementing the User Storage SPI let&#8217;s walk through a simple example. In this chapter you&#8217;ll see the implementation of a simple <code>UserStorageProvider</code> that looks up users in a simple property file. The property file contains username and password definitions and is hardcoded to a specific location on the classpath. The provider will be able to look up the user by ID and username and also be able to validate passwords. Users that originate from this provider will be read-only.</p>
 </div>
 <div class="sect3">
-<h4 id="provider-class"><a class="anchor" href="#provider-class"></a>11.5.1. Provider Class</h4>
+<h4 id="provider-class"><a class="anchor" href="#provider-class"></a>12.5.1. Provider Class</h4>
 <div class="paragraph">
 <p>The first thing we will walk through is the <code>UserStorageProvider</code> class.</p>
 </div>
@@ -4069,7 +4130,7 @@ org.keycloak.examples.federation.properties.FilePropertiesStorageFactory</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="provider-factory-implementation"><a class="anchor" href="#provider-factory-implementation"></a>11.5.2. Provider Factory Implementation</h4>
+<h4 id="provider-factory-implementation"><a class="anchor" href="#provider-factory-implementation"></a>12.5.2. Provider Factory Implementation</h4>
 <div class="paragraph">
 <p>Now that the provider class is complete, we now turn our attention to the provider factory class.</p>
 </div>
@@ -4140,7 +4201,7 @@ If you do not specify the template parameter, your provider will not function. T
 <p>In our <code>init()</code> method implementation, we find the property file containing our user declarations from the classpath. We then load the <code>properties</code> field with the username and password combinations stored there.</p>
 </div>
 <div class="paragraph">
-<p>The <code>Config.Scope</code> parameter is factory configuration that can be set up within <code>standalone.xml</code>, <code>standalone-ha.xml</code>, or <code>domain.xml</code>. For more information on where these files reside see the <a href="https://www.keycloak.org/docs/7.0/server_installation/">Server Installation and Configuration Guide</a>.</p>
+<p>The <code>Config.Scope</code> parameter is factory configuration that can be set up within <code>standalone.xml</code>, <code>standalone-ha.xml</code>, or <code>domain.xml</code>.</p>
 </div>
 <div class="paragraph">
 <p>For example, by adding the following to <code>standalone.xml</code>:</p>
@@ -4189,7 +4250,7 @@ If you do not specify the template parameter, your provider will not function. T
 </div>
 </div>
 <div class="sect3">
-<h4 id="packaging-and-deployment-2"><a class="anchor" href="#packaging-and-deployment-2"></a>11.5.3. Packaging and Deployment</h4>
+<h4 id="packaging-and-deployment-2"><a class="anchor" href="#packaging-and-deployment-2"></a>12.5.3. Packaging and Deployment</h4>
 <div class="paragraph">
 <p>The class files for our provider implementation should be placed in a jar.  You also have to declare the provider factory class within the <code>META-INF/services/org.keycloak.storage.UserStorageProviderFactory</code> file.</p>
 </div>
@@ -4203,7 +4264,7 @@ If you do not specify the template parameter, your provider will not function. T
 </div>
 </div>
 <div class="sect3">
-<h4 id="enabling-the-provider-in-the-administration-console"><a class="anchor" href="#enabling-the-provider-in-the-administration-console"></a>11.5.4. Enabling the Provider in the Administration Console</h4>
+<h4 id="enabling-the-provider-in-the-administration-console"><a class="anchor" href="#enabling-the-provider-in-the-administration-console"></a>12.5.4. Enabling the Provider in the Administration Console</h4>
 <div class="paragraph">
 <p>You enable user storage providers per realm within the <code>User Federation</code> page in the administration console.</p>
 </div>
@@ -4231,7 +4292,7 @@ If you do not specify the template parameter, your provider will not function. T
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration-techniques"><a class="anchor" href="#configuration-techniques"></a>11.6. Configuration Techniques</h3>
+<h3 id="configuration-techniques"><a class="anchor" href="#configuration-techniques"></a>12.6. Configuration Techniques</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/configuration.adoc" target="_blank">Edit this section</a>
@@ -4270,7 +4331,7 @@ If you do not specify the template parameter, your provider will not function. T
 <p>The <code>ComponentFactory.getConfigProperties()</code> method returns a list of <code>org.keycloak.provider.ProviderConfigProperty</code> instances. These instances declare metadata that is needed to render and store each configuration variable of the provider.</p>
 </div>
 <div class="sect3">
-<h4 id="configuration-example"><a class="anchor" href="#configuration-example"></a>11.6.1. Configuration Example</h4>
+<h4 id="configuration-example"><a class="anchor" href="#configuration-example"></a>12.6.1. Configuration Example</h4>
 <div class="paragraph">
 <p>Let&#8217;s expand our <code>PropertyFileUserStorageProviderFactory</code> example to allow you to point a provider instance to a specific file on disk.</p>
 </div>
@@ -4349,7 +4410,7 @@ If you do not specify the template parameter, your provider will not function. T
 </div>
 </div>
 <div class="sect3">
-<h4 id="configuring-the-provider-in-the-administration-console"><a class="anchor" href="#configuring-the-provider-in-the-administration-console"></a>11.6.2. Configuring the Provider in the Administration Console</h4>
+<h4 id="configuring-the-provider-in-the-administration-console"><a class="anchor" href="#configuring-the-provider-in-the-administration-console"></a>12.6.2. Configuring the Provider in the Administration Console</h4>
 <div class="paragraph">
 <p>Now that the configuration is enabled, you can set the <code>path</code> variable when you configure the provider in the administration console.</p>
 </div>
@@ -4360,7 +4421,7 @@ If you do not specify the template parameter, your provider will not function. T
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-remove-user-and-query-capability-interfaces"><a class="anchor" href="#add-remove-user-and-query-capability-interfaces"></a>11.7. Add/Remove User and Query Capability interfaces</h3>
+<h3 id="add-remove-user-and-query-capability-interfaces"><a class="anchor" href="#add-remove-user-and-query-capability-interfaces"></a>12.7. Add/Remove User and Query Capability interfaces</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/registration-query.adoc" target="_blank">Edit this section</a>
@@ -4373,7 +4434,7 @@ also not queryable or viewable in the administration console. To add these enhan
 the <code>UserQueryProvider</code> and <code>UserRegistrationProvider</code> interfaces.</p>
 </div>
 <div class="sect3">
-<h4 id="implementing-userregistrationprovider"><a class="anchor" href="#implementing-userregistrationprovider"></a>11.7.1. Implementing UserRegistrationProvider</h4>
+<h4 id="implementing-userregistrationprovider"><a class="anchor" href="#implementing-userregistrationprovider"></a>12.7.1. Implementing UserRegistrationProvider</h4>
 <div class="paragraph">
 <p>To implement adding and removing users from this particular store, we first have to be able to save our properties
 file to disk.</p>
@@ -4498,7 +4559,7 @@ the next one.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementing-userqueryprovider"><a class="anchor" href="#implementing-userqueryprovider"></a>11.7.2. Implementing UserQueryProvider</h4>
+<h4 id="implementing-userqueryprovider"><a class="anchor" href="#implementing-userqueryprovider"></a>12.7.2. Implementing UserQueryProvider</h4>
 <div class="paragraph">
 <p>Without implementing <code>UserQueryProvider</code> the administration console would not be able to view and manage users that were loaded
 by our example provider. Let&#8217;s look at implementing this interface.</p>
@@ -4610,7 +4671,7 @@ We only store usernames, so we only search based on usernames. We delegate to <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="augmenting-external-storage"><a class="anchor" href="#augmenting-external-storage"></a>11.8. Augmenting External Storage</h3>
+<h3 id="augmenting-external-storage"><a class="anchor" href="#augmenting-external-storage"></a>12.8. Augmenting External Storage</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/augmenting.adoc" target="_blank">Edit this section</a>
@@ -4657,7 +4718,7 @@ suggested you read the javadoc of this class as it has smaller protected methods
 surrounding group membership and role mappings.</p>
 </div>
 <div class="sect3">
-<h4 id="augmentation-example"><a class="anchor" href="#augmentation-example"></a>11.8.1. Augmentation Example</h4>
+<h4 id="augmentation-example"><a class="anchor" href="#augmentation-example"></a>12.8.1. Augmentation Example</h4>
 <div class="paragraph">
 <p>In our <code>PropertyFileUserStorageProvider</code> example, we just need a simple change to our provider to use the
 <code>AbstractUserAdapterFederatedStorage</code>.</p>
@@ -4691,7 +4752,7 @@ method makes changes to the properties file and saves it.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-implementation-strategy"><a class="anchor" href="#import-implementation-strategy"></a>11.9. Import Implementation Strategy</h3>
+<h3 id="import-implementation-strategy"><a class="anchor" href="#import-implementation-strategy"></a>12.9. Import Implementation Strategy</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/import.adoc" target="_blank">Edit this section</a>
@@ -4815,7 +4876,7 @@ If your provider is implementing the <code>UserRegistrationProvider</code> inter
 </table>
 </div>
 <div class="sect3">
-<h4 id="importeduservalidation-interface"><a class="anchor" href="#importeduservalidation-interface"></a>11.9.1. ImportedUserValidation Interface</h4>
+<h4 id="importeduservalidation-interface"><a class="anchor" href="#importeduservalidation-interface"></a>12.9.1. ImportedUserValidation Interface</h4>
 <div class="paragraph">
 <p>If you remember earlier in this chapter, we discussed how querying for a user worked.  Local storage is queried first,
 if the user is found there, then the query ends.  This is a problem for our above implementation as we want
@@ -4845,7 +4906,7 @@ If <code>validate()</code> returns <code>null</code>, then the local user will b
 </div>
 </div>
 <div class="sect3">
-<h4 id="importsynchronization-interface"><a class="anchor" href="#importsynchronization-interface"></a>11.9.2. ImportSynchronization Interface</h4>
+<h4 id="importsynchronization-interface"><a class="anchor" href="#importsynchronization-interface"></a>12.9.2. ImportSynchronization Interface</h4>
 <div class="paragraph">
 <p>With the import strategy you can see that it is possible for the local user copy to get out of sync with
 external storage. For example, maybe a user has been removed from the external store. The User Storage SPI has
@@ -4867,7 +4928,7 @@ an additional interface you can implement to deal with this, <code>org.keycloak.
 </div>
 </div>
 <div class="sect2">
-<h3 id="user-caches"><a class="anchor" href="#user-caches"></a>11.10. User Caches</h3>
+<h3 id="user-caches"><a class="anchor" href="#user-caches"></a>12.10. User Caches</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/cache.adoc" target="_blank">Edit this section</a>
@@ -4881,7 +4942,7 @@ is still local, but it becomes an invalidation cache. When a user object is modi
 is propagated to the entire cluster so that the other nodes' user cache is also invalidated.</p>
 </div>
 <div class="sect3">
-<h4 id="managing-the-user-cache"><a class="anchor" href="#managing-the-user-cache"></a>11.10.1. Managing the user cache</h4>
+<h4 id="managing-the-user-cache"><a class="anchor" href="#managing-the-user-cache"></a>12.10.1. Managing the user cache</h4>
 <div class="paragraph">
 <p>You can access the user cache by calling <code>KeycloakSession.userCache()</code>.</p>
 </div>
@@ -4921,7 +4982,7 @@ is propagated to the entire cluster so that the other nodes' user cache is also 
 </div>
 </div>
 <div class="sect3">
-<h4 id="onusercache-callback-interface"><a class="anchor" href="#onusercache-callback-interface"></a>11.10.2. OnUserCache Callback Interface</h4>
+<h4 id="onusercache-callback-interface"><a class="anchor" href="#onusercache-callback-interface"></a>12.10.2. OnUserCache Callback Interface</h4>
 <div class="paragraph">
 <p>You might want to cache additional information that is specific to your provider implementation. The User Storage SPI
 has a callback whenever a user is cached: <code>org.keycloak.models.cache.OnUserCache</code>.</p>
@@ -4979,14 +5040,14 @@ The <code>getCachedWith()</code> method returns a map that allows you to cache a
 </div>
 </div>
 <div class="sect3">
-<h4 id="cache-policies"><a class="anchor" href="#cache-policies"></a>11.10.3. Cache Policies</h4>
+<h4 id="cache-policies"><a class="anchor" href="#cache-policies"></a>12.10.3. Cache Policies</h4>
 <div class="paragraph">
 <p>On the administration console management page for your user storage provider, you can specify a unique cache policy.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="leveraging-java-ee-2"><a class="anchor" href="#leveraging-java-ee-2"></a>11.11. Leveraging Java EE</h3>
+<h3 id="leveraging-java-ee-2"><a class="anchor" href="#leveraging-java-ee-2"></a>12.11. Leveraging Java EE</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/javaee.adoc" target="_blank">Edit this section</a>
@@ -5096,7 +5157,7 @@ When using JPA any additional datasource must be an XA datasource. The Keycloak 
 </div>
 </div>
 <div class="sect2">
-<h3 id="rest-management-api"><a class="anchor" href="#rest-management-api"></a>11.12. REST Management API</h3>
+<h3 id="rest-management-api"><a class="anchor" href="#rest-management-api"></a>12.12. REST Management API</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/rest.adoc" target="_blank">Edit this section</a>
@@ -5208,7 +5269,7 @@ realmREsource.components().component(component.getId()).remove();</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="migrating-from-an-earlier-user-federation-spi"><a class="anchor" href="#migrating-from-an-earlier-user-federation-spi"></a>11.13. Migrating from an Earlier User Federation SPI</h3>
+<h3 id="migrating-from-an-earlier-user-federation-spi"><a class="anchor" href="#migrating-from-an-earlier-user-federation-spi"></a>12.13. Migrating from an Earlier User Federation SPI</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/migration.adoc" target="_blank">Edit this section</a>
@@ -5234,7 +5295,7 @@ this earlier SPI available as well. This earlier User Federation SPI has been re
 However, if you have written a provider with this earlier SPI, this chapter discusses some strategies you can use to port it.</p>
 </div>
 <div class="sect3">
-<h4 id="import-vs-non-import"><a class="anchor" href="#import-vs-non-import"></a>11.13.1. Import vs. Non-Import</h4>
+<h4 id="import-vs-non-import"><a class="anchor" href="#import-vs-non-import"></a>12.13.1. Import vs. Non-Import</h4>
 <div class="paragraph">
 <p>The earlier User Federation SPI required you to create a local copy of a user in the Keycloak&#8217;s database
 and import information from your external store to the local copy. However, this is no longer a requirement. You can still
@@ -5274,7 +5335,7 @@ has capability interfaces that you can implement to support synchronization, but
 </div>
 </div>
 <div class="sect3">
-<h4 id="userfederationprovider-vs-userstorageprovider"><a class="anchor" href="#userfederationprovider-vs-userstorageprovider"></a>11.13.2. UserFederationProvider vs. UserStorageProvider</h4>
+<h4 id="userfederationprovider-vs-userstorageprovider"><a class="anchor" href="#userfederationprovider-vs-userstorageprovider"></a>12.13.2. UserFederationProvider vs. UserStorageProvider</h4>
 <div class="paragraph">
 <p>The first thing to notice is that <code>UserFederationProvider</code> was a complete interface. You implemented every method in this interface. However, <code>UserStorageProvider</code> has instead broken up this interface into multiple capability interfaces that you implement as needed.</p>
 </div>
@@ -5316,7 +5377,7 @@ in the admin console.  You&#8217;ll still be able to login though.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="userfederationproviderfactory-vs-userstorageproviderfactory"><a class="anchor" href="#userfederationproviderfactory-vs-userstorageproviderfactory"></a>11.13.3. UserFederationProviderFactory vs. UserStorageProviderFactory</h4>
+<h4 id="userfederationproviderfactory-vs-userstorageproviderfactory"><a class="anchor" href="#userfederationproviderfactory-vs-userstorageproviderfactory"></a>12.13.3. UserFederationProviderFactory vs. UserStorageProviderFactory</h4>
 <div class="paragraph">
 <p>The synchronization methods in the earlier SPI are now encapsulated within an optional <code>ImportSynchronization</code> interface.
 If you have implemented synchronization logic, then have your new <code>UserStorageProviderFactory</code> implement the
@@ -5324,7 +5385,7 @@ If you have implemented synchronization logic, then have your new <code>UserStor
 </div>
 </div>
 <div class="sect3">
-<h4 id="upgrading-to-a-new-model"><a class="anchor" href="#upgrading-to-a-new-model"></a>11.13.4. Upgrading to a New Model</h4>
+<h4 id="upgrading-to-a-new-model"><a class="anchor" href="#upgrading-to-a-new-model"></a>12.13.4. Upgrading to a New Model</h4>
 <div class="paragraph">
 <p>The User Storage SPI instances are stored in a different set of relational tables. Keycloak
 automatically runs a migration script. If any earlier User Federation providers are deployed for a realm, they are converted
@@ -5356,10 +5417,82 @@ before upgrading Keycloak. This will remove linked local imported copies of any 
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_vault-spi"><a class="anchor" href="#_vault-spi"></a>13. Vault SPI</h2>
+<div class="sectionbody">
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/vault.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_development/topics/vault.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vault-provider"><a class="anchor" href="#vault-provider"></a>13.1. Vault provider</h3>
+<div class="paragraph">
+<p>You can use a vault SPI from <code>org.keycloak.vault</code> package to write custom extension for Keycloak to connect to arbitrary vault implementation.</p>
+</div>
+<div class="paragraph">
+<p>The built-in <code>plaintext</code> provider is an example of the implementation of this SPI. In general the following rules apply:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To prevent a secret from leaking across realms, you mey want to isolate or limit what secrets can be retrieved by a realm.
+In that case, your provider should take into account the realm name when looking up secrets, for example by prefixing
+entries with the realm name. For example, an expression <code>${vault.secret-id}</code> would then evaluate generally
+to different values of a secret <code>secret-id</code>, depending on whether it was used in a realm <em>A</em> or realm <em>B</em>.
+To differentiate between realms, the realm needs to be passed to the created <code>VaultProvider</code> instance from
+ <code>VaultProviderFactory.create()</code> method where it is available from its the <code>KeycloakSession</code> parameter.</p>
+</li>
+<li>
+<p>The vault provider needs to implement a single method <code>obtainSecret</code> that returns a <code>VaultRawSecret</code> for the given secret name. That class holds the representation of the secret either in <code>byte[]</code> or <code>ByteBuffer</code> and is expected to convert between the two upon demand. Note that this buffer would be discarded after usage as explained below.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For details on how to package and deploy a custom provider refer to the <a href="#_providers">Service Provider Interfaces</a> chapter.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="consuming-values-from-vault"><a class="anchor" href="#consuming-values-from-vault"></a>13.2. Consuming values from vault</h3>
+<div class="paragraph">
+<p>The vault contains sensitive data and Keycloak treats the secrets accordingly. When accessing a secret, the secret is obtained from the vault and retained in JVM memory only for the necessary time. Then all possible attempts to discard its content from JVM memory is done. This is achieved by using the vault secrets only within <code>try</code>-with-resources statement as outlined below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="type">char</span><span class="type">[]</span> c;
+    <span class="keyword">try</span> (VaultCharSecret cSecret = session.vault().getCharSecret(SECRET_NAME)) {
+        <span class="comment">// ... use cSecret</span>
+        c = cSecret.getAsArray().orElse(<span class="predefined-constant">null</span>);
+        <span class="comment">// if c != null, it now contains password</span>
+    }
+
+    <span class="comment">// if c != null, it now contains garbage</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The example uses <code>KeycloakSession.vault()</code> as the entrypoint for accessing
+the secrets. Using the <code>VaultProvider.obtainSecret</code> method directly is indeed
+also possible. However the <code>vault()</code> method has the benefit of ability
+to interpret the raw secret (which is generally a byte array)
+as a character array (via <code>vault().getCharSecret()</code>) or a <code>String</code>
+(via <code>vault().getStringSecret()</code>) in addition to obtaining the original
+uninterpreted value (via <code>vault().getRawSecret()</code> method).</p>
+</div>
+<div class="paragraph">
+<p>Note that since <code>String</code> objects are immutable, their content cannot be discarded
+by overriding with random garbage. Even though measures have been taken in the default
+<code>VaultStringSecret</code> implementation to prevent internalizing <code>String</code>s, the secrets
+stored in <code>String</code> objects would live at least to the next GC round. Thus using
+plain byte and character arrays and buffers is preferrable.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-22 13:57:43 UTC
+Last updated 2019-09-22 16:29:53 UTC
 </div>
 </div>
 <ul id="globalnav">
