@@ -1196,8 +1196,20 @@ file in the corresponding type of the keycloak theme (<code>themes/keycloak/&lt;
 <p>You can also add your own custom properties and use them from custom templates.</p>
 </div>
 <div class="paragraph">
-<p>When doing so, you can substitute system properties or environment variables by using <code>${some.system.property}</code> for system properties or <code>${env.ENV_VAR}</code> for environment variables.
-A default value can also be provided in case the system property or the environment variable is not found with <code>${some.system.property:defaultValue}</code> / <code>${env.ENV_VAR:defaultValue}</code>.</p>
+<p>When doing so, you can substitute system properties or environment variables by using these formats:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>${some.system.property}</code> - for system properties</p>
+</li>
+<li>
+<p><code>${env.ENV_VAR}</code> - for environment variables.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A default value can also be provided in case the system property or the environment variable is not found with <code>${foo:defaultValue}</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1206,10 +1218,21 @@ A default value can also be provided in case the system property or the environm
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If no default value is provided and there&#8217;s no corresponding is found in system property or environment variable, then nothing is replaced and you end up with the format in your template.
+If no default value is provided and there&#8217;s no corresponding system property or environment variable, then nothing is replaced and you end up with the format in your template.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of what is possible:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="properties">javaVersion=${java.version}
+
+unixHome=${env.HOME:Unix home not found}
+windowsHome=${env.HOMEPATH:Windows home not found}</code></pre>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -5508,7 +5531,7 @@ plain byte and character arrays and buffers is preferrable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-20 14:05:51 UTC
+Last updated 2019-09-23 13:27:43 UTC
 </div>
 </div>
 <ul id="globalnav">
