@@ -725,7 +725,8 @@ span.image img {
 <li><a href="#_javascript_implicit_flow">2.2.2. Implicit and Hybrid Flow</a></li>
 <li><a href="#hybrid-apps-with-cordova">2.2.3. Hybrid Apps with Cordova</a></li>
 <li><a href="#earlier-browsers">2.2.4. Earlier Browsers</a></li>
-<li><a href="#javascript-adapter-reference">2.2.5. JavaScript Adapter Reference</a></li>
+<li><a href="#a-note-about-code-promisetype-code">2.2.5. A note about <code>promiseType</code></a></li>
+<li><a href="#javascript-adapter-reference">2.2.6. JavaScript Adapter Reference</a></li>
 </ul>
 </li>
 <li><a href="#_nodejs_adapter">2.3. Node.js Adapter</a>
@@ -6085,7 +6086,18 @@ If you need to support browsers that do not have these available (for example, I
 </div>
 </div>
 <div class="sect3">
-<h4 id="javascript-adapter-reference"><a class="anchor" href="#javascript-adapter-reference"></a>2.2.5. JavaScript Adapter Reference</h4>
+<h4 id="a-note-about-code-promisetype-code"><a class="anchor" href="#a-note-about-code-promisetype-code"></a>2.2.5. A note about <code>promiseType</code></h4>
+<div class="paragraph">
+<p>Throughout the examples in the documentation you will find <code>promiseType: 'native'</code> specified wherever Keycloak is initialized.
+Historically Keycloak has used its own implementation of promises that is not compatible with native promises as provided by the browser.
+By default Keycloak&#8217;s own promise implementation (also known as <code>promiseType: 'legacy'</code>) will be used if no promise type is specified.</p>
+</div>
+<div class="paragraph">
+<p>In future versions of Keycloak the default promise type will change from <code>legacy</code> to <code>native</code>. Eventually, support for legacy promises will be removed entirely. It is therefore highly recommended that you always specify <code>promiseType: 'native'</code> to future-proof your code.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="javascript-adapter-reference"><a class="anchor" href="#javascript-adapter-reference"></a>2.2.6. JavaScript Adapter Reference</h4>
 <div class="sect4">
 <h5 id="constructor"><a class="anchor" href="#constructor"></a>Constructor</h5>
 <div class="listingblock">
@@ -6206,6 +6218,9 @@ Available options:</p>
 <div class="ulist">
 <ul>
 <li>
+<p>useNonce - Adds a cryptographic nonce to verify that the authentication response matches the request (default is true).</p>
+</li>
+<li>
 <p>onLoad - Specifies an action to do on load. Supported values are 'login-required' or 'check-sso'.</p>
 </li>
 <li>
@@ -6236,7 +6251,10 @@ Available options:</p>
 <p>flow - Set the OpenID Connect flow. Valid values are standard, implicit or hybrid.</p>
 </li>
 <li>
-<p>promiseType - If set to <code>native</code> all methods returning a promise will return a native JavaScript promise. If not set will return Keycloak specific promise objects. Since native JavaScript promises have become the industry standard it is recommended that you always specify <code>native</code>.</p>
+<p>promiseType - If set to <code>native</code> all methods returning a promise will return a native JavaScript promise. If not set will return Keycloak specific promise objects.</p>
+</li>
+<li>
+<p>enableLogging - Enables logging messages from Keycloak to the console (default is false).</p>
 </li>
 </ul>
 </div>
@@ -7997,6 +8015,7 @@ For example <code>${jboss.server.config.dir}</code>.</p>
     <span class="attribute-name">nameIDPolicyFormat</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">format</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">forceAuthentication</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">isPassive</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">keepDOMAssertion</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">autodetectBearerOnly</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 ...
 <span class="tag">&lt;/SP&gt;</span></code></pre>
@@ -8059,6 +8078,14 @@ The default value is <em>false</em>.</p>
 the user is redirected after logout to that page using the HTTP <code>302</code> status code. If a link without scheme part is specified,
 such as <code>/logout.jsp</code>, the page is displayed after logout, <em>regardless of whether it lies in a protected area according
 to <code>security-constraint</code> declarations in web.xml</em>, and the page is resolved relative to the deployment context root.</p>
+</dd>
+<dt class="hdlist1">keepDOMAssertion</dt>
+<dd>
+<p>This attribute should be set to <em>true</em> to make the adapter store the DOM representation of the assertion in its
+original form inside the <code>SamlPrincipal</code> associated to the request. The assertion document can be retrieved using
+the method <code>getAssertionDocument</code> inside the principal. This is specially useful when re-playing a signed assertion.
+The returned document is the one that was generated parsing the SAML response received by the Keycloak server.
+This setting is <em>OPTIONAL</em> and its default value is <em>false</em> (the document is not saved inside the principal).</p>
 </dd>
 </dl>
 </div>
@@ -12183,7 +12210,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-17 15:11:33 UTC
+Last updated 2019-10-05 14:54:06 UTC
 </div>
 </div>
 <ul id="globalnav">

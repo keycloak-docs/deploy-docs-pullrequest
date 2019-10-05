@@ -763,6 +763,18 @@ span.image img {
 <li><a href="#troubleshooting-2">6.6.6. Troubleshooting</a></li>
 </ul>
 </li>
+<li><a href="#_webauthn">6.7. W3C Web Authentication (WebAuthn)</a>
+<ul class="sectlevel3">
+<li><a href="#setup">6.7.1. Setup</a></li>
+<li><a href="#register-webauthn-authenticator">6.7.2. Register WebAuthn Authenticator</a></li>
+<li><a href="#authenticate-by-webauthn-authenticator">6.7.3. Authenticate by WebAuthn Authenticator</a></li>
+<li><a href="#view-registered-webauthn-authenticator">6.7.4. View Registered WebAuthn Authenticator</a></li>
+<li><a href="#edit-registered-webauthn-authenticator">6.7.5. Edit Registered WebAuthn Authenticator</a></li>
+<li><a href="#delete-registered-webauthn-authenticator">6.7.6. Delete Registered WebAuthn Authenticator</a></li>
+<li><a href="#re-register-webauthn-authenticator">6.7.7. Re-Register WebAuthn Authenticator</a></li>
+<li><a href="#configuration">6.7.8. Configuration</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#sso-protocols">7. SSO Protocols</a>
@@ -3573,6 +3585,424 @@ all certificates in trusted-ca-list-for-client-auth.pem must be added to <a href
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_webauthn"><a class="anchor" href="#_webauthn"></a>6.7. W3C Web Authentication (WebAuthn)</h3>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/authentication/webauthn.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/webauthn.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>Keycloak provides the limited support for <a href="https://www.w3.org/TR/webauthn/">W3C Web Authentication (WebAuthn)</a>. Keycloak works as WebAuthn&#8217;s <a href="https://www.w3.org/TR/webauthn/#rp-operations">Relying Party (RP)</a>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Please note that WebAuthn support is still in development and not yet complete, so we recommend that you use this feature experimentally. Also, this support&#8217;s specification and user interfaces may change.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Whether WebAuthn&#8217;s operations succeed depends on a user&#8217;s WebAuthn supporting authenticator, browser and platform. If you use this WebAuthn support, please clarify to what extent those entities support the WebAuthn specification.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The major restriction is as follows :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A user can register only one WebAuthn supporting Authenticator (called WebAuthn authenticator here).</p>
+</li>
+<li>
+<p>On registering the WebAuthn authenticator, its <a href="https://www.w3.org/TR/webauthn/#attestation-statement">Attestation Statement</a> is not verified.</p>
+</li>
+<li>
+<p>Only the Two-Factor Authentication (2FA) scenario is supported.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="setup"><a class="anchor" href="#setup"></a>6.7.1. Setup</h4>
+<div class="paragraph">
+<p>The setup procedure of WebAuthn support for 2FA is the following :</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Enable User Registration</dt>
+<dd>
+<p>An administrator carries out the following operations on the <code>Admin Console</code> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the <code>Realm Settings &#8594; Login</code> tab.</p>
+</li>
+<li>
+<p>Set the <code>User Registration</code> to ON and click <code>Save</code>.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Enable Webauthn Authenticator Registration</dt>
+<dd>
+<p>An administrator carries out the following operations on the <code>Admin Console</code> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the <code>Authentication &#8594; Required Actions</code> tab.</p>
+</li>
+<li>
+<p>Click <code>Register</code>.</p>
+</li>
+<li>
+<p>Select <code>Webauthn Register</code> as <code>Required Action</code>.</p>
+</li>
+<li>
+<p>Mark <code>Enabled</code> and <code>Default Action</code> checkbox.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Enable 2FA by Webauthn Authenticator</dt>
+<dd>
+<p>An administrator carries out the following operations on the <code>Admin Console</code> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the <code>Authentication &#8594; Flows</code> tab.</p>
+</li>
+<li>
+<p>Copy and create the new browser flow.</p>
+</li>
+<li>
+<p>Add the <code>WebAuthn Authenticator</code> execution below the <code>User Password Form</code> execution.</p>
+</li>
+<li>
+<p>Set <code>REQUIRED</code> to the <code>WebAuthn Authenticator</code> execution&#8217;s requirement.</p>
+</li>
+<li>
+<p>Open the <code>Authentication &#8594; Bindings</code> tab.</p>
+</li>
+<li>
+<p>Select the created new browser flow as <code>Browser Flow</code>.</p>
+</li>
+<li>
+<p>Click <code>Save</code>.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="register-webauthn-authenticator"><a class="anchor" href="#register-webauthn-authenticator"></a>6.7.2. Register WebAuthn Authenticator</h4>
+<div class="paragraph">
+<p>The appropriate method to register a WebAuthen authenticator depends on if the user has or has not already registered an account on Keycloak.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">User without their account</dt>
+<dd>
+<p>A user carries out the following operations :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the login form.</p>
+</li>
+<li>
+<p>Click the <code>Register</code> link.</p>
+</li>
+<li>
+<p>Fill in items on the register form and click <code>Register</code>.</p>
+</li>
+<li>
+<p>The user&#8217;s browser asks the user to register their WebAuthn authenticator.</p>
+</li>
+<li>
+<p>After successful registration, the user&#8217;s browser asks the user to enter the text as their just registered WebAuthn authenticator&#8217;s label.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">User with their account</dt>
+<dd>
+<p>When such the users try to log in, they are required to register their WebAuthn authenticator automatically :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the login form.</p>
+</li>
+<li>
+<p>Fill in items, click <code>Save</code> and  click <code>Login</code>.</p>
+</li>
+<li>
+<p>When the users log in, they are required to register their WebAuthn authenticator.</p>
+</li>
+<li>
+<p>After successful registration, the user&#8217;s browser asks the user to enter the text as their just registered WebAuthn authenticator&#8217;s label.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="authenticate-by-webauthn-authenticator"><a class="anchor" href="#authenticate-by-webauthn-authenticator"></a>6.7.3. Authenticate by WebAuthn Authenticator</h4>
+<div class="paragraph">
+<p>After registering their WebAuthn authenticator, the user carries out the following operations :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the login form.</p>
+</li>
+<li>
+<p>Fill in items, click <code>Save</code> and  click <code>Login</code>.</p>
+</li>
+<li>
+<p>The list of registered Webauthn Authenticators' labels appears. Click <code>Authenticate</code>.</p>
+</li>
+<li>
+<p>The user&#8217;s browser asks the user to authenticate by their WebAuthn authenticator.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-registered-webauthn-authenticator"><a class="anchor" href="#view-registered-webauthn-authenticator"></a>6.7.4. View Registered WebAuthn Authenticator</h4>
+<div class="paragraph">
+<p>An administrator and a user can view the following information :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.w3.org/TR/webauthn/#credential-id">Credential ID</a></p>
+</li>
+<li>
+<p>Label (WebAuthn authenticator&#8217;s label the user entered on registering it)</p>
+</li>
+<li>
+<p><a href="https://fidoalliance.org/specs/fido-v2.0-rd-20180702/fido-metadata-statement-v2.0-rd-20180702.html#authenticator-attestation-guid-aaguid-typedef">AAGUID</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An administrator carries out the following operations on the <code>Admin Console</code> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the <code>Users &#8594; (user) &#8594; Credentials</code> tab.</p>
+</li>
+<li>
+<p>View the <code>Manage WebAuthn Authenticator</code> area.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A user carries out the following operations on the <a href="#_account-service"><code>User Account Service</code></a>  :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>View the <code>Account</code> page.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-registered-webauthn-authenticator"><a class="anchor" href="#edit-registered-webauthn-authenticator"></a>6.7.5. Edit Registered WebAuthn Authenticator</h4>
+<div class="paragraph">
+<p>A user can edit the following information :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Label (WebAuthn authenticator&#8217;s label the user entered on registering it)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A user carries out the following operations on the <a href="#_account-service"><code>User Account Service</code></a>  :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>View the <code>Account</code> page.</p>
+</li>
+<li>
+<p>Edit the text in <code>Public Key Credential Label</code>.</p>
+</li>
+<li>
+<p>Click <code>Save</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-registered-webauthn-authenticator"><a class="anchor" href="#delete-registered-webauthn-authenticator"></a>6.7.6. Delete Registered WebAuthn Authenticator</h4>
+<div class="paragraph">
+<p>An administrator can delete the users' registered WebAuthn authenticators.</p>
+</div>
+<div class="paragraph">
+<p>An Administrator carries out the following operations on the <code>Admin Console</code> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the <code>Users &#8594; (user) &#8594; Credentials</code> tab.</p>
+</li>
+<li>
+<p>On the <code>Disable Credentials</code> area, add <code>webauthn</code> to <code>Disable Types</code>.</p>
+</li>
+<li>
+<p>Click <code>Disable Credential Types</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="re-register-webauthn-authenticator"><a class="anchor" href="#re-register-webauthn-authenticator"></a>6.7.7. Re-Register WebAuthn Authenticator</h4>
+<div class="paragraph">
+<p>A user can re-register their WebAuthn authenticator. Newly registered WebAuthn authenticator overrides the old registered one.</p>
+</div>
+<div class="paragraph">
+<p>At first, an administrator carries out the following operations on the <code>Admin Console</code> to require the user to register their WebAuthn authenticator after their login :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the <code>Users &#8594; (user) &#8594; Details</code> tab.</p>
+</li>
+<li>
+<p>Set <code>WebAuthn Register</code> on <code>Required User Actions</code>.</p>
+</li>
+<li>
+<p>Click <code>Save</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After that, the user carries out the following operations :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the login form.</p>
+</li>
+<li>
+<p>Fill in items, click <code>Save</code> and  click <code>Login</code>.</p>
+</li>
+<li>
+<p>When the users log in, they are required to register their WebAuthn authenticator.</p>
+</li>
+<li>
+<p>After successful registration, the user&#8217;s browser asks the user to enter the text as their just registered WebAuthn authenticator&#8217;s label.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuration"><a class="anchor" href="#configuration"></a>6.7.8. Configuration</h4>
+<div class="paragraph">
+<p>An administrator can configure WebAuthn related operations as <code>WebAuthn Policy</code> per realm.</p>
+</div>
+<div class="paragraph">
+<p>An administrator carries out the following operations on the <code>Admin Console</code> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the <code>Authentication &#8594; WebAuthn Policy</code> tab.</p>
+</li>
+<li>
+<p>Configure items and click <code>Save</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The configurable items and their description follow.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Configuration</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relying Party Entity Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Human-readable server name as WebAuthn Relying Party. This is a mandatory configuration, which is applied to the operation of registering the WebAuthn authenticator. The default setting is "keycloak".
+ For more details, see <a href="https://www.w3.org/TR/webauthn/#dictionary-pkcredentialentity">WebAuthn Specification</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Signature Algorithms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the WebAuthn authenticator which signature algorithms to use for the <a href="https://www.w3.org/TR/webauthn/#public-key-credential">Public Key Credential</a> that can be used for signing and verifying the <a href="https://www.w3.org/TR/webauthn/#authentication-assertion">Authentication Assertion</a>. Multiple algorithms can be specified. If no algorithm is specified, <a href="https://tools.ietf.org/html/rfc8152#section-8.1">ES256</a> is adapted. The default setting is ES256. This is an optional configuration item that is applied to the operation of registering WebAuthn authenticator.
+ For more details, see <a href="https://www.w3.org/TR/webauthn/#dictdef-publickeycredentialparameters">WebAuthn Specification</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relying Party ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the ID as WebAuthn Relying Party and determines the scope of Public Key Credentials. It must be origin&#8217;s effective domain. This is an optional configuration item that is applied to the operation of registering WebAuthn authenticator. If no entry is entered, the host part of the base URL of Keycloak&#8217;s server is adapted.
+ For more details, see <a href="https://www.w3.org/TR/webauthn/#rp-id">WebAuthn Specification</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attestation Conveyance Preference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the WebAuthn API implementation on the browser (<a href="https://www.w3.org/TR/webauthn/#webauthn-client">WebAuthn Client</a>) the preference of how to generate an Attestation Statement. However, Keycloak does not verify the Attestation Statement so that only "none" option can be selected. This is an optional configuration item that is applied to the operation of registering WebAuthn authenticator. If no option is selected, its behavior is the same as selecting "none".
+ For more details, see <a href="https://www.w3.org/TR/webauthn/#attestation-convey">WebAuthn Specification</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Authenticator Attachment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the WebAuthn Client an acceptable attachment pattern of a WebAuthn authenticator. This is an optional configuration item that is applied to the operation of registering WebAuthn authenticator. If no option is selected, the WebAuthn Client does not consider the attachment pattern.
+ For more details, see <a href="https://www.w3.org/TR/webauthn/#enumdef-authenticatorattachment">WebAuthn Specification</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Require Resident Key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the WebAuthn authenticator to generate the Public Key Credential as <a href="https://www.w3.org/TR/webauthn/#client-side-resident-public-key-credential-source">Client-side-resident Public Key Credential Source</a>. This is an optional configuration item that is applied to the operation of registering WebAuthn authenticator. If no option is selected, its behavior is the same as selecting "No".
+ For more details, see <a href="https://www.w3.org/TR/webauthn/#dom-authenticatorselectioncriteria-requireresidentkey">WebAuthn Specification</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User Verification Requirement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the WebAuthn authenticator to confirm actually verifying a user. This is an optional configuration item that is applied to the operation of registering WebAuthn authenticator and authenticating the user by WebAuthn authenticator. If no option is selected, its behavior is the same as selecting "preferred".
+ For more details, see <a href="https://www.w3.org/TR/webauthn/#dom-authenticatorselectioncriteria-userverification">WebAuthn Specification for registering WebAuthn authenticator</a> and <a href="https://www.w3.org/TR/webauthn/#dom-publickeycredentialrequestoptions-userverification">WebAuthn Specification for authenticating the user by WebAuthn authenticator</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It specifies the timeout value in seconds for registering WebAuthn authenticator and authenticating the user by WebAuthn authenticator. If set to 0, its behavior depends on the WebAuthn authenticator&#8217;s implementation. The default value is 0.
+ For more details, see <a href="https://www.w3.org/TR/webauthn/#dom-publickeycredentialcreationoptions-timeout">WebAuthn Specification for registering WebAuthn authenticator</a> and <a href="https://www.w3.org/TR/webauthn/#dom-publickeycredentialrequestoptions-timeout">WebAuthn Specification for authenticating the user by WebAuthn authenticator</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Avoid Same Authenticator Registration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set to "ON", the WebAuthn authenticator that has already been registered can not be newly registered. This is applied to the operation of registering WebAuthn authenticator. The default setting is "OFF".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Acceptable AAGUIDs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The white list of AAGUID of which a WebAuthn authenticator can be registered. This is applied to the operation of registering WebAuthn authenticator. If no entry is set on this list, any WebAuthn authenticator can be registered.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -4581,7 +5011,7 @@ and security is not broken.</p>
 <p>and can be used to invoke <code>good-service</code>.</p>
 </div>
 <div class="sect4">
-<h5 id="setup"><a class="anchor" href="#setup"></a>Setup</h5>
+<h5 id="setup-2"><a class="anchor" href="#setup-2"></a>Setup</h5>
 <div class="paragraph">
 <p>To properly set up audience checking:</p>
 </div>
@@ -12964,7 +13394,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-17 15:11:40 UTC
+Last updated 2019-10-05 14:54:11 UTC
 </div>
 </div>
 <ul id="globalnav">
