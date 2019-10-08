@@ -5889,8 +5889,8 @@ It has no other task than sending the received tokens to the main application an
 </div>
 <div class="paragraph">
 <p>One thing to keep in mind is that the access token by default has a short life expiration so you may need to refresh the access token prior to sending the
-request. You can do this by the <code>updateToken</code> method. The <code>updateToken</code> method returns a promise object which makes it easy to invoke the service only if the
-token was successfully refreshed and for example display an error to the user if it wasn&#8217;t. For example:</p>
+request. You can do this by the <code>updateToken</code> method. The <code>updateToken</code> method returns a promise which makes it easy to invoke the service only if the
+token was successfully refreshed and display an error to the user if it wasn&#8217;t. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6259,7 +6259,7 @@ Available options:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Returns promise to set functions to be invoked on success or error.</p>
+<p>Returns a promise that resolves when initialization completes.</p>
 </div>
 </div>
 <div class="sect5">
@@ -6400,8 +6400,7 @@ provider instead. More info in the <a href="https://www.keycloak.org/docs/8.0/se
 <p>Loads the users profile.</p>
 </div>
 <div class="paragraph">
-<p>Returns promise to set functions to be invoked if the profile was loaded successfully, or if the profile could not be
-loaded.</p>
+<p>Returns a promise that resolves with the profile.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -6429,8 +6428,10 @@ loaded.</p>
 If the session status iframe is enabled, the session status is also checked.</p>
 </div>
 <div class="paragraph">
-<p>Returns promise to set functions that can be invoked if the token is still valid, or if the token is no longer valid.
-For example:</p>
+<p>Returns a promise that resolves with a boolean indicating whether or not the token has been refreshed.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12210,7 +12211,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-05 14:54:06 UTC
+Last updated 2019-10-08 15:21:47 UTC
 </div>
 </div>
 <ul id="globalnav">
