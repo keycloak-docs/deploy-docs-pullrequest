@@ -726,7 +726,8 @@ span.image img {
 <li><a href="#hybrid-apps-with-cordova">2.2.3. Hybrid Apps with Cordova</a></li>
 <li><a href="#earlier-browsers">2.2.4. Earlier Browsers</a></li>
 <li><a href="#a-note-about-code-promisetype-code">2.2.5. A note about <code>promiseType</code></a></li>
-<li><a href="#javascript-adapter-reference">2.2.6. JavaScript Adapter Reference</a></li>
+<li><a href="#native-promises-and-typescript">2.2.6. Native promises and TypeScript</a></li>
+<li><a href="#javascript-adapter-reference">2.2.7. JavaScript Adapter Reference</a></li>
 </ul>
 </li>
 <li><a href="#_nodejs_adapter">2.3. Node.js Adapter</a>
@@ -5774,7 +5775,7 @@ is selected for <code>Access Type</code>.</p>
 <pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;head&gt;</span>
     <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloak.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
     <span class="tag">&lt;script&gt;</span>
-<span class="inline">        <span class="keyword">var</span> keycloak = Keycloak();
+<span class="inline">        <span class="keyword">var</span> keycloak = <span class="keyword">new</span> Keycloak();
         keycloak.init({ <span class="key">promiseType</span>: <span class="string"><span class="delimiter">'</span><span class="content">native</span><span class="delimiter">'</span></span> }).then(<span class="keyword">function</span>(authenticated) {
             alert(authenticated ? <span class="string"><span class="delimiter">'</span><span class="content">authenticated</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">not authenticated</span><span class="delimiter">'</span></span>);
         }).<span class="keyword">catch</span>(<span class="keyword">function</span>() {
@@ -5789,7 +5790,7 @@ is selected for <code>Access Type</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> keycloak = Keycloak(<span class="string"><span class="delimiter">'</span><span class="content">http://localhost:8080/myapp/keycloak.json</span><span class="delimiter">'</span></span>);</code></pre>
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> keycloak = <span class="keyword">new</span> Keycloak(<span class="string"><span class="delimiter">'</span><span class="content">http://localhost:8080/myapp/keycloak.json</span><span class="delimiter">'</span></span>);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5797,7 +5798,7 @@ is selected for <code>Access Type</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> keycloak = Keycloak({
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> keycloak = <span class="keyword">new</span> Keycloak({
     <span class="key">url</span>: <span class="string"><span class="delimiter">'</span><span class="content">http://keycloak-server/auth</span><span class="delimiter">'</span></span>,
     <span class="key">realm</span>: <span class="string"><span class="delimiter">'</span><span class="content">myrealm</span><span class="delimiter">'</span></span>,
     <span class="key">clientId</span>: <span class="string"><span class="delimiter">'</span><span class="content">myapp</span><span class="delimiter">'</span></span>
@@ -6097,7 +6098,22 @@ By default Keycloak&#8217;s own promise implementation (also known as <code>prom
 </div>
 </div>
 <div class="sect3">
-<h4 id="javascript-adapter-reference"><a class="anchor" href="#javascript-adapter-reference"></a>2.2.6. JavaScript Adapter Reference</h4>
+<h4 id="native-promises-and-typescript"><a class="anchor" href="#native-promises-and-typescript"></a>2.2.6. Native promises and TypeScript</h4>
+<div class="paragraph">
+<p>If you want to use native promises and get correct type information when using TypeScript you will have to specify the <code>promiseType</code> when constructing a new instance of Keycloak.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// Typescript assumes this is a 'legacy' promise, all methods return .success() and .error()</span>
+const keycloak = <span class="keyword">new</span> Keycloak();
+
+<span class="comment">// Typescript assumes this is a native promise, all methods return standard promises</span>
+const keycloak = <span class="keyword">new</span> Keycloak&lt;<span class="string"><span class="delimiter">'</span><span class="content">native</span><span class="delimiter">'</span></span>&gt;();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="javascript-adapter-reference"><a class="anchor" href="#javascript-adapter-reference"></a>2.2.7. JavaScript Adapter Reference</h4>
 <div class="sect4">
 <h5 id="constructor"><a class="anchor" href="#constructor"></a>Constructor</h5>
 <div class="listingblock">
@@ -12211,7 +12227,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-08 15:21:47 UTC
+Last updated 2019-10-15 09:26:07 UTC
 </div>
 </div>
 <ul id="globalnav">
