@@ -737,6 +737,15 @@ span.image img {
     display: block;
     padding: 5px;
 }
+
+/* Fix scroll to anchor hides title */
+
+:target:before {
+    content:"";
+    display:block;
+    height:70px; /* fixed header height*/
+    margin:-70px 0 0; /* negative fixed header height */
+}
 </style>
 
 </head>
@@ -5356,7 +5365,7 @@ The cache will be cleared for all realms!
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-23 13:26:36 UTC
+Last updated 2019-10-23 16:32:33 UTC
 </div>
 </div>
 <ul id="globalnav">
