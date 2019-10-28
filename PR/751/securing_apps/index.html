@@ -1802,7 +1802,7 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </table>
 </div>
 <div class="paragraph">
-<p>You must subscribe to the WildFly 17 repository before you can install the WildFly 7 adapters from an RPM.</p>
+<p>You must subscribe to the WildFly 18 repository before you can install the WildFly 7 adapters from an RPM.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Prerequisites</div>
@@ -1816,7 +1816,7 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </ol>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise Linux 6, 7: Using Red Hat Subscription Manager, subscribe to the WildFly 17 repository using the following command. Replace &lt;RHEL_VERSION&gt; with either 6 or 7 depending on your Red Hat Enterprise Linux version.</p>
+<p>For Red Hat Enterprise Linux 6, 7: Using Red Hat Subscription Manager, subscribe to the WildFly 18 repository using the following command. Replace &lt;RHEL_VERSION&gt; with either 6 or 7 depending on your Red Hat Enterprise Linux version.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1824,11 +1824,11 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </div>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise Linux 8: Using Red Hat Subscription Manager, subscribe to the WildFly 17 repository using the following command:</p>
+<p>For Red Hat Enterprise Linux 8: Using Red Hat Subscription Manager, subscribe to the WildFly 18 repository using the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ sudo subscription-manager repos --enable=jb-eap-17-for-rhel-8-x86_64-rpms --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ sudo subscription-manager repos --enable=jb-eap-18-for-rhel-8-x86_64-rpms --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1957,7 +1957,7 @@ The default EAP_HOME path for the RPM installation is /opt/rh/eap6/root/usr/shar
 <p>Keycloak supports securing your web applications running inside <a href="https://developers.redhat.com/products/fuse/overview">JBoss Fuse 6</a>.</p>
 </div>
 <div class="paragraph">
-<p>JBoss Fuse 6 leverages <a href="#_jetty9_adapter">Jetty 9 adapter</a> as JBoss Fuse 6.3.0 Rollup 11 is bundled with <a href="http://www.eclipse.org/jetty/">Jetty 9.2 server</a>
+<p>JBoss Fuse 6 leverages <a href="#_jetty9_adapter">Jetty 9 adapter</a> as JBoss Fuse 6.3.0 Rollup 12 is bundled with <a href="http://www.eclipse.org/jetty/">Jetty 9.2 server</a>
 under the covers and Jetty is used for running various kinds of web applications.</p>
 </div>
 <div class="admonitionblock warning">
@@ -2035,7 +2035,7 @@ All referenced web applications require injecting the Keycloak Jetty authenticat
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Start JBoss Fuse 6.3.0 Rollup 11; then in the Karaf terminal type:</p>
+<p>Start JBoss Fuse 6.3.0 Rollup 12; then in the Karaf terminal type:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>features:addurl mvn:org.keycloak/keycloak-osgi-features/8.0.0/xml/features
@@ -2078,7 +2078,7 @@ features:install keycloak</code></pre>
 <li>
 <p>Unzip it into the root directory of JBoss Fuse. The dependencies are then installed under the <code>system</code> directory. You can overwrite all existing jar files.</p>
 <div class="paragraph">
-<p>Use this for JBoss Fuse 6.3.0 Rollup 11:</p>
+<p>Use this for JBoss Fuse 6.3.0 Rollup 12:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2817,7 +2817,7 @@ features:install keycloak-jaas</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-On some later operating systems, you might also need to use the SSH command&#8217;s -o option <code>-o HostKeyAlgorithms=+ssh-dss</code> because later SSH clients do not allow use of the <code>ssh-dss</code> algorithm, by default. However, by default, it is currently used in JBoss Fuse 6.3.0 Rollup 11.
+On some later operating systems, you might also need to use the SSH command&#8217;s -o option <code>-o HostKeyAlgorithms=+ssh-dss</code> because later SSH clients do not allow use of the <code>ssh-dss</code> algorithm, by default. However, by default, it is currently used in JBoss Fuse 6.3.0 Rollup 12.
 </td>
 </tr>
 </table>
@@ -2920,7 +2920,7 @@ hawtio.rolePrincipalClasses=org.keycloak.adapters.jaas.RolePrincipal,org.apache.
 </div>
 </li>
 <li>
-<p>Start JBoss Fuse 6.3.0 Rollup 11 and install the keycloak feature if you have not already done so. The commands in Karaf terminal are similar to this example:</p>
+<p>Start JBoss Fuse 6.3.0 Rollup 12 and install the keycloak feature if you have not already done so. The commands in Karaf terminal are similar to this example:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>features:addurl mvn:org.keycloak/keycloak-osgi-features/8.0.0/xml/features
@@ -2960,7 +2960,7 @@ features:install keycloak</code></pre>
 </div>
 </li>
 <li>
-<p>Copy the <code>hawtio-wildfly-1.4.0.redhat-630377.war</code> archive to the <code>$EAP_HOME/standalone/configuration</code> directory. For more details about deploying Hawtio see the <a href="https://access.redhat.com/documentation/en-us/red_hat_jboss_fuse/6.3/html-single/deploying_into_a_web_server/">Fuse Hawtio documentation</a>.</p>
+<p>Copy the <code>hawtio-wildfly-1.4.0.redhat-630396.war</code> archive to the <code>$EAP_HOME/standalone/configuration</code> directory. For more details about deploying Hawtio see the <a href="https://access.redhat.com/documentation/en-us/red_hat_jboss_fuse/6.3/html-single/deploying_into_a_web_server/">Fuse Hawtio documentation</a>.</p>
 </li>
 <li>
 <p>Copy the <code>keycloak-hawtio.json</code> and <code>keycloak-hawtio-client.json</code> files with the above content to the <code>$EAP_HOME/standalone/configuration</code> directory.</p>
@@ -3007,7 +3007,7 @@ features:install keycloak</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:keycloak:1.1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;secure-deployment</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hawtio-wildfly-1.4.0.redhat-630377.war</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;secure-deployment</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hawtio-wildfly-1.4.0.redhat-630396.war</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 <span class="tag">&lt;/subsystem&gt;</span></code></pre>
 </div>
 </div>
@@ -3043,7 +3043,7 @@ features:install keycloak</code></pre>
 <div class="paragraph">
 <p>JBoss Fuse 7 leverages Undertow adapter which is essentially the same as
 <a href="#_jboss_adapter">EAP 7 / WildFly Adapter</a>
-as JBoss Fuse 7.3.1 is bundled with <a href="http://undertow.io/">Undertow HTTP engine</a> under the covers and Undertow is used for running various kinds of web applications.</p>
+as JBoss Fuse 7.4.0 is bundled with <a href="http://undertow.io/">Undertow HTTP engine</a> under the covers and Undertow is used for running various kinds of web applications.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -3121,7 +3121,7 @@ All referenced web applications require injecting the Keycloak Undertow authenti
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Start JBoss Fuse 7.3.1; then in the Karaf terminal type:</p>
+<p>Start JBoss Fuse 7.4.0; then in the Karaf terminal type:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>feature:repo-add mvn:org.keycloak/keycloak-osgi-features/8.0.0/xml/features
@@ -3164,7 +3164,7 @@ feature:install keycloak-pax-http-undertow keycloak-jaas</code></pre>
 <li>
 <p>Unzip it into the root directory of JBoss Fuse. The dependencies are then installed under the <code>system</code> directory. You can overwrite all existing jar files.</p>
 <div class="paragraph">
-<p>Use this for JBoss Fuse 7.3.1:</p>
+<p>Use this for JBoss Fuse 7.4.0:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3817,7 +3817,7 @@ features:install keycloak-jaas</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-On some later operating systems, you might also need to use the SSH command&#8217;s -o option <code>-o HostKeyAlgorithms=+ssh-dss</code> because later SSH clients do not allow use of the <code>ssh-dss</code> algorithm, by default. However, by default, it is currently used in JBoss Fuse 7.3.1.
+On some later operating systems, you might also need to use the SSH command&#8217;s -o option <code>-o HostKeyAlgorithms=+ssh-dss</code> because later SSH clients do not allow use of the <code>ssh-dss</code> algorithm, by default. However, by default, it is currently used in JBoss Fuse 7.4.0.
 </td>
 </tr>
 </table>
@@ -3925,7 +3925,7 @@ On some later operating systems, you might also need to use the SSH command&#821
 </div>
 </li>
 <li>
-<p>Start JBoss Fuse 7.3.1, <a href="#_fuse7_install_feature">install the Keycloak feature</a>. Then type in the Karaf terminal:</p>
+<p>Start JBoss Fuse 7.4.0, <a href="#_fuse7_install_feature">install the Keycloak feature</a>. Then type in the Karaf terminal:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>system:property -p hawtio.keycloakEnabled true
@@ -3962,7 +3962,7 @@ You then have to provide some extra configuration via normal Spring Boot configu
 <h5 id="_spring_boot_adapter_installation"><a class="anchor" href="#_spring_boot_adapter_installation"></a>Adapter Installation</h5>
 <div class="paragraph">
 <p>The Keycloak Spring Boot adapter takes advantage of Spring Boot&#8217;s autoconfiguration so all you need to do is add the Keycloak Spring Boot starter to your project.
-They Keycloak Spring Boot Starter is also directly available from the <a href="https://start.spring.io/">Spring Start Page</a>.
+The Keycloak Spring Boot Starter is also directly available from the <a href="https://start.spring.io/">Spring Initializr Page</a>.
 To add it manually using Maven, add the following to your dependencies:</p>
 </div>
 <div class="listingblock">
@@ -4346,13 +4346,36 @@ You then have to provide some extra beans in your Spring Security configuration 
 <div class="paragraph">
 <p>Unlike the other Keycloak Adapters, you should not configure your security in web.xml.
 However, keycloak.json is still required.
-In order for Single Sign Out work properly you have to define a session listener in web.xml:</p>
+In order for Single Sign Out work properly you have to define a session listener.</p>
+</div>
+<div class="ulist">
+<div class="title">The session listener can be defined:</div>
+<ul>
+<li>
+<p>in web.xml (for pure Spring Security environments):</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;listener&gt;</span>
-     <span class="tag">&lt;listener-class&gt;</span>org.springframework.security.web.session.HttpSessionEventPublisher<span class="tag">&lt;/listener-class&gt;</span>
-<span class="tag">&lt;/listener&gt;</span></code></pre>
+<pre>&lt;listener&gt;
+     &lt;listener-class&gt;org.springframework.security.web.session.HttpSessionEventPublisher&lt;/listener-class&gt;
+&lt;/listener&gt;</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>as a Spring bean (in Spring Boot environments using Spring Security adapter)</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@Bean
+public ServletListenerRegistrationBean&lt;HttpSessionEventPublisher&gt; httpSessionEventPublisher() {
+    return new ServletListenerRegistrationBean&lt;HttpSessionEventPublisher&gt;(new HttpSessionEventPublisher());
+}</pre>
 </div>
 </div>
 <div class="sect4">
@@ -8902,7 +8925,7 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </ol>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise Linux 6, 7: Using Red Hat Subscription Manager, subscribe to the WildFly 17 repository using the following command. Replace &lt;RHEL_VERSION&gt; with either 6 or 7 depending on your Red Hat Enterprise Linux version.</p>
+<p>For Red Hat Enterprise Linux 6, 7: Using Red Hat Subscription Manager, subscribe to the WildFly 18 repository using the following command. Replace &lt;RHEL_VERSION&gt; with either 6 or 7 depending on your Red Hat Enterprise Linux version.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8910,11 +8933,11 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </div>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise Linux 8: Using Red Hat Subscription Manager, subscribe to the WildFly 17 repository using the following command:</p>
+<p>For Red Hat Enterprise Linux 8: Using Red Hat Subscription Manager, subscribe to the WildFly 18 repository using the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ sudo subscription-manager repos --enable=jb-eap-17-for-rhel-8-x86_64-rpms --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ sudo subscription-manager repos --enable=jb-eap-18-for-rhel-8-x86_64-rpms --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12190,7 +12213,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-10 16:17:34 UTC
+Last updated 2019-10-28 10:15:54 UTC
 </div>
 </div>
 <ul id="globalnav">
