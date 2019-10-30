@@ -510,6 +510,33 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 <style>
+#tocbot a.toc-link.node-name--H1{ font-style: italic }
+@media screen{
+#tocbot > ul.toc-list{ margin-bottom: 0.5em; margin-left: 0.125em }
+#tocbot ul.sectlevel0, #tocbot a.toc-link.node-name--H1 + ul{
+  padding-left: 0 }
+#tocbot a.toc-link{ height:100% }
+.is-collapsible{ max-height:3000px; overflow:hidden; }
+.is-collapsed{ max-height:0 }
+.is-active-link{ font-weight:700 }
+}
+@media print{
+#tocbot a.toc-link.node-name--H4{ display:none }
+}
+
+/* Fix scroll to anchor hides title */
+h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+    display: block;
+    content: " ";
+    height: 70px;
+    margin-top: -70px;
+}
+
+h1 {
+    border-bottom: none !important
+}
+
+
 /* Global Navbar */
 
 ul#globalnav {
@@ -590,9 +617,7 @@ body.toc2 {
     }
 }
 
-</style>
 
-<style>
 /* General Changes */
 
 h1, h2, h3, #toctitle, .sidebarblock>.content>.title, h4, h5, h6 {
@@ -665,6 +690,7 @@ span.image img {
     padding: 5px;
 }
 </style>
+
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -672,18 +698,130 @@ span.image img {
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#keycloak-7-0-0">Keycloak 7.0.0</a></li>
-<li><a href="#keycloak-6-0-0">Keycloak 6.0.0</a></li>
-<li><a href="#keycloak-5-0-0">Keycloak 5.0.0</a></li>
-<li><a href="#keycloak-4-8-0-final">Keycloak 4.8.0.Final</a></li>
-<li><a href="#keycloak-4-7-0-final">Keycloak 4.7.0.Final</a></li>
-<li><a href="#keycloak-4-6-0-final">Keycloak 4.6.0.Final</a></li>
-<li><a href="#keycloak-4-5-0-final">Keycloak 4.5.0.Final</a></li>
-<li><a href="#keycloak-4-4-0-final">Keycloak 4.4.0.Final</a></li>
-<li><a href="#keycloak-4-3-0-final">Keycloak 4.3.0.Final</a></li>
-<li><a href="#keycloak-4-2-0-final">Keycloak 4.2.0.Final</a></li>
-<li><a href="#keycloak-4-1-0-final">Keycloak 4.1.0.Final</a></li>
-<li><a href="#keycloak-4-0-0-final">Keycloak 4.0.0.Final</a></li>
+<li><a href="#keycloak-7-0-0">Keycloak 7.0.0</a>
+<ul class="sectlevel2">
+<li><a href="#highlights">Highlights</a>
+<ul class="sectlevel3">
+<li><a href="#wildfly-17-upgrade">WildFly 17 Upgrade</a></li>
+<li><a href="#tomcat-9-adapter-support">Tomcat 9 adapter support</a></li>
+<li><a href="#new-account-console">New Account Console</a></li>
+<li><a href="#signed-and-encrypted-id-token-support">Signed and Encrypted ID Token Support</a></li>
+<li><a href="#testing-and-release-automation">Testing and release automation</a></li>
+</ul>
+</li>
+<li><a href="#other-improvements">Other improvements</a></li>
+</ul>
+</li>
+<li><a href="#keycloak-6-0-0">Keycloak 6.0.0</a>
+<ul class="sectlevel2">
+<li><a href="#wildfly-16-upgrade">WildFly 16 Upgrade</a>
+<ul class="sectlevel3">
+<li><a href="#smallrye-health-and-metrics-extensions">SmallRye Health and Metrics extensions</a></li>
+</ul>
+</li>
+<li><a href="#ps256-support">PS256 support</a></li>
+<li><a href="#mp-jwt-client-scope">MP-JWT Client Scope</a></li>
+</ul>
+</li>
+<li><a href="#keycloak-5-0-0">Keycloak 5.0.0</a>
+<ul class="sectlevel2">
+<li><a href="#wildfly-15-upgrade">WildFly 15 Upgrade</a></li>
+</ul>
+</li>
+<li><a href="#keycloak-4-8-0-final">Keycloak 4.8.0.Final</a>
+<ul class="sectlevel2">
+<li><a href="#openshift-integration">OpenShift Integration</a></li>
+<li><a href="#rules-drools-policy-marked-as-a-technology-preview-feature">Rules/Drools Policy Marked as a Technology Preview Feature</a></li>
+<li><a href="#support-for-db2-removed">Support for DB2 removed</a></li>
+</ul>
+</li>
+<li><a href="#keycloak-4-7-0-final">Keycloak 4.7.0.Final</a>
+<ul class="sectlevel2">
+<li><a href="#enhanced-remember-me">Enhanced Remember Me</a></li>
+<li><a href="#pagination-support-for-groups">Pagination support for Groups</a></li>
+<li><a href="#improve-startup-time-with-large-number-of-offline-sessions">Improve startup time with large number of offline sessions</a></li>
+</ul>
+</li>
+<li><a href="#keycloak-4-6-0-final">Keycloak 4.6.0.Final</a>
+<ul class="sectlevel2">
+<li><a href="#upgrade-to-wildfly-14">Upgrade to WildFly 14</a></li>
+<li><a href="#keycloak-gatekeeper">Keycloak Gatekeeper</a></li>
+</ul>
+</li>
+<li><a href="#keycloak-4-5-0-final">Keycloak 4.5.0.Final</a>
+<ul class="sectlevel2">
+<li><a href="#signature-spi">Signature SPI</a></li>
+<li><a href="#new-signature-algorithms">New Signature Algorithms</a></li>
+<li><a href="#better-audience-support-for-openid-connect-clients">Better Audience Support for OpenID Connect clients</a></li>
+<li><a href="#minor-improvements">Minor improvements</a></li>
+</ul>
+</li>
+<li><a href="#keycloak-4-4-0-final">Keycloak 4.4.0.Final</a>
+<ul class="sectlevel2">
+<li><a href="#upgrade-to-wildfly-13">Upgrade to WildFly 13</a></li>
+<li><a href="#authorization-services-support-in-node-js">Authorization Services support in Node.js</a></li>
+<li><a href="#minor-improvements-2">Minor improvements</a></li>
+</ul>
+</li>
+<li><a href="#keycloak-4-3-0-final">Keycloak 4.3.0.Final</a>
+<ul class="sectlevel2">
+<li><a href="#hostname-spi">Hostname SPI</a></li>
+<li><a href="#x509-client-authenticator">X509 Client Authenticator</a></li>
+<li><a href="#performance-improvements-to-authorization-services">Performance improvements to Authorization Services</a></li>
+<li><a href="#choosing-the-response-mode-when-obtaining-permissions-from-the-server">Choosing the response mode when obtaining permissions from the server</a></li>
+<li><a href="#nodejs-policy-enforcer">NodeJS Policy Enforcer</a></li>
+<li><a href="#support-hosted-domain-for-google-logins">Support hosted domain for Google logins</a></li>
+<li><a href="#escape-unsafe-tags-in-html-output">Escape unsafe tags in HTML output</a></li>
+</ul>
+</li>
+<li><a href="#keycloak-4-2-0-final">Keycloak 4.2.0.Final</a>
+<ul class="sectlevel2">
+<li><a href="#browser-tab-support-for-cordova">Browser tab support for Cordova</a></li>
+<li><a href="#saml-adapter-multitenancy-support">SAML adapter multitenancy support</a></li>
+<li><a href="#an-option-to-create-claims-with-dots-in-them">An option to create claims with dots (.) in them</a></li>
+</ul>
+</li>
+<li><a href="#keycloak-4-1-0-final">Keycloak 4.1.0.Final</a>
+<ul class="sectlevel2">
+<li><a href="#making-spring-boot-2-the-default-starter">Making Spring Boot 2 the default starter</a></li>
+</ul>
+</li>
+<li><a href="#keycloak-4-0-0-final">Keycloak 4.0.0.Final</a>
+<ul class="sectlevel2">
+<li><a href="#client-scopes-and-support-for-oauth-2-scope-parameter">Client Scopes and support for OAuth 2 scope parameter</a></li>
+<li><a href="#oauth-2-certificate-bound-access-tokens">OAuth 2 Certificate Bound Access Tokens</a></li>
+<li><a href="#authorization-services">Authorization Services</a>
+<ul class="sectlevel3">
+<li><a href="#uma-2-0-support">UMA 2.0 Support</a></li>
+<li><a href="#pushed-claims">Pushed Claims</a></li>
+<li><a href="#resource-attributes">Resource Attributes</a></li>
+<li><a href="#policy-enforcer-now-accepts-regular-access-tokens">Policy enforcer now accepts regular access tokens</a></li>
+<li><a href="#policy-enforcer-can-now-load-resources-from-the-server-on-demand">Policy enforcer can now load resources from the server on-demand</a></li>
+<li><a href="#policy-enforcer-now-supports-configuring-the-resource-cache">Policy enforcer now supports configuring the resource cache</a></li>
+<li><a href="#claim-information-points">Claim Information Points</a></li>
+<li><a href="#improvements-to-the-evaluation-api">Improvements to the Evaluation API</a></li>
+</ul>
+</li>
+<li><a href="#authorization-services-2">Authorization Services</a>
+<ul class="sectlevel3">
+<li><a href="#uma-2-0">UMA 2.0</a></li>
+<li><a href="#pushed-claims-2">Pushed Claims</a></li>
+<li><a href="#resource-attributes-2">Resource Attributes</a></li>
+</ul>
+</li>
+<li><a href="#themes-and-theme-resources">Themes and Theme Resources</a></li>
+<li><a href="#instagram-identity-provider">Instagram Identity Provider</a></li>
+<li><a href="#search-by-user-id-in-admin-console">Search by User ID in Admin Console</a></li>
+<li><a href="#adapters">Adapters</a>
+<ul class="sectlevel3">
+<li><a href="#spring-boot-2">Spring Boot 2</a></li>
+<li><a href="#fuse-7">Fuse 7</a></li>
+<li><a href="#javascript-native-promise-support">JavaScript - Native Promise Support</a></li>
+<li><a href="#javascript-cordova-options">JavaScript - Cordova Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1301,7 +1439,7 @@ Thanks to <a href="https://github.com/looorent">loorent</a> for the contribution
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-02 12:27:05 UTC
+Last updated 2019-10-30 14:51:33 UTC
 </div>
 </div>
 <ul id="globalnav">
@@ -1314,5 +1452,43 @@ Last updated 2019-10-02 12:27:05 UTC
     <li><a href="../upgrading/index.html">Upgrading</a></li>
     <li><a href="../release_notes/index.html">Release Notes</a></li>
 </ul>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+
+<script>
+    var oldtoc = document.getElementById('toctitle').nextElementSibling;
+    var newtoc = document.createElement('div');
+    newtoc.setAttribute('id', 'tocbot');
+    newtoc.setAttribute('class', 'js-toc');
+    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
+    tocbot.init({ contentSelector: '#content',
+        headingSelector: 'h2, h3, h4',
+        smoothScroll: false
+    });
+    var handleTocOnResize = function() {
+        var width = window.innerWidth
+                    || document.documentElement.clientWidth
+                    || document.body.clientWidth;
+        if (width < 768) {
+            tocbot.refresh({
+                contentSelector: '#content',
+                headingSelector: 'h2, h3, h4',
+                collapseDepth: 6,
+                activeLinkClass: 'ignoreactive',
+                throttleTimeout: 1000,
+                smoothScroll: false
+            });
+        }
+        else {
+            tocbot.refresh({
+                contentSelector: '#content',
+                headingSelector: 'h2, h3, h4',
+                smoothScroll: false
+            });
+        }
+    };
+    window.addEventListener('resize', handleTocOnResize);
+    handleTocOnResize();
+</script>
 </body>
 </html>

@@ -510,6 +510,33 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 <style>
+#tocbot a.toc-link.node-name--H1{ font-style: italic }
+@media screen{
+#tocbot > ul.toc-list{ margin-bottom: 0.5em; margin-left: 0.125em }
+#tocbot ul.sectlevel0, #tocbot a.toc-link.node-name--H1 + ul{
+  padding-left: 0 }
+#tocbot a.toc-link{ height:100% }
+.is-collapsible{ max-height:3000px; overflow:hidden; }
+.is-collapsed{ max-height:0 }
+.is-active-link{ font-weight:700 }
+}
+@media print{
+#tocbot a.toc-link.node-name--H4{ display:none }
+}
+
+/* Fix scroll to anchor hides title */
+h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+    display: block;
+    content: " ";
+    height: 70px;
+    margin-top: -70px;
+}
+
+h1 {
+    border-bottom: none !important
+}
+
+
 /* Global Navbar */
 
 ul#globalnav {
@@ -590,9 +617,7 @@ body.toc2 {
     }
 }
 
-</style>
 
-<style>
 /* General Changes */
 
 h1, h2, h3, #toctitle, .sidebarblock>.content>.title, h4, h5, h6 {
@@ -665,6 +690,7 @@ span.image img {
     padding: 5px;
 }
 </style>
+
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -672,150 +698,150 @@ span.image img {
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#guide-overview">1. Guide Overview</a>
+<li><a href="#guide-overview">Guide Overview</a>
 <ul class="sectlevel2">
-<li><a href="#recommended-additional-external-documentation">1.1. Recommended Additional External Documentation</a></li>
+<li><a href="#recommended-additional-external-documentation">Recommended Additional External Documentation</a></li>
 </ul>
 </li>
-<li><a href="#installation">2. Installation</a>
+<li><a href="#installation">Installation</a>
 <ul class="sectlevel2">
-<li><a href="#system-requirements">2.1. System Requirements</a></li>
-<li><a href="#installing-distribution-files">2.2. Installing Distribution Files</a></li>
-<li><a href="#distribution-directory-structure">2.3. Distribution Directory Structure</a></li>
+<li><a href="#system-requirements">System Requirements</a></li>
+<li><a href="#installing-distribution-files">Installing Distribution Files</a></li>
+<li><a href="#distribution-directory-structure">Distribution Directory Structure</a></li>
 </ul>
 </li>
-<li><a href="#_operating-mode">3. Choosing an Operating Mode</a>
+<li><a href="#_operating-mode">Choosing an Operating Mode</a>
 <ul class="sectlevel2">
-<li><a href="#_standalone-mode">3.1. Standalone Mode</a>
+<li><a href="#_standalone-mode">Standalone Mode</a>
 <ul class="sectlevel3">
-<li><a href="#standalone-boot-script">3.1.1. Standalone Boot Script</a></li>
-<li><a href="#standalone-configuration">3.1.2. Standalone Configuration</a></li>
+<li><a href="#standalone-boot-script">Standalone Boot Script</a></li>
+<li><a href="#standalone-configuration">Standalone Configuration</a></li>
 </ul>
 </li>
-<li><a href="#_standalone-ha-mode">3.2. Standalone Clustered Mode</a>
+<li><a href="#_standalone-ha-mode">Standalone Clustered Mode</a>
 <ul class="sectlevel3">
-<li><a href="#standalone-clustered-configuration">3.2.1. Standalone Clustered Configuration</a></li>
-<li><a href="#standalone-clustered-boot-script">3.2.2. Standalone Clustered Boot Script</a></li>
+<li><a href="#standalone-clustered-configuration">Standalone Clustered Configuration</a></li>
+<li><a href="#standalone-clustered-boot-script">Standalone Clustered Boot Script</a></li>
 </ul>
 </li>
-<li><a href="#_domain-mode">3.3. Domain Clustered Mode</a>
+<li><a href="#_domain-mode">Domain Clustered Mode</a>
 <ul class="sectlevel3">
-<li><a href="#domain-configuration">3.3.1. Domain Configuration</a></li>
-<li><a href="#host-controller-configuration">3.3.2. Host Controller Configuration</a></li>
-<li><a href="#server-instance-working-directories">3.3.3. Server Instance Working Directories</a></li>
-<li><a href="#domain-boot-script">3.3.4. Domain Boot Script</a></li>
-<li><a href="#_clustered-domain-example">3.3.5. Clustered Domain Example</a></li>
+<li><a href="#domain-configuration">Domain Configuration</a></li>
+<li><a href="#host-controller-configuration">Host Controller Configuration</a></li>
+<li><a href="#server-instance-working-directories">Server Instance Working Directories</a></li>
+<li><a href="#domain-boot-script">Domain Boot Script</a></li>
+<li><a href="#_clustered-domain-example">Clustered Domain Example</a></li>
 </ul>
 </li>
-<li><a href="#crossdc-mode">3.4. Cross-Datacenter Replication Mode</a>
+<li><a href="#crossdc-mode">Cross-Datacenter Replication Mode</a>
 <ul class="sectlevel3">
-<li><a href="#prerequisites">3.4.1. Prerequisites</a></li>
-<li><a href="#technicaldetails">3.4.2. Technical details</a></li>
-<li><a href="#requestprocessing">3.4.3. Request processing</a></li>
-<li><a href="#modes">3.4.4. Modes</a></li>
-<li><a href="#database">3.4.5. Database</a></li>
-<li><a href="#cache">3.4.6. Infinispan caches</a></li>
-<li><a href="#communication">3.4.7. Communication details</a></li>
-<li><a href="#setup">3.4.8. Basic setup</a></li>
-<li><a href="#administration">3.4.9. Administration of Cross DC deployment</a></li>
-<li><a href="#onoffline">3.4.10. Bringing sites offline and online</a></li>
-<li><a href="#statetransfer">3.4.11. State transfer</a></li>
-<li><a href="#clearcache">3.4.12. Clear caches</a></li>
-<li><a href="#tuningcache">3.4.13. Tuning the JDG cache configuration</a></li>
-<li><a href="#backups">3.4.14. SYNC or ASYNC backups</a></li>
-<li><a href="#troubleshooting">3.4.15. Troubleshooting</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#technicaldetails">Technical details</a></li>
+<li><a href="#requestprocessing">Request processing</a></li>
+<li><a href="#modes">Modes</a></li>
+<li><a href="#database">Database</a></li>
+<li><a href="#cache">Infinispan caches</a></li>
+<li><a href="#communication">Communication details</a></li>
+<li><a href="#setup">Basic setup</a></li>
+<li><a href="#administration">Administration of Cross DC deployment</a></li>
+<li><a href="#onoffline">Bringing sites offline and online</a></li>
+<li><a href="#statetransfer">State transfer</a></li>
+<li><a href="#clearcache">Clear caches</a></li>
+<li><a href="#tuningcache">Tuning the JDG cache configuration</a></li>
+<li><a href="#backups">SYNC or ASYNC backups</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#manage-subsystem-configuration">4. Manage Subsystem Configuration</a>
+<li><a href="#manage-subsystem-configuration">Manage Subsystem Configuration</a>
 <ul class="sectlevel2">
-<li><a href="#_config_spi_providers">4.1. Configure SPI Providers</a></li>
-<li><a href="#_start_cli">4.2. Start the WildFly CLI</a></li>
-<li><a href="#cli-embedded-mode">4.3. CLI Embedded Mode</a></li>
-<li><a href="#cli-gui-mode">4.4. CLI GUI Mode</a></li>
-<li><a href="#cli-scripting">4.5. CLI Scripting</a></li>
-<li><a href="#_cli_recipes">4.6. CLI Recipes</a>
+<li><a href="#_config_spi_providers">Configure SPI Providers</a></li>
+<li><a href="#_start_cli">Start the WildFly CLI</a></li>
+<li><a href="#cli-embedded-mode">CLI Embedded Mode</a></li>
+<li><a href="#cli-gui-mode">CLI GUI Mode</a></li>
+<li><a href="#cli-scripting">CLI Scripting</a></li>
+<li><a href="#_cli_recipes">CLI Recipes</a>
 <ul class="sectlevel3">
-<li><a href="#change-the-web-context-of-the-server">4.6.1. Change the web context of the server</a></li>
-<li><a href="#set-the-global-default-theme">4.6.2. Set the global default theme</a></li>
-<li><a href="#add-a-new-spi-and-a-provider">4.6.3. Add a new SPI and a provider</a></li>
-<li><a href="#disable-a-provider">4.6.4. Disable a provider</a></li>
-<li><a href="#change-the-default-provider-for-an-spi">4.6.5. Change the default provider for an SPI</a></li>
-<li><a href="#configure-the-dblock-spi">4.6.6. Configure the dblock SPI</a></li>
-<li><a href="#add-or-change-a-single-property-value-for-a-provider">4.6.7. Add or change a single property value for a provider</a></li>
-<li><a href="#remove-a-single-property-from-a-provider">4.6.8. Remove a single property from a provider</a></li>
-<li><a href="#set-values-on-a-provider-property-of-type-code-list-code">4.6.9. Set values on a provider property of type <code>List</code></a></li>
+<li><a href="#change-the-web-context-of-the-server">Change the web context of the server</a></li>
+<li><a href="#set-the-global-default-theme">Set the global default theme</a></li>
+<li><a href="#add-a-new-spi-and-a-provider">Add a new SPI and a provider</a></li>
+<li><a href="#disable-a-provider">Disable a provider</a></li>
+<li><a href="#change-the-default-provider-for-an-spi">Change the default provider for an SPI</a></li>
+<li><a href="#configure-the-dblock-spi">Configure the dblock SPI</a></li>
+<li><a href="#add-or-change-a-single-property-value-for-a-provider">Add or change a single property value for a provider</a></li>
+<li><a href="#remove-a-single-property-from-a-provider">Remove a single property from a provider</a></li>
+<li><a href="#set-values-on-a-provider-property-of-type-code-list-code">Set values on a provider property of type <code>List</code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#profiles">5. Profiles</a></li>
-<li><a href="#_database">6. Relational Database Setup</a>
+<li><a href="#profiles">Profiles</a></li>
+<li><a href="#_database">Relational Database Setup</a>
 <ul class="sectlevel2">
-<li><a href="#_rdbms-setup-checklist">6.1. RDBMS Setup Checklist</a></li>
-<li><a href="#package-the-jdbc-driver">6.2. Package the JDBC Driver</a></li>
-<li><a href="#declare-and-load-jdbc-driver">6.3. Declare and Load JDBC Driver</a></li>
-<li><a href="#modify-the-keycloak-datasource">6.4. Modify the Keycloak Datasource</a></li>
-<li><a href="#database-configuration">6.5. Database Configuration</a></li>
-<li><a href="#unicode-considerations-for-databases">6.6. Unicode Considerations for Databases</a>
+<li><a href="#_rdbms-setup-checklist">RDBMS Setup Checklist</a></li>
+<li><a href="#package-the-jdbc-driver">Package the JDBC Driver</a></li>
+<li><a href="#declare-and-load-jdbc-driver">Declare and Load JDBC Driver</a></li>
+<li><a href="#modify-the-keycloak-datasource">Modify the Keycloak Datasource</a></li>
+<li><a href="#database-configuration">Database Configuration</a></li>
+<li><a href="#unicode-considerations-for-databases">Unicode Considerations for Databases</a>
 <ul class="sectlevel3">
-<li><a href="#oracle-database">6.6.1. Oracle Database</a></li>
-<li><a href="#microsoft-sql-server-database">6.6.2. Microsoft SQL Server Database</a></li>
-<li><a href="#mysql-database">6.6.3. MySQL Database</a></li>
-<li><a href="#postgresql-database">6.6.4. PostgreSQL Database</a></li>
+<li><a href="#oracle-database">Oracle Database</a></li>
+<li><a href="#microsoft-sql-server-database">Microsoft SQL Server Database</a></li>
+<li><a href="#mysql-database">MySQL Database</a></li>
+<li><a href="#postgresql-database">PostgreSQL Database</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_network">7. Network Setup</a>
+<li><a href="#_network">Network Setup</a>
 <ul class="sectlevel2">
-<li><a href="#_bind-address">7.1. Bind Addresses</a></li>
-<li><a href="#_ports">7.2. Socket Port Bindings</a></li>
-<li><a href="#setting-up-https-ssl">7.3. Setting up HTTPS/SSL</a>
+<li><a href="#_bind-address">Bind Addresses</a></li>
+<li><a href="#_ports">Socket Port Bindings</a></li>
+<li><a href="#setting-up-https-ssl">Setting up HTTPS/SSL</a>
 <ul class="sectlevel3">
-<li><a href="#enabling-ssl-https-for-the-keycloak-server">7.3.1. Enabling SSL/HTTPS for the Keycloak Server</a></li>
+<li><a href="#enabling-ssl-https-for-the-keycloak-server">Enabling SSL/HTTPS for the Keycloak Server</a></li>
 </ul>
 </li>
-<li><a href="#outgoing-http-requests">7.4. Outgoing HTTP Requests</a>
+<li><a href="#outgoing-http-requests">Outgoing HTTP Requests</a>
 <ul class="sectlevel3">
-<li><a href="#_proxymappings">7.4.1. Proxy Mappings for Outgoing HTTP Requests</a></li>
-<li><a href="#_truststore">7.4.2. Outgoing HTTPS Request Truststore</a></li>
+<li><a href="#_proxymappings">Proxy Mappings for Outgoing HTTP Requests</a></li>
+<li><a href="#_truststore">Outgoing HTTPS Request Truststore</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_clustering">8. Clustering</a>
+<li><a href="#_clustering">Clustering</a>
 <ul class="sectlevel2">
-<li><a href="#recommended-network-architecture">8.1. Recommended Network Architecture</a></li>
-<li><a href="#clustering-example">8.2. Clustering Example</a></li>
-<li><a href="#_setting-up-a-load-balancer-or-proxy">8.3. Setting Up a Load Balancer or Proxy</a>
+<li><a href="#recommended-network-architecture">Recommended Network Architecture</a></li>
+<li><a href="#clustering-example">Clustering Example</a></li>
+<li><a href="#_setting-up-a-load-balancer-or-proxy">Setting Up a Load Balancer or Proxy</a>
 <ul class="sectlevel3">
-<li><a href="#identifying-client-ip-addresses">8.3.1. Identifying Client IP Addresses</a></li>
-<li><a href="#enable-https-ssl-with-a-reverse-proxy">8.3.2. Enable HTTPS/SSL with a Reverse Proxy</a></li>
-<li><a href="#verify-configuration">8.3.3. Verify Configuration</a></li>
-<li><a href="#using-the-built-in-load-balancer">8.3.4. Using the Built-In Load Balancer</a></li>
-<li><a href="#configuring-other-load-balancers">8.3.5. Configuring Other Load Balancers</a></li>
+<li><a href="#identifying-client-ip-addresses">Identifying Client IP Addresses</a></li>
+<li><a href="#enable-https-ssl-with-a-reverse-proxy">Enable HTTPS/SSL with a Reverse Proxy</a></li>
+<li><a href="#verify-configuration">Verify Configuration</a></li>
+<li><a href="#using-the-built-in-load-balancer">Using the Built-In Load Balancer</a></li>
+<li><a href="#configuring-other-load-balancers">Configuring Other Load Balancers</a></li>
 </ul>
 </li>
-<li><a href="#sticky-sessions">8.4. Sticky sessions</a>
+<li><a href="#sticky-sessions">Sticky sessions</a>
 <ul class="sectlevel3">
-<li><a href="#disable-adding-the-route">8.4.1. Disable adding the route</a></li>
+<li><a href="#disable-adding-the-route">Disable adding the route</a></li>
 </ul>
 </li>
-<li><a href="#multicast-network-setup">8.5. Multicast Network Setup</a></li>
-<li><a href="#securing-cluster-communication">8.6. Securing Cluster Communication</a></li>
-<li><a href="#_clustering_db_lock">8.7. Serialized Cluster Startup</a></li>
-<li><a href="#booting-the-cluster">8.8. Booting the Cluster</a></li>
-<li><a href="#troubleshooting-2">8.9. Troubleshooting</a></li>
+<li><a href="#multicast-network-setup">Multicast Network Setup</a></li>
+<li><a href="#securing-cluster-communication">Securing Cluster Communication</a></li>
+<li><a href="#_clustering_db_lock">Serialized Cluster Startup</a></li>
+<li><a href="#booting-the-cluster">Booting the Cluster</a></li>
+<li><a href="#troubleshooting-2">Troubleshooting</a></li>
 </ul>
 </li>
-<li><a href="#cache-configuration">9. Server Cache Configuration</a>
+<li><a href="#cache-configuration">Server Cache Configuration</a>
 <ul class="sectlevel2">
-<li><a href="#_eviction">9.1. Eviction and Expiration</a></li>
-<li><a href="#_replication">9.2. Replication and Failover</a></li>
-<li><a href="#disabling-caching">9.3. Disabling Caching</a></li>
-<li><a href="#clearing-caches-at-runtime">9.4. Clearing Caches at Runtime</a></li>
+<li><a href="#_eviction">Eviction and Expiration</a></li>
+<li><a href="#_replication">Replication and Failover</a></li>
+<li><a href="#disabling-caching">Disabling Caching</a></li>
+<li><a href="#clearing-caches-at-runtime">Clearing Caches at Runtime</a></li>
 </ul>
 </li>
 </ul>
@@ -823,7 +849,7 @@ span.image img {
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="guide-overview"><a class="anchor" href="#guide-overview"></a>1. Guide Overview</h2>
+<h2 id="guide-overview"><a class="anchor" href="#guide-overview"></a>Guide Overview</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -846,7 +872,7 @@ Many aspects of configuring Keycloak revolve around WildFly configuration elemen
 this guide will direct you to documentation outside of the manual if you want to dive into more detail.</p>
 </div>
 <div class="sect2">
-<h3 id="recommended-additional-external-documentation"><a class="anchor" href="#recommended-additional-external-documentation"></a>1.1. Recommended Additional External Documentation</h3>
+<h3 id="recommended-additional-external-documentation"><a class="anchor" href="#recommended-additional-external-documentation"></a>Recommended Additional External Documentation</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/overview/recommended-reading.adoc" target="_blank">Edit this section</a>
@@ -861,7 +887,7 @@ for WildFly and its sub projects. Here is the link to the documentation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://docs.wildfly.org/17/Admin_Guide.html"><em>WildFly 17 Documentation</em></a></p>
+<p><a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a></p>
 </li>
 </ul>
 </div>
@@ -869,7 +895,7 @@ for WildFly and its sub projects. Here is the link to the documentation:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="installation"><a class="anchor" href="#installation"></a>2. Installation</h2>
+<h2 id="installation"><a class="anchor" href="#installation"></a>Installation</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -882,7 +908,7 @@ for WildFly and its sub projects. Here is the link to the documentation:</p>
 as well as the directory structure of the distribution.</p>
 </div>
 <div class="sect2">
-<h3 id="system-requirements"><a class="anchor" href="#system-requirements"></a>2.1. System Requirements</h3>
+<h3 id="system-requirements"><a class="anchor" href="#system-requirements"></a>System Requirements</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/installation/system-requirements.adoc" target="_blank">Edit this section</a>
@@ -927,7 +953,7 @@ system property on startup to <code>file:/dev/urandom</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="installing-distribution-files"><a class="anchor" href="#installing-distribution-files"></a>2.2. Installing Distribution Files</h3>
+<h3 id="installing-distribution-files"><a class="anchor" href="#installing-distribution-files"></a>Installing Distribution Files</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/installation/distribution-files-community.adoc" target="_blank">Edit this section</a>
@@ -969,7 +995,7 @@ recommended for those that want to test drive Keycloak.  We do not support users
 </div>
 </div>
 <div class="sect2">
-<h3 id="distribution-directory-structure"><a class="anchor" href="#distribution-directory-structure"></a>2.3. Distribution Directory Structure</h3>
+<h3 id="distribution-directory-structure"><a class="anchor" href="#distribution-directory-structure"></a>Distribution Directory Structure</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/installation/directory-structure.adoc" target="_blank">Edit this section</a>
@@ -1019,7 +1045,7 @@ Here you can modify an existing theme or create your own.  See the <a href="http
 </div>
 </div>
 <div class="sect1">
-<h2 id="_operating-mode"><a class="anchor" href="#_operating-mode"></a>3. Choosing an Operating Mode</h2>
+<h2 id="_operating-mode"><a class="anchor" href="#_operating-mode"></a>Choosing an Operating Mode</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -1041,13 +1067,13 @@ your server configurations?  Your choice of operating mode effects how you confi
 <td class="content">
 The Keycloak is built on top of the WildFly Application Server.  This guide will only
      go over the basics for deployment within a specific mode.  If you want specific information on this, a better place
-     to go would be the <a href="http://docs.wildfly.org/17/Admin_Guide.html"><em>WildFly 17 Documentation</em></a>.
+     to go would be the <a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a>.
 </td>
 </tr>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_standalone-mode"><a class="anchor" href="#_standalone-mode"></a>3.1. Standalone Mode</h3>
+<h3 id="_standalone-mode"><a class="anchor" href="#_standalone-mode"></a>Standalone Mode</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/standalone.adoc" target="_blank">Edit this section</a>
@@ -1061,7 +1087,7 @@ you use standalone mode in production as you will have a single point of failure
 users will not be able to log in.  This mode is really only useful to test drive and play with the features of Keycloak</p>
 </div>
 <div class="sect3">
-<h4 id="standalone-boot-script"><a class="anchor" href="#standalone-boot-script"></a>3.1.1. Standalone Boot Script</h4>
+<h4 id="standalone-boot-script"><a class="anchor" href="#standalone-boot-script"></a>Standalone Boot Script</h4>
 <div class="paragraph">
 <p>When running the server in standalone mode, there is a specific script you need to run to boot the server depending on your
 operating system.  These scripts live in the <em>bin/</em> directory of the server distribution.</p>
@@ -1087,7 +1113,7 @@ operating system.  These scripts live in the <em>bin/</em> directory of the serv
 </div>
 </div>
 <div class="sect3">
-<h4 id="standalone-configuration"><a class="anchor" href="#standalone-configuration"></a>3.1.2. Standalone Configuration</h4>
+<h4 id="standalone-configuration"><a class="anchor" href="#standalone-configuration"></a>Standalone Configuration</h4>
 <div class="paragraph">
 <p>The bulk of this guide walks you through how to configure infrastructure level aspects of Keycloak.  These
 aspects are configured in a configuration file that is specific to the application server that Keycloak is a
@@ -1107,7 +1133,7 @@ is also used to configure non-infrastructure level things that are specific to K
 <td class="content">
 Any changes you make to this file while the server is running will not take effect and may even be overwritten
       by the server.  Instead use the command line scripting or the web console of WildFly.  See
-      the <a href="http://docs.wildfly.org/17/Admin_Guide.html"><em>WildFly 17 Documentation</em></a> for more information.
+      the <a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a> for more information.
 </td>
 </tr>
 </table>
@@ -1115,7 +1141,7 @@ Any changes you make to this file while the server is running will not take effe
 </div>
 </div>
 <div class="sect2">
-<h3 id="_standalone-ha-mode"><a class="anchor" href="#_standalone-ha-mode"></a>3.2. Standalone Clustered Mode</h3>
+<h3 id="_standalone-ha-mode"><a class="anchor" href="#_standalone-ha-mode"></a>Standalone Clustered Mode</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/standalone-ha.adoc" target="_blank">Edit this section</a>
@@ -1129,7 +1155,7 @@ This mode can be very easy to deploy initially, but can become quite cumbersome.
 you&#8217;ll have to modify each distribution on each machine.  For a large cluster this can become time consuming and error prone.</p>
 </div>
 <div class="sect3">
-<h4 id="standalone-clustered-configuration"><a class="anchor" href="#standalone-clustered-configuration"></a>3.2.1. Standalone Clustered Configuration</h4>
+<h4 id="standalone-clustered-configuration"><a class="anchor" href="#standalone-clustered-configuration"></a>Standalone Clustered Configuration</h4>
 <div class="paragraph">
 <p>The distribution has a mostly pre-configured app server configuration file for running within a cluster.  It has all the specific
 infrastructure settings for networking, databases, caches, and discovery.  This file resides
@@ -1151,14 +1177,14 @@ deploy some type of load balancer in front of the cluster.  The <a href="#_clust
 <td class="content">
 Any changes you make to this file while the server is running will not take effect and may even be overwritten
       by the server.  Instead use the command line scripting or the web console of WildFly.  See
-      the <a href="http://docs.wildfly.org/17/Admin_Guide.html"><em>WildFly 17 Documentation</em></a> for more information.
+      the <a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a> for more information.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="standalone-clustered-boot-script"><a class="anchor" href="#standalone-clustered-boot-script"></a>3.2.2. Standalone Clustered Boot Script</h4>
+<h4 id="standalone-clustered-boot-script"><a class="anchor" href="#standalone-clustered-boot-script"></a>Standalone Clustered Boot Script</h4>
 <div class="paragraph">
 <p>You use the same boot scripts to start Keycloak as you do in standalone mode.  The difference is that
 you pass in an additional flag to point to the HA config file.</p>
@@ -1185,7 +1211,7 @@ you pass in an additional flag to point to the HA config file.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_domain-mode"><a class="anchor" href="#_domain-mode"></a>3.3. Domain Clustered Mode</h3>
+<h3 id="_domain-mode"><a class="anchor" href="#_domain-mode"></a>Domain Clustered Mode</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/domain.adoc" target="_blank">Edit this section</a>
@@ -1209,7 +1235,7 @@ This capability is built into the WildFly Application Server which Keycloak deri
 </td>
 <td class="content">
 The guide will go over the very basics of domain mode.  Detailed steps on how to set up domain mode in a cluster should be obtained from the
-       <a href="http://docs.wildfly.org/17/Admin_Guide.html"><em>WildFly 17 Documentation</em></a>.
+       <a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a>.
 </td>
 </tr>
 </table>
@@ -1263,7 +1289,7 @@ In some environments, such as Microsoft Azure, the domain mode is not applicable
 </table>
 </div>
 <div class="sect3">
-<h4 id="domain-configuration"><a class="anchor" href="#domain-configuration"></a>3.3.1. Domain Configuration</h4>
+<h4 id="domain-configuration"><a class="anchor" href="#domain-configuration"></a>Domain Configuration</h4>
 <div class="paragraph">
 <p>Various other chapters in this guide walk you through configuring various aspects like databases,
 HTTP network connections, caches, and other infrastructure related things.  While standalone mode uses the <em>standalone.xml</em> file to configure these things,
@@ -1283,7 +1309,7 @@ where the domain profile and server group for the Keycloak server are defined.</
 <td class="content">
 Any changes you make to this file while the domain controller is running will not take effect and may even be overwritten
       by the server.  Instead use the command line scripting or the web console of WildFly.  See
-      the <a href="http://docs.wildfly.org/17/Admin_Guide.html"><em>WildFly 17 Documentation</em></a> for more information.
+      the <a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a> for more information.
 </td>
 </tr>
 </table>
@@ -1364,7 +1390,7 @@ binds a <code>socket-binding-group</code> to the server group.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="host-controller-configuration"><a class="anchor" href="#host-controller-configuration"></a>3.3.2. Host Controller Configuration</h4>
+<h4 id="host-controller-configuration"><a class="anchor" href="#host-controller-configuration"></a>Host Controller Configuration</h4>
 <div class="paragraph">
 <p>Keycloak comes with two host controller configuration files that reside in the <em>&#8230;&#8203;/domain/configuration/</em> directory:
 <em>host-master.xml</em> and <em>host-slave.xml</em>.  <em>host-master.xml</em> is configured to boot up a domain controller, a load balancer, and
@@ -1419,7 +1445,7 @@ the load balancer server don&#8217;t conflict with the authentication server ins
 </div>
 </div>
 <div class="sect3">
-<h4 id="server-instance-working-directories"><a class="anchor" href="#server-instance-working-directories"></a>3.3.3. Server Instance Working Directories</h4>
+<h4 id="server-instance-working-directories"><a class="anchor" href="#server-instance-working-directories"></a>Server Instance Working Directories</h4>
 <div class="paragraph">
 <p>Each Keycloak server instance defined in your host files creates a working directory under <em>&#8230;&#8203;/domain/servers/{SERVER NAME}</em>.
 Additional configuration can be put there, and any temporary, log, or data files the server instance needs or creates go there too.
@@ -1431,7 +1457,7 @@ The structure of these per server directories ends up looking like any other Wil
 </div>
 </div>
 <div class="sect3">
-<h4 id="domain-boot-script"><a class="anchor" href="#domain-boot-script"></a>3.3.4. Domain Boot Script</h4>
+<h4 id="domain-boot-script"><a class="anchor" href="#domain-boot-script"></a>Domain Boot Script</h4>
 <div class="paragraph">
 <p>When running the server in domain mode, there is a specific script you need to run to boot the server depending on your
 operating system.  These scripts live in the <em>bin/</em> directory of the server distribution.</p>
@@ -1461,7 +1487,7 @@ operating system.  These scripts live in the <em>bin/</em> directory of the serv
 </div>
 </div>
 <div class="sect3">
-<h4 id="_clustered-domain-example"><a class="anchor" href="#_clustered-domain-example"></a>3.3.5. Clustered Domain Example</h4>
+<h4 id="_clustered-domain-example"><a class="anchor" href="#_clustered-domain-example"></a>Clustered Domain Example</h4>
 <div class="paragraph">
 <p>You can test drive clustering using the out-of-the-box <em>domain.xml</em> configuration.  This example
 domain is meant to run on one machine and boots up:</p>
@@ -1586,7 +1612,7 @@ The add-user.sh does not add user to Keycloak server but to the underlying JBoss
 </div>
 </div>
 <div class="sect2">
-<h3 id="crossdc-mode"><a class="anchor" href="#crossdc-mode"></a>3.4. Cross-Datacenter Replication Mode</h3>
+<h3 id="crossdc-mode"><a class="anchor" href="#crossdc-mode"></a>Cross-Datacenter Replication Mode</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/crossdc.adoc" target="_blank">Edit this section</a>
@@ -1616,7 +1642,7 @@ Cross-Datacenter Replication Mode is Technology Preview and is not fully support
 <p><span class="image"><img src="./keycloak-images/cross-dc-architecture.png" alt="cross dc architecture"></span></p>
 </div>
 <div class="sect3">
-<h4 id="prerequisites"><a class="anchor" href="#prerequisites"></a>3.4.1. Prerequisites</h4>
+<h4 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h4>
 <div class="paragraph">
 <p>As this is an advanced topic, we recommend you first read the following, which provide valuable background knowledge:</p>
 </div>
@@ -1634,7 +1660,7 @@ Keycloak uses JBoss Data Grid (JDG) for the replication of Infinispan data betwe
 </div>
 </div>
 <div class="sect3">
-<h4 id="technicaldetails"><a class="anchor" href="#technicaldetails"></a>3.4.2. Technical details</h4>
+<h4 id="technicaldetails"><a class="anchor" href="#technicaldetails"></a>Technical details</h4>
 <div class="paragraph">
 <p>This section provides an introduction to the concepts and details of how Keycloak Cross-Datacenter Replication is accomplished.</p>
 </div>
@@ -1676,7 +1702,7 @@ In some cases, the data may not be visible on <code>site2</code> at all.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="requestprocessing"><a class="anchor" href="#requestprocessing"></a>3.4.3. Request processing</h4>
+<h4 id="requestprocessing"><a class="anchor" href="#requestprocessing"></a>Request processing</h4>
 <div class="paragraph">
 <p>An end user&#8217;s browser sends an HTTP request to the <a href="https://www.keycloak.org/docs/8.0/server_installation/#_setting-up-a-load-balancer-or-proxy">front end load balancer</a>. This load balancer is usually HTTPD or WildFly with mod_cluster, NGINX, HA Proxy, or perhaps some other kind of software or hardware load balancer.</p>
 </div>
@@ -1689,7 +1715,7 @@ These are not seen by an end user&#8217;s browser and therefore can not be part 
 </div>
 </div>
 <div class="sect3">
-<h4 id="modes"><a class="anchor" href="#modes"></a>3.4.4. Modes</h4>
+<h4 id="modes"><a class="anchor" href="#modes"></a>Modes</h4>
 <div class="paragraph">
 <p>According your requirements, there are two basic operating modes for Cross-Datacenter Replication:</p>
 </div>
@@ -1710,7 +1736,7 @@ It means that data need to be visible immediately on both sites and available to
 </div>
 </div>
 <div class="sect3">
-<h4 id="database"><a class="anchor" href="#database"></a>3.4.5. Database</h4>
+<h4 id="database"><a class="anchor" href="#database"></a>Database</h4>
 <div class="paragraph">
 <p>Keycloak uses a relational database management system (RDBMS) to persist some metadata about realms, clients, users, and so on. See <a href="https://www.keycloak.org/docs/8.0/server_installation/#_database">this chapter</a> of the server installation guide for more details. In a Cross-Datacenter Replication setup, we assume that either both data centers talk to the same database or that every data center has its own database node and both database nodes are synchronously replicated across the data centers. In both cases, it is required that when a Keycloak server on <code>site1</code> persists some data and commits the transaction, those data are immediately visible by subsequent DB transactions on <code>site2</code>.</p>
 </div>
@@ -1729,7 +1755,7 @@ It means that data need to be visible immediately on both sites and available to
 </div>
 </div>
 <div class="sect3">
-<h4 id="cache"><a class="anchor" href="#cache"></a>3.4.6. Infinispan caches</h4>
+<h4 id="cache"><a class="anchor" href="#cache"></a>Infinispan caches</h4>
 <div class="paragraph">
 <p>This section begins with a high level description of the Infinispan caches. More details of the cache setup follow.</p>
 </div>
@@ -1767,7 +1793,7 @@ entered a bad password. The details are described <a href="https://www.keycloak.
 </div>
 </div>
 <div class="sect3">
-<h4 id="communication"><a class="anchor" href="#communication"></a>3.4.7. Communication details</h4>
+<h4 id="communication"><a class="anchor" href="#communication"></a>Communication details</h4>
 <div class="paragraph">
 <p>Keycloak uses multiple, separate clusters of Infinispan caches. Every Keycloak node is in the cluster with the other Keycloak nodes in same data center, but not with the Keycloak nodes in different data centers. A Keycloak node does not communicate directly with the Keycloak nodes from different data centers. Keycloak nodes use external JDG (actually Infinispan servers) for communication across data centers. This is done using the <a href="https://infinispan.org/docs/8.2.x/user_guide/user_guide.html#using_hot_rod_server">Infinispan HotRod protocol</a>.</p>
 </div>
@@ -1782,7 +1808,7 @@ entered a bad password. The details are described <a href="https://www.keycloak.
 </div>
 </div>
 <div class="sect3">
-<h4 id="setup"><a class="anchor" href="#setup"></a>3.4.8. Basic setup</h4>
+<h4 id="setup"><a class="anchor" href="#setup"></a>Basic setup</h4>
 <div class="paragraph">
 <p>For this example, we describe using two data centers, <code>site1</code> and <code>site2</code>. Each data center consists of 1 Infinispan server and 2 Keycloak servers. We will end up with 2 Infinispan servers and 4 Keycloak servers in total.</p>
 </div>
@@ -1818,7 +1844,7 @@ They communicate with the Infinispan server <code>jdg1</code> using the HotRod p
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Download Infinispan 9.4.14 server and unzip to a directory you choose. This location will be referred in later steps as <code>JDG1_HOME</code> .</p>
+<p>Download Infinispan 9.4.16 server and unzip to a directory you choose. This location will be referred in later steps as <code>JDG1_HOME</code> .</p>
 </li>
 <li>
 <p>Change those things in the <code>JDG1_HOME/standalone/configuration/clustered.xml</code> in the configuration of JGroups subsystem:</p>
@@ -1942,7 +1968,7 @@ element. See <a href="#troubleshooting">Troubleshooting</a> for more details.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You should not see any issue if you use recommended Infinispan 9.4.14 server and this step can (and should) be ignored.
+You should not see any issue if you use recommended Infinispan 9.4.16 server and this step can (and should) be ignored.
 Issues related to authorization may exist just for some other versions of Infinispan server.
 </td>
 </tr>
@@ -2382,7 +2408,7 @@ Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', 
 </div>
 </div>
 <div class="sect3">
-<h4 id="administration"><a class="anchor" href="#administration"></a>3.4.9. Administration of Cross DC deployment</h4>
+<h4 id="administration"><a class="anchor" href="#administration"></a>Administration of Cross DC deployment</h4>
 <div class="paragraph">
 <p>This section contains some tips and options related to Cross-Datacenter Replication.</p>
 </div>
@@ -2404,7 +2430,7 @@ Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', 
 </div>
 </div>
 <div class="sect3">
-<h4 id="onoffline"><a class="anchor" href="#onoffline"></a>3.4.10. Bringing sites offline and online</h4>
+<h4 id="onoffline"><a class="anchor" href="#onoffline"></a>Bringing sites offline and online</h4>
 <div class="paragraph">
 <p>For example, assume this scenario:</p>
 </div>
@@ -2504,7 +2530,7 @@ Again, you may need to check all the caches and bring them online.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="statetransfer"><a class="anchor" href="#statetransfer"></a>3.4.11. State transfer</h4>
+<h4 id="statetransfer"><a class="anchor" href="#statetransfer"></a>State transfer</h4>
 <div class="paragraph">
 <p>State transfer is a required, manual step. Infinispan server does not do this automatically, for example during split-brain, it is only the admin who may decide which site has preference and hence if state transfer needs to be done bidirectionally between both sites or just unidirectionally, as in only from <code>site1</code> to <code>site2</code>, but not from <code>site2</code> to <code>site1</code>.</p>
 </div>
@@ -2520,7 +2546,7 @@ More info about state transfer is available in the <a href="https://access.redha
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearcache"><a class="anchor" href="#clearcache"></a>3.4.12. Clear caches</h4>
+<h4 id="clearcache"><a class="anchor" href="#clearcache"></a>Clear caches</h4>
 <div class="paragraph">
 <p>After split-brain it is safe to manually clear caches in the Keycloak admin console. This is because there might be some data changed in the database on <code>site1</code> and because of the event, that the cache should be invalidated wasn&#8217;t transferred during split-brain to <code>site2</code>. Hence Keycloak nodes on <code>site2</code> may still have some stale data in their caches.</p>
 </div>
@@ -2532,7 +2558,7 @@ More info about state transfer is available in the <a href="https://access.redha
 </div>
 </div>
 <div class="sect3">
-<h4 id="tuningcache"><a class="anchor" href="#tuningcache"></a>3.4.13. Tuning the JDG cache configuration</h4>
+<h4 id="tuningcache"><a class="anchor" href="#tuningcache"></a>Tuning the JDG cache configuration</h4>
 <div class="paragraph">
 <p>This section contains tips and options for configuring your JDG cache.</p>
 </div>
@@ -2583,7 +2609,7 @@ You only need to manually restore the site when it is back online as mentioned i
 </div>
 </div>
 <div class="sect3">
-<h4 id="backups"><a class="anchor" href="#backups"></a>3.4.14. SYNC or ASYNC backups</h4>
+<h4 id="backups"><a class="anchor" href="#backups"></a>SYNC or ASYNC backups</h4>
 <div class="paragraph">
 <p>An important part of the <code>backup</code> element is the <code>strategy</code> attribute. You must decide whether it needs to be <code>SYNC</code> or <code>ASYNC</code>. We have 7 caches which might be Cross-Datacenter Replication aware, and these can be configured in 3 different modes regarding cross-dc:</p>
 </div>
@@ -2680,7 +2706,7 @@ Regarding the switch to SYNC/ASYNC backup, make sure that you edit the <code>str
 </div>
 </div>
 <div class="sect3">
-<h4 id="troubleshooting"><a class="anchor" href="#troubleshooting"></a>3.4.15. Troubleshooting</h4>
+<h4 id="troubleshooting"><a class="anchor" href="#troubleshooting"></a>Troubleshooting</h4>
 <div class="paragraph">
 <p>The following tips are intended to assist you should you need to troubleshoot:</p>
 </div>
@@ -2856,7 +2882,7 @@ configuration file. For example:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="manage-subsystem-configuration"><a class="anchor" href="#manage-subsystem-configuration"></a>4. Manage Subsystem Configuration</h2>
+<h2 id="manage-subsystem-configuration"><a class="anchor" href="#manage-subsystem-configuration"></a>Manage Subsystem Configuration</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -2890,7 +2916,7 @@ you are using, configuration of the <em>keycloak-server</em> subsystem is the sa
 <p>Note that anything changed in this subsystem will not take effect until the server is rebooted.</p>
 </div>
 <div class="sect2">
-<h3 id="_config_spi_providers"><a class="anchor" href="#_config_spi_providers"></a>4.1. Configure SPI Providers</h3>
+<h3 id="_config_spi_providers"><a class="anchor" href="#_config_spi_providers"></a>Configure SPI Providers</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/config-subsystem/configure-spi-providers.adoc" target="_blank">Edit this section</a>
@@ -2965,7 +2991,7 @@ you do need to escape the quotes surrounding each list element with <code>&amp;q
 </div>
 </div>
 <div class="sect2">
-<h3 id="_start_cli"><a class="anchor" href="#_start_cli"></a>4.2. Start the WildFly CLI</h3>
+<h3 id="_start_cli"><a class="anchor" href="#_start_cli"></a>Start the WildFly CLI</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/config-subsystem/start-cli.adoc" target="_blank">Edit this section</a>
@@ -3017,12 +3043,12 @@ connect
 <div class="paragraph">
 <p>You may be thinking to yourself, "I didn&#8217;t enter in any username or password!".  If you run <code>jboss-cli</code> on the same machine
 as your running standalone server or domain controller and your account has appropriate file permissions, you do not have
-to setup or enter in an admin username and password.  See the <a href="http://docs.wildfly.org/17/Admin_Guide.html"><em>WildFly 17 Documentation</em></a>
+to setup or enter in an admin username and password.  See the <a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a>
 for more details on how to make things more secure if you are uncomfortable with that setup.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="cli-embedded-mode"><a class="anchor" href="#cli-embedded-mode"></a>4.3. CLI Embedded Mode</h3>
+<h3 id="cli-embedded-mode"><a class="anchor" href="#cli-embedded-mode"></a>CLI Embedded Mode</h3>
 <div class="paragraph">
 <p>If you do happen to be on the same machine as your standalone server and you want to
 issue commands while the server is not active, you can embed the server into CLI and make
@@ -3038,7 +3064,7 @@ execute the <code>embed-server</code> command with the config file you wish to c
 </div>
 </div>
 <div class="sect2">
-<h3 id="cli-gui-mode"><a class="anchor" href="#cli-gui-mode"></a>4.4. CLI GUI Mode</h3>
+<h3 id="cli-gui-mode"><a class="anchor" href="#cli-gui-mode"></a>CLI GUI Mode</h3>
 <div class="paragraph">
 <p>The CLI can also run in GUI mode.  GUI mode launches a Swing application that
 allows you to graphically view and edit the entire management model of a <em>running</em> server.
@@ -3067,7 +3093,7 @@ the keycloak-server subsystem.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="cli-scripting"><a class="anchor" href="#cli-scripting"></a>4.5. CLI Scripting</h3>
+<h3 id="cli-scripting"><a class="anchor" href="#cli-scripting"></a>CLI Scripting</h3>
 <div class="paragraph">
 <p>The CLI has extensive scripting capabilities.  A script is just a text
 file with CLI commands in it.  Consider a simple script that turns off theme
@@ -3091,7 +3117,7 @@ script from the command line as follows:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cli_recipes"><a class="anchor" href="#_cli_recipes"></a>4.6. CLI Recipes</h3>
+<h3 id="_cli_recipes"><a class="anchor" href="#_cli_recipes"></a>CLI Recipes</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/config-subsystem/cli-recipes.adoc" target="_blank">Edit this section</a>
@@ -3116,7 +3142,7 @@ you should substitute or the path to the keycloak-server subsystem.</p>
 <p><code>**</code> = <code>/profile=auth-server-clustered/subsystem=keycloak-server</code></p>
 </div>
 <div class="sect3">
-<h4 id="change-the-web-context-of-the-server"><a class="anchor" href="#change-the-web-context-of-the-server"></a>4.6.1. Change the web context of the server</h4>
+<h4 id="change-the-web-context-of-the-server"><a class="anchor" href="#change-the-web-context-of-the-server"></a>Change the web context of the server</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>/subsystem=keycloak-server/:write-attribute(name=web-context,value=myContext)</code></pre>
@@ -3124,7 +3150,7 @@ you should substitute or the path to the keycloak-server subsystem.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="set-the-global-default-theme"><a class="anchor" href="#set-the-global-default-theme"></a>4.6.2. Set the global default theme</h4>
+<h4 id="set-the-global-default-theme"><a class="anchor" href="#set-the-global-default-theme"></a>Set the global default theme</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>**/theme=defaults/:write-attribute(name=default,value=myTheme)</code></pre>
@@ -3132,7 +3158,7 @@ you should substitute or the path to the keycloak-server subsystem.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-a-new-spi-and-a-provider"><a class="anchor" href="#add-a-new-spi-and-a-provider"></a>4.6.3. Add a new SPI and a provider</h4>
+<h4 id="add-a-new-spi-and-a-provider"><a class="anchor" href="#add-a-new-spi-and-a-provider"></a>Add a new SPI and a provider</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>**/spi=mySPI/:add
@@ -3141,7 +3167,7 @@ you should substitute or the path to the keycloak-server subsystem.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="disable-a-provider"><a class="anchor" href="#disable-a-provider"></a>4.6.4. Disable a provider</h4>
+<h4 id="disable-a-provider"><a class="anchor" href="#disable-a-provider"></a>Disable a provider</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>**/spi=mySPI/provider=myProvider/:write-attribute(name=enabled,value=false)</code></pre>
@@ -3149,7 +3175,7 @@ you should substitute or the path to the keycloak-server subsystem.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="change-the-default-provider-for-an-spi"><a class="anchor" href="#change-the-default-provider-for-an-spi"></a>4.6.5. Change the default provider for an SPI</h4>
+<h4 id="change-the-default-provider-for-an-spi"><a class="anchor" href="#change-the-default-provider-for-an-spi"></a>Change the default provider for an SPI</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>**/spi=mySPI/:write-attribute(name=default-provider,value=myProvider)</code></pre>
@@ -3157,7 +3183,7 @@ you should substitute or the path to the keycloak-server subsystem.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="configure-the-dblock-spi"><a class="anchor" href="#configure-the-dblock-spi"></a>4.6.6. Configure the dblock SPI</h4>
+<h4 id="configure-the-dblock-spi"><a class="anchor" href="#configure-the-dblock-spi"></a>Configure the dblock SPI</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>**/spi=dblock/:add(default-provider=jpa)
@@ -3166,7 +3192,7 @@ you should substitute or the path to the keycloak-server subsystem.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-or-change-a-single-property-value-for-a-provider"><a class="anchor" href="#add-or-change-a-single-property-value-for-a-provider"></a>4.6.7. Add or change a single property value for a provider</h4>
+<h4 id="add-or-change-a-single-property-value-for-a-provider"><a class="anchor" href="#add-or-change-a-single-property-value-for-a-provider"></a>Add or change a single property value for a provider</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>**/spi=dblock/provider=jpa/:map-put(name=properties,key=lockWaitTimeout,value=3)</code></pre>
@@ -3174,7 +3200,7 @@ you should substitute or the path to the keycloak-server subsystem.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="remove-a-single-property-from-a-provider"><a class="anchor" href="#remove-a-single-property-from-a-provider"></a>4.6.8. Remove a single property from a provider</h4>
+<h4 id="remove-a-single-property-from-a-provider"><a class="anchor" href="#remove-a-single-property-from-a-provider"></a>Remove a single property from a provider</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>**/spi=dblock/provider=jpa/:map-remove(name=properties,key=lockRecheckTime)</code></pre>
@@ -3182,7 +3208,7 @@ you should substitute or the path to the keycloak-server subsystem.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="set-values-on-a-provider-property-of-type-code-list-code"><a class="anchor" href="#set-values-on-a-provider-property-of-type-code-list-code"></a>4.6.9. Set values on a provider property of type <code>List</code></h4>
+<h4 id="set-values-on-a-provider-property-of-type-code-list-code"><a class="anchor" href="#set-values-on-a-provider-property-of-type-code-list-code"></a>Set values on a provider property of type <code>List</code></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>**/spi=eventsStore/provider=jpa/:map-put(name=properties,key=exclude-events,value=[EVENT1,EVENT2])</code></pre>
@@ -3193,7 +3219,7 @@ you should substitute or the path to the keycloak-server subsystem.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="profiles"><a class="anchor" href="#profiles"></a>5. Profiles</h2>
+<h2 id="profiles"><a class="anchor" href="#profiles"></a>Profiles</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -3339,7 +3365,7 @@ the file:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_database"><a class="anchor" href="#_database"></a>6. Relational Database Setup</h2>
+<h2 id="_database"><a class="anchor" href="#_database"></a>Relational Database Setup</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -3371,14 +3397,14 @@ of Hibernate, but we will discuss how that is done if you run into that rare cir
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Datasource configuration is covered much more thoroughly in <a href="http://docs.wildfly.org/17/Admin_Guide.html#DataSource">the datasource configuration chapter</a>
-       in the <em>WildFly 17 Documentation</em>.
+Datasource configuration is covered much more thoroughly in <a href="http://docs.wildfly.org/18/Admin_Guide.html#DataSource">the datasource configuration chapter</a>
+       in the <em>WildFly 18 Documentation</em>.
 </td>
 </tr>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_rdbms-setup-checklist"><a class="anchor" href="#_rdbms-setup-checklist"></a>6.1. RDBMS Setup Checklist</h3>
+<h3 id="_rdbms-setup-checklist"><a class="anchor" href="#_rdbms-setup-checklist"></a>RDBMS Setup Checklist</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/database/checklist.adoc" target="_blank">Edit this section</a>
@@ -3412,7 +3438,7 @@ Datasource configuration is covered much more thoroughly in <a href="http://docs
 </div>
 </div>
 <div class="sect2">
-<h3 id="package-the-jdbc-driver"><a class="anchor" href="#package-the-jdbc-driver"></a>6.2. Package the JDBC Driver</h3>
+<h3 id="package-the-jdbc-driver"><a class="anchor" href="#package-the-jdbc-driver"></a>Package the JDBC Driver</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/database/jdbc.adoc" target="_blank">Edit this section</a>
@@ -3454,7 +3480,7 @@ Datasource configuration is covered much more thoroughly in <a href="http://docs
 </div>
 </div>
 <div class="sect2">
-<h3 id="declare-and-load-jdbc-driver"><a class="anchor" href="#declare-and-load-jdbc-driver"></a>6.3. Declare and Load JDBC Driver</h3>
+<h3 id="declare-and-load-jdbc-driver"><a class="anchor" href="#declare-and-load-jdbc-driver"></a>Declare and Load JDBC Driver</h3>
 <div class="paragraph">
 <p>The next thing you have to do is declare your newly packaged JDBC driver into your deployment profile so that it loads and becomes available when the server boots up. Where you perform this action depends on your <a href="#_operating-mode">operating mode</a>. If you&#8217;re deploying in standard mode, edit <em>&#8230;&#8203;/standalone/configuration/standalone.xml</em>.  If you&#8217;re deploying in standard clustering mode, edit <em>&#8230;&#8203;/standalone/configuration/standalone-ha.xml</em>.  If you&#8217;re deploying in domain mode, edit <em>&#8230;&#8203;/domain/configuration/domain.xml</em>. In domain mode, you&#8217;ll need to make sure you edit the profile you are using: either <code>auth-server-standalone</code> or <code>auth-server-clustered</code></p>
 </div>
@@ -3499,7 +3525,7 @@ Datasource configuration is covered much more thoroughly in <a href="http://docs
 </div>
 </div>
 <div class="sect2">
-<h3 id="modify-the-keycloak-datasource"><a class="anchor" href="#modify-the-keycloak-datasource"></a>6.4. Modify the Keycloak Datasource</h3>
+<h3 id="modify-the-keycloak-datasource"><a class="anchor" href="#modify-the-keycloak-datasource"></a>Modify the Keycloak Datasource</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/database/datasource.adoc" target="_blank">Edit this section</a>
@@ -3559,14 +3585,14 @@ scope of this guide.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-For more information about datasource features, see <a href="http://docs.wildfly.org/17/Admin_Guide.html#DataSource">the datasource configuration chapter</a> in the <em>WildFly 17 Documentation</em>.
+For more information about datasource features, see <a href="http://docs.wildfly.org/18/Admin_Guide.html#DataSource">the datasource configuration chapter</a> in the <em>WildFly 18 Documentation</em>.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="database-configuration"><a class="anchor" href="#database-configuration"></a>6.5. Database Configuration</h3>
+<h3 id="database-configuration"><a class="anchor" href="#database-configuration"></a>Database Configuration</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/database/hibernate.adoc" target="_blank">Edit this section</a>
@@ -3651,14 +3677,14 @@ Statistics are always reported to server log at specified interval (in seconds) 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-These configuration switches and more are described in the <a href="http://docs.wildfly.org/17/Developer_Guide.html#hibernate-properties"><em>WildFly 17 Development Guide</em></a>.
+These configuration switches and more are described in the <a href="http://docs.wildfly.org/18/Developer_Guide.html#hibernate-properties"><em>WildFly 18 Development Guide</em></a>.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="unicode-considerations-for-databases"><a class="anchor" href="#unicode-considerations-for-databases"></a>6.6. Unicode Considerations for Databases</h3>
+<h3 id="unicode-considerations-for-databases"><a class="anchor" href="#unicode-considerations-for-databases"></a>Unicode Considerations for Databases</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/database/unicode-considerations.adoc" target="_blank">Edit this section</a>
@@ -3707,7 +3733,7 @@ the expense of field length. If it only supports Unicode in <code>NVARCHAR</code
 fields is unlikely as Keycloak schema uses <code>VARCHAR</code> and <code>CHAR</code> fields extensively.</p>
 </div>
 <div class="sect3">
-<h4 id="oracle-database"><a class="anchor" href="#oracle-database"></a>6.6.1. Oracle Database</h4>
+<h4 id="oracle-database"><a class="anchor" href="#oracle-database"></a>Oracle Database</h4>
 <div class="paragraph">
 <p>Unicode characters are properly handled provided the database was created with Unicode support in <code>VARCHAR</code> and <code>CHAR</code>
 fields (e.g. by using <code>AL32UTF8</code> character set as the database character set). No special settings is needed for JDBC
@@ -3722,14 +3748,14 @@ may have negative impact on performance. For details, please refer to Oracle JDB
 </div>
 </div>
 <div class="sect3">
-<h4 id="microsoft-sql-server-database"><a class="anchor" href="#microsoft-sql-server-database"></a>6.6.2. Microsoft SQL Server Database</h4>
+<h4 id="microsoft-sql-server-database"><a class="anchor" href="#microsoft-sql-server-database"></a>Microsoft SQL Server Database</h4>
 <div class="paragraph">
 <p>Unicode characters are properly handled only for the special fields. No special settings of JDBC driver or database is
 necessary.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="mysql-database"><a class="anchor" href="#mysql-database"></a>6.6.3. MySQL Database</h4>
+<h4 id="mysql-database"><a class="anchor" href="#mysql-database"></a>MySQL Database</h4>
 <div class="paragraph">
 <p>Unicode characters are properly handled provided the database was created with Unicode support in <code>VARCHAR</code> and <code>CHAR</code>
 fields in the <code>CREATE DATABASE</code> command (e.g. by using <code>utf8</code> character set as the default database character set in
@@ -3745,7 +3771,7 @@ connection settings.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="postgresql-database"><a class="anchor" href="#postgresql-database"></a>6.6.4. PostgreSQL Database</h4>
+<h4 id="postgresql-database"><a class="anchor" href="#postgresql-database"></a>PostgreSQL Database</h4>
 <div class="paragraph">
 <p>Unicode is supported when the database character set is <code>UTF8</code>. In that case, Unicode characters can be used in any
 field, there is no reduction of field length for non-special fields. No special settings of JDBC driver is necessary.</p>
@@ -3755,7 +3781,7 @@ field, there is no reduction of field length for non-special fields. No special 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_network"><a class="anchor" href="#_network"></a>7. Network Setup</h2>
+<h2 id="_network"><a class="anchor" href="#_network"></a>Network Setup</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -3773,7 +3799,7 @@ may often need to make secure SSL and HTTPS connections to external servers and 
 be validated correctly.  This chapter discusses all of these things.</p>
 </div>
 <div class="sect2">
-<h3 id="_bind-address"><a class="anchor" href="#_bind-address"></a>7.1. Bind Addresses</h3>
+<h3 id="_bind-address"><a class="anchor" href="#_bind-address"></a>Bind Addresses</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/network/bind-address.adoc" target="_blank">Edit this section</a>
@@ -3841,14 +3867,14 @@ you boot up.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-There are many more options available when setting up <code>interface</code> definitions. For more information, see <a href="http://docs.wildfly.org/17/Admin_Guide.html#Interfaces_and_ports">the network interface</a> in the <em>WildFly 17 Documentation</em>.
+There are many more options available when setting up <code>interface</code> definitions. For more information, see <a href="http://docs.wildfly.org/18/Admin_Guide.html#Interfaces_and_ports">the network interface</a> in the <em>WildFly 18 Documentation</em>.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_ports"><a class="anchor" href="#_ports"></a>7.2. Socket Port Bindings</h3>
+<h3 id="_ports"><a class="anchor" href="#_ports"></a>Socket Port Bindings</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/network/ports.adoc" target="_blank">Edit this section</a>
@@ -3928,14 +3954,14 @@ to the <code>server-group</code> definitions you can see what <code>socket-bindi
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-There are many more options available when setting up <code>socket-binding-group</code> definitions.  For more information, see <a href="http://docs.wildfly.org/17/Admin_Guide.html#Interfaces_and_ports">the socket binding group</a> in the <em>WildFly 17 Documentation</em>.
+There are many more options available when setting up <code>socket-binding-group</code> definitions.  For more information, see <a href="http://docs.wildfly.org/18/Admin_Guide.html#Interfaces_and_ports">the socket binding group</a> in the <em>WildFly 18 Documentation</em>.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-up-https-ssl"><a class="anchor" href="#setting-up-https-ssl"></a>7.3. Setting up HTTPS/SSL</h3>
+<h3 id="setting-up-https-ssl"><a class="anchor" href="#setting-up-https-ssl"></a>Setting up HTTPS/SSL</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/network/https.adoc" target="_blank">Edit this section</a>
@@ -3980,7 +4006,7 @@ If you don&#8217;t have SSL/HTTPS configured on the server or you try to access 
 <p>The SSL mode for each realm can be configured in the Keycloak admin console.</p>
 </div>
 <div class="sect3">
-<h4 id="enabling-ssl-https-for-the-keycloak-server"><a class="anchor" href="#enabling-ssl-https-for-the-keycloak-server"></a>7.3.1. Enabling SSL/HTTPS for the Keycloak Server</h4>
+<h4 id="enabling-ssl-https-for-the-keycloak-server"><a class="anchor" href="#enabling-ssl-https-for-the-keycloak-server"></a>Enabling SSL/HTTPS for the Keycloak Server</h4>
 <div class="paragraph">
 <p>If you are not using a reverse proxy or load balancer to handle HTTPS traffic for you, you&#8217;ll need to enable HTTPS
 for the Keycloak server.  This involves</p>
@@ -4138,11 +4164,11 @@ $ /core-service=management/security-realm=UndertowRealm/server-identity=ssl:add(
 <p>If using domain mode, prefix the command with the profile that is being used with: <code>/profile=&lt;profile_name&gt;/</code>.</p>
 </div>
 <div class="paragraph">
-<p>The resulting element, <code>server name="default-server"</code>, which is a child element of <code>subsystem xmlns="urn:jboss:domain:undertow:9.0"</code>, should contain the following stanza:</p>
+<p>The resulting element, <code>server name="default-server"</code>, which is a child element of <code>subsystem xmlns="urn:jboss:domain:undertow:10.0"</code>, should contain the following stanza:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:9.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:10.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
    <span class="tag">&lt;buffer-cache</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
    <span class="tag">&lt;server</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default-server</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
       <span class="tag">&lt;https-listener</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">socket-binding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">security-realm</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UndertowRealm</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
@@ -4154,7 +4180,7 @@ $ /core-service=management/security-realm=UndertowRealm/server-identity=ssl:add(
 </div>
 </div>
 <div class="sect2">
-<h3 id="outgoing-http-requests"><a class="anchor" href="#outgoing-http-requests"></a>7.4. Outgoing HTTP Requests</h3>
+<h3 id="outgoing-http-requests"><a class="anchor" href="#outgoing-http-requests"></a>Outgoing HTTP Requests</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/network/outgoing.adoc" target="_blank">Edit this section</a>
@@ -4238,7 +4264,7 @@ See the section on <a href="#_proxymappings">Proxy Mappings for Outgoing HTTP Re
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_proxymappings"><a class="anchor" href="#_proxymappings"></a>7.4.1. Proxy Mappings for Outgoing HTTP Requests</h4>
+<h4 id="_proxymappings"><a class="anchor" href="#_proxymappings"></a>Proxy Mappings for Outgoing HTTP Requests</h4>
 <div class="paragraph">
 <p>Outgoing HTTP requests sent by Keycloak can optionally use a proxy server based on a comma delimited list of proxy-mappings.
 A proxy-mapping denotes the combination of a regex based hostname pattern and a proxy-uri in the form of <code>hostnamePattern;proxyUri</code>,
@@ -4309,7 +4335,7 @@ Note that one needs to encode <code>"</code> characters with <code>&amp;quot;</c
 </div>
 </div>
 <div class="sect3">
-<h4 id="_truststore"><a class="anchor" href="#_truststore"></a>7.4.2. Outgoing HTTPS Request Truststore</h4>
+<h4 id="_truststore"><a class="anchor" href="#_truststore"></a>Outgoing HTTPS Request Truststore</h4>
 <div class="paragraph">
 <p>When Keycloak invokes on remote HTTPS endpoints, it has to validate the remote server&#8217;s certificate in order to ensure it is connecting to a trusted server.
 This is necessary in order to prevent man-in-the-middle attacks.  The certificates of these remote server&#8217;s or the CA that signed these
@@ -4398,7 +4424,7 @@ If set to false, you must configure <code>file</code>, and <code>password</code>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_clustering"><a class="anchor" href="#_clustering"></a>8. Clustering</h2>
+<h2 id="_clustering"><a class="anchor" href="#_clustering"></a>Clustering</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -4438,13 +4464,13 @@ to be aware of when booting up a host in the cluster.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-It is possible to cluster Keycloak without IP Multicast, but this topic is beyond the scope of this guide.  For more information, see <a href="http://docs.wildfly.org/17/High_Availability_Guide.html#JGroups_Subsystem">JGroups</a> chapter of the <em>WildFly 17 Documentation</em>.
+It is possible to cluster Keycloak without IP Multicast, but this topic is beyond the scope of this guide.  For more information, see <a href="http://docs.wildfly.org/18/High_Availability_Guide.html#JGroups_Subsystem">JGroups</a> chapter of the <em>WildFly 18 Documentation</em>.
 </td>
 </tr>
 </table>
 </div>
 <div class="sect2">
-<h3 id="recommended-network-architecture"><a class="anchor" href="#recommended-network-architecture"></a>8.1. Recommended Network Architecture</h3>
+<h3 id="recommended-network-architecture"><a class="anchor" href="#recommended-network-architecture"></a>Recommended Network Architecture</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/clustering/recommended.adoc" target="_blank">Edit this section</a>
@@ -4471,7 +4497,7 @@ By default, there is nothing to prevent unauthorized nodes from joining the clus
 </div>
 </div>
 <div class="sect2">
-<h3 id="clustering-example"><a class="anchor" href="#clustering-example"></a>8.2. Clustering Example</h3>
+<h3 id="clustering-example"><a class="anchor" href="#clustering-example"></a>Clustering Example</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/clustering/example.adoc" target="_blank">Edit this section</a>
@@ -4484,7 +4510,7 @@ By default, there is nothing to prevent unauthorized nodes from joining the clus
 </div>
 </div>
 <div class="sect2">
-<h3 id="_setting-up-a-load-balancer-or-proxy"><a class="anchor" href="#_setting-up-a-load-balancer-or-proxy"></a>8.3. Setting Up a Load Balancer or Proxy</h3>
+<h3 id="_setting-up-a-load-balancer-or-proxy"><a class="anchor" href="#_setting-up-a-load-balancer-or-proxy"></a>Setting Up a Load Balancer or Proxy</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/clustering/load-balancer.adoc" target="_blank">Edit this section</a>
@@ -4497,7 +4523,7 @@ in front of your clustered Keycloak deployment.  It also covers configuring the 
 was <a href="#_clustered-domain-example">Clustered Domain Example</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="identifying-client-ip-addresses"><a class="anchor" href="#identifying-client-ip-addresses"></a>8.3.1. Identifying Client IP Addresses</h4>
+<h4 id="identifying-client-ip-addresses"><a class="anchor" href="#identifying-client-ip-addresses"></a>Identifying Client IP Addresses</h4>
 <div class="paragraph">
 <p>A few features in Keycloak rely on the fact that the remote
 address of the HTTP client connecting to the authentication server is the real IP address of the client machine. Examples include:</p>
@@ -4549,12 +4575,12 @@ any black or white listing of IP addresses.</p>
 If your proxy is forwarding requests via the HTTP protocol, then you need to configure Keycloak to pull the client&#8217;s
 IP address from the <code>X-Forwarded-For</code> header rather than from the network packet.
 To do this, open up the profile configuration file (<em>standalone.xml</em>, <em>standalone-ha.xml</em>, or <em>domain.xml</em> depending on your
-<a href="#_operating-mode">operating mode</a>) and look for the <code>urn:jboss:domain:undertow:9.0</code> XML block.</p>
+<a href="#_operating-mode">operating mode</a>) and look for the <code>urn:jboss:domain:undertow:10.0</code> XML block.</p>
 </div>
 <div class="listingblock">
 <div class="title"><code>X-Forwarded-For</code> HTTP Config</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:9.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:10.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
    <span class="tag">&lt;buffer-cache</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
    <span class="tag">&lt;server</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default-server</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
       <span class="tag">&lt;ajp-listener</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ajp</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">socket-binding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ajp</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
@@ -4577,7 +4603,7 @@ pull this information from the AJP packets.</p>
 <div class="listingblock">
 <div class="title"><code>X-Forwarded-For</code> AJP Config</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:9.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:10.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
      <span class="tag">&lt;buffer-cache</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
      <span class="tag">&lt;server</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default-server</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
          <span class="tag">&lt;ajp-listener</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ajp</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">socket-binding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ajp</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
@@ -4599,13 +4625,13 @@ pull this information from the AJP packets.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enable-https-ssl-with-a-reverse-proxy"><a class="anchor" href="#enable-https-ssl-with-a-reverse-proxy"></a>8.3.2. Enable HTTPS/SSL with a Reverse Proxy</h4>
+<h4 id="enable-https-ssl-with-a-reverse-proxy"><a class="anchor" href="#enable-https-ssl-with-a-reverse-proxy"></a>Enable HTTPS/SSL with a Reverse Proxy</h4>
 <div class="paragraph">
 <p>Assuming that your reverse proxy doesn&#8217;t use port 8443 for SSL you also need to configure what port HTTPS traffic is redirected to.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:9.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:10.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     ...
     <span class="tag">&lt;http-listener</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">socket-binding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http</span><span class="delimiter">&quot;</span></span>
         <span class="attribute-name">proxy-address-forwarding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">redirect-socket</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">proxy-https</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
@@ -4632,7 +4658,7 @@ socket binding you also need to define.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="verify-configuration"><a class="anchor" href="#verify-configuration"></a>8.3.3. Verify Configuration</h4>
+<h4 id="verify-configuration"><a class="anchor" href="#verify-configuration"></a>Verify Configuration</h4>
 <div class="paragraph">
 <p>You can verify the reverse proxy or load balancer configuration by opening the path <code>/auth/realms/master/.well-known/openid-configuration</code>
 through the reverse proxy. For example if the reverse proxy address is <code>https://acme.com/</code> then open the URL
@@ -4656,7 +4682,7 @@ something like this:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="using-the-built-in-load-balancer"><a class="anchor" href="#using-the-built-in-load-balancer"></a>8.3.4. Using the Built-In Load Balancer</h4>
+<h4 id="using-the-built-in-load-balancer"><a class="anchor" href="#using-the-built-in-load-balancer"></a>Using the Built-In Load Balancer</h4>
 <div class="paragraph">
 <p>This section covers configuring the built in load balancer that is discussed in the
 <a href="#_clustered-domain-example">Clustered Domain Example</a>.</p>
@@ -4689,7 +4715,7 @@ file and go to the undertow configuration in the <code>load-balancer</code> prof
 <div class="listingblock">
 <div class="title">domain.xml reverse-proxy config</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:9.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:10.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   ...
   <span class="tag">&lt;handlers&gt;</span>
       <span class="tag">&lt;reverse-proxy</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">lb-handler</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -4764,14 +4790,14 @@ of the master host.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="configuring-other-load-balancers"><a class="anchor" href="#configuring-other-load-balancers"></a>8.3.5. Configuring Other Load Balancers</h4>
+<h4 id="configuring-other-load-balancers"><a class="anchor" href="#configuring-other-load-balancers"></a>Configuring Other Load Balancers</h4>
 <div class="paragraph">
-<p>See <a href="http://docs.wildfly.org/17/High_Availability_Guide.html">the load balancing</a> section in the <em>WildFly 17 Documentation</em> for information how to use other software-based load balancers.</p>
+<p>See <a href="http://docs.wildfly.org/18/High_Availability_Guide.html">the load balancing</a> section in the <em>WildFly 18 Documentation</em> for information how to use other software-based load balancers.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sticky-sessions"><a class="anchor" href="#sticky-sessions"></a>8.4. Sticky sessions</h3>
+<h3 id="sticky-sessions"><a class="anchor" href="#sticky-sessions"></a>Sticky sessions</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/clustering/sticky-sessions.adoc" target="_blank">Edit this section</a>
@@ -4846,7 +4872,7 @@ an example of the start up command using this system property:</p>
 use a different route name. For example, if you want to hide the host name of your Keycloak server inside your private network.</p>
 </div>
 <div class="sect3">
-<h4 id="disable-adding-the-route"><a class="anchor" href="#disable-adding-the-route"></a>8.4.1. Disable adding the route</h4>
+<h4 id="disable-adding-the-route"><a class="anchor" href="#disable-adding-the-route"></a>Disable adding the route</h4>
 <div class="paragraph">
 <p>Some load balancers can be configured to add the route information by themselves instead of relying on the back end Keycloak node.
 However, as described above, adding the route by the Keycloak is recommended. This is because when done this way performance improves,
@@ -4874,7 +4900,7 @@ into your <code>RHSSO_HOME/standalone/configuration/standalone-ha.xml</code> fil
 </div>
 </div>
 <div class="sect2">
-<h3 id="multicast-network-setup"><a class="anchor" href="#multicast-network-setup"></a>8.5. Multicast Network Setup</h3>
+<h3 id="multicast-network-setup"><a class="anchor" href="#multicast-network-setup"></a>Multicast Network Setup</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/clustering/multicast.adoc" target="_blank">Edit this section</a>
@@ -4919,14 +4945,14 @@ You have to edit your the <em>standalone-ha.xml</em> or <em>domain.xml</em> sect
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-It is possible to cluster Keycloak without IP Multicast, but this topic is beyond the scope of this guide. For more information, see <a href="http://docs.wildfly.org/17/High_Availability_Guide.html#JGroups_Subsystem">JGroups</a> in the <em>WildFly 17 Documentation</em>.
+It is possible to cluster Keycloak without IP Multicast, but this topic is beyond the scope of this guide. For more information, see <a href="http://docs.wildfly.org/18/High_Availability_Guide.html#JGroups_Subsystem">JGroups</a> in the <em>WildFly 18 Documentation</em>.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="securing-cluster-communication"><a class="anchor" href="#securing-cluster-communication"></a>8.6. Securing Cluster Communication</h3>
+<h3 id="securing-cluster-communication"><a class="anchor" href="#securing-cluster-communication"></a>Securing Cluster Communication</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/clustering/securing-cluster-comm.adoc" target="_blank">Edit this section</a>
@@ -4941,7 +4967,7 @@ It is possible to cluster Keycloak without IP Multicast, but this topic is beyon
 </div>
 </div>
 <div class="sect2">
-<h3 id="_clustering_db_lock"><a class="anchor" href="#_clustering_db_lock"></a>8.7. Serialized Cluster Startup</h3>
+<h3 id="_clustering_db_lock"><a class="anchor" href="#_clustering_db_lock"></a>Serialized Cluster Startup</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/clustering/serialized.adoc" target="_blank">Edit this section</a>
@@ -4973,7 +4999,7 @@ depends on your <a href="#_operating-mode">operating mode</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="booting-the-cluster"><a class="anchor" href="#booting-the-cluster"></a>8.8. Booting the Cluster</h3>
+<h3 id="booting-the-cluster"><a class="anchor" href="#booting-the-cluster"></a>Booting the Cluster</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/clustering/booting.adoc" target="_blank">Edit this section</a>
@@ -5002,7 +5028,7 @@ $ bin/domain.sh --host-config=host-slave.xml</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="troubleshooting-2"><a class="anchor" href="#troubleshooting-2"></a>8.9. Troubleshooting</h3>
+<h3 id="troubleshooting-2"><a class="anchor" href="#troubleshooting-2"></a>Troubleshooting</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/clustering/troubleshooting.adoc" target="_blank">Edit this section</a>
@@ -5029,7 +5055,7 @@ If for some reason you still need to have firewall enabled on cluster nodes, you
 Default values are UDP port 55200 and multicast port 45688 with multicast address 230.0.0.4.
 Note that you may need more ports opened if you want to enable additional features like diagnostics for your JGroups stack.
 Keycloak delegates most of the clustering work to Infinispan/JGroups.
-For more information, see <a href="http://docs.wildfly.org/17/High_Availability_Guide.html#JGroups_Subsystem">JGroups</a> in the <em>WildFly 17 Documentation</em>.</p>
+For more information, see <a href="http://docs.wildfly.org/18/High_Availability_Guide.html#JGroups_Subsystem">JGroups</a> in the <em>WildFly 18 Documentation</em>.</p>
 </div>
 </li>
 <li>
@@ -5042,7 +5068,7 @@ For more information, see <a href="http://docs.wildfly.org/17/High_Availability_
 </div>
 </div>
 <div class="sect1">
-<h2 id="cache-configuration"><a class="anchor" href="#cache-configuration"></a>9. Server Cache Configuration</h2>
+<h2 id="cache-configuration"><a class="anchor" href="#cache-configuration"></a>Server Cache Configuration</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -5074,13 +5100,13 @@ but is possibly replicated across the cluster.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-More advanced configuration of these caches can be found in the  <a href="http://docs.wildfly.org/17/High_Availability_Guide.html#Infinispan_Subsystem">Infinispan</a> section of the <em>WildFly 17 Documentation</em>.
+More advanced configuration of these caches can be found in the  <a href="http://docs.wildfly.org/18/High_Availability_Guide.html#Infinispan_Subsystem">Infinispan</a> section of the <em>WildFly 18 Documentation</em>.
 </td>
 </tr>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_eviction"><a class="anchor" href="#_eviction"></a>9.1. Eviction and Expiration</h3>
+<h3 id="_eviction"><a class="anchor" href="#_eviction"></a>Eviction and Expiration</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/cache/eviction.adoc" target="_blank">Edit this section</a>
@@ -5104,7 +5130,7 @@ subsystem, which looks similar to this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:infinispan:8.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:infinispan:9.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;cache-container</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloak</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;local-cache</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">realms</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
             <span class="tag">&lt;object-memory</span> <span class="attribute-name">size</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">10000</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
@@ -5158,7 +5184,7 @@ by default. However, this cache should not cause any memory issues as entries in
 </div>
 </div>
 <div class="sect2">
-<h3 id="_replication"><a class="anchor" href="#_replication"></a>9.2. Replication and Failover</h3>
+<h3 id="_replication"><a class="anchor" href="#_replication"></a>Replication and Failover</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/cache/replication.adoc" target="_blank">Edit this section</a>
@@ -5179,7 +5205,7 @@ that data is lost.  This usually means that users will be logged out and will ha
 <div class="listingblock">
 <div class="title">owners</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:infinispan:8.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:infinispan:9.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
    <span class="tag">&lt;cache-container</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloak</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
        <span class="tag">&lt;distributed-cache</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sessions</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">owners</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 ...</code></pre>
@@ -5217,7 +5243,7 @@ It is generally wise to configure your environment to use loadbalancer with stic
 </div>
 </div>
 <div class="sect2">
-<h3 id="disabling-caching"><a class="anchor" href="#disabling-caching"></a>9.3. Disabling Caching</h3>
+<h3 id="disabling-caching"><a class="anchor" href="#disabling-caching"></a>Disabling Caching</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/cache/disable.adoc" target="_blank">Edit this section</a>
@@ -5247,7 +5273,7 @@ server for this change to take effect.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-caches-at-runtime"><a class="anchor" href="#clearing-caches-at-runtime"></a>9.4. Clearing Caches at Runtime</h3>
+<h3 id="clearing-caches-at-runtime"><a class="anchor" href="#clearing-caches-at-runtime"></a>Clearing Caches at Runtime</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/cache/clear.adoc" target="_blank">Edit this section</a>
@@ -5282,7 +5308,7 @@ The cache will be cleared for all realms!
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-02 12:28:00 UTC
+Last updated 2019-10-30 14:53:35 UTC
 </div>
 </div>
 <ul id="globalnav">
@@ -5295,5 +5321,43 @@ Last updated 2019-10-02 12:28:00 UTC
     <li><a href="../upgrading/index.html">Upgrading</a></li>
     <li><a href="../release_notes/index.html">Release Notes</a></li>
 </ul>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+
+<script>
+    var oldtoc = document.getElementById('toctitle').nextElementSibling;
+    var newtoc = document.createElement('div');
+    newtoc.setAttribute('id', 'tocbot');
+    newtoc.setAttribute('class', 'js-toc');
+    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
+    tocbot.init({ contentSelector: '#content',
+        headingSelector: 'h2, h3, h4',
+        smoothScroll: false
+    });
+    var handleTocOnResize = function() {
+        var width = window.innerWidth
+                    || document.documentElement.clientWidth
+                    || document.body.clientWidth;
+        if (width < 768) {
+            tocbot.refresh({
+                contentSelector: '#content',
+                headingSelector: 'h2, h3, h4',
+                collapseDepth: 6,
+                activeLinkClass: 'ignoreactive',
+                throttleTimeout: 1000,
+                smoothScroll: false
+            });
+        }
+        else {
+            tocbot.refresh({
+                contentSelector: '#content',
+                headingSelector: 'h2, h3, h4',
+                smoothScroll: false
+            });
+        }
+    };
+    window.addEventListener('resize', handleTocOnResize);
+    handleTocOnResize();
+</script>
 </body>
 </html>
