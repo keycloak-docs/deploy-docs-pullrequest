@@ -9400,6 +9400,9 @@ Here&#8217;s an example:</p>
 <span class="tag">&lt;/web-app&gt;</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>If the <code>keycloak-saml.xml</code> does not explicitly set <code>assertionConsumerServiceUrl</code>, the SAML adapter will implicitly listen for SAML assertions at the location <code>/my-context-path/saml</code>. This has to match <code>Master SAML Processing URL</code> in the IDP realm/client settings, e.g. <code>http://sp.domain.com/my-context-path/saml</code>. If not, Tomcat will probably redirect infinitely to the IDP login service, as it does not receive the SAML assertion after the user logged in.</p>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -12284,7 +12287,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-31 10:20:33 UTC
+Last updated 2019-10-31 11:40:56 UTC
 </div>
 </div>
 <ul id="globalnav">
