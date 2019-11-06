@@ -524,6 +524,44 @@ table.CodeRay td.code>pre{padding:0}
 #tocbot a.toc-link.node-name--H4{ display:none }
 }
 
+.versionarchive {
+    display: inline-block;
+}
+
+.versionarchive p {
+    background-color: #eee;
+    border-radius: 5px;
+    margin: 0;
+    padding: 2px 5px 2px 10px;
+}
+
+.versionarchive a {
+    background-color: #ffdd57;
+    padding: 0 5px;
+    font-style: normal;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.versionlatest {
+    display: inline-block;
+}
+
+.versionlatest p {
+    background-color: #eee;
+    border-radius: 5px;
+    margin: 0;
+    padding: 2px 5px 2px 10px;
+}
+
+.versionlatest em {
+    background-color: #23d160;
+    padding: 0 5px;
+    font-style: normal;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
 /* Fix scroll to anchor hides title */
 h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
     display: block;
@@ -1075,8 +1113,8 @@ span.image img {
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p>8.0.0 - <a href="https://www.keycloak.org/docs/latest/server_admin/">Click here for latest</a></p>
+<div class="paragraph versionarchive">
+<p>Version <strong>8.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/server_admin/">Click here for latest</a></em></p>
 </div>
 </div>
 </div>
@@ -13493,7 +13531,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-06 09:59:40 UTC
+Last updated 2019-11-06 17:21:50 UTC
 </div>
 </div>
 <ul id="globalnav">
