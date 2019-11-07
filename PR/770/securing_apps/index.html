@@ -7042,7 +7042,7 @@ You can also build via docker container: <code>make docker-build</code>. A Docke
 <span class="comment"># the secret associated to the 'client' application</span>
 <span class="key">client-secret</span>: <span class="string"><span class="content">&lt;CLIENT_SECRET&gt;</span></span>
 <span class="comment"># the interface definition you wish the proxy to listen, all interfaces is specified as ':&lt;port&gt;', unix sockets as unix://&lt;REL_PATH&gt;|&lt;/ABS PATH&gt;</span>
-<span class="key">listen</span>: <span class="string"><span class="content">127.0.0.1:3000</span></span>
+<span class="key">listen</span>: <span class="string"><span class="content">:3000</span></span>
 <span class="comment"># whether to enable refresh tokens</span>
 <span class="key">enable-refresh-tokens</span>: <span class="string"><span class="content">true</span></span>
 <span class="comment"># the location of a certificate you wish the proxy to use for TLS support</span>
@@ -7115,7 +7115,7 @@ You can also build via docker container: <code>make docker-build</code>. A Docke
 <span class="key">discovery-url</span>: <span class="string"><span class="content">https://keycloak.example.com/auth/realms/&lt;REALM_NAME&gt;</span></span>
 <span class="key">enable-default-deny</span>: <span class="string"><span class="content">true</span></span>
 <span class="key">encryption_key</span>: <span class="string"><span class="content">AgXa7xRcoClDEU0ZDSH4X0XhL5Qy2Z2j</span></span>
-<span class="key">listen</span>: <span class="string"><span class="content">127.0.0.1:3000</span></span>
+<span class="key">listen</span>: <span class="string"><span class="content">:3000</span></span>
 <span class="key">redirection-url</span>: <span class="string"><span class="content">http://127.0.0.1:3000</span></span>
 <span class="key">upstream-url</span>: <span class="string"><span class="content">http://127.0.0.1:80</span></span>
 <span class="key">resources</span>:
@@ -12335,7 +12335,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-06 17:21:43 UTC
+Last updated 2019-11-07 07:59:03 UTC
 </div>
 </div>
 <ul id="globalnav">
