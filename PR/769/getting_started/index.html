@@ -718,7 +718,7 @@ span.image img {
 <ul class="sectlevel2">
 <li><a href="#separate-appserver">Using a separate WildFly instance</a></li>
 <li><a href="#sso-adapter">Installing the Keycloak adapters</a></li>
-<li><a href="#deploy-code">Deploying sample application code</a></li>
+<li><a href="#deploy-code">Installing sample application code</a></li>
 <li><a href="#register-client">Registering the WildFly application</a></li>
 <li><a href="#configure-appserver">Configuring the WildFly instance</a></li>
 </ul>
@@ -877,7 +877,7 @@ $ ./standalone.sh</code></pre>
 <p>The master realm - This realm was created for you when you first started Keycloak. It contains the admin account you created at the first login.</p>
 </li>
 <li>
-<p>Other realms - These realms are created by the admin in the master realm. Use these realms to create users and applications. The applications are owned by the users.</p>
+<p>Other realms - These realms are created by the admin in the master realm. You can use these realms to create users and applications. The applications are owned by the users.</p>
 </li>
 </ul>
 </div>
@@ -1023,7 +1023,7 @@ This password is temporary and the user will be required to change it after the 
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Start the Keycloak server using a different value for the <code>jboss.socket.binding.port-offset</code> system property. The value of this property is a number that is added to the base value of every port opened by the Keycloak server. In the following examples, 100 is the number used.</p>
+<p>Start the Keycloak server by supplying a value for the <code>jboss.socket.binding.port-offset</code> system property. The value of this property is a number that is added to the base value of every port opened by the Keycloak server. In the following examples, 100 is the number used.</p>
 <div class="listingblock">
 <div class="title">Linux/Unix</div>
 <div class="content">
@@ -1045,7 +1045,7 @@ $ ./standalone.sh -Djboss.socket.binding.port-offset=100</code></pre>
 </div>
 <div class="paragraph">
 <div class="title">Next Steps</div>
-<p>Before you can use Keycloak to secure this servlet, you need one more procedure. Use the next procedure to install the Keycloak client adapter on the WildFly application server distribution.</p>
+<p>Before you can use Keycloak to secure this servlet, you need to install the Keycloak client adapter on the WildFly application server distribution.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1125,9 +1125,9 @@ $ ./standalone.sh</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deploy-code"><a class="anchor" href="#deploy-code"></a>Deploying sample application code</h3>
+<h3 id="deploy-code"><a class="anchor" href="#deploy-code"></a>Installing sample application code</h3>
 <div class="paragraph">
-<p>To make this application functional as a secure application, you install some sample code. You obtain the code by cloning the Keycloak Quickstarts Repository repository at <a href="https://github.com/keycloak/keycloak-quickstarts" class="bare">https://github.com/keycloak/keycloak-quickstarts</a>. The quickstarts are designed to work with the most recent Keycloak release.</p>
+<p>To make this application functional as a secure application, you will need to install the sample code provided. You obtain the code by cloning the Keycloak Quickstarts Repository repository at <a href="https://github.com/keycloak/keycloak-quickstarts" class="bare">https://github.com/keycloak/keycloak-quickstarts</a>. The quickstarts are designed to work with the most recent Keycloak release.</p>
 </div>
 <div class="paragraph">
 <div class="title">Prerequisites</div>
@@ -1153,7 +1153,7 @@ $ ./standalone.sh</code></pre>
 <p>Make sure your WildFly application server is started.</p>
 </li>
 <li>
-<p>Download, build, and deploy the code using the following commands.</p>
+<p>Download, build, and install the code using the following commands.</p>
 <div class="listingblock">
 <div class="title">Clone Project</div>
 <div class="content">
@@ -1167,7 +1167,7 @@ $ mvn clean wildfly:deploy</code></pre>
 </div>
 </li>
 <li>
-<p>Confirm that the application is successfully deployed. Go to <a href="http://localhost:8080/vanilla" class="bare">http://localhost:8080/vanilla</a> where a login page should appear.</p>
+<p>Confirm that the application is successfully installed. Go to <a href="http://localhost:8080/vanilla" class="bare">http://localhost:8080/vanilla</a> where a login page should appear.</p>
 <div class="paragraph">
 <p>If you click <strong>Login</strong>, the browser will pop up a BASIC auth login dialog. However, the application is not yet secured by any identity provider, so anything you enter in the dialog box will result in a <code>Forbidden</code> message being sent back by the server.</p>
 </div>
@@ -1181,7 +1181,7 @@ $ mvn clean wildfly:deploy</code></pre>
 <div class="sect2">
 <h3 id="register-client"><a class="anchor" href="#register-client"></a>Registering the WildFly application</h3>
 <div class="paragraph">
-<p>After you have deployed the sample code, you can define and register the client in the Keycloak Admin Console.</p>
+<p>After you have installed the sample code, you can define and register the client in the Keycloak Admin Console.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
@@ -1225,7 +1225,7 @@ $ mvn clean wildfly:deploy</code></pre>
 <div class="sect2">
 <h3 id="configure-appserver"><a class="anchor" href="#configure-appserver"></a>Configuring the WildFly instance</h3>
 <div class="paragraph">
-<p>The WildFly servlet application requires a final procedure before it is secured by Keycloak. Use the following procedure to configure the WildFly instance.</p>
+<p>The WildFly servlet application requires additional configuration before it is secured by Keycloak. Use the following procedure to configure the WildFly instance.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
@@ -1299,7 +1299,7 @@ $ mvn clean wildfly:deploy</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-07 17:12:48 UTC
+Last updated 2019-11-07 18:11:34 UTC
 </div>
 </div>
 <ul id="globalnav">
