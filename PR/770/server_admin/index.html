@@ -904,6 +904,7 @@ span.image img {
 <ul class="sectlevel3">
 <li><a href="#priority-order">Priority order</a></li>
 <li><a href="#_protocol-mappers_oidc-user-session-note-mappers">OIDC User Session Note Mappers</a></li>
+<li><a href="#script-mapper">Script Mapper</a></li>
 </ul>
 </li>
 <li><a href="#_client_installation">Generating Client Adapter Config</a></li>
@@ -5759,6 +5760,16 @@ those roles. Then, we process a JavaScript script that uses the roles and audien
 <p><code>clientHost</code>: The remote host name of the service account authenticated device</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="script-mapper"><a class="anchor" href="#script-mapper"></a>Script Mapper</h4>
+<div class="paragraph">
+<p>The <code>Script Mapper</code> allows you to map claims to tokens by running a user-defined JavaScript code. For more details about how to
+deploy scripts to the server, please take a look at <a href="https://www.keycloak.org/docs/8.0/server_development/#_script_providers">JavaScript Providers</a>.</p>
+</div>
+<div class="paragraph">
+<p>Once you have your scripts deployed, you should be able to select the scripts you deployed from the list of available mappers.</p>
 </div>
 </div>
 </div>
@@ -13585,7 +13596,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-07 11:50:34 UTC
+Last updated 2019-11-07 13:36:52 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

@@ -841,6 +841,7 @@ span.image img {
 <li><a href="#_policy_js">JavaScript-Based Policy</a>
 <ul class="sectlevel3">
 <li><a href="#configuration-3">Configuration</a></li>
+<li><a href="#creating-a-js-policy-from-a-deployed-jar-file">Creating a JS Policy from a Deployed JAR File</a></li>
 <li><a href="#examples">Examples</a></li>
 </ul>
 </li>
@@ -2601,6 +2602,20 @@ supported by Keycloak, and provides flexibility to write any policy based on the
 <div class="paragraph">
 <p>To create a new JavaScript-based policy, select <strong>JavaScript</strong> in the dropdown list in the upper right corner of the policy listing.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By default, JavaScript Policies can not be uploaded to the server. You should prefer deploying your JS Policies directly to
+the server as described in <a href="https://www.keycloak.org/docs/8.0/server_development/#_script_providers">JavaScript Providers</a>. If you still want to use the
+Keycloak Administration Console to manage your JS policies you should enable the <code>Upload Scripts</code> feature.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <div class="title">Add JavaScript Policy</div>
 <p><span class="image"><img src="./keycloak-images/policy/create-js.png" alt="Add JavaScript Policy"></span></p>
@@ -2635,6 +2650,16 @@ can identify them more easily.</p>
 </div>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-a-js-policy-from-a-deployed-jar-file"><a class="anchor" href="#creating-a-js-policy-from-a-deployed-jar-file"></a>Creating a JS Policy from a Deployed JAR File</h4>
+<div class="paragraph">
+<p>Keycloak allows you to deploy a JAR file in order to deploy scripts to the server. Please, take a look at <a href="https://www.keycloak.org/docs/8.0/server_development/#_script_providers">JavaScript Providers</a>
+for more details.</p>
+</div>
+<div class="paragraph">
+<p>Once you have your scripts deployed, you should be able to select the scripts you deployed from the list of available policy providers.</p>
 </div>
 </div>
 <div class="sect3">
@@ -5070,6 +5095,25 @@ any user with a role <code>people-manager</code> should be granted with the <cod
 <div class="paragraph">
 <p>Or even using a custom policy using JavaScript:</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Upload Scripts is <strong>Deprecated</strong> and will be removed in future releases. This feature is disabled by default.</p>
+</div>
+<div class="paragraph">
+<p>To enable start the server with
+<code>-Dkeycloak.profile.feature.upload_scripts=enabled</code>
+. For more details see <a href="https://www.keycloak.org/docs/8.0/server_installation/#profiles">Profiles</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">curl -X POST \
@@ -6435,7 +6479,7 @@ It is strongly recommended that you enable TLS/HTTPS when accessing the Keycloak
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-07 11:50:20 UTC
+Last updated 2019-11-07 13:36:40 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
