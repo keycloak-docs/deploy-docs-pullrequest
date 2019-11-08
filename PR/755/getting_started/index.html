@@ -510,6 +510,113 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 <style>
+/* Top menu */
+
+@media only screen and (min-width: 768px) {
+       div.top-menu-guides {
+              position: fixed;
+              display: inline-block;
+              top: 0;
+              left: 0;
+              z-index: 9999;
+       }
+
+       div.top-menu-guides p {
+              margin: 0;
+              padding: 0;
+       }
+
+       div.top-menu-guides .content {
+              margin: 0;
+              padding: 7px 20px 0 20px;
+              background-color: #ededed;
+              height: 48px;
+              width: 20em;
+       }
+
+       @media only screen and (max-width: 1280px) {
+              div.top-menu-guides .content {
+                     width: 15em;
+              }
+       }
+
+       div.top-menu-guides .ulist {
+              display: none;
+              position: absolute;
+              background-color: #f9f9f9;
+              min-width: 160px;
+              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+              padding: 0px;
+              margin-top: 12px;
+       }
+
+       div.top-menu-guides .ulist ul {
+              list-style: none;
+              padding: 5px;
+              margin: 0;
+       }
+
+       div.top-menu-guides .ulist li {
+              padding: 5px 10px;
+       }
+
+       div.top-menu-guides:hover .ulist {
+           display: block;
+       }
+
+       div.top-menu-version {
+           position: fixed;
+           top: 0;
+           z-index: 9999;
+       }
+
+       div.top-menu-version .content {
+           padding: 0;
+           margin: 0;
+           background-color: #eee;
+           height: 48px;
+           padding: 7px;
+       }
+
+       .versionarchive {
+           display: inline-block;
+       }
+
+       .versionarchive p {
+           margin: 0;
+           padding: 2px 5px 2px 10px;
+       }
+
+       .versionarchive a {
+           background-color: #ffdd57;
+           padding: 0 5px;
+           font-style: normal;
+           border-radius: 5px;
+           margin-left: 10px;
+       }
+
+       .versionlatest {
+           display: inline-block;
+       }
+
+       .versionlatest p {
+           background-color: #eee;
+           border-radius: 5px;
+           margin: 0;
+           padding: 2px 5px 2px 10px;
+       }
+
+       .versionlatest em {
+           background-color: #23d160;
+           padding: 0 5px;
+           font-style: normal;
+           border-radius: 5px;
+           margin-left: 10px;
+       }
+}
+
+/* TOC */
+
 #tocbot a.toc-link.node-name--H1{ font-style: italic }
 @media screen{
 #tocbot > ul.toc-list{ margin-bottom: 0.5em; margin-left: 0.125em }
@@ -536,47 +643,6 @@ h1 {
     border-bottom: none !important
 }
 
-
-/* Global Navbar */
-
-ul#globalnav {
-    background-color: #ededed;
-
-    list-style: none;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-
-    overflow: hidden;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    font-size: 0.6em;
-    height: 30px;
-}
-
-ul#globalnav::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-ul#globalnav li {
-    float: left;
-}
-
-ul#globalnav li a {
-    display: inline-block;
-    color: #004670;
-    text-align: center;
-    padding: 0.75em;
-    text-decoration: none;
-}
-
-ul#globalnav li a:hover {
-    color: #428bca;
-}
-
 #toc.toc2 {
     top: 30px;
     bottom: 0px;
@@ -588,11 +654,6 @@ body.toc2 {
 }
 
 @media only screen and (min-width:768px) {
-    ul#globalnav {
-        font-size: 0.75em;
-        height: 40px;
-    }
-
     #toc.toc2 {
         top: 40px;
     }
@@ -603,11 +664,6 @@ body.toc2 {
 }
 
 @media only screen and (min-width:1280px) {
-    ul#globalnav {
-        font-size: 1em;
-        height: 48px;
-    }
-
     #toc.toc2 {
         top: 48px;
     }
@@ -728,6 +784,49 @@ span.image img {
 </div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="exampleblock top-menu-guides">
+<div class="content">
+<div class="paragraph">
+<p><strong>Getting Started</strong> <span class="icon"><i class="fa fa-angle-down"></i></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/server_installation/">Server Installation</a></p>
+</li>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/securing_apps/">Securing Apps</a></p>
+</li>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/server_admin/">Server Administration</a></p>
+</li>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/server_development/">Server Developer</a></p>
+</li>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/authorization_services/">Authorization Services</a></p>
+</li>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/upgrading/">Upgrading</a></p>
+</li>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/release_notes/">Release Notes</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock top-menu-version">
+<div class="content">
+<div class="paragraph versionarchive">
+<p>Version <strong>8.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/getting_started/">Click here for latest</a></em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
@@ -1342,20 +1441,9 @@ If you click <strong>Login</strong>, the browser will pop up a BASIC auth login 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-31 11:40:54 UTC
+Last updated 2019-11-08 13:42:33 UTC
 </div>
 </div>
-<ul id="globalnav">
-    <li><a href="../getting_started/index.html">Getting Started</a></li>
-    <li><a href="../server_installation/index.html">Server Installation</a></li>
-    <li><a href="../securing_apps/index.html">Securing Apps</a></li>
-    <li><a href="../server_admin/index.html">Server Admin</a></li>
-    <li><a href="../server_development/index.html">Server Development</a></li>
-    <li><a href="../authorization_services/index.html">Authorization Services</a></li>
-    <li><a href="../upgrading/index.html">Upgrading</a></li>
-    <li><a href="../release_notes/index.html">Release Notes</a></li>
-</ul>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
 
 <script>

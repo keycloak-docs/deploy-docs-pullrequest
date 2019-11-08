@@ -510,6 +510,113 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .head .head{color:#f4f}
 </style>
 <style>
+/* Top menu */
+
+@media only screen and (min-width: 768px) {
+       div.top-menu-guides {
+              position: fixed;
+              display: inline-block;
+              top: 0;
+              left: 0;
+              z-index: 9999;
+       }
+
+       div.top-menu-guides p {
+              margin: 0;
+              padding: 0;
+       }
+
+       div.top-menu-guides .content {
+              margin: 0;
+              padding: 7px 20px 0 20px;
+              background-color: #ededed;
+              height: 48px;
+              width: 20em;
+       }
+
+       @media only screen and (max-width: 1280px) {
+              div.top-menu-guides .content {
+                     width: 15em;
+              }
+       }
+
+       div.top-menu-guides .ulist {
+              display: none;
+              position: absolute;
+              background-color: #f9f9f9;
+              min-width: 160px;
+              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+              padding: 0px;
+              margin-top: 12px;
+       }
+
+       div.top-menu-guides .ulist ul {
+              list-style: none;
+              padding: 5px;
+              margin: 0;
+       }
+
+       div.top-menu-guides .ulist li {
+              padding: 5px 10px;
+       }
+
+       div.top-menu-guides:hover .ulist {
+           display: block;
+       }
+
+       div.top-menu-version {
+           position: fixed;
+           top: 0;
+           z-index: 9999;
+       }
+
+       div.top-menu-version .content {
+           padding: 0;
+           margin: 0;
+           background-color: #eee;
+           height: 48px;
+           padding: 7px;
+       }
+
+       .versionarchive {
+           display: inline-block;
+       }
+
+       .versionarchive p {
+           margin: 0;
+           padding: 2px 5px 2px 10px;
+       }
+
+       .versionarchive a {
+           background-color: #ffdd57;
+           padding: 0 5px;
+           font-style: normal;
+           border-radius: 5px;
+           margin-left: 10px;
+       }
+
+       .versionlatest {
+           display: inline-block;
+       }
+
+       .versionlatest p {
+           background-color: #eee;
+           border-radius: 5px;
+           margin: 0;
+           padding: 2px 5px 2px 10px;
+       }
+
+       .versionlatest em {
+           background-color: #23d160;
+           padding: 0 5px;
+           font-style: normal;
+           border-radius: 5px;
+           margin-left: 10px;
+       }
+}
+
+/* TOC */
+
 #tocbot a.toc-link.node-name--H1{ font-style: italic }
 @media screen{
 #tocbot > ul.toc-list{ margin-bottom: 0.5em; margin-left: 0.125em }
@@ -536,47 +643,6 @@ h1 {
     border-bottom: none !important
 }
 
-
-/* Global Navbar */
-
-ul#globalnav {
-    background-color: #ededed;
-
-    list-style: none;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-
-    overflow: hidden;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    font-size: 0.6em;
-    height: 30px;
-}
-
-ul#globalnav::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-ul#globalnav li {
-    float: left;
-}
-
-ul#globalnav li a {
-    display: inline-block;
-    color: #004670;
-    text-align: center;
-    padding: 0.75em;
-    text-decoration: none;
-}
-
-ul#globalnav li a:hover {
-    color: #428bca;
-}
-
 #toc.toc2 {
     top: 30px;
     bottom: 0px;
@@ -588,11 +654,6 @@ body.toc2 {
 }
 
 @media only screen and (min-width:768px) {
-    ul#globalnav {
-        font-size: 0.75em;
-        height: 40px;
-    }
-
     #toc.toc2 {
         top: 40px;
     }
@@ -603,11 +664,6 @@ body.toc2 {
 }
 
 @media only screen and (min-width:1280px) {
-    ul#globalnav {
-        font-size: 1em;
-        height: 48px;
-    }
-
     #toc.toc2 {
         top: 48px;
     }
@@ -759,6 +815,13 @@ span.image img {
 </ul>
 </li>
 <li><a href="#leveraging-java-ee">Leveraging Java EE</a></li>
+<li><a href="#_script_providers">JavaScript Providers</a>
+<ul class="sectlevel3">
+<li><a href="#create-a-jar-with-the-scripts-you-want-to-deploy">Create a JAR with the scripts you want to deploy</a></li>
+<li><a href="#deploy-the-script-jar">Deploy the Script JAR</a></li>
+<li><a href="#using-keycloak-administration-console-to-upload-scripts">Using Keycloak Administration Console to upload scripts</a></li>
+</ul>
+</li>
 <li><a href="#available-spis">Available SPIs</a></li>
 </ul>
 </li>
@@ -895,6 +958,49 @@ span.image img {
 </div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="exampleblock top-menu-guides">
+<div class="content">
+<div class="paragraph">
+<p><strong>Server Developer</strong> <span class="icon"><i class="fa fa-angle-down"></i></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/getting_started/">Getting Started</a></p>
+</li>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/server_installation/">Server Installation</a></p>
+</li>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/securing_apps/">Securing Apps</a></p>
+</li>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/server_admin/">Server Administration</a></p>
+</li>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/authorization_services/">Authorization Services</a></p>
+</li>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/upgrading/">Upgrading</a></p>
+</li>
+<li>
+<p><a href="https://www.keycloak.org/docs/8.0/release_notes/">Release Notes</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock top-menu-version">
+<div class="content">
+<div class="paragraph versionarchive">
+<p>Version <strong>8.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/server_development/">Click here for latest</a></em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="preface"><a class="anchor" href="#preface"></a>Preface</h2>
 <div class="sectionbody">
@@ -2265,6 +2371,164 @@ perform a JNDI lookup of the Stateful EJB in its <code>create()</code> method.</
 </div>
 </div>
 <div class="sect2">
+<h3 id="_script_providers"><a class="anchor" href="#_script_providers"></a>JavaScript Providers</h3>
+<div class="paragraph">
+<p>Keycloak has the ability to execute scripts during runtime in order to allow administrators to customize specific functionalities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>OpenID Connect Script Protocol Mapper</p>
+</li>
+<li>
+<p>OpenID Connect Script Authenticator</p>
+</li>
+<li>
+<p>JavaScript Policy</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="create-a-jar-with-the-scripts-you-want-to-deploy"><a class="anchor" href="#create-a-jar-with-the-scripts-you-want-to-deploy"></a>Create a JAR with the scripts you want to deploy</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+JAR files are regular ZIP files with a <code>.jar</code> extension.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In order to make your scripts available to Keycloak you need to deploy them to the server. For that, you should create
+a <code>JAR</code> file with the following structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>META-INF/keycloak-scripts.json
+
+my-script-authenticator.js
+my-script-policy.js
+my-script-mapper.js</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>META-INF/keycloak-scripts.json</code> is a file descriptor that provides metadata information about the scripts you want to deploy. It is a JSON file with the following structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">authenticators</span><span class="delimiter">&quot;</span></span>: [
+        {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">My Authenticator</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">fileName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-authenticator.js</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">My Authenticator from a JS file</span><span class="delimiter">&quot;</span></span>
+        }
+    ],
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">policies</span><span class="delimiter">&quot;</span></span>: [
+        {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">My Policy</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">fileName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-policy.js</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">My Policy from a JS file</span><span class="delimiter">&quot;</span></span>
+        }
+    ],
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">mappers</span><span class="delimiter">&quot;</span></span>: [
+        {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">My Mapper</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">fileName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-mapper.js</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">My Mapper from a JS file</span><span class="delimiter">&quot;</span></span>
+        }
+    ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This file should reference the different types of script providers that you want to deploy:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>authenticators</code></p>
+<div class="paragraph">
+<p>For OpenID Connect Script Authenticators. You can have one or multiple authenticators in the same JAR file</p>
+</div>
+</li>
+<li>
+<p><code>policies</code></p>
+<div class="paragraph">
+<p>For JavaScript Policies when using Keycloak Authorization Services. You can have one or multiple policies in the same JAR file</p>
+</div>
+</li>
+<li>
+<p><code>mappers</code></p>
+<div class="paragraph">
+<p>For OpenID Connect Script Protocol Mappers. You can have one or multiple mappers in the same JAR file</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For each script file in your <code>JAR</code> file you must have a corresponding entry in <code>META-INF/keycloak-scripts.json</code> that maps your scripts files to a specific provider type. For that you should provide the following properties for each entry:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code></p>
+<div class="paragraph">
+<p>A friendly name that will be used to show the scripts through the Keycloak Administration Console. If not provided, the name
+of the script file will be used instead</p>
+</div>
+</li>
+<li>
+<p><code>description</code></p>
+<div class="paragraph">
+<p>An optional text that better describes the intend of the script file</p>
+</div>
+</li>
+<li>
+<p><code>fileName</code></p>
+<div class="paragraph">
+<p>The name of the script file. This property is <strong>mandatory</strong> and should map to a file within the JAR.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deploy-the-script-jar"><a class="anchor" href="#deploy-the-script-jar"></a>Deploy the Script JAR</h4>
+<div class="paragraph">
+<p>Once you have a JAR file with a descriptor and the scripts you want to deploy, you just need to copy the JAR to the to the Keycloak <code>standalone/deployments/</code> directory.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="using-keycloak-administration-console-to-upload-scripts"><a class="anchor" href="#using-keycloak-administration-console-to-upload-scripts"></a>Using Keycloak Administration Console to upload scripts</h4>
+<div class="paragraph">
+<p>By default, the Keycloak Administration Console won&#8217;t allow administrators to upload scripts to the server. The reason is that
+script execution can potentially harm the system due to the execution of malicious scripts. In order to prevent different types of
+attacks and lower the risks when running scripts at runtime, administrators should prefer deploying scripts directly to the server using a JAR file.</p>
+</div>
+<div class="paragraph">
+<p>By deploying scripts directly into the server, we expect that scripts go through a proper code analysis in order to find possible
+vulnerabilities that can be introduced by any script deployed to the server.</p>
+</div>
+<div class="paragraph">
+<p>However, it should still be possible to upload scripts to the server through the Keycloak Administration Console. For that,
+you must set the following system property when booting the server:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">    -Dkeycloak.profile.feature.upload_scripts=enabled</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more details about how to enable the <code>upload_scripts</code> feature. Please, take a look at the <a href="https://www.keycloak.org/docs/8.0/server_installation/#profiles">Profiles</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="available-spis"><a class="anchor" href="#available-spis"></a>Available SPIs</h3>
 <div class="paragraph">
 <p>If you want to see list of all available SPIs at runtime, you can check <code>Server Info</code> page in admin console as described in <a href="#_providers_admin_console">Admin Console</a> section.</p>
@@ -2694,9 +2958,9 @@ In our case we are storing this information, hashed, within a UserCredentialValu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Override</span>
+<pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@Override</span>
     <span class="directive">public</span> <span class="type">boolean</span> configuredFor(KeycloakSession session, RealmModel realm, UserModel user) {
-        <span class="keyword">return</span> session.users().configuredForCredentialType(<span class="string"><span class="delimiter">&quot;</span><span class="content">secret_question</span><span class="delimiter">&quot;</span></span>, realm, user);
+        <span class="keyword">return</span> session.userCredentialManager().isConfiguredFor(realm, user, <span class="string"><span class="delimiter">&quot;</span><span class="content">SECRET_QUESTION</span><span class="delimiter">&quot;</span></span>);
     }</code></pre>
 </div>
 </div>
@@ -2732,8 +2996,17 @@ Its sole purpose is to render the page or to continue the flow.</p>
            context.success();
            <span class="keyword">return</span>;
         }
-        Response challenge = loginForm(context).createForm(<span class="string"><span class="delimiter">&quot;</span><span class="content">secret_question.ftl</span><span class="delimiter">&quot;</span></span>);
+        Response challenge = context.form().createForm(<span class="string"><span class="delimiter">&quot;</span><span class="content">secret-question.ftl</span><span class="delimiter">&quot;</span></span>);
         context.challenge(challenge);
+    }
+
+    <span class="directive">protected</span> <span class="type">boolean</span> hasCookie(AuthenticationFlowContext context) {
+        Cookie cookie = context.getHttpRequest().getHttpHeaders().getCookies().get(<span class="string"><span class="delimiter">&quot;</span><span class="content">SECRET_QUESTION_ANSWERED</span><span class="delimiter">&quot;</span></span>);
+        <span class="type">boolean</span> result = cookie != <span class="predefined-constant">null</span>;
+        <span class="keyword">if</span> (result) {
+            <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Bypassing secret question because cookie is set</span><span class="delimiter">&quot;</span></span>);
+        }
+        <span class="keyword">return</span> result;
     }</code></pre>
 </div>
 </div>
@@ -2773,6 +3046,15 @@ The flow will end up invoking the action() method of our Authenticator implement
         }
         setCookie(context);
         context.success();
+    }
+
+    <span class="directive">protected</span> <span class="type">boolean</span> validateAnswer(AuthenticationFlowContext context) {
+        MultivaluedMap&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; formData = context.getHttpRequest().getDecodedFormParameters();
+        <span class="predefined-type">String</span> secret = formData.getFirst(<span class="string"><span class="delimiter">&quot;</span><span class="content">secret_answer</span><span class="delimiter">&quot;</span></span>);
+        UserCredentialModel input = <span class="keyword">new</span> UserCredentialModel();
+        input.setType(<span class="string"><span class="delimiter">&quot;</span><span class="content">SECRET_QUESTION</span><span class="delimiter">&quot;</span></span>);
+        input.setValue(secret);
+        <span class="keyword">return</span> context.getSession().userCredentialManager().isValid(context.getRealm(), context.getUser(), input);
     }</code></pre>
 </div>
 </div>
@@ -2931,7 +3213,8 @@ This file should be added to the <code>theme-resources/templates</code> in your 
                 &lt;div <span class="type">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${properties.kcInputWrapperClass!}</span><span class="delimiter">&quot;</span></span>&gt;
                     &lt;<span class="class">input</span> id=<span class="string"><span class="delimiter">&quot;</span><span class="content">totp</span><span class="delimiter">&quot;</span></span> name=<span class="string"><span class="delimiter">&quot;</span><span class="content">secret_answer</span><span class="delimiter">&quot;</span></span> type=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="type">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${properties.kcInputClass!}</span><span class="delimiter">&quot;</span></span> /&gt;
                 &lt;/<span class="class">div</span>&gt;
-            &lt;/div&gt;</code></pre>
+            &lt;/div&gt;
+        &lt;/form&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5557,20 +5840,9 @@ plain byte and character arrays and buffers is preferrable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-31 11:41:10 UTC
+Last updated 2019-11-08 13:42:44 UTC
 </div>
 </div>
-<ul id="globalnav">
-    <li><a href="../getting_started/index.html">Getting Started</a></li>
-    <li><a href="../server_installation/index.html">Server Installation</a></li>
-    <li><a href="../securing_apps/index.html">Securing Apps</a></li>
-    <li><a href="../server_admin/index.html">Server Admin</a></li>
-    <li><a href="../server_development/index.html">Server Development</a></li>
-    <li><a href="../authorization_services/index.html">Authorization Services</a></li>
-    <li><a href="../upgrading/index.html">Upgrading</a></li>
-    <li><a href="../release_notes/index.html">Release Notes</a></li>
-</ul>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
 
 <script>
