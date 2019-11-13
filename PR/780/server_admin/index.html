@@ -1972,7 +1972,7 @@ credential.</p>
 <div class="sect3">
 <h4 id="creating-a-password-for-the-user"><a class="anchor" href="#creating-a-password-for-the-user"></a>Creating a Password for the User</h4>
 <div class="paragraph">
-<p>If a user doesn&#8217;t have a password, or if his password has been deleted, the <code>Set Password</code> section will be shown on the page.</p>
+<p>If a user doesn&#8217;t have a password, or if the password has been deleted, the <code>Set Password</code> section will be shown on the page.</p>
 </div>
 <div class="paragraph">
 <div class="title">Credential Management - Set Password</div>
@@ -4146,7 +4146,7 @@ Whether WebAuthn&#8217;s operations succeed depends on a user&#8217;s WebAuthn s
 <p>Select a realm, click on Authentication link, select the "Browser" flow</p>
 </li>
 <li>
-<p>Make a copy of the built-in "Browser" flow. You may want to give the new flow a distinctive name, i.e. "WebAuthn Browser"</p>
+<p>Make a copy of the built-in "Browser" flow. You may want to give the new flow a distinctive name, for example "WebAuthn Browser"</p>
 </li>
 <li>
 <p>Using the drop down, select the copied flow</p>
@@ -4176,11 +4176,11 @@ Whether WebAuthn&#8217;s operations succeed depends on a user&#8217;s WebAuthn s
 <p><span class="image"><img src="./images/webauthn-browser-flow-required.png" alt="webauthn browser flow required"></span></p>
 </div>
 <div class="paragraph">
-<p>Note that in this scenario, if a user doesn&#8217;t have a WebAuthn credential, a required action will be set that forces him
+<p>Note that in this scenario, if a user doesn&#8217;t have a WebAuthn credential, a required action will be set that forces that user
 to register one.</p>
 </div>
 <div class="paragraph">
-<p>Alternatively, you can have users login with WebAuthn only if they have a WebAuthn credential registered, so instead of adding
+<p>Alternatively, you can have users log in with WebAuthn only if they have a WebAuthn credential registered, so instead of adding
 the <code>WebAuthn Authenticator</code> execution:</p>
 </div>
 <div class="ulist">
@@ -4252,7 +4252,7 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <p>The list of registered Webauthn Authenticators' labels appears. Click <code>Authenticate</code>.</p>
 </li>
 <li>
-<p>The user&#8217;s browser asks the user to authenticate by their WebAuthn authenticator</p>
+<p>The user&#8217;s browser asks the user to authenticate by their WebAuthn authenticator.</p>
 </li>
 </ul>
 </div>
@@ -4270,10 +4270,10 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <p>Users can be assigned a required action to create a WebAuthn credential from the <code>Reset Actions</code> list, and selecting <code>Webauthn Register</code></p>
 </li>
 <li>
-<p>The administrator can delete a WebAuthn credential by pressing it&#8217;s <code>Delete</code> button</p>
+<p>The administrator can delete a WebAuthn credential by pressing <code>Delete</code>.</p>
 </li>
 <li>
-<p>The administrator can view the credential&#8217;s data such as the AAGUID by selecting <code>Show data&#8230;&#8203;</code></p>
+<p>The administrator can view the credential&#8217;s data such as the AAGUID by selecting <code>Show data&#8230;&#8203;</code>.</p>
 </li>
 <li>
 <p>The administrator can set a label for the credential by setting a value in the <code>User Label</code> field and saving the data.</p>
@@ -9131,7 +9131,7 @@ The AutoLink authenticator would be dangerous in a generic environment where use
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The described setup uses two authenticators, and is the simplest one, but it is possible to use other
+The described setup uses two authenticators. This setup is the simplest one, but it is possible to use other
 authenticators according to your needs. For example, you can add the Review Profile authenticator to the beginning of the flow if you still want
 end users to confirm their profile information. You can also add authentication mechanisms to this flow, forcing a user to verify his credentials. This
 would require a more complex flow, for example setting the "Automatically Set Existing User" and "Password Form" as "Required" in an "Alternative" sub-flow.
@@ -13795,7 +13795,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-12 16:38:50 UTC
+Last updated 2019-11-13 13:12:04 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

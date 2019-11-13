@@ -2754,7 +2754,7 @@ The admin console supports applying, ordering, and configuring these new mechani
 Different aspects of this form can be enabled and disabled i.e.
 Recaptcha support can be turned off and on.
 The same authentication SPI can be used to add another page to the registration flow or reimplement it entirely.
-There&#8217;s also an additional fine-grain SPI you can use to add specific validations and user extensions to the built in registration form.</p>
+There&#8217;s also an additional fine-grained SPI you can use to add specific validations and user extensions to the built in registration form.</p>
 </div>
 <div class="paragraph">
 <p>A required action in Keycloak is an action that a user has to perform after he authenticates.
@@ -2873,7 +2873,7 @@ The executions for this subflow are loaded and the same processing logic occurs.
 <li>
 <p>The first execution in the Forms subflow is the UsernamePassword provider.
 This provider also does not require for a user to already be associated with the flow.
-This provider creates challenge HTTP response and sets its status to challenge(). This execution is required, so the flow honors this challenge and sends the HTTP response back to the browser.
+This provider creates a challenge HTTP response and sets its status to challenge(). This execution is required, so the flow honors this challenge and sends the HTTP response back to the browser.
 This response is a rendering of the Username/Password HTML page.
 The user enters in their username and password and clicks submit.
 This HTTP request is directed to the UsernamePassword provider.
@@ -2883,13 +2883,13 @@ This error log can be used to lock accounts or IP Addresses that have had too ma
 If the username and password is valid, the provider associated the UserModel with the AuthenticationSessionModel and returns a status of success().</p>
 </li>
 <li>
-<p>The next execution is a subflow called Conditional OTP. The executions for this subflow are loaded and the same processing logic occurs. It&#8217;s Requirement is
+<p>The next execution is a subflow called Conditional OTP. The executions for this subflow are loaded and the same processing logic occurs. Its Requirement is
 Conditional. This means that the flow will first evaluate all conditional executors that it contains. Conditional executors are authenticators that
 implement <code>ConditionalAuthenticator</code>, and must implement the method <code>boolean matchCondition(AuthenticationFlowContext context)</code>. A conditional subflow will
-call the <code>matchCondition</code> method of all conditional executions it contains, and if all of them evaluates to true, it will act as if it was a required subflow. If
+call the <code>matchCondition</code> method of all conditional executions it contains, and if all of them evaluate to true, it will act as if it was a required subflow. If
 not, it will act as if it was a disabled subflow. Conditional authenticators are only used for this purpose, and are not used as authenticators.
 This means that even if the conditional authenticator evaluates to "true", then this will not mark a flow or subflow as successful. For example,
-a flow containing only a Conditional subflow with only a conditional authenticator will never allow a user to login.</p>
+a flow containing only a Conditional subflow with only a conditional authenticator will never allow a user to log in.</p>
 </li>
 <li>
 <p>The first execution of the Conditional OTP subflow is the Condition - User Configured.
@@ -2901,7 +2901,7 @@ method evaluate to true. Otherwise, the <code>matchCondition</code> method will 
 </li>
 <li>
 <p>The next execution is the OTP Form.
-This also provider requires that a user has been associated with the flow.
+This provider also requires that a user has been associated with the flow.
 This requirement is satisfied because the UsernamePassword provider already associated the user with the flow.
 Since a user is required for this provider, the provider is also asked if the user is configured to use this provider.
 If user is not configured, then the flow will then set up a required action that the user must perform after authentication is complete.
@@ -2923,7 +2923,7 @@ Here the provider sets up an HTTP response which renders the page for the requir
 This is done by setting a challenge status.</p>
 </li>
 <li>
-<p>If the required action is ultimately successful, then the required action is removed from the user&#8217;s require actions list.</p>
+<p>If the required action is ultimately successful, then the required action is removed from the user&#8217;s required actions list.</p>
 </li>
 <li>
 <p>After all required actions have been resolved, the user is finally logged in.</p>
@@ -2944,8 +2944,9 @@ The Authenticator interface defines the logic. The AuthenticatorFactory is respo
 They both extend a more generic Provider and ProviderFactory set of interfaces that other Keycloak components like User Federation do.</p>
 </div>
 <div class="paragraph">
-<p>Some authenticators, like the CookieAuthenticator don&#8217;t rely on a Credential that the user has or knows to authenticate the user. But some, like the
-PasswordForm authenticator or the OTPFormAuthenticator rely on the user inputting some information and verifying that information against some information in the
+<p>Some authenticators, like the CookieAuthenticator don&#8217;t rely on a Credential that the user has or knows to authenticate the user.
+However, some authenticators, such as the PasswordForm authenticator or the OTPFormAuthenticator rely on the user inputting some
+information and verifying that information against some information in the
 database. For the PasswordForm for example, the authenticator will verify the hash of the password against a hash stored in the database, while the
 OTPFormAuthenticator will verify the OTP received against the one generated from the shared secret stored in the database.</p>
 </div>
@@ -3124,8 +3125,8 @@ getting the type for this credential. The classes <code>SecretQuestionCredential
 </div>
 </div>
 <div class="paragraph">
-<p>To be fully usable, the <code>SecretQuestionCredentialModel</code> objects must both contain the raw json data from it&#8217;s parent class,
-and the unmarshalled objets in it&#8217;s own attributes. This leads us to create method a which reads from a simple CredentialModel,
+<p>To be fully usable, the <code>SecretQuestionCredentialModel</code> objects must both contain the raw json data from its parent class,
+and the unmarshalled objects in its own attributes. This leads us to create a method which reads from a simple CredentialModel,
 such as is created when reading from the database, to make a <code>SecretQuestionCredentialModel</code>:</p>
 </div>
 <div class="listingblock">
@@ -3186,7 +3187,7 @@ such as is created when reading from the database, to make a <code>SecretQuestio
 <div class="sect3">
 <h4 id="implementing-a-credentialprovider"><a class="anchor" href="#implementing-a-credentialprovider"></a>Implementing a CredentialProvider</h4>
 <div class="paragraph">
-<p>As with all Providers, to allow Keycloak to generate the CredentialProvider, we require a CredentialProviderFactory. For this we create
+<p>As with all Providers, to allow Keycloak to generate the CredentialProvider, we require a CredentialProviderFactory. For this requirement we create
 the SecretQuestionCredentialProviderFactory, whose <code>create</code> method will be called when a SecretQuestionCredentialProvider is asked for:</p>
 </div>
 <div class="listingblock">
@@ -3240,7 +3241,7 @@ return the `SecretQuestionCredentialModel&#8217;s TYPE String:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The second method is to create a <code>SecretQuestionCredentialModel</code> from a <code>CredentialModel</code>. For this we simply call the existing static method
+<p>The second method is to create a <code>SecretQuestionCredentialModel</code> from a <code>CredentialModel</code>. For this method we simply call the existing static method
 from <code>SecretQuestionCredentialModel</code>:</p>
 </div>
 <div class="listingblock">
@@ -3447,8 +3448,8 @@ failureChallenge() works the same as challenge(), but it also records the failur
 <p>The validation itself gets the data that was received from the form, and calls the isValid method from the SecretQuestionCredentialProvider. You&#8217;ll notice
 that there&#8217;s a section of the code concerning getting the credential Id. This is because if Keycloak is configured to allow multiple types of alternative
 authenticators, or if the user could record multiple credentials of the SECRET_QUESTION type (for example if we allowed to choose from several questions,
-and we allowed the user to have answers for more than one of those questions), then Keycloak needs to know which credential is being user to log the user.
-In case there is more than one, Keycloak allows the user to choose during the login which credential he is using, and the information is transmitted by
+and we allowed the user to have answers for more than one of those questions), then Keycloak needs to know which credential is being used to log the user.
+In case there is more than one credential, Keycloak allows the user to choose during the login which credential is being used, and the information is transmitted by
 the form to the Authenticator.
 In case the form doesn&#8217;t present this information, credential id used is given by the CredentialProvider&#8217;s <code>default getDefaultCredential</code> method, which will
 return the "most preferred" credential of the correct type of the user,</p>
@@ -4063,7 +4064,7 @@ or during <code>Service account</code> authentication (represented by OAuth2 <co
 <div class="sect3">
 <h4 id="default-implementations"><a class="anchor" href="#default-implementations"></a>Default implementations</h4>
 <div class="paragraph">
-<p>Actually Keycloak has 2 builtin implementations of client authentication:</p>
+<p>Actually Keycloak has 2 default implementations of client authentication:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -6263,7 +6264,7 @@ plain byte and character arrays and buffers is preferrable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-12 16:38:55 UTC
+Last updated 2019-11-13 13:12:09 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
