@@ -850,6 +850,12 @@ span.image img {
 </li>
 </ul>
 </li>
+<li><a href="#hostname">Hostname</a>
+<ul class="sectlevel2">
+<li><a href="#default-provider">Default provider</a></li>
+<li><a href="#custom-provider">Custom provider</a></li>
+</ul>
+</li>
 <li><a href="#_network">Network Setup</a>
 <ul class="sectlevel2">
 <li><a href="#_bind-address">Bind Addresses</a></li>
@@ -1725,7 +1731,9 @@ The add-user.sh does not add user to Keycloak server but to the underlying JBoss
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Cross-Datacenter Replication Mode is Technology Preview and is not fully supported.
+<div class="paragraph">
+<p>Cross-Datacenter Replication Mode is <strong>Technology Preview</strong> and is not fully supported.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -3886,6 +3894,96 @@ field, there is no reduction of field length for non-special fields. No special 
 </div>
 </div>
 <div class="sect1">
+<h2 id="hostname"><a class="anchor" href="#hostname"></a>Hostname</h2>
+<div class="sectionbody">
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/host.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/host.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>Keycloak uses the public hostname for a number of things. For example, in the token issuer fields and URLs sent in
+password reset emails.</p>
+</div>
+<div class="paragraph">
+<p>The Hostname SPI provides a way to configure the hostname for a request. The default provider allows setting
+a fixed URL for frontend requests, while allowing backend requests to be based on the request URI. It is also possible
+to develop your own provider in the case the built-in provider does not provide the functionality needed.</p>
+</div>
+<div class="sect2">
+<h3 id="default-provider"><a class="anchor" href="#default-provider"></a>Default provider</h3>
+<div class="paragraph">
+<p>The default hostname provider uses the configured <code>frontendUrl</code> as the base URL for frontend requests (requests from
+user-agents) and uses the request URL as the basis for backend requests (direct requests from clients).</p>
+</div>
+<div class="paragraph">
+<p>Frontend request do not have to have the same context-path as the Keycloak server. This means you can expose Keycloak
+on for example <code><a href="https://auth.example.org" class="bare">https://auth.example.org</a></code> or <code><a href="https://example.org/keycloak" class="bare">https://example.org/keycloak</a></code> while internally its URL could be
+<code><a href="https://10.0.0.10:8080/auth" class="bare">https://10.0.0.10:8080/auth</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>This makes it possible to have user-agents (browsers) send requests to ${project.name} through the public domain name,
+while internal clients can use an internal domain name or IP address.</p>
+</div>
+<div class="paragraph">
+<p>This is reflected in the OpenID Connect Discovery endpoint for example where the <code>authorization_endpoint</code> uses the
+frontend URL, while <code>token_endpoint</code> uses the backend URL. As a note here a public client for instance would contact
+Keycloak through the public endpoint, which would result in the base of <code>authorization_endpoint</code> and <code>token_endpoint</code>
+being the same.</p>
+</div>
+<div class="paragraph">
+<p>To set the frontendUrl for Keycloak you can either pass add <code>-Dkeycloak.frontendUrl=https://auth.example.org</code> to the
+startup or you can configure it in <code>standalone.xml</code>. See the example below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;spi</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hostname</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;default-provider&gt;</span>default<span class="tag">&lt;/default-provider&gt;</span>
+    <span class="tag">&lt;provider</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;properties&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">frontendUrl</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://auth.example.com</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">forceBackendUrlToFrontendUrl</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/properties&gt;</span>
+    <span class="tag">&lt;/provider&gt;</span>
+<span class="tag">&lt;/spi&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To update the <code>frontendUrl</code> with jboss-cli use the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">/subsystem=keycloak-server/spi=hostname/provider=fixed:write-attribute(name=properties.frontendUrl,value=&quot;https://auth.example.com&quot;)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want all requests to go through the public domain name you can force backend requests to use the frontend URL as
+well by setting <code>forceBackendUrlToFrontendUrl</code> to <code>true</code>.</p>
+</div>
+<div class="paragraph">
+<p>It is also possible to override the default frontend URL for individual realms. This can be done in the admin console.</p>
+</div>
+<div class="paragraph">
+<p>If you do not want to expose the admin endpoints and console on the public domain use the property <code>adminUrl</code> to set
+a fixed URL for the admin console, which is different to the <code>frontendUrl</code>. It is also required to block access to
+<code>/auth/admin</code> externally, for details on how to do that refer to the <a href="https://www.keycloak.org/docs/8.0/server_admin/">Server Administration Guide</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="custom-provider"><a class="anchor" href="#custom-provider"></a>Custom provider</h3>
+<div class="paragraph">
+<p>To develop a custom hostname provider you need to implement <code>org.keycloak.urls.HostnameProviderFactory</code> and
+<code>org.keycloak.urls.HostnameProvider</code>.</p>
+</div>
+<div class="paragraph">
+<p>Follow the instructions in the Service Provider Interfaces section in <a href="https://www.keycloak.org/docs/8.0/server_development/">Server Developer Guide</a>
+for more information on how to develop a custom provider.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_network"><a class="anchor" href="#_network"></a>Network Setup</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
@@ -5413,7 +5511,7 @@ The cache will be cleared for all realms!
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-13 23:26:07 UTC
+Last updated 2019-11-14 22:37:59 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

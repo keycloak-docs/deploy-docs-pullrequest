@@ -839,6 +839,8 @@ span.image img {
 <li><a href="#_auth_spi_walkthrough">Authenticator SPI Walk Through</a>
 <ul class="sectlevel3">
 <li><a href="#packaging-classes-and-deployment">Packaging Classes and Deployment</a></li>
+<li><a href="#extending-the-credentialmodel-class">Extending the CredentialModel class</a></li>
+<li><a href="#implementing-a-credentialprovider">Implementing a CredentialProvider</a></li>
 <li><a href="#implementing-an-authenticator">Implementing an Authenticator</a></li>
 <li><a href="#implementing-an-authenticatorfactory">Implementing an AuthenticatorFactory</a></li>
 <li><a href="#adding-authenticator-form">Adding Authenticator Form</a></li>
@@ -2752,7 +2754,7 @@ The admin console supports applying, ordering, and configuring these new mechani
 Different aspects of this form can be enabled and disabled i.e.
 Recaptcha support can be turned off and on.
 The same authentication SPI can be used to add another page to the registration flow or reimplement it entirely.
-There&#8217;s also an additional fine-grain SPI you can use to add specific validations and user extensions to the built in registration form.</p>
+There&#8217;s also an additional fine-grained SPI you can use to add specific validations and user extensions to the built in registration form.</p>
 </div>
 <div class="paragraph">
 <p>A required action in Keycloak is an action that a user has to perform after he authenticates.
@@ -2787,10 +2789,11 @@ Flows contain execution entries.</p>
 <dt class="hdlist1">Execution Requirement</dt>
 <dd>
 <p>Each execution defines how an authenticator behaves in a flow.
-The requirement defines whether the authenticator is enabled, disabled, optional, required, or an alternative.
-An alternative requirement means that the authentiactor is optional unless no other alternative authenticator is successful in the flow.
-For example, cookie authentication, kerberos, and the set of all login forms are all alternative.
-If one of those is successful, none of the others are executed.</p>
+The requirement defines whether the authenticator is enabled, disabled, conditional, required, or an alternative.
+An alternative requirement means that the authenticator is enough to validate the flow it&#8217;s in, but isn&#8217;t necessary.
+For example, in the built-in browser flow, cookie authentication, the Identity Provider Redirector, and the set of all authenticators in the
+forms subflow are all alternative. As they are executed in a sequential top-to-bottom order, if one of them is successful, the flow is
+successful, and any following execution in the flow (or sub-flow) is not evaluated.</p>
 </dd>
 <dt class="hdlist1">Authenticator Config</dt>
 <dd>
@@ -2815,9 +2818,11 @@ Let&#8217;s assume the following flows, executions and sub flows.</p>
 <div class="content">
 <pre class="CodeRay highlight"><code>Cookie - ALTERNATIVE
 Kerberos - ALTERNATIVE
-Forms Subflow - ALTERNATIVE
+Forms subflow - ALTERNATIVE
            Username/Password Form - REQUIRED
-           OTP Password Form - OPTIONAL</code></pre>
+           Conditional OTP subflow - CONDITIONAL
+                      Condition - User Configured - REQUIRED
+                      OTP Form - REQUIRED</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2868,7 +2873,7 @@ The executions for this subflow are loaded and the same processing logic occurs.
 <li>
 <p>The first execution in the Forms subflow is the UsernamePassword provider.
 This provider also does not require for a user to already be associated with the flow.
-This provider creates challenge HTTP response and sets its status to challenge(). This execution is required, so the flow honors this challenge and sends the HTTP response back to the browser.
+This provider creates a challenge HTTP response and sets its status to challenge(). This execution is required, so the flow honors this challenge and sends the HTTP response back to the browser.
 This response is a rendering of the Username/Password HTML page.
 The user enters in their username and password and clicks submit.
 This HTTP request is directed to the UsernamePassword provider.
@@ -2878,13 +2883,30 @@ This error log can be used to lock accounts or IP Addresses that have had too ma
 If the username and password is valid, the provider associated the UserModel with the AuthenticationSessionModel and returns a status of success().</p>
 </li>
 <li>
-<p>The next execution is the OTP Form.
+<p>The next execution is a subflow called Conditional OTP. The executions for this subflow are loaded and the same processing logic occurs. Its Requirement is
+Conditional. This means that the flow will first evaluate all conditional executors that it contains. Conditional executors are authenticators that
+implement <code>ConditionalAuthenticator</code>, and must implement the method <code>boolean matchCondition(AuthenticationFlowContext context)</code>. A conditional subflow will
+call the <code>matchCondition</code> method of all conditional executions it contains, and if all of them evaluate to true, it will act as if it was a required subflow. If
+not, it will act as if it was a disabled subflow. Conditional authenticators are only used for this purpose, and are not used as authenticators.
+This means that even if the conditional authenticator evaluates to "true", then this will not mark a flow or subflow as successful. For example,
+a flow containing only a Conditional subflow with only a conditional authenticator will never allow a user to log in.</p>
+</li>
+<li>
+<p>The first execution of the Conditional OTP subflow is the Condition - User Configured.
 This provider requires that a user has been associated with the flow.
 This requirement is satisfied because the UsernamePassword provider already associated the user with the flow.
+This provider&#8217;s <code>matchCondition</code> method will evaluate the <code>configuredFor</code> method for all other Authenticators in its current subflow. If the subflow contains
+executors with their Requirement set to required, then the <code>matchCondition</code> method will only evaluate to true if all the required authenticators' <code>configuredFor</code>
+method evaluate to true. Otherwise, the <code>matchCondition</code> method will evaluate to true if any alternative authenticator evaluates to true.</p>
+</li>
+<li>
+<p>The next execution is the OTP Form.
+This provider also requires that a user has been associated with the flow.
+This requirement is satisfied because the UsernamePassword provider already associated the user with the flow.
 Since a user is required for this provider, the provider is also asked if the user is configured to use this provider.
-If user is not configured, and this execution is required, then the flow will then set up a required action that the user must perform after authentication is complete.
-For OTP, this means the OTP setup page.
-If the execution was optional, then this execution is skipped.</p>
+If user is not configured, then the flow will then set up a required action that the user must perform after authentication is complete.
+For OTP, this means the OTP setup page. If the user is configured, he will be asked to enter his otp code. In our scenario, because of the conditional
+sub-flow, the user will never see the OTP login page, unless the Conditional OTP subflow is set to Required.</p>
 </li>
 <li>
 <p>After the flow is complete, the authentication processor creates a UserSessionModel and associates it with the AuthenticationSessionModel.
@@ -2901,7 +2923,7 @@ Here the provider sets up an HTTP response which renders the page for the requir
 This is done by setting a challenge status.</p>
 </li>
 <li>
-<p>If the required action is ultimately successful, then the required action is removed from the user&#8217;s require actions list.</p>
+<p>If the required action is ultimately successful, then the required action is removed from the user&#8217;s required actions list.</p>
 </li>
 <li>
 <p>After all required actions have been resolved, the user is finally logged in.</p>
@@ -2913,13 +2935,36 @@ This is done by setting a challenge status.</p>
 <h3 id="_auth_spi_walkthrough"><a class="anchor" href="#_auth_spi_walkthrough"></a>Authenticator SPI Walk Through</h3>
 <div class="paragraph">
 <p>In this section, we&#8217;ll take a look at the Authenticator interface.
-For this, we are going to implement an authenticator that requires that a user enter in the answer to a secret question like "What is your mother&#8217;s maiden name?".  This example is fully implemented and contained in the examples/providers/authenticator directory of the demo distribution of Keycloak.</p>
+For this, we are going to implement an authenticator that requires that a user enter in the answer to a secret question like "What is your mother&#8217;s maiden name?".
+This example is fully implemented and contained in the examples/providers/authenticator directory of the demo distribution of Keycloak.</p>
 </div>
 <div class="paragraph">
-<p>The classes you must implement are the org.keycloak.authentication.AuthenticatorFactory and Authenticator interfaces.
-The Authenticator interface defines the logic.
-The AuthenticatorFactory is responsible for creating instances of an Authenticator.
+<p>To create an authenticator, you must at minimum implement the org.keycloak.authentication.AuthenticatorFactory and Authenticator interfaces.
+The Authenticator interface defines the logic. The AuthenticatorFactory is responsible for creating instances of an Authenticator.
 They both extend a more generic Provider and ProviderFactory set of interfaces that other Keycloak components like User Federation do.</p>
+</div>
+<div class="paragraph">
+<p>Some authenticators, like the CookieAuthenticator don&#8217;t rely on a Credential that the user has or knows to authenticate the user.
+However, some authenticators, such as the PasswordForm authenticator or the OTPFormAuthenticator rely on the user inputting some
+information and verifying that information against some information in the
+database. For the PasswordForm for example, the authenticator will verify the hash of the password against a hash stored in the database, while the
+OTPFormAuthenticator will verify the OTP received against the one generated from the shared secret stored in the database.</p>
+</div>
+<div class="paragraph">
+<p>These types of authenticators are called CredentialValidators, and will require you to implement a few more classes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A class that extends org.keycloak.credential.CredentialModel, and that can generate the correct format of the credential in the database</p>
+</li>
+<li>
+<p>A class implementing the org.keycloak.credential.CredentialProvider and interface, and a class implementing its CredentialProviderFactory factory interface.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The SecretQuestionAuthenticator we&#8217;ll see in this walk through is a CredentialValidator, so we&#8217;ll see how to implement all these classes.</p>
 </div>
 <div class="sect3">
 <h4 id="packaging-classes-and-deployment"><a class="anchor" href="#packaging-classes-and-deployment"></a>Packaging Classes and Deployment</h4>
@@ -2931,7 +2976,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>org.keycloak.examples.authenticator.SecretQuestionAuthenticatorFactory
+<pre class="CodeRay highlight"><code data-lang="java">org.keycloak.examples.authenticator.SecretQuestionAuthenticatorFactory
 org.keycloak.examples.authenticator.AnotherProviderFactory</code></pre>
 </div>
 </div>
@@ -2943,7 +2988,351 @@ org.keycloak.examples.authenticator.AnotherProviderFactory</code></pre>
 </div>
 </div>
 <div class="sect3">
+<h4 id="extending-the-credentialmodel-class"><a class="anchor" href="#extending-the-credentialmodel-class"></a>Extending the CredentialModel class</h4>
+<div class="paragraph">
+<p>In Keycloak, credentials are stored in the database in the Credentials table. It has the following structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>-----------------------------
+| ID                        |
+-----------------------------
+| user_ID                   |
+-----------------------------
+| credential_type           |
+-----------------------------
+| created_date              |
+-----------------------------
+| user_label                |
+-----------------------------
+| secret_data               |
+-----------------------------
+| credential_data           |
+-----------------------------
+| priority                  |
+-----------------------------</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ID</code> is the primary key of the credential.</p>
+</li>
+<li>
+<p><code>user_ID</code> is the foreign key linking the credential to a user.</p>
+</li>
+<li>
+<p><code>credential_type</code> is a string set during the creation that must reference an existing credential type.</p>
+</li>
+<li>
+<p><code>created_date</code> is the creation timestamp (in long format) of the credential.</p>
+</li>
+<li>
+<p><code>user_label</code> is the editable name of the credential by the user</p>
+</li>
+<li>
+<p><code>secret_data</code> contains a static json with the information that cannot be transmitted outside of Keycloak</p>
+</li>
+<li>
+<p><code>credential_data</code> contains a json with the static information of the credential that can be shared in the admin console or via the REST API.</p>
+</li>
+<li>
+<p><code>priority</code> defines how "preferred" a credential is for a user, to determine which credential to present when a user has multiple choices.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As the secret_data and credential_data fields are designed to contain json, it is up to you to determine how to structure, read and write into
+these fields, allowing you a lot of flexibility.</p>
+</div>
+<div class="paragraph">
+<p>For this example, we are going to use a very simple credential data, containing only the question asked to the user:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>{
+  "question":"aQuestion"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with an equally simple secret data, containing only the secret answer:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>{
+  "answer":"anAnswer"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here the answer will be kept in plain text in the database for the sake of simplicity, but it would also be possible to have a salted hash for the answer,
+as is the case for passwords in Keycloak. In this case, the secret data would also have to contain a field for the salt, and the credential data information
+about the algorithm such as the type of algorithm used and the number of iterations used. For more details you can consult the implementation of the
+<code>org.keycloak.models.credential.PasswordCredentialModel</code> class.</p>
+</div>
+<div class="paragraph">
+<p>In our case we create the class <code>SecretQuestionCredentialModel</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SecretQuestionCredentialModel</span> <span class="directive">extends</span> CredentialModel {
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> TYPE = <span class="string"><span class="delimiter">&quot;</span><span class="content">SECRET_QUESTION</span><span class="delimiter">&quot;</span></span>;
+
+    <span class="directive">private</span> <span class="directive">final</span> SecretQuestionCredentialData credentialData;
+    <span class="directive">private</span> <span class="directive">final</span> SecretQuestionSecretData secretData;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where <code>TYPE</code> is the credential_type we write in the database. For consistency, we make sure that this String is always the one referenced when
+getting the type for this credential. The classes <code>SecretQuestionCredentialData</code> and <code>SecretQuestionSecretData</code> are used to marshal and unmarshal the json:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SecretQuestionCredentialData</span> {
+
+    <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> question;
+
+    <span class="annotation">@JsonCreator</span>
+    <span class="directive">public</span> SecretQuestionCredentialData(<span class="annotation">@JsonProperty</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">question</span><span class="delimiter">&quot;</span></span>) <span class="predefined-type">String</span> question) {
+        <span class="local-variable">this</span>.question = question;
+    }
+
+    <span class="directive">public</span> <span class="predefined-type">String</span> getQuestion() {
+        <span class="keyword">return</span> question;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SecretQuestionSecretData</span> {
+
+     <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> answer;
+
+    <span class="annotation">@JsonCreator</span>
+     <span class="directive">public</span> SecretQuestionSecretData(<span class="annotation">@JsonProperty</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">answer</span><span class="delimiter">&quot;</span></span>) <span class="predefined-type">String</span> answer) {
+         <span class="local-variable">this</span>.answer = answer;
+     }
+
+    <span class="directive">public</span> <span class="predefined-type">String</span> getAnswer() {
+        <span class="keyword">return</span> answer;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To be fully usable, the <code>SecretQuestionCredentialModel</code> objects must both contain the raw json data from its parent class,
+and the unmarshalled objects in its own attributes. This leads us to create a method which reads from a simple CredentialModel,
+such as is created when reading from the database, to make a <code>SecretQuestionCredentialModel</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> SecretQuestionCredentialModel(SecretQuestionCredentialData credentialData, SecretQuestionSecretData secretData) {
+    <span class="local-variable">this</span>.credentialData = credentialData;
+    <span class="local-variable">this</span>.secretData = secretData;
+}
+
+<span class="directive">public</span> <span class="directive">static</span> SecretQuestionCredentialModel createFromCredentialModel(CredentialModel credentialModel){
+    <span class="keyword">try</span> {
+        SecretQuestionCredentialData credentialData = JsonSerialization.readValue(credentialModel.getCredentialData(), SecretQuestionCredentialData.class);
+        SecretQuestionSecretData secretData = JsonSerialization.readValue(credentialModel.getSecretData(), SecretQuestionSecretData.class);
+
+        SecretQuestionCredentialModel secretQuestionCredentialModel = <span class="keyword">new</span> SecretQuestionCredentialModel(credentialData, secretData);
+        secretQuestionCredentialModel.setUserLabel(credentialModel.getUserLabel());
+        secretQuestionCredentialModel.setCreatedDate(credentialModel.getCreatedDate());
+        secretQuestionCredentialModel.setType(TYPE);
+        secretQuestionCredentialModel.setId(credentialModel.getId());
+        secretQuestionCredentialModel.setSecretData(credentialModel.getSecretData());
+        secretQuestionCredentialModel.setCredentialData(credentialModel.getCredentialData());
+        <span class="keyword">return</span> secretQuestionCredentialModel;
+    } <span class="keyword">catch</span> (<span class="exception">IOException</span> e){
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">RuntimeException</span>(e);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And a method to create a <code>SecretQuestionCredentialModel</code> from the question and answer:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> SecretQuestionCredentialModel(<span class="predefined-type">String</span> question, <span class="predefined-type">String</span> answer) {
+    credentialData = <span class="keyword">new</span> SecretQuestionCredentialData(question);
+    secretData = <span class="keyword">new</span> SecretQuestionSecretData(answer);
+}
+
+<span class="directive">public</span> <span class="directive">static</span> SecretQuestionCredentialModel createSecretQuestion(<span class="predefined-type">String</span> question, <span class="predefined-type">String</span> answer) {
+    SecretQuestionCredentialModel credentialModel = <span class="keyword">new</span> SecretQuestionCredentialModel(question, answer);
+    credentialModel.fillCredentialModelFields();
+    <span class="keyword">return</span> credentialModel;
+}
+
+<span class="directive">private</span> <span class="type">void</span> fillCredentialModelFields(){
+    <span class="keyword">try</span> {
+        setCredentialData(JsonSerialization.writeValueAsString(credentialData));
+        setSecretData(JsonSerialization.writeValueAsString(secretData));
+        setType(TYPE);
+        setCreatedDate(<span class="predefined-type">Time</span>.currentTimeMillis());
+    } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">RuntimeException</span>(e);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementing-a-credentialprovider"><a class="anchor" href="#implementing-a-credentialprovider"></a>Implementing a CredentialProvider</h4>
+<div class="paragraph">
+<p>As with all Providers, to allow Keycloak to generate the CredentialProvider, we require a CredentialProviderFactory. For this requirement we create
+the SecretQuestionCredentialProviderFactory, whose <code>create</code> method will be called when a SecretQuestionCredentialProvider is asked for:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SecretQuestionCredentialProviderFactory</span> <span class="directive">implements</span> CredentialProviderFactory&lt;SecretQuestionCredentialProvider&gt; {
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> PROVIDER_ID =  <span class="string"><span class="delimiter">&quot;</span><span class="content">secret-question</span><span class="delimiter">&quot;</span></span>;
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> getId() {
+        <span class="keyword">return</span> PROVIDER_ID;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CredentialProvider create(KeycloakSession session) {
+        <span class="keyword">return</span> <span class="keyword">new</span> SecretQuestionCredentialProvider(session);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The CredentialProvider interface takes a generic parameter that extends a CredentialModel. In our case we to use the SecretQuestionCredentialModel we created:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SecretQuestionCredentialProvider</span> <span class="directive">implements</span> CredentialProvider&lt;SecretQuestionCredentialModel&gt;, CredentialInputValidator {
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> logger = <span class="predefined-type">Logger</span>.getLogger(SecretQuestionCredentialProvider.class);
+
+    <span class="directive">protected</span> KeycloakSession session;
+
+    <span class="directive">public</span> SecretQuestionCredentialProvider(KeycloakSession session) {
+        <span class="local-variable">this</span>.session = session;
+    }
+
+    <span class="directive">private</span> UserCredentialStore getCredentialStore() {
+        <span class="keyword">return</span> session.userCredentialManager();
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We also want to implement the CredentialInputValidator interface, as this allows Keycloak to know that this provider can also be used to validate a
+credential for an Authenticator. For the CredentialProvider interface, the first method that needs to be implemented is the <code>getType()</code> method. This will simply
+return the `SecretQuestionCredentialModel&#8217;s TYPE String:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="predefined-type">String</span> getType() {
+    <span class="keyword">return</span> SecretQuestionCredentialModel.TYPE;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The second method is to create a <code>SecretQuestionCredentialModel</code> from a <code>CredentialModel</code>. For this method we simply call the existing static method
+from <code>SecretQuestionCredentialModel</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> SecretQuestionCredentialModel getCredentialFromModel(CredentialModel model) {
+    <span class="keyword">return</span> SecretQuestionCredentialModel.createFromCredentialModel(model);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, we have the methods to create a credential and delete a credential. These methods call the KeycloakSession&#8217;s <code>userCredentialManager</code>, which
+is responsible for knowing where to read or write the credential, for example local storage or federated storage.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CredentialModel createCredential(RealmModel realm, UserModel user, SecretQuestionCredentialModel credentialModel) {
+    <span class="keyword">if</span> (credentialModel.getCreatedDate() == <span class="predefined-constant">null</span>) {
+        credentialModel.setCreatedDate(<span class="predefined-type">Time</span>.currentTimeMillis());
+    }
+    <span class="keyword">return</span> getCredentialStore().createCredential(realm, user, credentialModel);
+}
+
+<span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> deleteCredential(RealmModel realm, UserModel user, <span class="predefined-type">String</span> credentialId) {
+    getCredentialStore().removeStoredCredential(realm, user, credentialId);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For the CredentialInputValidator, the main method to implement is the <code>isValid</code>, which tests whether a credential is valid for a
+given user in a given realm. This is the method that is called by the Authenticator when it seeks to validate the user&#8217;s input. Here we
+simply need to check that the input String is the one recorded in the Credential:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">boolean</span> isValid(RealmModel realm, UserModel user, CredentialInput input) {
+    <span class="keyword">if</span> (!(input <span class="keyword">instanceof</span> UserCredentialModel)) {
+        logger.debug(<span class="string"><span class="delimiter">&quot;</span><span class="content">Expected instance of UserCredentialModel for CredentialInput</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }
+    <span class="keyword">if</span> (!input.getType().equals(getType())) {
+        <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }
+    <span class="predefined-type">String</span> challengeResponse = input.getChallengeResponse();
+    <span class="keyword">if</span> (challengeResponse == <span class="predefined-constant">null</span>) {
+        <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }
+    CredentialModel credentialModel = getCredentialStore().getStoredCredentialById(realm, user, input.getCredentialId());
+    SecretQuestionCredentialModel sqcm = getCredentialFromModel(credentialModel);
+    <span class="keyword">return</span> sqcm.getSecretQuestionSecretData().getAnswer().equals(challengeResponse);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The other two methods to implement are a test if the CredentialProvider supports the given credential type and a test to check
+if the credential type is configured for a given user. For our case, the latter test simply means checking if the user has a credential
+of the SECRET_QUESTION type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">boolean</span> supportsCredentialType(<span class="predefined-type">String</span> credentialType) {
+    <span class="keyword">return</span> getType().equals(credentialType);
+}
+
+<span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">boolean</span> isConfiguredFor(RealmModel realm, UserModel user, <span class="predefined-type">String</span> credentialType) {
+    <span class="keyword">if</span> (!supportsCredentialType(credentialType)) <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    <span class="keyword">return</span> !getCredentialStore().getStoredCredentialsByType(realm, user, credentialType).isEmpty();
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="implementing-an-authenticator"><a class="anchor" href="#implementing-an-authenticator"></a>Implementing an Authenticator</h4>
+<div class="paragraph">
+<p>When implementing an authenticator that uses Credentials to authenticate a user, you should have the authenticator implement
+the CredentialValidator interface. This interfaces takes a class extending a CredentialProvider as a parameter, and will
+allow Keycloak to directly call the methods from the CredentialProvider. The only method that needs to be implemented is
+<code>getCredentialProvider</code> method, which in our example allows the SecretQuestionAuthenticator to retrieve the SecretQuestionCredentialProvider:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> SecretQuestionCredentialProvider getCredentialProvider(KeycloakSession session) {
+    <span class="keyword">return</span> (SecretQuestionCredentialProvider)session.getProvider(CredentialProvider.class, SecretQuestionCredentialProviderFactory.PROVIDER_ID);
+}</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>When implementing the Authenticator interface, the first method that needs to be implemented is the requiresUser() method.
 For our example, this method must return true as we need to validate the secret question associated with the user.
@@ -2952,24 +3341,21 @@ This example, however, is validating a specific credential of a specific user.</
 </div>
 <div class="paragraph">
 <p>The next method to implement is the configuredFor() method.
-This method is responsible for determining if the user is configured for this particular authenticator.
-For this example, we need to check if the answer to the secret question has been set up by the user or not.
-In our case we are storing this information, hashed, within a UserCredentialValueModel within the UserModel (just like passwords are stored).  Here&#8217;s how we do this very simple check:</p>
+This method is responsible for determining if the user is configured for this particular authenticator. In our case,
+we can just call the method implemented in the SecretQuestionCredentialProvider</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@Override</span>
-    <span class="directive">public</span> <span class="type">boolean</span> configuredFor(KeycloakSession session, RealmModel realm, UserModel user) {
-        <span class="keyword">return</span> session.userCredentialManager().isConfiguredFor(realm, user, <span class="string"><span class="delimiter">&quot;</span><span class="content">SECRET_QUESTION</span><span class="delimiter">&quot;</span></span>);
-    }</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">boolean</span> configuredFor(KeycloakSession session, RealmModel realm, UserModel user) {
+    <span class="keyword">return</span> getCredentialProvider(session).isConfiguredFor(realm, user, getType(session));
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The configuredForCredentialType() call queries the user to see if it supports that credential type.</p>
-</div>
-<div class="paragraph">
-<p>The next method to implement on the Authenticator is setRequiredActions().  If configuredFor() returns false and our example authenticator is required within the flow, this method will be called.
-It is responsible for registering any required actions that must be performed by the user.
+<p>The next method to implement on the Authenticator is setRequiredActions(). If configuredFor() returns false and our example authenticator
+is required within the flow, this method will be called, but only if the associated AuthenticatorFactory&#8217;s <code>isUserSetupAllowed</code> method returns true.
+The setRequiredActions() method is responsible for registering any required actions that must be performed by the user.
 In our example, we need to register a required action that will force the user to set up the answer to the secret question.
 We will implement this required action provider later in this chapter.
 Here is the implementation of the setRequiredActions() method.</p>
@@ -2985,29 +3371,31 @@ Here is the implementation of the setRequiredActions() method.</p>
 <div class="paragraph">
 <p>Now we are getting into the meat of the Authenticator implementation.
 The next method to implement is authenticate().  This is the initial method the flow invokes when the execution is first visited.
-What we want is that if a user has answered the secret question already on their browser&#8217;s machine, then the user doesn&#8217;t have to answer the question again, making that machine "trusted".  The authenticate() method isn&#8217;t responsible for processing the secret question form.
+What we want is that if a user has answered the secret question already on their browser&#8217;s machine, then the user doesn&#8217;t
+have to answer the question again, making that machine "trusted".  The authenticate() method isn&#8217;t responsible for processing the secret question form.
 Its sole purpose is to render the page or to continue the flow.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Override</span>
-    <span class="directive">public</span> <span class="type">void</span> authenticate(AuthenticationFlowContext context) {
-        <span class="keyword">if</span> (hasCookie(context)) {
-           context.success();
-           <span class="keyword">return</span>;
-        }
-        Response challenge = context.form().createForm(<span class="string"><span class="delimiter">&quot;</span><span class="content">secret-question.ftl</span><span class="delimiter">&quot;</span></span>);
-        context.challenge(challenge);
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> authenticate(AuthenticationFlowContext context) {
+    <span class="keyword">if</span> (hasCookie(context)) {
+        context.success();
+        <span class="keyword">return</span>;
     }
+    Response challenge = context.form()
+            .createForm(<span class="string"><span class="delimiter">&quot;</span><span class="content">secret-question.ftl</span><span class="delimiter">&quot;</span></span>);
+    context.challenge(challenge);
+}
 
-    <span class="directive">protected</span> <span class="type">boolean</span> hasCookie(AuthenticationFlowContext context) {
-        Cookie cookie = context.getHttpRequest().getHttpHeaders().getCookies().get(<span class="string"><span class="delimiter">&quot;</span><span class="content">SECRET_QUESTION_ANSWERED</span><span class="delimiter">&quot;</span></span>);
-        <span class="type">boolean</span> result = cookie != <span class="predefined-constant">null</span>;
-        <span class="keyword">if</span> (result) {
-            <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Bypassing secret question because cookie is set</span><span class="delimiter">&quot;</span></span>);
-        }
-        <span class="keyword">return</span> result;
-    }</code></pre>
+<span class="directive">protected</span> <span class="type">boolean</span> hasCookie(AuthenticationFlowContext context) {
+    Cookie cookie = context.getHttpRequest().getHttpHeaders().getCookies().get(<span class="string"><span class="delimiter">&quot;</span><span class="content">SECRET_QUESTION_ANSWERED</span><span class="delimiter">&quot;</span></span>);
+    <span class="type">boolean</span> result = cookie != <span class="predefined-constant">null</span>;
+    <span class="keyword">if</span> (result) {
+        <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Bypassing secret question because cookie is set</span><span class="delimiter">&quot;</span></span>);
+    }
+    <span class="keyword">return</span> result;
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3017,8 +3405,7 @@ If that returns true, we just mark this execution&#8217;s status as SUCCESS usin
 <div class="paragraph">
 <p>If the hasCookie() method returns false, we must return a response that renders the secret question HTML form.
 AuthenticationFlowContext has a form() method that initializes a Freemarker page builder with appropriate base information needed to build the form.
-This page builder is called <code>org.keycloak.login.LoginFormsProvider</code>.
-the LoginFormsProvider.createForm() method loads a Freemarker template file from your login theme.
+This page builder is called <code>org.keycloak.login.LoginFormsProvider</code>. The LoginFormsProvider.createForm() method loads a Freemarker template file from your login theme.
 Additionally you can call the LoginFormsProvider.setAttribute() method if you want to pass additional information to the Freemarker template.
 We&#8217;ll go over this later.</p>
 </div>
@@ -3034,28 +3421,19 @@ The flow will end up invoking the action() method of our Authenticator implement
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Override</span>
-    <span class="directive">public</span> <span class="type">void</span> action(AuthenticationFlowContext context) {
-        <span class="type">boolean</span> validated = validateAnswer(context);
-        <span class="keyword">if</span> (!validated) {
-           Response challenge = context.form()
-                                 .setError(<span class="string"><span class="delimiter">&quot;</span><span class="content">badSecret</span><span class="delimiter">&quot;</span></span>)
-                                 .createForm(<span class="string"><span class="delimiter">&quot;</span><span class="content">secret-question.ftl</span><span class="delimiter">&quot;</span></span>);
-           context.failureChallenge(AuthenticationFlowError.INVALID_CREDENTIALS, challenge);
-           <span class="keyword">return</span>;
-        }
-        setCookie(context);
-        context.success();
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> action(AuthenticationFlowContext context) {
+    <span class="type">boolean</span> validated = validateAnswer(context);
+    <span class="keyword">if</span> (!validated) {
+        Response challenge =  context.form()
+                .setError(<span class="string"><span class="delimiter">&quot;</span><span class="content">badSecret</span><span class="delimiter">&quot;</span></span>)
+                .createForm(<span class="string"><span class="delimiter">&quot;</span><span class="content">secret-question.ftl</span><span class="delimiter">&quot;</span></span>);
+        context.failureChallenge(AuthenticationFlowError.INVALID_CREDENTIALS, challenge);
+        <span class="keyword">return</span>;
     }
-
-    <span class="directive">protected</span> <span class="type">boolean</span> validateAnswer(AuthenticationFlowContext context) {
-        MultivaluedMap&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; formData = context.getHttpRequest().getDecodedFormParameters();
-        <span class="predefined-type">String</span> secret = formData.getFirst(<span class="string"><span class="delimiter">&quot;</span><span class="content">secret_answer</span><span class="delimiter">&quot;</span></span>);
-        UserCredentialModel input = <span class="keyword">new</span> UserCredentialModel();
-        input.setType(<span class="string"><span class="delimiter">&quot;</span><span class="content">SECRET_QUESTION</span><span class="delimiter">&quot;</span></span>);
-        input.setValue(secret);
-        <span class="keyword">return</span> context.getSession().userCredentialManager().isValid(context.getRealm(), context.getUser(), input);
-    }</code></pre>
+    setCookie(context);
+    context.success();
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3067,21 +3445,53 @@ failureChallenge() works the same as challenge(), but it also records the failur
 <p>If validation is successful, then we set a cookie to remember that the secret question has been answered and we call AuthenticationFlowContext.success().</p>
 </div>
 <div class="paragraph">
-<p>The last thing I want to go over is the setCookie() method.
+<p>The validation itself gets the data that was received from the form, and calls the isValid method from the SecretQuestionCredentialProvider. You&#8217;ll notice
+that there&#8217;s a section of the code concerning getting the credential Id. This is because if Keycloak is configured to allow multiple types of alternative
+authenticators, or if the user could record multiple credentials of the SECRET_QUESTION type (for example if we allowed to choose from several questions,
+and we allowed the user to have answers for more than one of those questions), then Keycloak needs to know which credential is being used to log the user.
+In case there is more than one credential, Keycloak allows the user to choose during the login which credential is being used, and the information is transmitted by
+the form to the Authenticator.
+In case the form doesn&#8217;t present this information, credential id used is given by the CredentialProvider&#8217;s <code>default getDefaultCredential</code> method, which will
+return the "most preferred" credential of the correct type of the user,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">protected</span> <span class="type">boolean</span> validateAnswer(AuthenticationFlowContext context) {
+    MultivaluedMap&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; formData = context.getHttpRequest().getDecodedFormParameters();
+    <span class="predefined-type">String</span> secret = formData.getFirst(<span class="string"><span class="delimiter">&quot;</span><span class="content">secret_answer</span><span class="delimiter">&quot;</span></span>);
+    <span class="predefined-type">String</span> credentialId = context.getSelectedCredentialId();
+    <span class="keyword">if</span> (credentialId == <span class="predefined-constant">null</span> || credentialId.isEmpty()) {
+        credentialId = getCredentialProvider(context.getSession())
+                .getDefaultCredential(context.getSession(), context.getRealm(), context.getUser()).getId();
+        context.setSelectedCredentialId(credentialId);
+    }
+
+    UserCredentialModel input = <span class="keyword">new</span> UserCredentialModel(credentialId, getType(context.getSession()), secret);
+    <span class="keyword">return</span> getCredentialProvider(context.getSession()).isValid(context.getRealm(), context.getUser(), input);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The last thing to go over is the setCookie() method.
 This is an example of providing configuration for the Authenticator.
 In this case we want the max age of the cookie to be configurable.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">protected</span> <span class="type">void</span> setCookie(AuthenticationFlowContext context) {
-        AuthenticatorConfigModel config = context.getAuthenticatorConfig();
-        <span class="type">int</span> maxCookieAge = <span class="integer">60</span> * <span class="integer">60</span> * <span class="integer">24</span> * <span class="integer">30</span>; <span class="comment">// 30 days</span>
-        <span class="keyword">if</span> (config != <span class="predefined-constant">null</span>) {
-            maxCookieAge = <span class="predefined-type">Integer</span>.valueOf(config.getConfig().get(<span class="string"><span class="delimiter">&quot;</span><span class="content">cookie.max.age</span><span class="delimiter">&quot;</span></span>));
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">protected</span> <span class="type">void</span> setCookie(AuthenticationFlowContext context) {
+    AuthenticatorConfigModel config = context.getAuthenticatorConfig();
+    <span class="type">int</span> maxCookieAge = <span class="integer">60</span> * <span class="integer">60</span> * <span class="integer">24</span> * <span class="integer">30</span>; <span class="comment">// 30 days</span>
+    <span class="keyword">if</span> (config != <span class="predefined-constant">null</span>) {
+        maxCookieAge = <span class="predefined-type">Integer</span>.valueOf(config.getConfig().get(<span class="string"><span class="delimiter">&quot;</span><span class="content">cookie.max.age</span><span class="delimiter">&quot;</span></span>));
 
-        }
-        ... set the cookie ...
-    }</code></pre>
+    }
+    <span class="predefined-type">URI</span> uri = context.getUriInfo().getBaseUriBuilder().path(<span class="string"><span class="delimiter">&quot;</span><span class="content">realms</span><span class="delimiter">&quot;</span></span>).path(context.getRealm().getName()).build();
+    addCookie(context, <span class="string"><span class="delimiter">&quot;</span><span class="content">SECRET_QUESTION_ANSWERED</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>,
+            uri.getRawPath(),
+            <span class="predefined-constant">null</span>, <span class="predefined-constant">null</span>,
+            maxCookieAge,
+            <span class="predefined-constant">false</span>, <span class="predefined-constant">true</span>);
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3122,13 +3532,15 @@ The create() method is called by the runtime to allocate and process the Authent
 </div>
 <div class="paragraph">
 <p>The next thing the factory is responsible for is to specify the allowed requirement switches.
-While there are four different requirement types:  ALTERNATIVE, REQUIRED, OPTIONAL, DISABLED, AuthenticatorFactory implementations can limit which  requirement options are shown in the admin console when defining a flow.
-In our example, we&#8217;re going to limit our requirement options to REQUIRED and DISABLED.</p>
+While there are four different requirement types:  ALTERNATIVE, REQUIRED, CONDITIONAL, DISABLED, AuthenticatorFactory implementations can limit which
+requirement options are shown in the admin console when defining a flow. CONDITIONAL should only always be used for subflows, and unless there&#8217;s a good
+reason for doing otherwise, the requirement on a authenticator should be REQUIRED, ALTERNATIVE and DISABLED:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="directive">static</span> AuthenticationExecutionModel.Requirement<span class="type">[]</span> REQUIREMENT_CHOICES = {
             AuthenticationExecutionModel.Requirement.REQUIRED,
+            AuthenticationExecutionModel.Requirement.ALTERNATIVE,
             AuthenticationExecutionModel.Requirement.DISABLED
     };
     <span class="annotation">@Override</span>
@@ -3235,6 +3647,18 @@ This should be the question you want to ask the user.</p>
 If you called, <code>LoginFormsProvider.setAttribute("foo", "bar")</code>, the value of "foo" would be available for reference in your form as <code>${foo}</code>.
 The value of an attribute can be any Java bean as well.</p>
 </div>
+<div class="paragraph">
+<p>If you look at the top of the file, you&#8217;ll see that we are importing a template:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">&lt;<span class="error">#</span><span class="keyword">import</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">select.ftl</span><span class="delimiter">&quot;</span></span> <span class="include">as</span> <span class="include">layout</span>&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Importing this template, instead of the standard <code>template.ftl</code> allows Keycloak to display a dropdown box that allows the user to select
+a different credential or execution.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_adding_authenticator"><a class="anchor" href="#_adding_authenticator"></a>Adding Authenticator to a Flow</h4>
@@ -3267,7 +3691,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>org.keycloak.examples.authenticator.SecretQuestionRequiredActionFactory</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java">org.keycloak.examples.authenticator.SecretQuestionRequiredActionFactory</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3640,7 +4064,7 @@ or during <code>Service account</code> authentication (represented by OAuth2 <co
 <div class="sect3">
 <h4 id="default-implementations"><a class="anchor" href="#default-implementations"></a>Default implementations</h4>
 <div class="paragraph">
-<p>Actually Keycloak has 2 builtin implementations of client authentication:</p>
+<p>Actually Keycloak has 2 default implementations of client authentication:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -5840,7 +6264,7 @@ plain byte and character arrays and buffers is preferrable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-13 23:26:04 UTC
+Last updated 2019-11-14 22:37:57 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

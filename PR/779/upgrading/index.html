@@ -793,9 +793,12 @@ span.image img {
 <ul class="sectlevel2">
 <li><a href="#migrating-to-8-0-0">Migrating to 8.0.0</a>
 <ul class="sectlevel3">
+<li><a href="#new-default-hostname-provider">New Default Hostname provider</a></li>
 <li><a href="#upgrade-to-wildfly-18">Upgrade to Wildfly 18</a></li>
 <li><a href="#deploying-scripts-to-the-server">Deploying Scripts to the Server</a></li>
 <li><a href="#client-credentials-in-the-javascript-adapter">Client Credentials in the JavaScript adapter</a></li>
+<li><a href="#authentication-flows-changes">Authentication flows changes</a></li>
+<li><a href="#user-credentials-changes">User credentials changes</a></li>
 </ul>
 </li>
 <li><a href="#migrating-to-7-0-0">Migrating to 7.0.0</a>
@@ -1566,6 +1569,14 @@ to preserve compatibility with older client adapters. More details are available
 <div class="sect2">
 <h3 id="migrating-to-8-0-0"><a class="anchor" href="#migrating-to-8-0-0"></a>Migrating to 8.0.0</h3>
 <div class="sect3">
+<h4 id="new-default-hostname-provider"><a class="anchor" href="#new-default-hostname-provider"></a>New Default Hostname provider</h4>
+<div class="paragraph">
+<p>The old request and fixed hostname providers have been replaced with a new default hostname provider. The request
+and fixed hostname providers are now deprecated and it is recommended to switch to the default hostname provider as
+soon as possible.</p>
+</div>
+</div>
+<div class="sect3">
 <h4 id="upgrade-to-wildfly-18"><a class="anchor" href="#upgrade-to-wildfly-18"></a>Upgrade to Wildfly 18</h4>
 <div class="paragraph">
 <p>The Keycloak server was upgraded to use Wildfly 18 as the underlying container. This does not directly involve any
@@ -1611,6 +1622,46 @@ please take a look at <a href="https://www.keycloak.org/docs/8.0/server_developm
 <h4 id="client-credentials-in-the-javascript-adapter"><a class="anchor" href="#client-credentials-in-the-javascript-adapter"></a>Client Credentials in the JavaScript adapter</h4>
 <div class="paragraph">
 <p>In the previous releases, developers were allowed to provide client credentials to the JavaScript adapter. For now on, this capability was <strong>removed</strong>, because client-side apps are not safe to keep secrets.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="authentication-flows-changes"><a class="anchor" href="#authentication-flows-changes"></a>Authentication flows changes</h4>
+<div class="paragraph">
+<p>We did some refactoring and improvements related to the authentication flows, which requires some attention during migration.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">OPTIONAL execution requirement removed</dt>
+<dd>
+<p>Regarding migration, the most important change is removing the support for the OPTIONAL requirement from authentication executions and
+replacing it with the CONDITIONAL requirement, which allows more flexibility. The existing OPTIONAL authenticators configured in the previous version will be replaced with the CONDITIONAL subflows. These subflows will have
+the <code>Condition - User Configured</code> condition configured as first execution, and the previously OPTIONAL authenticator (for example <code>OTP Form</code>) as second execution.
+From the user&#8217;s point of view, the behavior during authentication should be same as in the previous version.</p>
+</dd>
+<dt class="hdlist1">Changes in the Java SPI</dt>
+<dd>
+<p>There are some changes in the Java Authentication SPI and Credential Provider SPI. The interface <code>Authenticator</code> is not changed,
+but you may be affected if you&#8217;re developing more advanced authenticators, which introduce some new credential types (subclasses of <code>CredentialModel</code>).
+There are changes on the <code>CredentialProvider</code> interface and introduction of some new interfaces like <code>CredentialValidator</code>. Also you
+may be affected if your authenticator supported the OPTIONAL execution requirement. It is recommended to double check the latest authentication
+examples in the server development guide for more details.</p>
+</dd>
+<dt class="hdlist1">Freemarker template changes</dt>
+<dd>
+<p>There are also some changes in the freemarker templates. You may be affected if you have your own theme with custom freemarker
+templates for login forms or some account forms, especially for the forms related to OTP. It is recommended to double check changes in
+the Freemarker templates in the latest Keycloak and align your templates according to it.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="user-credentials-changes"><a class="anchor" href="#user-credentials-changes"></a>User credentials changes</h4>
+<div class="paragraph">
+<p>We added more flexibility around storing of user credentials. Among other things, every user can have multiple credentials of the same
+type, for example multiple OTP credentials. There are some changes in the database schema in relation to that, however the credentials from
+the previous version should be automatically updated to the new format and users should be still able to login with their passwords or OTP
+credentials set in the previous version.</p>
 </div>
 </div>
 </div>
@@ -2873,7 +2924,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-13 23:26:10 UTC
+Last updated 2019-11-14 22:38:02 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
