@@ -759,8 +759,8 @@ span.image img {
 <ul class="sectlevel2">
 <li><a href="#examples-using-curl">Examples using CURL</a>
 <ul class="sectlevel3">
-<li><a href="#authenticating-with-code-client_id-code-and-code-client_secret-code">Authenticating with <code>client_id</code> and <code>client_secret</code></a></li>
-<li><a href="#authenticating-with-username-and-password">Authenticating with username and password</a></li>
+<li><a href="#authenticate-with-username-and-password">Authenticate with username and password</a></li>
+<li><a href="#authenticate-with-a-service-account">Authenticate with a service account</a></li>
 </ul>
 </li>
 <li><a href="#example-using-java">Example using Java</a></li>
@@ -1064,47 +1064,7 @@ This one is short</code></pre>
 <div class="sect2">
 <h3 id="examples-using-curl"><a class="anchor" href="#examples-using-curl"></a>Examples using CURL</h3>
 <div class="sect3">
-<h4 id="authenticating-with-code-client_id-code-and-code-client_secret-code"><a class="anchor" href="#authenticating-with-code-client_id-code-and-code-client_secret-code"></a>Authenticating with <code>client_id</code> and <code>client_secret</code></h4>
-<div class="paragraph">
-<p>Before being able to authenticate against the Admin REST API using a <code>client_id</code> and a <code>client_secret</code> you need to make sure the client is configured as it follows:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>client_id</code> is a <strong>confidential</strong> client that belongs to the realm <strong>master</strong></p>
-</li>
-<li>
-<p><code>client_id</code> has <code>Service Accounts Enabled</code> option enabled</p>
-</li>
-<li>
-<p><code>client_id</code> has a custom "Hardcoded claim" mapper</p>
-</li>
-<li>
-<p>Token Claim Name: <code>azp</code></p>
-</li>
-<li>
-<p>Claim value: <code>admin-cli</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Finally, check that <code>client_id</code> has the role 'admin' assigned in the "Service Account Roles" tab.</p>
-</div>
-<div class="paragraph">
-<p>After that, you will be able to obtain an access token for the Admin REST API using <code>client_id</code> and <code>client_secret</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">curl \
-  -d &quot;client_id=&lt;YOUR_CLIENT_ID&gt;&quot; \
-  -d &quot;client_secret=&lt;YOU_CLIENT_SECRET&gt;&quot; \
-  -d &quot;grant_type=client_credentials&quot; \
-  &quot;http://localhost:8080/auth/realms/master/protocol/openid-connect/token&quot;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="authenticating-with-username-and-password"><a class="anchor" href="#authenticating-with-username-and-password"></a>Authenticating with username and password</h4>
+<h4 id="authenticate-with-username-and-password"><a class="anchor" href="#authenticate-with-username-and-password"></a>Authenticate with username and password</h4>
 <div class="paragraph">
 <p>Obtain access token for user in the realm <code>master</code> with username <code>admin</code> and password <code>password</code>:</p>
 </div>
@@ -1142,6 +1102,50 @@ the value in the <code>Authorization</code> header of requests to the API.</p>
 <pre class="CodeRay highlight"><code data-lang="bash">curl \
   -H &quot;Authorization: bearer eyJhbGciOiJSUz...&quot; \
   &quot;http://localhost:8080/auth/admin/realms/master&quot;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="authenticate-with-a-service-account"><a class="anchor" href="#authenticate-with-a-service-account"></a>Authenticate with a service account</h4>
+<div class="paragraph">
+<p>Before being able to authenticate against the Admin REST API using a <code>client_id</code> and a <code>client_secret</code> you need to make sure the client is configured as it follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>client_id</code> is a <strong>confidential</strong> client that belongs to the realm <strong>master</strong></p>
+</li>
+<li>
+<p><code>client_id</code> has <code>Service Accounts Enabled</code> option enabled</p>
+</li>
+<li>
+<p><code>client_id</code> has a custom "Hardcoded claim" mapper</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Token Claim Name: <code>azp</code></p>
+</li>
+<li>
+<p>Claim value: <code>admin-cli</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Finally, check that <code>client_id</code> has the role 'admin' assigned in the "Service Account Roles" tab.</p>
+</div>
+<div class="paragraph">
+<p>After that, you will be able to obtain an access token for the Admin REST API using <code>client_id</code> and <code>client_secret</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">curl \
+  -d &quot;client_id=&lt;YOUR_CLIENT_ID&gt;&quot; \
+  -d &quot;client_secret=&lt;YOUR_CLIENT_SECRET&gt;&quot; \
+  -d &quot;grant_type=client_credentials&quot; \
+  &quot;http://localhost:8080/auth/realms/master/protocol/openid-connect/token&quot;</code></pre>
 </div>
 </div>
 </div>
@@ -5888,7 +5892,7 @@ plain byte and character arrays and buffers is preferrable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-13 18:27:41 UTC
+Last updated 2019-11-16 22:49:33 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

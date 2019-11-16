@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Red Hat Single Sign-On for OpenShift</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guide consists of basic information and instructions to get started with Red Hat Single Sign-On Continuous Delivery 8 for OpenShift"/><link rel="next" href="#introduction" title="Chapter 1. Introduction"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140286687234096"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On Continuous Delivery</span> <span class="productnumber">8</span></div><div><h1 class="title">Red Hat Single Sign-On for OpenShift</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On Continuous Delivery 8</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140286686624544">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Red Hat Single Sign-On for OpenShift</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guide consists of basic information and instructions to get started with Red Hat Single Sign-On Continuous Delivery 8 for OpenShift"/><link rel="next" href="#introduction" title="Chapter 1. Introduction"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140529585282352"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On Continuous Delivery</span> <span class="productnumber">8</span></div><div><h1 class="title">Red Hat Single Sign-On for OpenShift</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On Continuous Delivery 8</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140529581156176">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
 				This guide consists of basic information and instructions to get started with Red Hat Single Sign-On Continuous Delivery 8 for OpenShift
 			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="chapter"><a href="#introduction">1. Introduction</a></span><ul><li><span class="section"><a href="#what_is_red_hat_single_sign_on">1.1. What Is Red Hat Single Sign-On?</a></span></li></ul></li><li><span class="chapter"><a href="#before_you_begin">2. Before You Begin</a></span><ul><li><span class="section"><a href="#comparison_red_hat_single_sign_on_for_openshift_image_and_red_hat_single_sign_on">2.1. Comparison: Red Hat Single Sign-On for OpenShift Image and Red Hat Single Sign-On</a></span></li><li><span class="section"><a href="#version_compatibility_and_support">2.2. Version Compatibility and Support</a></span></li><li><span class="section"><a href="#deprecated_image_streams_and_application_templates_for_red_hat_single_sign_on_for_openshift">2.3. Deprecated Image Streams and Application Templates for Red Hat Single Sign-On for OpenShift</a></span></li><li><span class="section"><a href="#initial_setup">2.4. Initial Setup</a></span></li></ul></li><li><span class="chapter"><a href="#get_started">3. Get Started</a></span><ul><li><span class="section"><a href="#using_the_red_hat_single_sign_on_for_openshift_image_streams_and_application_templates">3.1. Using the Red Hat Single Sign-On for OpenShift Image Streams and Application Templates</a></span></li><li><span class="section"><a href="#Example-Deploying-SSO">3.2. Deploying the Red Hat Single Sign-On Image</a></span><ul><li><span class="section"><a href="#Preparing-SSO-Authentication-for-OpenShift-Deployment">3.2.1. Preparing the Deployment</a></span></li><li><span class="section"><a href="#deploying_the_red_hat_single_sign_on_image_using_the_application_template">3.2.2. Deploying the Red Hat Single Sign-On Image using the Application Template</a></span></li><li><span class="section"><a href="#accessing_the_administrator_console_of_the_red_hat_single_sign_on_pod">3.2.3. Accessing the Administrator Console of the Red Hat Single Sign-On Pod</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#advanced_concepts">4. Advanced Concepts</a></span><ul><li><span class="section"><a href="#requirements_and_deploying_link_xl_href_introduction_introduction_xml_passthrough_templates_passthrough_tls_termination_link_red_hat_single_sign_on_templates">4.1. Requirements and Deploying Passthrough TLS Termination Red Hat Single Sign-On Templates</a></span><ul><li><span class="section"><a href="#preparing_the_deployment">4.1.1. Preparing the Deployment</a></span></li><li><span class="section"><a href="#Configuring-Keystores">4.1.2. Creating HTTPS and JGroups Keystores, and Truststore for the Red Hat Single Sign-On Server</a></span></li><li><span class="section"><a href="#Configuring-Secrets">4.1.3. Secrets</a></span></li><li><span class="section"><a href="#deploying_the_chosen_red_hat_single_sign_on_passthrough_tls_template_via_openshift_cli">4.1.4. Deploying the Chosen Red Hat Single Sign-On Passthrough TLS Template via OpenShift CLI</a></span></li></ul></li><li><span class="section"><a href="#advanced-concepts-sso-hostname-spi-setup">4.2. Customizing the Hostname for the Red Hat Single Sign-On Server</a></span><ul><li><span class="section"><a href="#sso-connecting-to-an-external-database">4.2.1. Connecting to an external database</a></span></li></ul></li><li><span class="section"><a href="#sso-administrator-setup">4.3. Creating the Administrator Account for Red Hat Single Sign-On Server</a></span><ul><li><span class="section"><a href="#sso-admin-template-parameters">4.3.1. Creating the Administrator Account Using Template Parameters</a></span></li><li><span class="section"><a href="#sso-admin-remote-shell">4.3.2. Creating the Administrator Account via Remote Shell Session to Red Hat Single Sign-On Pod</a></span></li></ul></li><li><span class="section"><a href="#deployment_process">4.4. Deployment Process</a></span></li><li><span class="section"><a href="#SSO-Clients">4.5. Red Hat Single Sign-On Clients</a></span><ul><li><span class="section"><a href="#Auto-Man-Client-Reg">4.5.1. Automatic and Manual Red Hat Single Sign-On Client Registration Methods</a></span></li></ul></li><li><span class="section"><a href="#limitations">4.6. Limitations</a></span></li></ul></li><li><span class="chapter"><a href="#tutorials">5. Tutorials</a></span><ul><li><span class="section"><a href="#upgrading-sso-db-from-previous-version">5.1. Example Workflow: Updating Existing Database to Migrate to New Red Hat Single Sign-On for OpenShift Image Version</a></span><ul><li><span class="section"><a href="#automatic-db-migration">5.1.1. Automatic Database Migration</a></span></li><li><span class="section"><a href="#manual-db-migration">5.1.2. Manual Database Migration</a></span></li></ul></li><li><span class="section"><a href="#example_workflow_migrating_the_red_hat_single_sign_on_server_s_database_across_environments">5.2. Example Workflow: Migrating The Red Hat Single Sign-On Server’s Database Across Environments</a></span><ul><li><span class="section"><a href="#deploying_the_red_hat_single_sign_on_mysql_application_template">5.2.1. Deploying the Red Hat Single Sign-On MySQL Application Template</a></span></li><li><span class="section"><a href="#optional_creating_additional_red_hat_single_sign_on_link_xl_href_https_access_redhat_com_documentation_en_us_red_hat_single_sign_on_7_2_html_single_server_administration_guide_core_concepts_and_terms_realm_and_users_link_to_be_also_exported">5.2.2. (Optional) Creating additional Red Hat Single Sign-On realm and users to be also exported</a></span></li><li><span class="section"><a href="#sso-export-the-database">5.2.3. Export the Red Hat Single Sign-On database as a JSON file on the OpenShift pod</a></span></li><li><span class="section"><a href="#retrieve_and_import_the_exported_json_file">5.2.4. Retrieve and import the exported JSON file</a></span></li></ul></li><li><span class="section"><a href="#OSE-SSO-AUTH-TUTE">5.3. Example Workflow: Configuring OpenShift to use Red Hat Single Sign-On for Authentication</a></span><ul><li><span class="section"><a href="#configuring_red_hat_single_sign_on_credentials">5.3.1. Configuring Red Hat Single Sign-On Credentials</a></span></li><li><span class="section"><a href="#configuring_openshift_master_for_red_hat_single_sign_on_authentication">5.3.2. Configuring OpenShift Master for Red Hat Single Sign-On Authentication</a></span></li><li><span class="section"><a href="#logging_in_to_openshift">5.3.3. Logging in to OpenShift</a></span></li></ul></li><li><span class="section"><a href="#binary-builds">5.4. Example Workflow: Creating OpenShift Application from Existing Maven Binaries and Securing it Using Red Hat Single Sign-On</a></span><ul><li><span class="section"><a href="#deploy_binary_build_of_eap_6_4_7_1_jsp_service_invocation_application_and_secure_it_using_red_hat_single_sign_on">5.4.1. Deploy Binary Build of EAP 6.4 / 7.1 JSP Service Invocation Application and Secure it Using Red Hat Single Sign-On</a></span></li></ul></li><li><span class="section"><a href="#Example-EAP-Auto">5.5. Example Workflow: Automatically Registering EAP Application in Red Hat Single Sign-On with OpenID-Connect Client</a></span><ul><li><span class="section"><a href="#preparing_red_hat_single_sign_on_authentication_for_openshift_deployment">5.5.1. Preparing Red Hat Single Sign-On Authentication for OpenShift Deployment</a></span></li><li><span class="section"><a href="#preparing_the_red_hat_single_sign_on_credentials">5.5.2. Preparing the Red Hat Single Sign-On Credentials</a></span></li><li><span class="section"><a href="#deploy_the_red_hat_single_sign_on_enabled_jboss_eap_image">5.5.3. Deploy the Red Hat Single Sign-On-enabled JBoss EAP Image</a></span></li><li><span class="section"><a href="#log_in_to_the_jboss_eap_server_using_red_hat_single_sign_on">5.5.4. Log in to the JBoss EAP Server Using Red Hat Single Sign-On</a></span></li></ul></li><li><span class="section"><a href="#Example-EAP-Manual">5.6. Example Workflow: Manually Registering EAP Application in Red Hat Single Sign-On with SAML Client</a></span><ul><li><span class="section"><a href="#preparing_the_red_hat_single_sign_on_credentials_2">5.6.1. Preparing the Red Hat Single Sign-On Credentials</a></span></li><li><span class="section"><a href="#preparing_red_hat_single_sign_on_authentication_for_openshift_deployment_2">5.6.2. Preparing Red Hat Single Sign-On Authentication for OpenShift Deployment</a></span></li><li><span class="section"><a href="#modified-saml-xml">5.6.3. Modifying the <span class="strong strong"><strong>secure-saml-deployments</strong></span> File</a></span></li><li><span class="section"><a href="#configuring_saml_client_registration_in_the_application_emphasis_role_strong_web_xml_emphasis">5.6.4. Configuring SAML Client Registration in the Application <span class="strong strong"><strong>web.xml</strong></span></a></span></li><li><span class="section"><a href="#deploying_the_application">5.6.5. Deploying the Application</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#reference">6. Reference</a></span><ul><li><span class="section"><a href="#sso-artifact-repository-mirrors-section">6.1. Artifact Repository Mirrors</a></span></li><li><span class="section"><a href="#env_vars">6.2. Environment Variables</a></span><ul><li><span class="section"><a href="#information_environment_variables">6.2.1. Information Environment Variables</a></span></li><li><span class="section"><a href="#configuration_environment_variables">6.2.2. Configuration Environment Variables</a></span></li><li><span class="section"><a href="#template_variables_for_all_red_hat_single_sign_on_images">6.2.3. Template variables for all Red Hat Single Sign-On images</a></span></li><li><span class="section"><a href="#template_variables_specific_to_emphasis_role_strong_emphasis_sso_cd_mysql_emphasis_emphasis_emphasis_role_strong_emphasis_sso_cd_mysql_persistent_emphasis_emphasis_and_emphasis_role_strong_emphasis_sso_cd_x509_mysql_persistent_emphasis_emphasis">6.2.4. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-mysql</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-mysql-persistent</em></span></strong></span>, and <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-x509-mysql-persistent</em></span></strong></span></a></span></li><li><span class="section"><a href="#template_variables_specific_to_emphasis_role_strong_emphasis_sso_cd_postgresql_emphasis_emphasis_emphasis_role_strong_emphasis_sso_cd_postgresql_persistent_emphasis_emphasis_and_emphasis_role_strong_emphasis_sso_cd_x509_postgresql_persistent_emphasis_emphasis">6.2.5. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-postgresql</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-postgresql-persistent</em></span></strong></span>, and <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-x509-postgresql-persistent</em></span></strong></span></a></span></li><li><span class="section"><a href="#template_variables_specific_to_emphasis_role_strong_emphasis_sso_cd_mysql_persistent_emphasis_emphasis_emphasis_role_strong_emphasis_sso_cd_x509_mysql_persistent_emphasis_emphasis_emphasis_role_strong_emphasis_sso_cd_postgresql_persistent_emphasis_emphasis_and_emphasis_role_strong_emphasis_sso_cd_x509_postgresql_persistent_emphasis_emphasis">6.2.6. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-mysql-persistent</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-x509-mysql-persistent</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-postgresql-persistent</em></span></strong></span>, and <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-x509-postgresql-persistent</em></span></strong></span></a></span></li><li><span class="section"><a href="#template_variables_for_general_emphasis_role_strong_eap64_emphasis_and_emphasis_role_strong_eap71_emphasis_s2i_images">6.2.7. Template variables for general <span class="strong strong"><strong>eap64</strong></span> and <span class="strong strong"><strong>eap71</strong></span> S2I images</a></span></li><li><span class="section"><a href="#template_variables_specific_to_emphasis_role_strong_emphasis_eap64_sso_s2i_emphasis_emphasis_and_emphasis_role_strong_emphasis_eap71_sso_s2i_emphasis_emphasis_for_automatic_client_registration">6.2.8. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>eap64-sso-s2i</em></span></strong></span> and <span class="strong strong"><strong><span class="emphasis"><em>eap71-sso-s2i</em></span></strong></span> for automatic client registration</a></span></li><li><span class="section"><a href="#template_variables_specific_to_emphasis_role_strong_emphasis_eap64_sso_s2i_emphasis_emphasis_and_emphasis_role_strong_emphasis_eap71_sso_s2i_emphasis_emphasis_for_automatic_client_registration_with_saml_clients">6.2.9. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>eap64-sso-s2i</em></span></strong></span> and <span class="strong strong"><strong><span class="emphasis"><em>eap71-sso-s2i</em></span></strong></span> for automatic client registration with SAML clients</a></span></li></ul></li><li><span class="section"><a href="#exposed_ports">6.3. Exposed Ports</a></span></li></ul></li></ul></div><section class="chapter" id="introduction"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Introduction</h1></div></div></div><section class="section" id="what_is_red_hat_single_sign_on"><div class="titlepage"><div><div><h2 class="title">1.1. What Is Red Hat Single Sign-On?</h2></div></div></div><p>
 				Red Hat Single Sign-On is an integrated sign-on solution available as a Red Hat JBoss Middleware for OpenShift containerized image. The Red Hat Single Sign-On for OpenShift image provides an authentication server for users to centrally log in, log out, register, and manage user accounts for web applications, mobile applications, and RESTful web services.
@@ -161,27 +161,27 @@ sso-cd-x509-postgresql-persistent</pre></li><li class="listitem"><p class="simpa
 								In the <span class="strong strong"><strong>Results</strong></span> step, click the <span class="strong strong"><strong>Continue to the project overview</strong></span> link to verify the status of the deployment.
 							</li></ol></div></section></section><section class="section" id="accessing_the_administrator_console_of_the_red_hat_single_sign_on_pod"><div class="titlepage"><div><div><h3 class="title">3.2.3. Accessing the Administrator Console of the Red Hat Single Sign-On Pod</h3></div></div></div><p>
 					After the template got deployed, identify the available routes:
-				</p><pre class="programlisting language-bash">$ oc get routes</pre><div class="informaltable"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 14%; " class="col_1"/><col style="width: 14%; " class="col_2"/><col style="width: 14%; " class="col_3"/><col style="width: 14%; " class="col_4"/><col style="width: 14%; " class="col_5"/><col style="width: 14%; " class="col_6"/><col style="width: 14%; " class="col_7"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286686041152" scope="col">NAME</th><th align="left" valign="top" id="idm140286686040064" scope="col">HOST/PORT</th><th align="left" valign="top" id="idm140286686038976" scope="col">PATH</th><th align="left" valign="top" id="idm140286686037888" scope="col">SERVICES</th><th align="left" valign="top" id="idm140286686036800" scope="col">PORT</th><th align="left" valign="top" id="idm140286686035712" scope="col">TERMINATION</th><th align="left" valign="top" id="idm140286686034624" scope="col">WILDCARD</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286686041152">
+				</p><pre class="programlisting language-bash">$ oc get routes</pre><div class="informaltable"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 14%; " class="col_1"/><col style="width: 14%; " class="col_2"/><col style="width: 14%; " class="col_3"/><col style="width: 14%; " class="col_4"/><col style="width: 14%; " class="col_5"/><col style="width: 14%; " class="col_6"/><col style="width: 14%; " class="col_7"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529580751760" scope="col">NAME</th><th align="left" valign="top" id="idm140529580750672" scope="col">HOST/PORT</th><th align="left" valign="top" id="idm140529580749584" scope="col">PATH</th><th align="left" valign="top" id="idm140529580748496" scope="col">SERVICES</th><th align="left" valign="top" id="idm140529580747408" scope="col">PORT</th><th align="left" valign="top" id="idm140529580746320" scope="col">TERMINATION</th><th align="left" valign="top" id="idm140529572129744" scope="col">WILDCARD</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529580751760">
 								<p>
 									sso
 								</p>
-								</td><td align="left" valign="top" headers="idm140286686040064">
+								</td><td align="left" valign="top" headers="idm140529580750672">
 								<p>
 									sso-sso-app-demo.openshift.example.com
 								</p>
-								</td><td align="left" valign="top" headers="idm140286686038976"> </td><td align="left" valign="top" headers="idm140286686037888">
+								</td><td align="left" valign="top" headers="idm140529580749584"> </td><td align="left" valign="top" headers="idm140529580748496">
 								<p>
 									sso
 								</p>
-								</td><td align="left" valign="top" headers="idm140286686036800">
+								</td><td align="left" valign="top" headers="idm140529580747408">
 								<p>
 									&lt;all&gt;
 								</p>
-								</td><td align="left" valign="top" headers="idm140286686035712">
+								</td><td align="left" valign="top" headers="idm140529580746320">
 								<p>
 									reencrypt
 								</p>
-								</td><td align="left" valign="top" headers="idm140286686034624">
+								</td><td align="left" valign="top" headers="idm140529572129744">
 								<p>
 									None
 								</p>
@@ -332,27 +332,27 @@ Alias name: secret-key</pre><p>
 					</p><pre class="screen">$ oc new-app --template=sso-cd-x509-https \
   -p SSO_HOSTNAME="rh-sso-server.openshift.example.com"</pre></li><li class="listitem"><p class="simpara">
 						Identify the name of the route for the Red Hat Single Sign-On service.
-					</p><pre class="screen">$ oc get routes</pre><div class="informaltable"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 14%; " class="col_1"/><col style="width: 14%; " class="col_2"/><col style="width: 14%; " class="col_3"/><col style="width: 14%; " class="col_4"/><col style="width: 14%; " class="col_5"/><col style="width: 14%; " class="col_6"/><col style="width: 14%; " class="col_7"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286679135696" scope="col">NAME</th><th align="left" valign="top" id="idm140286679134608" scope="col">HOST/PORT</th><th align="left" valign="top" id="idm140286679133520" scope="col">PATH</th><th align="left" valign="top" id="idm140286679132432" scope="col">SERVICES</th><th align="left" valign="top" id="idm140286679131344" scope="col">PORT</th><th align="left" valign="top" id="idm140286679130256" scope="col">TERMINATION</th><th align="left" valign="top" id="idm140286679129168" scope="col">WILDCARD</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286679135696">
+					</p><pre class="screen">$ oc get routes</pre><div class="informaltable"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 14%; " class="col_1"/><col style="width: 14%; " class="col_2"/><col style="width: 14%; " class="col_3"/><col style="width: 14%; " class="col_4"/><col style="width: 14%; " class="col_5"/><col style="width: 14%; " class="col_6"/><col style="width: 14%; " class="col_7"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529576524944" scope="col">NAME</th><th align="left" valign="top" id="idm140529576523856" scope="col">HOST/PORT</th><th align="left" valign="top" id="idm140529576522768" scope="col">PATH</th><th align="left" valign="top" id="idm140529576521680" scope="col">SERVICES</th><th align="left" valign="top" id="idm140529572789616" scope="col">PORT</th><th align="left" valign="top" id="idm140529572788528" scope="col">TERMINATION</th><th align="left" valign="top" id="idm140529572787440" scope="col">WILDCARD</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529576524944">
 									<p>
 										sso
 									</p>
-									</td><td align="left" valign="top" headers="idm140286679134608">
+									</td><td align="left" valign="top" headers="idm140529576523856">
 									<p>
 										sso-sso-app-demo.openshift.example.com
 									</p>
-									</td><td align="left" valign="top" headers="idm140286679133520"> </td><td align="left" valign="top" headers="idm140286679132432">
+									</td><td align="left" valign="top" headers="idm140529576522768"> </td><td align="left" valign="top" headers="idm140529576521680">
 									<p>
 										sso
 									</p>
-									</td><td align="left" valign="top" headers="idm140286679131344">
+									</td><td align="left" valign="top" headers="idm140529572789616">
 									<p>
 										&lt;all&gt;
 									</p>
-									</td><td align="left" valign="top" headers="idm140286679130256">
+									</td><td align="left" valign="top" headers="idm140529572788528">
 									<p>
 										reencrypt
 									</p>
-									</td><td align="left" valign="top" headers="idm140286679129168">
+									</td><td align="left" valign="top" headers="idm140529572787440">
 									<p>
 										None
 									</p>
@@ -471,109 +471,109 @@ Added 'sso_admin' to '/opt/eap/standalone/configuration/keycloak-add-user.json',
 						Automatic Red Hat Single Sign-On client registration is determined by Red Hat Single Sign-On environment variables specific to the <span class="strong strong"><strong><span class="emphasis"><em>eap64-sso-s2i</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>eap71-sso-s2i</em></span></strong></span>, and <span class="strong strong"><strong><span class="emphasis"><em>datavirt63-secure-s2i</em></span></strong></span> templates. The Red Hat Single Sign-On credentials supplied in the template are then used to register the client to the Red Hat Single Sign-On realm during deployment of the client application.
 					</p><p>
 						The Red Hat Single Sign-On environment variables included in the <span class="strong strong"><strong><span class="emphasis"><em>eap64-sso-s2i</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>eap71-sso-s2i</em></span></strong></span>, and <span class="strong strong"><strong><span class="emphasis"><em>datavirt63-secure-s2i</em></span></strong></span> templates are:
-					</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286680042992" scope="col">Variable</th><th align="left" valign="top" id="idm140286680041904" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286680042992">
+					</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529576717168" scope="col">Variable</th><th align="left" valign="top" id="idm140529576716080" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529576717168">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>HOSTNAME_HTTP</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286680041904">
+									</td><td align="left" valign="top" headers="idm140529576716080">
 									<p>
 										Custom hostname for http service route. Leave blank for default hostname of &lt;application-name&gt;.&lt;project&gt;.&lt;default-domain-suffix&gt;
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140286680042992">
+									</td></tr><tr><td align="left" valign="top" headers="idm140529576717168">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>HOSTNAME_HTTPS</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286680041904">
+									</td><td align="left" valign="top" headers="idm140529576716080">
 									<p>
 										Custom hostname for https service route. Leave blank for default hostname of &lt;application-name&gt;.&lt;project&gt;.&lt;default-domain-suffix&gt;
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140286680042992">
+									</td></tr><tr><td align="left" valign="top" headers="idm140529576717168">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>SSO_URL</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286680041904">
+									</td><td align="left" valign="top" headers="idm140529576716080">
 									<p>
 										The Red Hat Single Sign-On web server authentication address: https://secure-sso-<span class="emphasis"><em>&lt;project-name&gt;</em></span>.<span class="emphasis"><em>&lt;hostname&gt;</em></span>/auth
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140286680042992">
+									</td></tr><tr><td align="left" valign="top" headers="idm140529576717168">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>SSO_REALM</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286680041904">
+									</td><td align="left" valign="top" headers="idm140529576716080">
 									<p>
 										The Red Hat Single Sign-On realm created for this procedure.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140286680042992">
+									</td></tr><tr><td align="left" valign="top" headers="idm140529576717168">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>SSO_USERNAME</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286680041904">
+									</td><td align="left" valign="top" headers="idm140529576716080">
 									<p>
 										The name of the <span class="emphasis"><em>realm management user</em></span>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140286680042992">
+									</td></tr><tr><td align="left" valign="top" headers="idm140529576717168">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>SSO_PASSWORD</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286680041904">
+									</td><td align="left" valign="top" headers="idm140529576716080">
 									<p>
 										The password of the user.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140286680042992">
+									</td></tr><tr><td align="left" valign="top" headers="idm140529576717168">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>SSO_PUBLIC_KEY</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286680041904">
+									</td><td align="left" valign="top" headers="idm140529576716080">
 									<p>
 										The public key generated by the realm. It is located in the <span class="strong strong"><strong>Keys</strong></span> tab of the <span class="strong strong"><strong>Realm Settings</strong></span> in the Red Hat Single Sign-On console.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140286680042992">
+									</td></tr><tr><td align="left" valign="top" headers="idm140529576717168">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>SSO_BEARER_ONLY</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286680041904">
+									</td><td align="left" valign="top" headers="idm140529576716080">
 									<p>
 										If set to <span class="strong strong"><strong>true</strong></span>, the OpenID Connect client is registered as bearer-only.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140286680042992">
+									</td></tr><tr><td align="left" valign="top" headers="idm140529576717168">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>SSO_ENABLE_CORS</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286680041904">
+									</td><td align="left" valign="top" headers="idm140529576716080">
 									<p>
 										If set to <span class="strong strong"><strong>true</strong></span>, the Red Hat Single Sign-On adapter enables Cross-Origin Resource Sharing (CORS).
 									</p>
 									</td></tr></tbody></table></div><p>
 						If the Red Hat Single Sign-On client uses the SAML protocol, the following additional variables need to be configured:
-					</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286682502656" scope="col">Variable</th><th align="left" valign="top" id="idm140286682501568" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286682502656">
+					</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529576545744" scope="col">Variable</th><th align="left" valign="top" id="idm140529576544656" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529576545744">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>SSO_SAML_KEYSTORE_SECRET</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286682501568">
+									</td><td align="left" valign="top" headers="idm140529576544656">
 									<p>
 										Secret to use for access to SAML keystore. The default is <span class="emphasis"><em>sso-app-secret</em></span>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140286682502656">
+									</td></tr><tr><td align="left" valign="top" headers="idm140529576545744">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>SSO_SAML_KEYSTORE</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286682501568">
+									</td><td align="left" valign="top" headers="idm140529576544656">
 									<p>
 										Keystore filename in the SAML keystore secret. The default is <span class="emphasis"><em>keystore.jks</em></span>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140286682502656">
+									</td></tr><tr><td align="left" valign="top" headers="idm140529576545744">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>SSO_SAML_KEYSTORE_PASSWORD</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286682501568">
+									</td><td align="left" valign="top" headers="idm140529576544656">
 									<p>
 										Keystore password for SAML. The default is <span class="emphasis"><em>mykeystorepass</em></span>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140286682502656">
+									</td></tr><tr><td align="left" valign="top" headers="idm140529576545744">
 									<p>
 										<span class="strong strong"><strong><span class="emphasis"><em>SSO_SAML_CERTIFICATE_NAME</em></span></strong></span>
 									</p>
-									</td><td align="left" valign="top" headers="idm140286682501568">
+									</td><td align="left" valign="top" headers="idm140529576544656">
 									<p>
 										Alias for keys/certificate to use for SAML. The default is <span class="emphasis"><em>jboss</em></span>.
 									</p>
@@ -1340,27 +1340,27 @@ sso-eap7-bin-demo/
 
 1 directory, 2 files</pre><div class="admonition note" id="standard-deployments-directory"><div class="admonition_header">Note</div><div><p>
 									The location of the standard deployments directory depends on the underlying base image, that was used to deploy the application. See the following table:
-								</p><div class="table" id="idm140286682326752"><p class="title"><strong>Table 5.1. Standard Location of the Deployments Directory</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th style="text-align: left; vertical-align: top; " id="idm140286682321888" scope="col">Name of the Underlying Base Image(s)</th><th style="text-align: left; vertical-align: top; " id="idm140286682320832" scope="col">Standard Location of the Deployments Directory</th></tr></thead><tbody><tr><td style="text-align: left; vertical-align: top; " headers="idm140286682321888">
+								</p><div class="table" id="idm140529574688480"><p class="title"><strong>Table 5.1. Standard Location of the Deployments Directory</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th style="text-align: left; vertical-align: top; " id="idm140529574683680" scope="col">Name of the Underlying Base Image(s)</th><th style="text-align: left; vertical-align: top; " id="idm140529574682624" scope="col">Standard Location of the Deployments Directory</th></tr></thead><tbody><tr><td style="text-align: left; vertical-align: top; " headers="idm140529574683680">
 												<p>
 													EAP for OpenShift 6.4 and 7.1
 												</p>
-												</td><td style="text-align: left; vertical-align: top; " headers="idm140286682320832">
+												</td><td style="text-align: left; vertical-align: top; " headers="idm140529574682624">
 												<p>
 													<span class="strong strong"><strong><span class="emphasis"><em>$JBOSS_HOME/standalone/deployments</em></span></strong></span>
 												</p>
-												</td></tr><tr><td style="text-align: left; vertical-align: top; " headers="idm140286682321888">
+												</td></tr><tr><td style="text-align: left; vertical-align: top; " headers="idm140529574683680">
 												<p>
 													Java S2I for OpenShift
 												</p>
-												</td><td style="text-align: left; vertical-align: top; " headers="idm140286682320832">
+												</td><td style="text-align: left; vertical-align: top; " headers="idm140529574682624">
 												<p>
 													<span class="strong strong"><strong><span class="emphasis"><em>/deployments</em></span></strong></span>
 												</p>
-												</td></tr><tr><td style="text-align: left; vertical-align: top; " headers="idm140286682321888">
+												</td></tr><tr><td style="text-align: left; vertical-align: top; " headers="idm140529574683680">
 												<p>
 													JWS for OpenShift
 												</p>
-												</td><td style="text-align: left; vertical-align: top; " headers="idm140286682320832">
+												</td><td style="text-align: left; vertical-align: top; " headers="idm140529574682624">
 												<p>
 													<span class="strong strong"><strong><span class="emphasis"><em>$JWS_HOME/webapps</em></span></strong></span>
 												</p>
@@ -1621,123 +1621,123 @@ $ oc secret new eap-jgroup-secret eapjgroups.jceks</pre></li><li class="listitem
 							Use the <span class="strong strong"><strong>Filter by keyword</strong></span> search bar to limit the list to those that match <span class="emphasis"><em>sso</em></span>. You may need to click <span class="strong strong"><strong>See all</strong></span> to show the desired application template.
 						</li><li class="listitem"><p class="simpara">
 							Select the <span class="strong strong"><strong><span class="emphasis"><em>eap71-sso-s2i</em></span></strong></span> image to list all of the deployment parameters. Include the following Red Hat Single Sign-On parameters to configure the Red Hat Single Sign-On credentials during the EAP build:
-						</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286680200016" scope="col">Variable</th><th align="left" valign="top" id="idm140286680198928" scope="col">Example Value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286680200016">
+						</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529575728208" scope="col">Variable</th><th align="left" valign="top" id="idm140529575727120" scope="col">Example Value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>APPLICATION_NAME</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>sso</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>HOSTNAME_HTTPS</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>secure-sample-jsp.eap-app-demo.openshift32.example.com</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>HOSTNAME_HTTP</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>sample-jsp.eap-app-demo.openshift32.example.com</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>SOURCE_REPOSITORY_URL</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>https://repository-example.com/developer/application</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>SSO_URL</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>https://secure-sso-sso-app-demo.openshift32.example.com/auth</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>SSO_REALM</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>eap-demo</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>SSO_USERNAME</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>eap-mgmt-user</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>SSO_PASSWORD</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>password</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>SSO_PUBLIC_KEY</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>&lt;realm-public-key&gt;</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_KEYSTORE</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>eapkeystore.jks</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_PASSWORD</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>password</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_SECRET</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>eap-ssl-secret</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_ENCRYPT_KEYSTORE</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>eapjgroups.jceks</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_ENCRYPT_PASSWORD</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>password</em></span>
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140286680200016">
+										</td></tr><tr><td align="left" valign="top" headers="idm140529575728208">
 										<p>
 											<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_ENCRYPT_SECRET</em></span></strong></span>
 										</p>
-										</td><td align="left" valign="top" headers="idm140286680198928">
+										</td><td align="left" valign="top" headers="idm140529575727120">
 										<p>
 											<span class="emphasis"><em>eap-jgroup-secret</em></span>
 										</p>
@@ -1970,1203 +1970,1203 @@ MAVEN_MIRROR_URL=http://10.0.0.1:8080/repository/internal/</pre></li><li class="
 					During application build, you will notice that Maven dependencies are pulled from the repository manager, instead of the default public repositories. Also, after the build is finished, you will see that the mirror is filled with all the dependencies that were retrieved and used during the build.
 				</p></div></div></section><section class="section" id="env_vars"><div class="titlepage"><div><div><h2 class="title">6.2. Environment Variables</h2></div></div></div><section class="section" id="information_environment_variables"><div class="titlepage"><div><div><h3 class="title">6.2.1. Information Environment Variables</h3></div></div></div><p>
 					The following information environment variables are designed to convey information about the image and should not be modified by the user:
-				</p><div class="table" id="idm140286678047616"><p class="title"><strong>Table 6.1. Information Environment Variables</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286678041840" scope="col">Variable Name</th><th align="left" valign="top" id="idm140286678040752" scope="col">Description</th><th align="left" valign="top" id="idm140286678039664" scope="col">Example Value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286678041840">
+				</p><div class="table" id="idm140529597607584"><p class="title"><strong>Table 6.1. Information Environment Variables</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529597601808" scope="col">Variable Name</th><th align="left" valign="top" id="idm140529597600720" scope="col">Description</th><th align="left" valign="top" id="idm140529597599632" scope="col">Example Value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529597601808">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_AUTH_OPENSHIFT</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678040752">
+								</td><td align="left" valign="top" headers="idm140529597600720">
 								<p>
 									-
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678039664">
+								</td><td align="left" valign="top" headers="idm140529597599632">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>true</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678041840">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529597601808">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_HTTPS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678040752">
+								</td><td align="left" valign="top" headers="idm140529597600720">
 								<p>
 									-
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678039664">
+								</td><td align="left" valign="top" headers="idm140529597599632">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>true</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678041840">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529597601808">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_PASSWORD_RANDOM</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678040752">
+								</td><td align="left" valign="top" headers="idm140529597600720">
 								<p>
 									-
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678039664">
+								</td><td align="left" valign="top" headers="idm140529597599632">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>true</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678041840">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529597601808">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JBOSS_IMAGE_NAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678040752">
+								</td><td align="left" valign="top" headers="idm140529597600720">
 								<p>
 									Image name, same as Name label.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678039664">
+								</td><td align="left" valign="top" headers="idm140529597599632">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>redhat-sso-7/sso72-openshift</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678041840">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529597601808">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JBOSS_IMAGE_RELEASE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678040752">
+								</td><td align="left" valign="top" headers="idm140529597600720">
 								<p>
 									Image release, same as Release label.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678039664">
+								</td><td align="left" valign="top" headers="idm140529597599632">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>dev</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678041840">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529597601808">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JBOSS_IMAGE_VERSION</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678040752">
+								</td><td align="left" valign="top" headers="idm140529597600720">
 								<p>
 									Image version, same as Version label.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678039664">
+								</td><td align="left" valign="top" headers="idm140529597599632">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>1.1</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678041840">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529597601808">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JBOSS_MODULES_SYSTEM_PKGS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678040752">
+								</td><td align="left" valign="top" headers="idm140529597600720">
 								<p>
 									-
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678039664">
+								</td><td align="left" valign="top" headers="idm140529597599632">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>org.jboss.logmanager,jdk.nashorn.api</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678041840">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529597601808">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>STI_BUILDER</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678040752">
+								</td><td align="left" valign="top" headers="idm140529597600720">
 								<p>
 									Provides OpenShift S2I support for jee project types.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678039664">
+								</td><td align="left" valign="top" headers="idm140529597599632">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>jee</em></span></strong></span>
 								</p>
 								</td></tr></tbody></table></div></div></section><section class="section" id="configuration_environment_variables"><div class="titlepage"><div><div><h3 class="title">6.2.2. Configuration Environment Variables</h3></div></div></div><p>
 					Configuration environment variables are designed to conveniently adjust the image without requiring a rebuild, and should be set by the user as desired.
-				</p><div class="table" id="conf_env_vars"><p class="title"><strong>Table 6.2. Configuration Environment Variables</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286677971872" scope="col">Variable Name</th><th align="left" valign="top" id="idm140286677970784" scope="col">Description</th><th align="left" valign="top" id="idm140286677969696" scope="col">Example Value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286677971872">
+				</p><div class="table" id="conf_env_vars"><p class="title"><strong>Table 6.2. Configuration Environment Variables</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529576665680" scope="col">Variable Name</th><th align="left" valign="top" id="idm140529576664592" scope="col">Description</th><th align="left" valign="top" id="idm140529576663504" scope="col">Example Value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_AUTH_OPENSHIFT</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Switch on client authentication for OpenShift TLS communication. The value of this parameter can be a relative distinguished name which must be contained in a presented client’s certificate. Enabling this parameter will automatically switch Jolokia into https communication mode. The default CA cert is set to <code class="literal">/var/run/secrets/kubernetes.io/serviceaccount/ca.crt</code>.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>true</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_CONFIG</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									If set uses this file (including path) as Jolokia JVM agent properties (as described in Jolokia’s <a class="link" href="https://jolokia.org/reference/html/agents.html#agents-jvm">reference manual</a>). If not set, the <code class="literal">/opt/jolokia/etc/jolokia.properties</code> file will be created using the settings as defined in this document, otherwise the rest of the settings in this document are ignored.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>/opt/jolokia/custom.properties</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_DISCOVERY_ENABLED</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Enable Jolokia discovery. Defaults to <span class="strong strong"><strong><span class="emphasis"><em>false</em></span></strong></span>.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>true</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_HOST</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Host address to bind to. Defaults to <span class="strong strong"><strong><span class="emphasis"><em>0.0.0.0</em></span></strong></span>.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>127.0.0.1</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_HTTPS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Switch on secure communication with https. By default self-signed server certificates are generated if no serverCert configuration is given in <span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_OPTS</em></span></strong></span>. <span class="emphasis"><em>NOTE: If the values is set to an empty string, https is turned <code class="literal">off</code>. If the value is set to a non empty string, https is turned <code class="literal">on</code>.</em></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>true</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_ID</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Agent ID to use ($HOSTNAME by default, which is the container id).
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>openjdk-app-1-xqlsj</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_OFF</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									If set disables activation of Jolokia (i.e. echos an empty value). By default, Jolokia is enabled. <span class="emphasis"><em>NOTE: If the values is set to an empty string, https is turned <code class="literal">off</code>. If the value is set to a non empty string, https is turned <code class="literal">on</code>.</em></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>true</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_OPTS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Additional options to be appended to the agent configuration. They should be given in the format <code class="literal">"key=value, key=value, …&lt;200b&gt; "</code>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>backlog=20</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Password for basic authentication. By default authentication is switched off.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>mypassword</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_PASSWORD_RANDOM</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									If set, a random value is generated for <span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_PASSWORD</em></span></strong></span>, and it is saved in the <span class="strong strong"><strong><span class="emphasis"><em>/opt/jolokia/etc/jolokia.pw</em></span></strong></span> file.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>true</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_PORT</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Port to use (Default: <span class="strong strong"><strong><span class="emphasis"><em>8778</em></span></strong></span>).
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>5432</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AB_JOLOKIA_USER</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									User for basic authentication. Defaults to <span class="strong strong"><strong><span class="emphasis"><em>jolokia</em></span></strong></span>.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>myusername</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>CONTAINER_CORE_LIMIT</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									A calculated core limit as described in <a class="link" href="https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt">CFS Bandwidth Control.</a>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>2</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>GC_ADAPTIVE_SIZE_POLICY_WEIGHT</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									The weighting given to the current Garbage Collection (GC) time versus previous GC times.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>90</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>GC_MAX_HEAP_FREE_RATIO</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Maximum percentage of heap free after GC to avoid shrinking.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>40</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>GC_MAX_METASPACE_SIZE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									The maximum metaspace size.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>100</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>GGC_TIME_RATIOC_MIN_HEAP_FREE_RATIO</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Minimum percentage of heap free after GC to avoid expansion.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>20</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>GC_TIME_RATIO</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Specifies the ratio of the time spent outside the garbage collection (for example, the time spent for application execution) to the time spent in the garbage collection.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>4</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JAVA_DIAGNOSTICS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Set this to get some diagnostics information to standard out when things are happening.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>true</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JAVA_INITIAL_MEM_RATIO</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									This is used to calculate a default initial heap memory based the maximal heap memory. The default is 100 which means 100% of the maximal heap is used for the initial heap size. You can skip this mechanism by setting this value to 0 in which case no <code class="literal">-Xms</code> option is added.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>100</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JAVA_MAX_MEM_RATIO</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									It is used to calculate a default maximal heap memory based on a containers restriction. If used in a Docker container without any memory constraints for the container then this option has no effect. If there is a memory constraint then <code class="literal">-Xmx</code> is set to a ratio of the container available memory as set here. The default is 50 which means 50% of the available memory is used as an upper boundary. You can skip this mechanism by setting this value to 0 in which case no <code class="literal">-Xmx</code> option is added.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>40</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JAVA_OPTS_APPEND</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Server startup options.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>-Dkeycloak.migration.action=export -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/tmp</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>MQ_SIMPLE_DEFAULT_PHYSICAL_DESTINATION</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									For backwards compatability, set to true to use <code class="literal">MyQueue</code> and <code class="literal">MyTopic</code> as physical destination name defaults instead of <code class="literal">queue/MyQueue</code> and <code class="literal">topic/MyTopic</code>.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>false</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>OPENSHIFT_KUBE_PING_LABELS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Clustering labels selector.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>app=sso-app</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>OPENSHIFT_KUBE_PING_NAMESPACE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Clustering project namespace.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>myproject</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SCRIPT_DEBUG</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									If set to <code class="literal">true</code>, ensurses that the bash scripts are executed with the <code class="literal">-x</code> option, printing the commands and their arguments as they are executed.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>true</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_ADMIN_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Password of the administrator account for the <code class="literal">master</code> realm of the Red Hat Single Sign-On server. <span class="strong strong"><strong>Required.</strong></span> If no value is specified, it is auto generated and displayed as an OpenShift Instructional message when the template is instantiated.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>adm-password</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_ADMIN_USERNAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Username of the administrator account for the <code class="literal">master</code> realm of the Red Hat Single Sign-On server. <span class="strong strong"><strong>Required.</strong></span> If no value is specified, it is auto generated and displayed as an OpenShift Instructional message when the template is instantiated.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>admin</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_HOSTNAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Custom hostname for the Red Hat Single Sign-On server. <span class="strong strong"><strong>Not set by default</strong></span>. If not set, the <code class="literal">request</code> hostname SPI provider, which uses the request headers to determine the hostname of the Red Hat Single Sign-On server is used. If set, the <code class="literal">fixed</code> hostname SPI provider, with the hostname of the Red Hat Single Sign-On server set to the provided variable value, is used. See dedicated <a class="link" href="#advanced-concepts-sso-hostname-spi-setup" title="4.2. Customizing the Hostname for the Red Hat Single Sign-On Server">Customizing Hostname for the Red Hat Single Sign-On Server</a> section for additional steps to be performed, when <span class="strong strong"><strong><span class="emphasis"><em>SSO_HOSTNAME</em></span></strong></span> variable is set.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>rh-sso-server.openshift.example.com</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_REALM</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Name of the realm to be created in the Red Hat Single Sign-On server if this environment variable is provided.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>demo</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_SERVICE_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									The password for the Red Hat Single Sign-On service user.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>mgmt-password</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_SERVICE_USERNAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									The username used to access the Red Hat Single Sign-On service. This is used by clients to create the application client(s) within the specified Red Hat Single Sign-On realm. This user is created if this environment variable is provided.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>sso-mgmtuser</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_TRUSTSTORE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									The name of the truststore file within the secret.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>truststore.jks</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_TRUSTSTORE_DIR</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									Truststore directory.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>/etc/sso-secret-volume</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_TRUSTSTORE_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									The password for the truststore and certificate.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>mykeystorepass</em></span></strong></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286677971872">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576665680">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_TRUSTSTORE_SECRET</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677970784">
+								</td><td align="left" valign="top" headers="idm140529576664592">
 								<p>
 									The name of the secret containing the truststore file. Used for <span class="emphasis"><em>sso-truststore-volume</em></span> volume.
 								</p>
-								</td><td align="left" valign="top" headers="idm140286677969696">
+								</td><td align="left" valign="top" headers="idm140529576663504">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>truststore-secret</em></span></strong></span>
 								</p>
 								</td></tr></tbody></table></div></div><p>
 					Available <a class="link" href="https://docs.openshift.com/container-platform/latest/dev_guide/templates.html#overview">application templates</a> for Red Hat Single Sign-On for OpenShift can combine the <a class="link" href="#conf_env_vars" title="Table 6.2. Configuration Environment Variables">aforementioned configuration variables</a> with common OpenShift variables (for example <span class="strong strong"><strong><span class="emphasis"><em>APPLICATION_NAME</em></span></strong></span> or <span class="strong strong"><strong><span class="emphasis"><em>SOURCE_REPOSITORY_URL</em></span></strong></span>), product specific variables (e.g. <span class="strong strong"><strong><span class="emphasis"><em>HORNETQ_CLUSTER_PASSWORD</em></span></strong></span>), or configuration variables typical to database images (e.g. <span class="strong strong"><strong><span class="emphasis"><em>MYSQL_FT_MAX_WORD_LEN</em></span></strong></span>) yet. All of these different types of configuration variables can be adjusted as desired to achieve the deployed Red Hat Single Sign-On-enabled application will align with the intended use case as much as possible. The list of configuration variables, available for each category of application templates for Red Hat Single Sign-On-enabled applications, is described below.
-				</p></section><section class="section" id="template_variables_for_all_red_hat_single_sign_on_images"><div class="titlepage"><div><div><h3 class="title">6.2.3. Template variables for all Red Hat Single Sign-On images</h3></div></div></div><div class="table" id="idm140286678261376"><p class="title"><strong>Table 6.3. Configuration Variables Available For All Red Hat Single Sign-On Images</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286678256496" scope="col">Variable</th><th align="left" valign="top" id="idm140286678255408" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286678256496">
+				</p></section><section class="section" id="template_variables_for_all_red_hat_single_sign_on_images"><div class="titlepage"><div><div><h3 class="title">6.2.3. Template variables for all Red Hat Single Sign-On images</h3></div></div></div><div class="table" id="idm140529577601312"><p class="title"><strong>Table 6.3. Configuration Variables Available For All Red Hat Single Sign-On Images</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529577596432" scope="col">Variable</th><th align="left" valign="top" id="idm140529577595344" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>APPLICATION_NAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The name for the application.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>DB_MAX_POOL_SIZE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									Sets xa-pool/max-pool-size for the configured datasource.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>DB_TX_ISOLATION</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									Sets transaction-isolation for the configured datasource.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>DB_USERNAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									Database user name.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HOSTNAME_HTTP</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									Custom hostname for http service route. Leave blank for default hostname, e.g.: <span class="emphasis"><em>&lt;application-name&gt;.&lt;project&gt;.&lt;default-domain-suffix&gt;</em></span>.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HOSTNAME_HTTPS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									Custom hostname for https service route. Leave blank for default hostname, e.g.: <span class="emphasis"><em>&lt;application-name&gt;.&lt;project&gt;.&lt;default-domain-suffix&gt;</em></span>.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_KEYSTORE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The name of the keystore file within the secret. If defined along with <span class="strong strong"><strong><span class="emphasis"><em>HTTPS_PASSWORD</em></span></strong></span> and <span class="strong strong"><strong><span class="emphasis"><em>HTTPS_NAME</em></span></strong></span>, enable HTTPS and set the SSL certificate key file to a relative path under <span class="emphasis"><em>$JBOSS_HOME/standalone/configuration</em></span>.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_KEYSTORE_TYPE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The type of the keystore file (JKS or JCEKS).
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_NAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The name associated with the server certificate (e.g. <span class="emphasis"><em>jboss</em></span>). If defined along with <span class="strong strong"><strong><span class="emphasis"><em>HTTPS_PASSWORD</em></span></strong></span> and <span class="strong strong"><strong><span class="emphasis"><em>HTTPS_KEYSTORE</em></span></strong></span>, enable HTTPS and set the SSL name.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The password for the keystore and certificate (e.g. <span class="emphasis"><em>mykeystorepass</em></span>). If defined along with <span class="strong strong"><strong><span class="emphasis"><em>HTTPS_NAME</em></span></strong></span> and <span class="strong strong"><strong><span class="emphasis"><em>HTTPS_KEYSTORE</em></span></strong></span>, enable HTTPS and set the SSL key password.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_SECRET</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The name of the secret containing the keystore file.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>IMAGE_STREAM_NAMESPACE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									Namespace in which the ImageStreams for Red Hat Middleware images are installed. These ImageStreams are normally installed in the <span class="emphasis"><em>openshift</em></span> namespace. You should only need to modify this if you’ve installed the ImageStreams in a different namespace/project.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_CLUSTER_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									JGroups cluster password.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_ENCRYPT_KEYSTORE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The name of the keystore file within the secret.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_ENCRYPT_NAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The name associated with the server certificate (e.g. <span class="emphasis"><em>secret-key</em></span>).
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_ENCRYPT_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The password for the keystore and certificate (e.g. <span class="emphasis"><em>password</em></span>).
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_ENCRYPT_SECRET</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The name of the secret containing the keystore file.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_ADMIN_USERNAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									Username of the administrator account for the <code class="literal">master</code> realm of the Red Hat Single Sign-On server. <span class="strong strong"><strong>Required.</strong></span> If no value is specified, it is auto generated and displayed as an OpenShift instructional message when the template is instantiated.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_ADMIN_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									Password of the administrator account for the <code class="literal">master</code> realm of the Red Hat Single Sign-On server. <span class="strong strong"><strong>Required.</strong></span> If no value is specified, it is auto generated and displayed as an OpenShift instructional message when the template is instantiated.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_REALM</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									Name of the realm to be created in the Red Hat Single Sign-On server if this environment variable is provided.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_SERVICE_USERNAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The username used to access the Red Hat Single Sign-On service. This is used by clients to create the application client(s) within the specified Red Hat Single Sign-On realm. This user is created if this environment variable is provided.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_SERVICE_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The password for the Red Hat Single Sign-On service user.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_TRUSTSTORE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The name of the truststore file within the secret.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_TRUSTSTORE_SECRET</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The name of the secret containing the truststore file. Used for <span class="strong strong"><strong><span class="emphasis"><em>sso-truststore-volume</em></span></strong></span> volume.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678256496">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577596432">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_TRUSTSTORE_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678255408">
+								</td><td align="left" valign="top" headers="idm140529577595344">
 								<p>
 									The password for the truststore and certificate.
 								</p>
-								</td></tr></tbody></table></div></div></section><section class="section" id="template_variables_specific_to_emphasis_role_strong_emphasis_sso_cd_mysql_emphasis_emphasis_emphasis_role_strong_emphasis_sso_cd_mysql_persistent_emphasis_emphasis_and_emphasis_role_strong_emphasis_sso_cd_x509_mysql_persistent_emphasis_emphasis"><div class="titlepage"><div><div><h3 class="title">6.2.4. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-mysql</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-mysql-persistent</em></span></strong></span>, and <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-x509-mysql-persistent</em></span></strong></span></h3></div></div></div><div class="table" id="idm140286678118240"><p class="title"><strong>Table 6.4. Configuration Variables Specific To Red Hat Single Sign-On-enabled MySQL Applications With Ephemeral Or Persistent Storage</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286678113296" scope="col">Variable</th><th align="left" valign="top" id="idm140286678112208" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286678113296">
+								</td></tr></tbody></table></div></div></section><section class="section" id="template_variables_specific_to_emphasis_role_strong_emphasis_sso_cd_mysql_emphasis_emphasis_emphasis_role_strong_emphasis_sso_cd_mysql_persistent_emphasis_emphasis_and_emphasis_role_strong_emphasis_sso_cd_x509_mysql_persistent_emphasis_emphasis"><div class="titlepage"><div><div><h3 class="title">6.2.4. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-mysql</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-mysql-persistent</em></span></strong></span>, and <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-x509-mysql-persistent</em></span></strong></span></h3></div></div></div><div class="table" id="idm140529577121920"><p class="title"><strong>Table 6.4. Configuration Variables Specific To Red Hat Single Sign-On-enabled MySQL Applications With Ephemeral Or Persistent Storage</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529577116976" scope="col">Variable</th><th align="left" valign="top" id="idm140529577115888" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529577116976">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>DB_USERNAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678112208">
+								</td><td align="left" valign="top" headers="idm140529577115888">
 								<p>
 									Database user name.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678113296">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577116976">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>DB_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678112208">
+								</td><td align="left" valign="top" headers="idm140529577115888">
 								<p>
 									Database user password.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678113296">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577116976">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>DB_JNDI</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678112208">
+								</td><td align="left" valign="top" headers="idm140529577115888">
 								<p>
 									Database JNDI name used by application to resolve the datasource, e.g. <span class="emphasis"><em>java:/jboss/datasources/mysql</em></span>.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678113296">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577116976">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>MYSQL_AIO</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678112208">
+								</td><td align="left" valign="top" headers="idm140529577115888">
 								<p>
 									Controls the <span class="emphasis"><em>innodb_use_native_aio</em></span> setting value if the native AIO is broken.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678113296">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577116976">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>MYSQL_FT_MAX_WORD_LEN</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678112208">
+								</td><td align="left" valign="top" headers="idm140529577115888">
 								<p>
 									The maximum length of the word to be included in a FULLTEXT index.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678113296">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577116976">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>MYSQL_FT_MIN_WORD_LEN</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678112208">
+								</td><td align="left" valign="top" headers="idm140529577115888">
 								<p>
 									The minimum length of the word to be included in a FULLTEXT index.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678113296">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577116976">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>MYSQL_LOWER_CASE_TABLE_NAMES</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678112208">
+								</td><td align="left" valign="top" headers="idm140529577115888">
 								<p>
 									Sets how the table names are stored and compared.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678113296">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529577116976">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>MYSQL_MAX_CONNECTIONS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678112208">
+								</td><td align="left" valign="top" headers="idm140529577115888">
 								<p>
 									The maximum permitted number of simultaneous client connections.
 								</p>
-								</td></tr></tbody></table></div></div></section><section class="section" id="template_variables_specific_to_emphasis_role_strong_emphasis_sso_cd_postgresql_emphasis_emphasis_emphasis_role_strong_emphasis_sso_cd_postgresql_persistent_emphasis_emphasis_and_emphasis_role_strong_emphasis_sso_cd_x509_postgresql_persistent_emphasis_emphasis"><div class="titlepage"><div><div><h3 class="title">6.2.5. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-postgresql</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-postgresql-persistent</em></span></strong></span>, and <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-x509-postgresql-persistent</em></span></strong></span></h3></div></div></div><div class="table" id="idm140286680482864"><p class="title"><strong>Table 6.5. Configuration Variables Specific To Red Hat Single Sign-On-enabled PostgreSQL Applications With Ephemeral Or Persistent Storage</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286680477920" scope="col">Variable</th><th align="left" valign="top" id="idm140286680476832" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286680477920">
+								</td></tr></tbody></table></div></div></section><section class="section" id="template_variables_specific_to_emphasis_role_strong_emphasis_sso_cd_postgresql_emphasis_emphasis_emphasis_role_strong_emphasis_sso_cd_postgresql_persistent_emphasis_emphasis_and_emphasis_role_strong_emphasis_sso_cd_x509_postgresql_persistent_emphasis_emphasis"><div class="titlepage"><div><div><h3 class="title">6.2.5. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-postgresql</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-postgresql-persistent</em></span></strong></span>, and <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-x509-postgresql-persistent</em></span></strong></span></h3></div></div></div><div class="table" id="idm140529576505952"><p class="title"><strong>Table 6.5. Configuration Variables Specific To Red Hat Single Sign-On-enabled PostgreSQL Applications With Ephemeral Or Persistent Storage</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529576501008" scope="col">Variable</th><th align="left" valign="top" id="idm140529576499920" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529576501008">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>DB_USERNAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680476832">
+								</td><td align="left" valign="top" headers="idm140529576499920">
 								<p>
 									Database user name.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680477920">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576501008">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>DB_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680476832">
+								</td><td align="left" valign="top" headers="idm140529576499920">
 								<p>
 									Database user password.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680477920">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576501008">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>DB_JNDI</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680476832">
+								</td><td align="left" valign="top" headers="idm140529576499920">
 								<p>
 									Database JNDI name used by application to resolve the datasource, e.g. <span class="emphasis"><em>java:/jboss/datasources/postgresql</em></span>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680477920">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576501008">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>POSTGRESQL_MAX_CONNECTIONS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680476832">
+								</td><td align="left" valign="top" headers="idm140529576499920">
 								<p>
 									The maximum number of client connections allowed. This also sets the maximum number of prepared transactions.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680477920">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576501008">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>POSTGRESQL_SHARED_BUFFERS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680476832">
+								</td><td align="left" valign="top" headers="idm140529576499920">
 								<p>
 									Configures how much memory is dedicated to PostgreSQL for caching data.
 								</p>
-								</td></tr></tbody></table></div></div></section><section class="section" id="template_variables_specific_to_emphasis_role_strong_emphasis_sso_cd_mysql_persistent_emphasis_emphasis_emphasis_role_strong_emphasis_sso_cd_x509_mysql_persistent_emphasis_emphasis_emphasis_role_strong_emphasis_sso_cd_postgresql_persistent_emphasis_emphasis_and_emphasis_role_strong_emphasis_sso_cd_x509_postgresql_persistent_emphasis_emphasis"><div class="titlepage"><div><div><h3 class="title">6.2.6. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-mysql-persistent</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-x509-mysql-persistent</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-postgresql-persistent</em></span></strong></span>, and <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-x509-postgresql-persistent</em></span></strong></span></h3></div></div></div><div class="table" id="idm140286680444336"><p class="title"><strong>Table 6.6. Configuration Variables Specific To Red Hat Single Sign-On-enabled MySQL / PostgreSQL Applications With Persistent Storage</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286680439392" scope="col">Variable</th><th align="left" valign="top" id="idm140286680438304" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286680439392">
+								</td></tr></tbody></table></div></div></section><section class="section" id="template_variables_specific_to_emphasis_role_strong_emphasis_sso_cd_mysql_persistent_emphasis_emphasis_emphasis_role_strong_emphasis_sso_cd_x509_mysql_persistent_emphasis_emphasis_emphasis_role_strong_emphasis_sso_cd_postgresql_persistent_emphasis_emphasis_and_emphasis_role_strong_emphasis_sso_cd_x509_postgresql_persistent_emphasis_emphasis"><div class="titlepage"><div><div><h3 class="title">6.2.6. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-mysql-persistent</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-x509-mysql-persistent</em></span></strong></span>, <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-postgresql-persistent</em></span></strong></span>, and <span class="strong strong"><strong><span class="emphasis"><em>sso-cd-x509-postgresql-persistent</em></span></strong></span></h3></div></div></div><div class="table" id="idm140529576467552"><p class="title"><strong>Table 6.6. Configuration Variables Specific To Red Hat Single Sign-On-enabled MySQL / PostgreSQL Applications With Persistent Storage</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529576462608" scope="col">Variable</th><th align="left" valign="top" id="idm140529576461520" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529576462608">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>VOLUME_CAPACITY</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680438304">
+								</td><td align="left" valign="top" headers="idm140529576461520">
 								<p>
 									Size of persistent storage for database volume.
 								</p>
-								</td></tr></tbody></table></div></div></section><section class="section" id="template_variables_for_general_emphasis_role_strong_eap64_emphasis_and_emphasis_role_strong_eap71_emphasis_s2i_images"><div class="titlepage"><div><div><h3 class="title">6.2.7. Template variables for general <span class="strong strong"><strong>eap64</strong></span> and <span class="strong strong"><strong>eap71</strong></span> S2I images</h3></div></div></div><div class="table" id="idm140286680427760"><p class="title"><strong>Table 6.7. Configuration Variables For EAP 6.4 and EAP 7 Applications Built Via S2I</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286680422864" scope="col">Variable</th><th align="left" valign="top" id="idm140286680421776" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr></tbody></table></div></div></section><section class="section" id="template_variables_for_general_emphasis_role_strong_eap64_emphasis_and_emphasis_role_strong_eap71_emphasis_s2i_images"><div class="titlepage"><div><div><h3 class="title">6.2.7. Template variables for general <span class="strong strong"><strong>eap64</strong></span> and <span class="strong strong"><strong>eap71</strong></span> S2I images</h3></div></div></div><div class="table" id="idm140529576451104"><p class="title"><strong>Table 6.7. Configuration Variables For EAP 6.4 and EAP 7 Applications Built Via S2I</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529576446208" scope="col">Variable</th><th align="left" valign="top" id="idm140529576445120" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>APPLICATION_NAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									The name for the application.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>ARTIFACT_DIR</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									Artifacts directory.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>AUTO_DEPLOY_EXPLODED</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									Controls whether exploded deployment content should be automatically deployed.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>CONTEXT_DIR</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									Path within Git project to build; empty for root project directory.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>GENERIC_WEBHOOK_SECRET</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									Generic build trigger secret.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>GITHUB_WEBHOOK_SECRET</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									GitHub trigger secret.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HORNETQ_CLUSTER_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									HornetQ cluster administrator password.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HORNETQ_QUEUES</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									Queue names.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HORNETQ_TOPICS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									Topic names.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HOSTNAME_HTTP</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									Custom host name for http service route. Leave blank for default host name, e.g.: <span class="emphasis"><em>&lt;application-name&gt;.&lt;project&gt;.&lt;default-domain-suffix&gt;</em></span>.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HOSTNAME_HTTPS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									Custom host name for https service route. Leave blank for default host name, e.g.: <span class="emphasis"><em>&lt;application-name&gt;.&lt;project&gt;.&lt;default-domain-suffix&gt;</em></span>.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_KEYSTORE_TYPE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									The type of the keystore file (JKS or JCEKS).
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_KEYSTORE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									The name of the keystore file within the secret. If defined along with <span class="strong strong"><strong><span class="emphasis"><em>HTTPS_PASSWORD</em></span></strong></span> and <span class="strong strong"><strong><span class="emphasis"><em>HTTPS_NAME</em></span></strong></span>, enable HTTPS and set the SSL certificate key file to a relative path under <span class="emphasis"><em>$JBOSS_HOME/standalone/configuration</em></span>.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_NAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									The name associated with the server certificate (e.g. <span class="emphasis"><em>jboss</em></span>). If defined along with <span class="strong strong"><strong><span class="emphasis"><em>HTTPS_PASSWORD</em></span></strong></span> and <span class="strong strong"><strong><span class="emphasis"><em>HTTPS_KEYSTORE</em></span></strong></span>, enable HTTPS and set the SSL name.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									The password for the keystore and certificate (e.g. <span class="emphasis"><em>mykeystorepass</em></span>). If defined along with <span class="strong strong"><strong><span class="emphasis"><em>HTTPS_NAME</em></span></strong></span> and <span class="strong strong"><strong><span class="emphasis"><em>HTTPS_KEYSTORE</em></span></strong></span>, enable HTTPS and set the SSL key password.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>HTTPS_SECRET</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									The name of the secret containing the keystore file.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>IMAGE_STREAM_NAMESPACE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									Namespace in which the ImageStreams for Red Hat Middleware images are installed. These ImageStreams are normally installed in the <span class="emphasis"><em>openshift</em></span> namespace. You should only need to modify this if you’ve installed the ImageStreams in a different namespace/project.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_CLUSTER_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									JGroups cluster password.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_ENCRYPT_KEYSTORE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									The name of the keystore file within the secret.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_ENCRYPT_NAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									The name associated with the server certificate (e.g. <span class="emphasis"><em>secret-key</em></span>).
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_ENCRYPT_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									The password for the keystore and certificate (e.g. <span class="emphasis"><em>password</em></span>).
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>JGROUPS_ENCRYPT_SECRET</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									The name of the secret containing the keystore file.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SOURCE_REPOSITORY_REF</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									Git branch/tag reference.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680422864">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576446208">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SOURCE_REPOSITORY_URL</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680421776">
+								</td><td align="left" valign="top" headers="idm140529576445120">
 								<p>
 									Git source URI for application.
 								</p>
-								</td></tr></tbody></table></div></div></section><section class="section" id="template_variables_specific_to_emphasis_role_strong_emphasis_eap64_sso_s2i_emphasis_emphasis_and_emphasis_role_strong_emphasis_eap71_sso_s2i_emphasis_emphasis_for_automatic_client_registration"><div class="titlepage"><div><div><h3 class="title">6.2.8. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>eap64-sso-s2i</em></span></strong></span> and <span class="strong strong"><strong><span class="emphasis"><em>eap71-sso-s2i</em></span></strong></span> for automatic client registration</h3></div></div></div><div class="table" id="idm140286680294464"><p class="title"><strong>Table 6.8. Configuration Variables For EAP 6.4 and EAP 7 Red Hat Single Sign-On-enabled Applications Built Via S2I</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286680289552" scope="col">Variable</th><th align="left" valign="top" id="idm140286680288464" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr></tbody></table></div></div></section><section class="section" id="template_variables_specific_to_emphasis_role_strong_emphasis_eap64_sso_s2i_emphasis_emphasis_and_emphasis_role_strong_emphasis_eap71_sso_s2i_emphasis_emphasis_for_automatic_client_registration"><div class="titlepage"><div><div><h3 class="title">6.2.8. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>eap64-sso-s2i</em></span></strong></span> and <span class="strong strong"><strong><span class="emphasis"><em>eap71-sso-s2i</em></span></strong></span> for automatic client registration</h3></div></div></div><div class="table" id="idm140529576952688"><p class="title"><strong>Table 6.8. Configuration Variables For EAP 6.4 and EAP 7 Red Hat Single Sign-On-enabled Applications Built Via S2I</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529576947776" scope="col">Variable</th><th align="left" valign="top" id="idm140529576946688" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_URL</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									Red Hat Single Sign-On server location.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_REALM</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									Name of the realm to be created in the Red Hat Single Sign-On server if this environment variable is provided.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_USERNAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									The username used to access the Red Hat Single Sign-On service. This is used to create the application client(s) within the specified Red Hat Single Sign-On realm. This should match the <span class="strong strong"><strong><span class="emphasis"><em>SSO_SERVICE_USERNAME</em></span></strong></span> specified through one of the <span class="strong strong"><strong>sso-cd-</strong></span> templates.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									The password for the Red Hat Single Sign-On service user.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_PUBLIC_KEY</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									Red Hat Single Sign-On public key. Public key is recommended to be passed into the template to avoid man-in-the-middle security attacks.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_SECRET</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									The Red Hat Single Sign-On client secret for confidential access.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_SERVICE_URL</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									Red Hat Single Sign-On service location.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_TRUSTSTORE_SECRET</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									The name of the secret containing the truststore file. Used for <span class="strong strong"><strong><span class="emphasis"><em>sso-truststore-volume</em></span></strong></span> volume.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_TRUSTSTORE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									The name of the truststore file within the secret.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_TRUSTSTORE_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									The password for the truststore and certificate.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_BEARER_ONLY</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									Red Hat Single Sign-On client access type.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_DISABLE_SSL_CERTIFICATE_VALIDATION</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									If true SSL communication between EAP and the Red Hat Single Sign-On Server is insecure (i.e. certificate validation is disabled with curl)
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286680289552">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576947776">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_ENABLE_CORS</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286680288464">
+								</td><td align="left" valign="top" headers="idm140529576946688">
 								<p>
 									Enable CORS for Red Hat Single Sign-On applications.
 								</p>
-								</td></tr></tbody></table></div></div></section><section class="section" id="template_variables_specific_to_emphasis_role_strong_emphasis_eap64_sso_s2i_emphasis_emphasis_and_emphasis_role_strong_emphasis_eap71_sso_s2i_emphasis_emphasis_for_automatic_client_registration_with_saml_clients"><div class="titlepage"><div><div><h3 class="title">6.2.9. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>eap64-sso-s2i</em></span></strong></span> and <span class="strong strong"><strong><span class="emphasis"><em>eap71-sso-s2i</em></span></strong></span> for automatic client registration with SAML clients</h3></div></div></div><div class="table" id="idm140286678957040"><p class="title"><strong>Table 6.9. Configuration Variables For EAP 6.4 and EAP 7 Red Hat Single Sign-On-enabled Applications Built Via S2I Using SAML Protocol</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286678952096" scope="col">Variable</th><th align="left" valign="top" id="idm140286678951008" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286678952096">
+								</td></tr></tbody></table></div></div></section><section class="section" id="template_variables_specific_to_emphasis_role_strong_emphasis_eap64_sso_s2i_emphasis_emphasis_and_emphasis_role_strong_emphasis_eap71_sso_s2i_emphasis_emphasis_for_automatic_client_registration_with_saml_clients"><div class="titlepage"><div><div><h3 class="title">6.2.9. Template variables specific to <span class="strong strong"><strong><span class="emphasis"><em>eap64-sso-s2i</em></span></strong></span> and <span class="strong strong"><strong><span class="emphasis"><em>eap71-sso-s2i</em></span></strong></span> for automatic client registration with SAML clients</h3></div></div></div><div class="table" id="idm140529576877104"><p class="title"><strong>Table 6.9. Configuration Variables For EAP 6.4 and EAP 7 Red Hat Single Sign-On-enabled Applications Built Via S2I Using SAML Protocol</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529576872160" scope="col">Variable</th><th align="left" valign="top" id="idm140529576871072" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529576872160">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_SAML_CERTIFICATE_NAME</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678951008">
+								</td><td align="left" valign="top" headers="idm140529576871072">
 								<p>
 									The name associated with the server certificate.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678952096">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576872160">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_SAML_KEYSTORE_PASSWORD</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678951008">
+								</td><td align="left" valign="top" headers="idm140529576871072">
 								<p>
 									The password for the keystore and certificate.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678952096">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576872160">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_SAML_KEYSTORE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678951008">
+								</td><td align="left" valign="top" headers="idm140529576871072">
 								<p>
 									The name of the keystore file within the secret.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678952096">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576872160">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_SAML_KEYSTORE_SECRET</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678951008">
+								</td><td align="left" valign="top" headers="idm140529576871072">
 								<p>
 									The name of the secret containing the keystore file.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140286678952096">
+								</td></tr><tr><td align="left" valign="top" headers="idm140529576872160">
 								<p>
 									<span class="strong strong"><strong><span class="emphasis"><em>SSO_SAML_LOGOUT_PAGE</em></span></strong></span>
 								</p>
-								</td><td align="left" valign="top" headers="idm140286678951008">
+								</td><td align="left" valign="top" headers="idm140529576871072">
 								<p>
 									Red Hat Single Sign-On logout page for SAML applications.
 								</p>
-								</td></tr></tbody></table></div></div></section></section><section class="section" id="exposed_ports"><div class="titlepage"><div><div><h2 class="title">6.3. Exposed Ports</h2></div></div></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140286678919488" scope="col">Port Number</th><th align="left" valign="top" id="idm140286678918400" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140286678919488">
+								</td></tr></tbody></table></div></div></section></section><section class="section" id="exposed_ports"><div class="titlepage"><div><div><h2 class="title">6.3. Exposed Ports</h2></div></div></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140529576839616" scope="col">Port Number</th><th align="left" valign="top" id="idm140529576838528" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140529576839616">
 							<p>
 								<span class="strong strong"><strong><span class="emphasis"><em>8443</em></span></strong></span>
 							</p>
-							</td><td align="left" valign="top" headers="idm140286678918400">
+							</td><td align="left" valign="top" headers="idm140529576838528">
 							<p>
 								HTTPS
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140286678919488">
+							</td></tr><tr><td align="left" valign="top" headers="idm140529576839616">
 							<p>
 								<span class="strong strong"><strong><span class="emphasis"><em>8778</em></span></strong></span>
 							</p>
-							</td><td align="left" valign="top" headers="idm140286678918400">
+							</td><td align="left" valign="top" headers="idm140529576838528">
 							<p>
 								Jolokia monitoring
 							</p>
-							</td></tr></tbody></table></div></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140286686624544"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+							</td></tr></tbody></table></div></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140529581156176"><h1 class="legalnotice">Legal Notice</h1><div class="para">
 				Copyright <span class="trademark"/>© 2019 Red Hat, Inc.
 			</div><div class="para">
 				Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
