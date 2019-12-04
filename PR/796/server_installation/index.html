@@ -930,7 +930,13 @@ span.image img {
 <li><a href="#implementation-details">Implementation details</a></li>
 </ul>
 </li>
-<li><a href="#monitoring-stack">Monitoring Stack</a></li>
+<li><a href="#monitoring-stack">Monitoring Stack</a>
+<ul class="sectlevel3">
+<li><a href="#installing-application-monitoring-operator">Installing Application Monitoring Operator</a></li>
+<li><a href="#graphana-dashboard">Graphana Dashboard</a></li>
+<li><a href="#prometheus-alerts">Prometheus Alerts</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -6320,7 +6326,55 @@ Here&#8217;s an example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>TBD</p>
+<p>Keycloak Operator integrates with Application Monitoring Operator providing Graphana Dashboard and Prometheus Alerts. The integration is seamless and doesn&#8217;t require any action from the user. However, Application Monitoring Operator needs to be properly installed in the cluster.</p>
+</div>
+<div class="sect3">
+<h4 id="installing-application-monitoring-operator"><a class="anchor" href="#installing-application-monitoring-operator"></a>Installing Application Monitoring Operator</h4>
+<div class="paragraph">
+<p>Prior to running Keycloak Operator it is recommended to install Application Monitoring Operator by following the <a href="https://github.com/integr8ly/application-monitoring-operator#installation">documentation</a>. After Application Monitoring Operator is up and running, you need to annotate a namespace used for Keycloak Operator installation. Here&#8217;s an example:</p>
+</div>
+<div class="listingblock">
+<div class="title">Annotating namespace for monitoring</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc label namespace &lt;namespace&gt; monitoring-key=middleware</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the installation is complete and Application Monitoring Operator, you can search for Prometheus and Graphana route in <code>application-monitoring</code> namespace:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./keycloak-images/operator-application-monitoring-routes.png" alt="operator application monitoring routes"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="graphana-dashboard"><a class="anchor" href="#graphana-dashboard"></a>Graphana Dashboard</h4>
+<div class="paragraph">
+<p>Keycloak Operator installs a pre-defined Graphana Dashboard. Here&#8217;s how it looks like:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./keycloak-images/operator-graphana-dashboard.png" alt="operator graphana dashboard"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Graphana Dashboard is likely to be changed in future releases. If you need any customizations, please clone it and adjust to your needs.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="prometheus-alerts"><a class="anchor" href="#prometheus-alerts"></a>Prometheus Alerts</h4>
+<div class="paragraph">
+<p>Keycloak Operator installs a set of pre-defined Prometheus Alerts. Here&#8217;s how they look like:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./keycloak-images/operator-prometheus-alerts.png" alt="operator prometheus alerts"></span></p>
+</div>
 </div>
 </div>
 </div>
@@ -6334,7 +6388,7 @@ Here&#8217;s an example:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-03 10:25:43 UTC
+Last updated 2019-12-04 11:18:33 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
