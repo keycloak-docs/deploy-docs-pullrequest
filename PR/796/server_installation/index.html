@@ -5595,7 +5595,7 @@ OperatorHub tab of the OpenShift administration panel (as shown in the image bel
 <p><span class="image"><img src="./keycloak-images/operator-openshift-operatorhub.png" alt="operator openshift operatorhub"></span></p>
 </div>
 <div class="paragraph">
-<p>If Keycloak Operator is not available, please navigate to <a href="https://operatorhub.io/operator/keycloak-operator" class="bare">https://operatorhub.io/operator/keycloak-operator</a>, click install button and follow the instructions on screen.</p>
+<p>If Keycloak Operator is not available, please navigate to <a href="https://operatorhub.io/operator/keycloak-operator" class="bare">https://operatorhub.io/operator/keycloak-operator</a>, click <code>Install</code> button and follow the instructions on screen.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/operator-operatorhub-install.png" alt="operator operatorhub install"></span></p>
@@ -5613,7 +5613,7 @@ For Kubernetes installation, please follow <a href="https://github.com/operator-
 </table>
 </div>
 <div class="paragraph">
-<p>Once Keycloak Operator is available in your cluster, click <code>install</code> button and follow the instruction on
+<p>Once Keycloak Operator is available in your cluster, click <code>Install</code> button and follow the instruction on
 screen.</p>
 </div>
 <div class="paragraph">
@@ -5650,7 +5650,7 @@ steps manually from <a href="https://github.com/keycloak/keycloak-operator">Gith
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>kubectl create namespace myproject</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">kubectl create namespace myproject</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -5662,7 +5662,7 @@ steps manually from <a href="https://github.com/keycloak/keycloak-operator">Gith
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>kubectl apply -f deploy/role.yaml -n myproject
+<pre class="CodeRay highlight"><code data-lang="bash">kubectl apply -f deploy/role.yaml -n myproject
 kubectl apply -f deploy/role_binding.yaml -n myproject
 kubectl apply -f deploy/service_account.yaml -n myproject</code></pre>
 </div>
@@ -5676,7 +5676,7 @@ kubectl apply -f deploy/service_account.yaml -n myproject</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>kubectl apply -f deploy/operator.yaml -n myproject</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">kubectl apply -f deploy/operator.yaml -n myproject</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -5688,7 +5688,7 @@ kubectl apply -f deploy/service_account.yaml -n myproject</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>kubectl get deployment keycloak-operator
+<pre class="CodeRay highlight"><code data-lang="bash">kubectl get deployment keycloak-operator
 NAME                READY   UP-TO-DATE   AVAILABLE   AGE
 keycloak-operator   1/1     1            1           41s</code></pre>
 </div>
@@ -5700,7 +5700,7 @@ keycloak-operator   1/1     1            1           41s</code></pre>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<code>kubectl apply</code> commands can be replaced by <code>oc create</code>.
+TIP: When deploying Keycloak Operator to an OpenShift cluster, <code>kubectl apply</code> commands can be replaced with their <code>oc create</code> counterparts.
 </td>
 </tr>
 </table>
@@ -5734,7 +5734,7 @@ keycloak-operator   1/1     1            1           41s</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>Spec</code> contains three objects (two of them are listed the above and the external database has been covered in the other paragraphs of this manual):</p>
+<p>The <code>Spec</code> contains three properties (two of them are listed the above and the external database has been covered in the other paragraphs of this manual):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5742,7 +5742,7 @@ keycloak-operator   1/1     1            1           41s</code></pre>
 <p><code>instances</code> - controls the number of instances running in HA mode</p>
 </li>
 <li>
-<p><code>externalAccess</code> - if the <code>enabled</code> flag is set to <code>True</code>, Keycloak Operator will create a Route or an Ingress (depending on available types in the cluster) for Keycloak cluster.</p>
+<p><code>externalAccess</code> - if the <code>enabled</code> flag is set to <code>True</code>, depending on the types available in the cluster Keycloak Operator will create a Route or an Ingress for Keycloak cluster.</p>
 </li>
 </ul>
 </div>
@@ -5824,11 +5824,11 @@ keycloak-operator   1/1     1            1           41s</code></pre>
       <span class="key">app</span>: <span class="string"><span class="content">sso</span></span></code></pre>
 </div>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
 Note, that <code>instanceSelector</code> needs to match labels of an existing <code>Keycloak</code> Custom Resource.
@@ -5836,8 +5836,17 @@ Note, that <code>instanceSelector</code> needs to match labels of an existing <c
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Keycloak Operator synchronizes all the changes made to the Custom Resource with a running Keycloak instance. No manual changes via Keycloak Admin Console are allowed.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Keycloak Operator synchronizes all the changes made to the Custom Resource with a running Keycloak instance. No manual changes via Keycloak Admin Console are allowed.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Once Keycloak Operator reconciles the Custom Resource, it reports the status back:</p>
@@ -5922,8 +5931,17 @@ Note, that <code>realmSelector</code> needs to match labels of an existing <code
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Keycloak Operator synchronizes all the changes made to the Custom Resource with a running Keycloak instance. No manual changes via Keycloak Admin Console are allowed.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Keycloak Operator synchronizes all the changes made to the Custom Resource with a running Keycloak instance. No manual changes via Keycloak Admin Console are allowed.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Once Keycloak Operator reconciles the Custom Resource, it reports the status back:</p>
@@ -5955,7 +5973,7 @@ Note, that <code>realmSelector</code> needs to match labels of an existing <code
 </div>
 </div>
 <div class="paragraph">
-<p>Once a Client is created, Keycloak Operator creates a Secret with <code>Client ID</code> as well as the client&#8217;s secret using the following naming pattern: <code>keycloak-client-secret-&lt;Custom Resource name&gt;</code>. Here&#8217;s an example:</p>
+<p>Once a Client is created, Keycloak Operator creates a Secret with, containing both <code>Client ID</code> as well as the client&#8217;s secret using the following naming pattern: <code>keycloak-client-secret-&lt;Custom Resource name&gt;</code>. Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
 <div class="title">`KeycloakClient&#8217;s Secret</div>
@@ -5977,7 +5995,7 @@ kind: Secret</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak Operator allows application developers to represent Keycloak Users as Custom Resources:</p>
+<p>Keycloak Users can be represented as Custom Resources in Keycloak Operator:</p>
 </div>
 <div class="listingblock">
 <div class="title"><code>KeycloakUser</code> Custom Resource</div>
@@ -6006,11 +6024,11 @@ kind: Secret</code></pre>
       <span class="key">app</span>: <span class="string"><span class="content">sso</span></span></code></pre>
 </div>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
 Note, that <code>realmSelector</code> needs to match labels of an existing <code>KeycloakRealm</code> Custom Resource.
@@ -6018,8 +6036,17 @@ Note, that <code>realmSelector</code> needs to match labels of an existing <code
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Keycloak Operator synchronizes all the changes made to the Custom Resource with a running Keycloak instance. No manual changes via Keycloak Admin Console are allowed.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Keycloak Operator synchronizes all the changes made to the Custom Resource with a running Keycloak instance. No manual changes via Keycloak Admin Console are allowed.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Once Keycloak Operator reconciles the Custom Resource, it reports the status back:</p>
@@ -6053,7 +6080,7 @@ Note, that <code>realmSelector</code> needs to match labels of an existing <code
 </div>
 </div>
 <div class="paragraph">
-<p>Once a User is created, Keycloak Operator creates a Secret with the user credentials using the
+<p>Once a User is created, Keycloak Operator creates a Secret containing both username and password using the
 following naming pattern: <code>credential-&lt;realm name&gt;-&lt;user name&gt;-&lt;namespace&gt;</code>. Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
@@ -6093,7 +6120,7 @@ type: Opaque</code></pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>The Operator uses <code>KeycloakBackup</code> Custom Resource to trigger a backup Job (or a <code>CronJob</code> in case of Periodic Backups) and reports back its status. The CR has the following structure:</p>
+<p>The Operator uses <code>KeycloakBackup</code> Custom Resource (CR) to trigger a backup Job (or a <code>CronJob</code> in case of Periodic Backups) and reports back its status. The CR has the following structure:</p>
 </div>
 <div class="listingblock">
 <div class="title"><code>KeycloakBackup</code> Custom Resource</div>
@@ -6104,9 +6131,10 @@ type: Opaque</code></pre>
   <span class="key">name</span>: <span class="string"><span class="content">&lt;CR Name&gt;</span></span>
 <span class="key">spec</span>:
   <span class="key">aws</span>:
-    <span class="comment"># Optional - used only for Periodic Backups</span>
+    <span class="comment"># Optional - used only for Periodic Backups.</span>
+    <span class="comment"># Follows usual crond syntax (e.g. use &quot;0 1 * * *&quot;) to perform the backup every day at 1 AM.</span>
     <span class="key">schedule</span>: <span class="string"><span class="content">&lt;Cron Job Schedule&gt;</span></span>
-    <span class="comment"># Requred - used to obtain credentials for storing backup in S3</span>
+    <span class="comment"># Required - the name of the secret containing the credentials to access the S3 storage</span>
     <span class="key">credentialsSecretName</span>: <span class="string"><span class="content">&lt;A Secret containing S3 credentials&gt;</span></span></code></pre>
 </div>
 </div>
@@ -6124,12 +6152,20 @@ type: Opaque</code></pre>
   <span class="key">AWS_SECRET_ACCESS_KEY</span>: <span class="string"><span class="content">&lt;AWS Secret Key&gt;</span></span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>The above secret name needs to match the one referred in the <code>KeycloakBackup</code> Custom Resource.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The above secret name needs to match the one referred in the <code>KeycloakBackup</code> Custom Resource.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Once the <code>KeycloakBackup</code> Custom Resource is created, Keycloak Operator will create a corresponding <code>Job</code>
-responsible for backing up Postgresql database. The backup status will be reported in the status field.
+<p>Once the <code>KeycloakBackup</code> Custom Resource is created, Keycloak Operator will create a corresponding Job to back up the PostgreSQL database. The status of the backup is reported in the <code>status</code> field.
 Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
@@ -6161,7 +6197,22 @@ Here&#8217;s an example:</p>
 <div class="sect3">
 <h4 id="backups-to-aws-s3"><a class="anchor" href="#backups-to-aws-s3"></a>Backups to AWS S3</h4>
 <div class="paragraph">
-<p>In order to create Backups uploaded to S3 storage, you need to create a <code>KeycloakBackup</code> Custom Resource with <code>aws</code> sub-properties. The <code>credentialsSecretName</code> field is required and needs to contain a valid reference to a <code>Secret</code> containing AWS S3 credentials. If the <code>schedule</code> contains valid <code>CronJob</code> schedule definition, the Operator will backup your data periodically.</p>
+<p>In order to create Backups uploaded to S3 storage, you need to create a <code>KeycloakBackup</code> Custom Resource with <code>aws</code> sub-properties.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The <code>credentialsSecretName</code> field is required and needs to contain a valid reference to a <code>Secret</code> containing AWS S3 credentials.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If the <code>schedule</code> contains valid <code>CronJob</code> schedule definition, the Operator will backup your data periodically.</p>
 </div>
 </div>
 <div class="sect3">
@@ -6186,7 +6237,7 @@ Here&#8217;s an example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>It is a good practice to create a corresponding <code>PersistentVolume</code> for the backups upfront and use <code>claimRef</code> to reserve it only for <code>PersistentVolumeClaim</code> created by the Keycloak Operator (see <a href="https://docs.okd.io/3.6/dev_guide/persistent_volumes.html#persistent-volumes-volumes-and-claim-prebinding">OKD manual for more details</a>).</p>
+<p>It is a good practice to create a corresponding <code>PersistentVolume</code> for the upcoming backups upfront and use <code>claimRef</code> to reserve it only for <code>PersistentVolumeClaim</code> created by the Keycloak Operator (see <a href="https://docs.okd.io/3.6/dev_guide/persistent_volumes.html#persistent-volumes-volumes-and-claim-prebinding">OKD manual for more details</a>).</p>
 </div>
 </div>
 <div class="sect3">
@@ -6258,7 +6309,7 @@ This is not implemented!
 <div class="ulist">
 <ul>
 <li>
-<p>POSTGRES_EXTERNAL_ADDRESS - an IP address (or a Hostname) or the external database. This address needs to be resolvable from Kubernetes cluster perspective.</p>
+<p>POSTGRES_EXTERNAL_ADDRESS - an IP address (or a Hostname) of the external database. This address needs to be resolvable from the perspective of a Kubernetes cluster.</p>
 </li>
 <li>
 <p>POSTGRES_EXTERNAL_PORT - (Optional) A database port.</p>
@@ -6313,7 +6364,7 @@ Here&#8217;s an example:</p>
 <div class="sect3">
 <h4 id="implementation-details"><a class="anchor" href="#implementation-details"></a>Implementation details</h4>
 <div class="paragraph">
-<p>Keycloak Operator allows you to use an external Postgresql database by modifying <code>keycloak-postgresql</code> Endpoints object. Typically, this object is maintained by Kubernetes, however it might be used to connect to an external service. See <a href="https://docs.openshift.com/container-platform/3.11/dev_guide/integrating_external_services.html">OpenShift manual</a> for more details.</p>
+<p>Keycloak Operator allows you to use an external Postgresql database by modifying <code>&lt;Keycloak Custom Resource Name&gt;-postgresql</code> Endpoints object. Typically, this object is maintained by Kubernetes, however it might be used to connect to an external service. See <a href="https://docs.openshift.com/container-platform/3.11/dev_guide/integrating_external_services.html">OpenShift manual</a> for more details.</p>
 </div>
 </div>
 </div>
@@ -6331,7 +6382,7 @@ Here&#8217;s an example:</p>
 <div class="sect3">
 <h4 id="installing-application-monitoring-operator"><a class="anchor" href="#installing-application-monitoring-operator"></a>Installing Application Monitoring Operator</h4>
 <div class="paragraph">
-<p>Prior to running Keycloak Operator it is recommended to install Application Monitoring Operator by following the <a href="https://github.com/integr8ly/application-monitoring-operator#installation">documentation</a>. After Application Monitoring Operator is up and running, you need to annotate a namespace used for Keycloak Operator installation. Here&#8217;s an example:</p>
+<p>Prior to running Keycloak Operator it is recommended to install Application Monitoring Operator by following the <a href="https://github.com/integr8ly/application-monitoring-operator#installation">documentation</a>. After Application Monitoring Operator is up and running, you need to annotate the namespace used for Keycloak Operator installation. Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
 <div class="title">Annotating namespace for monitoring</div>
@@ -6340,7 +6391,7 @@ Here&#8217;s an example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Once the installation is complete and Application Monitoring Operator, you can search for Prometheus and Graphana route in <code>application-monitoring</code> namespace:</p>
+<p>Once the Application Monitoring Operator is installed and running, also the corresponding namespace is annotated for monitoring, you can search for Prometheus and Graphana route in <code>application-monitoring</code> namespace:</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/operator-application-monitoring-routes.png" alt="operator application monitoring routes"></span></p>
@@ -6388,7 +6439,7 @@ Graphana Dashboard is likely to be changed in future releases. If you need any c
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-04 11:18:33 UTC
+Last updated 2019-12-06 07:27:18 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
