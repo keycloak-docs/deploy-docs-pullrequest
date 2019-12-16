@@ -9703,6 +9703,11 @@ For this mapper implementation, there is always a one-to-one mapping (one LDAP a
 <p>This allows you to specify that the full name of the user, which is saved in some LDAP attribute (usually <code>cn</code> ) will be mapped to <code>firstName</code> and <code>lastname</code> attributes in the Keycloak database.
 Having <code>cn</code> to contain full name of user is a common case for some LDAP deployments.</p>
 </dd>
+<dt class="hdlist1">Hardcoded Attribute Mapper</dt>
+<dd>
+<p>This mapper adds a hardcoded attribute value to each Keycloak user linked with LDAP.
+This mapper can also force the values for the <code>enabled</code> or <code>emailVerified</code> user properties.</p>
+</dd>
 <dt class="hdlist1">Role Mapper</dt>
 <dd>
 <p>This allows you to configure role mappings from LDAP into Keycloak role mappings.
@@ -10537,7 +10542,7 @@ implement your own provider. See the <a href="https://www.keycloak.org/docs/9.0/
 <td class="content">
 There is at most one vault provider active per Keycloak instance
 at any given time, and the vault provider in each instance within the cluster
-have to be configured consistently.
+has to be configured consistently.
 </td>
 </tr>
 </table>
@@ -10591,7 +10596,7 @@ and users can create and manage the store contents using either the <code>elytro
 </div>
 <div class="paragraph">
 <p>To use this provider, you have to declare the <code>elytron-cs-keystore</code> in the <code>keycloak-server</code> subsystem and set the location
-and master secret of the keystore that was created by Elytron. An example of the minimal configuration for the provider is shown bellow:</p>
+and master secret of the keystore that was created by Elytron. An example of the minimal configuration for the provider follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10607,7 +10612,7 @@ and master secret of the keystore that was created by Elytron. An example of the
 </div>
 </div>
 <div class="paragraph">
-<p>If the underlying keystore has a format other than <code>JCEKS</code>, this has to be informed using the <code>keyStoreType</code>:</p>
+<p>If the underlying keystore has a format other than <code>JCEKS</code>, this format has to be informed using the <code>keyStoreType</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10657,11 +10662,11 @@ if the Keycloak server runs on WildFly/JBoss EAP.
 <div class="sect2">
 <h3 id="key-resolvers"><a class="anchor" href="#key-resolvers"></a>Key Resolvers</h3>
 <div class="paragraph">
-<p>All built-in providers support the configuration of one or more key resolvers. A key resolver is essentially implements
+<p>All built-in providers support the configuration of one or more key resolvers. A key resolver essentially implements
 the algorithm or strategy for combining the realm name with the key (as obtained from the <code>${vault.key}</code> expression} into
 the final entry name that will be used to retrieve the secret from the vault. The <code>keyResolvers</code> property is used to configure
 the resolvers that are to be used by the provider. The value is a comma-separated list of resolver names. An example of
-configuration for the <code>files-plaintext</code> provider can be seen bellow:</p>
+configuration for the <code>files-plaintext</code> provider follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10677,7 +10682,7 @@ configuration for the <code>files-plaintext</code> provider can be seen bellow:<
 </div>
 </div>
 <div class="paragraph">
-<p>The resolvers are executed in the same order they are declared in the configuration. For each resolver, the final entry
+<p>The resolvers are executed in the same order that they are declared in the configuration. For each resolver, the final entry
 name produced by the resolver that combines the realm with the vault key is used to search for the secret in the vault.
 If a secret is found, it is immediately returned. If not, the next resolver is used and this continues until a non-empty
 secret is found or all resolvers have been tried, in which case an empty secret is returned. In the example above, first
@@ -10686,7 +10691,7 @@ If not, then the <code>KEY_ONLY</code> resolver is used. Again, if an entry is f
 returned. If not, an empty secret is returned since there are no more resolvers to be used.</p>
 </div>
 <div class="paragraph">
-<p>A list of the currently available resolvers is described bellow:</p>
+<p>A list of the currently available resolvers follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -10699,12 +10704,12 @@ realm or key are escaped by another underscore character. So if the realm is cal
 combined key will be <code>master__realm_smtp__key</code>.</p>
 </li>
 <li>
-<p><code>REALM_FILESEPARATOR_KEY</code>: the realm and key are combined using the platform file separator character. This is useful in situaions
-with the keys are grouped by realm using a directory structure.</p>
+<p><code>REALM_FILESEPARATOR_KEY</code>: the realm and key are combined using the platform file separator character. This is useful in situations
+where the keys are grouped by realm using a directory structure.</p>
 </li>
 <li>
-<p><code>FACTORY_PROVIDED</code>: the realm and key are combined using the <code>VaultKeyResolver</code> that is provided by the vault provider factory. This
-allows for the creation of a custom key resolver by extending an existing factory and implementing the <code>getFactoryResolver</code> method.</p>
+<p><code>FACTORY_PROVIDED</code>: the realm and key are combined using the <code>VaultKeyResolver</code> that is provided by the vault provider factory,
+allowing the creation of a custom key resolver by extending an existing factory and implementing the <code>getFactoryResolver</code> method.</p>
 </li>
 </ul>
 </div>
@@ -10713,7 +10718,7 @@ allows for the creation of a custom key resolver by extending an existing factor
 </div>
 <div class="paragraph">
 <p>The <code>FACTORY_PROVIDED</code> resolver provides a hook that can be used to implement a custom resolver by extending the provider
-factory of choice and overriding the <code>getFactoryResolver</code> method so it return the custom resolver. For example, if you want
+factory of choice and overriding the <code>getFactoryResolver</code> method so it returns the custom resolver. For example, if you want
 to use the <code>elytron-cs-keystore</code> provider but none of the built-in resolvers match the format used in your keystore, you
 can extend the `ElytronCSKeystoreProvider and implement the getFactoryResolver method:</p>
 </div>
@@ -10740,7 +10745,7 @@ can extend the `ElytronCSKeystoreProvider and implement the getFactoryResolver m
 like <code>master_realm</mark>##smtp_key</code>, for example. This factory must then be installed just like any custom provider.</p>
 </div>
 <div class="paragraph">
-<p>Note that the custom factory must override both the <code>getFactoryResolver</code> and <code>getId</code> methods. The second is needed so that
+<p>Note that the custom factory must override both the <code>getFactoryResolver</code> and <code>getId</code> methods. The second method is needed so that
 we can properly configure the custom factory in Keycloak.</p>
 </div>
 <div class="paragraph">
@@ -14001,7 +14006,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-04 19:21:37 UTC
+Last updated 2019-12-16 19:25:16 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

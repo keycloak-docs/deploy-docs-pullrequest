@@ -4852,12 +4852,11 @@ org.keycloak.examples.federation.properties.FilePropertiesStorageFactory</pre>
 
     <span class="annotation">@Override</span>
     <span class="directive">public</span> <span class="type">boolean</span> isValid(RealmModel realm, UserModel user, CredentialInput input) {
-        <span class="keyword">if</span> (!supportsCredentialType(input.getType()) || !(input <span class="keyword">instanceof</span> UserCredentialModel)) <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+        <span class="keyword">if</span> (!supportsCredentialType(input.getType())) <span class="keyword">return</span> <span class="predefined-constant">false</span>;
 
-        UserCredentialModel cred = (UserCredentialModel)input;
         <span class="predefined-type">String</span> password = properties.getProperty(user.getUsername());
         <span class="keyword">if</span> (password == <span class="predefined-constant">null</span>) <span class="keyword">return</span> <span class="predefined-constant">false</span>;
-        <span class="keyword">return</span> password.equals(cred.getValue());
+        <span class="keyword">return</span> password.equals(input.getChallengeResponse());
     }</code></pre>
 </div>
 </div>
@@ -6209,7 +6208,7 @@ before upgrading Keycloak. This will remove linked local imported copies of any 
 <div class="ulist">
 <ul>
 <li>
-<p>To prevent a secret from leaking across realms, you may want to isolate or limit what secrets can be retrieved by a realm.
+<p>To prevent a secret from leaking across realms, you may want to isolate or limit the secrets that can be retrieved by a realm.
 In that case, your provider should take into account the realm name when looking up secrets, for example by prefixing
 entries with the realm name. For example, an expression <code>${vault.key}</code> would then evaluate generally to different entry
 names, depending on whether it was used in a realm <em>A</em> or realm <em>B</em>. To differentiate between realms, the realm needs to
@@ -6272,7 +6271,7 @@ plain byte and character arrays and buffers is preferrable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-04 19:21:41 UTC
+Last updated 2019-12-16 19:25:21 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
