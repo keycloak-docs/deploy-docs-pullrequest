@@ -1583,7 +1583,7 @@ to preserve compatibility with older client adapters. More details are available
 There were some issues with this approach and we did the refactoring in the Authentication SPI, which means that this is not considered
 valid anymore. If ALTERNATIVE and REQUIRED executions are configured at the same level, the ALTERNATIVE executions are considered disabled.
 So when migrating to the newest version, your existing authentication flows will be automatically migrated preserved the same behavior as existed in the previous version.
-If they contain ALTERNATIVE executions after some REQUIRED executions, then the ALTERNATIVE executions will be added to the separate REQUIRED subflow. This
+If they contain ALTERNATIVE executions at the same level as some REQUIRED executions, then the ALTERNATIVE executions will be added to the separate REQUIRED subflow. This
 should ensure same/similar behavior of the particular authentication flow as in the previous version. We always recommend
 to doublecheck the configuration of your authentication flow and test it to doublecheck that everything works as expected.
 This recommendation is true in particular if you have some more customized authentication flows with custom authenticator implementations.</p>
@@ -2950,7 +2950,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-16 08:30:33 UTC
+Last updated 2019-12-16 19:32:13 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
