@@ -4852,12 +4852,11 @@ org.keycloak.examples.federation.properties.FilePropertiesStorageFactory</pre>
 
     <span class="annotation">@Override</span>
     <span class="directive">public</span> <span class="type">boolean</span> isValid(RealmModel realm, UserModel user, CredentialInput input) {
-        <span class="keyword">if</span> (!supportsCredentialType(input.getType()) || !(input <span class="keyword">instanceof</span> UserCredentialModel)) <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+        <span class="keyword">if</span> (!supportsCredentialType(input.getType())) <span class="keyword">return</span> <span class="predefined-constant">false</span>;
 
-        UserCredentialModel cred = (UserCredentialModel)input;
         <span class="predefined-type">String</span> password = properties.getProperty(user.getUsername());
         <span class="keyword">if</span> (password == <span class="predefined-constant">null</span>) <span class="keyword">return</span> <span class="predefined-constant">false</span>;
-        <span class="keyword">return</span> password.equals(cred.getValue());
+        <span class="keyword">return</span> password.equals(input.getChallengeResponse());
     }</code></pre>
 </div>
 </div>
@@ -6264,7 +6263,7 @@ plain byte and character arrays and buffers is preferrable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-01 19:18:18 UTC
+Last updated 2019-12-16 08:30:27 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

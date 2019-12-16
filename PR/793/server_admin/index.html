@@ -9701,6 +9701,11 @@ For this mapper implementation, there is always a one-to-one mapping (one LDAP a
 <p>This allows you to specify that the full name of the user, which is saved in some LDAP attribute (usually <code>cn</code> ) will be mapped to <code>firstName</code> and <code>lastname</code> attributes in the Keycloak database.
 Having <code>cn</code> to contain full name of user is a common case for some LDAP deployments.</p>
 </dd>
+<dt class="hdlist1">Hardcoded Attribute Mapper</dt>
+<dd>
+<p>This mapper adds a hardcoded attribute value to each Keycloak user linked with LDAP.
+This mapper can also force the values for the <code>enabled</code> or <code>emailVerified</code> user properties.</p>
+</dd>
 <dt class="hdlist1">Role Mapper</dt>
 <dd>
 <p>This allows you to configure role mappings from LDAP into Keycloak role mappings.
@@ -13805,7 +13810,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-01 19:18:14 UTC
+Last updated 2019-12-16 08:30:23 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
