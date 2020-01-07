@@ -782,7 +782,7 @@ span.image img {
 <li><a href="#_create-new-user">Creating New Users</a></li>
 <li><a href="#_delete-user">Deleting Users</a></li>
 <li><a href="#user-attributes">User Attributes</a></li>
-<li><a href="#user-credentials">User Credentials</a>
+<li><a href="#_user-credentials">User Credentials</a>
 <ul class="sectlevel3">
 <li><a href="#creating-a-password-for-the-user">Creating a Password for the User</a></li>
 <li><a href="#creating-other-credentials">Creating other credentials</a></li>
@@ -830,7 +830,7 @@ span.image img {
 <li><a href="#creating-a-password-less-browser-login-flow">Creating a password-less browser login flow</a></li>
 </ul>
 </li>
-<li><a href="#executions">Executions</a></li>
+<li><a href="#script-authenticator">Script Authenticator</a></li>
 <li><a href="#_kerberos">Kerberos</a>
 <ul class="sectlevel3">
 <li><a href="#setup-of-kerberos-server">Setup of Kerberos server</a></li>
@@ -1070,7 +1070,9 @@ span.image img {
 </li>
 <li><a href="#_vault-administration">Using Vault to Obtain Secrets</a>
 <ul class="sectlevel2">
-<li><a href="#kubernetes-openshift-files-plaintext-vault-provider">Kubernetes / OpenShift files plaintext vault provider</a></li>
+<li><a href="#kubernetes-openshift-files-plaintext-vault-provider">Kubernetes / OpenShift Files Plaintext Vault Provider</a></li>
+<li><a href="#elytron-credential-store-vault-provider">Elytron Credential Store Vault Provider</a></li>
+<li><a href="#key-resolvers">Key Resolvers</a></li>
 </ul>
 </li>
 <li><a href="#_account-service">User Account Service</a>
@@ -1176,7 +1178,7 @@ span.image img {
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/overview.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/overview.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/overview.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1193,7 +1195,7 @@ party identity providers like Facebook and Google+.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/overview/features.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/overview/features.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/overview/features.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="ulist">
@@ -1267,7 +1269,7 @@ protocol mappers and many more.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/overview/how.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/overview/how.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/overview/how.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1287,7 +1289,7 @@ invocations on REST-based services.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/overview/concepts.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/overview/concepts.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/overview/concepts.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1451,7 +1453,7 @@ must be used to filter out bots.  Credential reset flow defines what actions a u
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/initialization.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/initialization.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/initialization.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1519,7 +1521,7 @@ standalone mode, here is how you use the script.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/admin-console.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/admin-console.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/admin-console.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1549,7 +1551,7 @@ The image above shows the tooltip in action.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/realms/master.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/master.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/master.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1582,7 +1584,7 @@ chapter.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/realms/create.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/create.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/create.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1615,7 +1617,7 @@ top left corner drop down menu.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/realms/ssl.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/ssl.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/ssl.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1649,7 +1651,7 @@ Keycloak generates a self-signed certificate the first time it runs.  Please not
 <dl>
 <dt class="hdlist1">external requests</dt>
 <dd>
-<p>Users can interact with Keycloak without SSL so long as they stick to private IP addresses like <code>localhost</code>, <code>127.0.0.1</code>, <code>10.0.x.x</code>, <code>192.168.x.x</code>, and <code>172.16.x.x</code>.
+<p>Users can interact with Keycloak without SSL so long as they stick to private IP addresses like <code>localhost</code>, <code>127.0.0.1</code>, <code>10.x.x.x</code>, <code>192.168.x.x</code>, and <code>172.16.x.x</code>.
 If you try to access Keycloak without SSL from a non-private IP address you will get an error.</p>
 </dd>
 <dt class="hdlist1">none</dt>
@@ -1669,7 +1671,7 @@ configuring SSL on your server.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/realms/cache.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/cache.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/cache.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1692,7 +1694,7 @@ to the <code>Realm Settings</code> left menu item and the <code>Cache</code> tab
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/realms/email.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/email.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/email.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1752,7 +1754,7 @@ You will most likely also need to change the <code>Port</code> (the default port
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/realms/themes.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/themes.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/themes.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1808,7 +1810,7 @@ how you can offer additional languages.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1819,7 +1821,7 @@ how you can offer additional languages.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/viewing.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/viewing.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/viewing.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1855,7 +1857,7 @@ database you need to either:</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/create-user.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/create-user.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/create-user.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1882,7 +1884,7 @@ button.  Click that to start creating your new user.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/delete-user.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/delete-user.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/delete-user.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1908,7 +1910,7 @@ button.  Click that to start creating your new user.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/attributes.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/attributes.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/attributes.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -1925,11 +1927,11 @@ Note that any edits you make on this page will not be stored until you hit the <
 </div>
 </div>
 <div class="sect2">
-<h3 id="user-credentials"><a class="anchor" href="#user-credentials"></a>User Credentials</h3>
+<h3 id="_user-credentials"><a class="anchor" href="#_user-credentials"></a>User Credentials</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/credentials.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/credentials.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/credentials.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2025,7 +2027,7 @@ and would like to set up some more.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/required-actions.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/required-actions.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/required-actions.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2096,7 +2098,7 @@ creating themes.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/impersonation.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/impersonation.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/impersonation.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2138,7 +2140,7 @@ for more details on assigning administration permissions.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/user-registration.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/user-registration.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/user-registration.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2182,7 +2184,7 @@ See the <a href="https://www.keycloak.org/docs/9.0/server_development/">Server D
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/recaptcha.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/recaptcha.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/recaptcha.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2232,7 +2234,7 @@ for more information on extending and creating themes.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/personal_data.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/personal_data.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/personal_data.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2276,7 +2278,7 @@ for more information on extending and creating themes.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/login-settings.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/login-settings.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/login-settings.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2287,7 +2289,7 @@ for more information on extending and creating themes.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/login-settings/forgot-password.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/login-settings/forgot-password.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/login-settings/forgot-password.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2348,7 +2350,7 @@ Be sure to leave Update Password enabled on the Required Actions tab.  Otherwise
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/login-settings/remember-me.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/login-settings/remember-me.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/login-settings/remember-me.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2379,7 +2381,7 @@ turns the login cookie from a session-only cookie to a persistence cookie.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/authentication.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2393,7 +2395,7 @@ Kerberos or disable or enable various built-in credential types.  This chapter c
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/authentication/password-policies.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/password-policies.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/password-policies.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2496,7 +2498,7 @@ or the <code>blacklistsPath</code> property of the <code>passwordBlacklist</code
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/authentication/otp-policies.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/otp-policies.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/otp-policies.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2588,7 +2590,7 @@ manually too many times by accident.  This value really should be increased to a
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/authentication/flows.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/flows.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/flows.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -2901,7 +2903,7 @@ password, and then his OTP. If the user has no OTP credential, he will be asked 
 <p>It is important to note that since the WebAuthn execution is set to <em>Alternative</em> instead of <em>Required</em>, this flow will never ask the user to register a WebAuthn credential. For a user
 to have a Webauthn credential, he must have a required action added to him by an administrator. This is done first by making sure that that the <code>Webauthn Register</code>
 required action is enabled in the realm (see the <a href="#_webauthn">WebAuthn</a> documentation), and then by setting the required action by using the <code>Credential Reset</code> part of a
-user&#8217;s <a href="#user-credentials">Credentials</a> management menu.</p>
+user&#8217;s <a href="#_user-credentials">Credentials</a> management menu.</p>
 </div>
 <div class="paragraph">
 <p>Creating a more advanced flow such as this one can have some subtle side effects. For example, if you were to enable the ability to reset the password
@@ -2925,12 +2927,8 @@ experience. To correct this, you could:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="executions"><a class="anchor" href="#executions"></a>Executions</h3>
+<h3 id="script-authenticator"><a class="anchor" href="#script-authenticator"></a>Script Authenticator</h3>
 <div class="paragraph">
-<p>Executions can be used</p>
-</div>
-<div class="paragraph">
-<div class="title">Script Authenticator</div>
 <p>A <em>script</em> authenticator allows to define custom authentication logic via JavaScript.
 Custom authenticators. In order to make use of this feature, it must be explicitly enabled:</p>
 </div>
@@ -3013,7 +3011,7 @@ to the <code>authenticate(context)</code> <code>action(context)</code> function.
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/authentication/kerberos.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/kerberos.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/kerberos.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -3382,7 +3380,7 @@ future versions and provide some more flexible mappings from Kerberos principals
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/authentication/x509.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/x509.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/x509.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -4066,7 +4064,7 @@ all certificates in trusted-ca-list-for-client-auth.pem must be added to <a href
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/authentication/webauthn.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/webauthn.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/webauthn.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -4263,7 +4261,7 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <div class="sect4">
 <h5 id="managing-credentials"><a class="anchor" href="#managing-credentials"></a>Managing Credentials</h5>
 <div class="paragraph">
-<p>WebAuthn credentials are managed in a similar manner as other credentials, such as OTP, from the <a href="#user-credentials">User credential management</a>:</p>
+<p>WebAuthn credentials are managed in a similar manner as other credentials, such as OTP, from the <a href="#_user-credentials">User credential management</a>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4483,7 +4481,7 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -4495,7 +4493,7 @@ and the applications it secures interact with these protocols.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/oidc.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/oidc.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/oidc.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -4653,7 +4651,7 @@ Implicit Flow, Direct Grants, or Client Grants.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/saml.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/saml.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/saml.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -4758,7 +4756,7 @@ This is used most often for REST or SOAP-based clients.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/saml-vs-oidc.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/saml-vs-oidc.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/saml-vs-oidc.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -4785,7 +4783,7 @@ make implementing security in your web applications easier. For example, check o
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/docker.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/docker.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/docker.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -4858,7 +4856,7 @@ This flow assumes that a <code>docker login</code> command has already been perf
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -4873,7 +4871,7 @@ This section discusses various aspects around configuring clients and various wa
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/client-oidc.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-oidc.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-oidc.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -5202,7 +5200,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/confidential.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/confidential.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/confidential.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -5317,7 +5315,7 @@ The second option is to supply <code>client_id</code> as a query parameter.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/service-accounts.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/service-accounts.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/service-accounts.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -5392,7 +5390,7 @@ Pragma: no-cache
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/audience.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/audience.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/audience.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -5646,7 +5644,7 @@ which was the token issued for, unless any of the audience mappers added it.
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/client-saml.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-saml.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-saml.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -5828,7 +5826,7 @@ If a login request contains the Assertion Consumer Service URL, that will take p
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/idp-initiated-login.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/idp-initiated-login.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/idp-initiated-login.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -5908,7 +5906,7 @@ the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoi
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/entity-descriptors.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/entity-descriptors.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/entity-descriptors.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -5933,7 +5931,7 @@ going to this public URL:  <code>root/auth/realms/{realm}/protocol/saml/descript
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/client-link.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-link.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-link.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -5963,7 +5961,7 @@ This indirection helps avoid hard-coding client base URLs.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/protocol-mappers.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/protocol-mappers.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/protocol-mappers.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6082,7 +6080,7 @@ deploy scripts to the server, please take a look at <a href="https://www.keycloa
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/installation.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/installation.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/installation.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6103,7 +6101,7 @@ are supported.  The mod-auth-mellon Apache HTTPD adapter for SAML is supported a
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/client-scopes.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-scopes.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-scopes.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6379,7 +6377,7 @@ More details in the <a href="https://www.keycloak.org/docs/9.0/authorization_ser
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6395,7 +6393,7 @@ dedicated namespace where roles can be defined.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/realm-roles.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/realm-roles.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/realm-roles.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6422,7 +6420,7 @@ on localization.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/client-roles.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/client-roles.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/client-roles.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6434,7 +6432,7 @@ on localization.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/composite.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/composite.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/composite.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6475,7 +6473,7 @@ When tokens and SAML assertions are created, any composite will also have its as
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/user-role-mappings.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/user-role-mappings.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/user-role-mappings.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6502,7 +6500,7 @@ chapter.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/user-role-mappings/default-roles.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/user-role-mappings/default-roles.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/user-role-mappings/default-roles.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6524,7 +6522,7 @@ To specify default roles go to the <code>Roles</code> left menu item, and click 
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/role-scope-mappings.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/role-scope-mappings.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/role-scope-mappings.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6565,7 +6563,7 @@ to define the same role scope mappings for a whole set of clients.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/groups.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/groups.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/groups.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6617,7 +6615,7 @@ select the <code>Membership</code> tab, <em>Jim</em> is now displayed there.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/groups/groups-vs-roles.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/groups/groups-vs-roles.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/groups/groups-vs-roles.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6638,7 +6636,7 @@ Use groups to manage users.  Use composite roles to manage applications and serv
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/groups/default-groups.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/groups/default-groups.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/groups/default-groups.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6659,7 +6657,7 @@ To specify default groups go to the <code>Groups</code> left menu item, and clic
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/admin-console-permissions.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/admin-console-permissions.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/admin-console-permissions.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6672,7 +6670,7 @@ define fine-grained access to users in different realms to manage the server.  T
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/admin-console-permissions/master-realm.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/admin-console-permissions/master-realm.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/admin-console-permissions/master-realm.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6776,7 +6774,7 @@ Admins with the <code>manage-users</code> role will only be able to assign admin
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/admin-console-permissions/per-realm.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/admin-console-permissions/per-realm.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/admin-console-permissions/per-realm.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6836,7 +6834,7 @@ Users within that realm can be granted realm management permissions by assigning
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/admin-console-permissions/fine-grain.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/admin-console-permissions/fine-grain.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/admin-console-permissions/fine-grain.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -7319,7 +7317,7 @@ remove members from the group.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/realms/keys.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/keys.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/keys.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -7454,7 +7452,7 @@ Keycloak is able to send them the request about pushed not-before policy.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -7512,7 +7510,7 @@ service that you want to integrate with.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/overview.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/overview.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/overview.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -7604,7 +7602,7 @@ They only need to know about Keycloak.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/default-provider.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/default-provider.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/default-provider.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -7622,7 +7620,7 @@ They only need to know about Keycloak.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/configuration.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/configuration.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/configuration.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -7741,7 +7739,7 @@ Regardless of which identity provider you are creating, you&#8217;ll see the fol
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social-login.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social-login.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social-login.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -7755,7 +7753,7 @@ Keycloak provides built-in support for the most common social networks out there
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social/bitbucket.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/bitbucket.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/bitbucket.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -7829,7 +7827,7 @@ Bitbucket often changes the look and feel of application registration, so what y
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social/facebook.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/facebook.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/facebook.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -7910,7 +7908,7 @@ uses the following scopes: <code>email</code>.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social/github.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/github.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/github.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -7973,7 +7971,7 @@ Go back to Keycloak and specify those items.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social/gitlab.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/gitlab.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/gitlab.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -8040,7 +8038,7 @@ GitLab often changes the look and feel of application registration, so what you 
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social/google.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/google.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/google.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -8150,7 +8148,7 @@ you must enter the domain that is used for the G Suite into the <code>Hosted Dom
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social/linked-in.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/linked-in.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/linked-in.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -8215,7 +8213,7 @@ Go back to Keycloak and specify those items.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social/microsoft.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/microsoft.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/microsoft.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -8291,7 +8289,7 @@ From November 2018 onwards, Microsoft is removing support for the Live SDK API i
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social/openshift.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/openshift.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/openshift.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -8457,7 +8455,7 @@ The OpenShift API server returns <code>The client is not authorized to request a
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social/paypal.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/paypal.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/paypal.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -8526,7 +8524,7 @@ copy this URI to your clipboard.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social/stack-overflow.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/stack-overflow.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/stack-overflow.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -8576,7 +8574,7 @@ Go back to Keycloak and specify those items.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social/twitter.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/twitter.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/twitter.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -8646,7 +8644,7 @@ You cannot use <code>localhost</code> in the <code>Callback URL</code>.  Instead
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/oidc.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/oidc.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/oidc.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -8782,7 +8780,7 @@ This link is a JSON document describing metadata about the IDP.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/saml.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/saml.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/saml.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -8899,7 +8897,7 @@ Clicking this button will export a SAML SP entity descriptor which you can use t
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/suggested.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/suggested.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/suggested.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -8946,7 +8944,7 @@ keycloak.createLoginUrl({
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/mappers.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/mappers.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/mappers.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -8991,7 +8989,7 @@ This is done in the server&#8217;s app-server configuration file (domain.xml or 
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/session-data.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/session-data.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/session-data.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -9020,7 +9018,7 @@ For example Keycloak user <code>john</code> can be linked to the Facebook user <
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/first-login-flow.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/first-login-flow.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/first-login-flow.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -9156,7 +9154,7 @@ would require a more complex flow, for example setting the "Automatically Set Ex
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/tokens.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/tokens.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/tokens.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -9191,7 +9189,7 @@ In the broker configuration page you can automatically assign this role to newly
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/logout.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/logout.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/logout.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -9209,7 +9207,7 @@ See <a href="https://www.keycloak.org/docs/9.0/securing_apps/#_java_adapter_logo
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sessions.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sessions.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sessions.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -9224,7 +9222,7 @@ can revoke tokens and set up all the token and session timeouts there too.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sessions/administering.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sessions/administering.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sessions/administering.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -9278,7 +9276,7 @@ Clicking on the <code>Show Sessions</code> button there allows you to see which 
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sessions/revocation.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sessions/revocation.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sessions/revocation.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -9301,7 +9299,7 @@ OIDC client adapter installed.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sessions/timeouts.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sessions/timeouts.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sessions/timeouts.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -9424,7 +9422,7 @@ the message about successful refresh from the node which did the refresh.
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sessions/offline.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sessions/offline.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sessions/offline.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -9470,7 +9468,7 @@ support offline tokens if you include <code>scope=offline_access</code> in the b
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/user-federation.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/user-federation.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/user-federation.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -9533,7 +9531,7 @@ This can cause security issues and unforeseen problems as the user may be loaded
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/user-federation/ldap.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/user-federation/ldap.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/user-federation/ldap.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -9701,6 +9699,11 @@ For this mapper implementation, there is always a one-to-one mapping (one LDAP a
 <p>This allows you to specify that the full name of the user, which is saved in some LDAP attribute (usually <code>cn</code> ) will be mapped to <code>firstName</code> and <code>lastname</code> attributes in the Keycloak database.
 Having <code>cn</code> to contain full name of user is a common case for some LDAP deployments.</p>
 </dd>
+<dt class="hdlist1">Hardcoded Attribute Mapper</dt>
+<dd>
+<p>This mapper adds a hardcoded attribute value to each Keycloak user linked with LDAP.
+This mapper can also force the values for the <code>enabled</code> or <code>emailVerified</code> user properties.</p>
+</dd>
 <dt class="hdlist1">Role Mapper</dt>
 <dd>
 <p>This allows you to configure role mappings from LDAP into Keycloak role mappings.
@@ -9762,7 +9765,7 @@ in plain-text by default and you may need to explicitly enable password hashing 
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/user-federation/sssd.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/user-federation/sssd.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/user-federation/sssd.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -9988,7 +9991,7 @@ $ sudo yum install libunix-dbus-java-0.8.0-1.fc24.x86_64.rpm</pre>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/user-federation/custom.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/user-federation/custom.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/user-federation/custom.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -10004,7 +10007,7 @@ You can find documentation for this in our <a href="https://www.keycloak.org/doc
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/events.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/events.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/events.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -10018,7 +10021,7 @@ to send an email if an event occurs.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/events/login.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/events/login.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/events/login.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -10192,6 +10195,21 @@ that comes with your distribution and adding for example:</p>
 </div>
 </div>
 <div class="paragraph">
+<p>You can also set up a maximum length of the Event detail stored in the database by editing <code>standalone.xml</code>, <code>standalone-ha.xml</code>, or
+<code>domain.xml</code>. This setting can be useful in case some field (e.g. redirect_uri) is very long. Here is an example of defining the maximum length.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;spi</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">eventsStore</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;provider</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">jpa</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;properties&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">max-detail-length</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1000</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/properties&gt;</span>
+    <span class="tag">&lt;/provider&gt;</span>
+<span class="tag">&lt;/spi&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>See the <a href="https://www.keycloak.org/docs/9.0/server_installation/">Server Installation and Configuration Guide</a> for more details on
 where the <code>standalone.xml</code>, <code>standalone-ha.xml</code>, or <code>domain.xml</code> file lives.</p>
 </div>
@@ -10202,7 +10220,7 @@ where the <code>standalone.xml</code>, <code>standalone-ha.xml</code>, or <code>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/events/admin.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/events/admin.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/events/admin.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -10258,7 +10276,7 @@ database.  The <code>Clear admin events</code> button allows you to wipe out the
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/export-import.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/export-import.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/export-import.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -10485,7 +10503,7 @@ Use this feature with caution, especially on a production system.
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/vault.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/vault.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/vault.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -10494,8 +10512,13 @@ Use this feature with caution, especially on a production system.
 <div class="paragraph">
 <p>To obtain a secret from a vault instead of entering it directly, enter
 the following specially crafted string into the appropriate field:
-<code><strong>${vault.</strong><em>entry-name</em><strong>}</strong></code> where you replace the <code><em>entry-name</em></code>
+<code><strong>${vault.</strong><em>key</em><strong>}</strong></code> where you replace the <code><em>key</em></code>
 with the name of the secret as recognized by the vault.</p>
+</div>
+<div class="paragraph">
+<p>In order to prevent secrets from leaking across realms, implementations may combine the realm name with the <code><em>key</em></code>
+obtained from the vault expression. This means that the <code><em>key</em></code> won&#8217;t directly map to an entry in the vault, but rather
+be used to create the final entry name according to the algorithm used to combine it with the realm name.</p>
 </div>
 <div class="paragraph">
 <p>Currently, the secret can be obtained from the vault in the following fields:</p>
@@ -10521,8 +10544,22 @@ with the name of the secret as recognized by the vault.</p>
 It is possible to either use a built-in provider described below or
 implement your own provider. See the <a href="https://www.keycloak.org/docs/9.0/server_development/">Server Developer Guide</a> for more information.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There is at most one vault provider active per Keycloak instance
+at any given time, and the vault provider in each instance within the cluster
+has to be configured consistently.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect2">
-<h3 id="kubernetes-openshift-files-plaintext-vault-provider"><a class="anchor" href="#kubernetes-openshift-files-plaintext-vault-provider"></a>Kubernetes / OpenShift files plaintext vault provider</h3>
+<h3 id="kubernetes-openshift-files-plaintext-vault-provider"><a class="anchor" href="#kubernetes-openshift-files-plaintext-vault-provider"></a>Kubernetes / OpenShift Files Plaintext Vault Provider</h3>
 <div class="paragraph">
 <p>Keycloak supports vault implementation for <a href="https://kubernetes.io/docs/concepts/configuration/secret/">Kubernetes secrets</a>. These secrets
 can be mounted as data volumes, and they appear as a directory with a flat file structure, where each secret is represented by a file whose name is the secret name, and contents of that file is the secret value.</p>
@@ -10555,6 +10592,70 @@ provider with the directory where vault files are searched for set to <code>stan
 /subsystem=keycloak-server/spi=vault/provider=files-plaintext/:add(enabled=true,properties={dir =&gt; &quot;${jboss.home.dir}/standalone/configuration/vault&quot;})</code></pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="elytron-credential-store-vault-provider"><a class="anchor" href="#elytron-credential-store-vault-provider"></a>Elytron Credential Store Vault Provider</h3>
+<div class="paragraph">
+<p>Keycloak also provides support for reading secrets stored in an Elytron credential store. The <code>elytron-cs-keystore</code>
+vault provider is capable of retrieving secrets from the keystore-based implementation of the credential store, which
+is also the default implementation provided by Elytron.</p>
+</div>
+<div class="paragraph">
+<p>This credential store is backed by a keystore (<code>JCEKS</code> is the default format, but it is possible to use other formats such as <code>PKCS12</code>)
+and users can create and manage the store contents using either the <code>elytron</code> subsystem in WildFly/JBoss EAP, or using the
+<code>elytron-tool.sh</code> script.</p>
+</div>
+<div class="paragraph">
+<p>To use this provider, you have to declare the <code>elytron-cs-keystore</code> in the <code>keycloak-server</code> subsystem and set the location
+and master secret of the keystore that was created by Elytron. An example of the minimal configuration for the provider follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;spi</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">vault</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;default-provider&gt;</span>elytron-cs-keystore<span class="tag">&lt;/default-provider&gt;</span>
+    <span class="tag">&lt;provider</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">elytron-cs-keystore</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;properties&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">location</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${jboss.home.dir}/standalone/configuration/vault/credential-store.jceks</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">secretpw1!</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/properties&gt;</span>
+    <span class="tag">&lt;/provider&gt;</span>
+<span class="tag">&lt;/spi&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the underlying keystore has a format other than <code>JCEKS</code>, this format has to be informed using the <code>keyStoreType</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;spi</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">vault</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;default-provider&gt;</span>elytron-cs-keystore<span class="tag">&lt;/default-provider&gt;</span>
+    <span class="tag">&lt;provider</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">elytron-cs-keystore</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;properties&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">location</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${jboss.home.dir}/standalone/configuration/vault/credential-store.p12</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">secretpw1!</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keyStoreType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">PKCS12</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/properties&gt;</span>
+    <span class="tag">&lt;/provider&gt;</span>
+<span class="tag">&lt;/spi&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For the secret, the <code>elytron-cs-keystore</code> provider supports both clear-text values (as shown above) and also values that
+were masked using the <code>elytron-tool.sh</code> script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;spi</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">vault</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+   ...
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">MASK-3u2HNQaMogJJ8VP7J6gRIl;12345678;321</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+   ...
+<span class="tag">&lt;/spi&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more detailed information on how to create/manage elytron credential stores, as well as how to mask keystore secrets,
+please refer to the Elytron documentation.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -10562,12 +10663,123 @@ provider with the directory where vault files are searched for set to <code>stan
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-There is at most one vault provider active per Keycloak instance
-at any given time, and the vault provider in each instance within the cluster
-have to be configured consistently.
+The <code>elytron-cs-keystore</code> vault provider has been implemented as a WildFly extension and as such is only available
+if the Keycloak server runs on WildFly/JBoss EAP.
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="key-resolvers"><a class="anchor" href="#key-resolvers"></a>Key Resolvers</h3>
+<div class="paragraph">
+<p>All built-in providers support the configuration of one or more key resolvers. A key resolver essentially implements
+the algorithm or strategy for combining the realm name with the key (as obtained from the <code>${vault.key}</code> expression} into
+the final entry name that will be used to retrieve the secret from the vault. The <code>keyResolvers</code> property is used to configure
+the resolvers that are to be used by the provider. The value is a comma-separated list of resolver names. An example of
+configuration for the <code>files-plaintext</code> provider follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;spi</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">vault</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;default-provider&gt;</span>files-plaintext<span class="tag">&lt;/default-provider&gt;</span>
+    <span class="tag">&lt;provider</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">files-plaintext</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;properties&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dir</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${jboss.home.dir}/standalone/configuration/vault/</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keyResolvers</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">REALM_UNDERSCORE_KEY, KEY_ONLY</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/properties&gt;</span>
+    <span class="tag">&lt;/provider&gt;</span>
+<span class="tag">&lt;/spi&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The resolvers are executed in the same order that they are declared in the configuration. For each resolver, the final entry
+name produced by the resolver that combines the realm with the vault key is used to search for the secret in the vault.
+If a secret is found, it is immediately returned. If not, the next resolver is used and this continues until a non-empty
+secret is found or all resolvers have been tried, in which case an empty secret is returned. In the example above, first
+the <code>REALM_UNDERSCORE_KEY</code> resolver is used. If an entry is found in the vault with the name it produces, it is returned.
+If not, then the <code>KEY_ONLY</code> resolver is used. Again, if an entry is found in the vault with the name it produces, it is
+returned. If not, an empty secret is returned since there are no more resolvers to be used.</p>
+</div>
+<div class="paragraph">
+<p>A list of the currently available resolvers follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>KEY_ONLY</code>: the realm name is ignored and the key from the vault expression is used as is.</p>
+</li>
+<li>
+<p><code>REALM_UNDERSCORE_KEY</code>: the realm and key are combined using an underscore <code>_</code> character. Occurrences of underscore in either the
+realm or key are escaped by another underscore character. So if the realm is called <code>master_realm</code> and the key is <code>smtp_key</code>, the
+combined key will be <code>master__realm_smtp__key</code>.</p>
+</li>
+<li>
+<p><code>REALM_FILESEPARATOR_KEY</code>: the realm and key are combined using the platform file separator character. This is useful in situations
+where the keys are grouped by realm using a directory structure.</p>
+</li>
+<li>
+<p><code>FACTORY_PROVIDED</code>: the realm and key are combined using the <code>VaultKeyResolver</code> that is provided by the vault provider factory,
+allowing the creation of a custom key resolver by extending an existing factory and implementing the <code>getFactoryResolver</code> method.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If no resolver is configured for the built-in providers, the <code>REALM_UNDERSCORE_KEY</code> is selected by default.</p>
+</div>
+<div class="paragraph">
+<p>The <code>FACTORY_PROVIDED</code> resolver provides a hook that can be used to implement a custom resolver by extending the provider
+factory of choice and overriding the <code>getFactoryResolver</code> method so it returns the custom resolver. For example, if you want
+to use the <code>elytron-cs-keystore</code> provider but none of the built-in resolvers match the format used in your keystore, you
+can extend the `ElytronCSKeystoreProvider and implement the getFactoryResolver method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">class</span> <span class="class">CustomElytronProviderFactory</span> <span class="directive">extends</span> ElytronCSKeyStoreProviderFactory {
+        ...
+        <span class="annotation">@Override</span>
+        <span class="directive">protected</span> VaultKeyResolver getFactoryResolver() {
+            <span class="keyword">return</span> (realm, key) -&gt; realm + <span class="string"><span class="delimiter">&quot;</span><span class="content">###</span><span class="delimiter">&quot;</span></span> + key;
+        }
+
+        <span class="annotation">@Override</span>
+        <span class="directive">public</span> <span class="predefined-type">String</span> getId() {
+            <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">custom-elytron-cs-keystore;
+        }
+
+        ...
+    }</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The custom factory returns a key resolver that combines the realm and key with a triple <code><mark></code> character. So an entry would look
+like <code>master_realm</mark>##smtp_key</code>, for example. This factory must then be installed just like any custom provider.</p>
+</div>
+<div class="paragraph">
+<p>Note that the custom factory must override both the <code>getFactoryResolver</code> and <code>getId</code> methods. The second method is needed so that
+we can properly configure the custom factory in Keycloak.</p>
+</div>
+<div class="paragraph">
+<p>To install and use the above custom provider the configuration would look something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;spi</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">vault</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;default-provider&gt;</span>custom-elytron-cs-keystore<span class="tag">&lt;/default-provider&gt;</span>
+    <span class="tag">&lt;provider</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">custom-elytron-cs-keystore</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;properties&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">location</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${jboss.home.dir}/standalone/configuration/vault/credential-store.p12</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">MASK-3u2HNQaMogJJ8VP7J6gRIl;12345678;321</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keyStoreType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">PKCS12</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keyResolvers</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">FACTORY_PROVIDED</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/properties&gt;</span>
+    <span class="tag">&lt;/provider&gt;</span>
+<span class="tag">&lt;/spi&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The configuration above tells Keycloak to setup the custom Elytron provider and use the key resolver that is created by
+the custom factory.</p>
 </div>
 </div>
 </div>
@@ -10578,7 +10790,7 @@ have to be configured consistently.
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/account.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/account.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/account.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -10646,7 +10858,7 @@ See the <a href="https://www.keycloak.org/docs/9.0/server_development/">Server D
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -10661,7 +10873,7 @@ Many of those vulnerabilities are discussed here.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/host.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/host.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/host.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -10686,7 +10898,7 @@ to develop your own provider in the case the built-in provider does not provide 
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/admin.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/admin.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/admin.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -10695,7 +10907,7 @@ usage. If access to the admin console is not needed externally, we recommend not
 Internet.</p>
 </div>
 <div class="paragraph">
-<p>This can be achieve either directly in Keycloak or with a proxy such as Apache or nginx.</p>
+<p>This can be achieved either directly in Keycloak or with a proxy such as Apache or nginx.</p>
 </div>
 <div class="paragraph">
 <p>For the proxy option please follow the documentation for the proxy. You need to control access to any requests
@@ -10815,7 +11027,7 @@ receives the client IP address and not the proxy IP address
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/brute-force.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/brute-force.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/brute-force.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -11027,7 +11239,7 @@ users pick hard to guess passwords.  See the <a href="#_password-policies">Passw
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/clickjacking.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/clickjacking.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/clickjacking.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -11055,7 +11267,7 @@ click the <code>Security Defenses</code> tab and make sure you are on the <code>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/ssl.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/ssl.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/ssl.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -11083,7 +11295,7 @@ Otherwise you are vulnerable to DNS man in the middle attacks.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/csrf.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/csrf.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/csrf.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -11112,7 +11324,7 @@ This query or form parameter is checked against the state cookie to verify that 
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/redirect.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/redirect.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/redirect.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -11127,7 +11339,7 @@ registered redirect URIs as specific as feasible.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/compromised-tokens.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/compromised-tokens.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/compromised-tokens.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -11153,7 +11365,7 @@ More info in the  <a href="#realm_keys">keys chapter</a>.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/compromised-codes.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/compromised-codes.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/compromised-codes.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -11172,7 +11384,7 @@ This value should be really short, as short as a few seconds and just long enoug
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/open-redirect.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/open-redirect.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/open-redirect.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -11192,7 +11404,7 @@ It is important that clients and applications register as specific a URI pattern
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/password-db-compromised.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/password-db-compromised.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/password-db-compromised.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -11208,7 +11420,7 @@ It is up to you to decide how serious you want to be to protect your password da
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/scope.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/scope.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/scope.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -11225,7 +11437,7 @@ Or alternatively, you can set role scope mappings at the Client Scope level and 
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/audience-limit.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/audience-limit.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/audience-limit.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -11239,7 +11451,7 @@ more details are in the <a href="#_audience">Audience Support section</a>.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/sql.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/sql.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/sql.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -11254,7 +11466,7 @@ more details are in the <a href="#_audience">Audience Support section</a>.</p>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/admin-cli.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/admin-cli.adoc" target="_blank">Report an issue</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/admin-cli.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -13805,7 +14017,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-06 11:15:03 UTC
+Last updated 2020-01-07 13:11:01 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

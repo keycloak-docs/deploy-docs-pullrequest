@@ -760,6 +760,7 @@ span.image img {
 <ul class="sectlevel3">
 <li><a href="#drools-policy-removed">Drools Policy Removed</a></li>
 <li><a href="#pagination-support-for-clients">Pagination support for clients</a></li>
+<li><a href="#new-elytron-credential-store-vault-provider">New Elytron Credential Store Vault Provider</a></li>
 </ul>
 </li>
 </ul>
@@ -991,6 +992,14 @@ span.image img {
 <h4 id="pagination-support-for-clients"><a class="anchor" href="#pagination-support-for-clients"></a>Pagination support for clients</h4>
 <div class="paragraph">
 <p>Pagination support was added to clients in the Admin Console and REST API. Thanks to <a href="https://github.com/saibot94">saibot94</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="new-elytron-credential-store-vault-provider"><a class="anchor" href="#new-elytron-credential-store-vault-provider"></a>New Elytron Credential Store Vault Provider</h4>
+<div class="paragraph">
+<p>A new built-in vault provider that reads secrets from a keystore-backed Elytron credential store has been added as a WildFly
+extension. The creation and management of the credential store is handled by Elytron using either the <code>elytron</code> subsystem or the
+<code>elytron-tool.sh</code> script.</p>
 </div>
 </div>
 </div>
@@ -1486,7 +1495,7 @@ as soon as they happen. We also introduced a policy decision cache on a per requ
 previously evaluated.</p>
 </div>
 <div class="paragraph">
-<p>We are also working on other layers of cache which should give a much better experience. See <a href="https://issues.jboss.org/browse/KEYCLOAK-7952">KEYCLOAK-7952</a>.</p>
+<p>We are also working on other layers of cache which should give a much better experience. See <a href="https://issues.redhat.com/browse/KEYCLOAK-7952">KEYCLOAK-7952</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1793,7 +1802,7 @@ Thanks to <a href="https://github.com/looorent">loorent</a> for the contribution
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-06 11:14:17 UTC
+Last updated 2020-01-07 13:10:14 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
