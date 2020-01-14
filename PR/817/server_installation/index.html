@@ -3883,6 +3883,23 @@ connection settings.</p>
 <p>Unicode is supported when the database character set is <code>UTF8</code>. In that case, Unicode characters can be used in any
 field, there is no reduction of field length for non-special fields. No special settings of JDBC driver is necessary.</p>
 </div>
+<div class="paragraph">
+<p>The character set of a PostgreSQL database is determined at the time it is created. You can determine the default
+character set for a PostgreSQL cluster with the SQL command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="SQL"><span class="class">show</span> server_encoding;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the default character set is not UTF 8, then you can create the database with UTF8 as its character set like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="SQL"><span class="class">create</span> <span class="type">database</span> keycloak with encoding <span class="string"><span class="delimiter">'</span><span class="content">UTF8</span><span class="delimiter">'</span></span>;</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -5504,7 +5521,7 @@ The cache will be cleared for all realms!
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-09 18:05:18 UTC
+Last updated 2020-01-14 21:34:28 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
