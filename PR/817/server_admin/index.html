@@ -4117,7 +4117,7 @@ Whether WebAuthn&#8217;s operations succeed depends on a user&#8217;s WebAuthn s
 <p>Select <code>Webauthn Register</code> as <code>Required Action</code>.</p>
 </li>
 <li>
-<p>Mark <code>Enabled</code> checkbox. Optionally mark <code>Default Action</code> checkbox if you want all newly created users to be required to register WebAuthn credential.</p>
+<p>Mark <code>Enabled</code> checkbox. Optionally mark <code>Default Action</code> checkbox if you want all new created users to be required to register WebAuthn credential.</p>
 </li>
 </ul>
 </div>
@@ -4377,8 +4377,8 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <dl>
 <dt class="hdlist1">New user</dt>
 <dd>
-<p>In case that <code>WebAuthn Register</code> required action is set as <code>Default Action</code> in a realm, a new users will be always required to
-setup WebAuthn security key after first successful login. A new user carries out the following operations :</p>
+<p>If the <code>WebAuthn Register</code> required action is set as <code>Default Action</code> in a realm, new users are required to
+set up the WebAuthn security key after the first successful login. A new user carries out the following operations :</p>
 <div class="ulist">
 <ul>
 <li>
@@ -4401,7 +4401,7 @@ setup WebAuthn security key after first successful login. A new user carries out
 </dd>
 <dt class="hdlist1">Existing user</dt>
 <dd>
-<p>In case that <code>WebAuthn Authenticator</code> is setup as required as shown in the first example, then when existing users try to log in,
+<p>If <code>WebAuthn Authenticator</code> is set up as required as shown in the first example, then when existing users try to log in,
 they are required to register their WebAuthn authenticator automatically :</p>
 <div class="ulist">
 <ul>
@@ -4428,16 +4428,16 @@ they are required to register their WebAuthn authenticator automatically :</p>
 <h4 id="passwordless-webauthn"><a class="anchor" href="#passwordless-webauthn"></a>Passwordless WebAuthn</h4>
 <div class="paragraph">
 <p>WebAuthn is often used for two-factor authentication, however it can be desired to use it also as first factor authentication. In this case,
-user with <code>passwordless</code> WebAuthn credential will be able to authenticate to Keycloak without password. Keycloak allows to use WebAuthn
-as both passwordless and two-factor authentication mechanism in the context of single realm and even in the context of single authentication flow.</p>
+a user with <code>passwordless</code> WebAuthn credential will be able to authenticate to Keycloak without a password. Keycloak allows to use WebAuthn
+as both the passwordless and two-factor authentication mechanism in the context of a single realm and even in the context of a single authentication flow.</p>
 </div>
 <div class="paragraph">
 <p>Administrator may typically require that Security Keys registered by users for the WebAuthn passwordless authentication must meet different
-(usually stronger) requirements. For example those security keys may require users to authenticate to that security key using PIN, or the
+(usually stronger) requirements. For example, those security keys may require users to authenticate to that security key using a PIN, or the
 security key should be attested with stronger certificate authority.</p>
 </div>
 <div class="paragraph">
-<p>Because of this, Keycloak allows administrator to configure separate <code>WebAuthn Passwordless Policy</code>. There is also separate required action
+<p>Because of this situation, Keycloak allows administrator to configure separate <code>WebAuthn Passwordless Policy</code>. There is a separate required action
 of type <code>Webauthn Register Passwordless</code> and separate authenticator of type <code>WebAuthn Passwordless Authenticator</code>.</p>
 </div>
 <div class="sect4">
@@ -4449,33 +4449,33 @@ of type <code>Webauthn Register Passwordless</code> and separate authenticator o
 <ul>
 <li>
 <p>Register new required action for WebAuthn passwordless support. Use the same steps as described <a href="#_webauthn-register">above</a>
-with the only difference, that you need to register action called <code>Webauthn Register Passwordless</code>.</p>
+with the only difference, that you need to register the action called <code>Webauthn Register Passwordless</code>.</p>
 </li>
 <li>
 <p>Configure the policy. You can use same steps and configuration options as described <a href="#_webauthn-policy">above</a>, however you
 need to configure them in the admin console in the tab <code>WebAuthn Passwordless Policy</code>. You can configure this policy as you want, however
-typically the requirements for security key will be stronger than for two-factor policy. For example <code>User Verification Requirement</code> can
-be set to <code>Required</code> when configure passwordless policy.</p>
+typically the requirements for the security key will be stronger than for the two-factor policy. For example the <code>User Verification Requirement</code> can
+be set to <code>Required</code> when you configure the passwordless policy.</p>
 </li>
 <li>
 <p>Finally configure the authentication flow. Let&#8217;s assume that we will use same flow called <code>WebAuthn Browser</code> as described
 <a href="#_webauthn-authenticator-setup">above</a>, but
-we will configure it like this:</p>
+we will configure it as follows:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>WebAuthn Browser Forms</code> subflow will contain <code>Username Form</code> as first authenticator. This means that user will provide just
-his username as first step.</p>
+<p>The <code>WebAuthn Browser Forms</code> subflow will contain <code>Username Form</code> as the first authenticator. This setting means that the user
+will provide just his or her username as the first step.</p>
 </li>
 <li>
-<p>There will be required subflow, which can be named for example <code>Passwordless Or Two-factor</code> . This indicates that user can
+<p>There will be a required subflow, which can be named for example <code>Passwordless Or Two-factor</code> . This setting indicates that user can
 authenticate either with Passwordless WebAuthn credential or with Two-factor authentication.</p>
 </li>
 <li>
 <p>Flow will contain <code>WebAuthn Passwordless Authenticator</code> as first alternative.</p>
 </li>
 <li>
-<p>Second alternative will be subflow named for example <code>Password And Two-factor Webauthn</code>. This subflow will contain <code>Password Form</code> and
+<p>The second alternative will be a subflow named for example <code>Password And Two-factor Webauthn</code>. This subflow will contain <code>Password Form</code> and
 <code>WebAuthn Authenticator</code>.</p>
 </li>
 </ul>
@@ -4490,10 +4490,10 @@ authenticate either with Passwordless WebAuthn credential or with Two-factor aut
 <p><span class="image"><img src="./images/webauthn-passwordless-flow.png" alt="webauthn passwordless flow"></span></p>
 </div>
 <div class="paragraph">
-<p>You can now add <code>WebAuthn Register Passwordless</code> as required action to some user to test this. During first authentication, user will
-be still required to use password and his second-factor WebAuthn credential. However once user registers the Passwordless WebAuthn
-credential, he will be able to choose during future authentications. If he uses his WebAuthn Passwordless credential, he won&#8217;t need to
-provide his password and second-factor WebAuthn credential at all.</p>
+<p>You can now add <code>WebAuthn Register Passwordless</code> as the required action to some user to test this. During the first authentication, the user will
+be still required to use the password and second-factor WebAuthn credential. However, once the user registers the credentials, that user will be able
+to choose during future authentications. If he uses  his or her WebAuthn Passwordless credential, he won&#8217;t need to
+provide the password and second-factor WebAuthn credential at all.</p>
 </div>
 </div>
 </div>
@@ -14042,7 +14042,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-14 21:34:21 UTC
+Last updated 2020-01-15 13:31:44 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
