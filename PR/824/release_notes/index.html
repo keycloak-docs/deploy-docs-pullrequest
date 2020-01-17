@@ -761,7 +761,7 @@ span.image img {
 <li><a href="#drools-policy-removed">Drools Policy Removed</a></li>
 <li><a href="#pagination-support-for-clients">Pagination support for clients</a></li>
 <li><a href="#new-elytron-credential-store-vault-provider">New Elytron Credential Store Vault Provider</a></li>
-<li><a href="#samesite-cookie-changes-with-upcoming-google-chrome-update">SameSite Cookie changes with upcoming Google Chrome update</a></li>
+<li><a href="#samesite-cookie-changes-with-upcoming-google-chrome-update">SameSite cookie changes with upcoming Google Chrome update</a></li>
 <li><a href="#other-improvements">Other improvements</a></li>
 </ul>
 </li>
@@ -1005,9 +1005,13 @@ extension. The creation and management of the credential store is handled by Ely
 </div>
 </div>
 <div class="sect3">
-<h4 id="samesite-cookie-changes-with-upcoming-google-chrome-update"><a class="anchor" href="#samesite-cookie-changes-with-upcoming-google-chrome-update"></a>SameSite Cookie changes with upcoming Google Chrome update</h4>
+<h4 id="samesite-cookie-changes-with-upcoming-google-chrome-update"><a class="anchor" href="#samesite-cookie-changes-with-upcoming-google-chrome-update"></a>SameSite cookie changes with upcoming Google Chrome update</h4>
 <div class="paragraph">
-<p>Google chrome starting version 80, will change its default value for SameSite cookie argument to Lax. Therefore we needed to change some of our cookies (especially those which are used within our Javascript adapter for checking session status using the iframe) to have SameSite argument set to None which requires also setting the argument Secure. This means starting on version 9.0.0 our Javascript adapter will be fully functional only using TLS on Keycloak side.</p>
+<p>Google Chrome starting with version 80, will change the default value for <code>SameSite</code> cookie parameter to <code>Lax</code>.
+Therefore changes were required to several Keycloak cookies (especially those which are used within our
+Javascript adapter for checking session status using the iframe) to set <code>SameSite</code> parameter to <code>None</code>. Please note
+that this settings also requires setting the <code>Secure</code> parameter, hence starting with this version, our Javascript
+adapter will only be fully functional when using SSL / TLS connection on Keycloak side.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1820,7 +1824,7 @@ Thanks to <a href="https://github.com/looorent">loorent</a> for the contribution
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-17 13:19:51 UTC
+Last updated 2020-01-17 14:48:55 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
