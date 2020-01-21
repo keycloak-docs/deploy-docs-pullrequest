@@ -4495,6 +4495,15 @@ hostname patterns. The first matching pattern determines the proxy-uri to use.
 If none of the configured patterns match for the given hostname then no proxy is used.</p>
 </div>
 <div class="paragraph">
+<p>If the proxy server requires authentication, include the proxy user&#8217;s credentials in this format <code>username:password@</code>.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>.*\.(google|googleapis)\.com;http://user01:pas2w0rd@www-proxy.acme.com:8080</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>The special value <code>NO_PROXY</code> for the proxy-uri can be used to indicate that no proxy
 should be used for hosts matching the associated hostname pattern.
 It is possible to specify a catch-all pattern at the end of the proxy-mappings to define a default
@@ -5521,7 +5530,7 @@ The cache will be cleared for all realms!
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-15 13:31:51 UTC
+Last updated 2020-01-21 19:45:53 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

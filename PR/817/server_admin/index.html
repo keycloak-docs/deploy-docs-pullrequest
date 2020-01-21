@@ -859,7 +859,7 @@ span.image img {
 <li><a href="#managing-webauthn-as-an-administrator">Managing WebAuthn as an administrator</a></li>
 <li><a href="#attestation-statement-verification">Attestation Statement Verification</a></li>
 <li><a href="#managing-webauthn-credentials-as-a-user">Managing WebAuthn credentials as a user</a></li>
-<li><a href="#passwordless-webauthn">Passwordless WebAuthn</a></li>
+<li><a href="#passwordless-webauthn-together-with-two-factor">Passwordless WebAuthn together with Two-Factor</a></li>
 </ul>
 </li>
 </ul>
@@ -4127,7 +4127,7 @@ Whether WebAuthn&#8217;s operations succeed depends on a user&#8217;s WebAuthn s
 <div class="ulist">
 <ul>
 <li>
-<p>Select a realm, click on Authentication link, select the "Browser" flow</p>
+<p>Select a realm, click on <code>Authentication</code> link, select the <code>Browser</code> flow</p>
 </li>
 <li>
 <p>Make a copy of the built-in "Browser" flow. You may want to give the new flow a distinctive name, for example "WebAuthn Browser"</p>
@@ -4149,7 +4149,7 @@ Whether WebAuthn&#8217;s operations succeed depends on a user&#8217;s WebAuthn s
 <p>Using the <code>Actions</code> menu of the <code>WebAuthn Browser Forms</code>, click on <code>Add execution</code></p>
 </li>
 <li>
-<p>Select <code>WebAuthn Authenticator</code> using the drop down and click on "Save"</p>
+<p>Select <code>WebAuthn Authenticator</code> using the drop down and click on <code>Save</code></p>
 </li>
 <li>
 <p>Set its Requirement to <em>Required</em>.</p>
@@ -4180,7 +4180,7 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <p>Using the <code>Actions</code> menu of the <code>WebAuthn Browser Forms</code>, click on <code>Add flow</code></p>
 </li>
 <li>
-<p>Set the alias to "Conditional 2FA"</p>
+<p>Set the alias to "Conditional 2FA" and click on <code>Save</code></p>
 </li>
 <li>
 <p>Set the Requirement of <code>Conditional 2FA</code> to <em>Conditional</em></p>
@@ -4189,13 +4189,16 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <p>Using the <code>Actions</code> menu of the <code>Conditional 2FA</code>, click on <code>Add execution</code></p>
 </li>
 <li>
-<p>Select <code>Condition - User Configured</code> using the drop down and click on "Save"</p>
+<p>Select <code>Condition - User Configured</code> using the drop down and click on <code>Save</code></p>
+</li>
+<li>
+<p>Set the Requirement of <code>Condition - User Configured</code> execution to <em>Required</em></p>
 </li>
 <li>
 <p>Using the <code>Actions</code> menu of the <code>Conditional 2FA</code>, click on <code>Add execution</code></p>
 </li>
 <li>
-<p>Select <code>WebAuthn Authenticator</code> using the drop down and click on "Save"</p>
+<p>Select <code>WebAuthn Authenticator</code> using the drop down and click on <code>Save</code></p>
 </li>
 <li>
 <p>Set its Requirement to <em>Alternative</em>.</p>
@@ -4214,7 +4217,7 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <p>Using the <code>Actions</code> menu of the <code>Conditional 2FA</code>, click on <code>Add execution</code></p>
 </li>
 <li>
-<p>Select <code>OTP Form</code> using the drop down and click on "Save"</p>
+<p>Select <code>OTP Form</code> using the drop down and click on <code>Save</code></p>
 </li>
 <li>
 <p>Set its Requirement to <em>Alternative</em>.</p>
@@ -4425,7 +4428,7 @@ they are required to register their WebAuthn authenticator automatically :</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="passwordless-webauthn"><a class="anchor" href="#passwordless-webauthn"></a>Passwordless WebAuthn</h4>
+<h4 id="passwordless-webauthn-together-with-two-factor"><a class="anchor" href="#passwordless-webauthn-together-with-two-factor"></a>Passwordless WebAuthn together with Two-Factor</h4>
 <div class="paragraph">
 <p>WebAuthn is often used for two-factor authentication, however it can be desired to use it also as first factor authentication. In this case,
 a user with <code>passwordless</code> WebAuthn credential will be able to authenticate to Keycloak without a password. Keycloak allows to use WebAuthn
@@ -4464,19 +4467,19 @@ we will configure it as follows:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>WebAuthn Browser Forms</code> subflow will contain <code>Username Form</code> as the first authenticator. This setting means that the user
-will provide just his or her username as the first step.</p>
+<p>The <code>WebAuthn Browser Forms</code> subflow will contain <code>Username Form</code> as the first authenticator. Delete the default <code>Username Password Form</code>
+authenticator and add the <code>Username Form</code> authenticator instead. This setting means that the user will provide just his or her username as the first step.</p>
 </li>
 <li>
 <p>There will be a required subflow, which can be named for example <code>Passwordless Or Two-factor</code> . This setting indicates that user can
 authenticate either with Passwordless WebAuthn credential or with Two-factor authentication.</p>
 </li>
 <li>
-<p>Flow will contain <code>WebAuthn Passwordless Authenticator</code> as first alternative.</p>
+<p>Flow will contain <code>WebAuthn Passwordless Authenticator</code> as the first alternative.</p>
 </li>
 <li>
-<p>The second alternative will be a subflow named for example <code>Password And Two-factor Webauthn</code>. This subflow will contain <code>Password Form</code> and
-<code>WebAuthn Authenticator</code>.</p>
+<p>The second alternative will be a subflow named for example <code>Password And Two-factor Webauthn</code>. This subflow will contain a <code>Password Form</code> and
+a <code>WebAuthn Authenticator</code>.</p>
 </li>
 </ul>
 </div>
@@ -4484,14 +4487,15 @@ authenticate either with Passwordless WebAuthn credential or with Two-factor aut
 </ul>
 </div>
 <div class="paragraph">
-<p>The full configuration of the flow will look like this:</p>
+<p>The final configuration of the flow will look like the following:</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/webauthn-passwordless-flow.png" alt="webauthn passwordless flow"></span></p>
 </div>
 <div class="paragraph">
-<p>You can now add <code>WebAuthn Register Passwordless</code> as the required action to some user to test this. During the first authentication, the user will
-be still required to use the password and second-factor WebAuthn credential. However, once the user registers the credentials, that user will be able
+<p>You can now add <code>WebAuthn Register Passwordless</code> as the required action to some user, already known to Keycloak, to test this.
+During the first authentication, the user will be still required to use the password and second-factor WebAuthn credential. However, once
+the user registers the credentials, that user will be able
 to choose during future authentications. If he uses  his or her WebAuthn Passwordless credential, he won&#8217;t need to
 provide the password and second-factor WebAuthn credential at all.</p>
 </div>
@@ -14042,7 +14046,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-15 13:31:44 UTC
+Last updated 2020-01-21 19:45:45 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
