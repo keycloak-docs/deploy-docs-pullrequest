@@ -8788,9 +8788,8 @@ You must define the SAML configuration options as well.  They basically describe
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the URI reference corresponding to a name identifier format. Defaults to <code>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Principal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies which part of SAML assertion will be used to identify and track external user identities. Can be either Subject NameID or SAML attribute (either by name or by friendly name).
- The use of Subject NameID is discouraged in favor of SAML attributes; see <a href="https://kantarainitiative.github.io/SAMLprofiles/saml2int.html"> SAML V2.0 Deployment Profile for Federation Interoperability</a>, 3.1.3. Subject Identification for more details.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Principal Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies which part of SAML assertion will be used to identify and track external user identities. Can be either Subject NameID or SAML attribute (either by name or by friendly name).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Principal Attribute</p></td>
@@ -13984,7 +13983,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-05 03:46:13 UTC
+Last updated 2020-02-05 16:22:23 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

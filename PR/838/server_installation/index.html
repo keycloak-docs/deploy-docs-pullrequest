@@ -1103,10 +1103,6 @@ of your WildFly distribution, open the bin directory in a shell and run <code>./
 <p>This chapter walks you through the directory structure of the server distribution.</p>
 </div>
 <div class="paragraph">
-<div class="title">distribution directory structure</div>
-<p><span class="image"><img src="./keycloak-images/files.png" alt="distribution"></span></p>
-</div>
-<div class="paragraph">
 <p>Let&#8217;s examine the purpose of some of the directories:</p>
 </div>
 <div class="dlist">
@@ -1123,13 +1119,13 @@ of your WildFly distribution, open the bin directory in a shell and run <code>./
 <dd>
 <p>These are all the Java libraries used by the server.</p>
 </dd>
-<dt class="hdlist1"><em>providers/</em></dt>
-<dd>
-<p>If you are writing extensions to keycloak, you can put your extensions here.  See the <a href="https://www.keycloak.org/docs/9.0/server_development/">Server Developer Guide</a> for more information on this.</p>
-</dd>
 <dt class="hdlist1"><em>standalone/</em></dt>
 <dd>
 <p>This contains configuration files and working directory when running Keycloak in <a href="#_standalone-mode">standalone mode</a>.</p>
+</dd>
+<dt class="hdlist1"><em>standalone/deployments/</em></dt>
+<dd>
+<p>If you are writing extensions to Keycloak, you can put your extensions here.  See the <a href="https://www.keycloak.org/docs/9.0/server_development/">Server Developer Guide</a> for more information on this.</p>
 </dd>
 <dt class="hdlist1"><em>themes/</em></dt>
 <dd>
@@ -5522,7 +5518,7 @@ The cache will be cleared for all realms!
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-05 03:46:20 UTC
+Last updated 2020-02-05 16:22:31 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
