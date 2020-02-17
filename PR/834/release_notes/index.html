@@ -761,6 +761,8 @@ span.image img {
 <li><a href="#drools-policy-removed">Drools Policy Removed</a></li>
 <li><a href="#pagination-support-for-clients">Pagination support for clients</a></li>
 <li><a href="#new-elytron-credential-store-vault-provider">New Elytron Credential Store Vault Provider</a></li>
+<li><a href="#more-updates-to-w3c-webauthn-and-authentication-flows">More updates to W3C WebAuthn and Authentication flows</a></li>
+<li><a href="#improved-handling-of-user-locale">Improved handling of user locale</a></li>
 <li><a href="#other-improvements">Other improvements</a></li>
 </ul>
 </li>
@@ -981,7 +983,7 @@ span.image img {
 <div class="exampleblock top-menu-version">
 <div class="content">
 <div class="paragraph versionarchive">
-<p>Version <strong>9.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/release_notes/">Click here for latest</a></em></p>
+<p>Version <strong>9.0.1</strong> <em><a href="https://www.keycloak.org/docs/latest/release_notes/">Click here for latest</a></em></p>
 </div>
 </div>
 </div>
@@ -1013,11 +1015,34 @@ extension. The creation and management of the credential store is handled by Ely
 </div>
 </div>
 <div class="sect3">
+<h4 id="more-updates-to-w3c-webauthn-and-authentication-flows"><a class="anchor" href="#more-updates-to-w3c-webauthn-and-authentication-flows"></a>More updates to W3C WebAuthn and Authentication flows</h4>
+<div class="paragraph">
+<p>In this release, we did some usability improvements to the authentication flows. It should be easier for the end user to choose between
+available authentication mechanisms for two-factor authentication. It should be more intuitive to log in with OTP or WebAuthn
+considering the fact that user can have more OTP or WebAuthn credentials. There is also better support for passwordless WebAuthn authentication.
+Finally, we did some work on defects related to the authentication flows.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="improved-handling-of-user-locale"><a class="anchor" href="#improved-handling-of-user-locale"></a>Improved handling of user locale</h4>
+<div class="paragraph">
+<p>A number of improvements have been made to how the locale for the login page is selected, as well as when the locale
+is updated for a user.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://www.keycloak.org/docs/9.0/server_admin/#_user_locale_selection">Server Administration Guide</a> for more details.</p>
+</div>
+</div>
+<div class="sect3">
 <h4 id="other-improvements"><a class="anchor" href="#other-improvements"></a>Other improvements</h4>
 <div class="ulist">
 <ul>
 <li>
 <p>Authorization Header token is only considered now when type is Bearer on Gatekeeper. Thanks to <a href="https://github.com/HansK-p">HansK-p</a></p>
+</li>
+<li>
+<p>More algorithms are supported for the client authentication with signed client secret JWT. Namely HS384 and HS512 algorithms were added.
+Thanks to <a href="https://github.com/tnorimat">tnorimat</a></p>
 </li>
 </ul>
 </div>
@@ -1840,7 +1865,7 @@ Thanks to <a href="https://github.com/looorent">loorent</a> for the contribution
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-03 18:38:23 UTC
+Last updated 2020-02-17 21:05:16 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

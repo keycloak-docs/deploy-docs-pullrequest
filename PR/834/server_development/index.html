@@ -998,7 +998,7 @@ span.image img {
 <div class="exampleblock top-menu-version">
 <div class="content">
 <div class="paragraph versionarchive">
-<p>Version <strong>9.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/server_development/">Click here for latest</a></em></p>
+<p>Version <strong>9.0.1</strong> <em><a href="https://www.keycloak.org/docs/latest/server_development/">Click here for latest</a></em></p>
 </div>
 </div>
 </div>
@@ -2503,21 +2503,21 @@ my-script-mapper.js</code></pre>
     <span class="key"><span class="delimiter">&quot;</span><span class="content">authenticators</span><span class="delimiter">&quot;</span></span>: [
         {
             <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">My Authenticator</span><span class="delimiter">&quot;</span></span>,
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">fileName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-authenticator.js</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">fileName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-script-authenticator.js</span><span class="delimiter">&quot;</span></span>,
             <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">My Authenticator from a JS file</span><span class="delimiter">&quot;</span></span>
         }
     ],
     <span class="key"><span class="delimiter">&quot;</span><span class="content">policies</span><span class="delimiter">&quot;</span></span>: [
         {
             <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">My Policy</span><span class="delimiter">&quot;</span></span>,
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">fileName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-policy.js</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">fileName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-script-policy.js</span><span class="delimiter">&quot;</span></span>,
             <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">My Policy from a JS file</span><span class="delimiter">&quot;</span></span>
         }
     ],
     <span class="key"><span class="delimiter">&quot;</span><span class="content">mappers</span><span class="delimiter">&quot;</span></span>: [
         {
             <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">My Mapper</span><span class="delimiter">&quot;</span></span>,
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">fileName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-mapper.js</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">fileName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-script-mapper.js</span><span class="delimiter">&quot;</span></span>,
             <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">My Mapper from a JS file</span><span class="delimiter">&quot;</span></span>
         }
     ]
@@ -2824,7 +2824,7 @@ Don&#8217;t forget to always backup your database before doing any changes in th
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak comes out of the box with a bunch of different authentication mechanisms: kerberos, password, and otp.
+<p>Keycloak includes a range of different authentication mechanisms: kerberos, password, otp and others.
 These mechanisms may not meet all of your requirements and you may want to plug in your own custom ones.
 Keycloak provides an authentication SPI that you can use to write new plugins.
 The admin console supports applying, ordering, and configuring these new mechanisms.</p>
@@ -3539,11 +3539,10 @@ return the "most preferred" credential of the correct type of the user,</p>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">protected</span> <span class="type">boolean</span> validateAnswer(AuthenticationFlowContext context) {
     MultivaluedMap&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; formData = context.getHttpRequest().getDecodedFormParameters();
     <span class="predefined-type">String</span> secret = formData.getFirst(<span class="string"><span class="delimiter">&quot;</span><span class="content">secret_answer</span><span class="delimiter">&quot;</span></span>);
-    <span class="predefined-type">String</span> credentialId = context.getSelectedCredentialId();
+    <span class="predefined-type">String</span> credentialId = formData.getFirst(<span class="string"><span class="delimiter">&quot;</span><span class="content">credentialId</span><span class="delimiter">&quot;</span></span>);
     <span class="keyword">if</span> (credentialId == <span class="predefined-constant">null</span> || credentialId.isEmpty()) {
         credentialId = getCredentialProvider(context.getSession())
                 .getDefaultCredential(context.getSession(), context.getRealm(), context.getUser()).getId();
-        context.setSelectedCredentialId(credentialId);
     }
 
     UserCredentialModel input = <span class="keyword">new</span> UserCredentialModel(credentialId, getType(context.getSession()), secret);
@@ -3552,7 +3551,7 @@ return the "most preferred" credential of the correct type of the user,</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The last thing to go over is the setCookie() method.
+<p>Next method is the setCookie().
 This is an example of providing configuration for the Authenticator.
 In this case we want the max age of the cookie to be configurable.</p>
 </div>
@@ -3579,6 +3578,32 @@ In this case we want the max age of the cookie to be configurable.</p>
 If configuration exists we pull the max age config out of it.
 We will see how we can define what should be configured when we talk about the AuthenticatorFactory implementation.
 The config values can be defined within the admin console if you set up config definitions in your AuthenticatorFactory implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+    <span class="directive">public</span> CredentialTypeMetadata getCredentialTypeMetadata() {
+        <span class="keyword">return</span> CredentialTypeMetadata.builder()
+                .type(getType())
+                .category(CredentialTypeMetadata.Category.TWO_FACTOR)
+                .displayName(SecretQuestionCredentialProviderFactory.PROVIDER_ID)
+                .helpText(<span class="string"><span class="delimiter">&quot;</span><span class="content">secret-question-text</span><span class="delimiter">&quot;</span></span>)
+                .createAction(SecretQuestionAuthenticatorFactory.PROVIDER_ID)
+                .removeable(<span class="predefined-constant">false</span>)
+                .build(session);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Last method in SecretQuestionCredentialProvider class is getCredentialTypeMetadata(), which is an abstract method of CredentialProvider
+interface. Each Credential provider has to provide and implement this method. The method returns an instance of CredentialTypeMetadata,
+which should at least include type and category of authenticator, displayName and removable item. In this example, the builder
+takes type of authenticator from method getType(), category is Two Factor (the authenticator can be used as second factor of authentication)
+and removable, which is set up to false (user can&#8217;t remove some previously registered credentials).</p>
+</div>
+<div class="paragraph">
+<p>Other items of builder are helpText (will be shown to the user on various screens), createAction (the providerID of the required action,
+which can be used by the user to create new credential) or updateAction (same as createAction, but instead of creating the new credential, it will update the credential).</p>
 </div>
 </div>
 <div class="sect3">
@@ -3746,7 +3771,8 @@ a different credential or execution.</p>
 <p>Adding an Authenticator to a flow must be done in the admin console.
 If you go to the Authentication menu item and go to the Flow tab, you will be able to view the currently defined flows.
 You cannot modify built in flows, so, to add the Authenticator we&#8217;ve created you have to copy an existing flow or create your own.
-I&#8217;m hoping the UI is intuitive enough so that you can figure out for yourself how to create a flow and add the Authenticator.</p>
+Our hope is that the user interface is sufficiently clear so that you can determine how to create a flow and add the Authenticator. For
+more details, see the <code>Authentication Flows</code> chapter in <a href="https://www.keycloak.org/docs/9.0/server_admin/">Server Administration Guide</a> .</p>
 </div>
 <div class="paragraph">
 <p>After you&#8217;ve created your flow, you have to bind it to the login action you want to bind it to.
@@ -6351,7 +6377,7 @@ plain byte and character arrays and buffers is preferrable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-03 18:39:16 UTC
+Last updated 2020-02-17 21:06:11 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
