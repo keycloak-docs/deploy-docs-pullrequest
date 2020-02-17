@@ -1042,7 +1042,7 @@ adapters for selected platforms, but it is also possible to use generic OpenID C
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak client adapters are libraries that makes it very easy to secure applications and services with Keycloak. We call them
+<p>Keycloak client adapters are libraries that make it very easy to secure applications and services with Keycloak. We call them
 adapters rather than libraries as they provide a tight integration to the underlying platform and framework. This makes our adapters easy to use and they
 require less boilerplate code than what is typically required by a library.</p>
 </div>
@@ -6000,6 +6000,19 @@ It has no other task than sending the received tokens to the main application an
 <div class="paragraph">
 <p>Please keep in mind that this page at the specified location must be provided by the application itself and is <em>not</em> part of the JavaScript adapter!</p>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Starting with Chrome version 80 (released on February 2020), silent <code>check-sso</code> functionality will work only
+when the SSL / TLS connection is configured on the Keycloak side.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>To enable <code>login-required</code> set <code>onLoad</code> to <code>login-required</code> and pass to the init method:</p>
 </div>
@@ -6065,6 +6078,21 @@ This feature can be disabled by setting <code>checkLoginIframe: false</code> in 
 <div class="paragraph">
 <p>You should not rely on looking at this cookie directly. Its format can change and it&#8217;s also associated with the URL of the Keycloak server, not
 your application.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Starting with Chrome version 80 (released on February 2020), status iframe will only be able to see the special
+cookie over the SSL / TLS connection configured on the Keycloak side. Using an insecure connection may lead to redirecting
+to Keycloak every time iframe checks the status. You can avoid this behavior by disabling iframe
+or <a href="https://www.keycloak.org/docs/9.0/server_installation/#_setting_up_ssl">configuring the SSL / TLS</a> on the Keycloak side.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -6378,7 +6406,7 @@ Available options:</p>
 <p>useNonce - Adds a cryptographic nonce to verify that the authentication response matches the request (default is true).</p>
 </li>
 <li>
-<p>onLoad - Specifies an action to do on load. Supported values are 'login-required' or 'check-sso'.</p>
+<p>onLoad - Specifies an action to do on load. Supported values are <code>login-required</code> or <code>check-sso</code>.</p>
 </li>
 <li>
 <p>silentCheckSsoRedirectUri - Set the redirect uri for silent authentication check if onLoad is set to 'check-sso'.</p>
@@ -6396,22 +6424,22 @@ Available options:</p>
 <p>timeSkew - Set an initial value for skew between local time and Keycloak server in seconds (only together with token or refreshToken).</p>
 </li>
 <li>
-<p>checkLoginIframe - Set to enable/disable monitoring login state (default is true).</p>
+<p>checkLoginIframe - Set to enable/disable monitoring login state (default is <code>true</code>).</p>
 </li>
 <li>
 <p>checkLoginIframeInterval - Set the interval to check login state (default is 5 seconds).</p>
 </li>
 <li>
-<p>responseMode - Set the OpenID Connect response mode send to Keycloak server at login request. Valid values are query or fragment. Default value is fragment, which means that after successful authentication will Keycloak redirect to JavaScript application with OpenID Connect parameters added in URL fragment. This is generally safer and recommended over query.</p>
+<p>responseMode - Set the OpenID Connect response mode send to Keycloak server at login request. Valid values are <code>query</code> or <code>fragment</code>. Default value is <code>fragment</code>, which means that after successful authentication will Keycloak redirect to JavaScript application with OpenID Connect parameters added in URL fragment. This is generally safer and recommended over <code>query</code>.</p>
 </li>
 <li>
-<p>flow - Set the OpenID Connect flow. Valid values are standard, implicit or hybrid.</p>
+<p>flow - Set the OpenID Connect flow. Valid values are <code>standard</code>, <code>implicit</code> or <code>hybrid</code>.</p>
 </li>
 <li>
 <p>promiseType - If set to <code>native</code> all methods returning a promise will return a native JavaScript promise. If not set will return Keycloak specific promise objects.</p>
 </li>
 <li>
-<p>enableLogging - Enables logging messages from Keycloak to the console (default is false).</p>
+<p>enableLogging - Enables logging messages from Keycloak to the console (default is <code>false</code>).</p>
 </li>
 <li>
 <p>pkceMethod - The method for Proof Key Code Exchange (<a href="https://tools.ietf.org/html/rfc7636">PKCE</a>) to use. Configuring this value enables the PKCE mechanism. Available options:</p>
@@ -6464,7 +6492,7 @@ to Keycloak will contain the scope parameter <code>scope=openid address phone</c
 provider instead. More info in the <a href="https://www.keycloak.org/docs/9.0/server_admin/#_client_suggested_idp">Identity Provider documentation</a>.</p>
 </li>
 <li>
-<p>action - If value is 'register' then user is redirected to registration page, otherwise to login page.</p>
+<p>action - If value is <code>register</code> then user is redirected to registration page, otherwise to login page.</p>
 </li>
 <li>
 <p>locale - Sets the 'ui_locales' query param in compliance with <a href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">section 3.1.2.1 of the OIDC 1.0 specification</a>.</p>
@@ -7103,7 +7131,7 @@ You can also build via docker container: <code>make docker-build</code>. A Docke
 <span class="key">encryption-key</span>: <span class="string"><span class="content">&lt;ENCRYPTION_KEY&gt;</span></span>
 <span class="comment"># the upstream endpoint which we should proxy request</span>
 <span class="key">upstream-url</span>: <span class="string"><span class="content">http://127.0.0.1:80</span></span>
-<span class="comment"># additional scopes to add to add to the default (openid+email+profile)</span>
+<span class="comment"># additional scopes to add to the default (openid+email+profile)</span>
 <span class="key">scopes</span>:
 - <span class="string"><span class="content">vpn-user</span></span>
 <span class="comment"># a collection of resource i.e. urls that you wish to protect</span>
@@ -12382,7 +12410,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-30 21:59:39 UTC
+Last updated 2020-02-17 16:59:51 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
