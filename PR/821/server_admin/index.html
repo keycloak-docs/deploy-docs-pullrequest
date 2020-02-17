@@ -859,6 +859,7 @@ span.image img {
 <li><a href="#managing-webauthn-as-an-administrator">Managing WebAuthn as an administrator</a></li>
 <li><a href="#attestation-statement-verification">Attestation Statement Verification</a></li>
 <li><a href="#managing-webauthn-credentials-as-a-user">Managing WebAuthn credentials as a user</a></li>
+<li><a href="#passwordless-webauthn-together-with-two-factor">Passwordless WebAuthn together with Two-Factor</a></li>
 </ul>
 </li>
 </ul>
@@ -1800,6 +1801,47 @@ will be.  The next time a user logs in, they will be able to choose a language o
 User Account Management UI, and Admin Console.  The <a href="https://www.keycloak.org/docs/9.0/server_development/">Server Developer Guide</a> explains
 how you can offer additional languages.</p>
 </div>
+<div class="sect4">
+<h5 id="_user_locale_selection"><a class="anchor" href="#_user_locale_selection"></a>User Locale selection</h5>
+<div class="paragraph">
+<p>In order to select the best possible locale for a user there is a locale selector provider that handles deciding what
+is the best locale on the information available. One thing to note here is that it is not always known who the user is.
+For this reason the previously authenticated users locale is remembered in a persisted cookie.</p>
+</div>
+<div class="paragraph">
+<p>The logic for selecting the locale uses the first of the following that is available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>User selected - when the user has selected a locale using the drop-down locale selector</p>
+</li>
+<li>
+<p>User profile - when there is an authenticated user and the user has a preferred locale set</p>
+</li>
+<li>
+<p>Client selected - passed by the client using for example ui_locales parameter</p>
+</li>
+<li>
+<p>Cookie - last locale selected on the browser</p>
+</li>
+<li>
+<p>Accepted language - locale from <code>Accept-Language</code> header</p>
+</li>
+<li>
+<p>Realm default</p>
+</li>
+<li>
+<p>If none of the above, fallback to English</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When a user is authenticated an action is triggered to update the locale in the persisted cookie mentioned earlier. If the
+user has actively switched the locale through the locale selector on the login pages the users locale is also updated at
+this point.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2010,7 +2052,7 @@ has been compromised.</p>
 <h5 id="creating-an-otp"><a class="anchor" href="#creating-an-otp"></a>Creating an OTP</h5>
 <div class="paragraph">
 <p>If OTP is conditional in your realm, the user will have to go to the User Account Management service to re-configure a new
-OTP generator. A user can set up any number of OTP credentials in this manner. If OTP is required, then the user will be asked
+OTP generator. If OTP is required, then the user will be asked
 to re-configure a new OTP generator when they log in.</p>
 </div>
 <div class="paragraph">
@@ -2440,7 +2482,7 @@ the next time the user logs in.</p>
 </dd>
 <dt class="hdlist1">Hashing Iterations</dt>
 <dd>
-<p>This value specifies the number of times a password will be hashed before it is stored or verified. The default value is 20,000.
+<p>This value specifies the number of times a password will be hashed before it is stored or verified. The default value is 27,500.
 This hashing is done in the rare case that a hacker gets access to your password database. Once they have access to the database,
 they can reverse engineer user passwords.
 The industry recommended value for this parameter changes every year as CPU power improves. A higher hashing iteration value takes more CPU power for hashing,
@@ -2621,28 +2663,34 @@ flow is and does.</p>
 <p>The <code>Auth Type</code> column is the name of authentication or action that will be executed.  If an authentication is indented
 this means it is in a sub-flow and may or may not be executed depending on the behavior of its parent. The <code>Requirement</code>
 column is a set of radio buttons which define whether or not the action will execute. Let&#8217;s describe what each radio
-button means in this context:</p>
+button means in this context.</p>
 </div>
+<div class="sect4">
+<h5 id="_execution-requirements"><a class="anchor" href="#_execution-requirements"></a>Execution requirements</h5>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Required</dt>
 <dd>
-<p>This authentication execution must execute successfully. If the user doesn&#8217;t have that type of authentication mechanism
-configured and there is a required action associated with that authentication type, then a required action will be attached
-to that account.  For example, if you switch the <code>Browser - Conditional OTP</code> sub-flow to <code>Required</code>, users that don&#8217;t have an OTP generator configured
-will be asked to do so.</p>
+<p>For a flow to be evaluated as successful, all required elements in the flow must evaluate as successful. This means that all <em>Required</em> elements in the flow
+must be sequentially executed, from top to bottom, unless one of the elements causes the flow to fail. However, this is only true for the current flow.
+Any <em>Required</em> element within a sub-flow is only processed if that sub-flow is entered.</p>
 </dd>
 <dt class="hdlist1">Alternative</dt>
 <dd>
-<p>This means that at least one alternative authentication type must execute successfully at that level of the flow.</p>
+<p>When a flow contains only <em>Alternative</em> elements, only a single element must evaluate as successful for the flow to evaluate as successful.
+Because the <em>Required</em> flow elements within a flow are sufficient to mark a flow as successful, any <em>Alternative</em> flow element within a flow
+that contains <em>Required</em> flow elements will never be executed. In this case, they are functionally <em>Disabled</em>.</p>
 </dd>
 <dt class="hdlist1">Disabled</dt>
 <dd>
-<p>If disabled, the authentication type is not executed.</p>
+<p>Any <em>Disabled</em> element is not evaluated and does not count to mark a flow as successful.</p>
 </dd>
 <dt class="hdlist1">Conditional</dt>
 <dd>
-<p>This requirement type can only be set on sub-flows, indicating that it will only be executed if its condition evaluates to true.</p>
+<p>This requirement type can only be set on sub-flows. A <em>Conditional</em> sub-flow can contain a "Condition" execution. These "Condition" executions must evaluate as
+logical statements. If all "Condition" executions evaluate as <em>true</em> then the <em>Conditional</em> sub-flow acts as <em>Required</em>. If not, the <em>Conditional</em> sub-flow
+acts as <em>Disabled</em>. If no "Condition" execution is set, the <em>Conditional</em> sub-flow acts as <em>Disabled</em>. If a flow contains "Condition" executions and is not set to
+<em>Conditional</em>, the "Condition" executions are not evaluated, and can be considered functionally <em>Disabled</em>.</p>
 </dd>
 </dl>
 </div>
@@ -2686,6 +2734,7 @@ has an OTP credential set up. If he doesn&#8217;t, the user will not see an OTP 
 </ol>
 </div>
 </div>
+</div>
 <div class="sect3">
 <h4 id="creating-flows"><a class="anchor" href="#creating-flows"></a>Creating flows</h4>
 <div class="paragraph">
@@ -2694,10 +2743,18 @@ considerations when designing your own flow. A badly created flow could either l
 like, or simply result in an error.</p>
 </div>
 <div class="paragraph">
-<p>To create a flow, you can either:
-. Copy and then modify an existing flow. To do this select an existing flow (for example the <code>Browser</code> flow), and press the <code>Copy</code> button.
-  This will then ask you to set a name for the new flow, before creating it.
-. Create a new flow from scratch. To do this press the <code>New</code> button. Since this is the more general case, we will use this for our example.</p>
+<p>To create a flow, you can either:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Copy and then modify an existing flow. To do this select an existing flow (for example the <code>Browser</code> flow), and press the <code>Copy</code> button.
+This will then ask you to set a name for the new flow, before creating it.</p>
+</li>
+<li>
+<p>Create a new flow from scratch. To do this press the <code>New</code> button. Since this is the more general case, we will use this for our example.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>When creating a new flow, you will have to create a top level flow</p>
@@ -2759,34 +2816,8 @@ depending on how the executions they contain evaluate (and this includes the eva
 depends on the Requirement of each execution and sub-flow.</p>
 </div>
 <div class="paragraph">
-<p>Fully understanding this requires a more complete explanation of how requirements work when evaluating a flow, and this also applies to sub-flows:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Required</dt>
-<dd>
-<p>For a flow to be evaluated as successful, all required elements in the flow must evaluate as successful. This means that all <em>Required</em> elements in the flow
-must be sequentially executed, from top to bottom, unless one the the elements causes the flow to fail. However, this is only true for the current flow.
-Any <em>Required</em> element within a sub-flow is only processed if that sub-flow is entered.</p>
-</dd>
-<dt class="hdlist1">Alternative</dt>
-<dd>
-<p>When a flow contains only <em>Alternative</em> elements, only a single element must evaluate as successful for the flow to evaluate as successful.
-Because the <em>Required</em> flow elements within a flow are sufficient to mark a flow as successful, any <em>Alternative</em> flow element within a flow
-that contains <em>Required</em> flow elements will never be executed. In this case, they are functionally <em>Disabled</em>.</p>
-</dd>
-<dt class="hdlist1">Disabled</dt>
-<dd>
-<p>Any <em>Disabled</em> element is not evaluated and does not count to mark a flow as successful.</p>
-</dd>
-<dt class="hdlist1">Conditional</dt>
-<dd>
-<p>This requirement type can only be set on sub-flows. A <em>Conditional</em> sub-flow can contain a "Condition" execution. These "Condition" executions must evaluate as
-logical statements. If all "Condition" executions evaluate as <em>true</em> then the <em>Conditional</em> sub-flow acts as <em>Required</em>. If not, the <em>Conditional</em> sub-flow
-acts as <em>Disabled</em>. If no "Condition" execution is set, the <em>Conditional</em> sub-flow acts as <em>Disabled</em>. If a flow contains "Condition" executions and is not set to
-<em>Conditional</em>, the "Condition" executions are not evaluated, and can be considered functionally <em>Disabled</em>.</p>
-</dd>
-</dl>
+<p>Fully understanding this requires a more complete explanation of how requirements work when evaluating a flow, and this also applies to sub-flows.
+Refer to the <a href="#_execution-requirements">execution requirements section</a> above for more details.</p>
 </div>
 <div class="paragraph">
 <p>Note that after adding an execution, you should check that the Requirement is set to the correct value. Even if there is only a single possible Requirement, it
@@ -2857,7 +2888,7 @@ After pressing "Save", set its Requirement to <em>Required</em>.</p>
 </li>
 <li>
 <p>Using the <code>Actions</code> menu on the right-hand side of the "Authentication" subflow, select "Add execution". Using the drop-down select
-"Webauthn Authenticator". After pressing "Save", set its Requirement to <em>Alternative</em>.</p>
+"Webauthn Passwordless Authenticator". After pressing "Save", set its Requirement to <em>Alternative</em>.</p>
 </li>
 <li>
 <p>Using the <code>Actions</code> menu on the right-hand side of the "Authentication" subflow, select "Add flow". Choose an representative Alias, e.g. "Password with OTP".
@@ -2889,19 +2920,21 @@ After pressing "Save", set its Requirement to <em>Alternative</em>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>If the user has any WebAuthn credentials recorded, he will be able to use any of them to log in directly. This is the password-less login.
-The user also has a drop-down allowing him to select "Password with OTP". He can do this because the "WebAuthn" execution and the "Password with OTP"
+<p>If the user has any WebAuthn passwordless credentials recorded, that user will be able to use any of them to log in directly. This is the password-less login.
+The user can instead select "Password with OTP". The user can do this because the "WebAuthn Passwordless" execution and the "Password with OTP"
 flow are set to <em>Alternative</em>. Were they set to <em>Required</em> the user would have to enter WebAuthn, password, and OTP.</p>
 </li>
 <li>
-<p>If the user selects the "Password with OTP" from the drop-down, or if the user doesn&#8217;t have any WebAuthn credentials, he will have to first enter his
+<p>If the user selects <code>Try another way</code> link on the screen with "WebAuthn passwordless" authentication, the user can choose between "Password" and
+"Security Key" (WebAuthn passwordless). When selecting the password, the user will need to continue and log in with the assigned OTP as well.
+If the user has no WebAuthn credentials, he will have to first enter his
 password, and then his OTP. If the user has no OTP credential, he will be asked to record one.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>It is important to note that since the WebAuthn execution is set to <em>Alternative</em> instead of <em>Required</em>, this flow will never ask the user to register a WebAuthn credential. For a user
-to have a Webauthn credential, he must have a required action added to him by an administrator. This is done first by making sure that that the <code>Webauthn Register</code>
+<p>It is important to note that since the WebAuthn Passwordless execution is set to <em>Alternative</em> instead of <em>Required</em>, this flow will never ask the user to register a WebAuthn credential. For a user
+to have a Webauthn credential, that user must have a required action added by an administrator. This is done first by making sure that the <code>Webauthn Register Passwordless</code>
 required action is enabled in the realm (see the <a href="#_webauthn">WebAuthn</a> documentation), and then by setting the required action by using the <code>Credential Reset</code> part of a
 user&#8217;s <a href="#_user-credentials">Credentials</a> management menu.</p>
 </div>
@@ -2929,81 +2962,10 @@ experience. To correct this, you could:</p>
 <div class="sect2">
 <h3 id="script-authenticator"><a class="anchor" href="#script-authenticator"></a>Script Authenticator</h3>
 <div class="paragraph">
-<p>A <em>script</em> authenticator allows to define custom authentication logic via JavaScript.
-Custom authenticators. In order to make use of this feature, it must be explicitly enabled:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>bin/standalone.sh|bat -Dkeycloak.profile.feature.scripts=enabled</code></pre>
-</div>
+<p>Ability to upload scripts through the Admin Console and REST endpoints is deprecated.</p>
 </div>
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.keycloak.org/docs/9.0/server_installation/#profiles">Profiles</a> section.</p>
-</div>
-<div class="paragraph">
-<p>Authentication scripts must at least provide one of the following functions:
-<code>authenticate(..)</code> which is called from <code>Authenticator#authenticate(AuthenticationFlowContext)</code>
-<code>action(..)</code> which is called from <code>Authenticator#action(AuthenticationFlowContext)</code></p>
-</div>
-<div class="paragraph">
-<p>Custom <code>Authenticator</code> should at least provide the <code>authenticate(..)</code> function.
-The following script <code>javax.script.Bindings</code> are available for convenient use within script code.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>script</code></dt>
-<dd>
-<p>the <code>ScriptModel</code> to access script metadata</p>
-</dd>
-<dt class="hdlist1"><code>realm</code></dt>
-<dd>
-<p>the <code>RealmModel</code></p>
-</dd>
-<dt class="hdlist1"><code>user</code></dt>
-<dd>
-<p>the current <code>UserModel</code></p>
-</dd>
-<dt class="hdlist1"><code>session</code></dt>
-<dd>
-<p>the active <code>KeycloakSession</code></p>
-</dd>
-<dt class="hdlist1"><code>authenticationSession</code></dt>
-<dd>
-<p>the current <code>AuthenticationSessionModel</code></p>
-</dd>
-<dt class="hdlist1"><code>httpRequest</code></dt>
-<dd>
-<p>the current <code>org.jboss.resteasy.spi.HttpRequest</code></p>
-</dd>
-<dt class="hdlist1"><code>LOG</code></dt>
-<dd>
-<p>a <code>org.jboss.logging.Logger</code> scoped to <code>ScriptBasedAuthenticator</code></p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>Note that additional context information can be extracted from the <code>context</code> argument passed
-to the <code>authenticate(context)</code> <code>action(context)</code> function.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">AuthenticationFlowError = Java.type(<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.authentication.AuthenticationFlowError</span><span class="delimiter">&quot;</span></span>);
-
-<span class="keyword">function</span> <span class="function">authenticate</span>(context) {
-
-  LOG.info(script.name + <span class="string"><span class="delimiter">&quot;</span><span class="content"> --&gt; trace auth for: </span><span class="delimiter">&quot;</span></span> + user.username);
-
-  <span class="keyword">if</span> (   user.username === <span class="string"><span class="delimiter">&quot;</span><span class="content">tester</span><span class="delimiter">&quot;</span></span>
-      &amp;&amp; user.getAttribute(<span class="string"><span class="delimiter">&quot;</span><span class="content">someAttribute</span><span class="delimiter">&quot;</span></span>)
-      &amp;&amp; user.getAttribute(<span class="string"><span class="delimiter">&quot;</span><span class="content">someAttribute</span><span class="delimiter">&quot;</span></span>).contains(<span class="string"><span class="delimiter">&quot;</span><span class="content">someValue</span><span class="delimiter">&quot;</span></span>)) {
-
-      context.failure(AuthenticationFlowError.INVALID_USER);
-      <span class="keyword">return</span>;
-  }
-
-  context.success();
-}</code></pre>
-</div>
+<p>For more details see <a href="https://www.keycloak.org/docs/9.0/server_development/#_script_providers">JavaScript Providers</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4100,23 +4062,7 @@ Whether WebAuthn&#8217;s operations succeed depends on a user&#8217;s WebAuthn s
 <p>The setup procedure of WebAuthn support for 2FA is the following :</p>
 </div>
 <div class="sect4">
-<h5 id="enable-user-registration"><a class="anchor" href="#enable-user-registration"></a>Enable User Registration</h5>
-<div class="paragraph">
-<p>An administrator carries out the following operations on the <code>Admin Console</code> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Open the <code>Realm Settings &#8594; Login</code> tab.</p>
-</li>
-<li>
-<p>Set the <code>User Registration</code> to ON and click <code>Save</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="enable-webauthn-authenticator-registration"><a class="anchor" href="#enable-webauthn-authenticator-registration"></a>Enable Webauthn Authenticator Registration</h5>
+<h5 id="_webauthn-register"><a class="anchor" href="#_webauthn-register"></a>Enable Webauthn Authenticator Registration</h5>
 <div class="paragraph">
 <p>An administrator carries out the following operations on the <code>Admin Console</code> :</p>
 </div>
@@ -4132,17 +4078,17 @@ Whether WebAuthn&#8217;s operations succeed depends on a user&#8217;s WebAuthn s
 <p>Select <code>Webauthn Register</code> as <code>Required Action</code>.</p>
 </li>
 <li>
-<p>Mark <code>Enabled</code> and <code>Default Action</code> checkbox.</p>
+<p>Mark <code>Enabled</code> checkbox. Optionally mark <code>Default Action</code> checkbox if you want all new created users to be required to register WebAuthn credential.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="adding-webauthn-authentication-to-a-browser-flow"><a class="anchor" href="#adding-webauthn-authentication-to-a-browser-flow"></a>Adding WebAuthn Authentication to a Browser Flow</h5>
+<h5 id="_webauthn-authenticator-setup"><a class="anchor" href="#_webauthn-authenticator-setup"></a>Adding WebAuthn Authentication to a Browser Flow</h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Select a realm, click on Authentication link, select the "Browser" flow</p>
+<p>Select a realm, click on <code>Authentication</code> link, select the <code>Browser</code> flow</p>
 </li>
 <li>
 <p>Make a copy of the built-in "Browser" flow. You may want to give the new flow a distinctive name, for example "WebAuthn Browser"</p>
@@ -4164,7 +4110,7 @@ Whether WebAuthn&#8217;s operations succeed depends on a user&#8217;s WebAuthn s
 <p>Using the <code>Actions</code> menu of the <code>WebAuthn Browser Forms</code>, click on <code>Add execution</code></p>
 </li>
 <li>
-<p>Select <code>WebAuthn Authenticator</code> using the drop down and click on "Save"</p>
+<p>Select <code>WebAuthn Authenticator</code> using the drop down and click on <code>Save</code></p>
 </li>
 <li>
 <p>Set its Requirement to <em>Required</em>.</p>
@@ -4173,6 +4119,13 @@ Whether WebAuthn&#8217;s operations succeed depends on a user&#8217;s WebAuthn s
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/webauthn-browser-flow-required.png" alt="webauthn browser flow required"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In the <code>Bindings</code> menu, change the browser flow to <code>WebAuthn Browser</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Note that in this scenario, if a user doesn&#8217;t have a WebAuthn credential, a required action will be set that forces that user
@@ -4188,7 +4141,7 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <p>Using the <code>Actions</code> menu of the <code>WebAuthn Browser Forms</code>, click on <code>Add flow</code></p>
 </li>
 <li>
-<p>Set the alias to "Conditional 2FA"</p>
+<p>Set the alias to "Conditional 2FA" and click on <code>Save</code></p>
 </li>
 <li>
 <p>Set the Requirement of <code>Conditional 2FA</code> to <em>Conditional</em></p>
@@ -4197,13 +4150,16 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <p>Using the <code>Actions</code> menu of the <code>Conditional 2FA</code>, click on <code>Add execution</code></p>
 </li>
 <li>
-<p>Select <code>Condition - User Configured</code> using the drop down and click on "Save"</p>
+<p>Select <code>Condition - User Configured</code> using the drop down and click on <code>Save</code></p>
+</li>
+<li>
+<p>Set the Requirement of <code>Condition - User Configured</code> execution to <em>Required</em></p>
 </li>
 <li>
 <p>Using the <code>Actions</code> menu of the <code>Conditional 2FA</code>, click on <code>Add execution</code></p>
 </li>
 <li>
-<p>Select <code>WebAuthn Authenticator</code> using the drop down and click on "Save"</p>
+<p>Select <code>WebAuthn Authenticator</code> using the drop down and click on <code>Save</code></p>
 </li>
 <li>
 <p>Set its Requirement to <em>Alternative</em>.</p>
@@ -4222,7 +4178,7 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <p>Using the <code>Actions</code> menu of the <code>Conditional 2FA</code>, click on <code>Add execution</code></p>
 </li>
 <li>
-<p>Select <code>OTP Form</code> using the drop down and click on "Save"</p>
+<p>Select <code>OTP Form</code> using the drop down and click on <code>Save</code></p>
 </li>
 <li>
 <p>Set its Requirement to <em>Alternative</em>.</p>
@@ -4237,18 +4193,13 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <div class="sect3">
 <h4 id="authenticate-with-webauthn-authenticator"><a class="anchor" href="#authenticate-with-webauthn-authenticator"></a>Authenticate with WebAuthn Authenticator</h4>
 <div class="paragraph">
-<p>After registering their WebAuthn authenticator, the user carries out the following operations :</p>
+<p>After registering a WebAuthn authenticator, the user carries out the following operations
+assuming that authentication flow configuration above with the conditional subflow using <code>WebAuthn Authenticator</code> was used:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Open the login form.</p>
-</li>
-<li>
-<p>Select the credential or credentials that Keycloak must accept for login. Then click <code>Save</code> and  click <code>Login</code>.</p>
-</li>
-<li>
-<p>The list of registered Webauthn Authenticators' labels appears. Click <code>Authenticate</code>.</p>
+<p>Open the login form. The user must authenticate with a username and password.</p>
 </li>
 <li>
 <p>The user&#8217;s browser asks the user to authenticate by their WebAuthn authenticator.</p>
@@ -4281,7 +4232,7 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="managing-policy"><a class="anchor" href="#managing-policy"></a>Managing Policy</h5>
+<h5 id="_webauthn-policy"><a class="anchor" href="#_webauthn-policy"></a>Managing Policy</h5>
 <div class="paragraph">
 <p>An administrator can configure WebAuthn related operations as <code>WebAuthn Policy</code> per realm.</p>
 </div>
@@ -4385,7 +4336,8 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 <dl>
 <dt class="hdlist1">New user</dt>
 <dd>
-<p>A new user carries out the following operations :</p>
+<p>If the <code>WebAuthn Register</code> required action is set as <code>Default Action</code> in a realm, new users are required to
+set up the WebAuthn security key after the first successful login. A new user carries out the following operations :</p>
 <div class="ulist">
 <ul>
 <li>
@@ -4408,7 +4360,8 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 </dd>
 <dt class="hdlist1">Existing user</dt>
 <dd>
-<p>When existing users try to log in, they are required to register their WebAuthn authenticator automatically :</p>
+<p>If <code>WebAuthn Authenticator</code> is set up as required as shown in the first example, then when existing users try to log in,
+they are required to register their WebAuthn authenticator automatically :</p>
 <div class="ulist">
 <ul>
 <li>
@@ -4429,46 +4382,78 @@ the <code>WebAuthn Authenticator</code> execution:</p>
 </dl>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="passwordless-webauthn-together-with-two-factor"><a class="anchor" href="#passwordless-webauthn-together-with-two-factor"></a>Passwordless WebAuthn together with Two-Factor</h4>
+<div class="paragraph">
+<p>WebAuthn is often used for two-factor authentication, however it can be desired to use it also as first factor authentication. In this case,
+a user with <code>passwordless</code> WebAuthn credential will be able to authenticate to Keycloak without a password. Keycloak allows to use WebAuthn
+as both the passwordless and two-factor authentication mechanism in the context of a single realm and even in the context of a single authentication flow.</p>
+</div>
+<div class="paragraph">
+<p>Administrator may typically require that Security Keys registered by users for the WebAuthn passwordless authentication must meet different
+(usually stronger) requirements. For example, those security keys may require users to authenticate to that security key using a PIN, or the
+security key should be attested with stronger certificate authority.</p>
+</div>
+<div class="paragraph">
+<p>Because of this situation, Keycloak allows administrator to configure separate <code>WebAuthn Passwordless Policy</code>. There is a separate required action
+of type <code>Webauthn Register Passwordless</code> and separate authenticator of type <code>WebAuthn Passwordless Authenticator</code>.</p>
+</div>
 <div class="sect4">
-<h5 id="view-registered-webauthn-authenticator"><a class="anchor" href="#view-registered-webauthn-authenticator"></a>View Registered WebAuthn Authenticator</h5>
+<h5 id="setup-2"><a class="anchor" href="#setup-2"></a>Setup</h5>
 <div class="paragraph">
-<p>A user carries out the following operations on the <a href="#_account-service"><code>User Account Service</code></a>  :</p>
+<p>The setup procedure of WebAuthn passwordless support is the following :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>View the <code>Account</code> page.</p>
+<p>Register new required action for WebAuthn passwordless support. Use the same steps as described <a href="#_webauthn-register">above</a>
+with the only difference, that you need to register the action called <code>Webauthn Register Passwordless</code>.</p>
 </li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="edit-registered-webauthn-authenticator"><a class="anchor" href="#edit-registered-webauthn-authenticator"></a>Edit Registered WebAuthn Authenticator</h5>
-<div class="paragraph">
-<p>A user can edit the following information :</p>
-</div>
+<li>
+<p>Configure the policy. You can use same steps and configuration options as described <a href="#_webauthn-policy">above</a>, however you
+need to configure them in the admin console in the tab <code>WebAuthn Passwordless Policy</code>. You can configure this policy as you want, however
+typically the requirements for the security key will be stronger than for the two-factor policy. For example the <code>User Verification Requirement</code> can
+be set to <code>Required</code> when you configure the passwordless policy.</p>
+</li>
+<li>
+<p>Finally configure the authentication flow. Let&#8217;s assume that we will use same flow called <code>WebAuthn Browser</code> as described
+<a href="#_webauthn-authenticator-setup">above</a>, but
+we will configure it as follows:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Label (WebAuthn authenticator&#8217;s label the user entered on registering it)</p>
+<p>The <code>WebAuthn Browser Forms</code> subflow will contain <code>Username Form</code> as the first authenticator. Delete the default <code>Username Password Form</code>
+authenticator and add the <code>Username Form</code> authenticator instead. This setting means that the user will provide just his or her username as the first step.</p>
+</li>
+<li>
+<p>There will be a required subflow, which can be named for example <code>Passwordless Or Two-factor</code> . This setting indicates that user can
+authenticate either with Passwordless WebAuthn credential or with Two-factor authentication.</p>
+</li>
+<li>
+<p>Flow will contain <code>WebAuthn Passwordless Authenticator</code> as the first alternative.</p>
+</li>
+<li>
+<p>The second alternative will be a subflow named for example <code>Password And Two-factor Webauthn</code>. This subflow will contain a <code>Password Form</code> and
+a <code>WebAuthn Authenticator</code>.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>A user carries out the following operations on the <a href="#_account-service"><code>User Account Service</code></a>  :</p>
+<p>The final configuration of the flow will look like the following:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>View the <code>Account</code> page.</p>
-</li>
-<li>
-<p>Edit the text in <code>Public Key Credential Label</code>.</p>
-</li>
-<li>
-<p>Click <code>Save</code>.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p><span class="image"><img src="./images/webauthn-passwordless-flow.png" alt="webauthn passwordless flow"></span></p>
+</div>
+<div class="paragraph">
+<p>You can now add <code>WebAuthn Register Passwordless</code> as the required action to some user, already known to Keycloak, to test this.
+During the first authentication, the user will be still required to use the password and second-factor WebAuthn credential. However, once
+the user registers the credentials, that user will be able
+to choose during future authentications. If he uses  his or her WebAuthn Passwordless credential, he won&#8217;t need to
+provide the password and second-factor WebAuthn credential at all.</p>
 </div>
 </div>
 </div>
@@ -5307,7 +5292,7 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 <div class="paragraph">
 <p>There are two ways for Keycloak to obtain the Client ID from the request. The first option is the <code>client_id</code>
 parameter in the query (described in Section 2.2 of the <a href="https://tools.ietf.org/html/rfc6749">OAuth 2.0 Specification</a>).
-The second option is to supply <code>client_id</code> as a query parameter.</p>
+The second option is to supply <code>client_id</code> as a form parameter.</p>
 </div>
 </div>
 <div class="sect3">
@@ -5489,7 +5474,7 @@ and security is not broken.</p>
 <p>and can be used to invoke <code>good-service</code>.</p>
 </div>
 <div class="sect4">
-<h5 id="setup-2"><a class="anchor" href="#setup-2"></a>Setup</h5>
+<h5 id="setup-3"><a class="anchor" href="#setup-3"></a>Setup</h5>
 <div class="paragraph">
 <p>To properly set up audience checking:</p>
 </div>
@@ -8830,6 +8815,14 @@ You must define the SAML configuration options as well.  They basically describe
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the URI reference corresponding to a name identifier format. Defaults to <code>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</code>.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Principal Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies which part of the SAML assertion will be used to identify and track external user identities. Can be either Subject NameID or SAML attribute (either by name or by friendly name).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Principal Attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If Principal is set to either "Attribute [Name]" or "Attribute [Friendly Name]", this field will specify the name or the friendly name of the identifying attribute, respectively.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HTTP-POST Binding Response</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When this realm responds to any SAML requests sent by the external IDP, which SAML binding should be used?  If set to <code>off</code>, then the Redirect Binding will be used.</p></td>
 </tr>
@@ -9475,19 +9468,19 @@ support offline tokens if you include <code>scope=offline_access</code> in the b
 <p>Many companies have existing user databases that hold information about users and their passwords or other credentials.
 In many cases, it is just not possible to migrate off of those existing stores to a pure Keycloak deployment.
 Keycloak can federate existing external user databases.
-Out of the box we have support for LDAP and Active Directory.  You can also code your own extension for any custom
-user databases you might have using our User Storage SPI.</p>
+By default, we support LDAP and Active Directory, but you can also code your own extension for any custom
+user database using our User Storage SPI.</p>
 </div>
 <div class="paragraph">
 <p>The way it works is that when a user logs in, Keycloak will look into its own internal user store to find the user.
-If it can&#8217;t find it there it will iterate
+If it cannot find it there, it will iterate
 over every User Storage provider you have configured for the realm until it finds a match.  Data from the external store is mapped into a common user model that is consumed by the Keycloak
 runtime.  This common user model can then be mapped to OIDC token claims and SAML assertion attributes.</p>
 </div>
 <div class="paragraph">
 <p>External user databases rarely have every piece of data needed to support all the features that Keycloak has.
-In this case, the User Storage Provider can opt to store some things locally in the Keycloak user store.
-Some providers even import the user locally and sync periodically with the external store.  All this depends on the capabilities of the provider and how its configured.  For example, your
+Therefore, the User Storage Provider can opt to store some things locally in the Keycloak user store.
+Some providers even import the user locally and sync periodically with the external store. This approach depends on the capabilities of the provider and how it is configured.  For example, your
 external user store may not support OTP.  Depending on the provider, this OTP can be handled and stored by Keycloak.</p>
 </div>
 <div class="sect2">
@@ -9506,7 +9499,7 @@ external user store may not support OTP.  Depending on the provider, this OTP ca
 <div class="sect2">
 <h3 id="dealing-with-provider-failures"><a class="anchor" href="#dealing-with-provider-failures"></a>Dealing with Provider Failures</h3>
 <div class="paragraph">
-<p>If a User Storage Provider fails, that is, if your LDAP server is down, you may have trouble logging in and may not be able to view users in the admin console.
+<p>If a User Storage Provider fails (for example, your LDAP server is down), you may have trouble logging in and may not be able to view users in the admin console.
 Keycloak does not catch failures when using a Storage Provider to lookup a user.  It will abort the invocation.  So, if you have a Storage Provider with a higher
 priority that fails during user lookup, the login or user query will fail entirely with an exception and abort.  It will not fail over to the next configured provider.</p>
 </div>
@@ -9623,7 +9616,7 @@ More info in <a href="#_kerberos">Kerberos section</a>.</p>
 <dt class="hdlist1">Other options</dt>
 <dd>
 <p>The rest of the configuration options should be self explanatory.
-You can mouseover the tooltips in Admin Console to see some more details about them.</p>
+You can hover the mouse pointer over the tooltips in the Admin Console to see some more details about them.</p>
 </dd>
 </dl>
 </div>
@@ -9631,41 +9624,39 @@ You can mouseover the tooltips in Admin Console to see some more details about t
 <div class="sect3">
 <h4 id="connect-to-ldap-over-ssl"><a class="anchor" href="#connect-to-ldap-over-ssl"></a>Connect to LDAP over SSL</h4>
 <div class="paragraph">
-<p>When you configure a secured connection URL to your LDAP store(for example <code>ldaps://myhost.com:636</code> ),
-Keycloak will use SSL for the communication with LDAP server.
+<p>When you configure a secured connection URL to your LDAP store (for example,`ldaps://myhost.com:636'), Keycloak will use SSL for communication with the LDAP server.
 The important thing is to properly configure a truststore on the Keycloak server side, otherwise Keycloak can&#8217;t trust the SSL connection to LDAP.</p>
 </div>
 <div class="paragraph">
-<p>The global truststore for the Keycloak can be configured with the Truststore SPI.  Please check out the <a href="https://www.keycloak.org/docs/9.0/server_installation/">Server Installation and Configuration Guide</a> for more detail.
-If you don&#8217;t configure the truststore SPI, the truststore will fallback to the default mechanism provided by Java (either the file provided by system property <code>javax.net.ssl.trustStore</code>
+<p>The global truststore for the Keycloak can be configured with the Truststore SPI.  Please check out the <a href="https://www.keycloak.org/docs/9.0/server_installation/">Server Installation and Configuration Guide</a> for more details.
+If you do not figure the truststore SPI, the truststore will fall back on the default mechanism provided by Java (either the file provided by system property <code>javax.net.ssl.trustStore</code>
 or the cacerts file from the JDK if the system property is not set).</p>
 </div>
 <div class="paragraph">
 <p>There is a configuration property <code>Use Truststore SPI</code> in the LDAP federation provider configuration, where you can choose whether the Truststore SPI is used.
 By default, the value is <code>Only for ldaps</code>, which is fine for most deployments.  The Truststore SPI will only be used
-if the connection to LDAP starts with <code>ldaps</code>.</p>
+if the connection URL to LDAP starts with <code>ldaps</code>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="sync-of-ldap-users-to-keycloak"><a class="anchor" href="#sync-of-ldap-users-to-keycloak"></a>Sync of LDAP users to Keycloak</h4>
 <div class="paragraph">
-<p>If you have import enabled, the LDAP Provider will automatically take care of synchronization (import) of needed LDAP users into the Keycloak local database.
+<p>If you enable the Import Users option, the LDAP Provider will automatically take care of synchronization (import) of needed LDAP users into the Keycloak local database.
 As users log in, the LDAP provider will import the LDAP user
 into the Keycloak database and then authenticate against the LDAP password. This is the only time users will be imported.
 If you go to the <code>Users</code> left menu item in the Admin Console and click the <code>View all users</code> button, you will only see those LDAP users that
-have been authenticated at least once by Keycloak.  It is implemented this way so that admins don&#8217;t accidentally try to import a huge LDAP DB of users.</p>
+have been authenticated at least once by Keycloak.  It is implemented this way so that this operation does not trigger an import of the entire LDAP user database.</p>
 </div>
 <div class="paragraph">
-<p>If you want to sync all LDAP users into the Keycloak database, you may configure and enable the <code>Sync Settings</code> of the LDAP provider you configured.
-There are 2 types of synchronization:</p>
+<p>If you want to sync all LDAP users into the Keycloak database, you may configure and enable the <code>Sync Settings</code> on the LDAP provider configuration page.
+Two types of synchronization exist:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Periodic Full sync</dt>
 <dd>
-<p>This will synchronize all LDAP users into Keycloak DB.
-Those LDAP users, which already exist in Keycloak and were changed in LDAP directly will be updated in Keycloak DB
-(For example if user <code>Mary Kelly</code> was changed in LDAP to <code>Mary Smith</code>).</p>
+<p>This type will synchronize all LDAP users into the Keycloak database.
+Those LDAP users, which already exist in Keycloak and were changed in LDAP directly will be updated in the Keycloak database.  For example, the user <code>Mary Kelly</code> was changed in LDAP to <code>Mary Smith</code>.</p>
 </dd>
 <dt class="hdlist1">Periodic Changed users sync</dt>
 <dd>
@@ -9675,13 +9666,13 @@ Those LDAP users, which already exist in Keycloak and were changed in LDAP direc
 </div>
 <div class="paragraph">
 <p>The best way to handle syncing is to click the <code>Synchronize all users</code> button when you first create the LDAP provider,
-then set up a periodic sync of changed users.  The configuration page for your LDAP Provider has several options to support you.</p>
+then set up a periodic sync of changed users.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_ldap_mappers"><a class="anchor" href="#_ldap_mappers"></a>LDAP Mappers</h4>
 <div class="paragraph">
-<p>LDAP mappers are <code>listeners</code>, which are triggered by the LDAP Provider at various points, provide another extension point to LDAP integration.
+<p>LDAP mappers are <code>listeners</code>, which are triggered by the LDAP Provider at various points and provide another extension point to LDAP integration.
 They are triggered when a user logs in via LDAP and needs to be imported, during Keycloak initiated registration, or when a user is queried from the Admin Console.
 When you create an LDAP Federation provider, Keycloak will automatically provide set of built-in <code>mappers</code> for this provider.
 You are free to change this set and create a new mapper or update/delete existing ones.</p>
@@ -9711,23 +9702,22 @@ One Role mapper can be used to map LDAP roles (usually groups from a particular 
 It&#8217;s not a problem to configure more Role mappers for the same LDAP provider.
 So for example you can specify that role mappings from groups under
 <code>ou=main,dc=example,dc=org</code> will be mapped to realm role mappings and role mappings from groups under
-<code>ou=finance,dc=example,dc=org</code> will be mapped to client role mappings of client <code>finance</code> .</p>
+<code>ou=finance,dc=example,dc=org</code> will be mapped to client role mappings of client <code>finance</code>.</p>
 </dd>
 <dt class="hdlist1">Hardcoded Role Mapper</dt>
 <dd>
-<p>This mapper will grant a specified Keycloak role to each Keycloak user linked with LDAP.</p>
+<p>This mapper will grant a specified Keycloak role to each Keycloak user from the LDAP provider.</p>
 </dd>
 <dt class="hdlist1">Group Mapper</dt>
 <dd>
-<p>This allows you to configure group mappings from LDAP into Keycloak group mappings.
-Group mapper can be used to map LDAP groups from a particular branch of an LDAP tree into groups in Keycloak.
+<p>This allows you to map LDAP groups from a particular branch of an LDAP tree into groups in Keycloak.
 It will also propagate user-group mappings from LDAP into user-group mappings in Keycloak.</p>
 </dd>
 <dt class="hdlist1">MSAD User Account Mapper</dt>
 <dd>
 <p>This mapper is specific to Microsoft Active Directory (MSAD). It&#8217;s able to tightly integrate the MSAD user account state
-into the Keycloak account state (account enabled, password is expired etc).
-It&#8217;s using the <code>userAccountControl</code> and <code>pwdLastSet</code> LDAP attributes.  (both are specific to MSAD and are not LDAP standard).
+into the Keycloak account state (account enabled, password is expired, and so on).
+It is using the <code>userAccountControl</code> and <code>pwdLastSet</code> LDAP attributes, which are both specific to MSAD and are not LDAP standard.
 For example if <code>pwdLastSet</code> is <code>0</code>, the Keycloak user is required to update their password
 and there will be an UPDATE_PASSWORD required action added to the user. If <code>userAccountControl</code> is
 <code>514</code> (disabled account) the Keycloak user is disabled as well.</p>
@@ -9787,7 +9777,7 @@ in plain-text by default and you may need to explicitly enable password hashing 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Groups and roles are automatically registered, but not synchronized, so any changes made by the Keycloak administrator directly in Keycloak is not synchronized with SSSD.
+Groups and roles are automatically registered, but not synchronized, so any changes made by the Keycloak administrator directly in Keycloak are not synchronized with SSSD.
 </td>
 </tr>
 </table>
@@ -9798,7 +9788,7 @@ Groups and roles are automatically registered, but not synchronized, so any chan
 <div class="sect3">
 <h4 id="freeipa-idm-server"><a class="anchor" href="#freeipa-idm-server"></a>FreeIPA/IdM Server</h4>
 <div class="paragraph">
-<p>As a matter of simplicity, a <a href="https://hub.docker.com/r/freeipa/freeipa-server/">FreeIPA Docker image</a> already available is used. To set up a server, see the <a href="https://www.freeipa.org/page/Quick_Start_Guide">FreeIPA documentation</a>.</p>
+<p>For the sake of simplicity, a <a href="https://hub.docker.com/r/freeipa/freeipa-server/">FreeIPA Docker image</a> already available is used. To set up a server, see the <a href="https://www.freeipa.org/page/Quick_Start_Guide">FreeIPA documentation</a>.</p>
 </div>
 <div class="paragraph">
 <p>Running a FreeIPA server with Docker requires this command:</p>
@@ -9826,7 +9816,7 @@ Groups and roles are automatically registered, but not synchronized, so any chan
 <p>If you do not make this change, you must set up a DNS server.</p>
 </div>
 <div class="paragraph">
-<p>So that the SSSD federation provider is started and running on Keycloak you must enroll your Linux machine in the IPA domain:</p>
+<p>You must enroll your Linux machine in the IPA domain so that the SSSD federation provider is started and running on Keycloak:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -9906,13 +9896,13 @@ account required   pam_sss.so</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You should be able to see the user&#8217;s group. If this command returns a timeout or an error, it means that the federation provider will also not be able to retrieve anything on Keycloak.</p>
+<p>You should be able to see the user&#8217;s group. If this command returns a timeout or an error, it means that the federation provider running on Keycloak will also be unable to retrieve anything.</p>
 </div>
 <div class="paragraph">
 <p>Most of the time this occurs because the machine was not enrolled in the FreeIPA IdM server or you do not have permission to access the SSSD service.</p>
 </div>
 <div class="paragraph">
-<p>If you do not have permission, ensure that the user running Keycloak is included in the <code>/etc/sssd/sssd.conf</code> file in the following section:</p>
+<p>If you do not have permission, ensure that the user running the Keycloak server is included in the <code>/etc/sssd/sssd.conf</code> file in the following section:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -9961,7 +9951,7 @@ $ sudo yum install libunix-dbus-java-0.8.0-1.fc24.x86_64.rpm</pre>
 <div class="sect2">
 <h3 id="configuring-a-federated-sssd-store"><a class="anchor" href="#configuring-a-federated-sssd-store"></a>Configuring a Federated SSSD Store</h3>
 <div class="paragraph">
-<p>After installation, you need to configure a federated SSSD store.</p>
+<p>After the installation, you need to configure a federated SSSD store.</p>
 </div>
 <div class="paragraph">
 <p>To configure a federated SSSD store, complete the following steps:</p>
@@ -10156,8 +10146,52 @@ is trying to guess user passwords.  You can parse the log file for <code>LOGIN_E
 into Fail2Ban so that it can help prevent attacks.</p>
 </div>
 <div class="paragraph">
-<p>The Email Event Listener sends an email to the user&#8217;s account when an event occurs.
-The Email Event Listener only supports the following events at the moment:</p>
+<p>The Logging Event Listener logs events to the <code>org.keycloak.events</code> logger category. By default debug log events are not
+included in server logs.</p>
+</div>
+<div class="paragraph">
+<p>To include debug log events in server logs, edit the <code>standalone.xml</code> file and change the log level used by the Logging
+Event listener. Alternately, you can configure the log level for <code>org.keycloak.events</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, to change the log level add the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:logging:...</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    ...
+    <span class="tag">&lt;logger</span> <span class="attribute-name">category</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.events</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;level</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DEBUG</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/logger&gt;</span>
+<span class="tag">&lt;/subsystem&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To change the log level used by the Logging Event listener, add the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:keycloak-server:...</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    ...
+    <span class="tag">&lt;spi</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">eventsListener</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;provider</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">jboss-logging</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;properties&gt;</span>
+          <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">success-level</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">info</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+          <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">error-level</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">error</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/properties&gt;</span>
+      <span class="tag">&lt;/provider&gt;</span>
+    <span class="tag">&lt;/spi&gt;</span>
+<span class="tag">&lt;/subsystem&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Valid values for the log levels are <code>debug</code>, <code>info</code>, <code>warn</code>, <code>error</code>, and <code>fatal</code>.</p>
+</div>
+<div class="paragraph">
+<p>The Email Event Listener sends an email to the user&#8217;s account when an event occurs.</p>
+</div>
+<div class="paragraph">
+<p>Currently, the Email Event Listener supports the following events:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -14017,7 +14051,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-15 21:47:33 UTC
+Last updated 2020-02-17 17:44:11 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
