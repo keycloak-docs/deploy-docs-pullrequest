@@ -4033,21 +4033,14 @@ all certificates in trusted-ca-list-for-client-auth.pem must be added to <a href
 <div class="paragraph">
 <p>Keycloak provides the limited support for <a href="https://www.w3.org/TR/webauthn/">W3C Web Authentication (WebAuthn)</a>. Keycloak works as a WebAuthn&#8217;s <a href="https://www.w3.org/TR/webauthn/#rp-operations">Relying Party (RP)</a>.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>WebAuthn is <strong>Technology Preview</strong> and is not fully supported. This feature is disabled by default.</p>
-</div>
-<div class="paragraph">
-<p>To enable start the server with <code>-Dkeycloak.profile=preview</code>
-or <code>-Dkeycloak.profile.feature.web_authn=enabled</code>
-. For more details see <a href="https://www.keycloak.org/docs/9.0/server_installation/#profiles">Profiles</a>.</p>
-</div>
+Please note that WebAuthn support is still in development and not yet complete, so we recommend that you use this feature experimentally. Also, this support&#8217;s specification and user interfaces may change.
 </td>
 </tr>
 </table>
@@ -14060,7 +14053,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-24 09:08:10 UTC
+Last updated 2020-02-25 14:33:39 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
