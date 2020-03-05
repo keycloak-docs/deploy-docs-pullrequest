@@ -985,7 +985,7 @@ this guide will direct you to documentation outside of the manual if you want to
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak is built on top of the WildFly application server and it&#8217;s sub-projects like Infinispan (for caching) and Hibernate (for persistence).
+<p>Keycloak is built on top of the WildFly application server and its sub-projects like Infinispan (for caching) and Hibernate (for persistence).
 This guide only covers basics for infrastructure-level configuration.  It is highly recommended that you peruse the documentation
 for WildFly and its sub projects. Here is the link to the documentation:</p>
 </div>
@@ -1066,7 +1066,7 @@ system property on startup to <code>file:/dev/urandom</code>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The Keycloak Server has three downloadable distributions:</p>
+<p>The Keycloak Server has two downloadable distributions:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1149,7 +1149,7 @@ Here you can modify an existing theme or create your own.  See the <a href="http
 <div class="paragraph">
 <p>Before deploying Keycloak in a production environment you need to decide which type of operating mode
 you are going to use.  Will you run Keycloak within a cluster?  Do you want a centralized way to manage
-your server configurations?  Your choice of operating mode effects how you configure databases, configure caching and even how you boot the server.</p>
+your server configurations?  Your choice of operating mode affects how you configure databases, configure caching and even how you boot the server.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -3399,6 +3399,12 @@ supported. In addition there are some features that are enabled by default, but 
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deprecated</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">web_authn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">W3C Web Authentication (WebAuthn)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Experimental</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -4741,7 +4747,7 @@ in front of your clustered Keycloak deployment.  It also covers configuring the 
 was <a href="#_clustered-domain-example">Clustered Domain Example</a>.</p>
 </div>
 <div class="paragraph">
-<p>The following diagram illustrates the use of a load balancer. The load balancer serves as a reverse proxy between the clients and the Keycloak servers.</p>
+<p>The following diagram illustrates the use of a load balancer. In this example, the load balancer serves as a reverse proxy between three clients and a cluster of three Keycloak servers.</p>
 </div>
 <div id="load-balancer-diagram" class="paragraph">
 <div class="title">Example Load Balancer Diagram</div>
@@ -5532,7 +5538,7 @@ The cache will be cleared for all realms!
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-25 14:29:14 UTC
+Last updated 2020-03-05 17:18:58 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

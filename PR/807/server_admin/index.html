@@ -6607,7 +6607,7 @@ select the <code>Membership</code> tab, <em>Jim</em> is now displayed there.</p>
 <div class="paragraph">
 <p>In the IT world the concepts of Group and Role are often blurred and interchangeable.
 In Keycloak, Groups are just a collection of users that you can apply roles and attributes to in one place.
-Roles define a type of user and applications assign permission and access control to roles</p>
+Roles define a type of user and applications assign permission and access control to roles.</p>
 </div>
 <div class="paragraph">
 <p>Aren&#8217;t <a href="#_composite-roles">Composite Roles</a> also similar to Groups?
@@ -7320,8 +7320,7 @@ possible to regularly rotate the keys without any downtime or interruption to us
 </div>
 <div class="paragraph">
 <p>To view the active keys for a realm select the realm in the admin console click on <code>Realm settings</code> then <code>Keys</code>. This
-will show the currently active keys for the realm. Keycloak currently only supports RSA signatures so there
-is only one active keypair. In the future as more signature algorithms are added there will be more active keypairs.</p>
+will show the currently active keys for the realm.</p>
 </div>
 <div class="paragraph">
 <p>To view passive or disabled keys select <code>Passive</code> or <code>Disabled</code>.
@@ -13690,7 +13689,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ kcadm.sh get testLDAPConnection -q action=testConnection -q bindCredential=secret -q bindDn=uid=admin,ou=system -q connectionUrl=ldap://localhost:10389 -q useTruststoreSpi=ldapsOnly</pre>
+<pre class="nowrap">$ kcadm.sh create testLDAPConnection -s action=testConnection -s bindCredential=secret -s bindDn=uid=admin,ou=system -s connectionUrl=ldap://localhost:10389 -s useTruststoreSpi=ldapsOnly</pre>
 </div>
 </div>
 </li>
@@ -13709,7 +13708,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ kcadm.sh get testLDAPConnection -q action=testAuthentication -q bindCredential=secret -q bindDn=uid=admin,ou=system -q connectionUrl=ldap://localhost:10389 -q useTruststoreSpi=ldapsOnly</pre>
+<pre class="nowrap">$ kcadm.sh create testLDAPConnection -s action=testAuthentication -s bindCredential=secret -s bindDn=uid=admin,ou=system -s connectionUrl=ldap://localhost:10389 -s useTruststoreSpi=ldapsOnly</pre>
 </div>
 </div>
 </li>
@@ -14053,7 +14052,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-25 14:29:07 UTC
+Last updated 2020-03-05 17:18:51 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

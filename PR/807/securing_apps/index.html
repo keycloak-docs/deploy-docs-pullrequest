@@ -803,9 +803,7 @@ span.image img {
 <li><a href="#_javascript_implicit_flow">2.2.2. Implicit and Hybrid Flow</a></li>
 <li><a href="#hybrid-apps-with-cordova">2.2.3. Hybrid Apps with Cordova</a></li>
 <li><a href="#earlier-browsers">2.2.4. Earlier Browsers</a></li>
-<li><a href="#a-note-about-code-promisetype-code">2.2.5. A note about <code>promiseType</code></a></li>
-<li><a href="#native-promises-and-typescript">2.2.6. Native promises and TypeScript</a></li>
-<li><a href="#javascript-adapter-reference">2.2.7. JavaScript Adapter Reference</a></li>
+<li><a href="#javascript-adapter-reference">2.2.5. JavaScript Adapter Reference</a></li>
 </ul>
 </li>
 <li><a href="#_nodejs_adapter">2.3. Node.js Adapter</a>
@@ -5029,7 +5027,7 @@ karaf@root()&gt; config:update</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Please refer to <a href="http://felix.apache.org/documentation/subprojects/apache-felix-http-service.html#using-the-osgi-http-whiteboard">Apache Felix HTTP Service</a> for more info on programmatic registration.</p>
+<p>Please refer to <a href="https://github.com/apache/felix-dev/tree/master/http#using-the-osgi-http-whiteboard">Apache Felix HTTP Service</a> for more info on programmatic registration.</p>
 </div>
 </div>
 </div>
@@ -5929,7 +5927,7 @@ is selected for <code>Access Type</code>.</p>
     <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloak.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
     <span class="tag">&lt;script&gt;</span>
 <span class="inline">        <span class="keyword">var</span> keycloak = <span class="keyword">new</span> Keycloak();
-        keycloak.init({ <span class="key">promiseType</span>: <span class="string"><span class="delimiter">'</span><span class="content">native</span><span class="delimiter">'</span></span> }).then(<span class="keyword">function</span>(authenticated) {
+        keycloak.init().then(<span class="keyword">function</span>(authenticated) {
             alert(authenticated ? <span class="string"><span class="delimiter">'</span><span class="content">authenticated</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">not authenticated</span><span class="delimiter">'</span></span>);
         }).<span class="keyword">catch</span>(<span class="keyword">function</span>() {
             alert(<span class="string"><span class="delimiter">'</span><span class="content">failed to initialize</span><span class="delimiter">'</span></span>);
@@ -5977,8 +5975,7 @@ This URI needs to be a valid endpoint in the application (and of course it must 
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">keycloak.init({
     <span class="key">onLoad</span>: <span class="string"><span class="delimiter">'</span><span class="content">check-sso</span><span class="delimiter">'</span></span>,
-    <span class="key">silentCheckSsoRedirectUri</span>: window.location.origin + <span class="string"><span class="delimiter">'</span><span class="content">/silent-check-sso.html</span><span class="delimiter">'</span></span>,
-    <span class="key">promiseType</span>: <span class="string"><span class="delimiter">'</span><span class="content">native</span><span class="delimiter">'</span></span>,
+    <span class="key">silentCheckSsoRedirectUri</span>: window.location.origin + <span class="string"><span class="delimiter">'</span><span class="content">/silent-check-sso.html</span><span class="delimiter">'</span></span>
 })</code></pre>
 </div>
 </div>
@@ -6019,8 +6016,7 @@ when the SSL / TLS connection is configured on the Keycloak side.
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">keycloak.init({
-    <span class="key">onLoad</span>: <span class="string"><span class="delimiter">'</span><span class="content">login-required</span><span class="delimiter">'</span></span>,
-    <span class="key">promiseType</span>: <span class="string"><span class="delimiter">'</span><span class="content">native</span><span class="delimiter">'</span></span>,
+    <span class="key">onLoad</span>: <span class="string"><span class="delimiter">'</span><span class="content">login-required</span><span class="delimiter">'</span></span>
 })</code></pre>
 </div>
 </div>
@@ -6120,8 +6116,7 @@ You also need to pass the parameter <code>flow</code> with value <code>implicit<
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">keycloak.init({
-    <span class="key">flow</span>: <span class="string"><span class="delimiter">'</span><span class="content">implicit</span><span class="delimiter">'</span></span>,
-    <span class="key">promiseType</span>: <span class="string"><span class="delimiter">'</span><span class="content">native</span><span class="delimiter">'</span></span>,
+    <span class="key">flow</span>: <span class="string"><span class="delimiter">'</span><span class="content">implicit</span><span class="delimiter">'</span></span>
 })</code></pre>
 </div>
 </div>
@@ -6148,8 +6143,7 @@ But, the token is still sent in the URL, and the security vulnerability mentione
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">keycloak.init({
-    <span class="key">flow</span>: <span class="string"><span class="delimiter">'</span><span class="content">hybrid</span><span class="delimiter">'</span></span>,
-    <span class="key">promiseType</span>: <span class="string"><span class="delimiter">'</span><span class="content">native</span><span class="delimiter">'</span></span>,
+    <span class="key">flow</span>: <span class="string"><span class="delimiter">'</span><span class="content">hybrid</span><span class="delimiter">'</span></span>
 })</code></pre>
 </div>
 </div>
@@ -6194,8 +6188,7 @@ From there, the Keycloak adapter can finish the login by reading the code or tok
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">keycloak.init({
-    <span class="key">adapter</span>: <span class="string"><span class="delimiter">'</span><span class="content">cordova-native</span><span class="delimiter">'</span></span>,
-    <span class="key">promiseType</span>: <span class="string"><span class="delimiter">'</span><span class="content">native</span><span class="delimiter">'</span></span>,
+    <span class="key">adapter</span>: <span class="string"><span class="delimiter">'</span><span class="content">cordova-native</span><span class="delimiter">'</span></span>
 })</code></pre>
 </div>
 </div>
@@ -6268,33 +6261,7 @@ If you need to support browsers that do not have these available (for example, I
 </div>
 </div>
 <div class="sect3">
-<h4 id="a-note-about-code-promisetype-code"><a class="anchor" href="#a-note-about-code-promisetype-code"></a>2.2.5. A note about <code>promiseType</code></h4>
-<div class="paragraph">
-<p>Throughout the examples in the documentation you will find <code>promiseType: 'native'</code> specified wherever Keycloak is initialized.
-Historically Keycloak has used its own implementation of promises that is not compatible with native promises as provided by the browser.
-By default Keycloak&#8217;s own promise implementation (also known as <code>promiseType: 'legacy'</code>) will be used if no promise type is specified.</p>
-</div>
-<div class="paragraph">
-<p>In future versions of Keycloak the default promise type will change from <code>legacy</code> to <code>native</code>. Eventually, support for legacy promises will be removed entirely. It is therefore highly recommended that you always specify <code>promiseType: 'native'</code> to future-proof your code.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="native-promises-and-typescript"><a class="anchor" href="#native-promises-and-typescript"></a>2.2.6. Native promises and TypeScript</h4>
-<div class="paragraph">
-<p>If you want to use native promises and get correct type information when using TypeScript you will have to specify the <code>promiseType</code> when constructing a new instance of Keycloak.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// Typescript assumes this is a 'legacy' promise, all methods return .success() and .error()</span>
-const keycloak = <span class="keyword">new</span> Keycloak();
-
-<span class="comment">// Typescript assumes this is a native promise, all methods return standard promises</span>
-const keycloak = <span class="keyword">new</span> Keycloak&lt;<span class="string"><span class="delimiter">'</span><span class="content">native</span><span class="delimiter">'</span></span>&gt;();</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="javascript-adapter-reference"><a class="anchor" href="#javascript-adapter-reference"></a>2.2.7. JavaScript Adapter Reference</h4>
+<h4 id="javascript-adapter-reference"><a class="anchor" href="#javascript-adapter-reference"></a>2.2.5. JavaScript Adapter Reference</h4>
 <div class="sect4">
 <h5 id="constructor"><a class="anchor" href="#constructor"></a>Constructor</h5>
 <div class="listingblock">
@@ -6434,9 +6401,6 @@ Available options:</p>
 </li>
 <li>
 <p>flow - Set the OpenID Connect flow. Valid values are <code>standard</code>, <code>implicit</code> or <code>hybrid</code>.</p>
-</li>
-<li>
-<p>promiseType - If set to <code>native</code> all methods returning a promise will return a native JavaScript promise. If not set will return Keycloak specific promise objects.</p>
 </li>
 <li>
 <p>enableLogging - Enables logging messages from Keycloak to the console (default is <code>false</code>).</p>
@@ -7263,7 +7227,7 @@ You can also build via docker container: <code>make docker-build</code>. A Docke
 <div class="sect3">
 <h4 id="http-routing"><a class="anchor" href="#http-routing"></a>2.4.5. HTTP routing</h4>
 <div class="paragraph">
-<p>By default all requests will be proxyed on to the upstream, if you wish to ensure all requests are authentication you can use this:</p>
+<p>By default all requests will be proxyed on to the upstream, if you wish to ensure all requests are authenticated you can use this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12410,7 +12374,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-25 14:29:02 UTC
+Last updated 2020-03-05 17:18:45 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
