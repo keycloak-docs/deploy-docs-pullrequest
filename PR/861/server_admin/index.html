@@ -13689,7 +13689,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ kcadm.sh get testLDAPConnection -q action=testConnection -q bindCredential=secret -q bindDn=uid=admin,ou=system -q connectionUrl=ldap://localhost:10389 -q useTruststoreSpi=ldapsOnly</pre>
+<pre class="nowrap">$ kcadm.sh create testLDAPConnection -s action=testConnection -s bindCredential=secret -s bindDn=uid=admin,ou=system -s connectionUrl=ldap://localhost:10389 -s useTruststoreSpi=ldapsOnly</pre>
 </div>
 </div>
 </li>
@@ -13708,7 +13708,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ kcadm.sh get testLDAPConnection -q action=testAuthentication -q bindCredential=secret -q bindDn=uid=admin,ou=system -q connectionUrl=ldap://localhost:10389 -q useTruststoreSpi=ldapsOnly</pre>
+<pre class="nowrap">$ kcadm.sh create testLDAPConnection -s action=testAuthentication -s bindCredential=secret -s bindDn=uid=admin,ou=system -s connectionUrl=ldap://localhost:10389 -s useTruststoreSpi=ldapsOnly</pre>
 </div>
 </div>
 </li>
@@ -14052,7 +14052,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-04 03:26:25 UTC
+Last updated 2020-03-05 19:11:52 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
