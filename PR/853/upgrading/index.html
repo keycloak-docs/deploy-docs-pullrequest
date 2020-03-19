@@ -791,6 +791,11 @@ span.image img {
 </li>
 <li><a href="#migration-changes">Migration Changes</a>
 <ul class="sectlevel2">
+<li><a href="#migrating-to-9-0-1">Migrating to 9.0.1</a>
+<ul class="sectlevel3">
+<li><a href="#legacy-promise-in-javascript-adapter">Legacy promise in JavaScript adapter</a></li>
+</ul>
+</li>
 <li><a href="#migrating-to-9-0-0">Migrating to 9.0.0</a>
 <ul class="sectlevel4">
 <li><a href="#improved-handling-of-user-locale">Improved handling of user locale</a></li>
@@ -1575,6 +1580,17 @@ to preserve compatibility with older client adapters. More details are available
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/upgrading/topics/keycloak/changes.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20upgrading/topics/keycloak/changes.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="sect2">
+<h3 id="migrating-to-9-0-1"><a class="anchor" href="#migrating-to-9-0-1"></a>Migrating to 9.0.1</h3>
+<div class="sect3">
+<h4 id="legacy-promise-in-javascript-adapter"><a class="anchor" href="#legacy-promise-in-javascript-adapter"></a>Legacy promise in JavaScript adapter</h4>
+<div class="paragraph">
+<p>It is no longer necessary to set promiseType in the JavaScript adapter, and both are available at the same time. It is
+recommended to update applications to use native promise API (<code>then</code> and <code>catch</code>) as soon as possible, as the legacy API
+(<code>success</code> and <code>error</code>) will be removed at some point.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -2980,7 +2996,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-25 02:44:50 UTC
+Last updated 2020-03-19 02:09:01 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

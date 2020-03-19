@@ -1007,6 +1007,7 @@ span.image img {
 <ul class="sectlevel3">
 <li><a href="#default-first-login-flow">Default First Login Flow</a></li>
 <li><a href="#automatically-link-existing-first-login-flow">Automatically Link Existing First Login Flow</a></li>
+<li><a href="#disabling-automatic-user-creation">Disabling Automatic User Creation</a></li>
 </ul>
 </li>
 <li><a href="#retrieving-external-idp-tokens">Retrieving External IDP Tokens</a></li>
@@ -6607,7 +6608,7 @@ select the <code>Membership</code> tab, <em>Jim</em> is now displayed there.</p>
 <div class="paragraph">
 <p>In the IT world the concepts of Group and Role are often blurred and interchangeable.
 In Keycloak, Groups are just a collection of users that you can apply roles and attributes to in one place.
-Roles define a type of user and applications assign permission and access control to roles</p>
+Roles define a type of user and applications assign permission and access control to roles.</p>
 </div>
 <div class="paragraph">
 <p>Aren&#8217;t <a href="#_composite-roles">Composite Roles</a> also similar to Groups?
@@ -7320,8 +7321,7 @@ possible to regularly rotate the keys without any downtime or interruption to us
 </div>
 <div class="paragraph">
 <p>To view the active keys for a realm select the realm in the admin console click on <code>Realm settings</code> then <code>Keys</code>. This
-will show the currently active keys for the realm. Keycloak currently only supports RSA signatures so there
-is only one active keypair. In the future as more signature algorithms are added there will be more active keypairs.</p>
+will show the currently active keys for the realm.</p>
 </div>
 <div class="paragraph">
 <p>To view passive or disabled keys select <code>Passive</code> or <code>Disabled</code>.
@@ -9140,6 +9140,31 @@ would require a more complex flow, for example setting the "Automatically Set Ex
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="disabling-automatic-user-creation"><a class="anchor" href="#disabling-automatic-user-creation"></a>Disabling Automatic User Creation</h4>
+<div class="paragraph">
+<p>The Default first login flow will look up a Keycloak account matching the external identity, and will then offer to link them; if there is no matching Keycloak account, it will automatically create one.
+This default behavior may be unsuitable for some setups, for example, when using read-only LDAP user store (which means all users are pre-created).
+In this case, automatic user creation should be turned off. To disable user creation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>open the <code>First Broker Login</code> flow configuration;</p>
+</li>
+<li>
+<p>set <code>Create User If Unique</code> to <code>DISABLED</code>;</p>
+</li>
+<li>
+<p>set <code>Confirm Link Existing Account</code> to <code>DISABLED</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This configuration also implies that Keycloak itself won&#8217;t be able to determine which internal account would correspond to the external identity.
+Therefore, the <code>Verify Existing Account By Re-authentication</code> authenticator will ask the user to provide both username and password.</p>
 </div>
 </div>
 </div>
@@ -13690,7 +13715,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ kcadm.sh get testLDAPConnection -q action=testConnection -q bindCredential=secret -q bindDn=uid=admin,ou=system -q connectionUrl=ldap://localhost:10389 -q useTruststoreSpi=ldapsOnly</pre>
+<pre class="nowrap">$ kcadm.sh create testLDAPConnection -s action=testConnection -s bindCredential=secret -s bindDn=uid=admin,ou=system -s connectionUrl=ldap://localhost:10389 -s useTruststoreSpi=ldapsOnly</pre>
 </div>
 </div>
 </li>
@@ -13709,7 +13734,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ kcadm.sh get testLDAPConnection -q action=testAuthentication -q bindCredential=secret -q bindDn=uid=admin,ou=system -q connectionUrl=ldap://localhost:10389 -q useTruststoreSpi=ldapsOnly</pre>
+<pre class="nowrap">$ kcadm.sh create testLDAPConnection -s action=testAuthentication -s bindCredential=secret -s bindDn=uid=admin,ou=system -s connectionUrl=ldap://localhost:10389 -s useTruststoreSpi=ldapsOnly</pre>
 </div>
 </div>
 </li>
@@ -14053,7 +14078,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-25 02:44:38 UTC
+Last updated 2020-03-19 02:08:49 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
