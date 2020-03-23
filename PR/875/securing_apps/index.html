@@ -5616,7 +5616,7 @@ you can point to any file on the file system where the client application is run
 </div>
 <div class="paragraph">
 <p>Multi Tenancy, in our context, means that a single target application (WAR) can be secured with multiple Keycloak realms. The realms can be located
-one the same Keycloak instance or on different instances.</p>
+on the same Keycloak instance or on different instances.</p>
 </div>
 <div class="paragraph">
 <p>In practice, this means that the application needs to have multiple <code>keycloak.json</code> adapter configuration files.</p>
@@ -6990,8 +6990,16 @@ configuration parameter to the <code>middleware()</code> call:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When the user-triggered logout is invoked a query parameter <code>redirect_url</code> can be passed.
-This parameter is then used as the redirect url of the OIDC logout endpoint.</p>
+<p>When the user-triggered logout is invoked a query parameter <code>redirect_url</code> can be passed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>https://example.com/logoff?redirect_url=https%3A%2F%2Fexample.com%3A3000%2Flogged%2Fout</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This parameter is then used as the redirect url of the OIDC logout endpoint and the user will be redirected to
+<code>https://example.com/logged/out</code>.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -7692,7 +7700,7 @@ X-Auth-Name: Beloved User</code></pre>
 <div class="sect3">
 <h4 id="known-issues"><a class="anchor" href="#known-issues"></a>2.4.29. Known Issues</h4>
 <div class="paragraph">
-<p>There is a known issue with the Keycloak server 4.7.0.Final in which Gatekeeper is unable to find the <em>client_id</em> in the <em>aud</em> claim. This is due to the fact the <em>client_id</em> is not in the audience anymore. The workaround is to add the "Audience" protocol mapper to the client with the audience pointed to the <em>client_id</em>. For more information, see <a href="https://issues.redhat.com/browse/KEYCLOAK-8954">KEYCLOAK-8954</a>.</p>
+<p>There is a known issue with the Keycloak server 4.6.0.Final in which Gatekeeper is unable to find the <em>client_id</em> in the <em>aud</em> claim. This is due to the fact the <em>client_id</em> is not in the audience anymore. The workaround is to add the "Audience" protocol mapper to the client with the audience pointed to the <em>client_id</em>. For more information, see <a href="https://issues.redhat.com/browse/KEYCLOAK-8954">KEYCLOAK-8954</a>.</p>
 </div>
 </div>
 </div>
@@ -12379,7 +12387,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-11 08:37:28 UTC
+Last updated 2020-03-23 18:15:03 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

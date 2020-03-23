@@ -764,6 +764,7 @@ span.image img {
 <li><a href="#other-improvements">Other improvements</a>
 <ul class="sectlevel3">
 <li><a href="#reverted-breaking-api-changes-to-localeselectorspi">Reverted breaking API changes to LocaleSelectorSPI</a></li>
+<li><a href="#fixed-the-automatic-resolution-of-code-keycloakconfigresolver-code-instances-for-spring-boot-applications">Fixed the automatic resolution of <code>KeycloakConfigResolver</code> instances for Spring Boot Applications</a></li>
 </ul>
 </li>
 </ul>
@@ -1024,6 +1025,17 @@ applications from the legacy/deprecated API to the native promise API.</p>
 <div class="paragraph">
 <p>In 9.0.0 a breaking API change was introduced to LocaleSelectorSPI. With 9.0.1 the changes to
 this API is now reverted, and a new LocaleUpdatorSPI has been introduced.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="fixed-the-automatic-resolution-of-code-keycloakconfigresolver-code-instances-for-spring-boot-applications"><a class="anchor" href="#fixed-the-automatic-resolution-of-code-keycloakconfigresolver-code-instances-for-spring-boot-applications"></a>Fixed the automatic resolution of <code>KeycloakConfigResolver</code> instances for Spring Boot Applications</h4>
+<div class="paragraph">
+<p>In previous releases, Spring Boot applications had to manually implement the <code>KeycloakConfigResolver</code> interface or extend the
+built-in <code>org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver</code>.</p>
+</div>
+<div class="paragraph">
+<p>This release fixes the backward compatibility issue by resolving instances automatically in case none is provided. As well as still
+allowing applications to provide their own configuration resolver implementations.</p>
 </div>
 </div>
 </div>
@@ -1905,7 +1917,7 @@ Thanks to <a href="https://github.com/looorent">loorent</a> for the contribution
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-11 08:36:44 UTC
+Last updated 2020-03-23 18:14:21 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
