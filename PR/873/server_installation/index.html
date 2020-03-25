@@ -947,7 +947,7 @@ span.image img {
 <div class="exampleblock top-menu-version">
 <div class="content">
 <div class="paragraph versionarchive">
-<p>Version <strong>9.0.1</strong> <em><a href="https://www.keycloak.org/docs/latest/server_installation/">Click here for latest</a></em></p>
+<p>Version <strong>9.0.4</strong> <em><a href="https://www.keycloak.org/docs/latest/server_installation/">Click here for latest</a></em></p>
 </div>
 </div>
 </div>
@@ -1071,19 +1071,19 @@ system property on startup to <code>file:/dev/urandom</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>'keycloak-9.0.1.[zip|tar.gz]'</p>
+<p>'keycloak-9.0.4.[zip|tar.gz]'</p>
 </li>
 <li>
-<p>'keycloak-overlay-9.0.1.[zip|tar.gz]'</p>
+<p>'keycloak-overlay-9.0.4.[zip|tar.gz]'</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The 'keycloak-9.0.1.[zip|tar.gz]' file is the server only distribution.  It contains nothing other than the scripts and binaries
+<p>The 'keycloak-9.0.4.[zip|tar.gz]' file is the server only distribution.  It contains nothing other than the scripts and binaries
 to run the Keycloak Server.  To unpack this file just run your operating system&#8217;s <code>unzip</code> or <code>gunzip</code> and <code>tar</code> utilities.</p>
 </div>
 <div class="paragraph">
-<p>The 'keycloak-overlay-9.0.1.[zip|tar.gz]' file is a WildFly add-on that allows you to install Keycloak Server on top of an existing
+<p>The 'keycloak-overlay-9.0.4.[zip|tar.gz]' file is a WildFly add-on that allows you to install Keycloak Server on top of an existing
 WildFly distribution.  We do not support users that want to run their applications and Keycloak on the same server instance.  To install the Keycloak Service Pack, just unzip it in the root directory
 of your WildFly distribution, open the bin directory in a shell and run <code>./jboss-cli.[sh|bat] --file=keycloak-install.cli</code>.</p>
 </div>
@@ -1316,7 +1316,7 @@ you pass in an additional flag to point to the HA config file.</p>
 </div>
 <div class="paragraph">
 <p>Running a cluster in standard mode can quickly become aggravating as the cluster grows in size.  Every time you need
-to make a configuration change, you have perform it on each node in the cluster.  Domain mode solves this problem by providing
+to make a configuration change, you have to perform it on each node in the cluster.  Domain mode solves this problem by providing
 a central place to store and publish configuration.  It can be quite complex to set up, but it is worth it in the end.
 This capability is built into the WildFly Application Server which Keycloak derives from.</p>
 </div>
@@ -1575,7 +1575,7 @@ operating system.  These scripts live in the <em>bin/</em> directory of the serv
 </div>
 </div>
 <div class="paragraph">
-<p>When running the boot script you will need pass in the host controlling configuration file you are going to use via the
+<p>When running the boot script you will need to pass in the host controlling configuration file you are going to use via the
 <code>--host-config</code> switch.</p>
 </div>
 </div>
@@ -3349,7 +3349,7 @@ supported. In addition there are some features that are enabled by default, but 
 <td class="tableblock halign-left valign-top"><p class="tableblock">account2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">New Account Management Console</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Experimental</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preview</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">account_api</p></td>
@@ -5186,7 +5186,7 @@ It is possible to cluster Keycloak without IP Multicast, but this topic is beyon
 <p>When cluster nodes are isolated on a private network it requires access to the private network to be able to join a cluster or to view communication in the cluster. In addition you can also enable authentication and encryption for cluster communication. As long as your private network is secure it is not necessary to enable authentication and encryption. Keycloak does not send very sensitive information on the cluster in either case.</p>
 </div>
 <div class="paragraph">
-<p>If you want to enable authentication and encryption for clustering communication see <a href="https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html/configuration_guide/configuring_high_availability#securing_cluster">Securing a Cluster</a> in the <em>JBoss EAP Configuration Guide</em>.</p>
+<p>If you want to enable authentication and encryption for clustering communication, see the 'High Availability Guide' in the <a href="http://docs.wildfly.org/18/High_Availability_Guide.html">WildFly documentation</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -5531,7 +5531,7 @@ The cache will be cleared for all realms!
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-06 19:45:09 UTC
+Last updated 2020-03-25 21:45:25 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
