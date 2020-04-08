@@ -794,7 +794,175 @@ span.image img {
 <li><a href="#_resource_server_overview">Managing Resource Servers</a>
 <ul class="sectlevel2">
 <li><a href="#_resource_server_create_client">Creating a Client Application</a></li>
-<li><a href="#_resource_server_enable_authorization">Enabling Authorization Services</a></li>
+<li><a href="#_resource_server_enable_authorization">Enabling Authorization Services</a>
+<ul class="sectlevel3">
+<li><a href="#resource_server_settings">Resource Server Settings</a></li>
+</ul>
+</li>
+<li><a href="#_resource_server_default_config">Default Configuration</a>
+<ul class="sectlevel3">
+<li><a href="#changing-the-default-configuration">Changing the Default Configuration</a></li>
+</ul>
+</li>
+<li><a href="#_resource_server_import_config">Export and Import Authorization Configuration</a>
+<ul class="sectlevel3">
+<li><a href="#exporting-a-configuration-file">Exporting a Configuration File</a></li>
+<li><a href="#importing-a-configuration-file">Importing a Configuration File</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_resource_overview">Managing Resources and Scopes</a>
+<ul class="sectlevel2">
+<li><a href="#_resource_view">Viewing Resources</a></li>
+<li><a href="#_resource_create">Creating Resources</a>
+<ul class="sectlevel3">
+<li><a href="#resource-attributes">Resource Attributes</a></li>
+<li><a href="#typed-resources">Typed Resources</a></li>
+<li><a href="#resource-owners">Resource Owners</a></li>
+<li><a href="#managing-resources-remotely">Managing Resources Remotely</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_policy_overview">Managing Policies</a>
+<ul class="sectlevel2">
+<li><a href="#_policy_user">User-Based Policy</a>
+<ul class="sectlevel3">
+<li><a href="#configuration">Configuration</a></li>
+</ul>
+</li>
+<li><a href="#_policy_rbac">Role-Based Policy</a>
+<ul class="sectlevel3">
+<li><a href="#configuration-2">Configuration</a></li>
+<li><a href="#_policy_rbac_required">Defining a Role as Required</a></li>
+</ul>
+</li>
+<li><a href="#_policy_js">JavaScript-Based Policy</a>
+<ul class="sectlevel3">
+<li><a href="#configuration-3">Configuration</a></li>
+<li><a href="#creating-a-js-policy-from-a-deployed-jar-file">Creating a JS Policy from a Deployed JAR File</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#_policy_time">Time-Based Policy</a>
+<ul class="sectlevel3">
+<li><a href="#configuration-4">Configuration</a></li>
+</ul>
+</li>
+<li><a href="#_policy_aggregated">Aggregated Policy</a>
+<ul class="sectlevel3">
+<li><a href="#configuration-5">Configuration</a></li>
+<li><a href="#decision-strategy-for-aggregated-policies">Decision Strategy for Aggregated Policies</a></li>
+</ul>
+</li>
+<li><a href="#_policy_client">Client-Based Policy</a>
+<ul class="sectlevel3">
+<li><a href="#configuration-6">Configuration</a></li>
+</ul>
+</li>
+<li><a href="#_policy_group">Group-Based Policy</a>
+<ul class="sectlevel3">
+<li><a href="#configuration-7">Configuration</a></li>
+<li><a href="#_policy_group_extend_access_children">Extending Access to Child Groups</a></li>
+</ul>
+</li>
+<li><a href="#_policy_logic">Positive and Negative Logic</a></li>
+<li><a href="#_policy_evaluation_api">Policy Evaluation API</a>
+<ul class="sectlevel3">
+<li><a href="#the-evaluation-context">The Evaluation Context</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_permission_overview">Managing Permissions</a>
+<ul class="sectlevel2">
+<li><a href="#_permission_create_resource">Creating Resource-Based Permissions</a>
+<ul class="sectlevel3">
+<li><a href="#configuration-8">Configuration</a></li>
+<li><a href="#_permission_typed_resource">Typed Resource Permission</a></li>
+</ul>
+</li>
+<li><a href="#_permission_create_scope">Creating Scope-Based Permissions</a>
+<ul class="sectlevel3">
+<li><a href="#configuration-9">Configuration</a></li>
+</ul>
+</li>
+<li><a href="#_permission_decision_strategies">Policy Decision Strategies</a></li>
+</ul>
+</li>
+<li><a href="#_policy_evaluation_overview">Evaluating and Testing Policies</a>
+<ul class="sectlevel2">
+<li><a href="#providing-identity-information">Providing Identity Information</a></li>
+<li><a href="#providing-contextual-information">Providing Contextual Information</a></li>
+<li><a href="#providing-the-permissions">Providing the Permissions</a></li>
+</ul>
+</li>
+<li><a href="#_service_overview">Authorization Services</a>
+<ul class="sectlevel2">
+<li><a href="#_service_authorization_api">Discovering Authorization Services Endpoints and Metadata</a></li>
+<li><a href="#_service_obtaining_permissions">Obtaining Permissions</a>
+<ul class="sectlevel3">
+<li><a href="#_authentication_methods">Client Authentication Methods</a></li>
+<li><a href="#_service_pushing_claims">Pushing Claims</a></li>
+</ul>
+</li>
+<li><a href="#_service_user_managed_access">User-Managed Access</a>
+<ul class="sectlevel3">
+<li><a href="#_service_uma_authorization_process">Authorization Process</a></li>
+<li><a href="#_service_authorization_aat">Submitting Permission Requests</a></li>
+<li><a href="#_service_authorization_my_resources">Managing Access to Users Resources</a></li>
+</ul>
+</li>
+<li><a href="#_service_protection_api">Protection API</a>
+<ul class="sectlevel3">
+<li><a href="#_service_protection_whatis_obtain_pat">What is a PAT and How to Obtain It</a></li>
+<li><a href="#_service_protection_resources_api">Managing Resources</a></li>
+<li><a href="#_service_protection_permission_api_papi">Managing Permission Requests</a></li>
+<li><a href="#_service_authorization_uma_policy_api">Managing Resource Permissions using the Policy API</a></li>
+</ul>
+</li>
+<li><a href="#_service_rpt_overview">Requesting Party Token</a>
+<ul class="sectlevel3">
+<li><a href="#_service_protection_token_introspection">Introspecting a Requesting Party Token</a></li>
+<li><a href="#obtaining-information-about-an-rpt">Obtaining Information about an RPT</a></li>
+<li><a href="#do-i-need-to-invoke-the-server-every-time-i-want-to-introspect-an-rpt">Do I Need to Invoke the Server Every Time I Want to Introspect an RPT?</a></li>
+</ul>
+</li>
+<li><a href="#_service_client_api">Authorization Client Java API</a>
+<ul class="sectlevel3">
+<li><a href="#maven-dependency">Maven Dependency</a></li>
+<li><a href="#configuration-10">Configuration</a></li>
+<li><a href="#creating-the-authorization-client">Creating the Authorization Client</a></li>
+<li><a href="#obtaining-user-entitlements">Obtaining User Entitlements</a></li>
+<li><a href="#creating-a-resource-using-the-protection-api">Creating a Resource Using the Protection API</a></li>
+<li><a href="#introspecting-an-rpt">Introspecting an RPT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_enforcer_overview">Policy Enforcers</a>
+<ul class="sectlevel2">
+<li><a href="#_enforcer_filter">Configuration</a></li>
+<li><a href="#_enforcer_claim_information_point">Claim Information Point</a>
+<ul class="sectlevel3">
+<li><a href="#obtaining-information-from-the-http-request">Obtaining information from the HTTP Request</a></li>
+<li><a href="#obtaining-information-from-an-external-http-service">Obtaining information from an External HTTP Service</a></li>
+<li><a href="#static-claims">Static Claims</a></li>
+<li><a href="#claim-information-provider-spi">Claim Information Provider SPI</a></li>
+</ul>
+</li>
+<li><a href="#_enforcer_authorization_context">Obtaining the Authorization Context</a></li>
+<li><a href="#using-the-authorizationcontext-to-obtain-an-authorization-client-instance">Using the AuthorizationContext to obtain an Authorization Client Instance</a></li>
+<li><a href="#_enforcer_js_adapter">JavaScript Integration</a>
+<ul class="sectlevel3">
+<li><a href="#handling-authorization-responses-from-a-uma-protected-resource-server">Handling Authorization Responses from a UMA-Protected Resource Server</a></li>
+<li><a href="#obtaining-entitlements">Obtaining Entitlements</a></li>
+<li><a href="#authorization-request">Authorization Request</a></li>
+<li><a href="#obtaining-the-rpt">Obtaining the RPT</a></li>
+</ul>
+</li>
+<li><a href="#_enforcer_filter_using_https">Setting Up TLS/HTTPS</a></li>
 </ul>
 </li>
 </ul>
@@ -838,7 +1006,7 @@ span.image img {
 <div class="exampleblock top-menu-version">
 <div class="content">
 <div class="paragraph versionarchive">
-<p>Version <strong>9.0.1</strong> <em><a href="https://www.keycloak.org/docs/latest/authorization_services/">Click here for latest</a></em></p>
+<p>Version <strong>9.0.4</strong> <em><a href="https://www.keycloak.org/docs/latest/authorization_services/">Click here for latest</a></em></p>
 </div>
 </div>
 </div>
@@ -1790,14 +1958,7 @@ table provides a brief description of the available authorization quickstarts:</
 </div>
 </div>
 <div class="paragraph">
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-To turn your OIDC Client Application into a resource server and enable fine-grained authorization, select <strong>Access type</strong> <strong>confidential</strong> and click the <strong>Authorization Enabled</strong> switch to <strong>ON</strong> then click <strong>Save</strong>.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>To turn your OIDC Client Application into a resource server and enable fine-grained authorization, set <strong>Access Type</strong> to <strong>confidential</strong>, set <strong>Authorization Enabled</strong> to <strong>ON</strong>, and click <strong>Save</strong>.
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; KEYCLOAK-9341 Updating all screens to 7.4 and eliminate branding per CCS standards</p>
+<p>To turn your OIDC Client Application into a resource server and enable fine-grained authorization, select <strong>Access type</strong> <strong>confidential</strong> and click the <strong>Authorization Enabled</strong> switch to <strong>ON</strong> then click <strong>Save</strong>.</p>
 </div>
 <div class="paragraph">
 <div class="title">Enabling Authorization Services</div>
@@ -1859,9 +2020,8 @@ To turn your OIDC Client Application into a resource server and enable fine-grai
 </li>
 </ul>
 </div>
-<div id="resource_server_settings" class="paragraph">
-<p>== Resource Server Settings</p>
-</div>
+<div class="sect3">
+<h4 id="resource_server_settings"><a class="anchor" href="#resource_server_settings"></a>Resource Server Settings</h4>
 <div class="paragraph">
 <p>On the Resource Server Settings page, you can configure the policy enforcement mode, allow remote resource management, and export the authorization configuration settings.</p>
 </div>
@@ -1909,9 +2069,10 @@ To turn your OIDC Client Application into a resource server and enable fine-grai
 </li>
 </ul>
 </div>
-<div id="_resource_server_default_config" class="paragraph">
-<p>= Default Configuration</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_resource_server_default_config"><a class="anchor" href="#_resource_server_default_config"></a>Default Configuration</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/resource-server-default-config.adoc" target="_blank">Edit this section</a>
@@ -1980,9 +2141,8 @@ to the default resource or any other resource you create using the same type.</p
 <div class="paragraph">
 <p>This permission is a <a href="#_permission_create_resource">resource-based permission</a>, defining a set of one or more policies that are applied to all resources with a given type.</p>
 </div>
-<div class="paragraph">
-<p>== Changing the Default Configuration</p>
-</div>
+<div class="sect3">
+<h4 id="changing-the-default-configuration"><a class="anchor" href="#changing-the-default-configuration"></a>Changing the Default Configuration</h4>
 <div class="paragraph">
 <p>You can change the default configuration by removing the default resource, policy, or permission definitions and creating your own.</p>
 </div>
@@ -2002,9 +2162,10 @@ The default configuration defines a resource that maps to all paths in your appl
 </tr>
 </table>
 </div>
-<div id="_resource_server_import_config" class="paragraph">
-<p>= Export and Import Authorization Configuration</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_resource_server_import_config"><a class="anchor" href="#_resource_server_import_config"></a>Export and Import Authorization Configuration</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/resource-server-import-config.adoc" target="_blank">Edit this section</a>
@@ -2027,9 +2188,8 @@ The default configuration defines a resource that maps to all paths in your appl
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>== Exporting a Configuration File</p>
-</div>
+<div class="sect3">
+<h4 id="exporting-a-configuration-file"><a class="anchor" href="#exporting-a-configuration-file"></a>Exporting a Configuration File</h4>
 <div class="paragraph">
 <p>To export a configuration file, complete the following steps:</p>
 </div>
@@ -2053,9 +2213,9 @@ The default configuration defines a resource that maps to all paths in your appl
 <div class="paragraph">
 <p>The configuration file is exported in JSON format and displayed in a text area, from which you can copy and paste. You can also click <strong>Download</strong> to download the configuration file and save it.</p>
 </div>
-<div class="paragraph">
-<p>== Importing a Configuration File</p>
 </div>
+<div class="sect3">
+<h4 id="importing-a-configuration-file"><a class="anchor" href="#importing-a-configuration-file"></a>Importing a Configuration File</h4>
 <div class="paragraph">
 <p>To import a configuration file, complete the following steps:</p>
 </div>
@@ -2073,9 +2233,13 @@ The default configuration defines a resource that maps to all paths in your appl
 <div class="paragraph">
 <p>To import a configuration file for a resource server, click <strong>Select file</strong> to select a file containing the configuration you want to import.</p>
 </div>
-<div id="_resource_overview" class="paragraph">
-<p>= Managing Resources and Scopes</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resource_overview"><a class="anchor" href="#_resource_overview"></a>Managing Resources and Scopes</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/resource-overview.adoc" target="_blank">Edit this section</a>
@@ -2086,9 +2250,8 @@ The default configuration defines a resource that maps to all paths in your appl
 <p>Resource management is straightforward and generic. After creating a resource server, you can start creating the resources and scopes that you want to protect.
 Resources and scopes can be managed by navigating to the <strong>Resource</strong> and <strong>Scope</strong> tabs, respectively.</p>
 </div>
-<div id="_resource_view" class="paragraph">
-<p>= Viewing Resources</p>
-</div>
+<div class="sect2">
+<h3 id="_resource_view"><a class="anchor" href="#_resource_view"></a>Viewing Resources</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/resource-view.adoc" target="_blank">Edit this section</a>
@@ -2139,9 +2302,9 @@ Before creating permissions for your resources, be sure you have already defined
 </tr>
 </table>
 </div>
-<div id="_resource_create" class="paragraph">
-<p>= Creating Resources</p>
 </div>
+<div class="sect2">
+<h3 id="_resource_create"><a class="anchor" href="#_resource_create"></a>Creating Resources</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/resource-create.adoc" target="_blank">Edit this section</a>
@@ -2200,9 +2363,8 @@ are usually the relative paths used to serve these resources.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>== Resource Attributes</p>
-</div>
+<div class="sect3">
+<h4 id="resource-attributes"><a class="anchor" href="#resource-attributes"></a>Resource Attributes</h4>
 <div class="paragraph">
 <p>Resources may have attributes associated with them. These attributes can be used to provide additional information about
 a resource and to provide additional information to policies when evaluating permissions associated with a resource.</p>
@@ -2210,24 +2372,24 @@ a resource and to provide additional information to policies when evaluating per
 <div class="paragraph">
 <p>Each attribute is a key and value pair where the value can be a set of one or many strings. Multiple values can be defined for an attribute by separating each value with a comma.</p>
 </div>
-<div class="paragraph">
-<p>== Typed Resources</p>
 </div>
+<div class="sect3">
+<h4 id="typed-resources"><a class="anchor" href="#typed-resources"></a>Typed Resources</h4>
 <div class="paragraph">
 <p>The type field of a resource can be used to group different resources together, so they can be protected using a common set of permissions.</p>
 </div>
-<div class="paragraph">
-<p>== Resource Owners</p>
 </div>
+<div class="sect3">
+<h4 id="resource-owners"><a class="anchor" href="#resource-owners"></a>Resource Owners</h4>
 <div class="paragraph">
 <p>Resources also have an owner. By default, resources are owned by the resource server.</p>
 </div>
 <div class="paragraph">
 <p>However, resources can also be associated with users, so you can create permissions based on the resource owner. For example, only the resource owner is allowed to delete or update a given resource.</p>
 </div>
-<div class="paragraph">
-<p>== Managing Resources Remotely</p>
 </div>
+<div class="sect3">
+<h4 id="managing-resources-remotely"><a class="anchor" href="#managing-resources-remotely"></a>Managing Resources Remotely</h4>
 <div class="paragraph">
 <p>Resource management is also exposed through the <a href="#_service_protection_api">Protection API</a> to allow resource servers to remotely manage their resources.</p>
 </div>
@@ -2248,9 +2410,13 @@ allow users to control their own resources as well as approve authorization requ
 </tr>
 </table>
 </div>
-<div id="_policy_overview" class="paragraph">
-<p>= Managing Policies</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_policy_overview"><a class="anchor" href="#_policy_overview"></a>Managing Policies</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-overview.adoc" target="_blank">Edit this section</a>
@@ -2273,9 +2439,8 @@ allow users to control their own resources as well as approve authorization requ
 <div class="paragraph">
 <p>To create a new policy, in the upper right corner of the policy list, select a policy type from the <code>Create policy</code> dropdown list. Details about each policy type are described in this section.</p>
 </div>
-<div id="_policy_user" class="paragraph">
-<p>= User-Based Policy</p>
-</div>
+<div class="sect2">
+<h3 id="_policy_user"><a class="anchor" href="#_policy_user"></a>User-Based Policy</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-user-policy.adoc" target="_blank">Edit this section</a>
@@ -2292,9 +2457,8 @@ allow users to control their own resources as well as approve authorization requ
 <div class="title">Add a User-Based Policy</div>
 <p><span class="image"><img src="./keycloak-images/policy/create-user.png" alt="Add User-Based Policy"></span></p>
 </div>
-<div class="paragraph">
-<p>== Configuration</p>
-</div>
+<div class="sect3">
+<h4 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2324,9 +2488,10 @@ can identify them more easily.</p>
 </li>
 </ul>
 </div>
-<div id="_policy_rbac" class="paragraph">
-<p>= Role-Based Policy</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_policy_rbac"><a class="anchor" href="#_policy_rbac"></a>Role-Based Policy</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-role-policy.adoc" target="_blank">Edit this section</a>
@@ -2349,9 +2514,8 @@ can identify them more easily.</p>
 <div class="title">Add Role-Based Policy</div>
 <p><span class="image"><img src="./keycloak-images/policy/create-role.png" alt="Add Role-Based Policy"></span></p>
 </div>
-<div class="paragraph">
-<p>== Configuration</p>
-</div>
+<div class="sect3">
+<h4 id="configuration-2"><a class="anchor" href="#configuration-2"></a>Configuration</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2387,9 +2551,9 @@ can identify them more easily.</p>
 </li>
 </ul>
 </div>
-<div id="_policy_rbac_required" class="paragraph">
-<p>= Defining a Role as Required</p>
 </div>
+<div class="sect3">
+<h4 id="_policy_rbac_required"><a class="anchor" href="#_policy_rbac_required"></a>Defining a Role as Required</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-role-policy-required-role.adoc" target="_blank">Edit this section</a>
@@ -2411,9 +2575,10 @@ only if the user requesting access has been granted <strong>all</strong> the <st
 <p>Required roles can be useful when your policy defines multiple roles but only a subset of them are mandatory. In this case, you can combine realm and client roles to enable an
 even more fine-grained role-based access control (RBAC) model for your application. For example, you can have policies specific for a client and require a specific client role associated with that client. Or you can enforce that access is granted only in the presence of a specific realm role. You can also combine both approaches within the same policy.</p>
 </div>
-<div id="_policy_js" class="paragraph">
-<p>= JavaScript-Based Policy</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_policy_js"><a class="anchor" href="#_policy_js"></a>JavaScript-Based Policy</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-js-policy.adoc" target="_blank">Edit this section</a>
@@ -2445,9 +2610,8 @@ Keycloak Administration Console to manage your JS policies you should enable the
 <div class="title">Add JavaScript Policy</div>
 <p><span class="image"><img src="./keycloak-images/policy/create-js.png" alt="Add JavaScript Policy"></span></p>
 </div>
-<div class="paragraph">
-<p>== Configuration</p>
-</div>
+<div class="sect3">
+<h4 id="configuration-3"><a class="anchor" href="#configuration-3"></a>Configuration</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2477,9 +2641,9 @@ can identify them more easily.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>== Creating a JS Policy from a Deployed JAR File</p>
 </div>
+<div class="sect3">
+<h4 id="creating-a-js-policy-from-a-deployed-jar-file"><a class="anchor" href="#creating-a-js-policy-from-a-deployed-jar-file"></a>Creating a JS Policy from a Deployed JAR File</h4>
 <div class="paragraph">
 <p>Keycloak allows you to deploy a JAR file in order to deploy scripts to the server. Please, take a look at <a href="https://www.keycloak.org/docs/9.0/server_development/#_script_providers">JavaScript Providers</a>
 for more details.</p>
@@ -2487,12 +2651,13 @@ for more details.</p>
 <div class="paragraph">
 <p>Once you have your scripts deployed, you should be able to select the scripts you deployed from the list of available policy providers.</p>
 </div>
-<div class="paragraph">
-<p>== Examples</p>
 </div>
+<div class="sect3">
+<h4 id="examples"><a class="anchor" href="#examples"></a>Examples</h4>
+<div class="sect4">
+<h5 id="checking-for-attributes-from-the-evaluation-context"><a class="anchor" href="#checking-for-attributes-from-the-evaluation-context"></a>Checking for attributes from the evaluation context</h5>
 <div class="paragraph">
-<p>=== Checking for attributes from the evaluation context
-Here is a simple example of a JavaScript-based policy that uses attribute-based access control (ABAC) to define a condition based on an attribute
+<p>Here is a simple example of a JavaScript-based policy that uses attribute-based access control (ABAC) to define a condition based on an attribute
 obtained from the execution context:</p>
 </div>
 <div class="listingblock">
@@ -2505,9 +2670,11 @@ obtained from the execution context:</p>
 }</code></pre>
 </div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="checking-for-attributes-from-the-current-identity"><a class="anchor" href="#checking-for-attributes-from-the-current-identity"></a>Checking for attributes from the current identity</h5>
 <div class="paragraph">
-<p>=== Checking for attributes from the current identity
-Here is a simple example of a JavaScript-based policy that uses attribute-based access control (ABAC) to define a condition based on an attribute
+<p>Here is a simple example of a JavaScript-based policy that uses attribute-based access control (ABAC) to define a condition based on an attribute
 obtained associated with the current identity:</p>
 </div>
 <div class="listingblock">
@@ -2525,9 +2692,11 @@ obtained associated with the current identity:</p>
 <div class="paragraph">
 <p>Where these attributes are mapped from whatever claim is defined in the token that was used in the authorization request.</p>
 </div>
+</div>
+<div class="sect4">
+<h5 id="checking-for-roles-granted-to-the-current-identity"><a class="anchor" href="#checking-for-roles-granted-to-the-current-identity"></a>Checking for roles granted to the current identity</h5>
 <div class="paragraph">
-<p>=== Checking for roles granted to the current identity
-You can also use Role-Based Access Control (RBAC) in your policies. In the example below, we check if a user is granted with a <code>keycloak_user</code> <strong>realm</strong> role:</p>
+<p>You can also use Role-Based Access Control (RBAC) in your policies. In the example below, we check if a user is granted with a <code>keycloak_user</code> <strong>realm</strong> role:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2552,9 +2721,11 @@ You can also use Role-Based Access Control (RBAC) in your policies. In the examp
 }</code></pre>
 </div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="checking-for-roles-granted-to-an-user"><a class="anchor" href="#checking-for-roles-granted-to-an-user"></a>Checking for roles granted to an user</h5>
 <div class="paragraph">
-<p>=== Checking for roles granted to an user
-To check for realm roles granted to an user:</p>
+<p>To check for realm roles granted to an user:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2577,9 +2748,11 @@ To check for realm roles granted to an user:</p>
 }</code></pre>
 </div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="checking-for-roles-granted-to-a-group"><a class="anchor" href="#checking-for-roles-granted-to-a-group"></a>Checking for roles granted to a group</h5>
 <div class="paragraph">
-<p>=== Checking for roles granted to a group
-To check for realm roles granted to a group:</p>
+<p>To check for realm roles granted to a group:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2590,9 +2763,11 @@ To check for realm roles granted to a group:</p>
 }</code></pre>
 </div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="pushing-arbitrary-claims-to-the-resource-server"><a class="anchor" href="#pushing-arbitrary-claims-to-the-resource-server"></a>Pushing arbitrary claims to the resource server</h5>
 <div class="paragraph">
-<p>=== Pushing arbitrary claims to the resource server
-To push arbitrary claims to the resource server in order to provide additional information on how permissions should be
+<p>To push arbitrary claims to the resource server in order to provide additional information on how permissions should be
 enforced:</p>
 </div>
 <div class="listingblock">
@@ -2608,9 +2783,9 @@ enforced:</p>
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Checking for group membership</p>
 </div>
+<div class="sect4">
+<h5 id="checking-for-group-membership"><a class="anchor" href="#checking-for-group-membership"></a>Checking for group membership</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> realm = <span class="predefined">$evaluation</span>.getRealm();
@@ -2620,9 +2795,11 @@ enforced:</p>
 }</code></pre>
 </div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="mixing-different-access-control-mechanisms"><a class="anchor" href="#mixing-different-access-control-mechanisms"></a>Mixing different access control mechanisms</h5>
 <div class="paragraph">
-<p>=== Mixing different access control mechanisms
-You can also use a combination of several access control mechanisms. The example below shows how roles(RBAC) and
+<p>You can also use a combination of several access control mechanisms. The example below shows how roles(RBAC) and
 claims/attributes(ABAC) checks can be used within the same policy. In this case we check if user is granted with <code>admin</code> role
 or has an e-mail from <code>keycloak.org</code> domain:</p>
 </div>
@@ -2650,9 +2827,11 @@ When writing your own rules, keep in mind that the <strong>$evaluation</strong> 
 </tr>
 </table>
 </div>
-<div id="_policy_time" class="paragraph">
-<p>= Time-Based Policy</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_policy_time"><a class="anchor" href="#_policy_time"></a>Time-Based Policy</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-time-policy.adoc" target="_blank">Edit this section</a>
@@ -2669,9 +2848,8 @@ When writing your own rules, keep in mind that the <strong>$evaluation</strong> 
 <div class="title">Add Time Policy</div>
 <p><span class="image"><img src="./keycloak-images/policy/create-time.png" alt="Add Time Policy"></span></p>
 </div>
-<div class="paragraph">
-<p>== Configuration</p>
-</div>
+<div class="sect3">
+<h4 id="configuration-4"><a class="anchor" href="#configuration-4"></a>Configuration</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2740,9 +2918,10 @@ can identify them more easily.</p>
 <div class="paragraph">
 <p>Access is only granted if all conditions are satisfied. Keycloak will perform an <em>AND</em> based on the outcome of each condition.</p>
 </div>
-<div id="_policy_aggregated" class="paragraph">
-<p>= Aggregated Policy</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_policy_aggregated"><a class="anchor" href="#_policy_aggregated"></a>Aggregated Policy</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-aggregated-policy.adoc" target="_blank">Edit this section</a>
@@ -2778,9 +2957,8 @@ When creating aggregated policies, be mindful that you are not introducing a cir
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>== Configuration</p>
-</div>
+<div class="sect3">
+<h4 id="configuration-5"><a class="anchor" href="#configuration-5"></a>Configuration</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2817,9 +2995,9 @@ or create a new one by selecting the type of the policy you want to create.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>== Decision Strategy for Aggregated Policies</p>
 </div>
+<div class="sect3">
+<h4 id="decision-strategy-for-aggregated-policies"><a class="anchor" href="#decision-strategy-for-aggregated-policies"></a>Decision Strategy for Aggregated Policies</h4>
 <div class="paragraph">
 <p>When creating aggregated policies, you can also define the decision strategy that will be used to determine the final decision based on the outcome from each policy.</p>
 </div>
@@ -2845,9 +3023,10 @@ or create a new one by selecting the type of the policy you want to create.</p>
 </li>
 </ul>
 </div>
-<div id="_policy_client" class="paragraph">
-<p>= Client-Based Policy</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_policy_client"><a class="anchor" href="#_policy_client"></a>Client-Based Policy</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-client-policy.adoc" target="_blank">Edit this section</a>
@@ -2864,9 +3043,8 @@ or create a new one by selecting the type of the policy you want to create.</p>
 <div class="title">Add a Client-Based Policy</div>
 <p><span class="image"><img src="./images/policy/create-client.png" alt="Add Client-Based Policy"></span></p>
 </div>
-<div class="paragraph">
-<p>== Configuration</p>
-</div>
+<div class="sect3">
+<h4 id="configuration-6"><a class="anchor" href="#configuration-6"></a>Configuration</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2896,9 +3074,10 @@ can identify them more easily.</p>
 </li>
 </ul>
 </div>
-<div id="_policy_group" class="paragraph">
-<p>= Group-Based Policy</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_policy_group"><a class="anchor" href="#_policy_group"></a>Group-Based Policy</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-group-policy.adoc" target="_blank">Edit this section</a>
@@ -2915,9 +3094,8 @@ can identify them more easily.</p>
 <div class="title">Add Group-Based Policy</div>
 <p><span class="image"><img src="./keycloak-images/policy/create-group.png" alt="Add Group-Based Policy"></span></p>
 </div>
-<div class="paragraph">
-<p>== Configuration</p>
-</div>
+<div class="sect3">
+<h4 id="configuration-7"><a class="anchor" href="#configuration-7"></a>Configuration</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2956,9 +3134,9 @@ by marking the checkbox <strong>Extend to Children</strong>. If left unmarked, a
 </li>
 </ul>
 </div>
-<div id="_policy_group_extend_access_children" class="paragraph">
-<p>= Extending Access to Child Groups</p>
 </div>
+<div class="sect3">
+<h4 id="_policy_group_extend_access_children"><a class="anchor" href="#_policy_group_extend_access_children"></a>Extending Access to Child Groups</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-group-policy-extend-children.adoc" target="_blank">Edit this section</a>
@@ -2979,9 +3157,10 @@ added you can mark a checkbox <strong>Extend to Children</strong> in order to ex
 <div class="paragraph">
 <p>In the example above, the policy is granting access for any user member of <strong>IT</strong> or any of its children.</p>
 </div>
-<div id="_policy_logic" class="paragraph">
-<p>= Positive and Negative Logic</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_policy_logic"><a class="anchor" href="#_policy_logic"></a>Positive and Negative Logic</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-logic.adoc" target="_blank">Edit this section</a>
@@ -2996,9 +3175,9 @@ added you can mark a checkbox <strong>Extend to Children</strong> in order to ex
 you can create a role-based policy using that role and set its <strong>Logic</strong> field to <strong>Negative</strong>. If you keep <strong>Positive</strong>, which
 is the default behavior, the policy result will be kept as it is.</p>
 </div>
-<div id="_policy_evaluation_api" class="paragraph">
-<p>= Policy Evaluation API</p>
 </div>
+<div class="sect2">
+<h3 id="_policy_evaluation_api"><a class="anchor" href="#_policy_evaluation_api"></a>Policy Evaluation API</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-evaluation-api.adoc" target="_blank">Edit this section</a>
@@ -3076,9 +3255,8 @@ is the default behavior, the policy result will be kept as it is.</p>
 <div class="paragraph">
 <p>For more information about the Evaluation API see the <a href="https://www.keycloak.org/docs/9.0/api_documentation/">JavaDocs</a>.</p>
 </div>
-<div class="paragraph">
-<p>== The Evaluation Context</p>
-</div>
+<div class="sect3">
+<h4 id="the-evaluation-context"><a class="anchor" href="#the-evaluation-context"></a>The Evaluation Context</h4>
 <div class="paragraph">
 <p>The evaluation context provides useful information to policies during their evaluation.</p>
 </div>
@@ -3170,9 +3348,13 @@ from a policy and use it to build your conditions.</p>
 </tr>
 </tbody>
 </table>
-<div id="_permission_overview" class="paragraph">
-<p>= Managing Permissions</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_permission_overview"><a class="anchor" href="#_permission_overview"></a>Managing Permissions</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/permission-overview.adoc" target="_blank">Edit this section</a>
@@ -3206,9 +3388,8 @@ you can start managing permissions. To manage permissions, click the <strong>Per
 <div class="paragraph">
 <p>To create a permission, select the permission type you want to create from the dropdown list in the upper right corner of the permission listing. The following sections describe these two types of objects in more detail.</p>
 </div>
-<div id="_permission_create_resource" class="paragraph">
-<p>= Creating Resource-Based Permissions</p>
-</div>
+<div class="sect2">
+<h3 id="_permission_create_resource"><a class="anchor" href="#_permission_create_resource"></a>Creating Resource-Based Permissions</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/permission-create-resource.adoc" target="_blank">Edit this section</a>
@@ -3225,9 +3406,8 @@ you can start managing permissions. To manage permissions, click the <strong>Per
 <div class="title">Add Resource-Based Permission</div>
 <p><span class="image"><img src="./keycloak-images/permission/create-resource.png" alt="Add Resource-Based Permission"></span></p>
 </div>
-<div class="paragraph">
-<p>== Configuration</p>
-</div>
+<div class="sect3">
+<h4 id="configuration-8"><a class="anchor" href="#configuration-8"></a>Configuration</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3284,9 +3464,9 @@ or create a new one by selecting the type of the policy you want to create.</p>
 </li>
 </ul>
 </div>
-<div id="_permission_typed_resource" class="paragraph">
-<p>= Typed Resource Permission</p>
 </div>
+<div class="sect3">
+<h4 id="_permission_typed_resource"><a class="anchor" href="#_permission_typed_resource"></a>Typed Resource Permission</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/permission-typed-resource-permission.adoc" target="_blank">Edit this section</a>
@@ -3320,9 +3500,10 @@ you can specify the type that you want to protect as well as the policies that a
 <div class="title">Example of a Typed Resource Permission</div>
 <p><span class="image"><img src="./keycloak-images/permission/typed-resource-perm-example.png" alt="Example of a Typed Resource Permission"></span></p>
 </div>
-<div id="_permission_create_scope" class="paragraph">
-<p>= Creating Scope-Based Permissions</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_permission_create_scope"><a class="anchor" href="#_permission_create_scope"></a>Creating Scope-Based Permissions</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/permission-create-scope.adoc" target="_blank">Edit this section</a>
@@ -3339,9 +3520,8 @@ you can specify the type that you want to protect as well as the policies that a
 <div class="title">Add Scope-Based Permission</div>
 <p><span class="image"><img src="./keycloak-images/permission/create-scope.png" alt="Add Scope-Based Permission"></span></p>
 </div>
-<div class="paragraph">
-<p>== Configuration</p>
-</div>
+<div class="sect3">
+<h4 id="configuration-9"><a class="anchor" href="#configuration-9"></a>Configuration</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3384,9 +3564,10 @@ or create a new one by selecting the type of the policy you want to create.</p>
 </li>
 </ul>
 </div>
-<div id="_permission_decision_strategies" class="paragraph">
-<p>= Policy Decision Strategies</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_permission_decision_strategies"><a class="anchor" href="#_permission_decision_strategies"></a>Policy Decision Strategies</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/permission-decision-strategy.adoc" target="_blank">Edit this section</a>
@@ -3418,9 +3599,12 @@ or create a new one by selecting the type of the policy you want to create.</p>
 </li>
 </ul>
 </div>
-<div id="_policy_evaluation_overview" class="paragraph">
-<p>= Evaluating and Testing Policies</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_policy_evaluation_overview"><a class="anchor" href="#_policy_evaluation_overview"></a>Evaluating and Testing Policies</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-evaluation-tool-overview.adoc" target="_blank">Edit this section</a>
@@ -3436,21 +3620,20 @@ or create a new one by selecting the type of the policy you want to create.</p>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/policy-evaluation-tool/policy-evaluation-tool.png" alt="Policy Evaluation Tool"></span></p>
 </div>
-<div class="paragraph">
-<p>== Providing Identity Information</p>
-</div>
+<div class="sect2">
+<h3 id="providing-identity-information"><a class="anchor" href="#providing-identity-information"></a>Providing Identity Information</h3>
 <div class="paragraph">
 <p>The <strong>Identity Information</strong> filters can be used to specify the user requesting permissions.</p>
 </div>
-<div class="paragraph">
-<p>== Providing Contextual Information</p>
 </div>
+<div class="sect2">
+<h3 id="providing-contextual-information"><a class="anchor" href="#providing-contextual-information"></a>Providing Contextual Information</h3>
 <div class="paragraph">
 <p>The <strong>Contextual Information</strong> filters can be used to define additional attributes to the evaluation context, so that policies can obtain these same attributes.</p>
 </div>
-<div class="paragraph">
-<p>== Providing the Permissions</p>
 </div>
+<div class="sect2">
+<h3 id="providing-the-permissions"><a class="anchor" href="#providing-the-permissions"></a>Providing the Permissions</h3>
 <div class="paragraph">
 <p>The <strong>Permissions</strong> filters can be used to build an authorization request. You can request permissions for a set of one or more resources and scopes. If you want
 to simulate authorization requests based on all protected resources and scopes, click <strong>Add</strong> without specifying any <code>Resources</code> or <code>Scopes</code>.</p>
@@ -3458,9 +3641,12 @@ to simulate authorization requests based on all protected resources and scopes, 
 <div class="paragraph">
 <p>When you&#8217;ve specified your desired values, click <strong>Evaluate</strong>.</p>
 </div>
-<div id="_service_overview" class="paragraph">
-<p>= Authorization Services</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_service_overview"><a class="anchor" href="#_service_overview"></a>Authorization Services</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-overview.adoc" target="_blank">Edit this section</a>
@@ -3482,9 +3668,8 @@ the access token with permissions is called a Requesting Party Token or RPT for 
 <p>In addition to the issuance of RPTs, Keycloak Authorization Services also provides a set of RESTful endpoints that allow resources servers to manage their protected
 resources, scopes, permissions and policies, helping developers to extend or integrate these capabilities into their applications in order to support fine-grained authorization.</p>
 </div>
-<div id="_service_authorization_api" class="paragraph">
-<p>= Discovering Authorization Services Endpoints and Metadata</p>
-</div>
+<div class="sect2">
+<h3 id="_service_authorization_api"><a class="anchor" href="#_service_authorization_api"></a>Discovering Authorization Services Endpoints and Metadata</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-authorization-discovery-document.adoc" target="_blank">Edit this section</a>
@@ -3561,9 +3746,9 @@ operations create, read, update, and delete permission tickets in Keycloak.</p>
 </li>
 </ul>
 </div>
-<div id="_service_obtaining_permissions" class="paragraph">
-<p>= Obtaining Permissions</p>
 </div>
+<div class="sect2">
+<h3 id="_service_obtaining_permissions"><a class="anchor" href="#_service_obtaining_permissions"></a>Obtaining Permissions</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-authorization-obtaining-permission.adoc" target="_blank">Edit this section</a>
@@ -3771,9 +3956,8 @@ Content-Type: application/json
 }</code></pre>
 </div>
 </div>
-<div id="_authentication_methods" class="paragraph">
-<p>= Client Authentication Methods</p>
-</div>
+<div class="sect3">
+<h4 id="_authentication_methods"><a class="anchor" href="#_authentication_methods"></a>Client Authentication Methods</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-authorization-obtaining-permission-authentication.adoc" target="_blank">Edit this section</a>
@@ -3825,9 +4009,9 @@ the resources and scopes to which User A has access.</p>
 </li>
 </ul>
 </div>
-<div id="_service_pushing_claims" class="paragraph">
-<p>= Pushing Claims</p>
 </div>
+<div class="sect3">
+<h4 id="_service_pushing_claims"><a class="anchor" href="#_service_pushing_claims"></a>Pushing Claims</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-authorization-pushing-claims.adoc" target="_blank">Edit this section</a>
@@ -3867,15 +4051,16 @@ an authorization request to the token endpoint as follows:</p>
 <div class="paragraph">
 <p>The format expects one or more claims where the value for each claim must be an array of strings.</p>
 </div>
-<div class="paragraph">
-<p>== Pushing Claims Using UMA</p>
-</div>
+<div class="sect4">
+<h5 id="pushing-claims-using-uma"><a class="anchor" href="#pushing-claims-using-uma"></a>Pushing Claims Using UMA</h5>
 <div class="paragraph">
 <p>For more details about how to push claims when using UMA and permission tickets, please take a look at <a href="#_service_protection_permission_api_papi">Permission API</a></p>
 </div>
-<div id="_service_user_managed_access" class="paragraph">
-<p>= User-Managed Access</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_service_user_managed_access"><a class="anchor" href="#_service_user_managed_access"></a>User-Managed Access</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-authorization-obtaining-permission-uma.adoc" target="_blank">Edit this section</a>
@@ -3934,9 +4119,8 @@ policies that she can change is to define which people are allowed to view her b
 to provide to Alice a space where she can select individuals and the operations (or data) they are allowed to access. At any time, Alice
 can revoke access or grant additional permissions to Bob.</p>
 </div>
-<div id="_service_uma_authorization_process" class="paragraph">
-<p>= Authorization Process</p>
-</div>
+<div class="sect3">
+<h4 id="_service_uma_authorization_process"><a class="anchor" href="#_service_uma_authorization_process"></a>Authorization Process</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-authorization-uma-authz-process.adoc" target="_blank">Edit this section</a>
@@ -4019,9 +4203,9 @@ Content-Type: application/json
 }</code></pre>
 </div>
 </div>
-<div id="_service_authorization_aat" class="paragraph">
-<p>= Submitting Permission Requests</p>
 </div>
+<div class="sect3">
+<h4 id="_service_authorization_aat"><a class="anchor" href="#_service_authorization_aat"></a>Submitting Permission Requests</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-authorization-uma-submiting-permission-requests.adoc" target="_blank">Edit this section</a>
@@ -4072,9 +4256,9 @@ Once created, resource owners can check their account and manage their permissio
 <div class="paragraph">
 <p>You can think about this functionality as a <code>Request Access</code> button in your application, where users can ask other users for access to their resources.</p>
 </div>
-<div id="_service_authorization_my_resources" class="paragraph">
-<p>= Managing Access to Users Resources</p>
 </div>
+<div class="sect3">
+<h4 id="_service_authorization_my_resources"><a class="anchor" href="#_service_authorization_my_resources"></a>Managing Access to Users Resources</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-authorization-uma-account-my-resources.adoc" target="_blank">Edit this section</a>
@@ -4150,9 +4334,10 @@ on the <code>Revoke</code> button or by removing a specific <code>Permission</co
 </li>
 </ul>
 </div>
-<div id="_service_protection_api" class="paragraph">
-<p>= Protection API</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_service_protection_api"><a class="anchor" href="#_service_protection_api"></a>Protection API</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-protection-protection-api.adoc" target="_blank">Edit this section</a>
@@ -4191,9 +4376,8 @@ servers on behalf of their users.</p>
 <p>An important requirement for this API is that <em>only</em> resource servers are allowed to access its endpoints using a special OAuth2 access token called a protection API token (PAT).
 In UMA, a PAT is a token with the scope <strong>uma_protection</strong>.</p>
 </div>
-<div id="_service_protection_whatis_obtain_pat" class="paragraph">
-<p>= What is a PAT and How to Obtain It</p>
-</div>
+<div class="sect3">
+<h4 id="_service_protection_whatis_obtain_pat"><a class="anchor" href="#_service_protection_whatis_obtain_pat"></a>What is a PAT and How to Obtain It</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-protection-whatis-obtain-pat.adoc" target="_blank">Edit this section</a>
@@ -4249,9 +4433,9 @@ which requires a <em>client_id</em> and a <em>client_secret</em>. You can choose
 </tr>
 </table>
 </div>
-<div id="_service_protection_resources_api" class="paragraph">
-<p>= Managing Resources</p>
 </div>
+<div class="sect3">
+<h4 id="_service_protection_resources_api"><a class="anchor" href="#_service_protection_resources_api"></a>Managing Resources</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-protection-resources-api-papi.adoc" target="_blank">Edit this section</a>
@@ -4291,9 +4475,8 @@ which requires a <em>client_id</em> and a <em>client_secret</em>. You can choose
 <div class="paragraph">
 <p>For more information about the contract for each of these operations, see <a href="https://docs.kantarainitiative.org/uma/wg/oauth-uma-federated-authz-2.0-09.html#reg-api">UMA Resource Registration API</a>.</p>
 </div>
-<div class="paragraph">
-<p>== Creating a Resource</p>
-</div>
+<div class="sect4">
+<h5 id="creating-a-resource"><a class="anchor" href="#creating-a-resource"></a>Creating a Resource</h5>
 <div class="paragraph">
 <p>To create a resource you must send an HTTP POST request as follows:</p>
 </div>
@@ -4335,9 +4518,9 @@ specific user, you can send a request as follows:</p>
 <div class="paragraph">
 <p>Where the property <code>owner</code> can be set with the username or the identifier of the user.</p>
 </div>
-<div class="paragraph">
-<p>== Creating User-Managed Resources</p>
 </div>
+<div class="sect4">
+<h5 id="creating-user-managed-resources"><a class="anchor" href="#creating-user-managed-resources"></a>Creating User-Managed Resources</h5>
 <div class="paragraph">
 <p>By default, resources created via Protection API can not be managed by resource owners through the <a href="#_service_authorization_my_resources">User Account Service</a>.</p>
 </div>
@@ -4357,9 +4540,9 @@ specific user, you can send a request as follows:</p>
   }'</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Updating Resources</p>
 </div>
+<div class="sect4">
+<h5 id="updating-resources"><a class="anchor" href="#updating-resources"></a>Updating Resources</h5>
 <div class="paragraph">
 <p>To update an existing resource, send an HTTP PUT request as follows:</p>
 </div>
@@ -4378,9 +4561,9 @@ specific user, you can send a request as follows:</p>
   }'</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Deleting Resources</p>
 </div>
+<div class="sect4">
+<h5 id="deleting-resources"><a class="anchor" href="#deleting-resources"></a>Deleting Resources</h5>
 <div class="paragraph">
 <p>To delete an existing resource, send an HTTP DELETE request as follows:</p>
 </div>
@@ -4391,9 +4574,9 @@ specific user, you can send a request as follows:</p>
   -H 'Authorization: Bearer '$pat</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Querying Resources</p>
 </div>
+<div class="sect4">
+<h5 id="querying-resources"><a class="anchor" href="#querying-resources"></a>Querying Resources</h5>
 <div class="paragraph">
 <p>To query the resources by <code>id</code>, send an HTTP GET request as follows:</p>
 </div>
@@ -4445,9 +4628,10 @@ specific user, you can send a request as follows:</p>
 <div class="paragraph">
 <p>When querying the server for permissions use parameters <code>first</code> and <code>max</code> results to limit the result.</p>
 </div>
-<div id="_service_protection_permission_api_papi" class="paragraph">
-<p>= Managing Permission Requests</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_service_protection_permission_api_papi"><a class="anchor" href="#_service_protection_permission_api_papi"></a>Managing Permission Requests</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-protection-permission-api-papi.adoc" target="_blank">Edit this section</a>
@@ -4507,9 +4691,8 @@ permission tickets is an important aspects when using UMA as it allows resource 
 <p>These are just some of the benefits brought by UMA where other aspects of UMA are strongly based on permission tickets, specially regarding
 privacy and user controlled access to their resources.</p>
 </div>
-<div class="paragraph">
-<p>== Creating Permission Ticket</p>
-</div>
+<div class="sect4">
+<h5 id="creating-permission-ticket"><a class="anchor" href="#creating-permission-ticket"></a>Creating Permission Ticket</h5>
 <div class="paragraph">
 <p>To create a permission ticket, send an HTTP POST request as follows:</p>
 </div>
@@ -4555,12 +4738,11 @@ privacy and user controlled access to their resources.</p>
 <p>Where these claims will be available to your policies when evaluating permissions for the resource and scope(s) associated
 with the permission ticket.</p>
 </div>
-<div class="paragraph">
-<p>== Other non UMA-compliant endpoints</p>
 </div>
-<div class="paragraph">
-<p>=== Creating permission ticket</p>
-</div>
+<div class="sect4">
+<h5 id="other-non-uma-compliant-endpoints"><a class="anchor" href="#other-non-uma-compliant-endpoints"></a>Other non UMA-compliant endpoints</h5>
+<div class="sect5">
+<h6 id="creating-permission-ticket-2"><a class="anchor" href="#creating-permission-ticket-2"></a>Creating permission ticket</h6>
 <div class="paragraph">
 <p>To grant permissions for a specific resource with id {resource_id} to a user with id {user_id}, as an owner of the resource send an HTTP POST request as follows:</p>
 </div>
@@ -4578,9 +4760,9 @@ with the permission ticket.</p>
      }'</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Getting permission tickets</p>
 </div>
+<div class="sect5">
+<h6 id="getting-permission-tickets"><a class="anchor" href="#getting-permission-tickets"></a>Getting permission tickets</h6>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">curl http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket \
@@ -4618,9 +4800,9 @@ with the permission ticket.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>=== Updating permission ticket</p>
 </div>
+<div class="sect5">
+<h6 id="updating-permission-ticket"><a class="anchor" href="#updating-permission-ticket"></a>Updating permission ticket</h6>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">curl -X PUT \
@@ -4636,18 +4818,20 @@ with the permission ticket.</p>
      }'</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Deleting permission ticket</p>
 </div>
+<div class="sect5">
+<h6 id="deleting-permission-ticket"><a class="anchor" href="#deleting-permission-ticket"></a>Deleting permission ticket</h6>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">curl -X DELETE http://${host}:${port}/auth/realms/${realm_name}/authz/protection/permission/ticket/{ticket_id} \
      -H 'Authorization: Bearer '$access_token</code></pre>
 </div>
 </div>
-<div id="_service_authorization_uma_policy_api" class="paragraph">
-<p>= Managing Resource Permissions using the Policy API</p>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_service_authorization_uma_policy_api"><a class="anchor" href="#_service_authorization_uma_policy_api"></a>Managing Resource Permissions using the Policy API</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-protection-policy-api.adoc" target="_blank">Edit this section</a>
@@ -4682,9 +4866,8 @@ where audience is the resource server</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>== Associating a Permission with a Resource</p>
-</div>
+<div class="sect4">
+<h5 id="associating-a-permission-with-a-resource"><a class="anchor" href="#associating-a-permission-with-a-resource"></a>Associating a Permission with a Resource</h5>
 <div class="paragraph">
 <p>To associate a permission with a specific resource you must send a HTTP POST request as follows:</p>
 </div>
@@ -4758,6 +4941,7 @@ any user with a role <code>people-manager</code> should be granted with the <cod
 </div>
 <div class="paragraph">
 <p>To enable start the server with
+<code>-Dkeycloak.profile.feature.upload_scripts=enabled</code>
 . For more details see <a href="https://www.keycloak.org/docs/9.0/server_installation/#profiles">Profiles</a>.</p>
 </div>
 </td>
@@ -4808,9 +4992,9 @@ any user with a role <code>people-manager</code> should be granted with the <cod
 }'</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Removing a Permission</p>
 </div>
+<div class="sect4">
+<h5 id="removing-a-permission"><a class="anchor" href="#removing-a-permission"></a>Removing a Permission</h5>
 <div class="paragraph">
 <p>To remove a permission associated with a resource, send an HTTP DELETE request as follows:</p>
 </div>
@@ -4821,9 +5005,9 @@ any user with a role <code>people-manager</code> should be granted with the <cod
   -H 'Authorization: Bearer '$access_token</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Querying Permission</p>
 </div>
+<div class="sect4">
+<h5 id="querying-permission"><a class="anchor" href="#querying-permission"></a>Querying Permission</h5>
 <div class="paragraph">
 <p>To query the permissions associated with a resource, send an HTTP GET request as follows:</p>
 </div>
@@ -4859,9 +5043,11 @@ any user with a role <code>people-manager</code> should be granted with the <cod
 <div class="paragraph">
 <p>When querying the server for permissions use parameters <code>first</code> and <code>max</code> results to limit the result.</p>
 </div>
-<div id="_service_rpt_overview" class="paragraph">
-<p>= Requesting Party Token</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_service_rpt_overview"><a class="anchor" href="#_service_rpt_overview"></a>Requesting Party Token</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-rpt-overview.adoc" target="_blank">Edit this section</a>
@@ -4903,9 +5089,8 @@ or on its own behalf.</p>
 <p>Also note that permissions are directly related with the resources/scopes you are protecting and completely decoupled from
 the access control methods that were used to actually grant and issue these same permissions.</p>
 </div>
-<div id="_service_protection_token_introspection" class="paragraph">
-<p>= Introspecting a Requesting Party Token</p>
-</div>
+<div class="sect3">
+<h4 id="_service_protection_token_introspection"><a class="anchor" href="#_service_protection_token_introspection"></a>Introspecting a Requesting Party Token</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-rpt-token-introspection.adoc" target="_blank">Edit this section</a>
@@ -4928,9 +5113,9 @@ the access control methods that were used to actually grant and issue these same
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>= Obtaining Information about an RPT</p>
 </div>
+<div class="sect3">
+<h4 id="obtaining-information-about-an-rpt"><a class="anchor" href="#obtaining-information-about-an-rpt"></a>Obtaining Information about an RPT</h4>
 <div class="paragraph">
 <p>The token introspection is essentially a <a href="https://tools.ietf.org/html/rfc7662">OAuth2 token introspection</a>-compliant endpoint from which you can obtain information about an RPT.</p>
 </div>
@@ -5012,9 +5197,9 @@ The request above is using HTTP BASIC and passing the client&#8217;s credentials
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>= Do I Need to Invoke the Server Every Time I Want to Introspect an RPT?</p>
 </div>
+<div class="sect3">
+<h4 id="do-i-need-to-invoke-the-server-every-time-i-want-to-introspect-an-rpt"><a class="anchor" href="#do-i-need-to-invoke-the-server-every-time-i-want-to-introspect-an-rpt"></a>Do I Need to Invoke the Server Every Time I Want to Introspect an RPT?</h4>
 <div class="paragraph">
 <p>No. Just like a regular access token issued by a Keycloak server, RPTs also use the
  <a href="https://tools.ietf.org/html/rfc7519">JSON web token (JWT)</a> specification as the default format.</p>
@@ -5036,9 +5221,10 @@ you can also use the permissions within the token to enforce authorization decis
 </li>
 </ul>
 </div>
-<div id="_service_client_api" class="paragraph">
-<p>= Authorization Client Java API</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_service_client_api"><a class="anchor" href="#_service_client_api"></a>Authorization Client Java API</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/service-client-api.adoc" target="_blank">Edit this section</a>
@@ -5052,9 +5238,8 @@ If you are using Java, you can access the Keycloak Authorization Services using 
 <div class="paragraph">
 <p>It is targeted for resource servers that want to access the different endpoints provided by the server such as the Token Endpoint, Resource, and Permission management endpoints.</p>
 </div>
-<div class="paragraph">
-<p>== Maven Dependency</p>
-</div>
+<div class="sect3">
+<h4 id="maven-dependency"><a class="anchor" href="#maven-dependency"></a>Maven Dependency</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
@@ -5066,9 +5251,9 @@ If you are using Java, you can access the Keycloak Authorization Services using 
 <span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Configuration</p>
 </div>
+<div class="sect3">
+<h4 id="configuration-10"><a class="anchor" href="#configuration-10"></a>Configuration</h4>
 <div class="paragraph">
 <p>The client configuration is defined in a <code>keycloak.json</code> file as follows:</p>
 </div>
@@ -5115,9 +5300,9 @@ If you are using Java, you can access the Keycloak Authorization Services using 
 <div class="paragraph">
 <p>The configuration file is usually located in your application&#8217;s classpath, the default location from where the client is going to try to find a <code><code>keycloak.json</code></code> file.</p>
 </div>
-<div class="paragraph">
-<p>== Creating the Authorization Client</p>
 </div>
+<div class="sect3">
+<h4 id="creating-the-authorization-client"><a class="anchor" href="#creating-the-authorization-client"></a>Creating the Authorization Client</h4>
 <div class="paragraph">
 <p>Considering you have a <code><code>keycloak.json</code></code> file in your classpath, you can create a new <code><code>AuthzClient</code></code> instance as follows:</p>
 </div>
@@ -5127,9 +5312,9 @@ If you are using Java, you can access the Keycloak Authorization Services using 
     AuthzClient authzClient = AuthzClient.create();</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Obtaining User Entitlements</p>
 </div>
+<div class="sect3">
+<h4 id="obtaining-user-entitlements"><a class="anchor" href="#obtaining-user-entitlements"></a>Obtaining User Entitlements</h4>
 <div class="paragraph">
 <p>Here is an example illustrating how to obtain user entitlements:</p>
 </div>
@@ -5175,9 +5360,9 @@ AuthorizationResponse response = authzClient.authorization(<span class="string">
 <span class="comment">// now you can use the RPT to access protected resources on the resource server</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Creating a Resource Using the Protection API</p>
 </div>
+<div class="sect3">
+<h4 id="creating-a-resource-using-the-protection-api"><a class="anchor" href="#creating-a-resource-using-the-protection-api"></a>Creating a Resource Using the Protection API</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// create a new instance based on the configuration defined in keycloak.json</span>
@@ -5208,9 +5393,9 @@ ResourceRepresentation resource = resourceClient.findById(resourceId);
 <span class="predefined-type">System</span>.out.println(resource);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Introspecting an RPT</p>
 </div>
+<div class="sect3">
+<h4 id="introspecting-an-rpt"><a class="anchor" href="#introspecting-an-rpt"></a>Introspecting an RPT</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// create a new instance based on the configuration defined in keycloak.json</span>
@@ -5232,9 +5417,13 @@ TokenIntrospectionResponse requestingPartyToken = authzClient.protection().intro
 }</code></pre>
 </div>
 </div>
-<div id="_enforcer_overview" class="paragraph">
-<p>= Policy Enforcers</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_enforcer_overview"><a class="anchor" href="#_enforcer_overview"></a>Policy Enforcers</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/enforcer-overview.adoc" target="_blank">Edit this section</a>
@@ -5280,9 +5469,8 @@ depending on the permissions granted by Keycloak to the identity making the requ
 <p>Policy enforcement is strongly linked to your application&#8217;s paths and the <a href="#_resource_overview">resources</a> you created for a resource server using the Keycloak Administration Console. By default,
 when you create a resource server, Keycloak creates a <a href="#_resource_server_default_config">default configuration</a> for your resource server so you can enable policy enforcement quickly.</p>
 </div>
-<div id="_enforcer_filter" class="paragraph">
-<p>= Configuration</p>
-</div>
+<div class="sect2">
+<h3 id="_enforcer_filter"><a class="anchor" href="#_enforcer_filter"></a>Configuration</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/enforcer-keycloak-enforcement-filter.adoc" target="_blank">Edit this section</a>
@@ -5551,9 +5739,9 @@ check whether or not access should be granted. When enabled, make sure your reso
 </li>
 </ul>
 </div>
-<div id="_enforcer_claim_information_point" class="paragraph">
-<p>= Claim Information Point</p>
 </div>
+<div class="sect2">
+<h3 id="_enforcer_claim_information_point"><a class="anchor" href="#_enforcer_claim_information_point"></a>Claim Information Point</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/enforcer-claim-information-point.adoc" target="_blank">Edit this section</a>
@@ -5586,9 +5774,8 @@ to the policy-enforcer in order to resolve claims from different sources, such a
 context and contents into account, based on who, what, why, when, where, and which for a given transaction. It is all about
 Contextual-based Authorization and how to use runtime information in order to support fine-grained authorization decisions.</p>
 </div>
-<div class="paragraph">
-<p>== Obtaining information from the HTTP Request</p>
-</div>
+<div class="sect3">
+<h4 id="obtaining-information-from-the-http-request"><a class="anchor" href="#obtaining-information-from-the-http-request"></a>Obtaining information from the HTTP Request</h4>
 <div class="paragraph">
 <p>Here are several examples showing how you can extract claims from an HTTP request:</p>
 </div>
@@ -5622,9 +5809,9 @@ Contextual-based Authorization and how to use runtime information in order to su
   }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Obtaining information from an External HTTP Service</p>
 </div>
+<div class="sect3">
+<h4 id="obtaining-information-from-an-external-http-service"><a class="anchor" href="#obtaining-information-from-an-external-http-service"></a>Obtaining information from an External HTTP Service</h4>
 <div class="paragraph">
 <p>Here are several examples showing how you can extract claims from an external HTTP Service:</p>
 </div>
@@ -5663,9 +5850,9 @@ Contextual-based Authorization and how to use runtime information in order to su
   }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Static Claims</p>
 </div>
+<div class="sect3">
+<h4 id="static-claims"><a class="anchor" href="#static-claims"></a>Static Claims</h4>
 <div class="listingblock">
 <div class="title">keycloak.json</div>
 <div class="content">
@@ -5684,9 +5871,9 @@ Contextual-based Authorization and how to use runtime information in order to su
   }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Claim Information Provider SPI</p>
 </div>
+<div class="sect3">
+<h4 id="claim-information-provider-spi"><a class="anchor" href="#claim-information-provider-spi"></a>Claim Information Provider SPI</h4>
 <div class="paragraph">
 <p>The Claim Information Provider SPI can be used by developers to support different claim information points in case none of the
 built-ins providers are enough to address their requirements.</p>
@@ -5753,9 +5940,10 @@ instance of MyClaimInformationPointProvider. When called, any configuration defi
 }</code></pre>
 </div>
 </div>
-<div id="_enforcer_authorization_context" class="paragraph">
-<p>= Obtaining the Authorization Context</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_enforcer_authorization_context"><a class="anchor" href="#_enforcer_authorization_context"></a>Obtaining the Authorization Context</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/enforcer-authorization-context.adoc" target="_blank">Edit this section</a>
@@ -5841,9 +6029,9 @@ to build a dynamic menu where items are hidden or shown depending on the permiss
 <div class="paragraph">
 <p>Security requirements change, but with Keycloak there is no need to change your application code to address the new requirements. Once your application is based on the resource and scope identifier, you need only change the configuration of the permissions or policies associated with a particular resource in the authorization server. In this case, the permissions and policies associated with the <code>Project Resource</code> and/or the scope <code>urn:project.com:project:create</code> would be changed.</p>
 </div>
-<div class="paragraph">
-<p>= Using the AuthorizationContext to obtain an Authorization Client Instance</p>
 </div>
+<div class="sect2">
+<h3 id="using-the-authorizationcontext-to-obtain-an-authorization-client-instance"><a class="anchor" href="#using-the-authorizationcontext-to-obtain-an-authorization-client-instance"></a>Using the AuthorizationContext to obtain an Authorization Client Instance</h3>
 <div class="paragraph">
 <p>The <code><code>AuthorizationContext</code></code> can also be used to obtain a reference to the <a href="#_service_client_api">Authorization Client API</a> configured to your application:</p>
 </div>
@@ -5856,9 +6044,9 @@ to build a dynamic menu where items are hidden or shown depending on the permiss
 <div class="paragraph">
 <p>In some cases, resource servers protected by the policy enforcer need to access the APIs provided by the authorization server. With an <code><code>AuthzClient</code></code> instance in hands, resource servers can interact with the server in order to create resources or check for specific permissions programmatically.</p>
 </div>
-<div id="_enforcer_js_adapter" class="paragraph">
-<p>= JavaScript Integration</p>
 </div>
+<div class="sect2">
+<h3 id="_enforcer_js_adapter"><a class="anchor" href="#_enforcer_js_adapter"></a>JavaScript Integration</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/enforcer-js-adapter.adoc" target="_blank">Edit this section</a>
@@ -5903,9 +6091,8 @@ This library is based on the Keycloak JavaScript adapter, which can be integrate
 <p>In both cases, the library allows you to easily interact with both resource server and Keycloak Authorization Services to obtain tokens with
 permissions your client can use as bearer tokens to access the protected resources on a resource server.</p>
 </div>
-<div class="paragraph">
-<p>== Handling Authorization Responses from a UMA-Protected Resource Server</p>
-</div>
+<div class="sect3">
+<h4 id="handling-authorization-responses-from-a-uma-protected-resource-server"><a class="anchor" href="#handling-authorization-responses-from-a-uma-protected-resource-server"></a>Handling Authorization Responses from a UMA-Protected Resource Server</h4>
 <div class="paragraph">
 <p>If a resource server is protected by a policy enforcer, it responds to client requests based on the permissions carried along with a bearer token.
 Typically, when you try to access a resource server with a bearer token that is lacking permissions to access a protected resource, the resource server
@@ -5961,9 +6148,9 @@ Identity.authorization.authorize(authorizationRequest).then(<span class="keyword
 <div class="paragraph">
 <p>Most applications should use the <code>onGrant</code> callback to retry a request after a 401 response. Subsequent requests should include the RPT as a bearer token for retries.</p>
 </div>
-<div class="paragraph">
-<p>== Obtaining Entitlements</p>
 </div>
+<div class="sect3">
+<h4 id="obtaining-entitlements"><a class="anchor" href="#obtaining-entitlements"></a>Obtaining Entitlements</h4>
 <div class="paragraph">
 <p>The <code><code>keycloak-authz.js</code></code> library provides an <code>entitlement</code> function that you can use to obtain an RPT from the server by providing
 the resources and scopes your client wants to access.</p>
@@ -6011,9 +6198,9 @@ the resources and scopes your client wants to access.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>== Authorization Request</p>
 </div>
+<div class="sect3">
+<h4 id="authorization-request"><a class="anchor" href="#authorization-request"></a>Authorization Request</h4>
 <div class="paragraph">
 <p>Both <code><code>authorize</code></code> and <code><code>entitlement</code></code> functions accept an authorization request object. This object can be set with the following
 properties:</p>
@@ -6071,9 +6258,9 @@ This parameter will only take effect when used together with the <code>ticket</c
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>== Obtaining the RPT</p>
 </div>
+<div class="sect3">
+<h4 id="obtaining-the-rpt"><a class="anchor" href="#obtaining-the-rpt"></a>Obtaining the RPT</h4>
 <div class="paragraph">
 <p>If you have already obtained an RPT using any of the authorization functions provided by the library, you can always obtain the RPT as follows from the authorization object (assuming that it has been initialized by one of the techniques shown earlier):</p>
 </div>
@@ -6082,9 +6269,10 @@ This parameter will only take effect when used together with the <code>ticket</c
 <pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> rpt = authorization.rpt;</code></pre>
 </div>
 </div>
-<div id="_enforcer_filter_using_https" class="paragraph">
-<p>= Setting Up TLS/HTTPS</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_enforcer_filter_using_https"><a class="anchor" href="#_enforcer_filter_using_https"></a>Setting Up TLS/HTTPS</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/enforcer-https.adoc" target="_blank">Edit this section</a>
@@ -6123,11 +6311,9 @@ It is strongly recommended that you enable TLS/HTTPS when accessing the Keycloak
 </div>
 </div>
 </div>
-</div>
-</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-05 19:11:41 UTC
+Last updated 2020-04-08 14:05:31 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

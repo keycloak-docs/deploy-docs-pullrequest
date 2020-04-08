@@ -1007,6 +1007,7 @@ span.image img {
 <ul class="sectlevel3">
 <li><a href="#default-first-login-flow">Default First Login Flow</a></li>
 <li><a href="#automatically-link-existing-first-login-flow">Automatically Link Existing First Login Flow</a></li>
+<li><a href="#disabling-automatic-user-creation">Disabling Automatic User Creation</a></li>
 </ul>
 </li>
 <li><a href="#retrieving-external-idp-tokens">Retrieving External IDP Tokens</a></li>
@@ -1167,7 +1168,7 @@ span.image img {
 <div class="exampleblock top-menu-version">
 <div class="content">
 <div class="paragraph versionarchive">
-<p>Version <strong>9.0.1</strong> <em><a href="https://www.keycloak.org/docs/latest/server_admin/">Click here for latest</a></em></p>
+<p>Version <strong>9.0.4</strong> <em><a href="https://www.keycloak.org/docs/latest/server_admin/">Click here for latest</a></em></p>
 </div>
 </div>
 </div>
@@ -2877,7 +2878,7 @@ creating the flow from the start:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The Username form is similar to "Browser" flow&#8217;s Username Password Form, but only asks for a username, allowing a user to do perform a password-less login.
+<p>The Username form is similar to "Browser" flow&#8217;s Username Password Form, but only asks for a username, allowing a user to perform a password-less login.
 However, note that this inevitably allows a user enumeration attack on your Keycloak server. This is an unavoidable security risk for the convenience,
 so the flow should make sure that an attacker cannot just have to guess a password to be able to enter.</p>
 </div>
@@ -8344,7 +8345,7 @@ grantMethod: prompt <i class="conum" data-value="4"></i><b>(4)</b>
 Go back to Keycloak and specify those items.</p>
 </div>
 <div class="paragraph">
-<p>Please refer to <a href="https://docs.okd.io/latest/architecture/additional_concepts/authentication.html#oauth">official OpenShift documentation</a> for more detailed guides.</p>
+<p>Please refer to <a href="https://docs.okd.io/latest/authentication/configuring-internal-oauth.html#oauth-register-additional-client_configuring-internal-oauth">official OpenShift documentation</a> for more detailed guides.</p>
 </div>
 </div>
 <div class="sect3">
@@ -8432,7 +8433,7 @@ The OpenShift API server returns <code>The client is not authorized to request a
 </table>
 </div>
 <div class="paragraph">
-<p>Please refer to <a href="https://docs.okd.io/latest/architecture/additional_concepts/authentication.html#oauth">official OpenShift documentation</a> for more detailed guides.</p>
+<p>Please refer to <a href="https://docs.okd.io/latest/authentication/configuring-internal-oauth.html#oauth-register-additional-client_configuring-internal-oauth">official OpenShift documentation</a> for more detailed guides.</p>
 </div>
 </div>
 <div class="sect3">
@@ -9089,7 +9090,7 @@ Disable this if you don&#8217;t want to confirm linking by email, but instead yo
 <dt class="hdlist1">Verify Existing Account By Re-authentication</dt>
 <dd>
 <p>This authenticator is used if email authenticator is disabled or not available (SMTP not configured for realm). It will display a login screen
-where the user needs to authenticate with his password to link their Keycloak account with the Identity provider.
+where the user needs to authenticate to link their Keycloak account with the Identity provider.
 User can also re-authenticate with some different identity provider, which is already linked to their Keycloak account.
 You can also force users to use OTP. Otherwise it&#8217;s optional and used only if OTP is already set for the user account.</p>
 </dd>
@@ -9139,6 +9140,31 @@ would require a more complex flow, for example setting the "Automatically Set Ex
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="disabling-automatic-user-creation"><a class="anchor" href="#disabling-automatic-user-creation"></a>Disabling Automatic User Creation</h4>
+<div class="paragraph">
+<p>The Default first login flow will look up a Keycloak account matching the external identity, and will then offer to link them; if there is no matching Keycloak account, it will automatically create one.
+This default behavior may be unsuitable for some setups, for example, when using read-only LDAP user store (which means all users are pre-created).
+In this case, automatic user creation should be turned off. To disable user creation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>open the <code>First Broker Login</code> flow configuration;</p>
+</li>
+<li>
+<p>set <code>Create User If Unique</code> to <code>DISABLED</code>;</p>
+</li>
+<li>
+<p>set <code>Confirm Link Existing Account</code> to <code>DISABLED</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This configuration also implies that Keycloak itself won&#8217;t be able to determine which internal account would correspond to the external identity.
+Therefore, the <code>Verify Existing Account By Re-authentication</code> authenticator will ask the user to provide both username and password.</p>
 </div>
 </div>
 </div>
@@ -9837,7 +9863,24 @@ Groups and roles are automatically registered, but not synchronized, so any chan
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ ipa user-add john --first=John --last=Smith --email=john@smith.com --phone=042424242 --street="Testing street" \      --city="Testing city" --state="Testing State" --postalcode=0000000000</pre>
+<pre>$ ipa user-add john --first=John --last=Smith --email=john@smith.com --phone=042424242 --street="Testing street" \      --city="Testing city" --state="Testing State" --postalcode=0000000000 --password</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To force setting the user&#8217;s password, use kinit.  Given the user john, you would enter this command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kinit john</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To restore normal IPA operation, you would enter these commands:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kdestroy -A
+kinit admin</pre>
 </div>
 </div>
 </div>
@@ -14052,7 +14095,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-05 19:11:52 UTC
+Last updated 2020-04-08 14:05:43 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
