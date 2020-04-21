@@ -7720,7 +7720,7 @@ Regardless of which identity provider you are creating, you&#8217;ll see the fol
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sync Mode</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Strategy of how to update user information from the idp through mappers: When choosing <code>legacy</code>, the current behaviour is kept,
- <code>import</code> will never update user data, while <code>force</code> will always update user data when possible</p></td>
+ <code>import</code> will never update user data, while <code>force</code> will always update user data when possible. See also the documentation for <a href="#_mappers">Identity Provider Mappers</a> for more details.</p></td>
 </tr>
 </tbody>
 </table>
@@ -8975,10 +8975,23 @@ Broker mappers can import SAML attributes or OIDC ID/Access token claims into us
 tooltips also describe what configuration information you need to enter. Click <code>Save</code> and your new mapper will be added.</p>
 </div>
 <div class="paragraph">
-<p>The mapper will update user information when the user logs in repeatedly according to the <code>Sync Mode Override</code>. Choose <code>inherit</code> to
-use the sync mode configured in the identity provider, all other options will override this sync mode. Choose <code>legacy</code> to
-keep the mapper behaviour to keep the old behaviour, <code>import</code> to only import data when the user is first created in Keycloak
-and <code>force</code> to always update user data.</p>
+<p>The mapper will update user information when the user logs in repeatedly according to the <code>Sync Mode Override</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Choose legacy to keep the mapper behaviour as in the old Keycloak versions.</p>
+</li>
+<li>
+<p>Choose import to only import data when the user is first created in Keycloak during the first login to Keycloak with a particular identity provider.</p>
+</li>
+<li>
+<p>Choose force to always update user data during every user login.</p>
+</li>
+<li>
+<p>Choose <code>inherit</code> to use the sync mode configured in the identity provider, all other options will override this sync mode.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>For JSON based claims, you can use dot notation for nesting and square brackets to access array fields by index.
@@ -14106,7 +14119,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-16 10:42:35 UTC
+Last updated 2020-04-21 09:10:59 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
