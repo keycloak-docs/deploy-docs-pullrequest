@@ -5575,13 +5575,13 @@ Openshift. You use the Keycloak Operator to create Custom Resources (CRs) to per
 <p>Install Keycloak to a namespace</p>
 </li>
 <li>
-<p>Create Keycloak Realms</p>
+<p>Create Keycloak realms</p>
 </li>
 <li>
-<p>Create Keycloak Clients</p>
+<p>Create Keycloak clients</p>
 </li>
 <li>
-<p>Create Keycloak Users</p>
+<p>Create Keycloak users</p>
 </li>
 <li>
 <p>Connect to an external database</p>
@@ -5589,10 +5589,13 @@ Openshift. You use the Keycloak Operator to create Custom Resources (CRs) to per
 <li>
 <p>Create scheduled backups of the database</p>
 </li>
+<li>
+<p>Install extensions</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>After you create CRs for realms, clients, and users, you can choose to manage them by the Admin Console or as Custom Resources using the <code>oc</code> command.  However, you cannot use both methods, because the Operator performs one way sync for CRs that you modify.  For example, if you modify a realm CR, the changes show up in the Admin Console. However, if you modify the realm using Admin Console, those changes have no effect on the CR.</p>
+<p>After you create CRs for realms, clients, and users, you can choose to manage them by the Keycloak Admin Console or as Custom Resources using the <code>oc</code> command.  However, you cannot use both methods, because the Operator performs one way sync for CRs that you modify.  For example, if you modify a realm CR, the changes show up in the Admin Console. However, if you modify the realm using the Admin Console, those changes have no effect on the CR.</p>
 </div>
 <div class="sect2">
 <h3 id="installing-keycloak-operator-into-a-cluster"><a class="anchor" href="#installing-keycloak-operator-into-a-cluster"></a>Installing Keycloak Operator into a cluster</h3>
@@ -5603,25 +5606,25 @@ Openshift. You use the Keycloak Operator to create Custom Resources (CRs) to per
 </div>
 </div>
 <div class="paragraph">
-<p>The following choices exist for installing the Keycloak Operator into
+<p>To install the Keycloak Operator into
 a Kubernetes cluster or
-an Openshift cluster.</p>
+an Openshift cluster, you have two options:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Installing by using the Operator Lifecycle Manager (OLM)</p>
+<p>The Operator Lifecycle Manager (OLM)</p>
 </li>
 <li>
-<p>Installing from the command line</p>
+<p>Command line installation</p>
 </li>
 </ul>
 </div>
 <div class="sect3">
 <h4 id="using-operator-lifecycle-manager"><a class="anchor" href="#using-operator-lifecycle-manager"></a>Using Operator Lifecycle Manager</h4>
 <div class="paragraph">
-<p>For an new OpenShift 4.x cluster, the Keycloak Operator should already be available in
-OperatorHub tab of the OpenShift administration panel..</p>
+<p>For a new OpenShift 4.x cluster, the Keycloak Operator should already be available in
+OperatorHub tab of the OpenShift administration panel.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/operator-openshift-operatorhub.png" alt="operator openshift operatorhub"></span></p>
@@ -5646,7 +5649,7 @@ OperatorHub tab of the OpenShift administration panel..</p>
 <p><span class="image"><img src="./keycloak-images/operator-operatorhub-install.png" alt="operator operatorhub install"></span></p>
 </div>
 <div class="paragraph">
-<p>Once Keycloak Operator is available in your cluster, click <code>Install</code> and follow the instruction on the screen.</p>
+<p>Once the Keycloak Operator is available in your cluster, click <code>Install</code> and follow the instruction on the screen.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/operator-olm-installation.png" alt="operator olm installation"></span></p>
@@ -5662,7 +5665,7 @@ OperatorHub tab of the OpenShift administration panel..</p>
 <div class="sect3">
 <h4 id="installing-from-the-command-line"><a class="anchor" href="#installing-from-the-command-line"></a>Installing from the command line</h4>
 <div class="paragraph">
-<p>It is possible to run Keycloak Operator without the Operator Lifecycle Manager. This requires running several steps manually from <a href="https://github.com/keycloak/keycloak-operator">Github repo</a>:</p>
+<p>You can install the Keycloak Operator at the command line using the <a href="https://github.com/keycloak/keycloak-operator">Github repo</a>:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -5675,7 +5678,7 @@ OperatorHub tab of the OpenShift administration panel..</p>
 </div>
 </li>
 <li>
-<p>Create a new namespace (or reuse an existing one). For this example, we&#8217;ll be using namespace <code>myproject</code>.</p>
+<p>Create a new namespace (or reuse an existing one). In this example, the namespace is <code>myproject</code>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">kubectl create namespace myproject</code></pre>
@@ -5683,7 +5686,7 @@ OperatorHub tab of the OpenShift administration panel..</p>
 </div>
 </li>
 <li>
-<p>Deploy Role, Role Binding and a Service Account for Keycloak Operator.</p>
+<p>Deploy a Role, Role Binding and a Service Account for the Operator by using these commands:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">kubectl apply -f deploy/role.yaml -n myproject
@@ -5693,7 +5696,7 @@ kubectl apply -f deploy/service_account.yaml -n myproject</code></pre>
 </div>
 </li>
 <li>
-<p>Deploy the operator.</p>
+<p>Deploy the Operator.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">kubectl apply -f deploy/operator.yaml -n myproject</code></pre>
@@ -5701,7 +5704,7 @@ kubectl apply -f deploy/service_account.yaml -n myproject</code></pre>
 </div>
 </li>
 <li>
-<p>Validate if Keycloak Operator is running</p>
+<p>Confirm that the Operator is running;</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">kubectl get deployment keycloak-operator
@@ -5719,7 +5722,7 @@ keycloak-operator   1/1     1            1           41s</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When deploying Keycloak Operator to an OpenShift cluster, <code>kubectl apply</code> commands can be replaced with their <code>oc create</code> counterparts.
+When deploying the Operator to an OpenShift cluster, <code>kubectl apply</code> commands can be replaced with their <code>oc create</code> counterparts.
 </td>
 </tr>
 </table>
@@ -5735,12 +5738,12 @@ When deploying Keycloak Operator to an OpenShift cluster, <code>kubectl apply</c
 </div>
 </div>
 <div class="paragraph">
-<p>When the Keycloak Operator installs the Keycloak Custom Resource, it creates the following:</p>
+<p>You can use the Keycloak Operator to install a Keycloak Custom Resource (CR), which automates the installation of Keycloak.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>keycloak-db-secret - used to store database username, password and other properties, such as external address (if used).</p>
+<p>keycloak-db-secret - Used to store database username, password and other properties, such as external address (if used).</p>
 </li>
 <li>
 <p>credentials-&lt;CR-Name&gt; - Admin user credentials to log into the Keycloak installation</p>
@@ -5749,7 +5752,7 @@ When deploying Keycloak Operator to an OpenShift cluster, <code>kubectl apply</c
 <p>keycloak StatefulSet with HA support</p>
 </li>
 <li>
-<p>keycloak-postgresql - Responsible for starting up a PostgreSQL installation</p>
+<p>keycloak-postgresql - Responsible for starting a PostgreSQL installation</p>
 </li>
 <li>
 <p>keycloak-discovery Service - Used for JDBC_PING discovery</p>
@@ -5758,7 +5761,7 @@ When deploying Keycloak Operator to an OpenShift cluster, <code>kubectl apply</c
 <p>keycloak Service - Used for connecting to Keycloak through HTTPS (HTTP is not allowed)</p>
 </li>
 <li>
-<p>keycloak-postgresql - A service for connecting both internal and external, if used, database instance</p>
+<p>keycloak-postgresql - A service for connecting both an internal and external, if used, database instance</p>
 </li>
 <li>
 <p>keycloak Ingress - Used for accessing Keycloak on Kubernetes</p>
@@ -5784,15 +5787,15 @@ This graphic is a place holder for one to be developed by our graphic artist.
 <p><span class="image"><img src="./keycloak-images/operator-components.png" alt="operator components"></span></p>
 </div>
 <div class="paragraph">
-<p>MyKeycloak name (used for Keycloak Custom Resource) appears only once - in credential-[CR Name]. Since the Operator can be installed only a single Keycloak cluster in a namespace, it is always called keycloak.</p>
+<p>MyKeycloak name, which is used for a Keycloak CR, appears only in the credential-[CR Name]. Since the Operator can be installed only on one Keycloak cluster in a namespace, it is always called keycloak.</p>
 </div>
 <div class="paragraph">
-<p>You can use the operator to manage Keycloak clusters by creating a Keycloak custom resources (CR) on
+<p>You can use the Operator to manage Keycloak clusters by creating a Keycloak CR on
 Kubernetes or
-Openshift. You define the properties in the YAML file.</p>
+Openshift. You define the properties of the Keycloak CR in a YAML file. You can update the YAML file and changes appear in the Keycloak Admin Console, however changes to the Admin Console do not update the CR.</p>
 </div>
 <div class="listingblock">
-<div class="title">Example YAML file for a <code>Keycloak</code> CR</div>
+<div class="title">Example YAML file for a Keycloak CR</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">apiVersion</span>: <span class="string"><span class="content">keycloak.org/v1alpha1</span></span>
 <span class="key">kind</span>: <span class="string"><span class="content">Keycloak</span></span>
@@ -5807,15 +5810,15 @@ Openshift. You define the properties in the YAML file.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The YAML file contains three properties. Two properties are listed above and the external database has been covered in a seperate section in this chapter:</p>
+<p>The <code>Keycloak</code> YAML file contains three properties. Two properties are listed above and the external database is covered in a seperate section in this chapter:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>instances</code> - controls the number of instances running in HA mode</p>
+<p><code>instances</code> - controls the number of instances running in high avaialability mode</p>
 </li>
 <li>
-<p><code>externalAccess</code> - if the <code>enabled</code> is <code>True</code>, depending on the types available in the cluster, the operator will create a route for OpenShift
+<p><code>externalAccess</code> - if the <code>enabled</code> is <code>True</code>, the Operator will create a route for OpenShift
 or an Ingress for Kubernetes
 for the Keycloak cluster.</p>
 </li>
@@ -5825,14 +5828,11 @@ for the Keycloak cluster.</p>
 <div class="title">Prerequisite</div>
 <p>You have a YAML file for this CR. See <a href="https://github.com/keycloak/keycloak-operator/tree/master/deploy/examples">Sample YAML files</a>.</p>
 </div>
-<div class="paragraph">
-<div class="title">Procedure</div>
-<p>Use these steps to create the CR on Kubernetes.</p>
-</div>
 <div class="olist arabic">
+<div class="title">Procedure for Kubernetes</div>
 <ol class="arabic">
 <li>
-<p>Use the <code>oc</code> command on the YAML file that you created.</p>
+<p>Use the <code>kubectl</code> command on the YAML file that you created.</p>
 <div class="paragraph">
 <p>oc create -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</p>
 </div>
@@ -5847,17 +5847,21 @@ for the Keycloak cluster.</p>
 </div>
 </li>
 <li>
-<p>Locate the password by using the <code>kubectl</code> command</p>
+<p>Locate the password by using this command</p>
 <div class="paragraph">
 <p>kubectl get secret credentials-&lt;CR-Name&gt; -o go-template='{{range $k,$v := .data}}{{printf "%s: " $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"\n"}}{{end}}'</p>
 </div>
 </li>
+<li>
+<p>Copy and paste the user name and password into the Admin Console login screen.</p>
+</li>
+<li>
+<p>Check the status of the CR.  See the Results section below.</p>
+</li>
 </ol>
 </div>
-<div class="paragraph">
-<p>Use these steps to create the CR on OpenShift.</p>
-</div>
 <div class="olist arabic">
+<div class="title">Procedure for Openshift</div>
 <ol class="arabic">
 <li>
 <p>Use the <code>oc</code> command on the YAML file that you created.</p>
@@ -5869,7 +5873,7 @@ for the Keycloak cluster.</p>
 </div>
 </li>
 <li>
-<p>Check when the Keycloak container is ready by using this command:</p>
+<p>Check that the Keycloak container is ready by using this command:</p>
 <div class="paragraph">
 <p>oc describe keycloak &lt;cr_name&gt;</p>
 </div>
@@ -5892,13 +5896,14 @@ for the Keycloak cluster.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Once the operator reconciles the Custom Resource, you can view the status with this commmand:</p>
+<div class="title">Results</div>
+<p>Once the Operator reconciles the CR, you can view the status with this command:</p>
 </div>
 <div class="paragraph">
-<p>kubectl describe keycloak &lt;cr_name&gt;</p>
+<p>oc describe keycloak &lt;cr_name&gt;</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>Keycloak</code> Custom Resource Status</div>
+<div class="title">Keycloak Custom Resource Status</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">Name</span>:         <span class="string"><span class="content">example-keycloak</span></span>
 <span class="key">Namespace</span>:    <span class="string"><span class="content">keycloak</span></span>
@@ -5950,10 +5955,10 @@ for the Keycloak cluster.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Application developers can use the operator to create realms as Custom Resources. You define the properties of the realm in a YAML file.</p>
+<p>Application developers can use the Keycloak Operator to create realms as Custom Resources (CRs). You define the properties of the realm CR in a YAML file. You can update the YAML file and changes appear in the Keycloak Admin Console, however changes to the Admin Console do not update the CR.</p>
 </div>
 <div class="listingblock">
-<div class="title">Example YAML file for a <code>KeycloakRealm</code> CR</div>
+<div class="title">Example YAML file for a <code>Realm</code> CR</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">apiVersion</span>: <span class="string"><span class="content">keycloak.org/v1alpha1</span></span>
 <span class="key">kind</span>: <span class="string"><span class="content">KeycloakRealm</span></span>
@@ -5979,7 +5984,7 @@ for the Keycloak cluster.</p>
 <p>You have a YAML file for this CR. See <a href="https://github.com/keycloak/keycloak-operator/tree/master/deploy/examples">Sample YAML files</a>.</p>
 </li>
 <li>
-<p>In the YAML file,  the 'app' under <code>instanceSelector</code> matches the label of a <code>Keycloak</code> Custom Resource. Matching these values ensures that you create the realm in the right instance of Keycloak. This matching allow support for multiple namespaces,</p>
+<p>In the YAML file,  the <code>app</code> under <code>instanceSelector</code> matches the label of a Keycloak CR. Matching these values ensures that you create the realm in the right instance of Keycloak.</p>
 </li>
 </ul>
 </div>
@@ -5987,13 +5992,13 @@ for the Keycloak cluster.</p>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Use the <code>oc</code> commmand on the YAML file that you created.</p>
+<p>Use the <code>oc</code> command on the YAML file that you created.</p>
 <div class="paragraph">
 <p>oc create -f &lt;realm-name&gt;.yaml</p>
 </div>
 </li>
 <li>
-<p>Log into the Admin Console for related instance of Keycloak.</p>
+<p>Log into the Keycloak Admin Console for the related instance of Keycloak.</p>
 </li>
 <li>
 <p>Choose Select Realm.</p>
@@ -6004,13 +6009,14 @@ for the Keycloak cluster.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Once the operator reconciles the Custom Resource, you can view the status with this commmand:</p>
+<div class="title">Results</div>
+<p>Once the Operator reconciles the CR, you can view the status with this commmand:</p>
 </div>
 <div class="paragraph">
-<p>kubectl describe keycloak &lt;cr_name&gt;</p>
+<p>oc describe keycloak &lt;cr_name&gt;</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>KeycloakRealm</code> Custom Resource Status</div>
+<div class="title">Realm Custom Resource Status</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">Name</span>:         <span class="string"><span class="content">example-keycloakrealm</span></span>
 <span class="key">Namespace</span>:    <span class="string"><span class="content">keycloak</span></span>
@@ -6053,10 +6059,10 @@ for the Keycloak cluster.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>As an application developer, you can use operator to create Keycloak Clients as Custom Resources.  You define the properties of the realm in a YAML file.</p>
+<p>As an application developer, you can use the Keycloak Operator to create Keycloak clients as Custom Resources (CRs).  You define the properties of the realm in a YAML file. You can update the YAML file and changes appear in the Keycloak Admin Console, however changes to the Admin Console do not update the CR.</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>KeycloakClient</code> Custom Resource</div>
+<div class="title">Example YAML file for a Client CR</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">apiVersion</span>: <span class="string"><span class="content">keycloak.org/v1alpha1</span></span>
 <span class="key">kind</span>: <span class="string"><span class="content">KeycloakClient</span></span>
@@ -6078,20 +6084,20 @@ for the Keycloak cluster.</p>
 </div>
 </div>
 <div class="paragraph">
-<div class="title">Prerequisites</div>
+<div class="title">Prerequisite</div>
 <p>You have a YAML file for this CR. See <a href="https://github.com/keycloak/keycloak-operator/tree/master/deploy/examples">Sample YAML files</a>.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Use the <code>kubectl</code> commmand on the YAML file that you created.</p>
+<p>Use the <code>oc</code> command on the YAML file that you created.</p>
 <div class="paragraph">
-<p>kubectl create -f &lt;client-name&gt;.yaml</p>
+<p>oc create -f &lt;client-name&gt;.yaml</p>
 </div>
 </li>
 <li>
-<p>Log into the Admin Console for related instance of Keycloak.</p>
+<p>Log into the Keycloak Admin Console for the related instance of Keycloak.</p>
 </li>
 <li>
 <p>Choose Clients</p>
@@ -6102,13 +6108,27 @@ for the Keycloak cluster.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Once the operator reconciles the Custom Resource, you can view the status with this commmand:</p>
-</div>
-<div class="paragraph">
-<p>kubectl describe keycloak &lt;cr_name&gt;</p>
+<p>Once a Client is created, the Operator creates a Secret containing the <code>Client ID</code> and the client&#8217;s secret using the following naming pattern: <code>keycloak-client-secret-&lt;Custom Resource name&gt;</code>. Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>KeycloakClient</code> Custom Resource Status</div>
+<div class="title">Client&#8217;s Secret</div>
+<div class="content">
+<pre class="CodeRay highlight"><code>apiVersion: v1
+data:
+  CLIENT_ID: &lt;base64 encoded Client ID&gt;
+  CLIENT_SECRET: &lt;base64 encoded Client Secret&gt;
+kind: Secret</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Results</div>
+<p>Once the Operator reconciles the CR, you can view the status with this command:</p>
+</div>
+<div class="paragraph">
+<p>oc describe keycloak &lt;cr_name&gt;</p>
+</div>
+<div class="listingblock">
+<div class="title">Client Custom Resource Status</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">Name</span>:         <span class="string"><span class="content">client-secret</span></span>
 <span class="key">Namespace</span>:    <span class="string"><span class="content">keycloak</span></span>
@@ -6133,19 +6153,6 @@ for the Keycloak cluster.</p>
 <span class="key">Events</span>:  <span class="string"><span class="content">&lt;none&gt;</span></span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Once a Client is created, the Operator creates a Secret containing the <code>Client ID</code> and the client&#8217;s secret using the following naming pattern: <code>keycloak-client-secret-&lt;Custom Resource name&gt;</code>.Here&#8217;s an example:</p>
-</div>
-<div class="listingblock">
-<div class="title">`KeycloakClient&#8217;s Secret</div>
-<div class="content">
-<pre class="CodeRay highlight"><code>apiVersion: v1
-data:
-  CLIENT_ID: &lt;base64 encoded Client ID&gt;
-  CLIENT_SECRET: &lt;base64 encoded Client Secret&gt;
-kind: Secret</code></pre>
-</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="creating-a-user-custom-resource"><a class="anchor" href="#creating-a-user-custom-resource"></a>Creating a User Custom Resource</h3>
@@ -6156,10 +6163,10 @@ kind: Secret</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak Users can be created as Custom Resources in the operator.</p>
+<p>You can use the Keycloak Operator to create users as a Custom Resources (CRs). You define the properties of the User CR in a YAML file. You can update properties, except for the password, in the YAML file and changes appear in the Keycloak Admin Console, however changes to the Admin Console do not update the CR.</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>KeycloakUser</code> Custom Resource</div>
+<div class="title">Example YAML file for a User CR</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">apiVersion</span>: <span class="string"><span class="content">keycloak.org/v1alpha1</span></span>
 <span class="key">kind</span>: <span class="string"><span class="content">KeycloakUser</span></span>
@@ -6192,7 +6199,7 @@ kind: Secret</code></pre>
 <p>You have a YAML file for this CR.  See <a href="https://github.com/keycloak/keycloak-operator/tree/master/deploy/examples">Sample YAML files</a>.</p>
 </li>
 <li>
-<p>The <code>realmSelector</code> needs to match labels of an existing <code>KeycloakRealm</code> Custom Resource.</p>
+<p>The <code>realmSelector</code> matches the labels of an existing realm CR.</p>
 </li>
 </ul>
 </div>
@@ -6200,13 +6207,13 @@ kind: Secret</code></pre>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Use this command to create the user Custom Resource based on the YAML that you created.</p>
+<p>Use this command to create the User CR based on the YAML file that you created.</p>
 <div class="paragraph">
 <p>oc create -f &lt;user_cr&gt;.yaml</p>
 </div>
 </li>
 <li>
-<p>Log into the Admin Console for related instance of Keycloak.</p>
+<p>Log into the Keycloak Admin Console for the related instance of Keycloak.</p>
 </li>
 <li>
 <p>Choose Users.</p>
@@ -6220,13 +6227,29 @@ kind: Secret</code></pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>Once the operator reconciles the Custom Resource, you can view the status with this commmand:</p>
-</div>
-<div class="paragraph">
-<p>kubectl describe keycloak &lt;cr_name&gt;</p>
+<p>Once a User is created, the Operator creates a Secret containing the both username and password using the
+following naming pattern: <code>credential-&lt;realm name&gt;-&lt;user name&gt;-&lt;namespace&gt;</code>. Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>KeycloakUser</code> Custom Resource Status</div>
+<div class="title"><code>KeycloakUser</code> Secret</div>
+<div class="content">
+<pre class="CodeRay highlight"><code>kind: Secret
+apiVersion: v1
+data:
+  password: &lt;base64 encoded password&gt;
+  username: &lt;base64 encoded username&gt;
+type: Opaque</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Results</div>
+<p>Once the Operator reconciles the CR, you can view the status with this command:</p>
+</div>
+<div class="paragraph">
+<p>oc describe keycloak &lt;cr_name&gt;</p>
+</div>
+<div class="listingblock">
+<div class="title">User Custom Resource Status</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">Name</span>:         <span class="string"><span class="content">example-realm-user</span></span>
 <span class="key">Namespace</span>:    <span class="string"><span class="content">keycloak</span></span>
@@ -6253,21 +6276,6 @@ kind: Secret</code></pre>
 <span class="key">Events</span>:     <span class="string"><span class="content">&lt;none&gt;</span></span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Once a User is created, the Keycloak Operator creates a Secret containing both username and password using the
-following naming pattern: <code>credential-&lt;realm name&gt;-&lt;user name&gt;-&lt;namespace&gt;</code>. Here&#8217;s an example:</p>
-</div>
-<div class="listingblock">
-<div class="title"><code>KeycloakUser</code> Secret</div>
-<div class="content">
-<pre class="CodeRay highlight"><code>kind: Secret
-apiVersion: v1
-data:
-  password: &lt;base64 encoded password&gt;
-  username: &lt;base64 encoded username&gt;
-type: Opaque</code></pre>
-</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="creating-a-backup-custom-resource"><a class="anchor" href="#creating-a-backup-custom-resource"></a>Creating a Backup Custom Resource</h3>
@@ -6278,26 +6286,30 @@ type: Opaque</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The Keycloak Operator provides automatic backups with manual restore in 3 modes:</p>
+<p>You can use the Keycloak Operator to create backup Custom Resources (CRs) to schedule automatic backups with manual restore. The CR triggers a backup Job
+(or a <code>CronJob</code> in case of Periodic Backups)
+and reports back its status.</p>
+</div>
+<div class="paragraph">
+<p>Three modes exist for a backup CR:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>One time backups to a local Persistent Volume.</p>
+<p>One time backups to a local Persistent Volume</p>
 </li>
 <li>
-<p>One time backups to Amazon S3 storage.</p>
+<p>One time backups to Amazon S3 storage</p>
 </li>
 <li>
-<p>Periodic backups to Amazon S3 storage.</p>
+<p>Periodic backups to Amazon S3 storage</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The Operator uses <code>KeycloakBackup</code> Custom Resource (CR) to trigger a backup Job (or a <code>CronJob</code> in case of Periodic Backups) and reports back its status. The CR has the following structure:</p>
+<p>The CR has the following structure:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>KeycloakBackup</code> Custom Resource</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">apiVersion</span>: <span class="string"><span class="content">keycloak.org/v1alpha1</span></span>
 <span class="key">kind</span>: <span class="string"><span class="content">KeycloakBackup</span></span>
@@ -6326,20 +6338,11 @@ type: Opaque</code></pre>
   <span class="key">AWS_SECRET_ACCESS_KEY</span>: <span class="string"><span class="content">&lt;AWS Secret Key&gt;</span></span></code></pre>
 </div>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-The above secret name needs to match the one referred in the <code>KeycloakBackup</code> Custom Resource.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>The above secret name needs to match the one identified in the Backup CR.</p>
 </div>
 <div class="paragraph">
-<p>Once the <code>KeycloakBackup</code> Custom Resource is created, Keycloak Operator will create a corresponding Job to back up the PostgreSQL database. The status of the backup is reported in the <code>status</code> field.
+<p>Once the Backup CR is created, the Operator creates a corresponding Job to back up the PostgreSQL database. The <code>status</code> field shows the backup status.
 Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
@@ -6371,7 +6374,7 @@ Here&#8217;s an example:</p>
 <div class="sect3">
 <h4 id="backups-to-aws-s3"><a class="anchor" href="#backups-to-aws-s3"></a>Backups to AWS S3</h4>
 <div class="paragraph">
-<p>In order to create Backups uploaded to S3 storage, you need to create a <code>KeycloakBackup</code> Custom Resource with <code>aws</code> sub-properties.</p>
+<p>In order to create Backups uploaded to S3 storage, you need to create a <code>KeycloakBackup</code> CR with <code>aws</code> sub-properties.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6386,16 +6389,16 @@ The <code>credentialsSecretName</code> field is required and needs to contain a 
 </table>
 </div>
 <div class="paragraph">
-<p>If the <code>schedule</code> contains valid <code>CronJob</code> schedule definition, the Operator will backup your data periodically.</p>
+<p>If the <code>schedule</code> contains a valid <code>CronJob</code> schedule definition, the Operator will back up your data periodically.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="backups-to-a-local-storage"><a class="anchor" href="#backups-to-a-local-storage"></a>Backups to a Local Storage</h4>
 <div class="paragraph">
-<p>The Keycloak Operator can create a backup to a local Persistent Volume. For the backup, you need to create a <code>KeycloakBackup</code> Custom Resource without <code>aws</code> sub-properties.
-Here&#8217;s an example:</p>
+<p>The Keycloak Operator can create a backup to a local Persistent Volume. For the backup, you need to create a <code>KeycloakBackup</code> CR without <code>aws</code> sub-properties.</p>
 </div>
 <div class="listingblock">
+<div class="title">Example YAML file for a Backup CR</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">apiVersion</span>: <span class="string"><span class="content">keycloak.org/v1alpha1</span></span>
 <span class="key">kind</span>: <span class="string"><span class="content">KeycloakBackup</span></span>
@@ -6617,7 +6620,7 @@ Graphana Dashboard is likely to be changed in future releases. If you need any c
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-09 01:20:38 UTC
+Last updated 2020-05-09 16:52:34 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
