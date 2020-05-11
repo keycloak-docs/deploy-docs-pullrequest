@@ -924,11 +924,7 @@ span.image img {
 <li><a href="#backups-to-a-local-storage">Backups to a Local Storage</a></li>
 </ul>
 </li>
-<li><a href="#connecting-to-an-external-database">Connecting to an external database</a>
-<ul class="sectlevel3">
-<li><a href="#implementation-details">Implementation details</a></li>
-</ul>
-</li>
+<li><a href="#connecting-to-an-external-database">Connecting to an external database</a></li>
 <li><a href="#monitoring-stack">Monitoring Stack</a>
 <ul class="sectlevel3">
 <li><a href="#installing-application-monitoring-operator">Installing Application Monitoring Operator</a></li>
@@ -6461,10 +6457,11 @@ The <code>credentialsSecretName</code> field is required and needs to contain a 
 </div>
 </div>
 <div class="paragraph">
-<p>Enabling external Postgresql database support requires creating <code>keycloak-db-secret</code> in the following form (note that values are Base64 encoded, see <a href="https://kubernetes.io/docs/concepts/configuration/secret/">Kubernetes Secrets manual</a>):</p>
+<p>Using an external Postgresql database for the Keycloak Operator involves creating a <code>keycloak-db-secret</code> in the following form. Note that values are Base64 encoded.
+For more information, see the <a href="https://kubernetes.io/docs/concepts/configuration/secret/">Kubernetes Secrets manual</a>.</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>keycloak-db-secret</code> Secret</div>
+<div class="title">Example YAML file for <code>keycloak-db-secret</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">apiVersion</span>: <span class="string"><span class="content">v1</span></span>
 <span class="key">kind</span>: <span class="string"><span class="content">Secret</span></span>
@@ -6485,20 +6482,21 @@ The <code>credentialsSecretName</code> field is required and needs to contain a 
 </div>
 </div>
 <div class="paragraph">
-<p>There are two properties specifically responsible for specifying external database hostname or IP address and its port:</p>
+<p>The following properties set the hostname or IP address and port of the database.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>POSTGRES_EXTERNAL_ADDRESS - an IP address (or a Hostname) of the external database. This address needs to be resolvable from the perspective of a Kubernetes cluster.</p>
+<p><code>POSTGRES_EXTERNAL_ADDRESS</code> - an IP address or a hostname of the external database.
+This address needs be resolvable in a Kubernetes cluster.</p>
 </li>
 <li>
-<p>POSTGRES_EXTERNAL_PORT - (Optional) A database port.</p>
+<p><code>POSTGRES_EXTERNAL_PORT</code> - (Optional) A database port.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The other properties should to be set as follows:</p>
+<p>The other properties work in the same way for a hosted or external database. Set them as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -6515,19 +6513,15 @@ The <code>credentialsSecretName</code> field is required and needs to contain a 
 <p><code>POSTGRES_PASSWORD</code> - Database password</p>
 </li>
 <li>
-<p><code>POSTGRES_SUPERUSER</code> - Indicates, whether backups should assume running as super user. Typically <code>true</code>.</p>
+<p><code>POSTGRES_SUPERUSER</code> - Indicates, whether backups should run as super user. Typically <code>true</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The other properties remain the same for both operating modes (hosted Postgresql and an external one).</p>
-</div>
-<div class="paragraph">
-<p>The Keycloak Custom Resource also needs to be updated to turn the external database support on.
-Here&#8217;s an example:</p>
+<p>The Keycloak Custom Resource (CR) also needs to be updated to enable external database support. Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>Keycloak</code> Custom Resource with external database support</div>
+<div class="title">Example YAML file for <code>Keycloak</code> Custom Resource that uses an external database</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">apiVersion</span>: <span class="string"><span class="content">keycloak.org/v1alpha1</span></span>
 <span class="key">kind</span>: <span class="string"><span class="content">Keycloak</span></span>
@@ -6542,11 +6536,105 @@ Here&#8217;s an example:</p>
   <span class="key">instances</span>: <span class="string"><span class="content">1</span></span></code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="implementation-details"><a class="anchor" href="#implementation-details"></a>Implementation details</h4>
-<div class="paragraph">
-<p>Keycloak Operator allows you to use an external Postgresql database by modifying <code>&lt;Keycloak Custom Resource Name&gt;-postgresql</code> Endpoints object. Typically, this object is maintained by Kubernetes, however it might be used to connect to an external service. See <a href="https://docs.openshift.com/container-platform/3.11/dev_guide/integrating_external_services.html">OpenShift manual</a> for more details.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The Keycloak Operator allows you to use an external Postgresql database by modifying the <code>&lt;Keycloak Custom Resource Name&gt;-postgresql</code> Endpoints object. Typically, this object is maintained by Kubernetes, however it might be used to connect to an external service. See the <a href="https://docs.openshift.com/container-platform/3.11/dev_guide/integrating_external_services.html">OpenShift manual</a> for more details.
+</td>
+</tr>
+</table>
 </div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You have a YAML file for <code>keycloak-db-secret</code></p>
+</li>
+<li>
+<p>You have modified the Keycloak CR to set <code>externalDatabase</code> to <code>true</code>.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Locate the secret for the database:</p>
+<div class="paragraph">
+<p>oc get secret &lt;secret_for_db&gt; -o yaml</p>
+</div>
+<div class="paragraph">
+<p>For example, the <code>POSTGRES_EXTERNAL_ADDRESS</code> appears in Base64 format.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/get_db_secret.png" alt="get db secret"></span></p>
+</div>
+</li>
+<li>
+<p>Decode the value for the secret:</p>
+<div class="paragraph">
+<p>echo "&lt;encoded_secret&gt;" | base64 -decode</p>
+</div>
+<div class="paragraph">
+<p>The following example shows the decoded value:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/decode_secret.png" alt="decode secret"></span></p>
+</div>
+</li>
+<li>
+<p>Confirm that the IP address for your database matches the decoded value:</p>
+<div class="paragraph">
+<p>oc get pods -o wide</p>
+</div>
+<div class="paragraph">
+<p>This example shows that the IP address matches the decoded value:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/get_pods.png" alt="get pods"></span></p>
+</div>
+</li>
+<li>
+<p>Confirm that <code>keycloak-postgresql</code> service, which is used by the database, is running:</p>
+<div class="paragraph">
+<p>oc get svc</p>
+</div>
+<div class="paragraph">
+<p>This example shows the <code>keycloak-postgresql</code> service, which the operator uses to communicate with the database. That services sends requests to a set of IP addresses in the cluster for your database.  The IP addresses are called endpoints.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/get_svc.png" alt="get svc"></span></p>
+</div>
+</li>
+<li>
+<p>View the endpoints for that service to confirm that they use the correct IP address.</p>
+<div class="paragraph">
+<p>oc get endpoints keycloak-postgresql</p>
+</div>
+<div class="paragraph">
+<p>This example shows that the endpoint for <code>keycloak-postgresql</code> matches the correct IP address.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/get_endpoints.png" alt="get endpoints"></span></p>
+</div>
+</li>
+<li>
+<p>Confirm that Keycloak is running with the external database:</p>
+<div class="paragraph">
+<p>oc get pods</p>
+</div>
+<div class="paragraph">
+<p>This example shows that everything is running.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/get_pods.png" alt="get pods"></span></p>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
@@ -6620,7 +6708,7 @@ Graphana Dashboard is likely to be changed in future releases. If you need any c
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-09 16:52:34 UTC
+Last updated 2020-05-11 21:26:46 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
