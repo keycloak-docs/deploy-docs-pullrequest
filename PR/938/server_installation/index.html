@@ -908,7 +908,7 @@ span.image img {
 </li>
 <li><a href="#_operator">Keycloak Operator</a>
 <ul class="sectlevel2">
-<li><a href="#installing-keycloak-operator-into-a-cluster">Installing Keycloak Operator into a cluster</a>
+<li><a href="#installing-the-keycloak-operator-into-a-cluster">Installing the Keycloak Operator into a cluster</a>
 <ul class="sectlevel3">
 <li><a href="#using-operator-lifecycle-manager">Using Operator Lifecycle Manager</a></li>
 <li><a href="#installing-from-the-command-line">Installing from the command line</a></li>
@@ -927,7 +927,6 @@ span.image img {
 <li><a href="#connecting-to-an-external-database">Connecting to an external database</a></li>
 <li><a href="#monitoring-stack">Monitoring Stack</a>
 <ul class="sectlevel3">
-<li><a href="#installing-application-monitoring-operator">Installing Application Monitoring Operator</a></li>
 <li><a href="#graphana-dashboard">Graphana Dashboard</a></li>
 <li><a href="#prometheus-alerts">Prometheus Alerts</a></li>
 </ul>
@@ -5563,7 +5562,7 @@ The cache will be cleared for all realms!
 <p>Operators take human operational knowledge and encode it into software that is more easily shared with consumers.
 The Keycloak Operator has been designed to automate Keycloak administration in
 Kubernetes or
-Openshift. You use the Keycloak Operator to create Custom Resources (CRs) to perform the following actions:</p>
+Openshift. You use the Keycloak Operator to create Custom Resources (CRs), which automate administrative tasks. You can create CRs to perform the following actions:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5591,10 +5590,10 @@ Openshift. You use the Keycloak Operator to create Custom Resources (CRs) to per
 </ul>
 </div>
 <div class="paragraph">
-<p>After you create CRs for realms, clients, and users, you can choose to manage them by the Keycloak Admin Console or as Custom Resources using the <code>oc</code> command.  However, you cannot use both methods, because the Operator performs one way sync for CRs that you modify.  For example, if you modify a realm CR, the changes show up in the Admin Console. However, if you modify the realm using the Admin Console, those changes have no effect on the CR.</p>
+<p>After you create Custom Resources for realms, clients, and users, you can choose to manage them by the Keycloak Admin Console or as Custom Resources using the <code>oc</code> command.  However, you cannot use both methods, because the Operator performs one way sync for CRs that you modify.  For example, if you modify a realm CR, the changes show up in the Admin Console. However, if you modify the realm using the Admin Console, those changes have no effect on the CR.</p>
 </div>
 <div class="sect2">
-<h3 id="installing-keycloak-operator-into-a-cluster"><a class="anchor" href="#installing-keycloak-operator-into-a-cluster"></a>Installing Keycloak Operator into a cluster</h3>
+<h3 id="installing-the-keycloak-operator-into-a-cluster"><a class="anchor" href="#installing-the-keycloak-operator-into-a-cluster"></a>Installing the Keycloak Operator into a cluster</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operator/installation.adoc" target="_blank">Edit this section</a>
@@ -5682,7 +5681,7 @@ OperatorHub tab of the OpenShift administration panel.</p>
 </div>
 </li>
 <li>
-<p>Deploy a Role, Role Binding and a Service Account for the Operator by using these commands:</p>
+<p>Deploy a role, role binding, and service Account for the Operator by using these commands:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">kubectl apply -f deploy/role.yaml -n myproject
@@ -5692,7 +5691,7 @@ kubectl apply -f deploy/service_account.yaml -n myproject</code></pre>
 </div>
 </li>
 <li>
-<p>Deploy the Operator.</p>
+<p>Deploy the Operator:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">kubectl apply -f deploy/operator.yaml -n myproject</code></pre>
@@ -5734,38 +5733,38 @@ When deploying the Operator to an OpenShift cluster, <code>kubectl apply</code> 
 </div>
 </div>
 <div class="paragraph">
-<p>You can use the Keycloak Operator to install a Keycloak Custom Resource (CR), which automates the installation of Keycloak.</p>
+<p>You can use the Keycloak Operator to create a Keycloak Custom Resource (CR), which automates the installation of Keycloak.  When you install Keycloak using a Keycloak CR, it creates the following components and services.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>keycloak-db-secret - Used to store database username, password and other properties, such as external address (if used).</p>
+<p><code>keycloak-db-secret</code> - Used to store the database username, password and other properties, such as external address (if you connect to an external database)</p>
 </li>
 <li>
-<p>credentials-&lt;CR-Name&gt; - Admin user credentials to log into the Keycloak installation</p>
+<p><code>credentials-&lt;CR-Name&gt;</code> - Admin username and password to log into the Keycloak Admin Console</p>
 </li>
 <li>
-<p>keycloak StatefulSet with HA support</p>
+<p><code>keycloak</code> - StatefulSet with high availability support</p>
 </li>
 <li>
-<p>keycloak-postgresql - Responsible for starting a PostgreSQL installation</p>
+<p><code>keycloak-postgresql</code> - Responsible for starting a PostgreSQL installation</p>
 </li>
 <li>
-<p>keycloak-discovery Service - Used for JDBC_PING discovery</p>
+<p><code>keycloak-discovery</code> Service - A service used for <code>JDBC_PING</code> discovery</p>
 </li>
 <li>
-<p>keycloak Service - Used for connecting to Keycloak through HTTPS (HTTP is not allowed)</p>
+<p><code>keycloak</code> Service - A service used for connecting to Keycloak through HTTPS (HTTP is not supporte)</p>
 </li>
 <li>
-<p>keycloak-postgresql - A service for connecting both an internal and external, if used, database instance</p>
+<p><code>keycloak-postgresql</code> Service - A service for connecting both an internal and external, if used, database instance</p>
 </li>
 <li>
-<p>keycloak Ingress - Used for accessing Keycloak on Kubernetes</p>
+<p><code>keycloak</code> Ingress - Used for accessing Keycloak on Kubernetes</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The following graphic illustrates how these components interact.</p>
+<p>The following graphic illustrates how these components and services interact.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5806,7 +5805,8 @@ Openshift. You define the properties of the Keycloak CR in a YAML file. You can 
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>Keycloak</code> YAML file contains three properties. Two properties are listed above and the external database is covered in a seperate section in this chapter:</p>
+<p>The <code>Keycloak</code> YAML file contains three properties. Two properties are listed above. A third property, <code>externalDatabase</code>, applies only if you want to connect
+to an externally hosted database. That topic is covered in a seperate section in this chapter:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5829,8 +5829,10 @@ for the Keycloak cluster.</p>
 <ol class="arabic">
 <li>
 <p>Use the <code>kubectl</code> command on the YAML file that you created.</p>
-<div class="paragraph">
-<p>oc create -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc create -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>This command will create an ingress on Kubernetes.</p>
@@ -5838,14 +5840,18 @@ for the Keycloak cluster.</p>
 </li>
 <li>
 <p>Use the <code>kubectl</code> command to find the ingress created by the <code>oc</code> command.</p>
-<div class="paragraph">
-<p>kubectl get ingress -n &lt;cr_name&gt;</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">kubectl get ingress -n &lt;cr_name&gt;</code></pre>
+</div>
 </div>
 </li>
 <li>
 <p>Locate the password by using this command</p>
-<div class="paragraph">
-<p>kubectl get secret credentials-&lt;CR-Name&gt; -o go-template='{{range $k,$v := .data}}{{printf "%s: " $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"\n"}}{{end}}'</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">kubectl get secret credentials-&lt;CR-Name&gt; -o go-template='{{range $k,$v := .data}}{{printf &quot;%s: &quot; $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{&quot;\n&quot;}}{{end}}'</code></pre>
+</div>
 </div>
 </li>
 <li>
@@ -5861,8 +5867,10 @@ for the Keycloak cluster.</p>
 <ol class="arabic">
 <li>
 <p>Use the <code>oc</code> command on the YAML file that you created.</p>
-<div class="paragraph">
-<p>oc create -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc create -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>This command will create a route in OpenShift.</p>
@@ -5870,8 +5878,10 @@ for the Keycloak cluster.</p>
 </li>
 <li>
 <p>Check that the Keycloak container is ready by using this command:</p>
-<div class="paragraph">
-<p>oc describe keycloak &lt;cr_name&gt;</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc describe keycloak &lt;cr_name&gt;</code></pre>
+</div>
 </div>
 </li>
 <li>
@@ -5895,8 +5905,10 @@ for the Keycloak cluster.</p>
 <div class="title">Results</div>
 <p>Once the Operator reconciles the CR, you can view the status with this command:</p>
 </div>
-<div class="paragraph">
-<p>oc describe keycloak &lt;cr_name&gt;</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc describe keycloak &lt;cr_name&gt;</code></pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">Keycloak Custom Resource Status</div>
@@ -5989,8 +6001,10 @@ for the Keycloak cluster.</p>
 <ol class="arabic">
 <li>
 <p>Use the <code>oc</code> command on the YAML file that you created.</p>
-<div class="paragraph">
-<p>oc create -f &lt;realm-name&gt;.yaml</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc create -f &lt;realm-name&gt;.yaml</code></pre>
+</div>
 </div>
 </li>
 <li>
@@ -6008,8 +6022,10 @@ for the Keycloak cluster.</p>
 <div class="title">Results</div>
 <p>Once the Operator reconciles the CR, you can view the status with this commmand:</p>
 </div>
-<div class="paragraph">
-<p>oc describe keycloak &lt;cr_name&gt;</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc describe keycloak &lt;cr_name&gt;</code></pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">Realm Custom Resource Status</div>
@@ -6088,8 +6104,10 @@ for the Keycloak cluster.</p>
 <ol class="arabic">
 <li>
 <p>Use the <code>oc</code> command on the YAML file that you created.</p>
-<div class="paragraph">
-<p>oc create -f &lt;client-name&gt;.yaml</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc create -f &lt;client-name&gt;.yaml</code></pre>
+</div>
 </div>
 </li>
 <li>
@@ -6120,8 +6138,10 @@ kind: Secret</code></pre>
 <div class="title">Results</div>
 <p>Once the Operator reconciles the CR, you can view the status with this command:</p>
 </div>
-<div class="paragraph">
-<p>oc describe keycloak &lt;cr_name&gt;</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc describe keycloak &lt;cr_name&gt;</code></pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">Client Custom Resource Status</div>
@@ -6204,8 +6224,10 @@ kind: Secret</code></pre>
 <ol class="arabic">
 <li>
 <p>Use this command to create the User CR based on the YAML file that you created.</p>
-<div class="paragraph">
-<p>oc create -f &lt;user_cr&gt;.yaml</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc create -f &lt;user_cr&gt;.yaml</code></pre>
+</div>
 </div>
 </li>
 <li>
@@ -6241,8 +6263,10 @@ type: Opaque</code></pre>
 <div class="title">Results</div>
 <p>Once the Operator reconciles the CR, you can view the status with this command:</p>
 </div>
-<div class="paragraph">
-<p>oc describe keycloak &lt;cr_name&gt;</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc describe keycloak &lt;cr_name&gt;</code></pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">User Custom Resource Status</div>
@@ -6414,8 +6438,10 @@ The <code>credentialsSecretName</code> field is required and needs to contain a 
 <ol class="arabic">
 <li>
 <p>Use this commmand to create the backup job with the YAML file that you created.</p>
-<div class="paragraph">
-<p>oc create -f &lt;backup_crname&gt;</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc create -f &lt;backup_crname&gt;.yaml</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>The Operator will create a new <code>PersistentVolumeClaim</code> with the following naming scheme:</p>
@@ -6428,20 +6454,26 @@ The <code>credentialsSecretName</code> field is required and needs to contain a 
 </li>
 <li>
 <p>View a list of backup jobs.</p>
-<div class="paragraph">
-<p>oc get jobs</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc get jobs</code></pre>
+</div>
 </div>
 </li>
 <li>
 <p>View the list of executed backup jobs when you expect it is completed.</p>
-<div class="paragraph">
-<p>oc get pods</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc get pods</code></pre>
+</div>
 </div>
 </li>
 <li>
 <p>View the log of the completed backup job.</p>
-<div class="paragraph">
-<p>oc logs &lt;job_name&gt;</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc logs &lt;job_name&gt;</code></pre>
+</div>
 </div>
 </li>
 </ol>
@@ -6564,8 +6596,10 @@ The Keycloak Operator allows you to use an external Postgresql database by modif
 <ol class="arabic">
 <li>
 <p>Locate the secret for the database:</p>
-<div class="paragraph">
-<p>oc get secret &lt;secret_for_db&gt; -o yaml</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc get secret &lt;secret_for_db&gt; -o yaml</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>For example, the <code>POSTGRES_EXTERNAL_ADDRESS</code> appears in Base64 format.</p>
@@ -6576,8 +6610,10 @@ The Keycloak Operator allows you to use an external Postgresql database by modif
 </li>
 <li>
 <p>Decode the value for the secret:</p>
-<div class="paragraph">
-<p>echo "&lt;encoded_secret&gt;" | base64 -decode</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">echo &quot;&lt;encoded_secret&gt;&quot; | base64 -decode</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>The following example shows the decoded value:</p>
@@ -6588,8 +6624,10 @@ The Keycloak Operator allows you to use an external Postgresql database by modif
 </li>
 <li>
 <p>Confirm that the IP address for your database matches the decoded value:</p>
-<div class="paragraph">
-<p>oc get pods -o wide</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc get pods -o wide</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>This example shows that the IP address matches the decoded value:</p>
@@ -6600,8 +6638,10 @@ The Keycloak Operator allows you to use an external Postgresql database by modif
 </li>
 <li>
 <p>Confirm that <code>keycloak-postgresql</code> service, which is used by the database, is running:</p>
-<div class="paragraph">
-<p>oc get svc</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc get svc</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>This example shows the <code>keycloak-postgresql</code> service, which the operator uses to communicate with the database. That services sends requests to a set of IP addresses in the cluster for your database.  The IP addresses are called endpoints.</p>
@@ -6612,8 +6652,10 @@ The Keycloak Operator allows you to use an external Postgresql database by modif
 </li>
 <li>
 <p>View the endpoints for that service to confirm that they use the correct IP address.</p>
-<div class="paragraph">
-<p>oc get endpoints keycloak-postgresql</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc get endpoints keycloak-postgresql</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>This example shows that the endpoint for <code>keycloak-postgresql</code> matches the correct IP address.</p>
@@ -6624,8 +6666,10 @@ The Keycloak Operator allows you to use an external Postgresql database by modif
 </li>
 <li>
 <p>Confirm that Keycloak is running with the external database:</p>
-<div class="paragraph">
-<p>oc get pods</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">oc get pods</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>This example shows that everything is running.</p>
@@ -6646,30 +6690,38 @@ The Keycloak Operator allows you to use an external Postgresql database by modif
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak Operator integrates with Application Monitoring Operator providing Graphana Dashboard and Prometheus Alerts. The integration is seamless and doesn&#8217;t require any action from the user. However, Application Monitoring Operator needs to be properly installed in the cluster.</p>
+<p>The Keycloak Operator integrates with the Application Monitoring Operator providing use of the Graphana Dashboard and Prometheus Alerts. The integration is seamless and requires no action to be set up. However, the Application Monitoring Operator needs to be installed in the cluster as described in this section.</p>
 </div>
-<div class="sect3">
-<h4 id="installing-application-monitoring-operator"><a class="anchor" href="#installing-application-monitoring-operator"></a>Installing Application Monitoring Operator</h4>
 <div class="paragraph">
-<p>Prior to running Keycloak Operator it is recommended to install Application Monitoring Operator by following the <a href="https://github.com/integr8ly/application-monitoring-operator#installation">documentation</a>. After Application Monitoring Operator is up and running, you need to annotate the namespace used for Keycloak Operator installation. Here&#8217;s an example:</p>
+<div class="title">Prerequisite</div>
+<p>The Keycloak Operator is installed.</p>
 </div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Install the Application Monitoring Operator using the <a href="https://github.com/integr8ly/application-monitoring-operator#installation">documentation</a>.</p>
+</li>
+<li>
+<p>Annotate the namespace used for the Keycloak Operator installation. Here&#8217;s an example of annotating a namespace:</p>
 <div class="listingblock">
-<div class="title">Annotating namespace for monitoring</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">oc label namespace &lt;namespace&gt; monitoring-key=middleware</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Once the Application Monitoring Operator is installed and running, also the corresponding namespace is annotated for monitoring, you can search for Prometheus and Graphana route in <code>application-monitoring</code> namespace:</p>
+</li>
+<li>
+<p>Confirm monitoring is working by searching for Prometheus and Graphana route in <code>application-monitoring</code> namespace:</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/operator-application-monitoring-routes.png" alt="operator application monitoring routes"></span></p>
 </div>
-</div>
 <div class="sect3">
 <h4 id="graphana-dashboard"><a class="anchor" href="#graphana-dashboard"></a>Graphana Dashboard</h4>
 <div class="paragraph">
-<p>Keycloak Operator installs a pre-defined Graphana Dashboard. Here&#8217;s how it looks like:</p>
+<p>The Operator installs a pre-defined Graphana Dashboard as shown here:</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/operator-graphana-dashboard.png" alt="operator graphana dashboard"></span></p>
@@ -6681,7 +6733,7 @@ The Keycloak Operator allows you to use an external Postgresql database by modif
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Graphana Dashboard is likely to be changed in future releases. If you need any customizations, please clone it and adjust to your needs.
+The Graphana Dashboard is likely to change at future releases. If you need any customizations, please clone it and adjust to your needs.
 </td>
 </tr>
 </table>
@@ -6690,7 +6742,7 @@ Graphana Dashboard is likely to be changed in future releases. If you need any c
 <div class="sect3">
 <h4 id="prometheus-alerts"><a class="anchor" href="#prometheus-alerts"></a>Prometheus Alerts</h4>
 <div class="paragraph">
-<p>Keycloak Operator installs a set of pre-defined Prometheus Alerts. Here&#8217;s how they look like:</p>
+<p>The Operator installs a set of pre-defined Prometheus Alerts as shown here:</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/operator-prometheus-alerts.png" alt="operator prometheus alerts"></span></p>
@@ -6708,7 +6760,7 @@ Graphana Dashboard is likely to be changed in future releases. If you need any c
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-11 21:26:46 UTC
+Last updated 2020-05-13 01:11:59 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
