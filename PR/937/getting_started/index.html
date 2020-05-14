@@ -774,6 +774,7 @@ span.image img {
 <li><a href="#securing-a-jboss-servlet-application">Securing a JBoss Servlet Application</a>
 <ul class="sectlevel2">
 <li><a href="#before-you-start-2">Before You Start</a></li>
+<li><a href="#downloading-and-starting-up-wildfly">Downloading and Starting up WildFly</a></li>
 <li><a href="#downloading-building-and-deploying-application-code">Downloading, Building, and Deploying Application Code</a></li>
 <li><a href="#installing-the-client-adapter">Installing the Client Adapter</a></li>
 <li><a href="#creating-and-registering-the-client">Creating and Registering the Client</a></li>
@@ -1190,8 +1191,33 @@ $ ./standalone.sh -Djboss.socket.binding.port-offset=100</code></pre>
 <div class="paragraph">
 <p>After starting Keycloak, go to <a href="http://localhost:8180/auth/admin/" class="bare">http://localhost:8180/auth/admin/</a> to access the admin console.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="downloading-and-starting-up-wildfly"><a class="anchor" href="#downloading-and-starting-up-wildfly"></a>Downloading and Starting up WildFly</h3>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/getting_started/topics/secure-jboss-app/download-wildfly.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20getting_started/topics/secure-jboss-app/download-wildfly.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 <div class="paragraph">
-<p>Unresolved directive in topics.adoc - include::topics/secure-jboss-app/download-wildfly.adoc[]</p>
+<p>Download the WildFly distribution and extract it from the compressed file into a directory on your machine.</p>
+</div>
+<div class="paragraph">
+<p>Start the application server.</p>
+</div>
+<div class="listingblock">
+<div class="title">Linux/Unix</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ cd bin
+$ ./standalone.sh</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Windows</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">&gt; ...\bin\standalone.bat</code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1433,7 +1459,7 @@ This script will make the necessary edits to the <code>&#8230;&#8203;/standalone
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-14 08:14:42 UTC
+Last updated 2020-05-14 08:19:13 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
