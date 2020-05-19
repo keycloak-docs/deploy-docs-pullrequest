@@ -914,7 +914,7 @@ span.image img {
 <li><a href="#installing-from-the-command-line">Installing from the command line</a></li>
 </ul>
 </li>
-<li><a href="#creating-a-keycloak-custom-resource">Creating a Keycloak Custom Resource</a></li>
+<li><a href="#_keycloak_cr">Creating a Keycloak Custom Resource</a></li>
 <li><a href="#creating-a-realm-custom-resource">Creating a Realm Custom Resource</a></li>
 <li><a href="#creating-a-client-custom-resource">Creating a Client Custom Resource</a></li>
 <li><a href="#creating-a-user-custom-resource">Creating a User Custom Resource</a></li>
@@ -924,7 +924,7 @@ span.image img {
 <li><a href="#backups-to-a-local-storage">Backups to a Local Storage</a></li>
 </ul>
 </li>
-<li><a href="#connecting-to-an-external-database">Connecting to an external database</a></li>
+<li><a href="#_external_database">Connecting to an external database</a></li>
 <li><a href="#installing-extensions-and-themes">Installing extensions and themes</a></li>
 <li><a href="#monitoring-stack">Monitoring Stack</a>
 <ul class="sectlevel3">
@@ -5726,7 +5726,7 @@ When deploying the Operator to an OpenShift cluster, <code>kubectl apply</code> 
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-a-keycloak-custom-resource"><a class="anchor" href="#creating-a-keycloak-custom-resource"></a>Creating a Keycloak Custom Resource</h3>
+<h3 id="_keycloak_cr"><a class="anchor" href="#_keycloak_cr"></a>Creating a Keycloak Custom Resource</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operator/keycloak-cr.adoc" target="_blank">Edit this section</a>
@@ -5742,7 +5742,7 @@ When deploying the Operator to an OpenShift cluster, <code>kubectl apply</code> 
 <p><code>keycloak-db-secret</code> - Used to store the database username, password and other properties, such as external address (if you connect to an external database)</p>
 </li>
 <li>
-<p><code>credentials-&lt;CR-Name&gt;</code> - Admin username and password to log into the Keycloak Admin Console</p>
+<p><code>credentials-&lt;CR-Name&gt;</code> - Admin username and password to log into the Keycloak admin console</p>
 </li>
 <li>
 <p><code>keycloak</code> - StatefulSet with high availability support</p>
@@ -5760,7 +5760,10 @@ When deploying the Operator to an OpenShift cluster, <code>kubectl apply</code> 
 <p><code>keycloak-postgresql</code> Service - A service for connecting both an internal and external, if used, database instance</p>
 </li>
 <li>
-<p><code>keycloak</code> Ingress - Used for accessing Keycloak on Kubernetes</p>
+<p><code>keycloak</code> Route - The URL for accessing the Keycloak admin console from OpenShift</p>
+</li>
+<li>
+<p><code>keycloak</code> Ingress - The URL for accessing the Keycloak admin console from Kubernetes</p>
 </li>
 </ul>
 </div>
@@ -5768,6 +5771,7 @@ When deploying the Operator to an OpenShift cluster, <code>kubectl apply</code> 
 <p>The following graphic illustrates how these components and services interact.</p>
 </div>
 <div class="paragraph">
+<div class="title">Operator Components and Services</div>
 <p><span class="image"><img src="./keycloak-images/operator-components.png" alt="operator components"></span></p>
 </div>
 <div class="paragraph">
@@ -5776,7 +5780,7 @@ When deploying the Operator to an OpenShift cluster, <code>kubectl apply</code> 
 <div class="paragraph">
 <p>You can use the Operator to manage Keycloak clusters by creating a Keycloak Custom Resource on
 Kubernetes or
-Openshift. You define the properties of the Keycloak Custom Resource in a YAML file. You can update the YAML file and changes appear in the Keycloak Admin Console, however changes to the Admin Console do not update the Custom Resource.</p>
+Openshift. You define the properties of the Keycloak Custom Resource in a YAML file. You can update the YAML file and changes appear in the Keycloak admin console, however changes to the admin console do not update the Custom Resource.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example YAML file for a Keycloak Custom Resource</div>
@@ -5795,7 +5799,7 @@ Openshift. You define the properties of the Keycloak Custom Resource in a YAML f
 </div>
 <div class="paragraph">
 <p>The <code>Keycloak</code> YAML file contains three properties. Two properties are listed above. A third property, <code>externalDatabase</code>, applies only if you want to connect
-to an externally hosted database. That topic is covered in a seperate section in this chapter:</p>
+to an externally hosted database. That topic is covered in the <a href="#_external_database">external database</a> section of this guide.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5811,16 +5815,17 @@ for the Keycloak cluster.</p>
 </div>
 <div class="paragraph">
 <div class="title">Prerequisite</div>
-<p>You have a YAML file for this Custom Resource. See <a href="https://github.com/keycloak/keycloak-operator/tree/master/deploy/examples">Sample YAML files</a>.</p>
+<p>You have a YAML file for this Custom Resource.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure for Kubernetes</div>
 <ol class="arabic">
 <li>
-<p>Use the <code>kubectl</code> command on the YAML file that you created.</p>
+<p>Use the <code>kubectl</code> command on the YAML file that you created. <code>kubectl apply -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</code></p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f keycloak.yaml -n keycloak
+westover.org/keycloak created</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5828,15 +5833,26 @@ for the Keycloak cluster.</p>
 </div>
 </li>
 <li>
-<p>Use the <code>kubectl</code> command to find the ingress created by the <code>kubectl</code> command.</p>
+<p>Use this command to find the ingress: <code>kubectl get ingress -n &lt;cr_name&gt;</code></p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get ingress -n &lt;cr_name&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get ingress -n keycloak
+NAME       HOSTS    ADDRESS         PORTS    AGE
+keycloak   +        192.168.122.88  80       3m</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Locate the password by using this command</p>
+<p>Copy and paste the ADDRESS, which is the ingress, into a web browser.</p>
+<div class="paragraph">
+<p>The Keycloak admin console login screen appears.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./keycloak-images/login-page.png" alt="login page"></span></p>
+</div>
+</li>
+<li>
+<p>Locate the user name and password by using this command:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get secret credentials-&lt;CR-Name&gt; -o go-template='{{range $k,$v := .data}}{{printf &quot;%s: &quot; $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{&quot;\n&quot;}}{{end}}'</code></pre>
@@ -5844,7 +5860,13 @@ for the Keycloak cluster.</p>
 </div>
 </li>
 <li>
-<p>Copy and paste the user name and password into the Admin Console login screen.</p>
+<p>Copy and paste the user name and password into the admin console login screen.</p>
+<div class="paragraph">
+<p>You are logged into an instance of Keycloak created by a Keycloak Custom Resource.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./keycloak-images/welcome.png" alt="welcome"></span></p>
+</div>
 </li>
 <li>
 <p>Check the status of the Custom Resource.  See the Results section below.</p>
@@ -5855,10 +5877,11 @@ for the Keycloak cluster.</p>
 <div class="title">Procedure for Openshift</div>
 <ol class="arabic">
 <li>
-<p>Use the <code>kubectl</code> command on the YAML file that you created.</p>
+<p>Use the <code>kubectl</code> command on the YAML file that you created. <code>kubectl apply -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</code></p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f keycloak.yaml -n keycloak
+westover.org/keycloak created</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5879,14 +5902,29 @@ for the Keycloak cluster.</p>
 <li>
 <p>Select <code>Networking</code>, <code>Route</code> and click the link under <code>Location</code>.</p>
 <div class="paragraph">
-<p>The Keycloak Admin Console login screen appears.</p>
+<p><span class="image"><img src="./images/route_ocp.png" alt="route ocp"></span></p>
+</div>
+<div class="paragraph">
+<p>The Keycloak admin console login screen appears.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./keycloak-images/login-page.png" alt="login page"></span></p>
 </div>
 </li>
 <li>
 <p>Locate the user name and password in the OpenShift Console. Click <code>Secrets</code> and locate the Keycloak entry.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./keycloak-images/secrets_ocp.png" alt="secrets ocp"></span></p>
+</div>
 </li>
 <li>
-<p>Copy and paste the user name and password into the Admin Console login screen.</p>
+<p>Copy and paste the user name and password into the admin console login screen.</p>
+<div class="paragraph">
+<p>You are logged into an instance of Keycloak created by a Keycloak Custom Resource.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./keycloak-images/welcome.png" alt="welcome"></span></p>
+</div>
 </li>
 </ol>
 </div>
@@ -5942,6 +5980,10 @@ for the Keycloak cluster.</p>
 <span class="key">Events</span>:</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<div class="title">Additional Resources</div>
+<p>See  <a href="#_external_database">Connecting to an external database</a>.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="creating-a-realm-custom-resource"><a class="anchor" href="#creating-a-realm-custom-resource"></a>Creating a Realm Custom Resource</h3>
@@ -5952,7 +5994,7 @@ for the Keycloak cluster.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Application developers can use the Keycloak Operator to create realms as Custom Resources. You define the properties of the realm Custom Resource in a YAML file. You can update the YAML file and changes appear in the Keycloak Admin Console, however changes to the Admin Console do not update the Custom Resource.</p>
+<p>Application developers can use the Keycloak Operator to create realms as Custom Resources. You define the properties of the realm Custom Resource in a YAML file. You can update the YAML file and changes appear in the Keycloak admin console, however changes to the admin console do not update the Custom Resource.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example YAML file for a <code>Realm</code> Custom Resource</div>
@@ -5960,7 +6002,7 @@ for the Keycloak cluster.</p>
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">apiVersion</span>: <span class="string"><span class="content">keycloak.org/v1alpha1</span></span>
 <span class="key">kind</span>: <span class="string"><span class="content">KeycloakRealm</span></span>
 <span class="key">metadata</span>:
-  <span class="key">name</span>: <span class="string"><span class="content">example-keycloakrealm</span></span>
+  <span class="key">name</span>: <span class="string"><span class="content">demo</span></span>
   <span class="key">labels</span>:
     <span class="key">app</span>: <span class="string"><span class="content">sso</span></span>
 <span class="key">spec</span>:
@@ -5978,7 +6020,7 @@ for the Keycloak cluster.</p>
 <div class="title">Prerequisites</div>
 <ul>
 <li>
-<p>You have a YAML file for this Custom Resource. See <a href="https://github.com/keycloak/keycloak-operator/tree/master/deploy/examples">Sample YAML files</a>.</p>
+<p>You have a YAML file for this Custom Resource.</p>
 </li>
 <li>
 <p>In the YAML file,  the <code>app</code> under <code>instanceSelector</code> matches the label of a Keycloak Custom Resource. Matching these values ensures that you create the realm in the right instance of Keycloak.</p>
@@ -5993,24 +6035,27 @@ for the Keycloak cluster.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f initial_realm.yaml
-westover.org/initial_realm created</code></pre>
+westover.org/demo created</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Log into the Keycloak Admin Console for the related instance of Keycloak.</p>
+<p>Log into the Keycloak admin console for the related instance of Keycloak.</p>
 </li>
 <li>
 <p>Choose Select Realm.</p>
 <div class="paragraph">
 <p>The new realm appears in the list of realms.</p>
 </div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/realms.png" alt="realms"></span></p>
+</div>
 </li>
 </ol>
 </div>
 <div class="paragraph">
 <div class="title">Results</div>
-<p>Once the Operator processes the Custom Resource, you can view the status with this commmand:</p>
+<p>Once the Operator processes the Custom Resource, you can view the status with this command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6061,7 +6106,7 @@ westover.org/initial_realm created</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>As an application developer, you can use the Keycloak Operator to create Keycloak clients as Custom Resources.  You define the properties of the realm in a YAML file. You can update the YAML file and changes appear in the Keycloak Admin Console, however changes to the Admin Console do not update the Custom Resource.</p>
+<p>As an application developer, you can use the Keycloak Operator to create Keycloak clients as Custom Resources.  You define the properties of the realm in a YAML file. You can update the YAML file and changes appear in the Keycloak admin console, however changes to the admin console do not update the Custom Resource.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example YAML file for a Client Custom Resource</div>
@@ -6087,7 +6132,7 @@ westover.org/initial_realm created</code></pre>
 </div>
 <div class="paragraph">
 <div class="title">Prerequisite</div>
-<p>You have a YAML file for this Custom Resource. See <a href="https://github.com/keycloak/keycloak-operator/tree/master/deploy/examples">Sample YAML files</a>.</p>
+<p>You have a YAML file for this Custom Resource.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
@@ -6102,12 +6147,15 @@ westover.org/initial_client created</code></pre>
 </div>
 </li>
 <li>
-<p>Log into the Keycloak Admin Console for the related instance of Keycloak.</p>
+<p>Log into the Keycloak admin console for the related instance of Keycloak.</p>
 </li>
 <li>
 <p>Choose Clients</p>
 <div class="paragraph">
 <p>The new client appears in the list of clients.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/clients.png" alt="clients"></span></p>
 </div>
 </li>
 </ol>
@@ -6170,7 +6218,7 @@ kind: Secret</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can use the Keycloak Operator to create users as a Custom Resources. You define the properties of the User Custom Resource in a YAML file. You can update properties, except for the password, in the YAML file and changes appear in the Keycloak Admin Console, however changes to the Admin Console do not update the Custom Resource.</p>
+<p>You can use the Keycloak Operator to create users as a Custom Resources. You define the properties of the User Custom Resource in a YAML file. You can update properties, except for the password, in the YAML file and changes appear in the Keycloak admin console, however changes to the admin console do not update the Custom Resource.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example YAML file for a User Custom Resource</div>
@@ -6203,7 +6251,7 @@ kind: Secret</code></pre>
 <div class="title">Prerequisites</div>
 <ul>
 <li>
-<p>You have a YAML file for this Custom Resource.  See <a href="https://github.com/keycloak/keycloak-operator/tree/master/deploy/examples">Sample YAML files</a>.</p>
+<p>You have a YAML file for this Custom Resource.</p>
 </li>
 <li>
 <p>The <code>realmSelector</code> matches the labels of an existing realm Custom Resource.</p>
@@ -6223,7 +6271,7 @@ westover.org/initial_user created</code></pre>
 </div>
 </li>
 <li>
-<p>Log into the Keycloak Admin Console for the related instance of Keycloak.</p>
+<p>Log into the Keycloak admin console for the related instance of Keycloak.</p>
 </li>
 <li>
 <p>Choose Users.</p>
@@ -6232,6 +6280,9 @@ westover.org/initial_user created</code></pre>
 <p>Search for the user you defined in the YAML file.</p>
 <div class="paragraph">
 <p>The user appears in the list.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/user_list.png" alt="user list"></span></p>
 </div>
 </li>
 </ol>
@@ -6298,8 +6349,8 @@ type: Opaque</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can use the Keycloak Operator to create backup Custom Resources to schedule automatic backups with manual restore. The Custom Resource triggers a backup Job
-(or a <code>CronJob</code> in case of Periodic Backups)
+<p>You can use the Keycloak Operator to create backup Custom Resources to schedule automatic backups with manual restore. The Custom Resource triggers a backup job
+(or a <code>CronJob</code> in the case of Periodic Backups)
 and reports back its status.</p>
 </div>
 <div class="paragraph">
@@ -6308,18 +6359,18 @@ and reports back its status.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>One time backups to a local Persistent Volume</p>
-</li>
-<li>
 <p>One time backups to Amazon S3 storage</p>
 </li>
 <li>
 <p>Periodic backups to Amazon S3 storage</p>
 </li>
+<li>
+<p>One time backups to a local Persistent Volume</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The Custom Resource has the following structure:</p>
+<p>The Backup Custom Resource has the following structure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6330,7 +6381,7 @@ and reports back its status.</p>
 <span class="key">spec</span>:
   <span class="key">aws</span>:
     <span class="comment"># Optional - used only for Periodic Backups.</span>
-    <span class="comment"># Follows usual crond syntax (e.g. use &quot;0 1 * * *&quot;) to perform the backup every day at 1 AM.</span>
+    <span class="comment"># Follows usual crond syntax (for example, use &quot;0 1 * * *&quot; to perform the backup every day at 1 AM.)</span>
     <span class="key">schedule</span>: <span class="string"><span class="content">&lt;Cron Job Schedule&gt;</span></span>
     <span class="comment"># Required - the name of the secret containing the credentials to access the S3 storage</span>
     <span class="key">credentialsSecretName</span>: <span class="string"><span class="content">&lt;A Secret containing S3 credentials&gt;</span></span></code></pre>
@@ -6350,28 +6401,22 @@ and reports back its status.</p>
   <span class="key">AWS_SECRET_ACCESS_KEY</span>: <span class="string"><span class="content">&lt;AWS Secret Key&gt;</span></span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>The above secret name needs to match the one identified in the Backup Custom Resource.</p>
-</div>
 <div class="sect3">
 <h4 id="backups-to-aws-s3"><a class="anchor" href="#backups-to-aws-s3"></a>Backups to AWS S3</h4>
+<div class="paragraph">
+<p>You can back up your database to AWS S3 storage one time or periodically. If the <code>schedule</code> contains a valid <code>CronJob</code> schedule definition, the Operator will back up your data periodically.</p>
+</div>
 <div class="ulist">
 <div class="title">Prerequisites</div>
 <ul>
 <li>
-<p>You have a YAML file for this Custom Resource.</p>
+<p>Your Backup Custom Resource YAML file includes a <code>credentialsSecretName</code> that references a <code>Secret</code> containing AWS S3 credentials.</p>
 </li>
 <li>
-<p>You have a <code>KeycloakBackup</code> Custom Resource with <code>aws</code> sub-properties.</p>
+<p>Your <code>KeycloakBackup</code> Custom Resource has <code>aws</code> sub-properties.</p>
 </li>
 <li>
-<p>The above secret name needs to match the one identified in the Backup Custom Resource.</p>
-</li>
-<li>
-<p>The <code>credentialsSecretName</code> field is required and needs to contain a valid reference to a <code>Secret</code> containing AWS S3 credentials.</p>
-</li>
-<li>
-<p>If the <code>schedule</code> contains a valid <code>CronJob</code> schedule definition, the Operator will back up your data periodically.</p>
+<p>You have a YAML file for the AWS S3 Secret that includes a <code>&lt;Secret Name&gt;</code> that matches the one identified in the Backup Custom Resource.</p>
 </li>
 </ul>
 </div>
@@ -6379,7 +6424,7 @@ and reports back its status.</p>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Use this commmand to create a backup job: <code>kubectl apply -f &lt;backup_crname&gt;.yaml</code>.</p>
+<p>Use this command to create a backup job: <code>kubectl apply -f &lt;backup_crname&gt;.yaml</code>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f aws_one-time-backup.yaml
@@ -6469,7 +6514,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Use this commmand to create a backup job: <code>kubectl apply -f &lt;backup_crname&gt;.yaml</code>.</p>
+<p>Use this command to create a backup job: <code>kubectl apply -f &lt;backup_crname&gt;.yaml</code>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f one-time-backup.yaml
@@ -6528,10 +6573,14 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<div class="title">Additional Resources</div>
+<p>See  <a href="#_keycloak_cr">Creating a Keycloak Customer Realm</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="connecting-to-an-external-database"><a class="anchor" href="#connecting-to-an-external-database"></a>Connecting to an external database</h3>
+<h3 id="_external_database"><a class="anchor" href="#_external_database"></a>Connecting to an external database</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operator/external-database.adoc" target="_blank">Edit this section</a>
@@ -6788,11 +6837,11 @@ keycloak-postgresql-c8vv27m 1/1    Running   0          36m   172.17.0.3</code><
 </li>
 <li>
 <p>Confirm monitoring is working by searching for Prometheus and Graphana route in <code>application-monitoring</code> namespace:</p>
-</li>
-</ol>
-</div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/operator-application-monitoring-routes.png" alt="operator application monitoring routes"></span></p>
+</div>
+</li>
+</ol>
 </div>
 <div class="sect3">
 <h4 id="graphana-dashboard"><a class="anchor" href="#graphana-dashboard"></a>Graphana Dashboard</h4>
@@ -6836,7 +6885,7 @@ The Graphana Dashboard is likely to change at future releases. If you need any c
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-16 20:17:45 UTC
+Last updated 2020-05-19 15:48:01 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
