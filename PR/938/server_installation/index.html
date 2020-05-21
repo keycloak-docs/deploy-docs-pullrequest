@@ -5611,7 +5611,7 @@ Openshift. You use the Keycloak Operator to create Custom Resources, which autom
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-After you create Custom Resources for realms, clients, and users, you can choose to manage them by the Keycloak admin console or as Custom Resources using the <code>kubectl</code> command.  However, you cannot use both methods, because the Operator performs one way sync for Custom Resources that you modify.  For example, if you modify a realm Custom Resource, the changes show up in the admin console. However, if you modify the realm using the admin console, those changes have no effect on the Custom Resource.
+After you create Custom Resources for realms, clients, and users, you can choose to manage them by the Keycloak admin console or as Custom Resources using the <code>oc</code> command.  However, you cannot use both methods, because the Operator performs one way sync for Custom Resources that you modify.  For example, if you modify a realm Custom Resource, the changes show up in the admin console. However, if you modify the realm using the admin console, those changes have no effect on the Custom Resource.
 </td>
 </tr>
 </table>
@@ -5667,7 +5667,7 @@ an Openshift cluster, you have two options:</p>
 <p><span class="image"><img src="./keycloak-images/operator-operatorhub-install.png" alt="operator operatorhub install"></span></p>
 </div>
 <div class="paragraph">
-<p>Once the Keycloak Operator is available in your cluster, click <code>Install</code> and follow the instruction on the screen.</p>
+<p>Once the Keycloak Operator is available in your cluster, click <code>Install</code> and follow the instructions on the screen.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/operator-olm-installation.png" alt="operator olm installation"></span></p>
@@ -5691,7 +5691,7 @@ an Openshift cluster, you have two options:</p>
 <p>Install all required Custom Resource Definitions.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f deploy/crds/</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc create -f deploy/crds/</code></pre>
 </div>
 </div>
 </li>
@@ -5699,7 +5699,7 @@ an Openshift cluster, you have two options:</p>
 <p>Create a new namespace (or reuse an existing one). In this example, the namespace is <code>myproject</code>.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl create namespace myproject</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc create namespace myproject</code></pre>
 </div>
 </div>
 </li>
@@ -5707,9 +5707,9 @@ an Openshift cluster, you have two options:</p>
 <p>Deploy a role, role binding, and service account for the Operator by using these commands:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f deploy/role.yaml -n myproject
-$ kubectl apply -f deploy/role_binding.yaml -n myproject
-$ kubectl apply -f deploy/service_account.yaml -n myproject</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc create -f deploy/role.yaml -n myproject
+$ oc create -f deploy/role_binding.yaml -n myproject
+$ oc create -f deploy/service_account.yaml -n myproject</code></pre>
 </div>
 </div>
 </li>
@@ -5717,7 +5717,7 @@ $ kubectl apply -f deploy/service_account.yaml -n myproject</code></pre>
 <p>Deploy the Operator:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f deploy/operator.yaml -n myproject</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc create -f deploy/operator.yaml -n myproject</code></pre>
 </div>
 </div>
 </li>
@@ -5725,7 +5725,7 @@ $ kubectl apply -f deploy/service_account.yaml -n myproject</code></pre>
 <p>Confirm that the Operator is running;</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get deployment keycloak-operator
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get deployment keycloak-operator
 NAME                READY   UP-TO-DATE   AVAILABLE   AGE
 keycloak-operator   1/1     1            1           41s</code></pre>
 </div>
@@ -5740,7 +5740,7 @@ keycloak-operator   1/1     1            1           41s</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When deploying the Operator to an OpenShift cluster, <code>kubectl apply</code> commands can be replaced with their <code>oc create</code> counterparts.
+When deploying the Operator to an OpenShift cluster, <code>oc create</code> commands can be replaced with their <code>kubectl apply</code> counterparts.
 </td>
 </tr>
 </table>
@@ -5843,10 +5843,10 @@ for the Keycloak cluster.</p>
 <div class="title">Procedure for Kubernetes</div>
 <ol class="arabic">
 <li>
-<p>Use the this command on the YAML file that you created. <code>kubectl apply -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</code>.  For example:</p>
+<p>Use the this command on the YAML file that you created. <code>oc create -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</code>.  For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f keycloak.yaml -n keycloak
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc create -f keycloak.yaml -n keycloak
 westover.org/keycloak created</code></pre>
 </div>
 </div>
@@ -5855,10 +5855,10 @@ westover.org/keycloak created</code></pre>
 </div>
 </li>
 <li>
-<p>Use this command to find the ingress: <code>kubectl get ingress -n &lt;cr_name&gt;</code>. For example:</p>
+<p>Use this command to find the ingress: <code>oc get ingress -n &lt;cr_name&gt;</code>. For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get ingress -n keycloak
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get ingress -n keycloak
 NAME       HOSTS                 ADDRESS     PORTS   AGE
 keycloak   keycloak.redhat.com   192.0.2.0   80      3m</code></pre>
 </div>
@@ -5877,7 +5877,7 @@ keycloak   keycloak.redhat.com   192.0.2.0   80      3m</code></pre>
 <p>Locate the user name and password by using this command:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get secret credentials-&lt;CR-Name&gt; -o go-template='{{range $k,$v := .data}}{{printf &quot;%s: &quot; $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{&quot;\n&quot;}}{{end}}'</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get secret credentials-&lt;CR-Name&gt; -o go-template='{{range $k,$v := .data}}{{printf &quot;%s: &quot; $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{&quot;\n&quot;}}{{end}}'</code></pre>
 </div>
 </div>
 </li>
@@ -5899,10 +5899,10 @@ keycloak   keycloak.redhat.com   192.0.2.0   80      3m</code></pre>
 <div class="title">Procedure for Openshift</div>
 <ol class="arabic">
 <li>
-<p>Use this command on the YAML file that you created. <code>kubectl apply -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</code>. For example:</p>
+<p>Use this command on the YAML file that you created. <code>oc create -f &lt;filename&gt;.yaml -n &lt;namespace&gt;</code>. For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f keycloak.yaml -n keycloak
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc create -f keycloak.yaml -n keycloak
 westover.org/keycloak created</code></pre>
 </div>
 </div>
@@ -5914,7 +5914,7 @@ westover.org/keycloak created</code></pre>
 <p>Check that the Keycloak container is ready by using this command:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;cr_name&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc describe keycloak &lt;cr_name&gt;</code></pre>
 </div>
 </div>
 </li>
@@ -5956,7 +5956,7 @@ westover.org/keycloak created</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;cr_name&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc describe keycloak &lt;cr_name&gt;</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6053,10 +6053,10 @@ westover.org/keycloak created</code></pre>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Use this command on the YAML file that you created: <code>kubectl apply -f &lt;realm-name&gt;.yaml</code>. For example:</p>
+<p>Use this command on the YAML file that you created: <code>oc create -f &lt;realm-name&gt;.yaml</code>. For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f initial_realm.yaml
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc create -f initial_realm.yaml
 westover.org/demo created</code></pre>
 </div>
 </div>
@@ -6081,7 +6081,7 @@ westover.org/demo created</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;cr_name&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc describe keycloak &lt;cr_name&gt;</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6160,10 +6160,10 @@ westover.org/demo created</code></pre>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Use this command on the YAML file that you created: <code>kubectl apply -f &lt;client-name&gt;.yaml</code>. For example:</p>
+<p>Use this command on the YAML file that you created: <code>oc create -f &lt;client-name&gt;.yaml</code>. For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f initial_client.yaml
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc create -f initial_client.yaml
 westover.org/initial_client created</code></pre>
 </div>
 </div>
@@ -6201,7 +6201,7 @@ kind: Secret</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;cr_name&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc describe keycloak &lt;cr_name&gt;</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6284,10 +6284,10 @@ kind: Secret</code></pre>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Use this command on the YAML file that you created: <code>kubectl apply -f &lt;user_cr&gt;.yaml</code>. For example:</p>
+<p>Use this command on the YAML file that you created: <code>oc create -f &lt;user_cr&gt;.yaml</code>. For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f initial_user.yaml
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc create -f initial_user.yaml
 westover.org/initial_user created</code></pre>
 </div>
 </div>
@@ -6330,7 +6330,7 @@ type: Opaque</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;cr_name&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc describe keycloak &lt;cr_name&gt;</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6449,19 +6449,19 @@ and reports back its status.</p>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Use this command to create the secret with credentials: <code>kubectl apply -f &lt;secret_for_aws&gt;.yaml</code>. For example:</p>
+<p>Use this command to create the secret with credentials: <code>oc create -f &lt;secret_for_aws&gt;.yaml</code>. For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f secret.yaml
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc create -f secret.yaml
 westover.org/aws_s3_secret created</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>Use this command to create a backup job: <code>kubectl apply -f &lt;backup_crname&gt;.yaml</code>. For example:</p>
+<p>Use this command to create a backup job: <code>oc create -f &lt;backup_crname&gt;.yaml</code>. For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f aws_one-time-backup.yaml
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc create -f aws_one-time-backup.yaml
 westover.org/aws_s3_backup created</code></pre>
 </div>
 </div>
@@ -6470,7 +6470,7 @@ westover.org/aws_s3_backup created</code></pre>
 <p>View a list of backup jobs.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get jobs
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get jobs
 NAME                   COMPLETIONS     DURATION     AGE
 aws_s3_backup    0/1             6s           6s</code></pre>
 </div>
@@ -6480,7 +6480,7 @@ aws_s3_backup    0/1             6s           6s</code></pre>
 <p>View the list of executed backup jobs when you expect that your job is completed. For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get pods
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get pods
 NAME                               READY    STATUS       RESTARTS    AGE
 aws_s3_backup-5b4rfdd              0/1      Completed    0           24s
 keycloak-0                         1/1      Running      0           52m
@@ -6492,7 +6492,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 <p>View the log of your completed backup job.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl logs aws_s3_backup-5b4rf
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc logs aws_s3_backup-5b4rf
 ==&gt; Component data dump completed
 .
 .
@@ -6505,7 +6505,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 <p>View the log of your completed backup job.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl logs aws_s3_backup-5b4rf
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc logs aws_s3_backup-5b4rf
 ==&gt; Component data dump completed
 .
 .
@@ -6548,11 +6548,11 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Use this command to create a backup job: `kubectl apply -f &lt;backup_crname&gt;.
+<p>Use this command to create a backup job: `oc create -f &lt;backup_crname&gt;.
 For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f one-time-backup.yaml
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc create -f one-time-backup.yaml
 westover.org/test-backup</code></pre>
 </div>
 </div>
@@ -6564,7 +6564,7 @@ westover.org/test-backup</code></pre>
 <p>View a list of volumes.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get pvc
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get pvc
 NAME                          STATUS   VOLUME
 keycloak-backup-test-backup   Bound    pvc-e242-ew022d5-093q-3134n-41-adff
 keycloak-postresql-claim      Bound    pvc-e242-vs29202-9bcd7-093q-31-zadj</code></pre>
@@ -6575,7 +6575,7 @@ keycloak-postresql-claim      Bound    pvc-e242-vs29202-9bcd7-093q-31-zadj</code
 <p>View a list of backup jobs.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get jobs
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get jobs
 NAME           COMPLETIONS     DURATION     AGE
 test-backup    0/1             6s           6s</code></pre>
 </div>
@@ -6585,7 +6585,7 @@ test-backup    0/1             6s           6s</code></pre>
 <p>View the list of executed backup jobs when you expect that your job is completed. For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get pods
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get pods
 NAME                               READY    STATUS       RESTARTS    AGE
 test-backup-5b4rf                  0/1      Completed    0           24s
 keycloak-0                         1/1      Running      0           52m
@@ -6597,7 +6597,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 <p>View the log of your completed backup job.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl logs test-backup-5b4rf
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc logs test-backup-5b4rf
 ==&gt; Component data dump completed
 .
 .
@@ -6717,10 +6717,10 @@ This address needs be resolvable in a Kubernetes cluster.</p>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Locate the secret for your PostgreSQL database using this command: <code>kubectl get secret &lt;secret_for_db&gt; -o yaml</code>. For example:</p>
+<p>Locate the secret for your PostgreSQL database using this command: <code>oc get secret &lt;secret_for_db&gt; -o yaml</code>. For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get secret keycloak-db-secret -o yaml
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get secret keycloak-db-secret -o yaml
 apiVersion: v1
 data
   POSTGRES_DATABASE: cm9vdA==
@@ -6745,7 +6745,7 @@ data
 <p>Confirm that the decoded value matches the IP address for your database.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get pods -o wide
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get pods -o wide
 NAME                        READY  STATUS    RESTARTS   AGE   IP
 keycloak-0                  1/1    Running   0          13m   192.0.2.0
 keycloak-postgresql-c8vv27m 1/1    Running   0          24m   192.0.2.3</code></pre>
@@ -6756,7 +6756,7 @@ keycloak-postgresql-c8vv27m 1/1    Running   0          24m   192.0.2.3</code></
 <p>Confirm that <code>keycloak-postgresql</code> appears in a list of running services.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get svc
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get svc
 NAME                 TYPE       CLUSTER-IP     EXTERNAL-IP  PORT(S)   AGE
 keycloak             ClusterIP  203.0.113.0    &lt;none&gt;       8443/TCP  27m
 keycloak-discovery   ClusterIP  None           &lt;none&gt;       8080/TCP  27m
@@ -6771,7 +6771,7 @@ keycloak-postgresql  ClusterIP  203.0.113.1    &lt;none&gt;       5432/TCP  27m<
 <p>View the endpoints used by the <code>keycloak-postgresql</code> service to confirm that they use the IP addresses for your database.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get endpoints keycloak-postgresql
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get endpoints keycloak-postgresql
 NAME                  ENDPOINTS         AGE
 keycloak-postgresql   192.0.2.3.5432    27m</code></pre>
 </div>
@@ -6781,7 +6781,7 @@ keycloak-postgresql   192.0.2.3.5432    27m</code></pre>
 <p>Confirm that Keycloak is running with the external database. This example shows that everything is running.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get pods
+<pre class="CodeRay highlight"><code data-lang="bash">$ oc get pods
 NAME                        READY  STATUS    RESTARTS   AGE   IP
 keycloak-0                  1/1    Running   0          26m   192.0.2.0
 keycloak-postgresql-c8vv27m 1/1    Running   0          36m   192.0.2.3</code></pre>
@@ -6869,7 +6869,7 @@ keycloak-postgresql-c8vv27m 1/1    Running   0          36m   192.0.2.3</code></
 <p>Annotate the namespace used for the Keycloak Operator installation. Here&#8217;s an example of annotating a namespace:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">kubectl label namespace &lt;namespace&gt; monitoring-key=middleware</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">oc label namespace &lt;namespace&gt; monitoring-key=middleware</code></pre>
 </div>
 </div>
 </li>
@@ -6923,7 +6923,7 @@ The Graphana Dashboard is likely to change at future releases. If you need any c
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-20 22:07:56 UTC
+Last updated 2020-05-21 13:34:31 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
