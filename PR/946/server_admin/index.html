@@ -9796,13 +9796,13 @@ Having <code>cn</code> to contain full name of user is a common case for some LD
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When registering new users in Keycloak and <code>Sync Registrations</code> switch is ON for the LDAP provider, the fullName mapper
-      allows the possibility of fallback to the username. This is especially useful in case of the Microsoft Active Directory. The common
-      setup for the MSAD is to configure <code>cn</code> LDAP attribute as fullName and at the same type, the <code>cn</code> is usually used as <code>RDN LDAP Attribute</code>
+When registering new users in Keycloak and <code>Sync Registrations</code> is ON for the LDAP provider, the fullName mapper
+      allows the possibility of fallback to the username. This fallback is especially useful in case of the Microsoft Active Directory. The common
+      setup for the MSAD is to configure <code>cn</code> LDAP attribute as fullName and at the same time, the <code>cn</code> is usually used as <code>RDN LDAP Attribute</code>
       in the configuration of the LDAP provider. With this setup, the fallback to the username will be used. For example when you create
-      Keycloak user "john123" without firstName and lastName filled, then fullname mapper will save "john123" as the value of the <code>cn</code> in LDAP.
-      When you later fill firstName and lastName to "John Doe", then fullname mapper will update LDAP <code>cn</code> to the value "John Doe" as
-      fallback to the username won&#8217;t be needed anymore.
+      Keycloak user "john123" and leave firstName and lastName empty, then fullname mapper will save "john123" as the value of the <code>cn</code> in LDAP.
+      When you later enter "John Doe" for firstName and lastName, the fullname mapper will update LDAP <code>cn</code> to the value "John Doe" as
+      fallback to the username will not be needed anymore.
 </td>
 </tr>
 </table>
@@ -12836,6 +12836,30 @@ $ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm</pre>
 <pre class="nowrap">$ kcadm.sh get clients/$CID/client-secret</pre>
 </div>
 </div>
+<h4 id="generate-a-new-secret-for-a-specific-client" class="discrete">Generate a new secret for a specific client</h4>
+<div class="paragraph">
+<p>Use a client&#8217;s ID to construct an endpoint URI, such as <code class="filename">clients/ID/client-secret</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ kcadm.sh create clients/$CID/client-secret</pre>
+</div>
+</div>
+<h4 id="updating-the-current-secret-for-a-specific-client" class="discrete">Updating the current secret for a specific client</h4>
+<div class="paragraph">
+<p>Use a client&#8217;s ID to construct an endpoint URI, such as <code class="filename">clients/ID</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ kcadm.sh update clients/$CID -s "secret=newSecret"</pre>
+</div>
+</div>
 <h4 id="getting-an-adapter-configuration-file-keycloak-json-for-a-specific-client" class="discrete">Getting an adapter configuration file (keycloak.json) for a specific client</h4>
 <div class="paragraph">
 <p>Use a client&#8217;s ID to construct an endpoint URI that targets a specific client, such as <code class="filename">clients/ID/installation/providers/keycloak-oidc-keycloak-json</code>.</p>
@@ -14187,7 +14211,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-21 07:50:10 UTC
+Last updated 2020-05-28 18:55:10 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
