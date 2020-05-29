@@ -9408,7 +9408,7 @@ There is a small window of time that is always added to the idle timeout before 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Offline Session Max Limited</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For <a href="#_offline-access">offline access</a>, if this flag is on, Offline Session Max is enabled to control the maximum time the offline token can remain active, regardless of user activity. And also Client Offline Session Idle and Client Offline Session Max are enabled.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For <a href="#_offline-access">offline access</a>, if this flag is on, Offline Session Max is enabled to control the maximum time the offline token can remain active, regardless of user activity. Also Client Offline Session Idle and Client Offline Session Max are enabled.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Offline Session Max</p></td>
@@ -9416,11 +9416,11 @@ There is a small window of time that is always added to the idle timeout before 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Client Offline Session Idle</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For <a href="#_offline-access">offline access</a>, if the user is not active for longer than this timeout, offline token requests will bump the idle timeout. It allows for the specification of a shorter idle timeout of offline token than offline session idle timeout. And it can be overridden on individual clients. It is an optional configuration and if not set to a value bigger than 0 it uses the same idle timeout set in the Offline Session Idle configuration.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For <a href="#_offline-access">offline access</a>, if the user is not active for longer than this timeout, offline token requests will bump the idle timeout. It allows for the specification of a shorter idle timeout of offline token than offline session idle timeout. However, it can be overridden on individual clients. It is an optional configuration and if not set to a value bigger than 0, it uses the same idle timeout set in the Offline Session Idle configuration.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Client Offline Session Max</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For <a href="#_offline-access">offline access</a>, the maximum time before a offline token is expired and invalidated. It allows for the specification of a shorter timeout of offline token than offline session timeout. And it can be overridden on individual clients. It is an optional configuration and if not set to a value bigger than 0 it uses the same idle timeout set in the Offline Session Max configuration.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For <a href="#_offline-access">offline access</a>, the maximum time before a offline token is expired and invalidated. It allows for the specification of a shorter timeout of offline token than offline session timeout. However, it can be overridden on individual clients. It is an optional configuration and if not set to a value bigger than 0, it uses the same idle timeout set in the Offline Session Max configuration.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Client Session Idle</p></td>
@@ -14139,7 +14139,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-18 03:22:53 UTC
+Last updated 2020-05-29 00:57:16 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
