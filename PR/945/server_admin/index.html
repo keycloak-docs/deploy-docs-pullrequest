@@ -5123,7 +5123,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <p><strong>Signed and Encrypted ID Token Support</strong></p>
 </div>
 <div class="paragraph">
-<p>Keycloak can encrypt ID token according to <a href="https://tools.ietf.org/html/rfc7516">Json Web Encryption (JWE)</a> specification. The administrator can determine whether encrypting ID token or not per client. This feature is disabled as default.</p>
+<p>Keycloak can encrypt ID token according to the <a href="https://tools.ietf.org/html/rfc7516">Json Web Encryption (JWE)</a> specification. The administrator can determine whether encrypting ID token or not per client. This feature is disabled as default.</p>
 </div>
 <div class="paragraph">
 <p>The key for encrypting ID token is called Content Encryption Key (CEK). Keycloak and a client need to negotiate which CEK is used and how to deliver it. The way to do so is called Key Management Mode.</p>
@@ -5154,7 +5154,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 </ul>
 </div>
 <div class="paragraph">
-<p>Key Encryption&#8217;s algorithms are defined in <a href="https://tools.ietf.org/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports RSAES-PKCS1-v1_5(RSA1_5) and RSAES OAEP using default parameters (RSA-OAEP). The detailed procedure to select this algorithm is as follows:</p>
+<p>Key Encryption&#8217;s algorithms are defined in the <a href="https://tools.ietf.org/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports RSAES-PKCS1-v1_5(RSA1_5) and RSAES OAEP using default parameters (RSA-OAEP). The detailed procedure to select this algorithm is as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5170,7 +5170,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 </ul>
 </div>
 <div class="paragraph">
-<p>ID token encryption algorithms by CEK are also defined in <a href="https://tools.ietf.org/html/rfc7518#section-5.1">JWA</a> specification. Keycloak supports AES_128_CBC_HMAC_SHA_256 authenticated encryption (A128CBC-HS256) and AES GCM using 128-bit key (A128GCM). The detailed procedure to select this algorithm is as follows:</p>
+<p>ID token encryption algorithms by CEK are also defined in the <a href="https://tools.ietf.org/html/rfc7518#section-5.1">JWA</a> specification. Keycloak supports AES_CBC_HMAC_SHA2 algorithms and AES GCM algorithms. The detailed procedure to select this algorithm is as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5181,7 +5181,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <p>open <code>Advanced Settings</code></p>
 </li>
 <li>
-<p>select <code>A128CBC-HS256</code> or <code>A128GCM</code> from <code>ID Token Encryption Content Encryption Algorithm</code> pulldown menu</p>
+<p>select the algorithm from <code>ID Token Encryption Content Encryption Algorithm</code> pulldown menu</p>
 </li>
 </ul>
 </div>
@@ -9787,6 +9787,28 @@ For this mapper implementation, there is always a one-to-one mapping (one LDAP a
 <p>This allows you to specify that the full name of the user, which is saved in some LDAP attribute (usually <code>cn</code> ) will be mapped to <code>firstName</code> and <code>lastname</code> attributes in the Keycloak database.
 Having <code>cn</code> to contain full name of user is a common case for some LDAP deployments.</p>
 </dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When registering new users in Keycloak and <code>Sync Registrations</code> is ON for the LDAP provider, the fullName mapper
+      allows the possibility of fallback to the username. This fallback is especially useful in case of the Microsoft Active Directory. The common
+      setup for the MSAD is to configure <code>cn</code> LDAP attribute as fullName and at the same time, the <code>cn</code> is usually used as <code>RDN LDAP Attribute</code>
+      in the configuration of the LDAP provider. With this setup, the fallback to the username will be used. For example when you create
+      Keycloak user "john123" and leave firstName and lastName empty, then fullname mapper will save "john123" as the value of the <code>cn</code> in LDAP.
+      When you later enter "John Doe" for firstName and lastName, the fullname mapper will update LDAP <code>cn</code> to the value "John Doe" as
+      fallback to the username will not be needed anymore.
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1">Hardcoded Attribute Mapper</dt>
 <dd>
 <p>This mapper adds a hardcoded attribute value to each Keycloak user linked with LDAP.
@@ -9842,8 +9864,22 @@ updating the password to built-in Keycloak database, when the hashing and saltin
 In the case of LDAP, the Keycloak relies on the LDAP server to provide hashing and salting of passwords.</p>
 </div>
 <div class="paragraph">
-<p>Most of LDAP servers (Microsoft Active Directory, RHDS, FreeIPA) provide this by default. Some others (OpenLDAP, ApacheDS) may store the passwords
-in plain-text by default and you may need to explicitly enable password hashing for them. See the documentation of your LDAP server more details.</p>
+<p>LDAP servers such as Microsoft Active Directory, RHDS or FreeIPA provide this by default. Others such as OpenLDAP or ApacheDS may store the passwords
+in plain-text by default unless you use the <em>LDAPv3 Password Modify Extended Operation</em> as per <strong>RFC3062</strong>. The LDAPv3 Password Modify Extended Operation
+must be enabled explicitly in the LDAP configuration page. See the documentation of your LDAP server for more details.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Always verify that user passwords are properly hashed and not stored as plaintext by inspecting a changed
+directory entry using <code>ldapsearch</code> and base64 decode the <code>userPassword</code> attribute value.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -12814,6 +12850,30 @@ $ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm</pre>
 <pre class="nowrap">$ kcadm.sh get clients/$CID/client-secret</pre>
 </div>
 </div>
+<h4 id="generate-a-new-secret-for-a-specific-client" class="discrete">Generate a new secret for a specific client</h4>
+<div class="paragraph">
+<p>Use a client&#8217;s ID to construct an endpoint URI, such as <code class="filename">clients/ID/client-secret</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ kcadm.sh create clients/$CID/client-secret</pre>
+</div>
+</div>
+<h4 id="updating-the-current-secret-for-a-specific-client" class="discrete">Updating the current secret for a specific client</h4>
+<div class="paragraph">
+<p>Use a client&#8217;s ID to construct an endpoint URI, such as <code class="filename">clients/ID</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ kcadm.sh update clients/$CID -s "secret=newSecret"</pre>
+</div>
+</div>
 <h4 id="getting-an-adapter-configuration-file-keycloak-json-for-a-specific-client" class="discrete">Getting an adapter configuration file (keycloak.json) for a specific client</h4>
 <div class="paragraph">
 <p>Use a client&#8217;s ID to construct an endpoint URI that targets a specific client, such as <code class="filename">clients/ID/installation/providers/keycloak-oidc-keycloak-json</code>.</p>
@@ -14165,7 +14225,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-20 21:49:30 UTC
+Last updated 2020-05-30 13:44:23 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
