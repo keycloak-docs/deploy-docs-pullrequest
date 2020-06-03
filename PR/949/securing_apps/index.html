@@ -9064,13 +9064,27 @@ instance. This should not be enabled when using Keycloak.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>SAML Post binding might be broken in the latest versions of browsers due to changes to the SameSite default value. To
-preserve full functionality of the SAML adapter, it is recommended to set the <code>SameSite</code> value to <code>None</code> for
-<code>JSESSIONID</code> cookie created by your container. Not doing so may result in resetting container&#8217;s session with each
-request to Keycloak.</p>
+<p>Browsers are planning to set default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This means that
+cookies will be sent to applications only if the request originates in the same domain. This behavior can affect SAML
+Post binding which may become non-functional. To preserve full functionality of the SAML adapter, it is recommended to
+set the <code>SameSite</code> value to <code>None</code> for <code>JSESSIONID</code> cookie created by your container. Not doing so may result in
+resetting container&#8217;s session with each request to Keycloak.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Setting the <code>SameSite</code> attribute to <code>None</code> brings certain security risks. To reduce the risks consider
+switching to the Redirect binding or to OIDC protocol, where this workaround is not necessary.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>To set the <code>SameSite</code> value to <code>None</code> for <code>JSESSIONID</code> cookie in Wildfly/EAP add file <code>undertow-handlers.conf</code>, with
+<p>To set the <code>SameSite</code> value to <code>None</code> for <code>JSESSIONID</code> cookie in Wildfly/EAP add a file <code>undertow-handlers.conf</code>, with
 following content, to the <code>WEB-INF</code> directory of your application.</p>
 </div>
 <div class="literalblock">
@@ -9079,8 +9093,7 @@ following content, to the <code>WEB-INF</code> directory of your application.</p
 </div>
 </div>
 <div class="paragraph">
-<p>The support for this configuration is available in Wildfly from version 19.1.0 and in EAP from versions 7.3.2.GA and
-7.2.9.GA.</p>
+<p>The support for this configuration is available in Wildfly from version 19.1.0.</p>
 </div>
 </div>
 </div>
@@ -9539,20 +9552,46 @@ Here&#8217;s an example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>SAML Post binding might be broken in the latest versions of browsers due to changes to the SameSite default value. To
-preserve full functionality of the SAML adapter, it is recommended to set the <code>SameSite</code> value to <code>None</code> for
-<code>JSESSIONID</code> cookie created by your container. Not doing so may result in resetting container&#8217;s session with each
-request to Keycloak.</p>
+<p>Browsers are planning to set default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This means that
+cookies will be sent to applications only if the request originates in the same domain. This behavior can affect SAML
+Post binding which may become non-functional. To preserve full functionality of the SAML adapter, it is recommended to
+set the <code>SameSite</code> value to <code>None</code> for <code>JSESSIONID</code> cookie created by your container. Not doing so may result in
+resetting container&#8217;s session with each request to Keycloak.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Setting the <code>SameSite</code> attribute to <code>None</code> brings certain security risks. To reduce the risks consider
+switching to the Redirect binding or to OIDC protocol, where this workaround is not necessary.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>To set the <code>SameSite</code> value to <code>None</code> for <code>JSESSIONID</code> cookie in Tomcat add following configuration to the
-<code>context.xml</code> of your application. Note, this will set the <code>SameSite</code> value to <code>None</code> for all cookies created by Tomcat
-container.</p>
+<p>To set the <code>SameSite</code> value to <code>None</code> for <code>JSESSIONID</code> cookie in Tomcat add following configuration to the`context.xml`
+of your application. Note, this will set the <code>SameSite</code> value to <code>None</code> for all cookies created by Tomcat container.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;CookieProcessor</span> <span class="attribute-name">sameSiteCookies</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">None</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
 </div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+It is not possible to set the <code>SameSite</code> attribute only to a subset of cookies, therefore all cookies created
+for your application will have this attribute set to <code>None</code>.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The support for this feature is available in Tomcat from versions 9.0.29 and 8.5.49.</p>
@@ -12455,7 +12494,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-02 10:24:55 UTC
+Last updated 2020-06-03 11:56:30 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
