@@ -9066,7 +9066,7 @@ instance. This should not be enabled when using Keycloak.</p>
 <div class="paragraph">
 <p>Browsers are planning to set the default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This setting means
 that cookies will be sent to applications only if the request originates in the same domain. This behavior can affect
-the SAML Post binding which may become non-functional. To preserve full functionality of the SAML adapter, we recommend
+the SAML POST binding which may become non-functional. To preserve full functionality of the SAML adapter, we recommend
 setting the <code>SameSite</code> value to <code>None</code> for the <code>JSESSIONID</code> cookie created by your container. Not doing so may result in
 resetting the container&#8217;s session with each request to Keycloak.</p>
 </div>
@@ -9078,7 +9078,7 @@ resetting the container&#8217;s session with each request to Keycloak.</p>
 </td>
 <td class="content">
 Setting the <code>SameSite</code> attribute to <code>None</code> brings certain security risks. To reduce the risks, consider
-switching to the Redirect binding or to OIDC protocol, where this workaround is not necessary.
+switching to the REDIRECT binding or to OIDC protocol, where this workaround is not necessary.
 </td>
 </tr>
 </table>
@@ -9554,7 +9554,7 @@ Here&#8217;s an example:</p>
 <div class="paragraph">
 <p>Browsers are planning to set the default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This setting means
 that cookies will be sent to applications only if the request originates in the same domain. This behavior can affect
-the SAML Post binding which may become non-functional. To preserve full functionality of the SAML adapter, we recommend
+the SAML POST binding which may become non-functional. To preserve full functionality of the SAML adapter, we recommend
 setting the <code>SameSite</code> value to <code>None</code> for the <code>JSESSIONID</code> cookie created by your container. Not doing so may result in
 resetting the container&#8217;s session with each request to Keycloak.</p>
 </div>
@@ -9566,7 +9566,7 @@ resetting the container&#8217;s session with each request to Keycloak.</p>
 </td>
 <td class="content">
 Setting the <code>SameSite</code> attribute to <code>None</code> brings certain security risks. To reduce the risks, consider
-switching to the Redirect binding or to OIDC protocol, where this workaround is not necessary.
+switching to the REDIRECT binding or to OIDC protocol, where this workaround is not necessary.
 </td>
 </tr>
 </table>
@@ -12494,7 +12494,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-03 12:55:54 UTC
+Last updated 2020-06-03 14:51:33 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
