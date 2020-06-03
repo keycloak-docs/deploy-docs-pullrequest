@@ -9064,11 +9064,11 @@ instance. This should not be enabled when using Keycloak.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Browsers are planning to set default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This means that
-cookies will be sent to applications only if the request originates in the same domain. This behavior can affect SAML
-Post binding which may become non-functional. To preserve full functionality of the SAML adapter, it is recommended to
-set the <code>SameSite</code> value to <code>None</code> for <code>JSESSIONID</code> cookie created by your container. Not doing so may result in
-resetting container&#8217;s session with each request to Keycloak.</p>
+<p>Browsers are planning to set the default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This setting means
+that cookies will be sent to applications only if the request originates in the same domain. This behavior can affect
+the SAML Post binding which may become non-functional. To preserve full functionality of the SAML adapter, we recommend
+setting the <code>SameSite</code> value to <code>None</code> for the <code>JSESSIONID</code> cookie created by your container. Not doing so may result in
+resetting the container&#8217;s session with each request to Keycloak.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -9077,15 +9077,15 @@ resetting container&#8217;s session with each request to Keycloak.</p>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Setting the <code>SameSite</code> attribute to <code>None</code> brings certain security risks. To reduce the risks consider
+Setting the <code>SameSite</code> attribute to <code>None</code> brings certain security risks. To reduce the risks, consider
 switching to the Redirect binding or to OIDC protocol, where this workaround is not necessary.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>To set the <code>SameSite</code> value to <code>None</code> for <code>JSESSIONID</code> cookie in Wildfly/EAP add a file <code>undertow-handlers.conf</code>, with
-following content, to the <code>WEB-INF</code> directory of your application.</p>
+<p>To set the <code>SameSite</code> value to <code>None</code> for the <code>JSESSIONID</code> cookie in Wildfly/EAP, add a file <code>undertow-handlers.conf</code>
+with the following content to the <code>WEB-INF</code> directory of your application.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -9552,11 +9552,11 @@ Here&#8217;s an example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Browsers are planning to set default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This means that
-cookies will be sent to applications only if the request originates in the same domain. This behavior can affect SAML
-Post binding which may become non-functional. To preserve full functionality of the SAML adapter, it is recommended to
-set the <code>SameSite</code> value to <code>None</code> for <code>JSESSIONID</code> cookie created by your container. Not doing so may result in
-resetting container&#8217;s session with each request to Keycloak.</p>
+<p>Browsers are planning to set the default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This setting means
+that cookies will be sent to applications only if the request originates in the same domain. This behavior can affect
+the SAML Post binding which may become non-functional. To preserve full functionality of the SAML adapter, we recommend
+setting the <code>SameSite</code> value to <code>None</code> for the <code>JSESSIONID</code> cookie created by your container. Not doing so may result in
+resetting the container&#8217;s session with each request to Keycloak.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -9565,7 +9565,7 @@ resetting container&#8217;s session with each request to Keycloak.</p>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Setting the <code>SameSite</code> attribute to <code>None</code> brings certain security risks. To reduce the risks consider
+Setting the <code>SameSite</code> attribute to <code>None</code> brings certain security risks. To reduce the risks, consider
 switching to the Redirect binding or to OIDC protocol, where this workaround is not necessary.
 </td>
 </tr>
@@ -12494,7 +12494,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-03 11:56:30 UTC
+Last updated 2020-06-03 12:55:54 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
