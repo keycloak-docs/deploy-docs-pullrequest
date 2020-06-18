@@ -760,15 +760,15 @@ span.image img {
 <li><a href="#installing-the-server">Installing the Server</a></li>
 <li><a href="#starting-the-keycloak-server">Starting the Keycloak server</a></li>
 <li><a href="#creating-the-admin-account">Creating the admin account</a></li>
-<li><a href="#logging-into-the-admin-console">Logging into the Admin Console</a></li>
+<li><a href="#logging-into-the-admin-console">Logging into the admin console</a></li>
 </ul>
 </li>
-<li><a href="#creating-realms-and-users">Creating realms and users</a>
+<li><a href="#creating-a-realm-and-a-user">Creating a realm and a user</a>
 <ul class="sectlevel2">
-<li><a href="#realms-users-and-applications">Realms, users, and applications</a></li>
+<li><a href="#realms-and-users">Realms and users</a></li>
 <li><a href="#_create-realm">Creating a realm</a></li>
 <li><a href="#creating-a-user">Creating a user</a></li>
-<li><a href="#logging-into-the-account-console">Logging into the Account Console</a></li>
+<li><a href="#logging-into-the-account-console">Logging into the account console</a></li>
 </ul>
 </li>
 <li><a href="#securing-a-sample-application">Securing a sample application</a>
@@ -948,7 +948,7 @@ $ ./standalone.sh</code></pre>
 <div class="sect2">
 <h3 id="creating-the-admin-account"><a class="anchor" href="#creating-the-admin-account"></a>Creating the admin account</h3>
 <div class="paragraph">
-<p>Before you can use Keycloak, you need create an admin account which you use to log in to the Keycloak admin console.</p>
+<p>Before you can use Keycloak, you need to create an admin account which you use to log in to the Keycloak admin console.</p>
 </div>
 <div class="ulist">
 <div class="title">Prerequisites</div>
@@ -984,7 +984,7 @@ $ ./standalone.sh</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging-into-the-admin-console"><a class="anchor" href="#logging-into-the-admin-console"></a>Logging into the Admin Console</h3>
+<h3 id="logging-into-the-admin-console"><a class="anchor" href="#logging-into-the-admin-console"></a>Logging into the admin console</h3>
 <div class="paragraph">
 <p>After you create the initial admin account, you can log in to the admin console.  In this console, you add users and register applications to be secured by Keycloak.</p>
 </div>
@@ -1034,7 +1034,7 @@ $ ./standalone.sh</code></pre>
 </div>
 <div class="paragraph">
 <div class="title">Next steps</div>
-<p>Now that you can log into the admin console, you can begin creating realms where administrators can create users and give them access to applications. For more details, see <a href="#_first-steps">Creating realms and users</a>.</p>
+<p>Now that you can log into the admin console, you can begin creating realms where administrators can create users and give them access to applications. For more details, see <a href="#_first-steps">Creating a realm and a user</a>.</p>
 </div>
 <div id="_first-steps" class="sidebarblock page-links">
 <div class="content">
@@ -1046,19 +1046,19 @@ $ ./standalone.sh</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="creating-realms-and-users"><a class="anchor" href="#creating-realms-and-users"></a>Creating realms and users</h2>
+<h2 id="creating-a-realm-and-a-user"><a class="anchor" href="#creating-a-realm-and-a-user"></a>Creating a realm and a user</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The first use of the Keycloak admin console is to create a realm and create a user in that realm. You use that user to log in to your new realm and visit the built-in account console, to which all users have access.</p>
 </div>
-<div id="realms-users-apps" class="sidebarblock page-links">
+<div id="realms-users" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/getting_started/topics/first-realm/realm-definition.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20getting_started/topics/first-realm/realm-definition.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="sect2">
-<h3 id="realms-users-and-applications"><a class="anchor" href="#realms-users-and-applications"></a>Realms, users, and applications</h3>
+<h3 id="realms-and-users"><a class="anchor" href="#realms-and-users"></a>Realms and users</h3>
 <div class="paragraph">
 <p>When you log in to the admin console, you work in a realm, which is a space where you manage objects. Two types of realms exist:</p>
 </div>
@@ -1209,7 +1209,7 @@ The realm name is case-sensitive, so make note of the case that you use.
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging-into-the-account-console"><a class="anchor" href="#logging-into-the-account-console"></a>Logging into the Account Console</h3>
+<h3 id="logging-into-the-account-console"><a class="anchor" href="#logging-into-the-account-console"></a>Logging into the account console</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/getting_started/topics/first-realm/account.adoc" target="_blank">Edit this section</a>
@@ -1401,7 +1401,7 @@ $ ./standalone.sh -Djboss.socket.binding.port-offset=100</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If you receive a <code>file not found</code>, make sure you used <code>unzip</code> in the previous step.  This method of extraction installs the files in the right place.</p>
+<p>If you receive a <code>file not found</code>, make sure that you used <code>unzip</code> in the previous step.  This method of extraction installs the files in the right place.</p>
 </div>
 </td>
 </tr>
@@ -1802,7 +1802,7 @@ $ cd keycloak-quickstarts/app-profile-jee-vanilla/config</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-18 12:20:51 UTC
+Last updated 2020-06-18 19:52:59 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
