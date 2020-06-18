@@ -6018,7 +6018,7 @@ for the Keycloak cluster.</p>
 <span class="key">metadata</span>:
   <span class="key">name</span>: <span class="string"><span class="content">example-keycloak</span></span>
   <span class="key">labels</span>:
-    <span class="key">app</span>: <span class="string"><span class="content">sso</span></span>
+   <span class="key">app</span>: <span class="string"><span class="content">example-keycloak</span></span>
 <span class="key">spec</span>:
   <span class="key">instances</span>: <span class="string"><span class="content">1</span></span>
   <span class="key">externalAccess</span>:
@@ -6119,7 +6119,7 @@ keycloak.keycloak.org/example-keycloak created</code></pre>
 <p>Check the status of the custom resource:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;cr_name&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;CR-name&gt;</code></pre>
 </div>
 </div>
 </li>
@@ -6155,7 +6155,7 @@ keycloak.keycloak.org/example-keycloak created</code></pre>
 </div>
 </li>
 <li>
-<p>Find the ingress: <code>kubectl get ingress -n &lt;cr_name&gt;</code>. For example:</p>
+<p>Find the ingress: <code>kubectl get ingress -n &lt;CR-name&gt;</code>. For example:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get ingress -n example-keycloak
@@ -6204,7 +6204,7 @@ keycloak   keycloak.redhat.com   192.0.2.0   80      3m</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;cr_name&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;CR-name&gt;</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6212,7 +6212,7 @@ keycloak   keycloak.redhat.com   192.0.2.0   80      3m</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">Name</span>:         <span class="string"><span class="content">example-keycloak</span></span>
 <span class="key">Namespace</span>:    <span class="string"><span class="content">keycloak</span></span>
-<span class="key">Labels</span>:       <span class="string"><span class="content">app=sso</span></span>
+<span class="key">Labels</span>:       <span class="string"><span class="content">app=example-keycloak</span></span>
 <span class="key">Annotations</span>:  <span class="string"><span class="content">&lt;none&gt;</span></span>
 <span class="key">API Version</span>:  <span class="string"><span class="content">keycloak.org/v1alpha1</span></span>
 <span class="key">Kind</span>:         <span class="string"><span class="content">Keycloak</span></span>
@@ -6296,7 +6296,7 @@ keycloak   keycloak.redhat.com   192.0.2.0   80      3m</code></pre>
 <span class="key">metadata</span>:
   <span class="key">name</span>: <span class="string"><span class="content">test</span></span>
   <span class="key">labels</span>:
-    <span class="key">app</span>: <span class="string"><span class="content">sso</span></span>
+    <span class="key">app</span>: <span class="string"><span class="content">app=example-keycloak</span></span>
 <span class="key">spec</span>:
   <span class="key">realm</span>:
     <span class="key">id</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">basic</span><span class="delimiter">&quot;</span></span>
@@ -6305,7 +6305,7 @@ keycloak   keycloak.redhat.com   192.0.2.0   80      3m</code></pre>
     <span class="key">displayName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Basic Realm</span><span class="delimiter">&quot;</span></span>
   <span class="key">instanceSelector</span>:
     <span class="key">matchLabels</span>:
-      <span class="key">app</span>: <span class="string"><span class="content">sso</span></span></code></pre>
+      <span class="key">app</span>: <span class="string"><span class="content">example-keycloak</span></span></code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -6355,7 +6355,7 @@ keycloak.keycloak.org/test created</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;cr_name&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;CR-name&gt;</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6363,7 +6363,7 @@ keycloak.keycloak.org/test created</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">Name</span>:         <span class="string"><span class="content">example-keycloakrealm</span></span>
 <span class="key">Namespace</span>:    <span class="string"><span class="content">keycloak</span></span>
-<span class="key">Labels</span>:       <span class="string"><span class="content">app=sso</span></span>
+<span class="key">Labels</span>:       <span class="string"><span class="content">app=example-keycloak</span></span>
 <span class="key">Annotations</span>:  <span class="string"><span class="content">&lt;none&gt;</span></span>
 <span class="key">API Version</span>:  <span class="string"><span class="content">keycloak.org/v1alpha1</span></span>
 <span class="key">Kind</span>:         <span class="string"><span class="content">KeycloakRealm</span></span>
@@ -6378,7 +6378,7 @@ keycloak.keycloak.org/test created</code></pre>
 <span class="key">Spec</span>:
   <span class="key">Instance Selector</span>:
     <span class="key">Match Labels</span>:
-      <span class="key">App</span>:  <span class="string"><span class="content">sso</span></span>
+      <span class="key">App</span>: <span class="string"><span class="content">example-keycloak</span></span>
   <span class="key">Realm</span>:
     <span class="key">Display Name</span>:  <span class="string"><span class="content">Basic Realm</span></span>
     <span class="key">Enabled</span>:       <span class="string"><span class="content">true</span></span>
@@ -6436,7 +6436,7 @@ keycloak.keycloak.org/test created</code></pre>
 <span class="key">metadata</span>:
   <span class="key">name</span>: <span class="string"><span class="content">example-client</span></span>
   <span class="key">labels</span>:
-    <span class="key">app</span>: <span class="string"><span class="content">sso</span></span>
+    <span class="key">app</span>: <span class="string"><span class="content">app=example-keycloak</span></span>
 <span class="key">spec</span>:
   <span class="key">realmSelector</span>:
      <span class="key">matchLabels</span>:
@@ -6506,7 +6506,7 @@ keycloak.keycloak.org/example-client created</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;cr_name&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;CR-name&gt;</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6514,7 +6514,7 @@ keycloak.keycloak.org/example-client created</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">Name</span>:         <span class="string"><span class="content">client-secret</span></span>
 <span class="key">Namespace</span>:    <span class="string"><span class="content">keycloak</span></span>
-<span class="key">Labels</span>:       <span class="string"><span class="content">app=sso</span></span>
+<span class="key">Labels</span>:       <span class="string"><span class="content">app=example-keycloak</span></span>
 <span class="key">API Version</span>:  <span class="string"><span class="content">keycloak.org/v1alpha1</span></span>
 <span class="key">Kind</span>:         <span class="string"><span class="content">KeycloakClient</span></span>
 <span class="key">Spec</span>:
@@ -6524,7 +6524,7 @@ keycloak.keycloak.org/example-client created</code></pre>
     <span class="key">Id</span>:                            <span class="string"><span class="content">keycloak-client-secret</span></span>
   <span class="key">Realm Selector</span>:
     <span class="key">Match Labels</span>:
-      <span class="key">App</span>:  <span class="string"><span class="content">sso</span></span>
+      <span class="key">App</span>:  <span class="string"><span class="content">keycloak</span></span>
 <span class="key">Status</span>:
   <span class="key">Message</span>:
   <span class="key">Phase</span>:    <span class="string"><span class="content">reconciling</span></span>
@@ -6593,7 +6593,7 @@ keycloak.keycloak.org/example-client created</code></pre>
         - <span class="string"><span class="delimiter">&quot;</span><span class="content">manage-users</span><span class="delimiter">&quot;</span></span>
   <span class="key">realmSelector</span>:
     <span class="key">matchLabels</span>:
-      <span class="key">app</span>: <span class="string"><span class="content">sso</span></span></code></pre>
+      <span class="key">app</span>: <span class="string"><span class="content">example-keycloak</span></span></code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -6660,7 +6660,7 @@ following naming pattern: <code>credential-&lt;realm name&gt;-&lt;username&gt;-&
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;cr_name&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl describe keycloak &lt;CR-name&gt;</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6668,13 +6668,13 @@ following naming pattern: <code>credential-&lt;realm name&gt;-&lt;username&gt;-&
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">Name</span>:         <span class="string"><span class="content">example-realm-user</span></span>
 <span class="key">Namespace</span>:    <span class="string"><span class="content">keycloak</span></span>
-<span class="key">Labels</span>:       <span class="string"><span class="content">app=sso</span></span>
+<span class="key">Labels</span>:       <span class="string"><span class="content">app=example-keycloak</span></span>
 <span class="key">API Version</span>:  <span class="string"><span class="content">keycloak.org/v1alpha1</span></span>
 <span class="key">Kind</span>:         <span class="string"><span class="content">KeycloakUser</span></span>
 <span class="key">Spec</span>:
   <span class="key">Realm Selector</span>:
     <span class="key">Match Labels</span>:
-      <span class="key">App</span>:  <span class="string"><span class="content">sso</span></span>
+      <span class="key">App</span>: <span class="string"><span class="content">example-keycloak</span></span>
   <span class="key">User</span>:
     <span class="key">Email</span>:           <span class="string"><span class="content">realm_user@redhat.com</span></span>
     <span class="key">Credentials</span>:
@@ -6726,7 +6726,7 @@ following naming pattern: <code>credential-&lt;realm name&gt;-&lt;username&gt;-&
     <span class="key">POSTGRES_DATABASE</span>: <span class="string"><span class="content">&lt;Database Name&gt;</span></span>
     <span class="key">POSTGRES_EXTERNAL_ADDRESS</span>: <span class="string"><span class="content">&lt;External Database IP or URL (resolvable by K8s)&gt;</span></span>
     <span class="key">POSTGRES_EXTERNAL_PORT</span>: <span class="string"><span class="content">&lt;External Database Port&gt;</span></span>
-    <span class="comment"># Strongly recommended to use &lt;'Keycloak CR Name'-postgresql&gt;</span>
+    <span class="comment"># Strongly recommended to use &lt;'Keycloak CR-Name'-postgresql&gt;</span>
     <span class="key">POSTGRES_HOST</span>: <span class="string"><span class="content">&lt;Database Service Name&gt;</span></span>
     <span class="key">POSTGRES_PASSWORD</span>: <span class="string"><span class="content">&lt;Database Password&gt;</span></span>
     <span class="comment"># Required for AWS Backup functionality</span>
@@ -6781,7 +6781,7 @@ This address needs be resolvable in a Kubernetes cluster.</p>
 <span class="key">kind</span>: <span class="string"><span class="content">Keycloak</span></span>
 <span class="key">metadata</span>:
   <span class="key">labels</span>:
-    <span class="key">app</span>: <span class="string"><span class="content">sso</span></span>
+      <span class="key">app</span>: <span class="string"><span class="content">example-keycloak</span></span>
   <span class="key">name</span>: <span class="string"><span class="content">example-keycloak</span></span>
   <span class="key">namespace</span>: <span class="string"><span class="content">keycloak</span></span>
 <span class="key">spec</span>:
@@ -7080,7 +7080,7 @@ keycloak.keycloak.org/test-backup</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The Operator creates a <code>PersistentVolumeClaim</code> with the following naming scheme:  <code>Keycloak-backup-&lt;CR_name&gt;</code>.</p>
+<p>The Operator creates a <code>PersistentVolumeClaim</code> with the following naming scheme:  <code>Keycloak-backup-&lt;CR-name&gt;</code>.</p>
 </div>
 </li>
 <li>
@@ -7160,7 +7160,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 <span class="key">metadata</span>:
   <span class="key">name</span>: <span class="string"><span class="content">example-keycloak</span></span>
   <span class="key">labels</span>:
-    <span class="key">app</span>: <span class="string"><span class="content">sso</span></span>
+   <span class="key">app</span>: <span class="string"><span class="content">keycloak</span></span>
 <span class="key">spec</span>:
   <span class="key">instances</span>: <span class="string"><span class="content">1</span></span>
   <span class="key">extensions</span>:
@@ -7184,7 +7184,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Edit the YAML file for the Keycloak custom resource: <code>kubectl edit &lt;cr-name&gt;</code></p>
+<p>Edit the YAML file for the Keycloak custom resource: <code>kubectl edit &lt;CR-name&gt;</code></p>
 </li>
 <li>
 <p>Add a line called <code>extensions:</code> after the <code>instances</code> line.</p>
@@ -7215,10 +7215,10 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 <div class="ulist">
 <ul>
 <li>
-<p>To edit a custom request, use this command: <code>kubectl edit &lt;cr-name&gt;</code></p>
+<p>To edit a custom request, use this command: <code>kubectl edit &lt;CR-name&gt;</code></p>
 </li>
 <li>
-<p>To delete a custom request, use this command: <code>kubectl delete &lt;cr-name&gt;</code></p>
+<p>To delete a custom request, use this command: <code>kubectl delete &lt;CR-name&gt;</code></p>
 </li>
 </ul>
 </div>
@@ -7231,11 +7231,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 </div>
 </div>
 <div class="paragraph">
-<p>A window opens where you can make changes. For example, you might change the name <code>arealm</code> to <code>demo-realm</code>.</p>
-</div>
-<div class="paragraph">
-<div class="title">Sample code for a custom resource</div>
-<p><span class="image"><img src="./images/cr-code.png" alt="cr code"></span></p>
+<p>A window opens where you can make changes.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -7263,7 +7259,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-16 06:58:43 UTC
+Last updated 2020-06-18 11:26:37 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

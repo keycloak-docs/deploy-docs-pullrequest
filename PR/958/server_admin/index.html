@@ -3851,7 +3851,7 @@ If you setup a new Keycloak instance it is recommended to enable this option. Le
 <p>In this example configuration, the client certificate will be looked up from the HTTP header, <code>SSL_CLIENT_CERT</code>, and the other certificates from its chain will be looked up from HTTP headers like <code>CERT_CHAIN_0</code> , <code>CERT_CHAIN_1</code>, &#8230;&#8203;, <code>CERT_CHAIN_9</code> . The attribute <code>certificateChainLength</code> is the maximum length of the chain, so the last one tried attribute would be <code>CERT_CHAIN_9</code> .</p>
 </div>
 <div class="paragraph">
-<p>Consult the <a href="http://www.haproxy.org/#docs">HAProxy documentation</a> for the details of how the HTTP Headers for the client certificate and client certificate chain can be configured and their proper names.</p>
+<p>Consult the HAProxy documentation for the details of how the HTTP Headers for the client certificate and client certificate chain can be configured and their proper names.</p>
 </div>
 </div>
 <div class="sect4">
@@ -14247,7 +14247,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-16 06:58:36 UTC
+Last updated 2020-06-18 11:26:29 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
