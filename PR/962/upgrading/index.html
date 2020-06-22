@@ -1610,7 +1610,8 @@ current version, the update is not possible and you will be immediately informed
 <p>The fields <code>username</code>, <code>email</code>, <code>firstName</code> and <code>lastName</code> in the <code>UserModel</code> are migrated to custom attributes as a preparation for adding more sophisticated user profiles to Keycloak in an upcoming version.
 If a database contains users with custom attributes of that exact name, the custom attributes will need to be migrated before upgrading (this is not done automatically). Otherwise, they will not be read from the database anymore and possibly deleted.
 This implies, that the <code>username</code> can now also be accessed and set via <code>UserModel.getFirstAttribute(UserModel.USERNAME)</code> (and similar for the other fields).
-Implementors of SPIs subclassing the <code>UserModel</code> directly or indirectly should ensure that the behavior between <code>setUsername</code> and <code>setSingleAttribute(UserModel.USERNAME, &#8230;&#8203;)</code> (and similar for the other fields) is consistent.</p>
+Implementors of SPIs subclassing the <code>UserModel</code> directly or indirectly should ensure that the behavior between <code>setUsername</code> and <code>setSingleAttribute(UserModel.USERNAME, &#8230;&#8203;)</code> (and similar for the other fields) is consistent.
+Users of the policy evaluation feature have to adapt their policies if they use the number of attributes in their evaluations since every user will now have four new attributes by default.</p>
 </div>
 <div class="paragraph">
 <p>The public API of <code>UserModel</code> has not changed, so no changes to frontend resources or SPIs accessing user data should be necessary.
@@ -3051,7 +3052,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-19 13:58:56 UTC
+Last updated 2020-06-22 10:01:41 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
