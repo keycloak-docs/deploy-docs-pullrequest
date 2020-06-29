@@ -794,6 +794,7 @@ span.image img {
 <li><a href="#migrating-to-11-0-0">Migrating to 11.0.0</a>
 <ul class="sectlevel3">
 <li><a href="#ldap-no-import-bugfix">LDAP no-import bugfix</a></li>
+<li><a href="#usermodel-changes">UserModel changes</a></li>
 </ul>
 </li>
 <li><a href="#migrating-to-9-0-1">Migrating to 9.0.1</a>
@@ -1601,6 +1602,20 @@ but it was not. In the current version, the update is not allowed to be performe
 <p>This should not affect most of the deployments, but some can be affected under some rare circumstances. For example if you previously
 tried to update a user with the admin REST API and the user had some incorrect attribute changes, the update was possible. With the
 current version, the update is not possible and you will be immediately informed about the reason.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="usermodel-changes"><a class="anchor" href="#usermodel-changes"></a>UserModel changes</h4>
+<div class="paragraph">
+<p>The fields <code>username</code>, <code>email</code>, <code>firstName</code> and <code>lastName</code> in the <code>UserModel</code> are migrated to custom attributes as a preparation for adding more sophisticated user profiles to Keycloak in an upcoming version.
+If a database contains users with custom attributes of that exact name, the custom attributes will need to be migrated before upgrading. This migration does not occur automatically. Otherwise, they will not be read from the database anymore and possibly deleted.
+This situation implies that the <code>username</code> can now also be accessed and set via <code>UserModel.getFirstAttribute(UserModel.USERNAME)</code>. Similar implications exist for other fields.
+Implementors of SPIs subclassing the <code>UserModel</code> directly or indirectly should ensure that the behavior between <code>setUsername</code> and <code>setSingleAttribute(UserModel.USERNAME, &#8230;&#8203;)</code> (and similar for the other fields) is consistent.
+Users of the policy evaluation feature have to adapt their policies if they use the number of attributes in their evaluations since every user will now have four new attributes by default.</p>
+</div>
+<div class="paragraph">
+<p>The public API of <code>UserModel</code> has not changed, so no changes to frontend resources or SPIs accessing user data should be necessary.
+The database has also not changed, yet.</p>
 </div>
 </div>
 </div>
@@ -3037,7 +3052,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-18 19:53:19 UTC
+Last updated 2020-06-29 15:52:37 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

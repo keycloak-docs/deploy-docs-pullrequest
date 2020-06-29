@@ -10623,6 +10623,21 @@ Examples:</p>
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The mechanism based on <code>keycloak.import</code> cannot be used together with the other mechanism based on <code>keycloak.migration.X</code> properties.
+If it is used together, the <code>keycloak.import</code> will be ignored. The <code>keycloak.import</code> mechanism always ignores the realms, which already
+exist in Keycloak. Generally the <code>keycloak.import</code> mechanism can be convenient for some development purposes, but if more
+flexibility is needed, we recommend that you stick with the mechanism based on <code>keycloak.migration.X</code> properties.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect2">
 <h3 id="admin-console-export-import"><a class="anchor" href="#admin-console-export-import"></a>Admin console export/import</h3>
 <div class="paragraph">
@@ -14233,7 +14248,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-18 19:53:06 UTC
+Last updated 2020-06-29 15:52:25 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

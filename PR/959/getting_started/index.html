@@ -878,11 +878,15 @@ span.image img {
 <p>Place the file in a directory you choose.</p>
 </li>
 <li>
-<p>Unpack the ZIP file using the appropriate <code>unzip</code> utility, such as jar or unzip.</p>
+<p>Unpack the ZIP file using the appropriate <code>unzip</code> utility, such as jar, tar, or unzip.</p>
 <div class="listingblock">
 <div class="title">Linux/Unix</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ tar -xvzf keycloak-11.0.0.tar.gz</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ unzip keycloak-11.0.0.zip
+
+or
+
+$ tar -xvzf keycloak-11.0.0.tar.gz</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1416,8 +1420,7 @@ $ ./standalone.sh -Djboss.socket.binding.port-offset=100</code></pre>
 <div class="listingblock">
 <div class="title">WildFly 10 on Windows</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; cd bin
-&gt; jboss-cli.bat --file=adapter-install-offline.cli</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">&gt; jboss-cli.bat --file=adapter-install-offline.cli</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1458,7 +1461,7 @@ $ ./standalone.sh -Djboss.socket.binding.port-offset=100</code></pre>
 <div class="listingblock">
 <div class="title">Windows</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; ...\bin\standalone.bat</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">&gt; ...\standalone.bat</code></pre>
 </div>
 </div>
 </li>
@@ -1509,8 +1512,7 @@ $ ./standalone.sh -Djboss.socket.binding.port-offset=100</code></pre>
 <div class="listingblock">
 <div class="title">WildFly 10 on Windows</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; cd bin
-&gt; jboss-cli.bat --file=adapter-install-offline.cli</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">&gt; jboss-cli.bat --file=adapter-install-offline.cli</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1551,7 +1553,7 @@ $ ./standalone.sh -Djboss.socket.binding.port-offset=100</code></pre>
 <div class="listingblock">
 <div class="title">Windows</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; ...\bin\standalone.bat</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">&gt; ...\standalone.bat</code></pre>
 </div>
 </div>
 </li>
@@ -1802,7 +1804,7 @@ $ cd keycloak-quickstarts/app-profile-jee-vanilla/config</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-18 19:52:59 UTC
+Last updated 2020-06-29 15:52:17 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
