@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Server Developer Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guides consist of information for developers to customize Red Hat Single Sign-On Continuous Delivery 8"/><link rel="next" href="#preface" title="Chapter 1. Preface"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm139729204099520"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On Continuous Delivery</span> <span class="productnumber">8</span></div><div><h1 class="title">Server Developer Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On Continuous Delivery 8</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm139729209258160">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
-				This guides consist of information for developers to customize Red Hat Single Sign-On Continuous Delivery 8
-			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="chapter"><a href="#preface">1. Preface</a></span></li><li><span class="chapter"><a href="#admin_rest_api">2. Admin REST API</a></span><ul><li><span class="section"><a href="#example_using_curl">2.1. Example using CURL</a></span></li></ul></li><li><span class="chapter"><a href="#themes">3. Themes</a></span><ul><li><span class="section"><a href="#theme_types">3.1. Theme Types</a></span></li><li><span class="section"><a href="#configure_theme">3.2. Configure Theme</a></span></li><li><span class="section"><a href="#default_themes">3.3. Default Themes</a></span></li><li><span class="section"><a href="#creating_a_theme">3.4. Creating a Theme</a></span><ul><li><span class="section"><a href="#theme_properties">3.4.1. Theme Properties</a></span></li><li><span class="section"><a href="#stylesheets">3.4.2. Stylesheets</a></span></li><li><span class="section"><a href="#scripts">3.4.3. Scripts</a></span></li><li><span class="section"><a href="#images">3.4.4. Images</a></span></li><li><span class="section"><a href="#messages">3.4.5. Messages</a></span></li><li><span class="section"><a href="#internationalization">3.4.6. Internationalization</a></span></li><li><span class="section"><a href="#html_templates">3.4.7. HTML Templates</a></span></li><li><span class="section"><a href="#emails">3.4.8. Emails</a></span></li></ul></li><li><span class="section"><a href="#deploying_themes">3.5. Deploying Themes</a></span></li><li><span class="section"><a href="#theme_selector">3.6. Theme Selector</a></span></li><li><span class="section"><a href="#theme_resource">3.7. Theme Resources</a></span></li><li><span class="section"><a href="#locale_selector">3.8. Locale Selector</a></span></li></ul></li><li><span class="chapter"><a href="#custom_user_attributes">4. Custom User Attributes</a></span><ul><li><span class="section"><a href="#registration_page">4.1. Registration Page</a></span></li><li><span class="section"><a href="#account_management_console">4.2. Account Management Console</a></span></li></ul></li><li><span class="chapter"><a href="#identity_brokering_apis">5. Identity Brokering APIs</a></span><ul><li><span class="section"><a href="#retrieving_external_idp_tokens">5.1. Retrieving External IDP Tokens</a></span></li><li><span class="section"><a href="#client_initiated_account_linking">5.2. Client Initiated Account Linking</a></span><ul><li><span class="section"><a href="#refreshing_external_tokens">5.2.1. Refreshing External Tokens</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#providers">6. Service Provider Interfaces (SPI)</a></span><ul><li><span class="section"><a href="#implementing_an_spi">6.1. Implementing an SPI</a></span><ul><li><span class="section"><a href="#providers_admin_console">6.1.1. Show info from your SPI implementation in admin console</a></span></li></ul></li><li><span class="section"><a href="#registering_provider_implementations">6.2. Registering provider implementations</a></span><ul><li><span class="section"><a href="#using_the_red_hat_single_sign_on_deployer">6.2.1. Using the Red Hat Single Sign-On Deployer</a></span></li><li><span class="section"><a href="#register_a_provider_using_modules">6.2.2. Register a provider using Modules</a></span></li><li><span class="section"><a href="#disabling_a_provider">6.2.3. Disabling a provider</a></span></li></ul></li><li><span class="section"><a href="#leveraging_java_ee">6.3. Leveraging Java EE</a></span></li><li><span class="section"><a href="#available_spis">6.4. Available SPIs</a></span></li></ul></li><li><span class="chapter"><a href="#user-storage-spi">7. User Storage SPI</a></span><ul><li><span class="section"><a href="#provider_interfaces">7.1. Provider Interfaces</a></span></li><li><span class="section"><a href="#provider_capability_interfaces">7.2. Provider Capability Interfaces</a></span></li><li><span class="section"><a href="#model_interfaces">7.3. Model Interfaces</a></span><ul><li><span class="section"><a href="#storage_ids">7.3.1. Storage Ids</a></span></li></ul></li><li><span class="section"><a href="#packaging_and_deployment">7.4. Packaging and Deployment</a></span></li><li><span class="section"><a href="#simple_read_only_lookup_example">7.5. Simple Read-Only, Lookup Example</a></span><ul><li><span class="section"><a href="#provider_class">7.5.1. Provider Class</a></span></li><li><span class="section"><a href="#provider_factory_implementation">7.5.2. Provider Factory Implementation</a></span></li><li><span class="section"><a href="#packaging_and_deployment_2">7.5.3. Packaging and Deployment</a></span></li><li><span class="section"><a href="#enabling_the_provider_in_the_administration_console">7.5.4. Enabling the Provider in the Administration Console</a></span></li></ul></li><li><span class="section"><a href="#configuration_techniques">7.6. Configuration Techniques</a></span><ul><li><span class="section"><a href="#configuration_example">7.6.1. Configuration Example</a></span></li><li><span class="section"><a href="#configuring_the_provider_in_the_administration_console">7.6.2. Configuring the Provider in the Administration Console</a></span></li></ul></li><li><span class="section"><a href="#add_remove_user_and_query_capability_interfaces">7.7. Add/Remove User and Query Capability interfaces</a></span><ul><li><span class="section"><a href="#implementing_userregistrationprovider">7.7.1. Implementing UserRegistrationProvider</a></span></li><li><span class="section"><a href="#implementing_userqueryprovider">7.7.2. Implementing UserQueryProvider</a></span></li></ul></li><li><span class="section"><a href="#augmenting_external_storage">7.8. Augmenting External Storage</a></span><ul><li><span class="section"><a href="#augmentation_example">7.8.1. Augmentation Example</a></span></li></ul></li><li><span class="section"><a href="#import_implementation_strategy">7.9. Import Implementation Strategy</a></span><ul><li><span class="section"><a href="#importeduservalidation_interface">7.9.1. ImportedUserValidation Interface</a></span></li><li><span class="section"><a href="#importsynchronization_interface">7.9.2. ImportSynchronization Interface</a></span></li></ul></li><li><span class="section"><a href="#user_caches">7.10. User Caches</a></span><ul><li><span class="section"><a href="#managing_the_user_cache">7.10.1. Managing the user cache</a></span></li><li><span class="section"><a href="#onusercache_callback_interface">7.10.2. OnUserCache Callback Interface</a></span></li><li><span class="section"><a href="#cache_policies">7.10.3. Cache Policies</a></span></li></ul></li><li><span class="section"><a href="#leveraging_java_ee_2">7.11. Leveraging Java EE</a></span></li><li><span class="section"><a href="#rest_management_api">7.12. REST Management API</a></span></li><li><span class="section"><a href="#migrating_from_an_earlier_user_federation_spi">7.13. Migrating from an Earlier User Federation SPI</a></span><ul><li><span class="section"><a href="#import_vs_non_import">7.13.1. Import vs. Non-Import</a></span></li><li><span class="section"><a href="#userfederationprovider_vs_userstorageprovider">7.13.2. UserFederationProvider vs. UserStorageProvider</a></span></li><li><span class="section"><a href="#userfederationproviderfactory_vs_userstorageproviderfactory">7.13.3. UserFederationProviderFactory vs. UserStorageProviderFactory</a></span></li><li><span class="section"><a href="#upgrading_to_a_new_model">7.13.4. Upgrading to a New Model</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#vault-spi">8. Vault SPI</a></span><ul><li><span class="section"><a href="#vault_provider">8.1. Vault provider</a></span></li><li><span class="section"><a href="#consuming_values_from_vault">8.2. Consuming values from vault</a></span></li></ul></li></ul></div><section class="chapter" id="preface"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Preface</h1></div></div></div><p>
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Server Developer Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guides consist of information for developers to customize Red Hat Single Sign-On 7.4"/><link rel="next" href="#preface" title="Chapter 1. Preface"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140248006207184"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On</span> <span class="productnumber">7.4</span></div><div><h1 class="title">Server Developer Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On 7.4</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140248012865168">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+				This guides consist of information for developers to customize Red Hat Single Sign-On 7.4
+			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="chapter"><a href="#preface">1. Preface</a></span></li><li><span class="chapter"><a href="#admin_rest_api">2. Admin REST API</a></span><ul><li><span class="section"><a href="#examples_using_curl">2.1. Examples using CURL</a></span><ul><li><span class="section"><a href="#authenticate_with_username_and_password">2.1.1. Authenticate with username and password</a></span></li><li><span class="section"><a href="#authenticate_with_a_service_account">2.1.2. Authenticate with a service account</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#themes">3. Themes</a></span><ul><li><span class="section"><a href="#theme_types">3.1. Theme Types</a></span></li><li><span class="section"><a href="#configure_theme">3.2. Configure Theme</a></span></li><li><span class="section"><a href="#default_themes">3.3. Default Themes</a></span></li><li><span class="section"><a href="#creating_a_theme">3.4. Creating a Theme</a></span><ul><li><span class="section"><a href="#theme_properties">3.4.1. Theme Properties</a></span></li><li><span class="section"><a href="#stylesheets">3.4.2. Stylesheets</a></span></li><li><span class="section"><a href="#scripts">3.4.3. Scripts</a></span></li><li><span class="section"><a href="#images">3.4.4. Images</a></span></li><li><span class="section"><a href="#messages">3.4.5. Messages</a></span></li><li><span class="section"><a href="#internationalization">3.4.6. Internationalization</a></span></li><li><span class="section"><a href="#html_templates">3.4.7. HTML Templates</a></span></li><li><span class="section"><a href="#emails">3.4.8. Emails</a></span></li></ul></li><li><span class="section"><a href="#deploying_themes">3.5. Deploying Themes</a></span></li><li><span class="section"><a href="#theme_selector">3.6. Theme Selector</a></span></li><li><span class="section"><a href="#theme_resource">3.7. Theme Resources</a></span></li><li><span class="section"><a href="#locale_selector">3.8. Locale Selector</a></span></li></ul></li><li><span class="chapter"><a href="#custom_user_attributes">4. Custom User Attributes</a></span><ul><li><span class="section"><a href="#registration_page">4.1. Registration Page</a></span></li><li><span class="section"><a href="#account_management_console">4.2. Account Management Console</a></span></li></ul></li><li><span class="chapter"><a href="#identity_brokering_apis">5. Identity Brokering APIs</a></span><ul><li><span class="section"><a href="#retrieving_external_idp_tokens">5.1. Retrieving External IDP Tokens</a></span></li><li><span class="section"><a href="#client_initiated_account_linking">5.2. Client Initiated Account Linking</a></span><ul><li><span class="section"><a href="#refreshing_external_tokens">5.2.1. Refreshing External Tokens</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#providers">6. Service Provider Interfaces (SPI)</a></span><ul><li><span class="section"><a href="#implementing_an_spi">6.1. Implementing an SPI</a></span><ul><li><span class="section"><a href="#providers_admin_console">6.1.1. Show info from your SPI implementation in admin console</a></span></li></ul></li><li><span class="section"><a href="#registering_provider_implementations">6.2. Registering provider implementations</a></span><ul><li><span class="section"><a href="#using_the_red_hat_single_sign_on_deployer">6.2.1. Using the Red Hat Single Sign-On Deployer</a></span></li><li><span class="section"><a href="#register_a_provider_using_modules">6.2.2. Register a provider using Modules</a></span></li><li><span class="section"><a href="#disabling_a_provider">6.2.3. Disabling a provider</a></span></li></ul></li><li><span class="section"><a href="#leveraging_java_ee">6.3. Leveraging Java EE</a></span></li><li><span class="section"><a href="#script_providers">6.4. JavaScript Providers</a></span><ul><li><span class="section"><a href="#authenticator">6.4.1. Authenticator</a></span></li><li><span class="section"><a href="#create_a_jar_with_the_scripts_to_deploy">6.4.2. Create a JAR with the scripts to deploy</a></span></li><li><span class="section"><a href="#deploy_the_script_jar">6.4.3. Deploy the Script JAR</a></span></li><li><span class="section"><a href="#using_red_hat_single_sign_on_administration_console_to_upload_scripts">6.4.4. Using Red Hat Single Sign-On Administration Console to upload scripts</a></span></li></ul></li><li><span class="section"><a href="#available_spis">6.5. Available SPIs</a></span></li></ul></li><li><span class="chapter"><a href="#user-storage-spi">7. User Storage SPI</a></span><ul><li><span class="section"><a href="#provider_interfaces">7.1. Provider Interfaces</a></span></li><li><span class="section"><a href="#provider_capability_interfaces">7.2. Provider Capability Interfaces</a></span></li><li><span class="section"><a href="#model_interfaces">7.3. Model Interfaces</a></span><ul><li><span class="section"><a href="#storage_ids">7.3.1. Storage Ids</a></span></li></ul></li><li><span class="section"><a href="#packaging_and_deployment">7.4. Packaging and Deployment</a></span></li><li><span class="section"><a href="#simple_read_only_lookup_example">7.5. Simple Read-Only, Lookup Example</a></span><ul><li><span class="section"><a href="#provider_class">7.5.1. Provider Class</a></span></li><li><span class="section"><a href="#provider_factory_implementation">7.5.2. Provider Factory Implementation</a></span></li><li><span class="section"><a href="#packaging_and_deployment_2">7.5.3. Packaging and Deployment</a></span></li><li><span class="section"><a href="#enabling_the_provider_in_the_administration_console">7.5.4. Enabling the Provider in the Administration Console</a></span></li></ul></li><li><span class="section"><a href="#configuration_techniques">7.6. Configuration Techniques</a></span><ul><li><span class="section"><a href="#configuration_example">7.6.1. Configuration Example</a></span></li><li><span class="section"><a href="#configuring_the_provider_in_the_administration_console">7.6.2. Configuring the Provider in the Administration Console</a></span></li></ul></li><li><span class="section"><a href="#add_remove_user_and_query_capability_interfaces">7.7. Add/Remove User and Query Capability interfaces</a></span><ul><li><span class="section"><a href="#implementing_userregistrationprovider">7.7.1. Implementing UserRegistrationProvider</a></span></li><li><span class="section"><a href="#implementing_userqueryprovider">7.7.2. Implementing UserQueryProvider</a></span></li></ul></li><li><span class="section"><a href="#augmenting_external_storage">7.8. Augmenting External Storage</a></span><ul><li><span class="section"><a href="#augmentation_example">7.8.1. Augmentation Example</a></span></li></ul></li><li><span class="section"><a href="#import_implementation_strategy">7.9. Import Implementation Strategy</a></span><ul><li><span class="section"><a href="#importeduservalidation_interface">7.9.1. ImportedUserValidation Interface</a></span></li><li><span class="section"><a href="#importsynchronization_interface">7.9.2. ImportSynchronization Interface</a></span></li></ul></li><li><span class="section"><a href="#user_caches">7.10. User Caches</a></span><ul><li><span class="section"><a href="#managing_the_user_cache">7.10.1. Managing the user cache</a></span></li><li><span class="section"><a href="#onusercache_callback_interface">7.10.2. OnUserCache Callback Interface</a></span></li><li><span class="section"><a href="#cache_policies">7.10.3. Cache Policies</a></span></li></ul></li><li><span class="section"><a href="#leveraging_java_ee_2">7.11. Leveraging Java EE</a></span></li><li><span class="section"><a href="#rest_management_api">7.12. REST Management API</a></span></li><li><span class="section"><a href="#migrating_from_an_earlier_user_federation_spi">7.13. Migrating from an Earlier User Federation SPI</a></span><ul><li><span class="section"><a href="#import_vs_non_import">7.13.1. Import vs. Non-Import</a></span></li><li><span class="section"><a href="#userfederationprovider_vs_userstorageprovider">7.13.2. UserFederationProvider vs. UserStorageProvider</a></span></li><li><span class="section"><a href="#userfederationproviderfactory_vs_userstorageproviderfactory">7.13.3. UserFederationProviderFactory vs. UserStorageProviderFactory</a></span></li><li><span class="section"><a href="#upgrading_to_a_new_model">7.13.4. Upgrading to a New Model</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#vault-spi">8. Vault SPI</a></span><ul><li><span class="section"><a href="#vault_provider">8.1. Vault provider</a></span></li><li><span class="section"><a href="#consuming_values_from_vault">8.2. Consuming values from vault</a></span></li></ul></li></ul></div><section class="chapter" id="preface"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Preface</h1></div></div></div><p>
 			In some of the example listings, what is meant to be displayed on one line does not fit inside the available page width. These lines have been broken up. A '\' at the end of a line means that a break has been introduced to fit in the page, with the following lines indented. So:
 		</p><pre class="screen">Let's pretend to have an extremely \
 long line that \
@@ -13,29 +13,47 @@ This one is short</pre><p>
 This one is short</pre></section><section class="chapter" id="admin_rest_api"><div class="titlepage"><div><div><h1 class="title">Chapter 2. Admin REST API</h1></div></div></div><p>
 			Red Hat Single Sign-On comes with a fully functional Admin REST API with all features provided by the Admin Console.
 		</p><p>
-			To invoke the API you need to obtain an access token with the appropriate permissions. The required permissions are described in <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on_continuous_delivery/8/html-single/server_administration_guide/">Server Administration Guide</a>.
+			To invoke the API you need to obtain an access token with the appropriate permissions. The required permissions are described in <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/server_administration_guide/">Server Administration Guide</a>.
 		</p><p>
-			A token can be obtained by enabling authenticating to your application with Red Hat Single Sign-On; see the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on_continuous_delivery/8/html-single/securing_applications_and_services_guide/">Securing Applications and Services Guide</a>. You can also use direct access grant to obtain an access token.
+			A token can be obtained by enabling authenticating to your application with Red Hat Single Sign-On; see the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/securing_applications_and_services_guide/">Securing Applications and Services Guide</a>. You can also use direct access grant to obtain an access token.
 		</p><p>
-			For complete documentation see <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on_continuous_delivery/8/html-single/api_documentation/">API Documentation</a>.
-		</p><section class="section" id="example_using_curl"><div class="titlepage"><div><div><h2 class="title">2.1. Example using CURL</h2></div></div></div><p>
-				Obtain access token for user in the realm <code class="literal">master</code> with username <code class="literal">admin</code> and password <code class="literal">password</code>:
-			</p><pre class="programlisting language-bash">curl \
+			For complete documentation see <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/api_documentation/index">API Documentation</a>.
+		</p><section class="section" id="examples_using_curl"><div class="titlepage"><div><div><h2 class="title">2.1. Examples using CURL</h2></div></div></div><section class="section" id="authenticate_with_username_and_password"><div class="titlepage"><div><div><h3 class="title">2.1.1. Authenticate with username and password</h3></div></div></div><p>
+					Obtain access token for user in the realm <code class="literal">master</code> with username <code class="literal">admin</code> and password <code class="literal">password</code>:
+				</p><pre class="programlisting language-bash">curl \
   -d "client_id=admin-cli" \
   -d "username=admin" \
   -d "password=password" \
   -d "grant_type=password" \
   "http://localhost:8080/auth/realms/master/protocol/openid-connect/token"</pre><div class="admonition note"><div class="admonition_header">Note</div><div><p>
-					By default this token expires in 1 minute
-				</p></div></div><p>
-				The result will be a JSON document. To invoke the API you need to extract the value of the <code class="literal">access_token</code> property. You can then invoke the API by including the value in the <code class="literal">Authorization</code> header of requests to the API.
-			</p><p>
-				The following example shows how to get the details of the master realm:
-			</p><pre class="programlisting language-bash">curl \
+						By default this token expires in 1 minute
+					</p></div></div><p>
+					The result will be a JSON document. To invoke the API you need to extract the value of the <code class="literal">access_token</code> property. You can then invoke the API by including the value in the <code class="literal">Authorization</code> header of requests to the API.
+				</p><p>
+					The following example shows how to get the details of the master realm:
+				</p><pre class="programlisting language-bash">curl \
   -H "Authorization: bearer eyJhbGciOiJSUz..." \
-  "http://localhost:8080/auth/admin/realms/master"</pre></section></section><section class="chapter" id="themes"><div class="titlepage"><div><div><h1 class="title">Chapter 3. Themes</h1></div></div></div><p>
+  "http://localhost:8080/auth/admin/realms/master"</pre></section><section class="section" id="authenticate_with_a_service_account"><div class="titlepage"><div><div><h3 class="title">2.1.2. Authenticate with a service account</h3></div></div></div><p>
+					Before being able to authenticate against the Admin REST API using a <code class="literal">client_id</code> and a <code class="literal">client_secret</code> you need to make sure the client is configured as it follows:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							<code class="literal">client_id</code> is a <span class="strong strong"><strong>confidential</strong></span> client that belongs to the realm <span class="strong strong"><strong>master</strong></span>
+						</li><li class="listitem">
+							<code class="literal">client_id</code> has <code class="literal">Service Accounts Enabled</code> option enabled
+						</li><li class="listitem"><p class="simpara">
+							<code class="literal">client_id</code> has a custom "Audience" mapper
+						</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+									Included Client Audience: <code class="literal">security-admin-console</code>
+								</li></ul></div></li></ul></div><p>
+					Finally, check that <code class="literal">client_id</code> has the role 'admin' assigned in the "Service Account Roles" tab.
+				</p><p>
+					After that, you will be able to obtain an access token for the Admin REST API using <code class="literal">client_id</code> and <code class="literal">client_secret</code>:
+				</p><pre class="programlisting language-bash">curl \
+  -d "client_id=&lt;YOUR_CLIENT_ID&gt;" \
+  -d "client_secret=&lt;YOUR_CLIENT_SECRET&gt;" \
+  -d "grant_type=client_credentials" \
+  "http://localhost:8080/auth/realms/master/protocol/openid-connect/token"</pre></section></section></section><section class="chapter" id="themes"><div class="titlepage"><div><div><h1 class="title">Chapter 3. Themes</h1></div></div></div><p>
 			Red Hat Single Sign-On provides theme support for web pages and emails. This allows customizing the look and feel of end-user facing pages so they can be integrated with your applications.
-		</p><div class="figure" id="idm139729207572544"><p class="title"><strong>Figure 3.1. Login page with sunrise example theme</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/login-sunrise.png" alt="login sunrise"/></div></div></div><section class="section" id="theme_types"><div class="titlepage"><div><div><h2 class="title">3.1. Theme Types</h2></div></div></div><p>
+		</p><div class="figure" id="idm140248013369328"><p class="title"><strong>Figure 3.1. Login page with sunrise example theme</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/login-sunrise.png" alt="login sunrise"/></div></div></div><section class="section" id="theme_types"><div class="titlepage"><div><div><h2 class="title">3.1. Theme Types</h2></div></div></div><p>
 				A theme can provide one or more types to customize different aspects of Red Hat Single Sign-On. The types available are:
 			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 						Account - Account management
@@ -168,7 +186,7 @@ windowsHome=${env.HOMEPATH:Windows home not found}</pre></section><section class
 				</p><pre class="screen">usernameOrEmail=Your Username</pre><p>
 					Within a message values like <code class="literal">{0}</code> and <code class="literal">{1}</code> are replaced with arguments when the message is used. For example {0} in <code class="literal">Log in to {0}</code> is replaced with the name of the realm.
 				</p></section><section class="section" id="internationalization"><div class="titlepage"><div><div><h3 class="title">3.4.6. Internationalization</h3></div></div></div><p>
-					Red Hat Single Sign-On supports internationalization. To enable internationalization for a realm see <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on_continuous_delivery/8/html-single/server_administration_guide/">Server Administration Guide</a>. This section describes how you can add your own language.
+					Red Hat Single Sign-On supports internationalization. To enable internationalization for a realm see <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/server_administration_guide/">Server Administration Guide</a>. This section describes how you can add your own language.
 				</p><p>
 					To add a new language create the file <code class="literal">&lt;THEME TYPE&gt;/messages/messages_&lt;LOCALE&gt;.properties</code> in the directory of your theme. Then add it to the <code class="literal">locales</code> property in <code class="literal">&lt;THEME TYPE&gt;/theme.properties</code>. For a language to be available to users the realms <code class="literal">login</code>, <code class="literal">account</code> and <code class="literal">email</code> theme has to support the language, so you need to add your language for those theme types.
 				</p><p>
@@ -575,7 +593,120 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }</pre></section><section class="section" id="available_spis"><div class="titlepage"><div><div><h2 class="title">6.4. Available SPIs</h2></div></div></div><p>
+    }</pre></section><section class="section" id="script_providers"><div class="titlepage"><div><div><h2 class="title">6.4. JavaScript Providers</h2></div></div></div><p>
+				Red Hat Single Sign-On has the ability to execute scripts during runtime in order to allow administrators to customize specific functionalities:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						Authenticator
+					</li><li class="listitem">
+						JavaScript Policy
+					</li><li class="listitem">
+						OpenID Connect Protocol Mapper
+					</li></ul></div><section class="section" id="authenticator"><div class="titlepage"><div><div><h3 class="title">6.4.1. Authenticator</h3></div></div></div><p>
+					Authentication scripts must provide at least one of the following functions: <code class="literal">authenticate(..)</code>, which is called from <code class="literal">Authenticator#authenticate(AuthenticationFlowContext)</code><code class="literal">action(..)</code>, which is called from <code class="literal">Authenticator#action(AuthenticationFlowContext)</code>
+				</p><p>
+					Custom <code class="literal">Authenticator</code> should at least provide the <code class="literal">authenticate(..)</code> function. You can use the <code class="literal">javax.script.Bindings</code> script within the code.
+				</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">script</code></span></dt><dd>
+								the <code class="literal">ScriptModel</code> to access script metadata
+							</dd><dt><span class="term"><code class="literal">realm</code></span></dt><dd>
+								the <code class="literal">RealmModel</code>
+							</dd><dt><span class="term"><code class="literal">user</code></span></dt><dd>
+								the current <code class="literal">UserModel</code>
+							</dd><dt><span class="term"><code class="literal">session</code></span></dt><dd>
+								the active <code class="literal">KeycloakSession</code>
+							</dd><dt><span class="term"><code class="literal">authenticationSession</code></span></dt><dd>
+								the current <code class="literal">AuthenticationSessionModel</code>
+							</dd><dt><span class="term"><code class="literal">httpRequest</code></span></dt><dd>
+								the current <code class="literal">org.jboss.resteasy.spi.HttpRequest</code>
+							</dd><dt><span class="term"><code class="literal">LOG</code></span></dt><dd>
+								a <code class="literal">org.jboss.logging.Logger</code> scoped to <code class="literal">ScriptBasedAuthenticator</code>
+							</dd></dl></div><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+						You can extract additional context information from the <code class="literal">context</code> argument passed to the <code class="literal">authenticate(context)</code> <code class="literal">action(context)</code> function.
+					</p></div></div><pre class="programlisting language-javascript">AuthenticationFlowError = Java.type("org.keycloak.authentication.AuthenticationFlowError");
+
+function authenticate(context) {
+
+  LOG.info(script.name + " --&gt; trace auth for: " + user.username);
+
+  if (   user.username === "tester"
+      &amp;&amp; user.getAttribute("someAttribute")
+      &amp;&amp; user.getAttribute("someAttribute").contains("someValue")) {
+
+      context.failure(AuthenticationFlowError.INVALID_USER);
+      return;
+  }
+
+  context.success();
+}</pre></section><section class="section" id="create_a_jar_with_the_scripts_to_deploy"><div class="titlepage"><div><div><h3 class="title">6.4.2. Create a JAR with the scripts to deploy</h3></div></div></div><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+						JAR files are regular ZIP files with a <code class="literal">.jar</code> extension.
+					</p></div></div><p>
+					In order to make your scripts available to Red Hat Single Sign-On you need to deploy them to the server. For that, you should create a <code class="literal">JAR</code> file with the following structure:
+				</p><pre class="screen">META-INF/keycloak-scripts.json
+
+my-script-authenticator.js
+my-script-policy.js
+my-script-mapper.js</pre><p>
+					The <code class="literal">META-INF/keycloak-scripts.json</code> is a file descriptor that provides metadata information about the scripts you want to deploy. It is a JSON file with the following structure:
+				</p><pre class="programlisting language-json">{
+    "authenticators": [
+        {
+            "name": "My Authenticator",
+            "fileName": "my-script-authenticator.js",
+            "description": "My Authenticator from a JS file"
+        }
+    ],
+    "policies": [
+        {
+            "name": "My Policy",
+            "fileName": "my-script-policy.js",
+            "description": "My Policy from a JS file"
+        }
+    ],
+    "mappers": [
+        {
+            "name": "My Mapper",
+            "fileName": "my-script-mapper.js",
+            "description": "My Mapper from a JS file"
+        }
+    ]
+}</pre><p>
+					This file should reference the different types of script providers that you want to deploy:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+							<code class="literal">authenticators</code>
+						</p><p class="simpara">
+							For OpenID Connect Script Authenticators. You can have one or multiple authenticators in the same JAR file
+						</p></li><li class="listitem"><p class="simpara">
+							<code class="literal">policies</code>
+						</p><p class="simpara">
+							For JavaScript Policies when using Red Hat Single Sign-On Authorization Services. You can have one or multiple policies in the same JAR file
+						</p></li><li class="listitem"><p class="simpara">
+							<code class="literal">mappers</code>
+						</p><p class="simpara">
+							For OpenID Connect Script Protocol Mappers. You can have one or multiple mappers in the same JAR file
+						</p></li></ul></div><p>
+					For each script file in your <code class="literal">JAR</code> file you must have a corresponding entry in <code class="literal">META-INF/keycloak-scripts.json</code> that maps your scripts files to a specific provider type. For that you should provide the following properties for each entry:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+							<code class="literal">name</code>
+						</p><p class="simpara">
+							A friendly name that will be used to show the scripts through the Red Hat Single Sign-On Administration Console. If not provided, the name of the script file will be used instead
+						</p></li><li class="listitem"><p class="simpara">
+							<code class="literal">description</code>
+						</p><p class="simpara">
+							An optional text that better describes the intend of the script file
+						</p></li><li class="listitem"><p class="simpara">
+							<code class="literal">fileName</code>
+						</p><p class="simpara">
+							The name of the script file. This property is <span class="strong strong"><strong>mandatory</strong></span> and should map to a file within the JAR.
+						</p></li></ul></div></section><section class="section" id="deploy_the_script_jar"><div class="titlepage"><div><div><h3 class="title">6.4.3. Deploy the Script JAR</h3></div></div></div><p>
+					Once you have a JAR file with a descriptor and the scripts you want to deploy, you just need to copy the JAR to the Red Hat Single Sign-On <code class="literal">standalone/deployments/</code> directory.
+				</p></section><section class="section" id="using_red_hat_single_sign_on_administration_console_to_upload_scripts"><div class="titlepage"><div><div><h3 class="title">6.4.4. Using Red Hat Single Sign-On Administration Console to upload scripts</h3></div></div></div><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+						Ability to upload scripts through the admin console is deprecated and will be removed in a future version of Red Hat Single Sign-On
+					</p></div></div><p>
+					Administrators cannot upload scripts to the server. This behavior prevents potential harm to the system in case malicious scripts are accidentally executed. Administrators should always deploy scripts directly to the server using a JAR file to prevent attacks when you run scripts at runtime.
+				</p><p>
+					Ability to upload scripts can be explicitly enabled. This should be used with great care and plans should be created to deploy all scripts directly to the server as soon as possible.
+				</p><p>
+					For more details about how to enable the <code class="literal">upload_scripts</code> feature. Please, take a look at the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/server_installation_and_configuration_guide/#profiles">Profiles</a>.
+				</p></section></section><section class="section" id="available_spis"><div class="titlepage"><div><div><h2 class="title">6.5. Available SPIs</h2></div></div></div><p>
 				If you want to see list of all available SPIs at runtime, you can check <code class="literal">Server Info</code> page in admin console as described in <a class="link" href="#providers_admin_console" title="6.1.1. Show info from your SPI implementation in admin console">Admin Console</a> section.
 			</p></section></section><section class="chapter" id="user-storage-spi"><div class="titlepage"><div><div><h1 class="title">Chapter 7. User Storage SPI</h1></div></div></div><p>
 			You can use the User Storage SPI to write extensions to Red Hat Single Sign-On to connect to external user databases and credential stores. The built-in LDAP and ActiveDirectory support is an implementation of this SPI in action. Out of the box, Red Hat Single Sign-On uses its local database to create, update, and look up users and validate credentials. Often though, organizations have existing external proprietary user databases that they cannot migrate to Red Hat Single Sign-On’s data model. For those situations, application developers can write implementations of the User Storage SPI to bridge the external user store and the internal user object model that Red Hat Single Sign-On uses to log in users and manage them.
@@ -672,51 +803,51 @@ public interface UserStorageProviderFactory&lt;T extends UserStorageProvider&gt;
 				The <code class="literal">UserStorageProviderFactory</code> has other capabilities as well which we will go over later in this chapter.
 			</p></section><section class="section" id="provider_capability_interfaces"><div class="titlepage"><div><div><h2 class="title">7.2. Provider Capability Interfaces</h2></div></div></div><p>
 				If you have examined the <code class="literal">UserStorageProvider</code> interface closely you might notice that it does not define any methods for locating or managing users. These methods are actually defined in other <span class="emphasis"><em>capability interfaces</em></span> depending on what scope of capabilities your external user store can provide and execute on. For example, some external stores are read-only and can only do simple queries and credential validation. You will only be required to implement the <span class="emphasis"><em>capability interfaces</em></span> for the features you are able to. You can implement these interfaces:
-			</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139729205888656" scope="col">SPI</th><th align="left" valign="top" id="idm139729205887568" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139729205888656">
+			</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140248009600464" scope="col">SPI</th><th align="left" valign="top" id="idm140248009599376" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140248009600464">
 							<p>
 								<code class="literal">org.keycloak.storage.user.UserLookupProvider</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm139729205887568">
+							</td><td align="left" valign="top" headers="idm140248009599376">
 							<p>
 								This interface is required if you want to be able to log in with users from this external store. Most (all?) providers implement this interface.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm139729205888656">
+							</td></tr><tr><td align="left" valign="top" headers="idm140248009600464">
 							<p>
 								<code class="literal">org.keycloak.storage.user.UserQueryProvider</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm139729205887568">
+							</td><td align="left" valign="top" headers="idm140248009599376">
 							<p>
 								Defines complex queries that are used to locate one or more users. You must implement this interface if you want to view and manage users from the administration console.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm139729205888656">
+							</td></tr><tr><td align="left" valign="top" headers="idm140248009600464">
 							<p>
 								<code class="literal">org.keycloak.storage.user.UserRegistrationProvider</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm139729205887568">
+							</td><td align="left" valign="top" headers="idm140248009599376">
 							<p>
 								Implement this interface if your provider supports adding and removing users.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm139729205888656">
+							</td></tr><tr><td align="left" valign="top" headers="idm140248009600464">
 							<p>
 								<code class="literal">org.keycloak.storage.user.UserBulkUpdateProvider</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm139729205887568">
+							</td><td align="left" valign="top" headers="idm140248009599376">
 							<p>
 								Implement this interface if your provider supports bulk update of a set of users.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm139729205888656">
+							</td></tr><tr><td align="left" valign="top" headers="idm140248009600464">
 							<p>
 								<code class="literal">org.keycloak.credential.CredentialInputValidator</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm139729205887568">
+							</td><td align="left" valign="top" headers="idm140248009599376">
 							<p>
 								Implement this interface if your provider can validate one or more different credential types (for example, if your provider can validate a password).
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm139729205888656">
+							</td></tr><tr><td align="left" valign="top" headers="idm140248009600464">
 							<p>
 								<code class="literal">org.keycloak.credential.CredentialInputUpdater</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm139729205887568">
+							</td><td align="left" valign="top" headers="idm140248009599376">
 							<p>
 								Implement this interface if your provider supports updating one or more different credential types.
 							</p>
@@ -840,12 +971,11 @@ org.keycloak.examples.federation.properties.FilePropertiesStorageFactory</pre><p
 
     @Override
     public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {
-        if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel)) return false;
+        if (!supportsCredentialType(input.getType())) return false;
 
-        UserCredentialModel cred = (UserCredentialModel)input;
         String password = properties.getProperty(user.getUsername());
         if (password == null) return false;
-        return password.equals(cred.getValue());
+        return password.equals(input.getChallengeResponse());
     }</pre><p>
 						The <code class="literal">isConfiguredFor()</code> method is called by the runtime to determine if a specific credential type is configured for the user. This method checks to see that the password is set for the user.
 					</p><p>
@@ -1589,7 +1719,7 @@ realmREsource.components().component(component.getId()).remove();</pre></section
 			</p><p>
 				The built-in <code class="literal">files-plaintext</code> provider is an example of the implementation of this SPI. In general the following rules apply:
 			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-						To prevent a secret from leaking across realms, you mey want to isolate or limit what secrets can be retrieved by a realm. In that case, your provider should take into account the realm name when looking up secrets, for example by prefixing entries with the realm name. For example, an expression <code class="literal">${vault.secret-id}</code> would then evaluate generally to different values of a secret <code class="literal">secret-id</code>, depending on whether it was used in a realm <span class="emphasis"><em>A</em></span> or realm <span class="emphasis"><em>B</em></span>. To differentiate between realms, the realm needs to be passed to the created <code class="literal">VaultProvider</code> instance from <code class="literal">VaultProviderFactory.create()</code> method where it is available from its the <code class="literal">KeycloakSession</code> parameter.
+						To prevent a secret from leaking across realms, you may want to isolate or limit the secrets that can be retrieved by a realm. In that case, your provider should take into account the realm name when looking up secrets, for example by prefixing entries with the realm name. For example, an expression <code class="literal">${vault.key}</code> would then evaluate generally to different entry names, depending on whether it was used in a realm <span class="emphasis"><em>A</em></span> or realm <span class="emphasis"><em>B</em></span>. To differentiate between realms, the realm needs to be passed to the created <code class="literal">VaultProvider</code> instance from <code class="literal">VaultProviderFactory.create()</code> method where it is available from the <code class="literal">KeycloakSession</code> parameter.
 					</li><li class="listitem">
 						The vault provider needs to implement a single method <code class="literal">obtainSecret</code> that returns a <code class="literal">VaultRawSecret</code> for the given secret name. That class holds the representation of the secret either in <code class="literal">byte[]</code> or <code class="literal">ByteBuffer</code> and is expected to convert between the two upon demand. Note that this buffer would be discarded after usage as explained below.
 					</li></ul></div><p>
@@ -1606,8 +1736,8 @@ realmREsource.components().component(component.getId()).remove();</pre></section
     // if c != null, it now contains garbage</pre><p>
 				The example uses <code class="literal">KeycloakSession.vault()</code> as the entrypoint for accessing the secrets. Using the <code class="literal">VaultProvider.obtainSecret</code> method directly is indeed also possible. However the <code class="literal">vault()</code> method has the benefit of ability to interpret the raw secret (which is generally a byte array) as a character array (via <code class="literal">vault().getCharSecret()</code>) or a <code class="literal">String</code> (via <code class="literal">vault().getStringSecret()</code>) in addition to obtaining the original uninterpreted value (via <code class="literal">vault().getRawSecret()</code> method).
 			</p><p>
-				Note that since <code class="literal">String</code> objects are immutable, their content cannot be discarded by overriding with random garbage. Even though measures have been taken in the default <code class="literal">VaultStringSecret</code> implementation to prevent internalizing <code class="literal">String</code>s, the secrets stored in <code class="literal">String</code> objects would live at least to the next GC round. Thus using plain byte and character arrays and buffers is preferrable.
-			</p></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm139729209258160"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+				Note that since <code class="literal">String</code> objects are immutable, their content cannot be discarded by overriding with random garbage. Even though measures have been taken in the default <code class="literal">VaultStringSecret</code> implementation to prevent internalizing <code class="literal">String</code>s, the secrets stored in <code class="literal">String</code> objects would live at least to the next GC round. Thus using plain byte and character arrays and buffers is preferable.
+			</p></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140248012865168"><h1 class="legalnotice">Legal Notice</h1><div class="para">
 				Copyright <span class="trademark"/>© 2019 Red Hat, Inc.
 			</div><div class="para">
 				Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
