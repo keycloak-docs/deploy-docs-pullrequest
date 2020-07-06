@@ -791,9 +791,16 @@ span.image img {
 </li>
 <li><a href="#migration-changes">Migration Changes</a>
 <ul class="sectlevel2">
+<li><a href="#migrating-to-11-0-0">Migrating to 11.0.0</a>
+<ul class="sectlevel3">
+<li><a href="#ldap-no-import-bugfix">LDAP no-import bugfix</a></li>
+<li><a href="#usermodel-changes">UserModel changes</a></li>
+</ul>
+</li>
 <li><a href="#migrating-to-9-0-1">Migrating to 9.0.1</a>
 <ul class="sectlevel3">
 <li><a href="#legacy-promise-in-javascript-adapter">Legacy promise in JavaScript adapter</a></li>
+<li><a href="#duplicated-top-level-groups">Duplicated top level groups</a></li>
 </ul>
 </li>
 <li><a href="#migrating-to-9-0-0">Migrating to 9.0.0</a>
@@ -1018,25 +1025,25 @@ span.image img {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/getting_started/">Getting Started</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/getting_started/">Getting Started</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/server_installation/">Server Installation</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/server_installation/">Server Installation</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/securing_apps/">Securing Apps</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/securing_apps/">Securing Apps</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/server_admin/">Server Administration</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/server_admin/">Server Administration</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/server_development/">Server Developer</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/authorization_services/">Authorization Services</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/authorization_services/">Authorization Services</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/release_notes/">Release Notes</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/release_notes/">Release Notes</a></p>
 </li>
 </ul>
 </div>
@@ -1045,7 +1052,7 @@ span.image img {
 <div class="exampleblock top-menu-version">
 <div class="content">
 <div class="paragraph versionarchive">
-<p>Version <strong>9.0.4</strong> <em><a href="https://www.keycloak.org/docs/latest/upgrading/">Click here for latest</a></em></p>
+<p>Version <strong>11.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/upgrading/">Click here for latest</a></em></p>
 </div>
 </div>
 </div>
@@ -1583,6 +1590,36 @@ to preserve compatibility with older client adapters. More details are available
 </div>
 </div>
 <div class="sect2">
+<h3 id="migrating-to-11-0-0"><a class="anchor" href="#migrating-to-11-0-0"></a>Migrating to 11.0.0</h3>
+<div class="sect3">
+<h4 id="ldap-no-import-bugfix"><a class="anchor" href="#ldap-no-import-bugfix"></a>LDAP no-import bugfix</h4>
+<div class="paragraph">
+<p>In the previous Keycloak version, when the LDAP provider was configured with <code>Import Users</code> OFF, it was possible to update the
+user even if some of non-LDAP mapped attributes were changed. This situation resulted in confusing behavior, when the attribute appeared to be updated,
+but it was not. In the current version, the update is not allowed to be performed at all if any non-LDAP mapped attributes are changed.</p>
+</div>
+<div class="paragraph">
+<p>This should not affect most of the deployments, but some can be affected under some rare circumstances. For example if you previously
+tried to update a user with the admin REST API and the user had some incorrect attribute changes, the update was possible. With the
+current version, the update is not possible and you will be immediately informed about the reason.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="usermodel-changes"><a class="anchor" href="#usermodel-changes"></a>UserModel changes</h4>
+<div class="paragraph">
+<p>The fields <code>username</code>, <code>email</code>, <code>firstName</code> and <code>lastName</code> in the <code>UserModel</code> are migrated to custom attributes as a preparation for adding more sophisticated user profiles to Keycloak in an upcoming version.
+If a database contains users with custom attributes of that exact name, the custom attributes will need to be migrated before upgrading. This migration does not occur automatically. Otherwise, they will not be read from the database anymore and possibly deleted.
+This situation implies that the <code>username</code> can now also be accessed and set via <code>UserModel.getFirstAttribute(UserModel.USERNAME)</code>. Similar implications exist for other fields.
+Implementors of SPIs subclassing the <code>UserModel</code> directly or indirectly should ensure that the behavior between <code>setUsername</code> and <code>setSingleAttribute(UserModel.USERNAME, &#8230;&#8203;)</code> (and similar for the other fields) is consistent.
+Users of the policy evaluation feature have to adapt their policies if they use the number of attributes in their evaluations since every user will now have four new attributes by default.</p>
+</div>
+<div class="paragraph">
+<p>The public API of <code>UserModel</code> has not changed, so no changes to frontend resources or SPIs accessing user data should be necessary.
+The database has also not changed, yet.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="migrating-to-9-0-1"><a class="anchor" href="#migrating-to-9-0-1"></a>Migrating to 9.0.1</h3>
 <div class="sect3">
 <h4 id="legacy-promise-in-javascript-adapter"><a class="anchor" href="#legacy-promise-in-javascript-adapter"></a>Legacy promise in JavaScript adapter</h4>
@@ -1590,6 +1627,25 @@ to preserve compatibility with older client adapters. More details are available
 <p>It is no longer necessary to set promiseType in the JavaScript adapter, and both are available at the same time. It is
 recommended to update applications to use native promise API (<code>then</code> and <code>catch</code>) as soon as possible, as the legacy API
 (<code>success</code> and <code>error</code>) will be removed at some point.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="duplicated-top-level-groups"><a class="anchor" href="#duplicated-top-level-groups"></a>Duplicated top level groups</h4>
+<div class="paragraph">
+<p>Version 9.0.1 fixes a problem which could create duplicated top level groups in the realm. Nevertheless the existence
+of previous duplicated groups makes the upgrade process fail. The Keycloak server can be affected by this issue
+if it is using a H2, MariaDB, MySQL or PostgreSQL database. Before launching the upgrade, check if the server contains
+duplicated top level groups. For example the following SQL query can be executed at database level to list them:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) &gt; 1;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Only one top level group can exist in each realm with the same name. Duplicates should be reviewed and deleted before the
+upgrade. The error in the upgrade contains the message <code>Change Set META-INF/jpa-changelog-9.0.1.xml::9.0.1-
+KEYCLOAK-12579-add-not-null-constraint::keycloak failed.</code></p>
 </div>
 </div>
 </div>
@@ -1602,7 +1658,7 @@ recommended to update applications to use native promise API (<code>then</code> 
 is updated for a user.</p>
 </div>
 <div class="paragraph">
-<p>See the <a href="https://www.keycloak.org/docs/9.0/server_admin/#_user_locale_selection">Server Administration Guide</a> for more details.</p>
+<p>See the <a href="https://www.keycloak.org/docs/11.0/server_admin/#_user_locale_selection">Server Administration Guide</a> for more details.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1687,7 +1743,7 @@ through the RESTful Admin API.</p>
 </div>
 <div class="paragraph">
 <p>For now on, this capability is <strong>disabled</strong> by default and users should prefer to deploy scripts directly to the server. For more details,
-please take a look at <a href="https://www.keycloak.org/docs/9.0/server_development/#_script_providers">JavaScript Providers</a>.</p>
+please take a look at <a href="https://www.keycloak.org/docs/11.0/server_development/#_script_providers">JavaScript Providers</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1933,7 +1989,7 @@ or <code>resourceAccess</code> properties, you may need to increase the priority
 <div class="paragraph">
 <p>Audiences of all the clients, for which authenticated user has at least one client role in the token, are automatically added
 to the <code>aud</code> claim in the access token now. On the other hand, an access token may not automatically contain the audience of the
-frontend client, for which it was issued. Read the <a href="https://www.keycloak.org/docs/9.0/server_admin/#_audience">Server Administration Guide</a> for more details.</p>
+frontend client, for which it was issued. Read the <a href="https://www.keycloak.org/docs/11.0/server_admin/#_audience">Server Administration Guide</a> for more details.</p>
 </div>
 </div>
 </div>
@@ -2113,7 +2169,7 @@ from the Protocol Mapper details. Those switches were replaced by the Client Sco
 <p>We added support for UMA 2.0. This version of the UMA specification introduced some important changes on how permissions are obtained from the server.</p>
 </div>
 <div class="paragraph">
-<p>Here are the main changes introduced by UMA 2.0 support. See <a href="https://www.keycloak.org/docs/9.0/authorization_services/">Authorization Services Guide</a> for details.</p>
+<p>Here are the main changes introduced by UMA 2.0 support. See <a href="https://www.keycloak.org/docs/11.0/authorization_services/">Authorization Services Guide</a> for details.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -2121,18 +2177,18 @@ from the Protocol Mapper details. Those switches were replaced by the Client Sco
 <dd>
 <p>Prior to UMA 2.0 (UMA 1.0), client applications were using the Authorization API to obtain permissions from the server in the format of a RPT. The new version
 of UMA specification has removed the Authorization API which was also removed from Keycloak. In UMA 2.0, RPTs can now be obtained from the token endpoint by using a specific grant type.
-See <a href="https://www.keycloak.org/docs/9.0/authorization_services/#_service_obtaining_permissions">Authorization Services Guide</a> for details.</p>
+See <a href="https://www.keycloak.org/docs/11.0/authorization_services/#_service_obtaining_permissions">Authorization Services Guide</a> for details.</p>
 </dd>
 <dt class="hdlist1">Entitlement API was removed</dt>
 <dd>
 <p>With the introduction of UMA 2.0, we decided to leverage the token endpoint and UMA grant type to allow obtaining RPTs from Keycloak and
 avoid having different APIs. The functionality provided by the Entitlement API was kept the same and is still possible to obtain permissions for a set
 of one or more resources and scopes or all permissions from the server in case no resource or scope is provided.
-See <a href="https://www.keycloak.org/docs/9.0/authorization_services/#_service_obtaining_permissions">Authorization Services Guide</a> for details.</p>
+See <a href="https://www.keycloak.org/docs/11.0/authorization_services/#_service_obtaining_permissions">Authorization Services Guide</a> for details.</p>
 </dd>
 <dt class="hdlist1">Changes to UMA Discovery Endpoint</dt>
 <dd>
-<p>UMA Discovery document changed, see <a href="https://www.keycloak.org/docs/9.0/authorization_services/#_service_authorization_api">Authorization Services Guide</a> for details.</p>
+<p>UMA Discovery document changed, see <a href="https://www.keycloak.org/docs/11.0/authorization_services/#_service_authorization_api">Authorization Services Guide</a> for details.</p>
 </dd>
 <dt class="hdlist1">Changes to Keycloak Authorization JavaScript Adapter</dt>
 <dd>
@@ -2140,7 +2196,7 @@ See <a href="https://www.keycloak.org/docs/9.0/authorization_services/#_service_
 the same behavior as before. The main change is on how you invoke both <code>authorization</code> and <code>entitlement</code> methods which now
 expect a specific object type representing an authorization request. This new object type provides more flexibility on how
 permissions can be obtained from the server by supporting the different parameters supported by the UMA grant type.
-See <a href="https://www.keycloak.org/docs/9.0/authorization_services/#_enforcer_js_adapter">Authorization Services Guide</a> for details.</p>
+See <a href="https://www.keycloak.org/docs/11.0/authorization_services/#_enforcer_js_adapter">Authorization Services Guide</a> for details.</p>
 <div class="literalblock">
 <div class="content">
 <pre>One of the main changes introduced by this release is that you are no longer required to exchange access tokens with RPTs in
@@ -2710,7 +2766,7 @@ WildFly 8.2.0.Final is no longer supported for the server.</p>
 </div>
 <div class="paragraph">
 <p>You also need to update standalone.xml as the extension module and subsystem definition has changed.
-See <a href="https://www.keycloak.org/docs/9.0/securing_apps/">Securing Applications and Services Guide</a> for details.</p>
+See <a href="https://www.keycloak.org/docs/11.0/securing_apps/">Securing Applications and Services Guide</a> for details.</p>
 </div>
 </div>
 </div>
@@ -2996,7 +3052,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-27 15:26:41 UTC
+Last updated 2020-07-06 21:51:44 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

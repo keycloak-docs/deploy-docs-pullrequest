@@ -979,25 +979,25 @@ span.image img {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/getting_started/">Getting Started</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/getting_started/">Getting Started</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/server_installation/">Server Installation</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/server_installation/">Server Installation</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/securing_apps/">Securing Apps</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/securing_apps/">Securing Apps</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/server_admin/">Server Administration</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/server_admin/">Server Administration</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/server_development/">Server Developer</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/upgrading/">Upgrading</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/upgrading/">Upgrading</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/9.0/release_notes/">Release Notes</a></p>
+<p><a href="https://www.keycloak.org/docs/11.0/release_notes/">Release Notes</a></p>
 </li>
 </ul>
 </div>
@@ -1006,7 +1006,7 @@ span.image img {
 <div class="exampleblock top-menu-version">
 <div class="content">
 <div class="paragraph versionarchive">
-<p>Version <strong>9.0.4</strong> <em><a href="https://www.keycloak.org/docs/latest/authorization_services/">Click here for latest</a></em></p>
+<p>Version <strong>11.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/authorization_services/">Click here for latest</a></em></p>
 </div>
 </div>
 </div>
@@ -1217,7 +1217,7 @@ Keycloak provides some built-in <a href="#_enforcer_overview">Policy Enforcers</
 <p>Policies define the conditions that must be satisfied to access or perform operations on something (resource or scope), but they are not tied to what they are protecting. They are generic and can be reused to build permissions or even more complex policies.</p>
 </div>
 <div class="paragraph">
-<p>For instance,to allow access to a group of resources only for users granted with a role "User Premium", you can use RBAC (Role-based Access Control).</p>
+<p>For instance, to allow access to a group of resources only for users granted with a role "User Premium", you can use RBAC (Role-based Access Control).</p>
 </div>
 <div class="paragraph">
 <p>Keycloak provides a few built-in policy types (and their respective policy providers) covering the most common access control mechanisms. You can even create policies based on rules written using JavaScript.</p>
@@ -1488,7 +1488,7 @@ structure represents the resources and/or scopes being requested by a client, th
 </div>
 </div>
 <div class="paragraph">
-<p>Before you can use this tutorial, you need to complete the installation of Keycloak and create the initial admin user as shown in the <a href="https://www.keycloak.org/docs/9.0/getting_started/">Getting Started Guide</a> tutorial.
+<p>Before you can use this tutorial, you need to complete the installation of Keycloak and create the initial admin user as shown in the <a href="https://www.keycloak.org/docs/11.0/getting_started/">Getting Started Guide</a> tutorial.
 There is one caveat to this. You have to run a separate WildFly instance on the same machine as Keycloak Server. This separate instance will run your Java Servlet application. Because of this you will have to run the Keycloak under a different port so that there are no port conflicts when running on the same machine. Use the <code>jboss.socket.binding.port-offset</code> system property on the command line. The value of this property is a number that will be added to the base value of every port opened by Keycloak Server.</p>
 </div>
 <div class="paragraph">
@@ -1507,7 +1507,7 @@ There is one caveat to this. You have to run a separate WildFly instance on the 
 </div>
 </div>
 <div class="paragraph">
-<p>For more details about how to install and configure a WildFly, please follow the steps on the <a href="https://www.keycloak.org/docs/9.0/securing_apps/">Securing Applications and Services Guide</a> tutorial.</p>
+<p>For more details about how to install and configure a WildFly, please follow the steps on the <a href="https://www.keycloak.org/docs/11.0/securing_apps/">Securing Applications and Services Guide</a> tutorial.</p>
 </div>
 <div class="paragraph">
 <p>After installing and booting both servers you should be able to access Keycloak Admin Console at <a href="http://localhost:8180/auth/admin/" class="bare">http://localhost:8180/auth/admin/</a> and also the WildFly instance at
@@ -1624,14 +1624,13 @@ Click the <strong>User Enabled</strong> switch to <strong>On</strong>, and then 
 </li>
 <li>
 <p>Click <strong>Save</strong>. The Client Details page is displayed.</p>
+</li>
+<li>
+<p>On the Client Details page, select <strong>confidential</strong> in the <strong>Access Type</strong> field, change the <strong>Authorization Enabled</strong> switch to <strong>ON</strong>, and then click <strong>Save</strong>. A new <strong>Authorization</strong> tab is displayed for the client.</p>
 <div class="paragraph">
 <div class="title">Client Details</div>
 <p><span class="image"><img src="./keycloak-images/getting-started/hello-world/enable-authz.png" alt="Client Details"></span></p>
 </div>
-</li>
-<li>
-<p>On the Client Details page, select <strong>confidential</strong> in the <strong>Access Type</strong> field, change the <strong>Authorization Enabled</strong> switch to <strong>ON</strong>, and then click <strong>Save</strong>.
-A new <strong>Authorization</strong> tab is displayed for the client.</p>
 </li>
 <li>
 <p>Click the <strong>Authorization</strong> tab and an Authorization Settings page similar to the following is displayed:</p>
@@ -2601,7 +2600,7 @@ supported by Keycloak, and provides flexibility to write any policy based on the
 </td>
 <td class="content">
 By default, JavaScript Policies can not be uploaded to the server. You should prefer deploying your JS Policies directly to
-the server as described in <a href="https://www.keycloak.org/docs/9.0/server_development/#_script_providers">JavaScript Providers</a>. If you still want to use the
+the server as described in <a href="https://www.keycloak.org/docs/11.0/server_development/#_script_providers">JavaScript Providers</a>. If you still want to use the
 Keycloak Administration Console to manage your JS policies you should enable the <code>Upload Scripts</code> feature.
 </td>
 </tr>
@@ -2646,7 +2645,7 @@ can identify them more easily.</p>
 <div class="sect3">
 <h4 id="creating-a-js-policy-from-a-deployed-jar-file"><a class="anchor" href="#creating-a-js-policy-from-a-deployed-jar-file"></a>Creating a JS Policy from a Deployed JAR File</h4>
 <div class="paragraph">
-<p>Keycloak allows you to deploy a JAR file in order to deploy scripts to the server. Please, take a look at <a href="https://www.keycloak.org/docs/9.0/server_development/#_script_providers">JavaScript Providers</a>
+<p>Keycloak allows you to deploy a JAR file in order to deploy scripts to the server. Please, take a look at <a href="https://www.keycloak.org/docs/11.0/server_development/#_script_providers">JavaScript Providers</a>
 for more details.</p>
 </div>
 <div class="paragraph">
@@ -3254,7 +3253,7 @@ is the default behavior, the policy result will be kept as it is.</p>
 <p>Policies determine this by invoking the <code>grant()</code> or <code>deny()</code> methods on an <code>Evaluation</code> instance. By default, the state of the <code>Evaluation</code> instance is denied, which means that your policies must explicitly invoke the <code>grant()</code> method to indicate to the policy evaluation engine that permission should be granted.</p>
 </div>
 <div class="paragraph">
-<p>For more information about the Evaluation API see the <a href="https://www.keycloak.org/docs/9.0/api_documentation/">JavaDocs</a>.</p>
+<p>For more information about the Evaluation API see the <a href="https://www.keycloak.org/docs/11.0/api_documentation/">JavaDocs</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="the-evaluation-context"><a class="anchor" href="#the-evaluation-context"></a>The Evaluation Context</h4>
@@ -4943,7 +4942,7 @@ any user with a role <code>people-manager</code> should be granted with the <cod
 <div class="paragraph">
 <p>To enable start the server with
 <code>-Dkeycloak.profile.feature.upload_scripts=enabled</code>
-. For more details see <a href="https://www.keycloak.org/docs/9.0/server_installation/#profiles">Profiles</a>.</p>
+. For more details see <a href="https://www.keycloak.org/docs/11.0/server_installation/#profiles">Profiles</a>.</p>
 </div>
 </td>
 </tr>
@@ -6314,7 +6313,7 @@ It is strongly recommended that you enable TLS/HTTPS when accessing the Keycloak
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-27 15:26:19 UTC
+Last updated 2020-07-06 21:51:18 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
