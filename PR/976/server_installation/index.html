@@ -2211,7 +2211,7 @@ Issues related to authorization may exist just for some other versions of Infini
 </td>
 <td class="content">
 The <em>PUBLIC_IP_ADDRESS</em> below refers to the IP address or hostname, which can be used for your server to bind to. Note that
-every Infinispan server and Keycloak server needs to use different address. During example setup with all hosts on single laptop,
+every Infinispan server and Keycloak server needs to use different address. During example setup with all the servers running on the same host,
 you may need to add the option <code>-Djboss.bind.address.management=<em>PUBLIC_IP_ADDRESS</em></code> as every server needs to use also different management interface.
 But this option usually should be omitted in production environments to avoid the ability for remote access to your server. For more information,
 see the <a href="http://docs.wildfly.org/20/Admin_Guide.html#Interfaces_and_ports"><em>WildFly 20 Documentation</em></a>.
@@ -2406,7 +2406,7 @@ In production, you can have more Infinispan servers in every data center. You ju
 <p>The configuration of distributed cache <code>authenticationSessions</code> and other caches is left unchanged.</p>
 </li>
 <li>
-<p>It is recommended to add the <code>remoteStoreSecurityEnabled</code> property with value <code>false</code> (or eventually <code>true</code> if you enabled security
+<p>It is recommended to add the <code>remoteStoreSecurityEnabled</code> property with the value <code>false</code> (or eventually <code>true</code> if you enabled security
 for the Infinispan servers as described above) to the <code>connectionsInfinispan</code> SPI in the <code>keycloak-server</code> subsystem:</p>
 <div class="listingblock">
 <div class="content">
@@ -7294,7 +7294,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-10 08:55:38 UTC
+Last updated 2020-07-10 09:05:39 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
