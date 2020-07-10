@@ -1636,13 +1636,14 @@ section to handle the migration of configuration files automatically.</p>
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 <li>
-<p>It is recommended to use <code>protocolVersion</code> property added to the <code>remote-store</code> under configuration of infinispan caches. When
-connecting to the Infinispan server 9.4.18, the recommended version of the hotrod protocol version is 2.9 as the infinispan library
-version differs among Keycloak server and Infinispan server. For more details, see the Cross-dc documentation.</p>
+<p>It is recommended to use the <code>protocolVersion</code> property added tp the <code>remote-store</code> element when configuring Infinispan caches.
+When connecting to the Infinispan server 9.4.18, the recommended version of the hotrod protocol version is 2.9 as the Infinispan
+library version differs among Keycloak server and Infinispan server. For more details, see the
+Cross-Datacenter documentation.</p>
 </li>
 <li>
 <p>It is recommended to use <code>remoteStoreSecurityEnabled</code> property under <code>connectionsInfinispan</code> subsystem. For more details,
-see the Cross-dc documentation.</p>
+see the Cross-Datacenter documentation.</p>
 </li>
 </ul>
 </div>
@@ -3111,7 +3112,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-10 07:38:02 UTC
+Last updated 2020-07-10 08:55:42 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
