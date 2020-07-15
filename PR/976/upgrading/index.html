@@ -797,6 +797,7 @@ span.image img {
 <li><a href="#upgrade-to-wildfly-20">Upgrade to Wildfly 20</a></li>
 <li><a href="#ldap-no-import-bugfix">LDAP no-import bugfix</a></li>
 <li><a href="#usermodel-changes">UserModel changes</a></li>
+<li><a href="#instagram-idp-migrated-to-new-the-api">Instagram IdP migrated to new the API</a></li>
 </ul>
 </li>
 <li><a href="#migrating-to-9-0-1">Migrating to 9.0.1</a>
@@ -1676,6 +1677,21 @@ Users of the policy evaluation feature have to adapt their policies if they use 
 <div class="paragraph">
 <p>The public API of <code>UserModel</code> has not changed, so no changes to frontend resources or SPIs accessing user data should be necessary.
 The database has also not changed, yet.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="instagram-idp-migrated-to-new-the-api"><a class="anchor" href="#instagram-idp-migrated-to-new-the-api"></a>Instagram IdP migrated to new the API</h4>
+<div class="paragraph">
+<p>Instagram IdP now uses new API as the old legacy API was deprecated. This requires getting new API credentials. For details,
+please refer to the <a href="https://www.keycloak.org/docs/11.0/server_admin/#instagram">Server Administration Guide</a>.</p>
+</div>
+<div class="paragraph">
+<p>Special attention is required for existing users that use Instagram IdP, specially the ones for whom it is the only authentication
+option. Such users have to login to Keycloak using Instagram IdP before September 30th, 2020. After that day they&#8217;ll have
+to use a different authentication method (like password) to login to manually update their Instagram social link, or create
+a new account in Keycloak. This is because Instagram user IDs are not compatible between the old and new API, however the
+new API temporarily returns both new and old user IDs to allow migration. Keycloak automatically migrates the ID once user
+logs in.</p>
 </div>
 </div>
 </div>
@@ -3112,7 +3128,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-10 09:05:43 UTC
+Last updated 2020-07-15 13:48:18 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
