@@ -794,6 +794,7 @@ span.image img {
 <ul class="sectlevel2">
 <li><a href="#migrating-to-11-0-0">Migrating to 11.0.0</a>
 <ul class="sectlevel3">
+<li><a href="#upgrade-to-wildfly-20">Upgrade to Wildfly 20</a></li>
 <li><a href="#ldap-no-import-bugfix">LDAP no-import bugfix</a></li>
 <li><a href="#usermodel-changes">UserModel changes</a></li>
 <li><a href="#instagram-idp-migrated-to-new-the-api">Instagram IdP migrated to new the API</a></li>
@@ -1612,6 +1613,47 @@ Keycloak server version.</p>
 <div class="sect2">
 <h3 id="migrating-to-11-0-0"><a class="anchor" href="#migrating-to-11-0-0"></a>Migrating to 11.0.0</h3>
 <div class="sect3">
+<h4 id="upgrade-to-wildfly-20"><a class="anchor" href="#upgrade-to-wildfly-20"></a>Upgrade to Wildfly 20</h4>
+<div class="paragraph">
+<p>The Keycloak server was upgraded to use Wildfly 20 as the underlying container. This does not directly involve any
+specific Keycloak server functionality, but there are few changes related to the migration, which are worth mentioning.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Dependency updates</dt>
+<dd>
+<p>The dependencies were updated to the versions used by Wildfly 20 server. For example, Infinispan is now 10.1.8.Final.</p>
+</dd>
+<dt class="hdlist1">Configuration changes</dt>
+<dd>
+<p>There are few configuration changes in the <code>standalone(-ha).xml</code> and <code>domain.xml</code> files. You should follow the <a href="#_install_new_version">Upgrading Keycloak server</a>
+section to handle the migration of configuration files automatically.</p>
+</dd>
+<dt class="hdlist1">Cross-Datacenter Replication changes</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
+not guaranteed as they are not tested anymore.</p>
+</li>
+<li>
+<p>It is recommended to use the <code>protocolVersion</code> property added to the <code>remote-store</code> element when configuring Infinispan caches.
+When connecting to the Infinispan server 9.4.18, the recommended version of the hotrod protocol version is 2.9 as the Infinispan
+library version differs among Keycloak server and Infinispan server. For more details, see the
+Cross-Datacenter documentation.</p>
+</li>
+<li>
+<p>It is recommended to use <code>remoteStoreSecurityEnabled</code> property under <code>connectionsInfinispan</code> subsystem. For more details,
+see the Cross-Datacenter documentation.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
 <h4 id="ldap-no-import-bugfix"><a class="anchor" href="#ldap-no-import-bugfix"></a>LDAP no-import bugfix</h4>
 <div class="paragraph">
 <p>In the previous Keycloak version, when the LDAP provider was configured with <code>Import Users</code> OFF, it was possible to update the
@@ -1769,7 +1811,7 @@ section to handle the migration of configuration files automatically.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.16. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 </ul>
@@ -1860,7 +1902,7 @@ section to handle the migration of configuration files automatically.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.16. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 </ul>
@@ -1876,7 +1918,7 @@ not guaranteed as we don&#8217;t test it anymore.</p>
 <h4 id="upgrade-to-wildfly-16"><a class="anchor" href="#upgrade-to-wildfly-16"></a>Upgrade to Wildfly 16</h4>
 <div class="paragraph">
 <p>The Keycloak server was upgraded to use Wildfly 16 as the underlying container. This does not directly involve any
-specific Keycloak server functionality, but there are few changes related to the migration, which worth mentioning.</p>
+specific Keycloak server functionality, but there are few changes related to the migration, which are worth mentioning.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -1894,7 +1936,7 @@ section to handle the migration of configuration files automatically.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.16. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 </ul>
@@ -1955,7 +1997,7 @@ section to handle the migration of configuration files automatically.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.16. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 </ul>
@@ -2085,7 +2127,7 @@ section to handle the migration of configuration files automatically.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.16. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 </ul>
@@ -2130,7 +2172,7 @@ changes on your own, here is a list of the most important changes:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.16. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 <li>
@@ -3095,7 +3137,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-20 15:52:50 UTC
+Last updated 2020-07-22 17:10:53 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
