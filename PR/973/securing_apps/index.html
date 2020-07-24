@@ -8040,7 +8040,7 @@ It can only be invoked by confidential clients.</p>
 <h4 id="validating-access-tokens"><a class="anchor" href="#validating-access-tokens"></a>2.6.2. Validating Access Tokens</h4>
 <div class="paragraph">
 <p>If you need to manually validate access tokens issued by Keycloak you can invoke the <a href="#_token_introspection_endpoint">Introspection Endpoint</a>.
-The downside to this approach is that you have to make a network invocation to the Keycloak server.  This can be slow and possibily overload the
+The downside to this approach is that you have to make a network invocation to the Keycloak server.  This can be slow and possibly overload the
 server if you have too many validation requests going on at the same time.  Keycloak issued access tokens are <a href="https://tools.ietf.org/html/rfc7519">JSON Web Tokens (JWT)</a> digitally signed and encoded using <a href="https://www.rfc-editor.org/rfc/rfc7515.txt">JSON Web Signature (JWS)</a>.
 Because they are encoded in this way, this allows you to locally validate access tokens using the public key of the issuing realm.  You can either hard code the
 realm&#8217;s public key in your validation code, or lookup and cache the public key using the <a href="#_certificate_endpoint">certificate endpoint</a> with the Key ID (KID) embedded within the
@@ -11959,7 +11959,7 @@ If it is an external token, this parameter may or may not have to be specified d
 <dt class="hdlist1">requested_token_type</dt>
 <dd>
 <p><em>OPTIONAL.</em> This parameter represents the type of token the client wants to exchange for.  Currently only oauth
-and OpenID Connect token types are supported.  The default value for this depends on whether the
+and OpenID Connect token types are supported.  The default value for this depends on whether it
 is <code>urn:ietf:params:oauth:token-type:refresh_token</code> in which case you will be returned both an access token and refresh
 token within the response.  Other appropriate values are <code>urn:ietf:params:oauth:token-type:access_token</code> and <code>urn:ietf:params:oauth:token-type:id_token</code></p>
 </dd>
@@ -12551,7 +12551,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-23 18:46:12 UTC
+Last updated 2020-07-24 21:38:49 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
