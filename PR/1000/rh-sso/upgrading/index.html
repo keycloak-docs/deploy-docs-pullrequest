@@ -1,0 +1,830 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Upgrading Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This book is a guide to upgrading your application from a previous version of Red Hat Single Sign-On 7.4."/><link rel="next" href="#intro" title="Chapter 1. Introduction"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140684032395104"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On</span> <span class="productnumber">7.4</span></div><div><h1 class="title">Upgrading Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On 7.4</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services </span></div></div><div><a href="#idm140684035725744">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+				This book is a guide to upgrading your application from a previous version of Red Hat Single Sign-On 7.4.
+			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="chapter"><a href="#intro">1. Introduction</a></span><ul><li><span class="section"><a href="#about_upgrades">1.1. About Upgrades</a></span><ul><li><span class="section"><a href="#major_upgrades">1.1.1. Major Upgrades</a></span></li><li><span class="section"><a href="#minor_updates">1.1.2. Minor Updates</a></span></li><li><span class="section"><a href="#micro_updates">1.1.3. Micro Updates</a></span></li></ul></li><li><span class="section"><a href="#migration_from_keycloak">1.2. Migration from Keycloak</a></span></li></ul></li><li><span class="chapter"><a href="#release_changes">2. Changes</a></span><ul><li><span class="section"><a href="#rh_sso_7_4">2.1. RH SSO 7.4</a></span><ul><li><span class="section"><a href="#upgrade_to_eap_7_3">2.1.1. Upgrade to EAP 7.3</a></span></li><li><span class="section"><a href="#authentication_flows_changes">2.1.2. Authentication flows changes</a></span></li><li><span class="section"><a href="#duplicated_top_level_groups">2.1.3. Duplicated top level groups</a></span></li><li><span class="section"><a href="#user_credentials_changes">2.1.4. User credentials changes</a></span></li><li><span class="section"><a href="#new_optional_client_scope">2.1.5. New optional client scope</a></span></li><li><span class="section"><a href="#improved_handling_of_user_locale">2.1.6. Improved handling of user locale</a></span></li><li><span class="section"><a href="#legacy_promise_in_javascript_adapter">2.1.7. Legacy promise in JavaScript adapter</a></span></li><li><span class="section"><a href="#deploying_scripts_to_the_server">2.1.8. Deploying Scripts to the Server</a></span></li><li><span class="section"><a href="#client_credentials_in_the_javascript_adapter">2.1.9. Client Credentials in the JavaScript adapter</a></span></li><li><span class="section"><a href="#new_default_hostname_provider">2.1.10. New Default Hostname provider</a></span></li><li><span class="section"><a href="#deprecated_or_removed_features">2.1.11. Deprecated or removed features</a></span></li><li><span class="section"><a href="#authorization_services_drools_policy">2.1.12. Authorization Services Drools Policy</a></span></li></ul></li><li><span class="section"><a href="#rh_sso_7_3">2.2. RH-SSO 7.3</a></span><ul><li><span class="section"><a href="#changes_to_authorization_services">2.2.1. Changes to Authorization Services</a></span></li><li><span class="section"><a href="#client_templates_changed_to_client_scopes">2.2.2. Client Templates changed to Client Scopes</a></span></li><li><span class="section"><a href="#new_default_client_scopes">2.2.3. New default client scopes</a></span></li><li><span class="section"><a href="#upgrade_to_eap_7_2">2.2.4. Upgrade to EAP 7.2</a></span></li><li><span class="section"><a href="#hostname_configuration">2.2.5. Hostname configuration</a></span></li><li><span class="section"><a href="#javascipt_adapter_promise">2.2.6. JavaScipt Adapter Promise</a></span></li><li><span class="section"><a href="#microsoft_identity_provider_updated_to_use_the_microsoft_graph_api">2.2.7. Microsoft Identity Provider updated to use the Microsoft Graph API</a></span></li><li><span class="section"><a href="#google_identity_provider_updated_to_use_google_sign_in_authentication_system">2.2.8. Google Identity Provider updated to use Google Sign-in authentication system</a></span></li><li><span class="section"><a href="#linkedin_social_broker_updated_to_version_2_of_linkedin_apis">2.2.9. LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs</a></span></li></ul></li><li><span class="section"><a href="#rh_sso_7_2">2.3. RH-SSO 7.2</a></span><ul><li><span class="section"><a href="#new_password_hashing_algorithms">2.3.1. New Password Hashing algorithms</a></span></li><li><span class="section"><a href="#id_token_requires_scope_openid">2.3.2. ID Token requires scope=openid</a></span></li><li><span class="section"><a href="#microsoft_sql_server_requires_extra_dependency">2.3.3. Microsoft SQL Server requires extra dependency</a></span></li><li><span class="section"><a href="#added_session_state_parameter_to_openid_connect_authentication_response">2.3.4. Added session_state parameter to OpenID Connect Authentication Response</a></span></li><li><span class="section"><a href="#microsoft_identity_provider_updated_to_use_the_microsoft_graph_api_2">2.3.5. Microsoft Identity Provider updated to use the Microsoft Graph API</a></span></li><li><span class="section"><a href="#google_identity_provider_updated_to_use_google_sign_in_authentication_system_2">2.3.6. Google Identity Provider updated to use Google Sign-in authentication system</a></span></li><li><span class="section"><a href="#linkedin_social_broker_updated_to_version_2_of_linkedin_apis_2">2.3.7. LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs</a></span></li></ul></li><li><span class="section"><a href="#rh_sso_7_1">2.4. RH-SSO 7.1</a></span><ul><li><span class="section"><a href="#realm_keys">2.4.1. Realm Keys</a></span></li><li><span class="section"><a href="#client_redirect_uri_matching">2.4.2. Client Redirect URI Matching</a></span></li><li><span class="section"><a href="#automatically_redirect_to_identity_provider">2.4.3. Automatically Redirect to Identity Provider</a></span></li><li><span class="section"><a href="#admin_rest_api">2.4.4. Admin REST API</a></span></li><li><span class="section"><a href="#server_configuration">2.4.5. Server Configuration</a></span></li><li><span class="section"><a href="#key_encryption_algorithm_in_saml_assertions">2.4.6. Key Encryption Algorithm in SAML Assertions</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#upgrading">3. Upgrading Red Hat Single Sign-On Server</a></span><ul><li><span class="section"><a href="#upgrading_minor">3.1. Minor Upgrades</a></span><ul><li><span class="section"><a href="#prep_migration">3.1.1. Preparing for Upgrading</a></span></li><li><span class="section"><a href="#install_new_version">3.1.2. Upgrading Red Hat Single Sign-On server</a></span></li><li><span class="section"><a href="#migrate_db">3.1.3. Migrating the Database</a></span></li><li><span class="section"><a href="#migrate_themes">3.1.4. Migrating Themes</a></span></li></ul></li><li><span class="section"><a href="#upgrading_micro">3.2. Micro Upgrades</a></span><ul><li><span class="section"><a href="#zip-patching">3.2.1. Patching a ZIP/Installer Installation</a></span></li><li><span class="section"><a href="#rpm-patching">3.2.2. Patching an RPM Installation</a></span></li><li><span class="section"><a href="#patching_local_maven">3.2.3. Patching a local Maven installation</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#upgrading_red_hat_single_sign_on_adapters">4. Upgrading Red Hat Single Sign-On Adapters</a></span><ul><li><span class="section"><a href="#compatibility_with_older_adapters">4.1. Compatibility with older adapters</a></span></li><li><span class="section"><a href="#upgrade_eap_adapter">4.2. Upgrading the EAP Adapter</a></span></li><li><span class="section"><a href="#upgrade_js_adapter">4.3. Upgrading the JavaScript Adapter</a></span></li><li><span class="section"><a href="#upgrade_nodejs_adapter">4.4. Upgrading the Node.js Adapter</a></span></li></ul></li></ul></div><section class="chapter" id="intro"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Introduction</h1></div></div></div><p>
+			Red Hat Single Sign-On (RH-SSO) 7.4 is based on the Keycloak project and provides security for your web applications by providing Web single sign-on capabilities based on popular standards such as SAML 2.0, OpenID Connect, and OAuth 2.0. The Red Hat Single Sign-On Server can act as a SAML or OpenID Connect-based identity provider, mediating with your enterprise user directory or third-party SSO provider for identity information and your applications using standards-based tokens.
+		</p><p>
+			RH-SSO provides two operating modes: standalone server or managed domain. The standalone server operating mode represents running RH-SSO as a single server instance. The managed domain operating mode allows for the management of multiple RH-SSO instances from a single control point. The upgrade process differs depending on which operating mode has been implemented. Specific instructions for each mode are provided where applicable.
+		</p><p>
+			The purpose of this guide is to document the steps that are required to successfully upgrade from Red Hat Single Sign-On 7.x to Red Hat Single Sign-On 7.4.
+		</p><section class="section" id="about_upgrades"><div class="titlepage"><div><div><h2 class="title">1.1. About Upgrades</h2></div></div></div><section class="section" id="major_upgrades"><div class="titlepage"><div><div><h3 class="title">1.1.1. Major Upgrades</h3></div></div></div><p>
+					A major upgrade or migration is required when RH-SSO is upgraded from one major release to another, for example, from Red Hat Single Sign-On 7.2 to Red Hat Single Sign-On 8.0. There may be breaking API changes between major releases that could require rewriting parts of applications or server extensions.
+				</p></section><section class="section" id="minor_updates"><div class="titlepage"><div><div><h3 class="title">1.1.2. Minor Updates</h3></div></div></div><p>
+					Red Hat Single Sign-On periodically provides point releases, which are minor updates that include bug fixes, security fixes, and new features. If you plan to upgrade from one Red Hat Single Sign-On point release to another, for example, from Red Hat Single Sign-On 7.3 to Red Hat Single Sign-On 7.4, code changes should not be required for applications or custom server extensions as long as no private, unsupported, or tech preview APIs are used.
+				</p></section><section class="section" id="micro_updates"><div class="titlepage"><div><div><h3 class="title">1.1.3. Micro Updates</h3></div></div></div><p>
+					Red Hat Single Sign-On 7.4 also periodically provides micro releases that contain bug and security fixes. Micro releases increment the minor release version by the last digit, for example from 7.4.0 to 7.4.1. These releases do not require migration and should not impact the server configuration files. The patch management system for ZIP installations can also rollback the patch and server configuration.
+				</p><p>
+					A micro release only contains the artifacts that have changed. For example if Red Hat Single Sign-On 7.4.1 contains changes to the server and the JavaScript adapter, but not the EAP adapter, only the server and JavaScript adapter are released and require updating.
+				</p></section></section><section class="section" id="migration_from_keycloak"><div class="titlepage"><div><div><h2 class="title">1.2. Migration from Keycloak</h2></div></div></div><p>
+				You can migrate to Red Hat Single Sign-On, the supported Red Hat product, from Keycloak, the community project.
+			</p><div class="itemizedlist"><p class="title"><strong>Prerequisites</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+						To learn about new features before the upgrade, review the <a class="link" href="#release_changes" title="Chapter 2. Changes">changes</a>.
+					</li><li class="listitem">
+						Verify that you have installed the correct version of Keycloak as a starting point. To migrate to Red Hat Single Sign-On 7.4, you need Keycloak 9.0.x.
+					</li></ul></div><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						Perform the <a class="link" href="#upgrading_minor" title="3.1. Minor Upgrades">Minor Upgrades</a> procedure. Although this procedure is labelled <span class="strong strong"><strong>Minor Upgrade</strong></span>, the same steps apply for this migration.
+					</li><li class="listitem">
+						Perform the <a class="link" href="#upgrade_adapters">Adapter Upgrade procedure</a>.
+					</li></ol></div></section></section><section class="chapter" id="release_changes"><div class="titlepage"><div><div><h1 class="title">Chapter 2. Changes</h1></div></div></div><p>
+			Review these changes carefully before upgrading.
+		</p><section class="section" id="rh_sso_7_4"><div class="titlepage"><div><div><h2 class="title">2.1. RH SSO 7.4</h2></div></div></div><p>
+				The following changes have occurred from Red Hat Single Sign-On 7.3 to Red Hat Single Sign-On 7.4.
+			</p><section class="section" id="upgrade_to_eap_7_3"><div class="titlepage"><div><div><h3 class="title">2.1.1. Upgrade to EAP 7.3</h3></div></div></div><p>
+					The Red Hat Single Sign-On server was upgraded to use EAP 7.3 as the underlying container. This change does not directly involve any specific Red Hat Single Sign-On server functionality, but a few changes relate to the migration.
+				</p><section class="section" id="dependency_updates"><div class="titlepage"><div><div><h4 class="title">2.1.1.1. Dependency updates</h4></div></div></div><p>
+						The dependencies were updated to the versions used by EAP 7.3 server. For example, the Infinispan component version is now 9.3.1.Final.
+					</p></section><section class="section" id="configuration_changes"><div class="titlepage"><div><div><h4 class="title">2.1.1.2. Configuration changes</h4></div></div></div><p>
+						There are a few configuration changes in the standalone(-ha).xml and domain.xml files. Follow the Upgrading the Red Hat Single Sign-On server section to handle the migration of configuration files automatically.
+					</p></section><section class="section" id="cross_datacenter_replication_changes"><div class="titlepage"><div><div><h4 class="title">2.1.1.3. Cross-Datacenter replication changes</h4></div></div></div><p>
+						You will need to upgrade JDG to version 7.3.5. The older version may still work, but it is not tested so it is not guaranteed to work.
+					</p></section></section><section class="section" id="authentication_flows_changes"><div class="titlepage"><div><div><h3 class="title">2.1.2. Authentication flows changes</h3></div></div></div><p>
+					We did some refactoring and improvements related to the authentication flows, which requires attention during migration.
+				</p><section class="section" id="required_and_alternative_executions_not_supported_at_same_authentication_flow"><div class="titlepage"><div><div><h4 class="title">2.1.2.1. REQUIRED and ALTERNATIVE executions not supported at same authentication flow</h4></div></div></div><p>
+						Previously, it was possible to have REQUIRED and ALTERNATIVE executions in the same authentication flow at the same level. There were some issues with this approach and we did the refactoring in the Authentication SPI, which means that this is no longer valid. If ALTERNATIVE and REQUIRED executions are configured at the same level, the ALTERNATIVE executions are considered disabled.
+					</p><p>
+						So when migrating to this version, your existing authentication flows will be migrated but retain the behavior of the previous version. If an authentication flow contains ALTERNATIVE executions at the same level as REQUIRED executions, the ALTERNATIVE executions are added to the separate REQUIRED subflow.
+					</p><p>
+						This strategy should ensure the same or similar behavior of the each authentication flow as in the previous version. However, you may review the configuration of your authentication flow and double check that it works as expected. This recommendation applies in particular for customized authentication flows with custom authenticator implementations.
+					</p></section><section class="section" id="optional_execution_requirement_removed"><div class="titlepage"><div><div><h4 class="title">2.1.2.2. OPTIONAL execution requirement removed</h4></div></div></div><p>
+						Regarding migration, the most important change is removing support for the OPTIONAL requirement from authentication executions and replacing it with the CONDITIONAL requirement, which allows more flexibility.
+					</p><p>
+						OPTIONAL authenticators configured in the previous version are replaced with the CONDITIONAL subflows. These subflows have the Condition - User Configured condition configured as first execution, and the previously OPTIONAL authenticator (for example OTP Form) as second execution. For the user, the behavior during authentication matches the behavior of the previous version.
+					</p></section><section class="section" id="spi_changes"><div class="titlepage"><div><div><h4 class="title">2.1.2.3. SPI Changes</h4></div></div></div><p>
+						Some changes exist in the Java Authentication SPI and Credential Provider SPI.
+					</p><p>
+						The interface Authenticator is not changed, but you may be affected if you develop advanced authenticators that introduce some new credential types (subclasses of CredentialModel). Changes exist on the CredentialProvider interface and introduction of some new interfaces such as CredentialValidator.
+					</p><p>
+						Also, you may be affected if your authenticator supported the OPTIONAL execution requirement. It is recommended that you double check the latest authentication examples in the server development guide for more details.
+					</p></section><section class="section" id="freemarker_template_changes"><div class="titlepage"><div><div><h4 class="title">2.1.2.4. Freemarker template changes</h4></div></div></div><p>
+						Changes exist in the freemarker templates. You may be affected if you have your own theme with custom freemarker templates for login forms or some account forms, especially for the forms related to OTP. We recommend that you review the changes in the Freemarker templates in this version and align your templates according to it.
+					</p></section></section><section class="section" id="duplicated_top_level_groups"><div class="titlepage"><div><div><h3 class="title">2.1.3. Duplicated top level groups</h3></div></div></div><p>
+					This release fixes a problem which could create duplicated top level groups in the realm. Nevertheless the existence of previous duplicated groups makes the upgrade process fail. The Red Hat Single Sign-On server can be affected by this issue if it is using an H2, MariaDB, MySQL or PostgreSQL database. Before launching the upgrade, check if the server contains duplicated top level groups. For example, the following SQL query can be executed at database level to list them:
+				</p><pre class="screen">SELECT REALM_ID, NAME, COUNT(*) FROM KEYCLOAK_GROUP WHERE PARENT_GROUP is NULL GROUP BY REALM_ID, NAME HAVING COUNT(*) &gt; 1;</pre><p>
+					Only one top level group can exist in each realm with the same name. Duplicates should be reviewed and deleted before the upgrade. The error in the upgrade contains the message <code class="literal">Change Set META-INF/jpa-changelog-9.0.1.xml::9.0.1- KEYCLOAK-12579-add-not-null-constraint::keycloak failed.</code>
+				</p></section><section class="section" id="user_credentials_changes"><div class="titlepage"><div><div><h3 class="title">2.1.4. User credentials changes</h3></div></div></div><p>
+					We added more flexibility around storing user credentials. Among other things, every user can have multiple credentials of the same type, such as multiple OTP credentials. Some changes exist in the database schema in relation to that, however the credentials from the previous version are updated to the new format. Users can still log in with the passwords or OTP credentials defined in the previous version.
+				</p></section><section class="section" id="new_optional_client_scope"><div class="titlepage"><div><div><h3 class="title">2.1.5. New optional client scope</h3></div></div></div><p>
+					We have added a microprofile-jwt optional client scope to handle the claims defined in the MicroProfile/JWT Auth Specification. This new client scope defines protocol mappers to set the username of the authenticated user to the upn claim and to set the realm roles to the groups claim.
+				</p></section><section class="section" id="improved_handling_of_user_locale"><div class="titlepage"><div><div><h3 class="title">2.1.6. Improved handling of user locale</h3></div></div></div><p>
+					A number of improvements have been made to how the locale for the login page is selected, as well as when the locale is updated for a user. See the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/server_administration_guide/">Server Administration Guide</a> for more details.
+				</p></section><section class="section" id="legacy_promise_in_javascript_adapter"><div class="titlepage"><div><div><h3 class="title">2.1.7. Legacy promise in JavaScript adapter</h3></div></div></div><p>
+					You no longer need to set promiseType in the JavaScript adapter, and both are available at the same time. It is recommended to update applications to use native promise API (then and catch) as soon as possible, as the legacy API (success and error) will be removed at some point.
+				</p></section><section class="section" id="deploying_scripts_to_the_server"><div class="titlepage"><div><div><h3 class="title">2.1.8. Deploying Scripts to the Server</h3></div></div></div><p>
+					Until now, administrators were allowed to upload scripts to the server through the Red Hat Single Sign-On Admin Console and the RESTful Admin API. This capability is now disabled. Users should deploy scripts directly to the server. For more details, review the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/server_developer_guide/#_script_providers">JavaScript Providers</a>.
+				</p></section><section class="section" id="client_credentials_in_the_javascript_adapter"><div class="titlepage"><div><div><h3 class="title">2.1.9. Client Credentials in the JavaScript adapter</h3></div></div></div><p>
+					In the previous releases, developers were allowed to provide client credentials to the JavaScript adapter. For now on, this capability was removed, because client-side apps are not safe to keep secrets. Ability to propagate prompt=none to default IDP
+				</p><p>
+					We have added a switch in the OIDC identity provider configuration named Accepts prompt=none forward from client to identify IDPs that are able to handle forwarded requests that include the prompt=none query parameter.
+				</p><p>
+					Until now, when receiving an auth request with prompt=none, a realm would return a login_required error if the user is not authenticated in the realm without checking if the user has been authenticated by an IDP. From now on, if a default IDP can be determined for the auth request (either by the use of the kc_idp_hint query param or by setting up a default IDP for the realm) and if the Accepts prompt=none forward from client switch has been enabled for the IDP, the auth request is forwarded to the IDP to check if the user has been authenticated there.
+				</p><p>
+					It is important to note that this switch is only taken into account if a default IDP is specified, in which case we know where to forward the auth request without having to prompt the user to select an IDP. If a default IDP cannot be determined, we cannot assume which one will be used to fulfill the auth request so the request forwarding is not performed.
+				</p></section><section class="section" id="new_default_hostname_provider"><div class="titlepage"><div><div><h3 class="title">2.1.10. New Default Hostname provider</h3></div></div></div><p>
+					The request and fixed hostname providers have been replaced with a new default hostname provider. The request and fixed hostname providers are now deprecated and we recommend that you switch to the default hostname provider as soon as possible.
+				</p></section><section class="section" id="deprecated_or_removed_features"><div class="titlepage"><div><div><h3 class="title">2.1.11. Deprecated or removed features</h3></div></div></div><p>
+					Certain features have a change in status.
+				</p><section class="section" id="deprecated_methods_in_token_representation_java_classes"><div class="titlepage"><div><div><h4 class="title">2.1.11.1. Deprecated methods in token representation Java classes</h4></div></div></div><p>
+						In the year 2038, an int is no longer able to hold the value of seconds since 1970, as such we are working on updating these to long values. In token representation there is a further issue. An int will by default result in 0 in the JSON representation, while it should not be included.
+					</p><p>
+						See the <a class="link" href="https://access.redhat.com/webassets/avalon/d/red-hat-single-sign-on/version-7.4/javadocs/">JavaDocs Documentation</a> for further details on exact methods that have been deprecated and replacement methods.
+					</p></section><section class="section" id="uploading_scripts"><div class="titlepage"><div><div><h4 class="title">2.1.11.2. Uploading scripts</h4></div></div></div><p>
+						Upload of scripts through admin rest endpoints/console is deprecated. It will be removed at a future release.
+					</p></section></section><section class="section" id="authorization_services_drools_policy"><div class="titlepage"><div><div><h3 class="title">2.1.12. Authorization Services Drools Policy</h3></div></div></div><p>
+					The Authorization Services Drools Policy has been removed.
+				</p></section></section><section class="section" id="rh_sso_7_3"><div class="titlepage"><div><div><h2 class="title">2.2. RH-SSO 7.3</h2></div></div></div><p>
+				The following changes have occurred from RH-SSO 7.2 to RH-SSO 7.3.
+			</p><section class="section" id="changes_to_authorization_services"><div class="titlepage"><div><div><h3 class="title">2.2.1. Changes to Authorization Services</h3></div></div></div><p>
+					We added support for UMA 2.0. This version of the UMA specification introduced some important changes on how permissions are obtained from the server.
+				</p><p>
+					Here are the main changes introduced by UMA 2.0 support. See <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/authorization_services_guide/">Authorization Services Guide</a> for details.
+				</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Authorization API was removed</span></dt><dd>
+								Prior to UMA 2.0 (UMA 1.0), client applications were using the Authorization API to obtain permissions from the server in the format of a RPT. The new version of UMA specification has removed the Authorization API which was also removed from Red Hat Single Sign-On. In UMA 2.0, RPTs can now be obtained from the token endpoint by using a specific grant type. See <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/authorization_services_guide/#_service_obtaining_permissions">Authorization Services Guide</a> for details.
+							</dd><dt><span class="term">Entitlement API was removed</span></dt><dd>
+								With the introduction of UMA 2.0, we decided to leverage the token endpoint and UMA grant type to allow obtaining RPTs from Red Hat Single Sign-On and avoid having different APIs. The functionality provided by the Entitlement API was kept the same and is still possible to obtain permissions for a set of one or more resources and scopes or all permissions from the server in case no resource or scope is provided. See <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/authorization_services_guide/#_service_obtaining_permissions">Authorization Services Guide</a> for details.
+							</dd><dt><span class="term">Changes to UMA Discovery Endpoint</span></dt><dd>
+								UMA Discovery document changed, see <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/authorization_services_guide/#_service_authorization_api">Authorization Services Guide</a> for details.
+							</dd><dt><span class="term">Changes to Red Hat Single Sign-On Authorization JavaScript Adapter</span></dt><dd><p class="simpara">
+								The Red Hat Single Sign-On Authorization JavaScript Adapter (keycloak-authz.js) changed in order to comply with the changes introduced by UMA 2.0 while keeping the same behavior as before. The main change is on how you invoke both <code class="literal">authorization</code> and <code class="literal">entitlement</code> methods which now expect a specific object type representing an authorization request. This new object type provides more flexibility on how permissions can be obtained from the server by supporting the different parameters supported by the UMA grant type. See <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/authorization_services_guide/#_enforcer_js_adapter">Authorization Services Guide</a> for details.
+							</p><pre class="literallayout">One of the main changes introduced by this release is that you are no longer required to exchange access tokens with RPTs in
+order to access resources protected by a resource server (when not using UMA). Depending on how the policy enforcer is configured on the resource server side, you can just send regular
+access tokens as a bearer token and permissions will still be enforced.</pre></dd><dt><span class="term">Changes to Red Hat Single Sign-On Authorization Client Java API</span></dt><dd>
+								When upgrading to the new version of Red Hat Single Sign-On Authorization Client Java API, you’ll notice that some representation classes were moved to a different package in <code class="literal">org.keycloak:keycloak-core</code>.
+							</dd></dl></div></section><section class="section" id="client_templates_changed_to_client_scopes"><div class="titlepage"><div><div><h3 class="title">2.2.2. Client Templates changed to Client Scopes</h3></div></div></div><p>
+					We added support for Client Scopes, which requires some attention during migration.
+				</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Client Templates changed to Client Scopes</span></dt><dd>
+								Client Templates were changed to Client Scopes. If you had any Client Templates, their protocol mappers and role scope mappings will be preserved.
+							</dd><dt><span class="term">Spaces replaced in the names</span></dt><dd>
+								Client templates with the space character in the name were renamed by replacing spaces with an underscore, because spaces are not allowed in the name of client scopes. For example, a client template <code class="literal">my template</code> will be changed to client scope <code class="literal">my_template</code>.
+							</dd><dt><span class="term">Linking Client Scopes to Clients</span></dt><dd>
+								For clients which had the client template, the corresponding client scope is now added as <code class="literal">Default Client Scope</code> to the client. So protocol mappers and role scope mappings will be preserved on the client.
+							</dd><dt><span class="term">Realm Default Client Scopes not linked with existing clients</span></dt><dd>
+								During the migration, the list of built-in client scopes is added to each realm as well as list of <code class="literal">Realm Default Client Scopes</code>. However, existing clients are NOT upgraded and new client scopes are NOT automatically added to them. Also all the protocol mappers and role scope mappings are kept on existing clients. In the new version, when you create a new client, it automatically has Realm Default Client Scopes attached to it and it does not have any protocol mappers attached to it. We did not change existing clients during migration as it would be impossible to properly detect customizations, which you will have for protocol mappers of the clients, for example. If you want to update existing clients (remove protocol mappers from them and link them with client scopes), you will need to do it manually.
+							</dd><dt><span class="term">Consents need to be confirmed again</span></dt><dd>
+								The client scopes change required the refactoring of consents. Consents now point to client scopes, not to roles or protocol mappers. Because of this change, the previously confirmed persistent consents by users are not valid anymore and users need to confirm the consent page again after the migration.
+							</dd><dt><span class="term">Some configuration switches removed</span></dt><dd>
+								The switch <code class="literal">Scope Param Required</code> was removed from Role Detail. The switches <code class="literal">Consent Required</code> and <code class="literal">Consent Text</code> were removed from the Protocol Mapper details. Those switches were replaced by the Client Scope feature.
+							</dd></dl></div></section><section class="section" id="new_default_client_scopes"><div class="titlepage"><div><div><h3 class="title">2.2.3. New default client scopes</h3></div></div></div><p>
+					We have added new realm default client scopes <code class="literal">roles</code> and <code class="literal">web-origins</code>. These client scopes contain protocol mappers to add the roles of the user and allowed web origins to the token. During migration, these client scopes should be automatically added to all the OpenID Connect clients as default client scopes. Hence no setup should be required after database migration is finished.
+				</p><section class="section" id="protocol_mapper_spi_addition"><div class="titlepage"><div><div><h4 class="title">2.2.3.1. Protocol mapper SPI addition</h4></div></div></div><p>
+						Related to this, there is a small addition in the (unsupported) Protocol Mappers SPI. You can be affected only if you implemented a custom ProtocolMapper. There is a new <code class="literal">getPriority()</code> method on the ProtocolMapper interface. The method has the default implementation set to return 0. If your protocol mapper implementation relies on the roles in the access token <code class="literal">realmAccess</code> or <code class="literal">resourceAccess</code> properties, you may need to increase the priority of your mapper.
+					</p></section><section class="section" id="audience_resolving"><div class="titlepage"><div><div><h4 class="title">2.2.3.2. Audience resolving</h4></div></div></div><p>
+						Audiences of all the clients, for which authenticated user has at least one client role in the token, are automatically added to the <code class="literal">aud</code> claim in the access token now. On the other hand, an access token may not automatically contain the audience of the frontend client, for which it was issued. Read the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/server_administration_guide/#_audience">Server Administration Guide</a> for more details.
+					</p></section></section><section class="section" id="upgrade_to_eap_7_2"><div class="titlepage"><div><div><h3 class="title">2.2.4. Upgrade to EAP 7.2</h3></div></div></div><p>
+					The Red Hat Single Sign-On server was upgraded to use EAP 7.2 as the underlying container. This does not directly involve any specific Red Hat Single Sign-On server functionality, but there are few changes related to the migration, which worth mentioning.
+				</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Dependency updates</span></dt><dd>
+								The dependencies were updated to the versions used by EAP 7.2 server. For example, Infinispan is now 9.3.1.Final.
+							</dd><dt><span class="term">Configuration changes</span></dt><dd>
+								There are few configuration changes in the <code class="literal">standalone(-ha).xml</code> and <code class="literal">domain.xml</code> files. You should follow the <a class="xref" href="#install_new_version" title="3.1.2. Upgrading Red Hat Single Sign-On server">Section 3.1.2, “Upgrading Red Hat Single Sign-On server”</a> section to handle the migration of configuration files automatically.
+							</dd><dt><span class="term">Cross-Datacenter Replication changes</span></dt><dd><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+										You will need to upgrade JDG server to version 7.3.5. The older version may still work, but it is not guaranteed as we don’t test it anymore.
+									</li><li class="listitem">
+										There is a need to add <code class="literal">protocolVersion</code> property with the value <code class="literal">2.6</code> to the configuration of the <code class="literal">remote-store</code> element in the Red Hat Single Sign-On configuration. This is required as there is a need to downgrade the version of HotRod protocol to be compatible with the version used by JDG 7.3.5.
+									</li></ul></div></dd></dl></div></section><section class="section" id="hostname_configuration"><div class="titlepage"><div><div><h3 class="title">2.2.5. Hostname configuration</h3></div></div></div><p>
+					In previous versions it was recommended to use a filter to specify permitted hostnames. It is now possible to set a fixed hostname which makes it easier to make sure the valid hostname is used and also allows internal applications to invoke Red Hat Single Sign-On through an alternative URL, for example an internal IP address. It is recommended that you switch to this approach in production.
+				</p></section><section class="section" id="javascipt_adapter_promise"><div class="titlepage"><div><div><h3 class="title">2.2.6. JavaScipt Adapter Promise</h3></div></div></div><p>
+					To use native JavaScript promise with the JavaScript adapter it is now required to set <code class="literal">promiseType</code> to <code class="literal">native</code> in the init options.
+				</p><p>
+					In the past if native promise was available a wrapper was returned that provided both the legacy Keycloak promise and the native promise. This was causing issues as the error handler was not always set prior to the native error event, which resulted in <code class="literal">Uncaught (in promise)</code> error.
+				</p></section><section class="section" id="microsoft_identity_provider_updated_to_use_the_microsoft_graph_api"><div class="titlepage"><div><div><h3 class="title">2.2.7. Microsoft Identity Provider updated to use the Microsoft Graph API</h3></div></div></div><p>
+					The Microsoft Identity Provider implementation in Red Hat Single Sign-On used to rely on the Live SDK endpoints for authorization and obtaining the user profile. From November 2018 onwards, Microsoft is removing support for the Live SDK API in favor of the new Microsoft Graph API. The Red Hat Single Sign-On identity provider has been updated to use the new endpoints so if this integration is in use make sure you upgrade to the latest Red Hat Single Sign-On version.
+				</p><p>
+					Legacy client applications registered under "Live SDK applications" won’t work with the Microsoft Graph endpoints due to changes in the id format of the applications. If you run into an error saying that the application identifier was not found in the directory, you will have to register the client application again in the <a class="link" href="https://account.live.com/developers/applications/create">Microsoft Application Registration</a> portal to obtain a new application id.
+				</p></section><section class="section" id="google_identity_provider_updated_to_use_google_sign_in_authentication_system"><div class="titlepage"><div><div><h3 class="title">2.2.8. Google Identity Provider updated to use Google Sign-in authentication system</h3></div></div></div><p>
+					The Google Identity Provider implementation in Red Hat Single Sign-On used to rely on the Google+ API endpoints endpoints for authorization and obtaining the user profile. From March 2019 onwards, Google is removing support for the Google+ API in favor of the new Google Sign-in authentication system. The Red Hat Single Sign-On identity provider has been updated to use the new endpoints so if this integration is in use make sure you upgrade to the latest Red Hat Single Sign-On version.
+				</p><p>
+					If you run into an error saying that the application identifier was not found in the directory, you will have to register the client application again in the <a class="link" href="https://console.developers.google.com/apis/credentials">Google API Console</a> portal to obtain a new application id and secret.
+				</p><p>
+					It is possible that you will need to adjust custom mappers for non-standard claims that were provided by Google+ user information endpoint and are provided under different name by Google Sign-in API. Please consult Google documentation for the most up-to-date information on available claims.
+				</p></section><section class="section" id="linkedin_social_broker_updated_to_version_2_of_linkedin_apis"><div class="titlepage"><div><div><h3 class="title">2.2.9. LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs</h3></div></div></div><p>
+					Accordingly with LinkedIn, all developers need to migrate to version 2.0 of their APIs and OAuth 2.0. As such, we have updated our LinkedIn Social Broker.
+				</p><p>
+					Existing deployments using this broker may start experiencing errors when fetching user’s profile using version 2 of LinkedIn APIs. This error may be related with the lack of permissions granted to the client application used to configure the broker which may not be authorized to access the Profile API or request specific OAuth2 scopes during the authentication process.
+				</p><p>
+					Even for newly created LinkedIn client applications, you need to make sure that the client is able to request the <code class="literal">r_liteprofile</code> and <code class="literal">r_emailaddress</code> OAuth2 scopes, at least, as well that the client application can fetch current member’s profile from the <code class="literal"><a class="link" href="https://api.linkedin.com/v2/me">https://api.linkedin.com/v2/me</a></code> endpoint.
+				</p><p>
+					Due to these privacy restrictions imposed by LinkedIn in regards to access to member’s information and the limited set of claims returned by the current member’s Profile API, the LinkedIn Social Broker is now using the member’s email address as the default username. That means that the <code class="literal">r_emailaddress</code> is always set when sending authorization requests during the authentication.
+				</p></section></section><section class="section" id="rh_sso_7_2"><div class="titlepage"><div><div><h2 class="title">2.3. RH-SSO 7.2</h2></div></div></div><p>
+				The following changes have occurred from RH-SSO 7.1 to RH-SSO 7.2.
+			</p><section class="section" id="new_password_hashing_algorithms"><div class="titlepage"><div><div><h3 class="title">2.3.1. New Password Hashing algorithms</h3></div></div></div><p>
+					We have added two new password hashing algorithms (pbkdf2-sha256 and pbkdf2-sha512). New realms will use the pbkdf2-sha256 hashing algorithm with 27500 hashing iterations. Since pbkdf2-sha256 is slightly faster than pbkdf2 the iterations was increased to 27500 from 20000.
+				</p><p>
+					Existing realms are upgraded if the password policy contains the default value for the hashing algorithm (not specified) and iteration (20000). If you have changed the hashing iterations, you need to manually change to pbkdf2-sha256 if you’d like to use the more secure hashing algorithm.
+				</p></section><section class="section" id="id_token_requires_scope_openid"><div class="titlepage"><div><div><h3 class="title">2.3.2. ID Token requires scope=openid</h3></div></div></div><p>
+					In RH-SSO 7.0, the ID Token was returned regardless if <code class="literal">scope=openid</code> query parameter was present or not in authorization request. This is incorrect according to the OpenID Connect specification.
+				</p><p>
+					In RH-SSO 7.1, we added this query parameter to adapters, but left the old behavior to accommodate migration.
+				</p><p>
+					In RH-SSO 7.2, this behavior has changed and the <code class="literal">scope=openid</code> query parameter is now required to mark the request as an OpenID Connect request. If this query parameter is omitted the ID Token will not be generated.
+				</p></section><section class="section" id="microsoft_sql_server_requires_extra_dependency"><div class="titlepage"><div><div><h3 class="title">2.3.3. Microsoft SQL Server requires extra dependency</h3></div></div></div><p>
+					Microsoft JDBC Driver 6.0 requires additional dependency added to the JDBC driver module. If you observe an <code class="literal">NoClassDefFoundError</code> error when using Microsoft SQL Server please add the following dependency to your JDBC driver <code class="literal">module.xml</code> file:
+				</p><pre class="programlisting language-xml">&lt;module name="javax.xml.bind.api"/&gt;</pre></section><section class="section" id="added_session_state_parameter_to_openid_connect_authentication_response"><div class="titlepage"><div><div><h3 class="title">2.3.4. Added session_state parameter to OpenID Connect Authentication Response</h3></div></div></div><p>
+					The OpenID Connect Session Management specification requires that the parameter <code class="literal">session_state</code> is present in the OpenID Connect Authentication Response.
+				</p><p>
+					In RH-SSO 7.1, we did not have this parameter, but now Red Hat Single Sign-On adds this parameter by default, as required by the specification.
+				</p><p>
+					However, some OpenID Connect / OAuth2 adapters, and especially older Red Hat Single Sign-On adapters (such as RH-SSO 7.1 and older), may have issues with this new parameter.
+				</p><p>
+					For example, the parameter will be always present in the browser URL after successful authentication to the client application. If you use RH-SSO 7.1 or a legacy OAuth2 / OpenID Connect adapter, it may be useful to disable adding the <code class="literal">session_state</code> parameter to the authentication response. This can be done for the particular client in the Red Hat Single Sign-On admin console, in client details in the section with <code class="literal">OpenID Connect Compatibility Modes</code>, described in <a class="xref" href="#compatibility_with_older_adapters" title="4.1. Compatibility with older adapters">Section 4.1, “Compatibility with older adapters”</a>. There is the <code class="literal">Exclude Session State From Authentication Response</code> switch, which can be turned on to prevent adding the <code class="literal">session_state</code> parameter to the Authentication Response.
+				</p></section><section class="section" id="microsoft_identity_provider_updated_to_use_the_microsoft_graph_api_2"><div class="titlepage"><div><div><h3 class="title">2.3.5. Microsoft Identity Provider updated to use the Microsoft Graph API</h3></div></div></div><p>
+					The Microsoft Identity Provider implementation in Red Hat Single Sign-On up to version 7.2.4 relies on the Live SDK endpoints for authorization and obtaining the user profile. From November 2018 onwards, Microsoft is removing support for the Live SDK API in favor of the new Microsoft Graph API. The Red Hat Single Sign-On identity provider has been updated to use the new endpoints so if this integration is in use make sure you upgrade to Red Hat Single Sign-On version 7.2.5 or later.
+				</p><p>
+					Legacy client applications registered under "Live SDK applications" won’t work with the Microsoft Graph endpoints due to changes in the id format of the applications. If you run into an error saying that the application identifier was not found in the directory, you will have to register the client application again in the <a class="link" href="https://account.live.com/developers/applications/create">Microsoft Application Registration</a> portal to obtain a new application id.
+				</p></section><section class="section" id="google_identity_provider_updated_to_use_google_sign_in_authentication_system_2"><div class="titlepage"><div><div><h3 class="title">2.3.6. Google Identity Provider updated to use Google Sign-in authentication system</h3></div></div></div><p>
+					The Google Identity Provider implementation in Red Hat Single Sign-On up to version 7.2.5 relies on the Google+ API endpoints endpoints for authorization and obtaining the user profile. From March 2019 onwards, Google is removing support for the Google+ API in favor of the new Google Sign-in authentication system. The Red Hat Single Sign-On identity provider has been updated to use the new endpoints so if this integration is in use make sure you upgrade to Red Hat Single Sign-On version 7.2.6 or later.
+				</p><p>
+					If you run into an error saying that the application identifier was not found in the directory, you will have to register the client application again in the <a class="link" href="https://console.developers.google.com/apis/credentials">Google API Console</a> portal to obtain a new application id and secret.
+				</p><p>
+					It is possible that you will need to adjust custom mappers for non-standard claims that were provided by Google+ user information endpoint and are provided under different name by Google Sign-in API. Please consult Google documentation for the most up-to-date information on available claims.
+				</p></section><section class="section" id="linkedin_social_broker_updated_to_version_2_of_linkedin_apis_2"><div class="titlepage"><div><div><h3 class="title">2.3.7. LinkedIn Social Broker Updated to Version 2 of LinkedIn APIs</h3></div></div></div><p>
+					Accordingly with LinkedIn, all developers need to migrate to version 2.0 of their APIs and OAuth 2.0. As such, we have updated our LinkedIn Social Broker so if this integration is in use make sure you upgrade to Red Hat Single Sign-On version 7.2.6 or later.
+				</p><p>
+					Existing deployments using this broker may start experiencing errors when fetching user’s profile using version 2 of LinkedIn APIs. This error may be related with the lack of permissions granted to the client application used to configure the broker which may not be authorized to access the Profile API or request specific OAuth2 scopes during the authentication process.
+				</p><p>
+					Even for newly created LinkedIn client applications, you need to make sure that the client is able to request the <code class="literal">r_liteprofile</code> and <code class="literal">r_emailaddress</code> OAuth2 scopes, at least, as well that the client application can fetch current member’s profile from the <code class="literal"><a class="link" href="https://api.linkedin.com/v2/me">https://api.linkedin.com/v2/me</a></code> endpoint.
+				</p><p>
+					Due to these privacy restrictions imposed by LinkedIn in regards to access to member’s information and the limited set of claims returned by the current member’s Profile API, the LinkedIn Social Broker is now using the member’s email address as the default username. That means that the <code class="literal">r_emailaddress</code> is always set when sending authorization requests during the authentication.
+				</p></section></section><section class="section" id="rh_sso_7_1"><div class="titlepage"><div><div><h2 class="title">2.4. RH-SSO 7.1</h2></div></div></div><p>
+				The following changes have occurred from RH-SSO 7.0 to RH-SSO 7.1.
+			</p><section class="section" id="realm_keys"><div class="titlepage"><div><div><h3 class="title">2.4.1. Realm Keys</h3></div></div></div><p>
+					For RH-SSO 7.0, only one set of keys could be associated with a realm. This meant that when changing the keys, all current cookies and tokens would be invalidated and all users would have to re-authenticate. For RH-SSO 7.1, support for multiple keys for one realm has been added. At any given time, one set of keys is the active set used for creating signatures, but there can be multiple keys used to verify signatures. This means that old cookies and tokens can be verified, then refreshed with the new signatures, allowing users to remain authenticated when keys are changed. There are also some changes to how keys are managed through the Admin Console and Admin REST API; for more details see <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/server_administration_guide/#realm_keys">Realm Keys</a> in the Server Administration Guide.
+				</p><p>
+					To allow seamless key rotation you must remove hard-coded keys from client adapters. The client adapters will automatically retrieve keys from the server as long as the realm key is not specified. Client adapters will also retrieve new keys automatically when keys are rotated.
+				</p></section><section class="section" id="client_redirect_uri_matching"><div class="titlepage"><div><div><h3 class="title">2.4.2. Client Redirect URI Matching</h3></div></div></div><p>
+					For RH-SSO 7.0, query parameters are ignored when matching valid redirect URIs for a client. For RH-SSO 7.1, query parameters are no longer ignored. If you need to include query parameters in the redirect URI you must specify the query parameters in the valid redirect URI for the client (for example, https://hostname/app/login?foo=bar) or use a wildcard (for example, https://hostname/app/login/*). Fragments are also no longer permitted in Valid Redirect URIs (that is, https://hostname/app#fragment).
+				</p></section><section class="section" id="automatically_redirect_to_identity_provider"><div class="titlepage"><div><div><h3 class="title">2.4.3. Automatically Redirect to Identity Provider</h3></div></div></div><p>
+					For RH-SSO 7.1, identity providers cannot be set as the default authentication provider. To automatically redirect to an identity provider for RH-SSO 7.1, you must now configure the identity provider redirector. For more information see <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.4/html-single/server_administration_guide/#default_identity_provider">Default Identity Provider</a> in the <span class="emphasis"><em>Server Administration Guide</em></span>. If you previously had an identity provider with the default authentication provider option set, this value is automatically used as the value for the identity provider redirector when the server is upgraded to RH-SSO 7.1.
+				</p></section><section class="section" id="admin_rest_api"><div class="titlepage"><div><div><h3 class="title">2.4.4. Admin REST API</h3></div></div></div><p>
+					For RH-SSO 7.0, paginated endpoints in the Admin REST API return all results if the maxResults query parameter was not specified. This could cause issues with a temporary high load and requests timing out when a large number of results were returned (for example, users). For RH-SSO 7.1, a maximum of 100 results are returned if a value for maxResults is not specified. You can return all results by specifying maxResults as -1.
+				</p></section><section class="section" id="server_configuration"><div class="titlepage"><div><div><h3 class="title">2.4.5. Server Configuration</h3></div></div></div><p>
+					For RH-SSO 7.0, server configuration is split between the keycloak-server.json file and the standalone/domain.xml or domain.xml file. For RH-SSO 7.1, the keycloak-server.json file has been removed and all server configuration is done through the standalone.xml or domain.xml file. The upgrading procedure for RH-SSO 7.1 automatically migrates the server configuration from the keycloak-server.json file to the standalone.xml or domain.xml file.
+				</p></section><section class="section" id="key_encryption_algorithm_in_saml_assertions"><div class="titlepage"><div><div><h3 class="title">2.4.6. Key Encryption Algorithm in SAML Assertions</h3></div></div></div><p>
+					For RH-SSO 7.1, keys in SAML assertions and documents are now encrypted using the RSA-OAEP encryption scheme. To use encrypted assertions, ensure your service providers support this encryption scheme. In the event that you have service providers that do not support RSA-OAEP, RH-SSO can be configured to use the legacy RSA-v1.5 encryption scheme by starting the server with the system property "keycloak.saml.key_trans.rsa_v1.5" set to true. If you do this, you should upgrade your service providers as soon as possible to be able to revert to the more secure RSA-OAEP encryption scheme.
+				</p></section></section></section><section class="chapter" id="upgrading"><div class="titlepage"><div><div><h1 class="title">Chapter 3. Upgrading Red Hat Single Sign-On Server</h1></div></div></div><p>
+			The upgrade or migration process for the Red Hat Single Sign-On server depends on the previous version of the software.
+		</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+					If you are upgrading to a new minor release, for example from 7.0.0 to 7.1.0, follow the steps in <a class="link" href="#upgrading_minor" title="3.1. Minor Upgrades">Minor Upgrades</a>.
+				</li><li class="listitem">
+					If you are migrating from Keycloak 9.0.x, follow the steps in <a class="link" href="#upgrading_minor" title="3.1. Minor Upgrades">Minor Upgrades</a>.
+				</li><li class="listitem">
+					If you are upgrading to a new micro release, for example from 7.1.0 to 7.1.1, follow the steps in <a class="link" href="#upgrading_micro" title="3.2. Micro Upgrades">Micro Upgrades</a>.
+				</li></ul></div><section class="section" id="upgrading_minor"><div class="titlepage"><div><div><h2 class="title">3.1. Minor Upgrades</h2></div></div></div><section class="section" id="prep_migration"><div class="titlepage"><div><div><h3 class="title">3.1.1. Preparing for Upgrading</h3></div></div></div><p>
+					Before you upgrade, be aware of the order in which you need to perform the upgrade steps. Also note potential issues that can occur within the upgrade process. In general, you must upgrade Red Hat Single Sign-On server first, and then upgrade the adapters.
+				</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+							Prior to applying the upgrade, handle any open transactions and delete the data/tx-object-store/ transaction directory.
+						</li><li class="listitem">
+							Back up the old installation (configuration, themes, and so on).
+						</li><li class="listitem">
+							Back up the database. For detailed information on how to back up the database, see the documentation for the relational database you are using.
+						</li><li class="listitem"><p class="simpara">
+							Upgrade Red Hat Single Sign-On server.
+						</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+									Testing the upgrade in a non-production environment first, to prevent any installation issues from being exposed in production, is a best practice.
+								</li><li class="listitem">
+									Be aware that after the upgrade the database will no longer be compatible with the old server
+								</li><li class="listitem">
+									Ensure the upgraded server is functional before upgrading adapters in production.
+								</li></ul></div></li><li class="listitem">
+							If you need to revert the upgrade, first restore the old installation, and then restore the database from the backup copy.
+						</li><li class="listitem">
+							Upgrade the adapters.
+						</li></ol></div></section><section class="section" id="install_new_version"><div class="titlepage"><div><div><h3 class="title">3.1.2. Upgrading Red Hat Single Sign-On server</h3></div></div></div><p>
+					It is important that you upgrade Red Hat Single Sign-On server before upgrading the adapters.
+				</p><p>
+					To upgrade Red Hat Single Sign-On server, complete the following steps:
+				</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+							Prior to applying the upgrade, handle any open transactions and delete the data/tx-object-store/ transaction directory.
+						</li><li class="listitem">
+							Download the new server archive
+						</li><li class="listitem">
+							Move the downloaded archive to the desired location.
+						</li><li class="listitem">
+							Extract the archive. This step installs a clean instance of the latest Red Hat Single Sign-On release.
+						</li><li class="listitem"><p class="simpara">
+							For standalone installations, copy the RHSSO_HOME/standalone/ directory from the previous installation over the directory in the new installation.
+						</p><p class="simpara">
+							For domain installations, copy the RHSSO_HOME/domain/ directory from the previous installation over the directory in the new installation.
+						</p><p class="simpara">
+							For domain installations, create the empty directory RHSSO_HOME/domain/deployments.
+						</p><p class="simpara">
+							NOTE: Files in the bin directory should not be overwritten by the files from previous versions. Changes should be made manually.
+						</p></li><li class="listitem">
+							Copy any custom modules that have been added to the modules directory.
+						</li><li class="listitem">
+							Run the applicable upgrade script below.
+						</li></ol></div><p>
+					To upgrade Red Hat Single Sign-On server RPM distribution, complete the following steps:
+				</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+							Prior to applying the upgrade, handle any open transactions and delete the /var/opt/rh/rh-sso7/lib/keycloak/standalone/data/tx-object-store/ transaction directory.
+						</li><li class="listitem"><p class="simpara">
+							Make sure you have subscribed to proper repositories containing JBOSS EAP and Red Hat Single Sign-On.
+						</p><pre class="literallayout">subscription-manager repos --enable=jb-eap-7.1-for-rhel-7-server-rpms
+subscription-manager repos --enable=rh-sso-7.2-for-rhel-7-server-rpms</pre><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+								To disable older product repositories for both JBOSS EAP and Red Hat Single Sign-On use:
+							</p><pre class="literallayout">subscription-manager repos --disable=&lt;OLDER_PRODUCT_REPO&gt;</pre><p>
+								To check the repositories use:
+							</p><pre class="literallayout">yum repolist</pre></div></div></li><li class="listitem"><p class="simpara">
+							The RPM upgrade process will not replace any of your modified configuration files, and will instead create .rpmnew files for the default configuration of the new Red Hat Single Sign-On version.
+						</p><p class="simpara">
+							To activate any new features in the new release, such as new subsystems, you must manually merge each .rpmnew file into your existing configuration files
+						</p></li><li class="listitem">
+							Copy any custom modules that have been added to the modules directory.
+						</li><li class="listitem"><p class="simpara">
+							Run the applicable upgrade script as described below.
+						</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+								Red Hat Single Sign-On RPM server distribution is using
+							</p><p>
+								<code class="literal">RHSSO_HOME=/opt/rh/rh-sso7/root/usr/share/keycloak</code>
+							</p><p>
+								Use it when calling migration scripts below.
+							</p></div></div></li></ol></div><section class="section" id="running_the_standalone_mode_upgrade_script"><div class="titlepage"><div><div><h4 class="title">3.1.2.1. Running the Standalone Mode Upgrade Script</h4></div></div></div><p>
+						To run the upgrade script for standalone mode, complete the following steps:
+					</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+								If you are using a different configuration file than the default one, edit the migration script to specify the new file name.
+							</li><li class="listitem">
+								Stop the server.
+							</li><li class="listitem"><p class="simpara">
+								Run the upgrade script:
+							</p><pre class="literallayout">bin/jboss-cli.sh --file=bin/migrate-standalone.cli</pre></li></ol></div></section><section class="section" id="running_the_standalone_high_availability_mode_upgrade_script"><div class="titlepage"><div><div><h4 class="title">3.1.2.2. Running the Standalone-High Availability Mode Upgrade Script</h4></div></div></div><p>
+						For standalone-high availability (HA) mode, all instances must be upgraded at the same time.
+					</p><p>
+						To run the upgrade script for standalone-HA mode, complete the following steps:
+					</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+								If you are using a different configuration file than the default one, edit the migration script to specify the new file name.
+							</li><li class="listitem">
+								Stop the server.
+							</li><li class="listitem"><p class="simpara">
+								Run the upgrade script:
+							</p><pre class="literallayout">bin/jboss-cli.sh --file=bin/migrate-standalone-ha.cli</pre></li></ol></div></section><section class="section" id="running_the_domain_mode_upgrade_script"><div class="titlepage"><div><div><h4 class="title">3.1.2.3. Running the Domain Mode Upgrade Script</h4></div></div></div><p>
+						For domain mode, all instances must be upgraded at the same time.
+					</p><p>
+						To run the upgrade script for domain mode, complete the following steps:
+					</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+								If you have changed the profile name, you must edit the upgrade script to change a variable near the beginning of the script.
+							</li><li class="listitem">
+								Edit the domain script to include the location of the keycloak-server.json file.
+							</li><li class="listitem">
+								Stop the server.
+							</li><li class="listitem"><p class="simpara">
+								Run the upgrade script on the domain controller only:
+							</p><pre class="literallayout">bin/jboss-cli.sh --file=bin/migrate-domain.cli</pre></li></ol></div></section><section class="section" id="running_the_domain_clustered_mode_upgrade_script"><div class="titlepage"><div><div><h4 class="title">3.1.2.4. Running the Domain-clustered Mode Upgrade Script</h4></div></div></div><p>
+						For domain-clustered mode, all instances must be upgraded at the same time.
+					</p><p>
+						To run the upgrade script for domain-clustered mode, complete the following steps:
+					</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+								If you have changed the profile name, you must edit the upgrade script to change a variable near the beginning of the script.
+							</li><li class="listitem">
+								Edit the domain-clustered script to include the location of the keycloak-server.json file.
+							</li><li class="listitem">
+								Stop the server.
+							</li><li class="listitem"><p class="simpara">
+								Run the upgrade script on the domain controller only:
+							</p><pre class="literallayout">bin/jboss-cli.sh --file=bin/migrate-domain-clustered.cli</pre></li></ol></div></section></section><section class="section" id="migrate_db"><div class="titlepage"><div><div><h3 class="title">3.1.3. Migrating the Database</h3></div></div></div><p>
+					Red Hat Single Sign-On can automatically migrate the database schema, or you can choose to do it manually. By default the database is automatically migrated when you start the new installation for the first time.
+				</p><section class="section" id="automatic_relational_database_migration"><div class="titlepage"><div><div><h4 class="title">3.1.3.1. Automatic Relational Database Migration</h4></div></div></div><p>
+						To enable automatic upgrading of the database schema, set the migrationStrategy property value to "update" for the default connectionsJpa provider:
+					</p><pre class="programlisting language-xml"> &lt;spi name="connectionsJpa"&gt;
+    &lt;provider name="default" enabled="true"&gt;
+        &lt;properties&gt;
+            ...
+            &lt;property name="migrationStrategy" value="update"/&gt;
+        &lt;/properties&gt;
+    &lt;/provider&gt;
+&lt;/spi&gt;</pre><p>
+						Or run this CLI command:
+					</p><pre class="programlisting language-bash">/subsystem=keycloak-server/spi=connectionsJpa/provider=default/:map-put(name=properties,key=migrationStrategy,value=update)</pre><p>
+						When you start the server with this setting your database is automatically migrated if the database schema has changed in the new version.
+					</p></section><section class="section" id="manual_relational_database_migration"><div class="titlepage"><div><div><h4 class="title">3.1.3.2. Manual Relational Database Migration</h4></div></div></div><p>
+						To enable manual upgrading of the database schema, set the migrationStrategy property value to "manual" for the default connectionsJpa provider:
+					</p><pre class="programlisting language-xml"> &lt;spi name="connectionsJpa"&gt;
+    &lt;provider name="default" enabled="true"&gt;
+        &lt;properties&gt;
+            ...
+            &lt;property name="migrationStrategy" value="manual"/&gt;
+        &lt;/properties&gt;
+    &lt;/provider&gt;
+&lt;/spi&gt;</pre><p>
+						Or run this CLI command:
+					</p><pre class="programlisting language-bash">/subsystem=keycloak-server/spi=connectionsJpa/provider=default/:map-put(name=properties,key=migrationStrategy,value=manual)</pre><p>
+						When you start the server with this configuration it checks if the database needs to be migrated. The required changes are written to an SQL file that you can review and manually run against the database. For further details on how to apply this file to the database, see the documentation for the relational database you’re using. After the changes have been written to the file, the server exits.
+					</p></section></section><section class="section" id="migrate_themes"><div class="titlepage"><div><div><h3 class="title">3.1.4. Migrating Themes</h3></div></div></div><p>
+					If you have created any custom themes they must be migrated to the new server. Any changes to the built-in themes might need to be reflected in your custom themes, depending on which aspects you have customized.
+				</p><p>
+					You must copy your custom themes from the old server "themes" directory to the new server "themes" directory. After that you need to review the changes below and consider if the changes need to be applied to your custom theme.
+				</p><p>
+					In summary:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							If you have customized any of the changed templates listed below you need to compare the template from the base theme to see if there are changes you need to apply.
+						</li><li class="listitem">
+							If you have customized any of the styles and are extending the Red Hat Single Sign-On themes you need to review the changes to the styles. If you are extending the base theme you can skip this step.
+						</li><li class="listitem">
+							If you have customized messages you might need to change the key or value or to add additional messages.
+						</li></ul></div><p>
+					Each step is described in more detail below the list of changes.
+				</p><section class="section" id="theme_changes_rh_sso_7_3"><div class="titlepage"><div><div><h4 class="title">3.1.4.1. Theme changes RH-SSO 7.3</h4></div></div></div><p>
+						<span class="strong strong"><strong>Templates</strong></span>
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								Account: account.ftl
+							</li><li class="listitem">
+								Account: applications.ftl
+							</li><li class="listitem">
+								Account: resource-detail.ftl (new)
+							</li><li class="listitem">
+								Account: resources.ftl (new)
+							</li><li class="listitem">
+								Account: template.ftl
+							</li><li class="listitem">
+								Account: totp.ftl
+							</li><li class="listitem">
+								Email-html: email-test.ftl
+							</li><li class="listitem">
+								Email-html: email-verification-with-code.ftl (new)
+							</li><li class="listitem">
+								Email-html: email-verification.ftl
+							</li><li class="listitem">
+								Email-html: event-login_error.ftl
+							</li><li class="listitem">
+								Email-html: event-removed_totp.ftl
+							</li><li class="listitem">
+								Email-html: event-update_password.ftl
+							</li><li class="listitem">
+								Email-html: event-update_totp.ftl
+							</li><li class="listitem">
+								Email-html: executeActions.ftl
+							</li><li class="listitem">
+								Email-html: identity-provider-link.ftl
+							</li><li class="listitem">
+								Email-html: password-reset.ftl
+							</li><li class="listitem">
+								Email-text: email-verification-with-code.ftl (new)
+							</li><li class="listitem">
+								Email-text: email-verification.ftl
+							</li><li class="listitem">
+								Email-text: executeActions.ftl
+							</li><li class="listitem">
+								Email-text: identity-provider-link.ftl
+							</li><li class="listitem">
+								Email-text: password-reset.ftl
+							</li><li class="listitem">
+								Login: cli_splash.ftl (new)
+							</li><li class="listitem">
+								Login: code.ftl
+							</li><li class="listitem">
+								Login: error.ftl
+							</li><li class="listitem">
+								Login: info.ftl
+							</li><li class="listitem">
+								Login: login-config-totp-text.ftl (new)
+							</li><li class="listitem">
+								Login: login-config-totp.ftl
+							</li><li class="listitem">
+								Login: login-idp-link-confirm.ftl
+							</li><li class="listitem">
+								Login: login-idp-link-email.ftl
+							</li><li class="listitem">
+								Login: login-oauth-grant.ftl
+							</li><li class="listitem">
+								Login: login-page-expired.ftl
+							</li><li class="listitem">
+								Login: login-reset-password.ftl
+							</li><li class="listitem">
+								Login: login-totp.ftl
+							</li><li class="listitem">
+								Login: login-update-password.ftl
+							</li><li class="listitem">
+								Login: login-update-profile.ftl
+							</li><li class="listitem">
+								Login: login-verify-email-code-text.ftl (new)
+							</li><li class="listitem">
+								Login: login-verify-email.ftl
+							</li><li class="listitem">
+								Login: login-x509-info.ftl
+							</li><li class="listitem">
+								Login: login.ftl
+							</li><li class="listitem">
+								Login: register.ftl
+							</li><li class="listitem">
+								Login: template.ftl
+							</li><li class="listitem">
+								Login: terms.ftl
+							</li><li class="listitem">
+								Welcome: index.ftl (new)
+							</li></ul></div><p>
+						<span class="strong strong"><strong>Messages</strong></span>
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								Account: messages_en.properties
+							</li><li class="listitem">
+								Admin: admin-messages_en.properties
+							</li><li class="listitem">
+								Email: messages_en.properties
+							</li><li class="listitem">
+								Login: messages_en.properties
+							</li></ul></div><p>
+						<span class="strong strong"><strong>Styles</strong></span>
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								Login: login-rhsso.css (new)
+							</li><li class="listitem">
+								Welcome: welcome-rhsso.css
+							</li></ul></div></section><section class="section" id="theme_changes_rh_sso_7_2"><div class="titlepage"><div><div><h4 class="title">3.1.4.2. Theme changes RH-SSO 7.2</h4></div></div></div><p>
+						<span class="strong strong"><strong>Templates</strong></span>
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								Account: account.ftl
+							</li><li class="listitem">
+								Account: applications.ftl
+							</li><li class="listitem">
+								Account: federatedIdentity.ftl
+							</li><li class="listitem">
+								Account: password.ftl
+							</li><li class="listitem">
+								Account: sessions.ftl
+							</li><li class="listitem">
+								Account: template.ftl
+							</li><li class="listitem">
+								Account: totp.ftl
+							</li><li class="listitem">
+								Admin: index.ftl
+							</li><li class="listitem">
+								Email: email-test.ftl (new)
+							</li><li class="listitem">
+								Email: email-verification.ftl
+							</li><li class="listitem">
+								Email: event-login_error.ftl
+							</li><li class="listitem">
+								Email: event-removed_totp.ftl
+							</li><li class="listitem">
+								Email: event-update_password.ftl
+							</li><li class="listitem">
+								Email: event-update_totp.ftl
+							</li><li class="listitem">
+								Email: executeActions.ftl
+							</li><li class="listitem">
+								Email: identity-provider-link.ftl
+							</li><li class="listitem">
+								Email: password-reset.ftl
+							</li><li class="listitem">
+								Login: bypass_kerberos.ftl (removed)
+							</li><li class="listitem">
+								Login: error.ftl
+							</li><li class="listitem">
+								Login: info.ftl
+							</li><li class="listitem">
+								Login: login-config-totp.ftl
+							</li><li class="listitem">
+								Login: login-idp-link-email.ftl
+							</li><li class="listitem">
+								Login: login-oauth-grant.ftl
+							</li><li class="listitem">
+								Login: login-page-expired.ftl (new)
+							</li><li class="listitem">
+								Login: login-reset-password.ftl
+							</li><li class="listitem">
+								Login: login-totp.ftl
+							</li><li class="listitem">
+								Login: login-update-password.ftl
+							</li><li class="listitem">
+								Login: login-update-profile.ftl
+							</li><li class="listitem">
+								Login: login-verify-email.ftl
+							</li><li class="listitem">
+								Login: login-x509-info.ftl (new)
+							</li><li class="listitem">
+								Login: login.ftl (new)
+							</li><li class="listitem">
+								Login: register.ftl (new)
+							</li><li class="listitem">
+								Login: template.ftl (new)
+							</li><li class="listitem">
+								Login: terms.ftl (new)
+							</li></ul></div><p>
+						<span class="strong strong"><strong>Messages</strong></span>
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								Account: messages_en.properties
+							</li><li class="listitem">
+								Admin: admin-messages_en.properties
+							</li><li class="listitem">
+								Admin: messages_en.properties
+							</li><li class="listitem">
+								Email: messages_en.properties
+							</li><li class="listitem">
+								Login: messages_en.properties
+							</li></ul></div><p>
+						<span class="strong strong"><strong>Styles</strong></span>
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								Account: account.css
+							</li><li class="listitem">
+								Login: login.css
+							</li></ul></div></section><section class="section" id="theme_changes_rh_sso_7_1"><div class="titlepage"><div><div><h4 class="title">3.1.4.3. Theme changes RH-SSO 7.1</h4></div></div></div><p>
+						<span class="strong strong"><strong>Templates</strong></span>
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								Account: account.ftl
+							</li><li class="listitem">
+								Account: federatedIdentity.ftl
+							</li><li class="listitem">
+								Account: totp.ftl
+							</li><li class="listitem">
+								Login: info.ftl
+							</li><li class="listitem">
+								Login: login-config-totp.ftl
+							</li><li class="listitem">
+								Login: login-reset-password.ftl
+							</li><li class="listitem">
+								Login: login.ftl
+							</li></ul></div><p>
+						<span class="strong strong"><strong>Messages</strong></span>
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								Account: editAccountHtmlTtile renamed to editAccountHtmlTitle
+							</li><li class="listitem">
+								Account: role_uma_authorization added
+							</li><li class="listitem">
+								Login: loginTotpStep1 value changed
+							</li><li class="listitem">
+								Login: invalidPasswordGenericMessage added
+							</li><li class="listitem">
+								Login: invlidRequesterMessage renamed to invalidRequesterMessage
+							</li><li class="listitem">
+								Login: clientDisabledMessage added
+							</li></ul></div><p>
+						<span class="strong strong"><strong>Styles</strong></span>
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								Account: account.css
+							</li><li class="listitem">
+								Login: login.css
+							</li></ul></div></section><section class="section" id="migrating_templates"><div class="titlepage"><div><div><h4 class="title">3.1.4.4. Migrating Templates</h4></div></div></div><p>
+						If you have customized any of the templates you need to carefully review the changes that have been made to the templates to decide if you need to apply these changes to your customized templates. Most likely you will need to apply the same changes to your customized templates. If you have not customized any of the listed templates you can skip this section.
+					</p><p>
+						A best practice is to use a diff tool to compare the templates to see what changes you might need to make to your customized template. If you have only made minor changes it is simpler to compare the updated template to your customized template. However, if you have made many changes it might be easier to compare the new template to your customized old template, as this will show you what changes you need to make.
+					</p><p>
+						The following screenshot compares the info.ftl template from the Login theme and an example custom theme:
+					</p><div class="formalpara"><p class="title"><strong>Comparison of the updated version of a Login theme template with an example custom Login theme template</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/theme-migration-meld-info-1.png" alt="theme migration meld info 1"/></span>
+						</p></div><p>
+						From this comparison it is easy to identify that the first change ("Hello world!!") was a customization, while the second change ("if pageRedirectUri") is a change to the base theme. By copying the second change to your custom template, you have successfully updated your customized template.
+					</p><p>
+						For the alternative approach the following screenshot compares the info.ftl template from the old installation with the updated info.ftl template from the new installation:
+					</p><div class="formalpara"><p class="title"><strong>Comparison of an example custom Login theme template with the updated version of the Login theme template</strong></p><p>
+							<span class="inlinemediaobject"><img src="images/theme-migration-meld-info-2.png" alt="theme migration meld info 2"/></span>
+						</p></div><p>
+						From this comparison it is easy to identify what has been changed in the base template. You will then manually have to make the same changes to your modified template. Since this approach is not as simple as the first approach, only use this approach if the first one is not feasible.
+					</p></section><section class="section" id="migrating_messages"><div class="titlepage"><div><div><h4 class="title">3.1.4.5. Migrating Messages</h4></div></div></div><p>
+						If you have added support for another language, you need to apply all the changes listed above. If you have not added support for another language, you might not need to change anything; you only have to make changes if you have changed an affected message in your theme.
+					</p><p>
+						For added values, review the value of the message in the base theme to determine if you need to customize that message.
+					</p><p>
+						For renamed keys, rename the key in your custom theme.
+					</p><p>
+						For changed values, check the value in the base theme to determine if you need to make changes to your custom theme.
+					</p></section><section class="section" id="migrating_styles"><div class="titlepage"><div><div><h4 class="title">3.1.4.6. Migrating Styles</h4></div></div></div><p>
+						If you are inheriting styles from the keycloak or rh-sso themes you might need to update your custom styles to reflect changes made to the styles from the built-in themes.
+					</p><p>
+						A best practice is to use a diff tool to compare the changes to stylesheets between the old server installation and the new server installation.
+					</p><p>
+						For example, using the diff command:
+					</p><pre class="programlisting language-bash">$ diff RHSSO_HOME_OLD/themes/keycloak/login/resources/css/login.css \
+RHSSO_HOME_NEW/themes/keycloak/login/resources/css/login.css</pre><p>
+						Review the changes and determine if they affect your custom styling.
+					</p></section></section></section><section class="section" id="upgrading_micro"><div class="titlepage"><div><div><h2 class="title">3.2. Micro Upgrades</h2></div></div></div><section class="section" id="zip-patching"><div class="titlepage"><div><div><h3 class="title">3.2.1. Patching a ZIP/Installer Installation</h3></div></div></div><p>
+					Patches for a ZIP installation of RH-SSO are available to download from the <a class="link" href="https://access.redhat.com/">Red Hat Customer Portal</a>.
+				</p><p>
+					For multiple RH-SSO hosts in a managed domain environment, individual hosts can be patched from your RH-SSO domain controller.
+				</p><p>
+					In addition to applying a patch, you can also roll back the application of a patch.
+				</p><section class="section" id="important_notes_on_zip_installation_patching"><div class="titlepage"><div><div><h4 class="title">3.2.1.1. Important Notes on ZIP Installation Patching</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								If you apply a patch that updates a module, the new patched JARs that are used at runtime are stored in <code class="literal">RHSSO_HOME/modules/system/layers/base/.overlays/<span class="emphasis"><em>PATCH_ID</em></span>/<span class="emphasis"><em>MODULE</em></span></code>. The original unpatched files are left in <code class="literal">RHSSO_HOME/modules/system/layers/base/<span class="emphasis"><em>MODULE</em></span></code>, but these JARs are <span class="strong strong"><strong>not</strong></span> used at runtime.
+							</li><li class="listitem"><p class="simpara">
+								In order to significantly decrease the size of cumulative patch releases for RH-SSO 7 you cannot perform a partial roll back of a cumulative patch. For a patch that has been applied, you will only be able to roll back the whole patch.
+							</p><p class="simpara">
+								For example, if you apply CP03 to RH-SSO 7.0.0, you will not be able to roll back to CP01 or CP02. If you would like the ability to roll back to each cumulative patch release, each cumulative patch must be applied separately in the order they were released.
+							</p></li></ul></div></section><section class="section" id="applying_a_patch"><div class="titlepage"><div><div><h4 class="title">3.2.1.2. Applying a Patch</h4></div></div></div><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+							RH-SSO servers that have been installed using the RPM method cannot be updated using these instructions. See the <a class="link" href="#rpm-patching" title="3.2.2. Patching an RPM Installation">RPM instructions for applying a patch</a> instead.
+						</p></div></div><p>
+						You can apply downloaded patches to a RH-SSO server using either the <a class="link" href="#zip_patching_management_cli" title="Applying a Patch to RH-SSO Using the Management CLI">management CLI</a> or the <a class="link" href="#zip_patching_management_console" title="Applying a Patch to RH-SSO Using the Management Console">management console</a>.
+					</p><div class="orderedlist" id="zip_patching_management_cli"><p class="title"><strong>Applying a Patch to RH-SSO Using the Management CLI</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+								Download the patch file from the Red Hat Customer Portal at <a class="link" href="https://access.redhat.com/downloads/">https://access.redhat.com/downloads/</a>.
+							</li><li class="listitem"><p class="simpara">
+								From the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html-single/configuration_guide/#management_cli_overview">management CLI</a>, apply the patch using the following command, including the appropriate path to the patch file:
+							</p><pre class="screen">patch apply /path/to/downloaded-patch.zip</pre><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+									To patch another RH-SSO host in a managed domain, you can specify the RH-SSO host name using the <code class="literal">--host=</code> argument. For example:
+								</p><pre class="screen">patch apply /path/to/downloaded-patch.zip --host=my-host</pre></div></div><p class="simpara">
+								The patch tool will warn if there are any conflicts in attempting to apply the patch. If there are conflicts, enter <code class="literal">patch --help</code> for the available arguments to re-run the command with an argument specifying how to resolve the conflicts.
+							</p></li><li class="listitem"><p class="simpara">
+								Restart the RH-SSO server for the patch to take effect:
+							</p><pre class="screen">shutdown --restart=true</pre></li></ol></div><div class="orderedlist" id="zip_patching_management_console"><p class="title"><strong>Applying a Patch to RH-SSO Using the Management Console</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+								Download the patch file from the Red Hat Customer Portal at <a class="link" href="https://access.redhat.com/downloads/">https://access.redhat.com/downloads/</a>.
+							</li><li class="listitem"><p class="simpara">
+								Open the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html-single/configuration_guide/#management_console_overview">management console</a> and navigate to the <span class="strong strong"><strong>Patch Management</strong></span> view.
+							</p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem"><p class="simpara">
+										For a standalone server, click the <span class="strong strong"><strong>Patching</strong></span> tab.
+									</p><div class="formalpara"><p class="title"><strong>The Patch Management Screen for a Standalone Server</strong></p><p>
+											<span class="inlinemediaobject"><img src="images/patching-standalone-tab.png" alt="The Patch Management Screen for a Standalone Server"/></span>
+										</p></div></li><li class="listitem"><p class="simpara">
+										For a server in a managed domain, click the <span class="strong strong"><strong>Patching</strong></span> tab, then select the host that you want to patch from the table, and click <span class="strong strong"><strong>View</strong></span>.
+									</p><div class="formalpara"><p class="title"><strong>The Patch Management Screen for a Managed Domain</strong></p><p>
+											<span class="inlinemediaobject"><img src="images/patching-domain-tab.png" alt="The Patch Management Screen for a Managed Domain"/></span>
+										</p></div></li></ol></div></li><li class="listitem"><p class="simpara">
+								Click <span class="strong strong"><strong>Apply a New Patch</strong></span>.
+							</p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem">
+										If you are patching a managed domain host, on the next screen select whether to shutdown the servers on the host, and click <span class="strong strong"><strong>Next</strong></span>.
+									</li></ol></div></li><li class="listitem"><p class="simpara">
+								Click the <span class="strong strong"><strong>Browse</strong></span> button, select the downloaded patch you want to apply, and then click <span class="strong strong"><strong>Next</strong></span>.
+							</p><div class="formalpara"><p class="title"><strong>Apply Patch Screen</strong></p><p>
+									<span class="inlinemediaobject"><img src="images/patching-select-patch.png" alt="Apply Patch Screen"/></span>
+									 .. If there are any conflicts in attempting to apply the patch, a warning will be displayed. Click <span class="strong strong"><strong>View error details</strong></span> to see the detail of the conflicts. If there is a conflict, you can either cancel the operation, or select the <span class="strong strong"><strong>Override all conflicts</strong></span> check box and click <span class="strong strong"><strong>Next</strong></span>. Overriding conflicts will result in the content of the patch overriding any user modifications.
+								</p></div></li><li class="listitem">
+								After the patch has been successfully applied, select whether to restart RH-SSO now for the patch to take effect, and click <span class="strong strong"><strong>Finish</strong></span>.
+							</li></ol></div></section><section class="section" id="rolling_back_a_patch"><div class="titlepage"><div><div><h4 class="title">3.2.1.3. Rolling Back a Patch</h4></div></div></div><p>
+						You can roll back a previously applied RH-SSO patch using either the <a class="link" href="#zip_rollback_management_cli" title="Rolling Back a Patch Using the Management CLI">management CLI</a> or the <a class="link" href="#zip_rollback_management_console" title="Rolling Back a Patch Using the Management Console">management console</a>.
+					</p><div class="admonition important"><div class="admonition_header">Important</div><div><p>
+							Rolling back a patch using the patch management system is not intended as a general uninstall functionality. It is only intended to be used immediately after the application of a patch that had undesirable effects.
+						</p></div></div><div class="itemizedlist"><p class="title"><strong>Prerequisites</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+								A patch that was previously applied.
+							</li></ul></div><div class="admonition warning"><div class="admonition_header">Warning</div><div><p>
+							When following either procedure, use caution when specifying the value of the <code class="literal">Reset Configuration</code> option:
+						</p><p>
+							If set to <code class="literal">TRUE</code>, the patch rollback process will also roll back the RH-SSO server configuration files to their pre-patch state. Any changes that were made to the RH-SSO server configuration files after the patch was applied will be lost.
+						</p><p>
+							If set to <code class="literal">FALSE</code>, the server configuration files will not be rolled back. In this situation, it is possible that the server will not start after the rollback, as the patch may have altered configurations, such as namespaces, which may no longer be valid and will have to be fixed manually.
+						</p></div></div><div class="orderedlist" id="zip_rollback_management_cli"><p class="title"><strong>Rolling Back a Patch Using the Management CLI</strong></p><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+								From the management CLI, use the <code class="literal">patch history</code> command to find the ID of the patch that you want to roll back.
+							</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+									If you are using a managed domain, you must add the <code class="literal">--host=<span class="emphasis"><em>HOSTNAME</em></span></code> argument to the commands in this procedure to specify the RH-SSO host.
+								</p></div></div></li><li class="listitem"><p class="simpara">
+								Roll back the patch with the appropriate patch ID from the previous step.
+							</p><pre class="screen">patch rollback --patch-id=PATCH_ID --reset-configuration=TRUE</pre><p class="simpara">
+								The patch tool will warn if there are any conflicts in attempting to roll back the patch. If there are conflicts, enter <code class="literal">patch --help</code> for the available arguments to re-run the command with an argument specifying how to resolve the conflicts.
+							</p></li><li class="listitem"><p class="simpara">
+								Restart the RH-SSO server for the patch roll back to take effect:
+							</p><pre class="screen">shutdown --restart=true</pre></li></ol></div><div class="orderedlist" id="zip_rollback_management_console"><p class="title"><strong>Rolling Back a Patch Using the Management Console</strong></p><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+								Open the management console and navigate to the <span class="strong strong"><strong>Patch Management</strong></span> view.
+							</p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem">
+										For a standalone server, click the <span class="strong strong"><strong>Patching</strong></span> tab.
+									</li><li class="listitem">
+										For a server in a managed domain, click the <span class="strong strong"><strong>Patching</strong></span> tab, then select the host that you want to patch from the table, and click <span class="strong strong"><strong>View</strong></span>.
+									</li></ol></div></li><li class="listitem"><p class="simpara">
+								Select the patch that you want to rollback from those listed in the table, then click <span class="strong strong"><strong>Rollback</strong></span>.
+							</p><div class="formalpara"><p class="title"><strong>Recent Patch History Screen</strong></p><p>
+									<span class="inlinemediaobject"><img src="images/patching-rollback-table.png" alt="Recent Patch History Screen"/></span>
+									 .. If you are rolling back a patch on a managed domain host, on the next screen select whether to shutdown the servers on the host, and click <span class="strong strong"><strong>Next</strong></span>.
+								</p></div></li><li class="listitem"><p class="simpara">
+								Choose your options for the rollback process, then click <span class="strong strong"><strong>Next</strong></span>.
+							</p><div class="formalpara"><p class="title"><strong>Patch Rollback Options</strong></p><p>
+									<span class="inlinemediaobject"><img src="images/patching-rollback-options.png" alt="Patch Rollback Options"/></span>
+								</p></div></li><li class="listitem"><p class="simpara">
+								Confirm the options and the patch to be rolled back, then click <span class="strong strong"><strong>Next</strong></span>.
+							</p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem">
+										If there are any conflicts in attempting to rollback the patch and the <span class="strong strong"><strong>Override all</strong></span> option was not selected, a warning will be displayed. Click <span class="strong strong"><strong>View error details</strong></span> to see the detail of the conflicts. If there is a conflict, you can either cancel the operation, or click <span class="strong strong"><strong>Choose Options</strong></span> and try the operation again with the <span class="strong strong"><strong>Override all</strong></span> check box selected. Overriding conflicts will result in the rollback operation overriding any user modifications.
+									</li></ol></div></li><li class="listitem">
+								After the patch has been successfully rolled back, select whether to restart the RH-SSO server now for the changes to take effect, and click <span class="strong strong"><strong>Finish</strong></span>.
+							</li></ol></div></section><section class="section" id="clearing_patch_history"><div class="titlepage"><div><div><h4 class="title">3.2.1.4. Clearing Patch History</h4></div></div></div><p>
+						When patches are applied to a RH-SSO server, the content and history of the patches are preserved for use in rollback operations. If multiple cumulative patches are applied, the patch history may use a significant amount of disk space.
+					</p><p>
+						You can use the following management CLI command to remove all older patches that are not currently in use. When using this command, only the latest cumulative patch is preserved along with the GA release. This is only useful for freeing space if multiple cumulative patches have previously been applied.
+					</p><pre class="screen">/core-service=patching:ageout-history</pre><div class="admonition important"><div class="admonition_header">Important</div><div><p>
+							If you clear the patch history, you will not be able to roll back a previously applied patch.
+						</p></div></div></section></section><section class="section" id="rpm-patching"><div class="titlepage"><div><div><h3 class="title">3.2.2. Patching an RPM Installation</h3></div></div></div><div class="itemizedlist"><p class="title"><strong>Prerequisites</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+							Ensure that the base operating system is up to date, and is subscribed and enabled to get updates from the standard Red Hat Enterprise Linux repositories.
+						</li><li class="listitem">
+							Ensure that you are subscribed to the relevant RH-SSO repository for the update.
+						</li><li class="listitem">
+							Back up all configuration files, deployments, and user data.
+						</li></ul></div><div class="admonition important"><div class="admonition_header">Important</div><div><p>
+						For a managed domain, the RH-SSO domain controller should be updated first.
+					</p></div></div><p>
+					To install a RH-SSO patch via RPM from your subscribed repository, update your Red Hat Enterprise Linux system using the following command:
+				</p><pre class="programlisting language-bash">yum update</pre></section><section class="section" id="patching_local_maven"><div class="titlepage"><div><div><h3 class="title">3.2.3. Patching a local Maven installation</h3></div></div></div><p>
+					If you have installed the RH-SSO Client Adapters Maven Repository using a ZIP file downloaded from the <a class="link" href="https://access.redhat.com/">Red Hat Customer Portal</a>, it may also need to be patched.
+				</p><p>
+					The RH-SSO Client Adapters Maven Repository is available online or as a downloaded ZIP file. If you use the publicly hosted online Maven repository, updates are automatically applied, and no action is required to update it. However, if you installed the Maven repository locally using the ZIP file, you are responsible for applying updates to the repository.
+				</p><p>
+					Whenever a cumulative patch is released for RH-SSO, a corresponding patch is provided for the RH-SSO Client Adapters Maven Repository. This patch is available in the form of an incremental ZIP file that is unzipped into the existing local repository. It does not overwrite or remove any existing files, so there is no rollback requirement.
+				</p><p>
+					Use the following procedure to apply updates to your locally installed RH-SSO Client Adapters Maven Repository.
+				</p><section class="section" id="prerequisites"><div class="titlepage"><div><div><h4 class="title">3.2.3.1. Prerequisites</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								Valid access and subscription to the Red Hat Customer Portal.
+							</li><li class="listitem">
+								The RH-SSO Client Adapters Maven Repository, previously downloaded and installed locally.
+							</li></ul></div></section><section class="section" id="update_a_locally_installed_rh_sso_client_adapters_maven_repository"><div class="titlepage"><div><div><h4 class="title">3.2.3.2. Update a locally installed RH-SSO Client Adapters Maven Repository</h4></div></div></div><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+								Open a browser and log into the <a class="link" href="https://access.redhat.com/">Red Hat Customer Portal</a>.
+							</li><li class="listitem">
+								Select <span class="strong strong"><strong>Downloads</strong></span> from the menu at the top of the page.
+							</li><li class="listitem">
+								Select <code class="literal">Red Hat Single Sign-On</code> from the list.
+							</li><li class="listitem">
+								Select the correct version of Red Hat Single Sign-On from the Version drop-down menu, then select the <span class="strong strong"><strong>Patches</strong></span> tab.
+							</li><li class="listitem">
+								Find <code class="literal">Red Hat Single Sign-On 7.x.y Client Adapters Incremental Maven Repository</code> from the list, where <code class="literal">x.y</code> match the cumulative patch number you want to update to. Select <span class="strong strong"><strong>Download</strong></span>.
+							</li><li class="listitem"><p class="simpara">
+								Locate the path to your RH-SSO Client Adapters Maven Repository. This is referred to in the commands below as <code class="literal">RH-SSO_MAVEN_REPOSITORY_PATH</code>. Unzip the downloaded Maven patch file directly into this directory, like this:
+							</p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem"><p class="simpara">
+										For Red Hat Enterprise Linux, open a terminal and run the following command, replacing the values for the cumulative patch number and your Maven repository path:
+									</p><pre class="screen">$ unzip -o rh-sso-7.x.y-incremental-maven-repository.zip  -d RH-SSO_MAVEN_REPOSITORY_PATH</pre></li><li class="listitem">
+										For Microsoft Windows, use the Windows extraction utility to extract the ZIP file into the root of the <code class="literal">RH-SSO_MAVEN_REPOSITORY_PATH</code> directory.
+									</li></ol></div></li></ol></div></section></section></section></section><section class="chapter" id="upgrading_red_hat_single_sign_on_adapters"><div class="titlepage"><div><div><h1 class="title">Chapter 4. Upgrading Red Hat Single Sign-On Adapters</h1></div></div></div><p id="upgrade_adapters">
+			It is important that you upgrade Red Hat Single Sign-On server first, and then upgrade the adapters. Earlier versions of the adapter might work with later versions of Red Hat Single Sign-On server, but earlier versions of Red Hat Single Sign-On server might not work with later versions of the adapter.
+		</p><section class="section" id="compatibility_with_older_adapters"><div class="titlepage"><div><div><h2 class="title">4.1. Compatibility with older adapters</h2></div></div></div><p>
+				As mentioned above, we try to support newer release versions of Red Hat Single Sign-On server working with older release versions of the adapters. However, in some cases we need to include fixes on the Red Hat Single Sign-On server side which may break compatibility with older versions of the adapters. For example, when we implement new aspects of the OpenID Connect specification, which older client adapter versions were not aware of.
+			</p><p>
+				In those cases, we added Compatibility modes. For OpenId Connect clients, there is a section named <code class="literal">OpenID Connect Compatibility Modes</code> in the Red Hat Single Sign-On admin console, on the page with client details. Here, you can disable some new aspects of the Red Hat Single Sign-On server to preserve compatibility with older client adapters. More details are available in the tool tips of individual switches.
+			</p></section><section class="section" id="upgrade_eap_adapter"><div class="titlepage"><div><div><h2 class="title">4.2. Upgrading the EAP Adapter</h2></div></div></div><p>
+				If you originally installed the adapter using a downloaded archive, to upgrade the JBoss EAP adapter, complete the following steps:
+			</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						Download the new adapter archive.
+					</li><li class="listitem">
+						Remove the previous adapter modules by deleting the <code class="literal">EAP_HOME/modules/system/add-ons/keycloak/</code> directory.
+					</li><li class="listitem">
+						Unzip the downloaded archive into EAP_HOME.
+					</li></ol></div><p>
+				If you originally installed the adapter using RPM, to upgrade the adapter, complete the following steps, which are different depending on whether you are performing a minor or a micro upgrade:
+			</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						For minor upgrades, use Yum to uninstall any adapters you currently have installed and then use Yum to install the new version of the adapters.
+					</li><li class="listitem">
+						For micro upgrades, use Yum to upgrade the adapter. This is the only step for micro upgrades.
+					</li></ol></div><pre class="programlisting language-bash">yum update</pre></section><section class="section" id="upgrade_js_adapter"><div class="titlepage"><div><div><h2 class="title">4.3. Upgrading the JavaScript Adapter</h2></div></div></div><p>
+				To upgrade a JavaScript adapter that has been copied to your web application, complete the following steps:
+			</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						Download the new adapter archive.
+					</li><li class="listitem">
+						Overwrite the keycloak.js file in your application with the keycloak.js file from the downloaded archive.
+					</li></ol></div></section><section class="section" id="upgrade_nodejs_adapter"><div class="titlepage"><div><div><h2 class="title">4.4. Upgrading the Node.js Adapter</h2></div></div></div><p>
+				To upgrade a Node.js adapter that has been copied to your web application, complete the following steps:
+			</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						Download the new adapter archive.
+					</li><li class="listitem">
+						Remove the existing Node.js adapter directory
+					</li><li class="listitem">
+						Unzip the updated file into its place
+					</li><li class="listitem">
+						Change the dependency for keycloak-connect in the package.json of your application
+					</li></ol></div></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140684035725744"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+				Copyright <span class="trademark"/>© 2019 Red Hat, Inc.
+			</div><div class="para">
+				Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+			</div><div class="para">
+				<a class="ulink" href="http://www.apache.org/licenses/LICENSE-2.0"> http://www.apache.org/licenses/LICENSE-2.0</a>
+			</div><div class="para">
+				Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+			</div></div></div></div></div></div><script type="text/javascript">
+                        jQuery(document).ready(function() {
+                            initSwitchery();
+                            jQuery('pre[class*="language-"]').each(function(i, block){hljs.highlightBlock(block);});
+                        });
+                    </script></body></html>
