@@ -3396,8 +3396,8 @@ is responsible for knowing where to read or write the credential, for example lo
 }
 
 <span class="annotation">@Override</span>
-<span class="directive">public</span> <span class="type">void</span> deleteCredential(RealmModel realm, UserModel user, <span class="predefined-type">String</span> credentialId) {
-    getCredentialStore().removeStoredCredential(realm, user, credentialId);
+<span class="directive">public</span> <span class="type">boolean</span> deleteCredential(RealmModel realm, UserModel user, <span class="predefined-type">String</span> credentialId) {
+    <span class="keyword">return</span> getCredentialStore().removeStoredCredential(realm, user, credentialId);
 }</code></pre>
 </div>
 </div>
@@ -6426,7 +6426,7 @@ plain byte and character arrays and buffers is preferable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-22 17:52:17 UTC
+Last updated 2020-07-28 16:37:49 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
