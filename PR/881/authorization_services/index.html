@@ -5599,8 +5599,7 @@ unnecessary requests to a Keycloak server by caching associations between paths 
 <li>
 <p><strong>lifespan</strong></p>
 <div class="paragraph">
-<p>Defines the time in milliseconds when the entry should be expired. If not provided, default value is <strong>3000</strong>. A value
-less than or equal to 0 can be set to completely disable the cache.</p>
+<p>Defines the time in milliseconds when the entry should be expired. If not provided, default value is <strong>3000</strong>. A value equal to 0 can be set to completely disable the cache. A value equal to -1 can be set to disable the expiry of the cache.</p>
 </div>
 </li>
 <li>
@@ -6313,7 +6312,7 @@ It is strongly recommended that you enable TLS/HTTPS when accessing the Keycloak
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-06 22:05:43 UTC
+Last updated 2020-07-30 20:21:49 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

@@ -1027,7 +1027,7 @@ for WildFly and its sub projects. Here is the link to the documentation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a></p>
+<p><a href="http://docs.wildfly.org/20/Admin_Guide.html"><em>WildFly 20 Documentation</em></a></p>
 </li>
 </ul>
 </div>
@@ -1195,7 +1195,7 @@ your server configurations?  Your choice of operating mode affects how you confi
 <td class="content">
 The Keycloak is built on top of the WildFly Application Server.  This guide will only
      go over the basics for deployment within a specific mode.  If you want specific information on this, a better place
-     to go would be the <a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a>.
+     to go would be the <a href="http://docs.wildfly.org/20/Admin_Guide.html"><em>WildFly 20 Documentation</em></a>.
 </td>
 </tr>
 </table>
@@ -1261,7 +1261,7 @@ is also used to configure non-infrastructure level things that are specific to K
 <td class="content">
 Any changes you make to this file while the server is running will not take effect and may even be overwritten
       by the server.  Instead use the command line scripting or the web console of WildFly.  See
-      the <a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a> for more information.
+      the <a href="http://docs.wildfly.org/20/Admin_Guide.html"><em>WildFly 20 Documentation</em></a> for more information.
 </td>
 </tr>
 </table>
@@ -1305,7 +1305,7 @@ deploy some type of load balancer in front of the cluster.  The <a href="#_clust
 <td class="content">
 Any changes you make to this file while the server is running will not take effect and may even be overwritten
       by the server.  Instead use the command line scripting or the web console of WildFly.  See
-      the <a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a> for more information.
+      the <a href="http://docs.wildfly.org/20/Admin_Guide.html"><em>WildFly 20 Documentation</em></a> for more information.
 </td>
 </tr>
 </table>
@@ -1363,7 +1363,7 @@ This capability is built into the WildFly Application Server which Keycloak deri
 </td>
 <td class="content">
 The guide will go over the very basics of domain mode.  Detailed steps on how to set up domain mode in a cluster should be obtained from the
-       <a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a>.
+       <a href="http://docs.wildfly.org/20/Admin_Guide.html"><em>WildFly 20 Documentation</em></a>.
 </td>
 </tr>
 </table>
@@ -1437,7 +1437,7 @@ where the domain profile and server group for the Keycloak server are defined.</
 <td class="content">
 Any changes you make to this file while the domain controller is running will not take effect and may even be overwritten
       by the server.  Instead use the command line scripting or the web console of WildFly.  See
-      the <a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a> for more information.
+      the <a href="http://docs.wildfly.org/20/Admin_Guide.html"><em>WildFly 20 Documentation</em></a> for more information.
 </td>
 </tr>
 </table>
@@ -1974,7 +1974,7 @@ They communicate with the Infinispan server <code>jdg1</code> using the HotRod p
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Download Infinispan 9.4.16 server and unzip to a directory you choose. This location will be referred in later steps as <code>JDG1_HOME</code> .</p>
+<p>Download Infinispan 9.4.18 server and unzip to a directory you choose. This location will be referred in later steps as <code>JDG1_HOME</code> .</p>
 </li>
 <li>
 <p>Change those things in the <code>JDG1_HOME/standalone/configuration/clustered.xml</code> in the configuration of JGroups subsystem:</p>
@@ -2098,7 +2098,7 @@ element. See <a href="#troubleshooting">Troubleshooting</a> for more details.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You should not see any issue if you use recommended Infinispan 9.4.16 server and this step can (and should) be ignored.
+You should not see any issue if you use recommended Infinispan 9.4.18 server and this step can (and should) be ignored.
 Issues related to authorization may exist just for some other versions of Infinispan server.
 </td>
 </tr>
@@ -2201,6 +2201,26 @@ Issues related to authorization may exist just for some other versions of Infini
 </ol>
 </div>
 </li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <em>PUBLIC_IP_ADDRESS</em> below refers to the IP address or hostname, which can be used for your server to bind to. Note that
+every Infinispan server and Keycloak server needs to use different address. During example setup with all the servers running on the same host,
+you may need to add the option <code>-Djboss.bind.address.management=<em>PUBLIC_IP_ADDRESS</em></code> as every server needs to use also different management interface.
+But this option usually should be omitted in production environments to avoid the ability for remote access to your server. For more information,
+see the <a href="http://docs.wildfly.org/20/Admin_Guide.html#Interfaces_and_ports"><em>WildFly 20 Documentation</em></a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Start server <code>jdg1</code>:</p>
 <div class="listingblock">
@@ -2297,14 +2317,6 @@ In production, you can have more Infinispan servers in every data center. You ju
 </div>
 </li>
 <li>
-<p>Add this <code>module</code> attribute under <code>cache-container</code> element of name <code>keycloak</code> :</p>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"> <span class="tag">&lt;cache-container</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloak</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">module</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.keycloak-model-infinispan</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span></code></pre>
-</div>
-</div>
-</li>
-<li>
 <p>Add the <code>remote-store</code> under <code>work</code> cache:</p>
 <div class="listingblock">
 <div class="content">
@@ -2312,6 +2324,7 @@ In production, you can have more Infinispan servers in every data center. You ju
     <span class="tag">&lt;remote-store</span> <span class="attribute-name">cache</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">work</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">remote-servers</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">remote-cache</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">passivation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">fetch-state</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">purge</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">preload</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">shared</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rawValues</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>true<span class="tag">&lt;/property&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">marshaller</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory<span class="tag">&lt;/property&gt;</span>
+        <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">protocolVersion</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2.9<span class="tag">&lt;/property&gt;</span>
     <span class="tag">&lt;/remote-store&gt;</span>
 <span class="tag">&lt;/replicated-cache&gt;</span></code></pre>
 </div>
@@ -2325,6 +2338,7 @@ In production, you can have more Infinispan servers in every data center. You ju
     <span class="tag">&lt;remote-store</span> <span class="attribute-name">cache</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sessions</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">remote-servers</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">remote-cache</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">passivation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">fetch-state</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">purge</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">preload</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">shared</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rawValues</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>true<span class="tag">&lt;/property&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">marshaller</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory<span class="tag">&lt;/property&gt;</span>
+        <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">protocolVersion</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2.9<span class="tag">&lt;/property&gt;</span>
     <span class="tag">&lt;/remote-store&gt;</span>
 <span class="tag">&lt;/distributed-cache&gt;</span></code></pre>
 </div>
@@ -2338,6 +2352,7 @@ In production, you can have more Infinispan servers in every data center. You ju
     <span class="tag">&lt;remote-store</span> <span class="attribute-name">cache</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">offlineSessions</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">remote-servers</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">remote-cache</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">passivation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">fetch-state</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">purge</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">preload</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">shared</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rawValues</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>true<span class="tag">&lt;/property&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">marshaller</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory<span class="tag">&lt;/property&gt;</span>
+        <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">protocolVersion</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2.9<span class="tag">&lt;/property&gt;</span>
     <span class="tag">&lt;/remote-store&gt;</span>
 <span class="tag">&lt;/distributed-cache&gt;</span>
 
@@ -2345,6 +2360,7 @@ In production, you can have more Infinispan servers in every data center. You ju
     <span class="tag">&lt;remote-store</span> <span class="attribute-name">cache</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">clientSessions</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">remote-servers</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">remote-cache</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">passivation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">fetch-state</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">purge</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">preload</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">shared</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rawValues</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>true<span class="tag">&lt;/property&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">marshaller</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory<span class="tag">&lt;/property&gt;</span>
+        <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">protocolVersion</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2.9<span class="tag">&lt;/property&gt;</span>
     <span class="tag">&lt;/remote-store&gt;</span>
 <span class="tag">&lt;/distributed-cache&gt;</span>
 
@@ -2352,6 +2368,7 @@ In production, you can have more Infinispan servers in every data center. You ju
     <span class="tag">&lt;remote-store</span> <span class="attribute-name">cache</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">offlineClientSessions</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">remote-servers</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">remote-cache</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">passivation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">fetch-state</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">purge</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">preload</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">shared</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rawValues</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>true<span class="tag">&lt;/property&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">marshaller</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory<span class="tag">&lt;/property&gt;</span>
+        <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">protocolVersion</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2.9<span class="tag">&lt;/property&gt;</span>
     <span class="tag">&lt;/remote-store&gt;</span>
 <span class="tag">&lt;/distributed-cache&gt;</span>
 
@@ -2359,6 +2376,7 @@ In production, you can have more Infinispan servers in every data center. You ju
     <span class="tag">&lt;remote-store</span> <span class="attribute-name">cache</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">loginFailures</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">remote-servers</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">remote-cache</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">passivation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">fetch-state</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">purge</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">preload</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">shared</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rawValues</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>true<span class="tag">&lt;/property&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">marshaller</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory<span class="tag">&lt;/property&gt;</span>
+        <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">protocolVersion</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2.9<span class="tag">&lt;/property&gt;</span>
     <span class="tag">&lt;/remote-store&gt;</span>
 <span class="tag">&lt;/distributed-cache&gt;</span>
 
@@ -2368,6 +2386,7 @@ In production, you can have more Infinispan servers in every data center. You ju
     <span class="tag">&lt;remote-store</span> <span class="attribute-name">cache</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">actionTokens</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">remote-servers</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">remote-cache</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">passivation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">fetch-state</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">purge</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">preload</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">shared</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rawValues</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>true<span class="tag">&lt;/property&gt;</span>
         <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">marshaller</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>org.keycloak.cluster.infinispan.KeycloakHotRodMarshallerFactory<span class="tag">&lt;/property&gt;</span>
+        <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">protocolVersion</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2.9<span class="tag">&lt;/property&gt;</span>
     <span class="tag">&lt;/remote-store&gt;</span>
 <span class="tag">&lt;/distributed-cache&gt;</span></code></pre>
 </div>
@@ -2385,6 +2404,22 @@ In production, you can have more Infinispan servers in every data center. You ju
 </li>
 <li>
 <p>The configuration of distributed cache <code>authenticationSessions</code> and other caches is left unchanged.</p>
+</li>
+<li>
+<p>It is recommended to add the <code>remoteStoreSecurityEnabled</code> property with the value of <code>false</code> (or eventually <code>true</code> if you enabled security
+for the Infinispan servers as described above) to the <code>connectionsInfinispan</code> SPI in the <code>keycloak-server</code> subsystem:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;spi</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">connectionsInfinispan</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    ...
+    <span class="tag">&lt;provider</span> <span class="attribute-name">...</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;properties&gt;</span>
+            ...
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">remoteStoreSecurityEnabled</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/properties&gt;</span>
+    ...</code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Optionally enable DEBUG logging under the <code>logging</code> subsystem:</p>
@@ -3173,7 +3208,7 @@ connect
 <div class="paragraph">
 <p>You may be thinking to yourself, "I didn&#8217;t enter in any username or password!".  If you run <code>jboss-cli</code> on the same machine
 as your running standalone server or domain controller and your account has appropriate file permissions, you do not have
-to setup or enter in an admin username and password.  See the <a href="http://docs.wildfly.org/18/Admin_Guide.html"><em>WildFly 18 Documentation</em></a>
+to setup or enter in an admin username and password.  See the <a href="http://docs.wildfly.org/20/Admin_Guide.html"><em>WildFly 20 Documentation</em></a>
 for more details on how to make things more secure if you are uncomfortable with that setup.</p>
 </div>
 </div>
@@ -3522,7 +3557,7 @@ is a Java API that is used to connect to a RDBMS.  There are different JDBC driv
 by your database vendor.  This chapter discusses how to configure Keycloak to use one of these vendor-specific drivers.</p>
 </div>
 <div class="paragraph">
-<p>The top layered technology for persistence is Hibernate JPA.  This is a object to relational mapping API that maps Java
+<p>The top layered technology for persistence is Hibernate JPA.  This is an object to relational mapping API that maps Java
 Objects to relational data.  Most deployments of Keycloak will never have to touch the configuration aspects
 of Hibernate, but we will discuss how that is done if you run into that rare circumstance.</p>
 </div>
@@ -3533,8 +3568,8 @@ of Hibernate, but we will discuss how that is done if you run into that rare cir
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Datasource configuration is covered much more thoroughly in <a href="http://docs.wildfly.org/18/Admin_Guide.html#DataSource">the datasource configuration chapter</a>
-       in the <em>WildFly 18 Documentation</em>.
+Datasource configuration is covered much more thoroughly in <a href="http://docs.wildfly.org/20/Admin_Guide.html#DataSource">the datasource configuration chapter</a>
+       in the <em>WildFly 20 Documentation</em>.
 </td>
 </tr>
 </table>
@@ -3721,7 +3756,7 @@ scope of this guide.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-For more information about datasource features, see <a href="http://docs.wildfly.org/18/Admin_Guide.html#DataSource">the datasource configuration chapter</a> in the <em>WildFly 18 Documentation</em>.
+For more information about datasource features, see <a href="http://docs.wildfly.org/20/Admin_Guide.html#DataSource">the datasource configuration chapter</a> in the <em>WildFly 20 Documentation</em>.
 </td>
 </tr>
 </table>
@@ -3813,7 +3848,7 @@ Statistics are always reported to server log at specified interval (in seconds) 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-These configuration switches and more are described in the <a href="http://docs.wildfly.org/18/Developer_Guide.html#hibernate-properties"><em>WildFly 18 Development Guide</em></a>.
+These configuration switches and more are described in the <a href="http://docs.wildfly.org/20/Developer_Guide.html#hibernate-properties"><em>WildFly 20 Development Guide</em></a>.
 </td>
 </tr>
 </table>
@@ -4110,7 +4145,7 @@ you boot up.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-There are many more options available when setting up <code>interface</code> definitions. For more information, see <a href="http://docs.wildfly.org/18/Admin_Guide.html#Interfaces_and_ports">the network interface</a> in the <em>WildFly 18 Documentation</em>.
+There are many more options available when setting up <code>interface</code> definitions. For more information, see <a href="http://docs.wildfly.org/20/Admin_Guide.html#Interfaces_and_ports">the network interface</a> in the <em>WildFly 20 Documentation</em>.
 </td>
 </tr>
 </table>
@@ -4197,7 +4232,7 @@ to the <code>server-group</code> definitions you can see what <code>socket-bindi
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-There are many more options available when setting up <code>socket-binding-group</code> definitions.  For more information, see <a href="http://docs.wildfly.org/18/Admin_Guide.html#Interfaces_and_ports">the socket binding group</a> in the <em>WildFly 18 Documentation</em>.
+There are many more options available when setting up <code>socket-binding-group</code> definitions.  For more information, see <a href="http://docs.wildfly.org/20/Admin_Guide.html#Interfaces_and_ports">the socket binding group</a> in the <em>WildFly 20 Documentation</em>.
 </td>
 </tr>
 </table>
@@ -4723,7 +4758,7 @@ to be aware of when booting up a host in the cluster.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-It is possible to cluster Keycloak without IP Multicast, but this topic is beyond the scope of this guide.  For more information, see <a href="http://docs.wildfly.org/18/High_Availability_Guide.html#JGroups_Subsystem">JGroups</a> chapter of the <em>WildFly 18 Documentation</em>.
+It is possible to cluster Keycloak without IP Multicast, but this topic is beyond the scope of this guide.  For more information, see <a href="http://docs.wildfly.org/20/High_Availability_Guide.html#JGroups_Subsystem">JGroups</a> chapter of the <em>WildFly 20 Documentation</em>.
 </td>
 </tr>
 </table>
@@ -5050,7 +5085,7 @@ The value of <code>jboss.domain.master.address</code> needs to be the IP address
 <div class="sect3">
 <h4 id="configuring-other-load-balancers"><a class="anchor" href="#configuring-other-load-balancers"></a>Configuring Other Load Balancers</h4>
 <div class="paragraph">
-<p>See <a href="http://docs.wildfly.org/18/High_Availability_Guide.html">the load balancing</a> section in the <em>WildFly 18 Documentation</em> for information how to use other software-based load balancers.</p>
+<p>See <a href="http://docs.wildfly.org/20/High_Availability_Guide.html">the load balancing</a> section in the <em>WildFly 20 Documentation</em> for information how to use other software-based load balancers.</p>
 </div>
 </div>
 </div>
@@ -5203,7 +5238,7 @@ You have to edit your the <em>standalone-ha.xml</em> or <em>domain.xml</em> sect
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-It is possible to cluster Keycloak without IP Multicast, but this topic is beyond the scope of this guide. For more information, see <a href="http://docs.wildfly.org/18/High_Availability_Guide.html#JGroups_Subsystem">JGroups</a> in the <em>WildFly 18 Documentation</em>.
+It is possible to cluster Keycloak without IP Multicast, but this topic is beyond the scope of this guide. For more information, see <a href="http://docs.wildfly.org/20/High_Availability_Guide.html#JGroups_Subsystem">JGroups</a> in the <em>WildFly 20 Documentation</em>.
 </td>
 </tr>
 </table>
@@ -5221,7 +5256,7 @@ It is possible to cluster Keycloak without IP Multicast, but this topic is beyon
 <p>When cluster nodes are isolated on a private network it requires access to the private network to be able to join a cluster or to view communication in the cluster. In addition you can also enable authentication and encryption for cluster communication. As long as your private network is secure it is not necessary to enable authentication and encryption. Keycloak does not send very sensitive information on the cluster in either case.</p>
 </div>
 <div class="paragraph">
-<p>If you want to enable authentication and encryption for clustering communication, see the 'High Availability Guide' in the <a href="http://docs.wildfly.org/18/High_Availability_Guide.html">WildFly documentation</a>.</p>
+<p>If you want to enable authentication and encryption for clustering communication, see the 'High Availability Guide' in the <a href="http://docs.wildfly.org/20/High_Availability_Guide.html">WildFly documentation</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -5313,7 +5348,7 @@ If for some reason you still need to have firewall enabled on cluster nodes, you
 Default values are UDP port 55200 and multicast port 45688 with multicast address 230.0.0.4.
 Note that you may need more ports opened if you want to enable additional features like diagnostics for your JGroups stack.
 Keycloak delegates most of the clustering work to Infinispan/JGroups.
-For more information, see <a href="http://docs.wildfly.org/18/High_Availability_Guide.html#JGroups_Subsystem">JGroups</a> in the <em>WildFly 18 Documentation</em>.</p>
+For more information, see <a href="http://docs.wildfly.org/20/High_Availability_Guide.html#JGroups_Subsystem">JGroups</a> in the <em>WildFly 20 Documentation</em>.</p>
 </div>
 </li>
 <li>
@@ -5358,7 +5393,7 @@ but is possibly replicated across the cluster.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-More advanced configuration of these caches can be found in the  <a href="http://docs.wildfly.org/18/High_Availability_Guide.html#Infinispan_Subsystem">Infinispan</a> section of the <em>WildFly 18 Documentation</em>.
+More advanced configuration of these caches can be found in the  <a href="http://docs.wildfly.org/20/High_Availability_Guide.html#Infinispan_Subsystem">Infinispan</a> section of the <em>WildFly 20 Documentation</em>.
 </td>
 </tr>
 </table>
@@ -5388,7 +5423,7 @@ subsystem, which looks similar to this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:infinispan:9.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:infinispan:10.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;cache-container</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloak</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;local-cache</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">realms</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
             <span class="tag">&lt;object-memory</span> <span class="attribute-name">size</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">10000</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
@@ -5463,7 +5498,7 @@ that data is lost.  This usually means that users will be logged out and will ha
 <div class="listingblock">
 <div class="title">owners</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:infinispan:9.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:infinispan:10.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
    <span class="tag">&lt;cache-container</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloak</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
        <span class="tag">&lt;distributed-cache</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sessions</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">owners</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 ...</code></pre>
@@ -7259,7 +7294,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-06 22:06:04 UTC
+Last updated 2020-07-30 20:22:15 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
