@@ -5156,7 +5156,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 </ul>
 </div>
 <div class="paragraph">
-<p>Key Encryption&#8217;s algorithms are defined in the <a href="https://tools.ietf.org/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports RSAES-PKCS1-v1_5(RSA1_5) and RSAES OAEP using default parameters (RSA-OAEP). The detailed procedure to select this algorithm is as follows:</p>
+<p>Key Encryption&#8217;s algorithms are defined in the <a href="https://tools.ietf.org/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports RSAES-PKCS1-v1_5(RSA1_5), RSAES OAEP using default parameters (RSA-OAEP), and RSAES OAEP 256 using SHA-256 and MFG1 (RSA-OAEP-256). The detailed procedure to select this algorithm is as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5164,10 +5164,10 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <p>open the client&#8217;s <code>Settings</code> tab</p>
 </li>
 <li>
-<p>open <code>Advanced Settings</code></p>
+<p>open <code>Fine Grain OpenID Connect Configuration</code></p>
 </li>
 <li>
-<p>select <code>RSA1_5</code> or <code>RSA-OAEP</code> from <code>ID Token Encryption Key Management Algorithm</code> pulldown menu</p>
+<p>select <code>RSA1_5</code>,  <code>RSA-OAEP</code>, or <code>RSA-OAEP-256</code> from <code>ID Token Encryption Key Management Algorithm</code> pulldown menu</p>
 </li>
 </ul>
 </div>
@@ -5180,7 +5180,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <p>open the client&#8217;s <code>Settings</code> tab</p>
 </li>
 <li>
-<p>open <code>Advanced Settings</code></p>
+<p>open <code>Fine Grain OpenID Connect Configuration</code></p>
 </li>
 <li>
 <p>select the algorithm from <code>ID Token Encryption Content Encryption Algorithm</code> pulldown menu</p>
@@ -14389,7 +14389,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-29 20:53:06 UTC
+Last updated 2020-07-31 20:26:48 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
