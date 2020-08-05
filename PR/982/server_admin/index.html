@@ -5014,7 +5014,7 @@ For more information see <a href="https://www.keycloak.org/docs/11.0/securing_ap
 <p><strong>Web Origins</strong></p>
 </div>
 <div class="paragraph">
-<p>This option centers around <a href="http://www.w3.org/TR/cors/">CORS</a> which stands for Cross-Origin Resource Sharing.
+<p>This option centers around <a href="https://fetch.spec.whatwg.org/">CORS</a> which stands for Cross-Origin Resource Sharing.
 If browser JavaScript tries to make an AJAX HTTP request to a server whose domain is different from the one the
 JavaScript code came from, then the request must use CORS.
 The server must handle CORS requests in a special way, otherwise the browser will not display or allow the request to be processed.
@@ -5156,7 +5156,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 </ul>
 </div>
 <div class="paragraph">
-<p>Key Encryption&#8217;s algorithms are defined in the <a href="https://tools.ietf.org/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports RSAES-PKCS1-v1_5(RSA1_5) and RSAES OAEP using default parameters (RSA-OAEP). The detailed procedure to select this algorithm is as follows:</p>
+<p>Key Encryption&#8217;s algorithms are defined in the <a href="https://tools.ietf.org/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports RSAES-PKCS1-v1_5(RSA1_5), RSAES OAEP using default parameters (RSA-OAEP), and RSAES OAEP 256 using SHA-256 and MFG1 (RSA-OAEP-256). The detailed procedure to select this algorithm is as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5164,10 +5164,10 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <p>open the client&#8217;s <code>Settings</code> tab</p>
 </li>
 <li>
-<p>open <code>Advanced Settings</code></p>
+<p>open <code>Fine Grain OpenID Connect Configuration</code></p>
 </li>
 <li>
-<p>select <code>RSA1_5</code> or <code>RSA-OAEP</code> from <code>ID Token Encryption Key Management Algorithm</code> pulldown menu</p>
+<p>select <code>RSA1_5</code>,  <code>RSA-OAEP</code>, or <code>RSA-OAEP-256</code> from <code>ID Token Encryption Key Management Algorithm</code> pulldown menu</p>
 </li>
 </ul>
 </div>
@@ -5180,7 +5180,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <p>open the client&#8217;s <code>Settings</code> tab</p>
 </li>
 <li>
-<p>open <code>Advanced Settings</code></p>
+<p>open <code>Fine Grain OpenID Connect Configuration</code></p>
 </li>
 <li>
 <p>select the algorithm from <code>ID Token Encryption Content Encryption Algorithm</code> pulldown menu</p>
@@ -7783,7 +7783,7 @@ You will use the <code>Redirect URI</code> from this page in a later step, which
 <div class="paragraph">
 <div class="title">Add a New App</div>
 <p>To enable login with Bitbucket you must first register an application project in
-<a href="https://confluence.atlassian.com/bitbucket/oauth-on-bitbucket-cloud-238027431.html">OAuth on Bitbucket Cloud</a>.</p>
+<a href="https://support.atlassian.com/bitbucket-cloud/docs/use-oauth-on-bitbucket-cloud/">OAuth on Bitbucket Cloud</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -14389,7 +14389,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-28 16:37:45 UTC
+Last updated 2020-08-05 18:17:18 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
