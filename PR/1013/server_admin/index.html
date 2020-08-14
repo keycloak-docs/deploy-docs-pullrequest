@@ -869,6 +869,7 @@ span.image img {
 <li><a href="#_oidc">OpenID Connect</a>
 <ul class="sectlevel3">
 <li><a href="#_oidc-auth-flows">OIDC Auth Flows</a></li>
+<li><a href="#_oidc-logout">OIDC Logout</a></li>
 <li><a href="#keycloak-server-oidc-uri-endpoints">Keycloak Server OIDC URI Endpoints</a></li>
 </ul>
 </li>
@@ -4599,6 +4600,51 @@ are sent within form parameters.  The HTTP response contains
 <p>This is also used by REST clients, but instead of obtaining a token that works on behalf
 of an external user, a token is created based on the metadata and permissions of a service account that is associated with the client.
 More info together with example is in <a href="#_service_accounts">Service Accounts</a> chapter.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_oidc-logout"><a class="anchor" href="#_oidc-logout"></a>OIDC Logout</h4>
+<div class="paragraph">
+<p>OIDC has three different specifications relevant to logout mechanisms, all of these are currently in draft status:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://openid.net/specs/openid-connect-session-1_0.html">Session Management</a></p>
+</li>
+<li>
+<p><a href="https://openid.net/specs/openid-connect-frontchannel-1_0.html">Front-Channel Logout</a></p>
+</li>
+<li>
+<p><a href="https://openid.net/specs/openid-connect-backchannel-1_0.html">Back-Channel Logout</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Again since all of this is described in the OIDC specification we will only give a brief overview here.</p>
+</div>
+<div class="sect4">
+<h5 id="session-management"><a class="anchor" href="#session-management"></a>Session Management</h5>
+<div class="paragraph">
+<p>This is a browser-based logout. The application obtains session status information from Keycloak at a regular basis.
+When the session is terminated at Keycloak the application will notice and trigger it&#8217;s own logout.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="frontchannel-logout"><a class="anchor" href="#frontchannel-logout"></a>Frontchannel Logout</h5>
+<div class="paragraph">
+<p>This is also a browser-based logout. In contrast to the Session Managment based logout approach Keycloak will send logout
+requests to the clients. Applications or clients need to have a frontchannel logout URL registered at Keycloak.
+After triggering a logout at Keycloak, it will send logout requests to these registered URLs that will terminate the client sessions.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="backchannel-logout"><a class="anchor" href="#backchannel-logout"></a>Backchannel Logout</h5>
+<div class="paragraph">
+<p>This is a non browser-based logout that uses direct backchannel communication between Keycloak and clients.
+Keycloak sends a HTTP POST request containing a logout token to all clients logged into Keycloak. These
+requests are sent to a registered backchannel logout URLs at Keycloak.</p>
 </div>
 </div>
 </div>
@@ -14418,7 +14464,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-13 15:33:23 UTC
+Last updated 2020-08-14 07:39:22 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
