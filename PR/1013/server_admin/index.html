@@ -4644,7 +4644,7 @@ After triggering a logout at Keycloak, it will send logout requests to these reg
 <div class="paragraph">
 <p>This is a non browser-based logout that uses direct backchannel communication between Keycloak and clients.
 Keycloak sends a HTTP POST request containing a logout token to all clients logged into Keycloak. These
-requests are sent to a registered backchannel logout URLs at Keycloak.</p>
+requests are sent to a registered backchannel logout URLs at Keycloak and are supposed to trigger a logout at client side.</p>
 </div>
 </div>
 </div>
@@ -14464,7 +14464,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-14 07:39:22 UTC
+Last updated 2020-08-14 07:49:18 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
