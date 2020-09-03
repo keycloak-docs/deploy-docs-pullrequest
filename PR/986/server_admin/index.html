@@ -999,6 +999,7 @@ span.image img {
 <li><a href="#saml-v2-0-identity-providers">SAML v2.0 Identity Providers</a>
 <ul class="sectlevel3">
 <li><a href="#_identity_broker_saml_sp_descriptor">SP Descriptor</a></li>
+<li><a href="#_identity_broker_saml_login_hint">Send Subject in SAML requests</a></li>
 </ul>
 </li>
 <li><a href="#_client_suggested_idp">Client-suggested Identity Provider</a></li>
@@ -2510,6 +2511,10 @@ There may be more cost effective ways of protecting your password stores.</p>
 <dt class="hdlist1">Not Username</dt>
 <dd>
 <p>When set, the password is not allowed to be the same as the username.</p>
+</dd>
+<dt class="hdlist1">Not Email</dt>
+<dd>
+<p>When set, the password is not allowed to be the same as the email address.</p>
 </dd>
 <dt class="hdlist1">Regular Expression</dt>
 <dd>
@@ -5013,7 +5018,7 @@ For more information see <a href="https://www.keycloak.org/docs/11.0/securing_ap
 <p><strong>Web Origins</strong></p>
 </div>
 <div class="paragraph">
-<p>This option centers around <a href="http://www.w3.org/TR/cors/">CORS</a> which stands for Cross-Origin Resource Sharing.
+<p>This option centers around <a href="https://fetch.spec.whatwg.org/">CORS</a> which stands for Cross-Origin Resource Sharing.
 If browser JavaScript tries to make an AJAX HTTP request to a server whose domain is different from the one the
 JavaScript code came from, then the request must use CORS.
 The server must handle CORS requests in a special way, otherwise the browser will not display or allow the request to be processed.
@@ -5155,7 +5160,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 </ul>
 </div>
 <div class="paragraph">
-<p>Key Encryption&#8217;s algorithms are defined in the <a href="https://tools.ietf.org/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports RSAES-PKCS1-v1_5(RSA1_5) and RSAES OAEP using default parameters (RSA-OAEP). The detailed procedure to select this algorithm is as follows:</p>
+<p>Key Encryption&#8217;s algorithms are defined in the <a href="https://tools.ietf.org/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports RSAES-PKCS1-v1_5(RSA1_5), RSAES OAEP using default parameters (RSA-OAEP), and RSAES OAEP 256 using SHA-256 and MFG1 (RSA-OAEP-256). The detailed procedure to select this algorithm is as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5163,10 +5168,10 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <p>open the client&#8217;s <code>Settings</code> tab</p>
 </li>
 <li>
-<p>open <code>Advanced Settings</code></p>
+<p>open <code>Fine Grain OpenID Connect Configuration</code></p>
 </li>
 <li>
-<p>select <code>RSA1_5</code> or <code>RSA-OAEP</code> from <code>ID Token Encryption Key Management Algorithm</code> pulldown menu</p>
+<p>select <code>RSA1_5</code>,  <code>RSA-OAEP</code>, or <code>RSA-OAEP-256</code> from <code>ID Token Encryption Key Management Algorithm</code> pulldown menu</p>
 </li>
 </ul>
 </div>
@@ -5179,7 +5184,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <p>open the client&#8217;s <code>Settings</code> tab</p>
 </li>
 <li>
-<p>open <code>Advanced Settings</code></p>
+<p>open <code>Fine Grain OpenID Connect Configuration</code></p>
 </li>
 <li>
 <p>select the algorithm from <code>ID Token Encryption Content Encryption Algorithm</code> pulldown menu</p>
@@ -7782,7 +7787,7 @@ You will use the <code>Redirect URI</code> from this page in a later step, which
 <div class="paragraph">
 <div class="title">Add a New App</div>
 <p>To enable login with Bitbucket you must first register an application project in
-<a href="https://confluence.atlassian.com/bitbucket/oauth-on-bitbucket-cloud-238027431.html">OAuth on Bitbucket Cloud</a>.</p>
+<a href="https://support.atlassian.com/bitbucket-cloud/docs/use-oauth-on-bitbucket-cloud/">OAuth on Bitbucket Cloud</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -8974,6 +8979,10 @@ You must define the SAML configuration options as well.  They basically describe
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validating X509 Certificate</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The public certificate that will be used to validate the signatures of SAML requests and responses from the external IDP.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pass subject</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether or not a <code>login_hint</code> query parameter should be forwarded to the IDP. When provided, this login_hint parameter is added to AuthnRequest&#8217;s Subject. This allows destination providers to prefill their login form. When no login_hint is provided, nothing is forwarded as an AuthnRequest Subject.</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -8987,16 +8996,36 @@ This link is an XML document describing metadata about the IDP.</p>
 <div class="sect3">
 <h4 id="_identity_broker_saml_sp_descriptor"><a class="anchor" href="#_identity_broker_saml_sp_descriptor"></a>SP Descriptor</h4>
 <div class="paragraph">
-<p>Once you create a SAML provider, there is an <code>EXPORT</code> button that appears when viewing that provider.
-Clicking this button will export a SAML SP entity descriptor which you can use to import into the external SP.</p>
+<p>If you need to access the provider&#8217;s SAML SP metadata, look for the <code>Endpoints</code> item in the identity provider configuration settings. It contains a link called
+<code>SAML 2.0 Service Provider Metadata</code> that generates the SAML entity descriptor for the Service Provider. You can either download it or copy its URL and then import it in the remote Identity Provider.</p>
 </div>
 <div class="paragraph">
-<p>This metadata is also available publicly by going to the URL.</p>
+<p>This metadata is also available publicly by going to the URL:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>http[s]://{host:port}/auth/realms/{realm-name}/broker/{broker-alias}/endpoint/descriptor</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Make sure to save any configuration changes before accessing the descriptor or they will not be reflected in the metadata.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_identity_broker_saml_login_hint"><a class="anchor" href="#_identity_broker_saml_login_hint"></a>Send Subject in SAML requests</h4>
+<div class="paragraph">
+<p>By default, a social button pointing to a SAML Identity Provider redirects the user to a login URL:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>http[s]://{host:port}/auth/realms/${realm-name}/broker/{broker-alias}/login</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Adding a query parameter named <code>login_hint</code> to this URL will add its value to SAML request as a Subject attribute. When this query parameter is absent or left empty, no subject will be added to the request.</p>
+</div>
+<div class="paragraph">
+<p>"Pass subject" option must be enabled.</p>
 </div>
 </div>
 </div>
@@ -14367,7 +14396,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-21 16:16:37 UTC
+Last updated 2020-09-03 14:31:34 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
