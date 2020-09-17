@@ -2836,7 +2836,7 @@ Company myCompany = em.find(Company.class, <span class="string"><span class="del
 </div>
 </div>
 <div class="paragraph">
-<p>The methods <code>getChangelogLocation</code> and <code>getFactoryId</code> are important to support automatic updating of your entities by Liquibase. <a href="http://www.liquibase.org/">Liquibase</a>
+<p>The methods <code>getChangelogLocation</code> and <code>getFactoryId</code> are important to support automatic updating of your entities by Liquibase. <a href="https://www.liquibase.org/">Liquibase</a>
 is a framework for updating the database schema, which Keycloak internally uses to create the DB schema and update the DB schema among versions. You may need to use
 it as well and create a changelog for your entities. Note that versioning of your own Liquibase changelog is independent
 of Keycloak versions. In other words, when you update to a new Keycloak version, you are not forced to update your
@@ -3396,8 +3396,8 @@ is responsible for knowing where to read or write the credential, for example lo
 }
 
 <span class="annotation">@Override</span>
-<span class="directive">public</span> <span class="type">void</span> deleteCredential(RealmModel realm, UserModel user, <span class="predefined-type">String</span> credentialId) {
-    getCredentialStore().removeStoredCredential(realm, user, credentialId);
+<span class="directive">public</span> <span class="type">boolean</span> deleteCredential(RealmModel realm, UserModel user, <span class="predefined-type">String</span> credentialId) {
+    <span class="keyword">return</span> getCredentialStore().removeStoredCredential(realm, user, credentialId);
 }</code></pre>
 </div>
 </div>
@@ -6426,7 +6426,7 @@ plain byte and character arrays and buffers is preferable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-12 10:09:42 UTC
+Last updated 2020-09-17 07:45:38 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

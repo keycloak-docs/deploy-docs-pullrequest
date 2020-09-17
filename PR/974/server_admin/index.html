@@ -992,12 +992,15 @@ span.image img {
 <li><a href="#paypal">PayPal</a></li>
 <li><a href="#stack-overflow">Stack Overflow</a></li>
 <li><a href="#twitter">Twitter</a></li>
+<li><a href="#instagram">Instagram</a></li>
 </ul>
 </li>
 <li><a href="#_identity_broker_oidc">OpenID Connect v1.0 Identity Providers</a></li>
 <li><a href="#saml-v2-0-identity-providers">SAML v2.0 Identity Providers</a>
 <ul class="sectlevel3">
+<li><a href="#_identity_broker_saml_requested_authncontext">Requesting specific AuthnContexts</a></li>
 <li><a href="#_identity_broker_saml_sp_descriptor">SP Descriptor</a></li>
+<li><a href="#_identity_broker_saml_login_hint">Send Subject in SAML requests</a></li>
 </ul>
 </li>
 <li><a href="#_client_suggested_idp">Client-suggested Identity Provider</a></li>
@@ -1190,7 +1193,7 @@ in their organization.  Security features that developers normally have to write
 and are easily tailorable to the individual requirements of your organization.  Keycloak provides customizable
 user interfaces for login, registration, administration, and account management.  You can also use Keycloak as an
 integration platform to hook it into existing LDAP and Active Directory servers.  You can also delegate authentication to third
-party identity providers like Facebook and Google+.</p>
+party identity providers like Facebook and Google.</p>
 </div>
 <div class="sect2">
 <h3 id="features"><a class="anchor" href="#features"></a>Features</h3>
@@ -2509,6 +2512,10 @@ There may be more cost effective ways of protecting your password stores.</p>
 <dt class="hdlist1">Not Username</dt>
 <dd>
 <p>When set, the password is not allowed to be the same as the username.</p>
+</dd>
+<dt class="hdlist1">Not Email</dt>
+<dd>
+<p>When set, the password is not allowed to be the same as the email address.</p>
 </dd>
 <dt class="hdlist1">Regular Expression</dt>
 <dd>
@@ -5012,7 +5019,7 @@ For more information see <a href="https://www.keycloak.org/docs/11.0/securing_ap
 <p><strong>Web Origins</strong></p>
 </div>
 <div class="paragraph">
-<p>This option centers around <a href="http://www.w3.org/TR/cors/">CORS</a> which stands for Cross-Origin Resource Sharing.
+<p>This option centers around <a href="https://fetch.spec.whatwg.org/">CORS</a> which stands for Cross-Origin Resource Sharing.
 If browser JavaScript tries to make an AJAX HTTP request to a server whose domain is different from the one the
 JavaScript code came from, then the request must use CORS.
 The server must handle CORS requests in a special way, otherwise the browser will not display or allow the request to be processed.
@@ -5154,7 +5161,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 </ul>
 </div>
 <div class="paragraph">
-<p>Key Encryption&#8217;s algorithms are defined in the <a href="https://tools.ietf.org/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports RSAES-PKCS1-v1_5(RSA1_5) and RSAES OAEP using default parameters (RSA-OAEP). The detailed procedure to select this algorithm is as follows:</p>
+<p>Key Encryption&#8217;s algorithms are defined in the <a href="https://tools.ietf.org/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports RSAES-PKCS1-v1_5(RSA1_5), RSAES OAEP using default parameters (RSA-OAEP), and RSAES OAEP 256 using SHA-256 and MFG1 (RSA-OAEP-256). The detailed procedure to select this algorithm is as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5162,10 +5169,10 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <p>open the client&#8217;s <code>Settings</code> tab</p>
 </li>
 <li>
-<p>open <code>Advanced Settings</code></p>
+<p>open <code>Fine Grain OpenID Connect Configuration</code></p>
 </li>
 <li>
-<p>select <code>RSA1_5</code> or <code>RSA-OAEP</code> from <code>ID Token Encryption Key Management Algorithm</code> pulldown menu</p>
+<p>select <code>RSA1_5</code>,  <code>RSA-OAEP</code>, or <code>RSA-OAEP-256</code> from <code>ID Token Encryption Key Management Algorithm</code> pulldown menu</p>
 </li>
 </ul>
 </div>
@@ -5178,7 +5185,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 <p>open the client&#8217;s <code>Settings</code> tab</p>
 </li>
 <li>
-<p>open <code>Advanced Settings</code></p>
+<p>open <code>Fine Grain OpenID Connect Configuration</code></p>
 </li>
 <li>
 <p>select the algorithm from <code>ID Token Encryption Content Encryption Algorithm</code> pulldown menu</p>
@@ -5196,8 +5203,10 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 </div>
 <div class="paragraph">
 <p>If you&#8217;ve set the client&#8217;s <a href="#_access-type">access type</a> to <code>confidential</code> in the client&#8217;s
-<code>Settings</code> tab, a new <code>Credentials</code> tab will show up. As part of dealing with this
-type of client you have to configure the client&#8217;s credentials.</p>
+<code>Settings</code> tab, a new <code>Credentials</code> tab will show up. Note that the <code>Credentials</code> tab only
+shows up after you&#8217;ve clicked the <code>Save</code> button at the bottom of the settings screen with a
+<code>confidential</code> access type. As part of dealing with thistype of client you have to configure
+the client&#8217;s credentials.</p>
 </div>
 <div class="paragraph">
 <div class="title">Credentials Tab</div>
@@ -6867,7 +6876,7 @@ and assign restricted access policies for managing a realm.  Things like:</p>
 <p>Limited user management.</p>
 </li>
 <li>
-<p>Fine grain impersonization control</p>
+<p>Fine grain impersonation control</p>
 </li>
 <li>
 <p>Being able to assign a specific restricted set of roles to users.</p>
@@ -6884,7 +6893,7 @@ and assign restricted access policies for managing a realm.  Things like:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>There&#8217;s some important things to note about fine grain admin permissions:</p>
+<p>There are some important things to note about fine grain admin permissions:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -6904,8 +6913,8 @@ default behavior of the built in admin roles.</p>
 <h4 id="managing-one-specific-client"><a class="anchor" href="#managing-one-specific-client"></a>Managing One Specific Client</h4>
 <div class="paragraph">
 <p>Let&#8217;s look first at allowing
-an admin to manage one client and one client only.  In our example we have a realm
-called <code>test</code> and a client called <code>sales-application</code>.  In realm <code>test</code> we will give a
+an admin to manage one client and one client only.  In our example, we have a realm
+called <code>test</code> and a client called <code>sales-application</code>.  In the realm <code>test</code> we will give a
 user in that realm permission to only manage that application.</p>
 </div>
 <div class="admonitionblock important">
@@ -6924,7 +6933,7 @@ You cannot do cross realm fine grain permissions.  Admins in the <code>master</c
 <h5 id="permission-setup"><a class="anchor" href="#permission-setup"></a>Permission Setup</h5>
 <div class="paragraph">
 <p>The first thing we must do is login to the Admin Console so we can set up permissions for that client.  We navigate to the management section
-of the client we want to define fine-grain permissions for.</p>
+of the client, we want to define fine-grain permissions for.</p>
 </div>
 <div class="paragraph">
 <div class="title">Client Management</div>
@@ -6983,7 +6992,7 @@ rules in JavaScript.  For this simple example, we&#8217;re going to create a <co
 <p><span class="image"><img src="./keycloak-images/fine-grain-client-user-policy.png" alt="fine grain client user policy"></span></p>
 </div>
 <div class="paragraph">
-<p>This policy will match a hard-coded user in the user database.  In this case it is the <code>sales-admin</code> user.  We must then go back to the
+<p>This policy will match a hard-coded user in the user database.  In this case, it is the <code>sales-admin</code> user.  We must then go back to the
 <code>sales-application</code> client&#8217;s <code>manage</code> permission page and assign the policy to the permission object.</p>
 </div>
 <div class="paragraph">
@@ -7013,7 +7022,7 @@ role tells the Admin Console that it should render client menus for the <code>sa
 <div class="sect4">
 <h5 id="testing-it-out"><a class="anchor" href="#testing-it-out"></a>Testing It Out.</h5>
 <div class="paragraph">
-<p>Next we log out of the master realm and re-login to the <a href="#_per_realm_admin_permissions">dedicated admin console</a> for the <code>test</code> realm
+<p>Next, we log out of the master realm and re-login to the <a href="#_per_realm_admin_permissions">dedicated admin console</a> for the <code>test</code> realm
 using the <code>sales-admin</code> as a username.  This is located under <code>/auth/admin/test/console</code>.</p>
 </div>
 <div class="paragraph">
@@ -7028,9 +7037,9 @@ using the <code>sales-admin</code> as a username.  This is located under <code>/
 <div class="sect3">
 <h4 id="restrict-user-role-mapping"><a class="anchor" href="#restrict-user-role-mapping"></a>Restrict User Role Mapping</h4>
 <div class="paragraph">
-<p>Another thing you might want to do is to restrict the set a roles an admin is allowed
+<p>Another thing you might want to do is to restrict the set of roles an admin is allowed
 to assign to a user.  Continuing our last example, let&#8217;s expand the permission set of the 'sales-admin'
-user so that he can also control which users are allowed to access this application.  Through fine grain permissions we can
+user so that he can also control which users are allowed to access this application.  Through fine grain permissions, we can
 enable it so that the <code>sales-admin</code> can only assign roles that grant specific access to
 the <code>sales-application</code>.  We can also restrict it so that the admin can only map roles
 and not perform any other types of user administration.</p>
@@ -7095,13 +7104,13 @@ allow the admin to view users in the realm he wants to add the <code>sales-appli
 <div class="sect4">
 <h5 id="testing-it-out-2"><a class="anchor" href="#testing-it-out-2"></a>Testing It Out.</h5>
 <div class="paragraph">
-<p>Next we log out of the master realm and re-login to the <a href="#_per_realm_admin_permissions">dedicated admin console</a> for the <code>test</code> realm
+<p>Next, we log out of the master realm and re-login to the <a href="#_per_realm_admin_permissions">dedicated admin console</a> for the <code>test</code> realm
 using the <code>sales-admin</code> as a username.  This is located under <code>/auth/admin/test/console</code>.</p>
 </div>
 <div class="paragraph">
 <p>You will see that now the <code>sales-admin</code> can view users in the system.  If you select one of the
 users you&#8217;ll see that each user detail page is read only, except for the <code>Role Mappings</code> tab.
-Going to these tab you&#8217;ll find that there are no <code>Available</code> roles for the admin to
+Going to this tab you&#8217;ll find that there are no <code>Available</code> roles for the admin to
 map to the user except when we browse the <code>sales-application</code> roles.</p>
 </div>
 <div class="paragraph">
@@ -7125,7 +7134,7 @@ by a client.  If we log back into the admin console to our master realm admin an
 <p><span class="image"><img src="./keycloak-images/fine-grain-client-permissions-tab-on.png" alt="fine grain client permissions tab on"></span></p>
 </div>
 <div class="paragraph">
-<p>If you grant access to this particular parmission to an admin, that admin will be able
+<p>If you grant access to this particular permission to an admin, that admin will be able
 map any role defined by the client.</p>
 </div>
 </div>
@@ -7155,7 +7164,7 @@ role mapping permissions.  See <a href="#_users-permissions">Users Permissions</
 <dt class="hdlist1">map-role-composite</dt>
 <dd>
 <p>Policies that decide if an admin can map this role as a composite to another role.
-An admin can define roles for a client if he has manage permissions for that client
+An admin can define roles for a client if he has to manage permissions for that client
 but he will not be able to add composites to those roles unless he has the
 <code>map-role-composite</code> privileges for the role he wants to add as a composite.</p>
 </dd>
@@ -7184,7 +7193,7 @@ permission types listed.</p>
 <dt class="hdlist1">manage</dt>
 <dd>
 <p>Policies that decide if an admin can view and manage the client&#8217;s configuration.
-There is some issues with this in that privileges could be leaked unintentionally.
+There are some issues with this in that privileges could be leaked unintentionally.
 For example, the admin could define a protocol mapper that hardcoded a role
 even if the admin does not have privileges to map the role to the client&#8217;s scope.
 This is currently the limitation of protocol mappers as they don&#8217;t have a way
@@ -7192,14 +7201,14 @@ to assign individual permissions to them like roles do.</p>
 </dd>
 <dt class="hdlist1">configure</dt>
 <dd>
-<p>Reduced set of prileges to manage the client.  Its like the <code>manage</code> scope except
+<p>Reduced set of privileges to manage the client.  It is like the <code>manage</code> scope except
 the admin is not allowed to define protocol mappers, change the client template,
 or the client&#8217;s scope.</p>
 </dd>
 <dt class="hdlist1">map-roles</dt>
 <dd>
 <p>Policies that decide if an admin can map any role defined by the client to a user.
-This is a shortcut, easy-of-use feature to avoid having to defin policies
+This is a shortcut, easy-of-use feature to avoid having to define policies
 for each and every role defined by the client.</p>
 </dd>
 <dt class="hdlist1">map-roles-composite</dt>
@@ -7234,7 +7243,7 @@ permission types listed.</p>
 <dt class="hdlist1">manage</dt>
 <dd>
 <p>Policies that decide if an admin can manage all users in the realm.  This
-permission grants the admin the privilege to perfor user role mappings, but
+permission grants the admin the privilege to perform user role mappings, but
 it does not specify which roles the admin is allowed to map.  You&#8217;ll need to
 define the privilege for each role you want the admin to be able to map.</p>
 </dd>
@@ -7779,7 +7788,7 @@ You will use the <code>Redirect URI</code> from this page in a later step, which
 <div class="paragraph">
 <div class="title">Add a New App</div>
 <p>To enable login with Bitbucket you must first register an application project in
-<a href="https://confluence.atlassian.com/bitbucket/oauth-on-bitbucket-cloud-238027431.html">OAuth on Bitbucket Cloud</a>.</p>
+<a href="https://support.atlassian.com/bitbucket-cloud/docs/use-oauth-on-bitbucket-cloud/">OAuth on Bitbucket Cloud</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -8638,6 +8647,103 @@ You cannot use <code>localhost</code> in the <code>Callback URL</code>.  Instead
 <p>Finally, you will need to obtain the API Key and secret from this page and copy them back into the <code>Client ID</code> and <code>Client Secret</code> fields on the Keycloak <code>Add identity provider</code> page.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="instagram"><a class="anchor" href="#instagram"></a>Instagram</h4>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/social/instagram.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/identity-broker/social/instagram.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>There are a number of steps you have to complete to be able to enable login with Instagram.  First, go to the <code>Identity Providers</code> left menu item
+and select <code>Instagram</code> from the <code>Add provider</code> drop down list.  This will bring you to the <code>Add identity provider</code> page.</p>
+</div>
+<div class="paragraph">
+<div class="title">Add Identity Provider</div>
+<p><span class="image"><img src="./keycloak-images/instagram-add-identity-provider.png" alt="instagram add identity provider"></span></p>
+</div>
+<div class="paragraph">
+<p>You can&#8217;t click save yet, as you&#8217;ll need to obtain a <code>Client ID</code> and <code>Client Secret</code> from Instagram.  One piece of data you&#8217;ll need from this
+page is the <code>Redirect URI</code>.  You&#8217;ll have to provide that to Instagram when you register Keycloak as a client there, so
+copy this URI to your clipboard.</p>
+</div>
+<div class="paragraph">
+<p>To enable login with Instagram you first have to create a project and a client. Instagram API is managed through the <a href="https://developers.facebook.com/">Facebook Developer Console</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Facebook often changes the look and feel of the Facebook Developer Console, so these directions might not always be up to date and the
+      configuration steps might be slightly different.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once you&#8217;ve logged into the console there is a menu in the top right corner of the screen that says <code>My Apps</code>.  Select the <code>Add a New App</code>
+menu item.</p>
+</div>
+<div class="paragraph">
+<div class="title">Add a New App</div>
+<p><span class="image"><img src="./images/instagram-add-new-app.png" alt="instagram add new app"></span></p>
+</div>
+<div class="paragraph">
+<p>Select <code>For Everything Else</code>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Create a New App ID</div>
+<p><span class="image"><img src="./images/instagram-create-app-id.png" alt="instagram create app id"></span></p>
+</div>
+<div class="paragraph">
+<p>Fill all required fields. Once you&#8217;re done with that, you will be brought to the dashboard
+for the application. In the menu in the left navigation panel select <code>Basic</code> under <code>Settings</code>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Add Platform</div>
+<p><span class="image"><img src="./images/instagram-add-platform.png" alt="instagram add platform"></span></p>
+</div>
+<div class="paragraph">
+<p>Select <code>+ Add Platform</code> at the bottom and then click <code>[Website]</code> with the globe icon. Specify URL of your site.</p>
+</div>
+<div class="paragraph">
+<div class="title">Add a Product</div>
+<p><span class="image"><img src="./images/instagram-add-product.png" alt="instagram add product"></span></p>
+</div>
+<div class="paragraph">
+<p>Select <code>Dashboard</code> from the left menu and click <code>Set Up</code> in the Instagram box. In the left menu then select <code>Basic Display</code> under <code>Instagram</code>
+and click <code>Create New App</code>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Create a New Instagram App ID</div>
+<p><span class="image"><img src="./images/instagram-create-instagram-app-id.png" alt="instagram create instagram app id"></span></p>
+</div>
+<div class="paragraph">
+<p>Specify <code>Display Name</code>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Setup the App</div>
+<p><span class="image"><img src="./images/instagram-app-settings.png" alt="instagram app settings"></span></p>
+</div>
+<div class="paragraph">
+<p>Copy and paste the <code>Redirect URI</code> from the Keycloak <code>Add identity provider</code> page into the <code>Valid OAuth Redirect URIs</code> of the Instagram <code>Client OAuth Settings</code> settings block.</p>
+</div>
+<div class="paragraph">
+<p>You can use this URL also for <code>Deauthorize Callback URL</code> and <code>Data Deletion Request URL</code>. Keycloak currently doesn&#8217;t support either of them,
+but the Facebook Developer Console requires both of them to be filled.</p>
+</div>
+<div class="paragraph">
+<p>You will need also to obtain the App ID and App Secret from this page so you can enter them into the Keycloak <code>Add identity provider</code> page.
+To obtain this click on <code>Show</code> under <code>App Secret</code>. Go back to Keycloak and specify those items and finally save your Instagram Identity Provider.</p>
+</div>
+<div class="paragraph">
+<p>After this it is necessary to make the Instagram app public. Click <code>App Review</code> left menu item and then <code>Requests</code>. After that follow the instructions on screen.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_identity_broker_oidc"><a class="anchor" href="#_identity_broker_oidc"></a>OpenID Connect v1.0 Identity Providers</h3>
@@ -8874,6 +8980,14 @@ You must define the SAML configuration options as well.  They basically describe
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validating X509 Certificate</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The public certificate that will be used to validate the signatures of SAML requests and responses from the external IDP.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sign Service Provider Metadata</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, it will use the realm&#8217;s keypair to sign the <a href="#_identity_broker_saml_sp_descriptor">SAML Service Provider Metadata descriptor</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pass subject</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether or not a <code>login_hint</code> query parameter should be forwarded to the IDP. When provided, this login_hint parameter is added to AuthnRequest&#8217;s Subject. This allows destination providers to prefill their login form. When no login_hint is provided, nothing is forwarded as an AuthnRequest Subject.</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -8885,18 +8999,74 @@ This link is an XML document describing metadata about the IDP.</p>
 <p>You can also import all this configuration data by providing a URL or XML file that points to the entity descriptor of the external SAML IDP you want to connect to.</p>
 </div>
 <div class="sect3">
-<h4 id="_identity_broker_saml_sp_descriptor"><a class="anchor" href="#_identity_broker_saml_sp_descriptor"></a>SP Descriptor</h4>
+<h4 id="_identity_broker_saml_requested_authncontext"><a class="anchor" href="#_identity_broker_saml_requested_authncontext"></a>Requesting specific AuthnContexts</h4>
 <div class="paragraph">
-<p>Once you create a SAML provider, there is an <code>EXPORT</code> button that appears when viewing that provider.
-Clicking this button will export a SAML SP entity descriptor which you can use to import into the external SP.</p>
+<p>Some Identity Providers let the clients specify particular constraints on the authentication method used to verify the user identity (e.g. asking for MFA, Kerberos authentication, security requirements, etc.). These are specified using particular AuthnContext criteria. A client can ask for one or more criteria and also specify how the Identity Provider should match the requested AuthnContext - exactly, or by satisfying same-or-better equivalents.</p>
 </div>
 <div class="paragraph">
-<p>This metadata is also available publicly by going to the URL.</p>
+<p>You can list the criteria your Service Provider requires by adding one or more ClassRef or DeclRef in the Requested AuthnContext Constraints section. Usually you will need to provide either ClassRefs or DeclRefs - you should check with your Identity Provider docs which values are supported. If no ClassRefs or DeclRefs are present, the Identity Provider will not enforce additional constraints.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 4. Requested AuthnContext Constraints</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Configuration</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comparison</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The comparison method the Identity Provider should use to evaluate the context requirements. Available values are <code>Exact</code>, <code>Minimum</code>, <code>Maximum</code> or <code>Better</code>. Default value is <code>Exact</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AuthnContext ClassRefs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One or more AuthnContext ClassRefs that describe the required criteria.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AuthnContext DeclRefs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One or more AuthnContext DeclRefs that describe the required criteria.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_identity_broker_saml_sp_descriptor"><a class="anchor" href="#_identity_broker_saml_sp_descriptor"></a>SP Descriptor</h4>
+<div class="paragraph">
+<p>If you need to access the provider&#8217;s SAML SP metadata, look for the <code>Endpoints</code> item in the identity provider configuration settings. It contains a link called
+<code>SAML 2.0 Service Provider Metadata</code> that generates the SAML entity descriptor for the Service Provider. You can either download it or copy its URL and then import it in the remote Identity Provider.</p>
+</div>
+<div class="paragraph">
+<p>This metadata is also available publicly by going to the URL:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>http[s]://{host:port}/auth/realms/{realm-name}/broker/{broker-alias}/endpoint/descriptor</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Make sure to save any configuration changes before accessing the descriptor or they will not be reflected in the metadata.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_identity_broker_saml_login_hint"><a class="anchor" href="#_identity_broker_saml_login_hint"></a>Send Subject in SAML requests</h4>
+<div class="paragraph">
+<p>By default, a social button pointing to a SAML Identity Provider redirects the user to a login URL:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>http[s]://{host:port}/auth/realms/${realm-name}/broker/{broker-alias}/login</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Adding a query parameter named <code>login_hint</code> to this URL will add its value to SAML request as a Subject attribute. When this query parameter is absent or left empty, no subject will be added to the request.</p>
+</div>
+<div class="paragraph">
+<p>"Pass subject" option must be enabled.</p>
 </div>
 </div>
 </div>
@@ -11268,6 +11438,20 @@ Brute Force Detection is disabled by default. Enabling this feature is highly re
 <div class="paragraph">
 <p>There are 2 different configurations for brute force detection; permanent lockout and temporary lockout. Permanent lockout will disable a user&#8217;s account after an attack is detected; the account will be disabled until an administrator renables it. Temporary lockout will disable a user&#8217;s account for a time period after an attack is detected; the time period for which the account is disabled increases the longer the attack continues.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When user is temporarily locked and attempt to login, the default error message <code>Invalid username or password</code> is shown.
+This is the same error message as the message displayed when invalid username or invalid password is provided. This is by design as
+we do not want to reveal to the attacker that user is temporarily disabled.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p><strong>Common Parameters</strong></p>
 </div>
@@ -12209,7 +12393,7 @@ $ kcadm.sh update realms/demorealm -f demorealm.json</pre>
 <p>Linux:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ kcadm.sh create components -r demorealm -s name=java-keystore -s providerId=java-keystore -s providerType=org.keycloak.keys.KeyProvider -s parentId=959844c1-d149-41d7-8359-6aa527fca0b0 -s 'config.priority=["101"]' -s 'config.enabled=["true"]' -s 'config.active=["true"]' -s 'config.keystore=["/opt/keycloak/keystore.jks"]' -s 'config.keystorePassword=["secret"]' -s 'config.keyPassword=["secret"]' -s 'config.alias=["localhost"]'</pre>
+<pre class="nowrap">$ kcadm.sh create components -r demorealm -s name=java-keystore -s providerId=java-keystore -s providerType=org.keycloak.keys.KeyProvider -s parentId=959844c1-d149-41d7-8359-6aa527fca0b0 -s 'config.priority=["101"]' -s 'config.enabled=["true"]' -s 'config.active=["true"]' -s 'config.keystore=["/opt/keycloak/keystore.jks"]' -s 'config.keystorePassword=["secret"]' -s 'config.keyPassword=["secret"]' -s 'config.keyAlias=["localhost"]'</pre>
 </div>
 </div>
 </li>
@@ -12217,7 +12401,7 @@ $ kcadm.sh update realms/demorealm -f demorealm.json</pre>
 <p>Windows:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">c:\&gt; kcadm create components -r demorealm -s name=java-keystore -s providerId=java-keystore -s providerType=org.keycloak.keys.KeyProvider -s parentId=959844c1-d149-41d7-8359-6aa527fca0b0 -s "config.priority=[\"101\"]" -s "config.enabled=[\"true\"]" -s "config.active=[\"true\"]" -s "config.keystore=[\"/opt/keycloak/keystore.jks\"]" -s "config.keystorePassword=[\"secret\"]" -s "config.keyPassword=[\"secret\"]" -s "config.alias=[\"localhost\"]"</pre>
+<pre class="nowrap">c:\&gt; kcadm create components -r demorealm -s name=java-keystore -s providerId=java-keystore -s providerType=org.keycloak.keys.KeyProvider -s parentId=959844c1-d149-41d7-8359-6aa527fca0b0 -s "config.priority=[\"101\"]" -s "config.enabled=[\"true\"]" -s "config.active=[\"true\"]" -s "config.keystore=[\"/opt/keycloak/keystore.jks\"]" -s "config.keystorePassword=[\"secret\"]" -s "config.keyPassword=[\"secret\"]" -s "config.keyAlias=[\"localhost\"]"</pre>
 </div>
 </div>
 </li>
@@ -14253,7 +14437,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-12 10:09:36 UTC
+Last updated 2020-09-17 07:45:32 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

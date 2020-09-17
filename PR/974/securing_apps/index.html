@@ -1921,7 +1921,7 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </table>
 </div>
 <div class="paragraph">
-<p>You must subscribe to the WildFly 18 repository before you can install the WildFly 7 adapters from an RPM.</p>
+<p>You must subscribe to the WildFly 20 repository before you can install the WildFly 7 adapters from an RPM.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Prerequisites</div>
@@ -1935,7 +1935,7 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </ol>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise Linux 6, 7: Using Red Hat Subscription Manager, subscribe to the WildFly 18 repository using the following command. Replace &lt;RHEL_VERSION&gt; with either 6 or 7 depending on your Red Hat Enterprise Linux version.</p>
+<p>For Red Hat Enterprise Linux 6, 7: Using Red Hat Subscription Manager, subscribe to the WildFly 20 repository using the following command. Replace &lt;RHEL_VERSION&gt; with either 6 or 7 depending on your Red Hat Enterprise Linux version.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1943,11 +1943,11 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </div>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise Linux 8: Using Red Hat Subscription Manager, subscribe to the WildFly 18 repository using the following command:</p>
+<p>For Red Hat Enterprise Linux 8: Using Red Hat Subscription Manager, subscribe to the WildFly 20 repository using the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ sudo subscription-manager repos --enable=jb-eap-18-for-rhel-8-x86_64-rpms --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ sudo subscription-manager repos --enable=jb-eap-20-for-rhel-8-x86_64-rpms --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3162,7 +3162,7 @@ features:install keycloak</code></pre>
 <div class="paragraph">
 <p>JBoss Fuse 7 leverages Undertow adapter which is essentially the same as
 <a href="#_jboss_adapter">EAP 7 / WildFly Adapter</a>
-as JBoss Fuse 7.4.0 is bundled with <a href="http://undertow.io/">Undertow HTTP engine</a> under the covers and Undertow is used for running various kinds of web applications.</p>
+as JBoss Fuse 7.4.0 is bundled with <a href="https://undertow.io/">Undertow HTTP engine</a> under the covers and Undertow is used for running various kinds of web applications.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -4613,7 +4613,9 @@ for the Keycloak adapter.
         <span class="tag">&lt;constructor-arg</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/WEB-INF/keycloak.json</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
     <span class="tag">&lt;/bean&gt;</span>
 
-    <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationEntryPoint</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationEntryPoint</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationEntryPoint</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationEntryPoint</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;constructor-arg</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">adapterDeploymentContext</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;/bean&gt;</span>
     <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationProvider</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
     <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakPreAuthActionsFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.filter.KeycloakPreAuthActionsFilter</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
     <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationProcessingFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.filter.KeycloakAuthenticationProcessingFilter</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -4762,7 +4764,7 @@ For example:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Bean</span>
-<span class="directive">public</span> KeycloakConfigResolver KeycloakConfigResolver() {
+<span class="directive">public</span> KeycloakConfigResolver keycloakConfigResolver() {
     <span class="keyword">return</span> <span class="keyword">new</span> KeycloakSpringBootConfigResolver();
 }</code></pre>
 </div>
@@ -7692,7 +7694,7 @@ X-Auth-Name: Beloved User</code></pre>
 <p>If a request for an access token contains a refresh token and  <code>--enable-refresh-tokens</code> is set to <code>true</code>, the proxy will automatically refresh the access token for you. The tokens themselves are kept either as an encrypted <strong>(--encryption-key=KEY)</strong> cookie <strong>(cookie name: kc-state).</strong> or a store <strong>(still requires encryption key)</strong>.</p>
 </div>
 <div class="paragraph">
-<p>At present the only store options supported are <a href="https://github.com/antirez/redis">Redis</a> and <a href="https://github.com/boltdb/bolt">Boltdb</a>.</p>
+<p>At present the only store options supported are <a href="https://github.com/redis/redis">Redis</a> and <a href="https://github.com/boltdb/bolt">Boltdb</a>.</p>
 </div>
 <div class="paragraph">
 <p>To enable a local boltdb store use <code>--store-url boltdb:///PATH</code> or using a relative path <code>boltdb://PATH</code>.</p>
@@ -7804,7 +7806,7 @@ X-Auth-Name: Beloved User</code></pre>
 <div class="sect3">
 <h4 id="limitations"><a class="anchor" href="#limitations"></a>2.4.28. Limitations</h4>
 <div class="paragraph">
-<p>Keep in mind <a href="http://browsercookielimits.squawky.net/">browser cookie limits</a> if you use access or refresh tokens in the browser cookie. Keycloak-generic-adapter divides the cookie automatically if your cookie is longer than 4093 bytes. Real size of the cookie depends on the content of the issued access token. Also, encryption might add additional bytes to the cookie size. If you have large cookies (&gt;200 KB), you might reach browser cookie limits.</p>
+<p>Keep in mind browser cookie limits if you use access or refresh tokens in the browser cookie. Keycloak-generic-adapter divides the cookie automatically if your cookie is longer than 4093 bytes. Real size of the cookie depends on the content of the issued access token. Also, encryption might add additional bytes to the cookie size. If you have large cookies (&gt;200 KB), you might reach browser cookie limits.</p>
 </div>
 <div class="paragraph">
 <p>All cookies are part of the header request, so you might find a problem with the max headers size limits in your infrastructure (some load balancers have very low this value, such as 8 KB). Be sure that all network devices have sufficient header size limits. Otherwise, your users won&#8217;t be able to obtain an access token.</p>
@@ -8040,7 +8042,7 @@ It can only be invoked by confidential clients.</p>
 <h4 id="validating-access-tokens"><a class="anchor" href="#validating-access-tokens"></a>2.6.2. Validating Access Tokens</h4>
 <div class="paragraph">
 <p>If you need to manually validate access tokens issued by Keycloak you can invoke the <a href="#_token_introspection_endpoint">Introspection Endpoint</a>.
-The downside to this approach is that you have to make a network invocation to the Keycloak server.  This can be slow and possibily overload the
+The downside to this approach is that you have to make a network invocation to the Keycloak server.  This can be slow and possibly overload the
 server if you have too many validation requests going on at the same time.  Keycloak issued access tokens are <a href="https://tools.ietf.org/html/rfc7519">JSON Web Tokens (JWT)</a> digitally signed and encoded using <a href="https://www.rfc-editor.org/rfc/rfc7515.txt">JSON Web Signature (JWS)</a>.
 Because they are encoded in this way, this allows you to locally validate access tokens using the public key of the issuing realm.  You can either hard code the
 realm&#8217;s public key in your validation code, or lookup and cache the public key using the <a href="#_certificate_endpoint">certificate endpoint</a> with the Key ID (KID) embedded within the
@@ -9223,7 +9225,7 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </ol>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise Linux 6, 7: Using Red Hat Subscription Manager, subscribe to the WildFly 18 repository using the following command. Replace &lt;RHEL_VERSION&gt; with either 6 or 7 depending on your Red Hat Enterprise Linux version.</p>
+<p>For Red Hat Enterprise Linux 6, 7: Using Red Hat Subscription Manager, subscribe to the WildFly 20 repository using the following command. Replace &lt;RHEL_VERSION&gt; with either 6 or 7 depending on your Red Hat Enterprise Linux version.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9231,11 +9233,11 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </div>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise Linux 8: Using Red Hat Subscription Manager, subscribe to the WildFly 18 repository using the following command:</p>
+<p>For Red Hat Enterprise Linux 8: Using Red Hat Subscription Manager, subscribe to the WildFly 20 repository using the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ sudo subscription-manager repos --enable=jb-eap-18-for-rhel-8-x86_64-rpms --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ sudo subscription-manager repos --enable=jb-eap-20-for-rhel-8-x86_64-rpms --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11959,7 +11961,7 @@ If it is an external token, this parameter may or may not have to be specified d
 <dt class="hdlist1">requested_token_type</dt>
 <dd>
 <p><em>OPTIONAL.</em> This parameter represents the type of token the client wants to exchange for.  Currently only oauth
-and OpenID Connect token types are supported.  The default value for this depends on whether the
+and OpenID Connect token types are supported.  The default value for this depends on whether it
 is <code>urn:ietf:params:oauth:token-type:refresh_token</code> in which case you will be returned both an access token and refresh
 token within the response.  Other appropriate values are <code>urn:ietf:params:oauth:token-type:access_token</code> and <code>urn:ietf:params:oauth:token-type:id_token</code></p>
 </dd>
@@ -12551,7 +12553,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-12 10:09:31 UTC
+Last updated 2020-09-17 07:45:27 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
