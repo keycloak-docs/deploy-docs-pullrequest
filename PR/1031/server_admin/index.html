@@ -891,8 +891,9 @@ span.image img {
 <ul class="sectlevel2">
 <li><a href="#oidc-clients">OIDC Clients</a>
 <ul class="sectlevel3">
+<li><a href="#creating-an-open-id-connect-client">Creating an Open ID Connect Client</a></li>
 <li><a href="#advanced-settings">Advanced Settings</a></li>
-<li><a href="#_client-credentials">Confidential Client Credentials</a></li>
+<li><a href="#confidential-client-credentials">Confidential Client Credentials</a></li>
 <li><a href="#_service_accounts">Service Accounts</a></li>
 <li><a href="#_audience">Audience Support</a></li>
 </ul>
@@ -4519,7 +4520,7 @@ path you use depends greatly on the type of application or client requesting acc
 OIDC and OAuth 2.0 specifications so only a brief overview will be provided here.</p>
 </div>
 <div class="sect4">
-<h5 id="authorization-code-flow"><a class="anchor" href="#authorization-code-flow"></a>Authorization Code Flow</h5>
+<h5 id="_oidc-auth-flows-authorization"><a class="anchor" href="#_oidc-auth-flows-authorization"></a>Authorization Code Flow</h5>
 <div class="paragraph">
 <p>This is a browser-based protocol and it is what we recommend you use to authenticate and authorize browser-based applications.  It makes
 heavy use of browser redirects to obtain an <em>identity</em> and <em>access</em> token.  Here&#8217;s a brief summary:</p>
@@ -4563,7 +4564,7 @@ into this in the <a href="#_clients">Managing Clients</a> chapter.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="implicit-flow"><a class="anchor" href="#implicit-flow"></a>Implicit Flow</h5>
+<h5 id="_oidc-auth-flows-implicit"><a class="anchor" href="#_oidc-auth-flows-implicit"></a>Implicit Flow</h5>
 <div class="paragraph">
 <p>This is a browser-based protocol that is similar to Authorization Code Flow except there are fewer requests and no refresh tokens involved.
 We do not recommend this flow as there remains the possibility of <em>access</em> tokens being leaked in the browser history as tokens are transmitted
@@ -4590,7 +4591,7 @@ redirects back to the application using the callback URL provided earlier and ad
 </div>
 </div>
 <div class="sect4">
-<h5 id="resource-owner-password-credentials-grant-direct-access-grants"><a class="anchor" href="#resource-owner-password-credentials-grant-direct-access-grants"></a>Resource Owner Password Credentials Grant (Direct Access Grants)</h5>
+<h5 id="_oidc-auth-flows-direct"><a class="anchor" href="#_oidc-auth-flows-direct"></a>Resource Owner Password Credentials Grant (Direct Access Grants)</h5>
 <div class="paragraph">
 <p>This is referred to in the Admin Console as <em>Direct Access Grants</em>. This is used by REST clients that want to obtain a token on behalf of a user.  It is one HTTP POST request that contains
 the credentials of the user as well as the id of the client and the client&#8217;s secret (if it is a confidential client).  The user&#8217;s credentials
@@ -4876,165 +4877,153 @@ This section discusses various aspects around configuring clients and various wa
 <p><a href="#_oidc">OpenID Connect</a> is the preferred protocol to secure applications.  It was designed from the ground up to be web friendly
 and work best with HTML5/JavaScript applications.</p>
 </div>
-<div class="paragraph">
-<p>To create an OIDC client go to the <code>Clients</code> left menu item.  On this page you&#8217;ll see a <code>Create</code> button on the right.</p>
+<div id="proc-creating-oidc-client_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/proc-creating-oidc-client.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/proc-creating-oidc-client.adoc" target="_blank">Report an issue</a>
 </div>
-<div class="paragraph">
-<div class="title">Clients</div>
-<p><span class="image"><img src="./keycloak-images/clients.png" alt="clients"></span></p>
 </div>
+<div class="sect3">
+<h4 id="creating-an-open-id-connect-client"><a class="anchor" href="#creating-an-open-id-connect-client"></a>Creating an Open ID Connect Client</h4>
 <div class="paragraph">
-<p>This will bring you to the <code>Add Client</code> page.</p>
+<p>To use <a href="#_oidc">OpenID Connect</a>, an existing application must be secured as an Open ID connect client.</p>
 </div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click <code>Clients</code> in the left navigation pane.</p>
+</li>
+<li>
+<p>Click <strong>Create</strong> to go to the <code>Add Client</code> page.</p>
 <div class="paragraph">
 <div class="title">Add Client</div>
-<p><span class="image"><img src="./keycloak-images/add-client-oidc.png" alt="add client oidc"></span></p>
+<p><span class="image"><img src="./keycloak-images/add-client-oidc.png" alt="Add Client"></span></p>
 </div>
-<div class="paragraph">
-<p>Enter in the <code>Client ID</code> of the client.  This should be a simple
-alpha-numeric string that will be used in requests and in the Keycloak database to identify the client.
-Next select <code>openid-connect</code> in the <code>Client Protocol</code> drop down box.
-Finally enter in the base URL of your
-application in the <code>Root URL</code> field and click <code>Save</code>.  This will create the client and bring you to the client <code>Settings</code>
+</li>
+<li>
+<p>Enter the <code>Client ID</code> of the client.</p>
+</li>
+<li>
+<p>Select <code>openid-connect</code> in the <code>Client Protocol</code> drop down box.</p>
+</li>
+<li>
+<p>Enter the base URL of your application in the <code>Root URL</code> field.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.  This action creates the client and bring you to the <code>Settings</code>
 tab.</p>
-</div>
 <div class="paragraph">
 <div class="title">Client Settings</div>
-<p><span class="image"><img src="./keycloak-images/client-settings-oidc.png" alt="client settings oidc"></span></p>
+<p><span class="image"><img src="./keycloak-images/client-settings-oidc.png" alt="Client Settings"></span></p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s walk through each configuration item on this page.</p>
-</div>
-<div class="paragraph">
-<p><strong>Client ID</strong></p>
-</div>
-<div class="paragraph">
-<p>This specifies an alpha-numeric string that will be used as the client identifier for OIDC requests.</p>
-</div>
-<div class="paragraph">
-<p><strong>Name</strong></p>
-</div>
-<div class="paragraph">
-<p>This is the display name for the client whenever it is displayed in a Keycloak UI screen.  You can localize
-the value of this field by setting up a replacement string value i.e. ${myapp}.  See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a>
-for more information.</p>
-</div>
-<div class="paragraph">
-<p><strong>Description</strong></p>
-</div>
-<div class="paragraph">
-<p>This specifies the description of the client.  This can also be localized.</p>
-</div>
-<div class="paragraph">
-<p><strong>Enabled</strong></p>
-</div>
-<div class="paragraph">
-<p>If this is turned off, the client will not be allowed to request authentication.</p>
-</div>
-<div class="paragraph">
-<p><strong>Consent Required</strong></p>
-</div>
-<div class="paragraph">
-<p>If this is on, then users will get a consent page which asks the user if they grant access to that application.  It will also
-display the metadata that the client is interested in so that the user knows exactly what information the client is getting access to.
-If you&#8217;ve ever done a social login to Google, you&#8217;ll often see a similar page.  Keycloak provides the same functionality.</p>
-</div>
-<div id="_access-type" class="paragraph">
-<p><strong>Access Type</strong></p>
-</div>
-<div class="paragraph">
-<p>This defines the type of the OIDC client.</p>
+<p>The following list describes each setting:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><em>confidential</em></dt>
+<dt class="hdlist1"><code>Client ID</code></dt>
 <dd>
-<p>Confidential access type is for server-side clients that need to perform a browser login and require a client secret when they turn an access code into an access token,
-(see <a href="https://tools.ietf.org/html/rfc6749#section-4.1.3">Access Token Request</a> in the OAuth 2.0 spec for more details). This type should be used for server-side applications.</p>
+<p>The alpha-numeric ID string that is used in OIDC requests and in the Keycloak database to identify the client.</p>
 </dd>
-<dt class="hdlist1"><em>public</em></dt>
+<dt class="hdlist1"><code>Name</code></dt>
 <dd>
-<p>Public access type is for client-side clients that need to perform a browser login. With a client-side application there is no way to keep a secret safe. Instead it is very important to restrict  access by configuring correct redirect URIs for the client.</p>
+<p>The name for the client in Keycloak UI screen. To localize
+the name, set up a replacement string value. For example, a string value such as ${myapp}.  See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more information.</p>
 </dd>
-<dt class="hdlist1"><em>bearer-only</em></dt>
+<dt class="hdlist1"><code>Description</code></dt>
 <dd>
-<p>Bearer-only access type means that the application only allows bearer token requests.
-If this is turned on, this application cannot participate in browser logins.</p>
+<p>The description of the client.  This setting can also be localized.</p>
+</dd>
+<dt class="hdlist1"><code>Enabled</code></dt>
+<dd>
+<p>When turned off, the client cannot request authentication.</p>
+</dd>
+<dt class="hdlist1"><code>Consent Required</code></dt>
+<dd>
+<p>When turned on, users see a consent page that they can use to grant access to that application.  It will also display metadata so the user knows the exact information that the client can access.</p>
+</dd>
+<dt class="hdlist1"><code>Access Type</code></dt>
+<dd>
+<p>The type of OIDC client.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Confidential</em></p>
+<div class="literalblock">
+<div class="content">
+<pre>For server-side clients that perform browser logins and require client secrets when making an Access Token Request. This setting should be used for server-side applications.</pre>
+</div>
+</div>
+</li>
+<li>
+<p><em>Public</em></p>
+<div class="literalblock">
+<div class="content">
+<pre>For client-side clients that perform browser logins. As it is not possible to ensure that secrets can be kept safe with client-side clients, it is important to restrict access by configuring correct redirect URIs.</pre>
+</div>
+</div>
+</li>
+<li>
+<p><em>Bearer-only</em></p>
+<div class="literalblock">
+<div class="content">
+<pre>The application allows only bearer token requests. When turned on, this application cannot participate in browser logins.</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><code>Standard Flow Enabled</code></dt>
+<dd>
+<p>When enabled, clients can use the OIDC <a href="#_oidc-auth-flows-authorization">Authorization Code Flow</a>.</p>
+</dd>
+<dt class="hdlist1"><code>Implicit Flow Enabled</code></dt>
+<dd>
+<p>When enabled, clients can use the OIDC <a href="#_oidc-auth-flows-implicit">Implicit Flow</a>.</p>
+</dd>
+<dt class="hdlist1"><code>Direct Access Grants Enabled</code></dt>
+<dd>
+<p>When enabled, clients can use the OIDC <a href="#_oidc-auth-flows-direct">Direct Access Grants</a>.</p>
+</dd>
+<dt class="hdlist1"><code>Root URL</code></dt>
+<dd>
+<p>This value adds a prefix to any configured URLS that Keycloak uses.</p>
+</dd>
+<dt class="hdlist1"><code>Valid Redirect URIs</code></dt>
+<dd>
+<p>Required field.  Enter a URL pattern and click <strong>+</strong> to add and <strong>-</strong> to remove existing URLs and click <strong>Save</strong>. You can use wildcards at the end of the URL pattern. For example http://host.com/*</p>
+<div class="paragraph">
+<p>Exclusive redirect URL patterns are typically more secure.  See <a href="#_unspecific-redirect-uris ">Threat Model Mitigation</a> chapter for more information.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>Base URL</code></dt>
+<dd>
+<p>This URL is used when Keycloak needs to link to the client.</p>
+</dd>
+<dt class="hdlist1"><code>Admin URL</code></dt>
+<dd>
+<p>Callback endpoint for a client.  The server uses this URL to make callbacks like pushing revocation policies, performing backchannel logout, and other administrative operations.  For Keycloak servlet adapters, this URL can be the root URL of the servlet application.
+For more information, see <a href="https://www.keycloak.org/docs/11.0/securing_apps/">Securing Applications and Services Guide</a>.</p>
+</dd>
+<dt class="hdlist1"><code>Web Origins</code></dt>
+<dd>
+<p>Enter a URL pattern and click <strong>+</strong> to add and <strong>-</strong> to remove existing URLs. Click <strong>Save</strong>.</p>
+<div class="paragraph">
+<p>This option handles <a href="https://fetch.spec.whatwg.org/">Cross-Origin Resource Sharing (CORS)</a>.
+If browser JavaScript attempts an AJAX HTTP request to a server whose domain is different from the one that the
+JavaScript code came from, the request must use CORS. The server must handle CORS requests, otherwise the browser will not display or allow the request to be processed. This protocol protects against XSS, CSRF, and other JavaScript-based attacks.</p>
+</div>
+<div class="paragraph">
+<p>Domain URLs listed here are embedded within the access token sent to the client application. The client application uses this information to decide whether to allow a CORS request to be invoked on it.  Only Keycloak client adapters support this feature. See <a href="https://www.keycloak.org/docs/11.0/securing_apps/">Securing Applications and Services Guide</a> for more information.</p>
+</div>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p><strong>Standard Flow Enabled</strong></p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>If this is on, clients are allowed to use the OIDC <a href="#_oidc-auth-flows">Authorization Code Flow</a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Implicit Flow Enabled</strong></p>
-</div>
-<div class="paragraph">
-<p>If this is on, clients are allowed to use the OIDC <a href="#_oidc-auth-flows">Implicit Flow</a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Direct Access Grants Enabled</strong></p>
-</div>
-<div class="paragraph">
-<p>If this is on, clients are allowed to use the OIDC <a href="#_oidc-auth-flows">Direct Access Grants</a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Root URL</strong></p>
-</div>
-<div class="paragraph">
-<p>If Keycloak uses any configured relative URLs, this value is prepended to them.</p>
-</div>
-<div class="paragraph">
-<p><strong>Valid Redirect URIs</strong></p>
-</div>
-<div class="paragraph">
-<p>This is a required field.  Enter in a URL pattern and click the + sign to add.  Click the - sign next to URLs you want to remove.
-Remember that you still have to click the <code>Save</code> button!
-Wildcards (*) are only allowed at the end of a URI, i.e. http://host.com/*</p>
-</div>
-<div class="paragraph">
-<p>You should take extra precautions when registering valid redirect URI patterns. If you make
-them too general you are vulnerable to attacks.  See <a href="#_unspecific-redirect-uris">Threat Model Mitigation</a> chapter
-for more information.</p>
-</div>
-<div class="paragraph">
-<p><strong>Base URL</strong></p>
-</div>
-<div class="paragraph">
-<p>If Keycloak needs to link to the client, this URL is used.</p>
-</div>
-<div class="paragraph">
-<p><strong>Admin URL</strong></p>
-</div>
-<div class="paragraph">
-<p>For Keycloak specific client adapters, this is the callback endpoint for the client.  The Keycloak
-server will use this URI to make callbacks like pushing revocation policies, performing backchannel logout, and other
-administrative operations.  For Keycloak servlet adapters, this can be the root URL of the servlet application.
-For more information see <a href="https://www.keycloak.org/docs/11.0/securing_apps/">Securing Applications and Services Guide</a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Web Origins</strong></p>
-</div>
-<div class="paragraph">
-<p>This option centers around <a href="https://fetch.spec.whatwg.org/">CORS</a> which stands for Cross-Origin Resource Sharing.
-If browser JavaScript tries to make an AJAX HTTP request to a server whose domain is different from the one the
-JavaScript code came from, then the request must use CORS.
-The server must handle CORS requests in a special way, otherwise the browser will not display or allow the request to be processed.
-This protocol exists to protect against XSS, CSRF and other JavaScript-based attacks.</p>
-</div>
-<div class="paragraph">
-<p>Keycloak has support for validated CORS requests.  The way it works is that the domains listed in the
-<code>Web Origins</code> setting for the client are embedded within the access token sent to the client application.  The client
-application can then use this information to decide whether or not to allow a CORS request to be invoked on it.  This is
-an extension to the OIDC protocol so only Keycloak client adapters support this feature.
-See <a href="https://www.keycloak.org/docs/11.0/securing_apps/">Securing Applications and Services Guide</a> for more information.</p>
-</div>
-<div class="paragraph">
-<p>To fill in the <code>Web Origins</code> data, enter in a base URL and click the + sign to add.  Click the - sign next to URLs you want to remove.
-Remember that you still have to click the <code>Save</code> button!</p>
 </div>
 <div class="sect3">
 <h4 id="advanced-settings"><a class="anchor" href="#advanced-settings"></a>Advanced Settings</h4>
@@ -5194,7 +5183,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 </div>
 </div>
 <div class="sect3">
-<h4 id="_client-credentials"><a class="anchor" href="#_client-credentials"></a>Confidential Client Credentials</h4>
+<h4 id="confidential-client-credentials"><a class="anchor" href="#confidential-client-credentials"></a>Confidential Client Credentials</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/confidential.adoc" target="_blank">Edit this section</a>
@@ -14433,7 +14422,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-09-11 20:54:57 UTC
+Last updated 2020-10-05 20:02:42 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
