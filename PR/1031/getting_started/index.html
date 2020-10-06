@@ -1461,98 +1461,6 @@ $ ./standalone.sh -Djboss.socket.binding.port-offset=100</code></pre>
 </div>
 </div>
 </li>
-<li>
-<p>Download the <strong>WildFly OpenID Connect Client Adapter</strong> distribution from <a href="https://www.keycloak.org/downloads.html">keycloak.org</a>.</p>
-</li>
-<li>
-<p>Change to the root directory of WildFly.</p>
-</li>
-<li>
-<p>Unzip the downloaded client adapter in this directory.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ unzip &lt;filename&gt;.zip</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Change to the bin directory.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ cd bin</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Run the appropriate script for your platform.</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If you receive a <code>file not found</code>, make sure you used <code>unzip</code> in the previous step.  This method of extraction installs the files in the right place.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="title">WildFly 10 on Linux/Unix</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ./jboss-cli.sh --file=adapter-install-offline.cli</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">WildFly 10 on Windows</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; jboss-cli.bat --file=adapter-install-offline.cli</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Wildfly 11 on Linux/Unix</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ./jboss-cli.sh --file=adapter-elytron-install-offline.cli</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Wildfly 11 on Windows</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; jboss-cli.bat --file=adapter-elytron-install-offline.cli</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>This script makes the necessary edits to the <code>&#8230;&#8203;/standalone/configuration/standalone.xml</code> file.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Start the application server.</p>
-<div class="listingblock">
-<div class="title">Linux/Unix</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ./standalone.sh</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Windows</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; ...\standalone.bat</code></pre>
-</div>
-</div>
-</li>
 </ol>
 </div>
 <div id="registering-app_" class="sidebarblock page-links">
@@ -1800,7 +1708,7 @@ $ cd keycloak-quickstarts/app-profile-jee-vanilla/config</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-05 20:02:34 UTC
+Last updated 2020-10-06 23:11:38 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

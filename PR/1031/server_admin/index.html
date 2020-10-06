@@ -893,7 +893,7 @@ span.image img {
 <ul class="sectlevel3">
 <li><a href="#creating-an-open-id-connect-client">Creating an Open ID Connect Client</a></li>
 <li><a href="#advanced-settings">Advanced Settings</a></li>
-<li><a href="#confidential-client-credentials">Confidential Client Credentials</a></li>
+<li><a href="#_client-credentials">Confidential Client Credentials</a></li>
 <li><a href="#_service_accounts">Service Accounts</a></li>
 <li><a href="#_audience">Audience Support</a></li>
 </ul>
@@ -1103,7 +1103,7 @@ span.image img {
 <li><a href="#clickjacking">Clickjacking</a></li>
 <li><a href="#ssl-https-requirement">SSL/HTTPS Requirement</a></li>
 <li><a href="#csrf-attacks">CSRF Attacks</a></li>
-<li><a href="#_unspecific-redirect-uris">Unspecific Redirect URIs</a></li>
+<li><a href="#unspecific-redirect-uris">Unspecific Redirect URIs</a></li>
 <li><a href="#compromised-access-and-refresh-tokens">Compromised Access and Refresh Tokens</a></li>
 <li><a href="#compromised-authorization-code">Compromised Authorization Code</a></li>
 <li><a href="#open-redirectors">Open redirectors</a></li>
@@ -4943,37 +4943,21 @@ the name, set up a replacement string value. For example, a string value such as
 <dd>
 <p>When turned on, users see a consent page that they can use to grant access to that application.  It will also display metadata so the user knows the exact information that the client can access.</p>
 </dd>
-<dt class="hdlist1"><code>Access Type</code></dt>
+<dt class="hdlist1"><a id="_access-type"></a><code>Access Type</code></dt>
 <dd>
 <p>The type of OIDC client.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><em>Confidential</em></p>
-<div class="literalblock">
-<div class="content">
-<pre>For server-side clients that perform browser logins and require client secrets when making an Access Token Request. This setting should be used for server-side applications.</pre>
-</div>
-</div>
-</li>
-<li>
-<p><em>Public</em></p>
-<div class="literalblock">
-<div class="content">
-<pre>For client-side clients that perform browser logins. As it is not possible to ensure that secrets can be kept safe with client-side clients, it is important to restrict access by configuring correct redirect URIs.</pre>
-</div>
-</div>
-</li>
-<li>
-<p><em>Bearer-only</em></p>
-<div class="literalblock">
-<div class="content">
-<pre>The application allows only bearer token requests. When turned on, this application cannot participate in browser logins.</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
+</dd>
+<dt class="hdlist1"><em>Confidential</em></dt>
+<dd>
+<p>For server-side clients that perform browser logins and require client secrets when making an Access Token Request. This setting should be used for server-side applications.</p>
+</dd>
+<dt class="hdlist1"><em>Public</em></dt>
+<dd>
+<p>For client-side clients that perform browser logins. As it is not possible to ensure that secrets can be kept safe with client-side clients, it is important to restrict access by configuring correct redirect URIs.</p>
+</dd>
+<dt class="hdlist1"><em>Bearer-only</em></dt>
+<dd>
+<p>The application allows only bearer token requests. When turned on, this application cannot participate in browser logins.</p>
 </dd>
 <dt class="hdlist1"><code>Standard Flow Enabled</code></dt>
 <dd>
@@ -4995,7 +4979,7 @@ the name, set up a replacement string value. For example, a string value such as
 <dd>
 <p>Required field.  Enter a URL pattern and click <strong>+</strong> to add and <strong>-</strong> to remove existing URLs and click <strong>Save</strong>. You can use wildcards at the end of the URL pattern. For example http://host.com/*</p>
 <div class="paragraph">
-<p>Exclusive redirect URL patterns are typically more secure.  See <a href="#_unspecific-redirect-uris ">Threat Model Mitigation</a> chapter for more information.</p>
+<p>Exclusive redirect URL patterns are typically more secure.  See <a href="#unspecific-redirect-uris_server_administration_guide">Unspecific Redirect URIs</a> for more information.</p>
 </div>
 </dd>
 <dt class="hdlist1"><code>Base URL</code></dt>
@@ -5183,7 +5167,7 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 </div>
 </div>
 <div class="sect3">
-<h4 id="confidential-client-credentials"><a class="anchor" href="#confidential-client-credentials"></a>Confidential Client Credentials</h4>
+<h4 id="_client-credentials"><a class="anchor" href="#_client-credentials"></a>Confidential Client Credentials</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/confidential.adoc" target="_blank">Edit this section</a>
@@ -8970,6 +8954,10 @@ You must define the SAML configuration options as well.  They basically describe
 <td class="tableblock halign-left valign-top"><p class="tableblock">The public certificate that will be used to validate the signatures of SAML requests and responses from the external IDP.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sign Service Provider Metadata</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, it will use the realm&#8217;s keypair to sign the <a href="#_identity_broker_saml_sp_descriptor">SAML Service Provider Metadata descriptor</a>.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pass subject</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Whether or not a <code>login_hint</code> query parameter should be forwarded to the IDP. When provided, this login_hint parameter is added to AuthnRequest&#8217;s Subject. This allows destination providers to prefill their login form. When no login_hint is provided, nothing is forwarded as an AuthnRequest Subject.</p></td>
 </tr>
@@ -11699,15 +11687,15 @@ The admin REST API can also be configured to validate the CORS origins as well.<
 To mitigate this Keycloak sets a state cookie and also embeds the value of this state cookie within hidden form fields or query parameters in action links.
 This query or form parameter is checked against the state cookie to verify that the call was made by the user.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_unspecific-redirect-uris"><a class="anchor" href="#_unspecific-redirect-uris"></a>Unspecific Redirect URIs</h3>
-<div class="sidebarblock page-links">
+<div id="unspecific-redirect-uris_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/redirect.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/redirect.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="unspecific-redirect-uris"><a class="anchor" href="#unspecific-redirect-uris"></a>Unspecific Redirect URIs</h3>
 <div class="paragraph">
 <p>For the <a href="#_oidc-auth-flows">Authorization Code Flow</a>, if you register redirect URIs that
 are too general, then it would be possible for a rogue client to impersonate a different client that has a broader scope
@@ -14422,7 +14410,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-05 20:02:42 UTC
+Last updated 2020-10-06 23:11:45 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
