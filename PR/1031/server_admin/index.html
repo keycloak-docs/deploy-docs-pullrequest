@@ -779,6 +779,7 @@ span.image img {
 <li><a href="#user-management">User Management</a></li>
 <li><a href="#searching-for-a-user">Searching for a user</a></li>
 <li><a href="#creating-a-user">Creating a user</a></li>
+<li><a href="#deleting-a-user">Deleting a user</a></li>
 <li><a href="#configuring-user-attributes">Configuring user attributes</a>
 <ul class="sectlevel2">
 <li><a href="#_user-credentials">User Credentials</a>
@@ -787,12 +788,13 @@ span.image img {
 <li><a href="#creating-other-credentials">Creating other credentials</a></li>
 </ul>
 </li>
-<li><a href="#required-actions">Required Actions</a>
-<ul class="sectlevel3">
-<li><a href="#default-required-actions">Default Required Actions</a></li>
-<li><a href="#terms-and-conditions">Terms and Conditions</a></li>
 </ul>
 </li>
+<li><a href="#required-actions">Required Actions</a></li>
+<li><a href="#setting-required-actions">Setting required actions</a></li>
+<li><a href="#setting-default-required-actions">Setting default required actions</a></li>
+<li><a href="#terms-and-conditions">Terms and conditions</a>
+<ul class="sectlevel2">
 <li><a href="#impersonation">Impersonation</a></li>
 <li><a href="#_user-registration">User Registration</a>
 <ul class="sectlevel3">
@@ -1992,8 +1994,49 @@ This action searches only the local Keycloak database and not the federated data
 </li>
 </ol>
 </div>
+<div id="proc-deleting-user_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-deleting-user.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-deleting-user.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<h1 id="deleting-a-user" class="sect0"><a class="anchor" href="#deleting-a-user"></a>Deleting a user</h1>
 <div class="paragraph">
-<p>Unresolved directive in topics.adoc - include::topics/users/delete-user.adoc[]</p>
+<p>You can delete a user, who no longer needs access to applications in the Keycloak console. If a user is deleted, the user profile and data is also deleted.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisite</div>
+<ul>
+<li>
+<p>You are in the realm where the user exists.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click on <strong>Users</strong> in the left menu. This opens the user list page.</p>
+</li>
+<li>
+<p>Click <strong>View all users</strong> to find the user to delete.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Alternatively, you can use the search bar to find a user.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Click <strong>Delete</strong> next to the user you want to remove and confirm deletion.</p>
+</li>
+</ol>
 </div>
 <div id="proc-configuring-user-attributes_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -2132,79 +2175,148 @@ to re-configure a new OTP generator when they log in.</p>
 contains a link that will bring the user to the OTP setup screen. You can use this method even if the user already has an OTP credential,
 and would like to set up some more.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="required-actions"><a class="anchor" href="#required-actions"></a>Required Actions</h3>
-<div class="sidebarblock page-links">
+<div id="con-required-actions_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/required-actions.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/required-actions.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/con-required-actions.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/con-required-actions.adoc" target="_blank">Report an issue</a>
 </div>
+</div>
+</div>
+</div>
+</div>
+<h1 id="required-actions" class="sect0"><a class="anchor" href="#required-actions"></a>Required Actions</h1>
+<div class="paragraph">
+<p>A user must complete required actions before initially logging in. A user must provide credentials before required actions can be executed. Once a required action is completed, the user does not have to perform the action again.</p>
 </div>
 <div class="paragraph">
-<p>Required Actions are tasks that a user must finish before they are allowed to log in.  A user must provide their credentials before required actions are executed.  Once a required action is completed, the user will not have
-to perform the action again.
-Here are explanations of some of the built-in required action types:</p>
+<p>Admins can add required actions for each user, in the <strong>Details</strong> tab of the admin console.</p>
+</div>
+<div class="paragraph">
+<p>The following are examples of required action types:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Update Password</dt>
 <dd>
-<p>When set, a user must change their password.</p>
+<p>The user must change their password.</p>
 </dd>
 <dt class="hdlist1">Configure OTP</dt>
 <dd>
-<p>When set, a user must configure a one-time password generator on their mobile device using either the Free OTP or Google Authenticator application.</p>
+<p>The user must configure a one-time password generator on their mobile device using either the Free OTP or Google Authenticator application.</p>
 </dd>
 <dt class="hdlist1">Verify Email</dt>
 <dd>
-<p>When set, a user must verify that they have a valid email account.  An email will be sent to the user with a link they have to click.  Once this workflow
-is successfully completed, they will be allowed to log in.</p>
+<p>The user must verify their email account.  An email will be sent to the user with a validation link that they must click.  Once this workflow is successfully completed, the user will be allowed to log in.</p>
 </dd>
 <dt class="hdlist1">Update Profile</dt>
 <dd>
-<p>This required action asks the user to update their profile information, i.e. their name, address, email, and/or phone number.</p>
+<p>The user must update profile information, such as name, address, email, and phone number.</p>
 </dd>
 </dl>
 </div>
+<div id="proc-setting-required-actions_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-setting-required-actions.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-setting-required-actions.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<h1 id="setting-required-actions" class="sect0"><a class="anchor" href="#setting-required-actions"></a>Setting required actions</h1>
 <div class="paragraph">
-<p>Admins can add required actions for each individual user within the user&#8217;s <code>Details</code> tab in the Admin Console.</p>
+<p>You can add and remove the required actions for existing users in the admin console.</p>
 </div>
 <div class="paragraph">
-<div class="title">Setting Required Action</div>
 <p><span class="image"><img src="./keycloak-images/user-required-action.png" alt="user required action"></span></p>
 </div>
+<div class="ulist">
+<div class="title">Prerequisite</div>
+<ul>
+<li>
+<p>You have administrator privileges and are logged into the admin console.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Navigate to the <strong>Required User Actions</strong> list.</p>
+</li>
+<li>
+<p>Select all the actions you want to add to the account.</p>
+</li>
+<li>
+<p>Click the <strong>X</strong> next to the action name to remove it.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong> after you select which actions to add.</p>
+</li>
+</ol>
+</div>
+<div id="proc-setting-default-required-actions_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-setting-default-required-actions.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-setting-default-required-actions.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<h1 id="setting-default-required-actions" class="sect0"><a class="anchor" href="#setting-default-required-actions"></a>Setting default required actions</h1>
 <div class="paragraph">
-<p>In the <code>Required User Actions</code> list box, select all the actions you want to add to the account.  If you want to remove one, click the <code>X</code> next to the
-action name.  Also remember to click the <code>Save</code> button after you&#8217;ve decided what actions to add.</p>
+<p>You can use the registration link or the <strong>Required Actions</strong> tab to specify the required actions that must be completed by a user before logging in.</p>
 </div>
-<div class="sect3">
-<h4 id="default-required-actions"><a class="anchor" href="#default-required-actions"></a>Default Required Actions</h4>
+<div class="olist arabic">
+<div class="title">Using the user registration link</div>
+<ol class="arabic">
+<li>
+<p>Click <strong>Add User</strong> to navigate to the user list page.</p>
+</li>
+<li>
+<p>Click the <a href="#_user-registration">user registration</a> link on the login page.</p>
+</li>
+<li>
+<p>Specify the default required actions.</p>
+</li>
+</ol>
+</div>
+<div class="olist arabic">
+<div class="title">Using the Required Actions tab</div>
+<ol class="arabic">
+<li>
+<p>Click <strong>Authentication</strong> in the left menu.</p>
+</li>
+<li>
+<p>Click the <strong>Required Actions</strong> tab.</p>
+</li>
+<li>
+<p>Click the checkbox in the <strong>Default Action</strong> column for one or more required actions. When a new user logs in for the first time, the selected actions must be executed.</p>
+</li>
+</ol>
+</div>
+<div id="proc-enabling-terms-conditions_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-enabling-terms-conditions.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-enabling-terms-conditions.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<h1 id="terms-and-conditions" class="sect0"><a class="anchor" href="#terms-and-conditions"></a>Terms and conditions</h1>
 <div class="paragraph">
-<p>You can also specify required actions that will be added to an account whenever a new user is created, i.e. through the <code>Add User</code> button the user
-list screen, or via the <a href="#_user-registration">user registration</a> link on the login page.  To specify
-the default required actions go to the <code>Authentication</code> left menu item and click on the <code>Required Actions</code> tab.</p>
+<p>Keycloak requires new users to accept the terms and conditions before logging in for the first time.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click the <strong>Required Actions</strong> tab.</p>
+</li>
+<li>
+<p>Enable the <strong>Terms and Conditions</strong> action.</p>
+</li>
+<li>
+<p>Edit the <code>terms.ftl</code> file in the <em>base</em> login theme.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<div class="title">Default Required Actions</div>
-<p><span class="image"><img src="./keycloak-images/default-required-actions.png" alt="default required actions"></span></p>
-</div>
-<div class="paragraph">
-<p>Simply click the checkbox in the <code>Default Action</code> column of the required actions that you want to be executed when a brand new user logs in.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="terms-and-conditions"><a class="anchor" href="#terms-and-conditions"></a>Terms and Conditions</h4>
-<div class="paragraph">
-<p>Many organizations have a requirement that when a new user logs in for the first time, they need to agree to the terms and conditions
-of the website.  Keycloak has this functionality implemented as a required action, but it requires some configuration.  For one, you
-have to go to the <code>Required Actions</code> tab described earlier and enable the <code>Terms and Conditions</code> action.  You must also edit the
-<em>terms.ftl</em> file in the <em>base</em> login theme.  See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more information on extending and
-creating themes.</p>
-</div>
-</div>
+<div class="title">Additional resources</div>
+<p>For more information on extending and creating themes, see the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="impersonation"><a class="anchor" href="#impersonation"></a>Impersonation</h3>
@@ -13401,7 +13513,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 <pre>c:\&gt; kcadm update users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r demorealm -s "requiredActions=[\"VERIFY_EMAIL\",\"UPDATE_PROFILE\",\"CONFIGURE_TOTP\",\"UPDATE_PASSWORD\"]"</pre>
 </div>
 </div>
-<h4 id="deleting-a-user" class="discrete">Deleting a user</h4>
+<h4 id="deleting-a-user-2" class="discrete">Deleting a user</h4>
 <div class="paragraph">
 <p>Use the <code class="command">delete</code> command with the same endpoint URI that you used to get a specific user.</p>
 </div>
@@ -14566,7 +14678,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-14 21:15:32 UTC
+Last updated 2020-10-14 21:52:35 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
