@@ -8988,80 +8988,124 @@ You must define the SAML configuration options as well.  They basically describe
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pass subject</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Whether or not a <code>login_hint</code> query parameter should be forwarded to the IDP. When provided, this login_hint parameter is added to AuthnRequest&#8217;s Subject. This allows destination providers to prefill their login form. When no login_hint is provided, nothing is forwarded as an AuthnRequest Subject.</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Research and Scholarship</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true, SAML IDP supports <a href="https://refeds.org/category/research-and-scholarship">Research and Scholarship</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">G??ANT Data Protection Code of Conduct v1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If true, SAML IDP supports <a href="https://wiki.refeds.org/display/CODE/Data+Protection+Code+of+Conduct+Home">G??ANT Data Protection Code of Conduct v1</a>.</p></td>
-</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Admin can also configure additional metadata in the separate fieldset "SAML metadata extensions".</p>
+</div>
+<div class="paragraph">
+<div class="title">SAML metadata extensions</div>
+<p><span class="image"><img src="./keycloak-images/saml-metadata-extensions.png" alt="saml metadata extensions"></span></p>
+</div>
+<div class="paragraph">
+<p>The above table describe this metadata.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 4. SAML metadata extension</caption>
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Registration authority</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Registration information is useful for determining the identity federation of a given SAML IdP configured from a metadata source.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Registration policy</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Registration policy.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A brief, localized description of SAML IdP.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Information url</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Localized information about the SAML IdP.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Privacy statement url</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">External location for localised privacy statements.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Logo</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Localized logo (URL or base64-encoded image data) fit for display to users.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Logo width</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Logo width.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Logo height</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Logo height.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization name</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization name.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization display name</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization display name.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization URL</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization URL.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contact person type</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type of contact person of organization.The possible values are technical, support, administrative, billing, and other.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contact person company name</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SAML IdP contact person company name.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contact person given name</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SAML IdP contact person given name.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contact person surname</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SAML IdP contact person surname.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contact person emails</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SAML IdP contact person emails separated by comma.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contact person telephone numbers</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SAML IdP contact person telephone numbers separated by comma.</p></td>
 </tr>
 </tbody>
@@ -9083,7 +9127,7 @@ This link is an XML document describing metadata about the IDP.</p>
 <p>You can list the criteria your Service Provider requires by adding one or more ClassRef or DeclRef in the Requested AuthnContext Constraints section. Usually you will need to provide either ClassRefs or DeclRefs - you should check with your Identity Provider docs which values are supported. If no ClassRefs or DeclRefs are present, the Identity Provider will not enforce additional constraints.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 4. Requested AuthnContext Constraints</caption>
+<caption class="title">Table 5. Requested AuthnContext Constraints</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -9125,7 +9169,8 @@ This link is an XML document describing metadata about the IDP.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Make sure to save any configuration changes before accessing the descriptor or they will not be reflected in the metadata.</p>
+<p>Make sure to save any configuration changes before accessing the descriptor or they will not be reflected in the metadata.
+Metadata extensions values (mdrpi:RegistrationInfo, mdui:UIInfo, md:Organization, md:ContactPerson) in produced xml is taken from realm metadata settings ( tab SAML metadata extensions in Realm Settings)</p>
 </div>
 </div>
 <div class="sect3">
@@ -14513,7 +14558,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-09-24 11:50:39 UTC
+Last updated 2020-10-15 13:47:26 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
