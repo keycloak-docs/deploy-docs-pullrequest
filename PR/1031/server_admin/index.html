@@ -776,25 +776,24 @@ span.image img {
 </li>
 </ul>
 </li>
-<li><a href="#user-management">User Management</a></li>
-<li><a href="#searching-for-a-user">Searching for a user</a></li>
-<li><a href="#creating-a-user">Creating a user</a></li>
-<li><a href="#deleting-a-user">Deleting a user</a></li>
-<li><a href="#configuring-user-attributes">Configuring user attributes</a>
+<li><a href="#user-management">User Management</a>
 <ul class="sectlevel2">
+<li><a href="#searching-for-users">Searching For Users</a></li>
+<li><a href="#_create-new-user">Creating New Users</a></li>
+<li><a href="#_delete-user">Deleting Users</a></li>
+<li><a href="#user-attributes">User Attributes</a></li>
 <li><a href="#_user-credentials">User Credentials</a>
 <ul class="sectlevel3">
 <li><a href="#creating-a-password-for-the-user">Creating a Password for the User</a></li>
 <li><a href="#creating-other-credentials">Creating other credentials</a></li>
 </ul>
 </li>
+<li><a href="#required-actions">Required Actions</a>
+<ul class="sectlevel3">
+<li><a href="#default-required-actions">Default Required Actions</a></li>
+<li><a href="#terms-and-conditions">Terms and Conditions</a></li>
 </ul>
 </li>
-<li><a href="#required-actions">Required Actions</a></li>
-<li><a href="#setting-required-actions">Setting required actions</a></li>
-<li><a href="#setting-default-required-actions">Setting default required actions</a></li>
-<li><a href="#terms-and-conditions">Terms and conditions</a>
-<ul class="sectlevel2">
 <li><a href="#impersonation">Impersonation</a></li>
 <li><a href="#_user-registration">User Registration</a>
 <ul class="sectlevel3">
@@ -802,6 +801,8 @@ span.image img {
 </ul>
 </li>
 <li><a href="#_personal_data">Personal data collected by Keycloak</a></li>
+</ul>
+</li>
 <li><a href="#login-page-settings">Login Page Settings</a>
 <ul class="sectlevel2">
 <li><a href="#forgot-password">Forgot Password</a></li>
@@ -893,7 +894,7 @@ span.image img {
 <li><a href="#creating-an-open-id-connect-client">Creating an Open ID Connect Client</a></li>
 <li><a href="#advanced-settings">Advanced Settings</a></li>
 <li><a href="#_client-credentials">Confidential Client Credentials</a></li>
-<li><a href="#_service_accounts">Using a Service Account</a></li>
+<li><a href="#service-accounts">Service Accounts</a></li>
 <li><a href="#_audience">Audience Support</a></li>
 </ul>
 </li>
@@ -1128,8 +1129,6 @@ span.image img {
 <li><a href="#storage-provider-operations">Storage provider operations</a></li>
 <li><a href="#adding-mappers">Adding mappers</a></li>
 <li><a href="#authentication-operations">Authentication operations</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -1864,223 +1863,115 @@ this point.</p>
 <div class="paragraph">
 <p>This section describes the administration functions for managing users.</p>
 </div>
-<div id="proc-searching-user_server_administration_guide" class="sidebarblock page-links">
+<div class="sect2">
+<h3 id="searching-for-users"><a class="anchor" href="#searching-for-users"></a>Searching For Users</h3>
+<div class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-searching-user.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-searching-user.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/viewing.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/viewing.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-</div>
-<h1 id="searching-for-a-user" class="sect0"><a class="anchor" href="#searching-for-a-user"></a>Searching for a user</h1>
 <div class="paragraph">
-<p>Search for a user to view detailed information about the user&#8217;s groups and roles.</p>
+<p>If you need to manage a specific user, click on <code>Users</code> in the left menu bar.</p>
+</div>
+<div class="paragraph">
+<div class="title">Users</div>
+<p><span class="image"><img src="./keycloak-images/users.png" alt="users"></span></p>
+</div>
+<div class="paragraph">
+<p>This menu option brings you to the user list page.  In the search box you can type in a full name, last name, or email address
+you want to search for in the user database.  The query will bring up all users that match your criteria.  The <code>View all users</code> button
+will list every user in the system.  This will search just local Keycloak database and not the federated database (ie. LDAP)
+because some backends like LDAP don&#8217;t have a way to page through users. So if you want the users from federated backend to be synced into Keycloak
+database you need to either:</p>
 </div>
 <div class="ulist">
-<div class="title">Prerequisite</div>
 <ul>
 <li>
-<p>You are in the realm where the user exists.</p>
+<p>Adjust search criteria. That will sync just the backend users matching the criteria into Keycloak database.</p>
+</li>
+<li>
+<p>Go to <code>User Federation</code> tab and click <code>Sync all users</code> or <code>Sync changed users</code> in the page with your federation provider.</p>
 </li>
 </ul>
 </div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Click <strong>Users</strong> in the left menu. This opens the user list page.</p>
-</li>
-<li>
-<p>Type the full name, last name, first name, or email address of the user you want to search for in the search box. The search returns all users that match your criteria.</p>
-</li>
-<li>
-<p>Alternatively, you can click <strong>View all users</strong> to list every user in the system.</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This action searches only the local Keycloak database and not the federated database, such as LDAP. The backends for federated databases do not have a pagination mechanism that enables searching for users.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>See <a href="#_user-storage-federation">User Federation</a> for more details.</p>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>To search users from a federated backend, the user list must be synced into the Keycloak database. Adjust the search criteria to sync the backend users to the Keycloak database.</p>
-</li>
-<li>
-<p>Alternatively, click the <strong>User Federation</strong> tab.</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>To apply changes to a selected user, click <strong>Sync changed users</strong> on the page with your federation provider.</p>
-</li>
-<li>
-<p>To apply changes to all users in the database, click <strong>Sync all users</strong> on the page with your federation provider.</p>
-</li>
-</ol>
 </div>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="ulist">
-<div class="title">Additional resources</div>
-<ul>
-<li>
-<p>For more information on user federation, see <a href="#_user-storage-federation">User Federation</a>.</p>
-</li>
-</ul>
-</div>
-<div id="proc-creating-user_server_administration_guide" class="sidebarblock page-links">
+<div class="sect2">
+<h3 id="_create-new-user"><a class="anchor" href="#_create-new-user"></a>Creating New Users</h3>
+<div class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-creating-user.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-creating-user.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/create-user.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/create-user.adoc" target="_blank">Report an issue</a>
 </div>
-</div>
-<h1 id="creating-a-user" class="sect0"><a class="anchor" href="#creating-a-user"></a>Creating a user</h1>
-<div class="paragraph">
-<p>Administrators can create users and applications that are owned by the users of a specified realm. In the console, you can add users and register applications to be secured by Keycloak.</p>
 </div>
 <div class="paragraph">
-<p>A user can use the console to access applications in a realm, update profile information, and change credentials.</p>
+<p>To create a user click on <code>Users</code> in the left menu bar.</p>
 </div>
 <div class="paragraph">
-<p>Create users in the same realm that contains the applications for the user. Every user in a realm has access to the console and the applications in that realm.</p>
+<div class="title">Users</div>
+<p><span class="image"><img src="./keycloak-images/users.png" alt="users"></span></p>
 </div>
-<div class="ulist">
-<div class="title">Prerequisites</div>
-<ul>
-<li>
-<p>You are not in the master realm. Use the master realm only to create other realms.</p>
-</li>
-<li>
-<p>You are in the realm that contains the applications for the user.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>This menu option brings you to the user list page.  On the right side of the empty user list, you should see an <code>Add User</code>
+button.  Click that to start creating your new user.</p>
 </div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>In the console, click <strong>Users</strong> in the left menu.</p>
-</li>
-<li>
-<p>Click <strong>Add User</strong>, located on the right side of the empty user list.</p>
-</li>
-<li>
-<p>Enter the details for the new user.</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<strong>Username</strong> is the only required field.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<div class="title">Add User</div>
+<p><span class="image"><img src="./keycloak-images/add-user.png" alt="add user"></span></p>
 </div>
-</li>
-<li>
-<p>Click <strong>Save</strong>. After saving the details, the <strong>management page</strong> for the new user is displayed.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>The only required field is <code>Username</code>.  Click save.  This will bring you to the management page for your new user.</p>
 </div>
-<div id="proc-deleting-user_server_administration_guide" class="sidebarblock page-links">
+</div>
+<div class="sect2">
+<h3 id="_delete-user"><a class="anchor" href="#_delete-user"></a>Deleting Users</h3>
+<div class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-deleting-user.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-deleting-user.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/delete-user.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/delete-user.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<h1 id="deleting-a-user" class="sect0"><a class="anchor" href="#deleting-a-user"></a>Deleting a user</h1>
 <div class="paragraph">
-<p>You can delete a user, who no longer needs access to applications in the Keycloak console. If a user is deleted, the user profile and data is also deleted.</p>
+<p>To delete a user click on <code>Users</code> in the left menu bar.</p>
 </div>
-<div class="ulist">
-<div class="title">Prerequisite</div>
-<ul>
-<li>
-<p>You are in the realm where the user exists.</p>
-</li>
-</ul>
+<div class="paragraph">
+<div class="title">Users</div>
+<p><span class="image"><img src="./keycloak-images/users.png" alt="users"></span></p>
 </div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Click on <strong>Users</strong> in the left menu. This opens the user list page.</p>
-</li>
-<li>
-<p>Click <strong>View all users</strong> to find the user to delete.</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Alternatively, you can use the search bar to find a user.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>This menu option brings you to the user list page. Click <code>View all users</code> or search to find the user you intend to delete.</p>
 </div>
-</li>
-<li>
-<p>Click <strong>Delete</strong> next to the user you want to remove and confirm deletion.</p>
-</li>
-</ol>
+<div class="paragraph">
+<div class="title">View All Users</div>
+<p><span class="image"><img src="./keycloak-images/delete-user.png" alt="delete user"></span></p>
 </div>
-<div id="proc-configuring-user-attributes_server_administration_guide" class="sidebarblock page-links">
+<div class="paragraph">
+<p>In the list of users, click <code>Delete</code> next to the user you want to remove. You will be asked to confirm that you are sure you want to delete this user. Click <code>Delete</code> in the confirmation box to confirm.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="user-attributes"><a class="anchor" href="#user-attributes"></a>User Attributes</h3>
+<div class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-configuring-user-attributes.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-configuring-user-attributes.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/attributes.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/attributes.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<h1 id="configuring-user-attributes" class="sect0"><a class="anchor" href="#configuring-user-attributes"></a>Configuring user attributes</h1>
 <div class="paragraph">
-<p>User attributes provide a customized experience for each user. Using user attributes, you can can create a personalized identity for each user in the console.</p>
+<p>Beyond basic user metadata like name and email, you can store arbitrary user attributes.  Choose a user to manage
+then click on the <code>Attributes</code> tab.</p>
 </div>
-<div class="ulist">
-<div class="title">Prerequisite</div>
-<ul>
-<li>
-<p>You are in the realm where the user exists.</p>
-</li>
-</ul>
+<div class="paragraph">
+<div class="title">Users</div>
+<p><span class="image"><img src="./keycloak-images/user-attributes.png" alt="user attributes"></span></p>
 </div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Click <strong>Users</strong> in the left menu.</p>
-</li>
-<li>
-<p>Select a user to manage.</p>
-</li>
-<li>
-<p>Click the <strong>Attributes</strong> tab.</p>
-</li>
-<li>
-<p>Enter the attribute name in the <strong>Key</strong> field.</p>
-</li>
-<li>
-<p>Enter the attribute value in the <strong>Value</strong> field.</p>
-</li>
-<li>
-<p>Click <strong>Add</strong>.</p>
-</li>
-<li>
-<p>Click <strong>Save</strong>.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Enter in the attribute name and value in the empty fields and click the <code>Add</code> button next to it to add a new field.
+Note that any edits you make on this page will not be stored until you hit the <code>Save</code> button.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_user-credentials"><a class="anchor" href="#_user-credentials"></a>User Credentials</h3>
@@ -2175,148 +2066,79 @@ to re-configure a new OTP generator when they log in.</p>
 contains a link that will bring the user to the OTP setup screen. You can use this method even if the user already has an OTP credential,
 and would like to set up some more.</p>
 </div>
-<div id="con-required-actions_server_administration_guide" class="sidebarblock page-links">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="required-actions"><a class="anchor" href="#required-actions"></a>Required Actions</h3>
+<div class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/con-required-actions.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/con-required-actions.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/required-actions.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/required-actions.adoc" target="_blank">Report an issue</a>
 </div>
-</div>
-</div>
-</div>
-</div>
-<h1 id="required-actions" class="sect0"><a class="anchor" href="#required-actions"></a>Required Actions</h1>
-<div class="paragraph">
-<p>A user must complete required actions before initially logging in. A user must provide credentials before required actions can be executed. Once a required action is completed, the user does not have to perform the action again.</p>
 </div>
 <div class="paragraph">
-<p>Admins can add required actions for each user, in the <strong>Details</strong> tab of the admin console.</p>
-</div>
-<div class="paragraph">
-<p>The following are examples of required action types:</p>
+<p>Required Actions are tasks that a user must finish before they are allowed to log in.  A user must provide their credentials before required actions are executed.  Once a required action is completed, the user will not have
+to perform the action again.
+Here are explanations of some of the built-in required action types:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Update Password</dt>
 <dd>
-<p>The user must change their password.</p>
+<p>When set, a user must change their password.</p>
 </dd>
 <dt class="hdlist1">Configure OTP</dt>
 <dd>
-<p>The user must configure a one-time password generator on their mobile device using either the Free OTP or Google Authenticator application.</p>
+<p>When set, a user must configure a one-time password generator on their mobile device using either the Free OTP or Google Authenticator application.</p>
 </dd>
 <dt class="hdlist1">Verify Email</dt>
 <dd>
-<p>The user must verify their email account.  An email will be sent to the user with a validation link that they must click.  Once this workflow is successfully completed, the user will be allowed to log in.</p>
+<p>When set, a user must verify that they have a valid email account.  An email will be sent to the user with a link they have to click.  Once this workflow
+is successfully completed, they will be allowed to log in.</p>
 </dd>
 <dt class="hdlist1">Update Profile</dt>
 <dd>
-<p>The user must update profile information, such as name, address, email, and phone number.</p>
+<p>This required action asks the user to update their profile information, i.e. their name, address, email, and/or phone number.</p>
 </dd>
 </dl>
 </div>
-<div id="proc-setting-required-actions_server_administration_guide" class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-setting-required-actions.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-setting-required-actions.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<h1 id="setting-required-actions" class="sect0"><a class="anchor" href="#setting-required-actions"></a>Setting required actions</h1>
 <div class="paragraph">
-<p>You can add and remove the required actions for existing users in the admin console.</p>
+<p>Admins can add required actions for each individual user within the user&#8217;s <code>Details</code> tab in the Admin Console.</p>
 </div>
 <div class="paragraph">
+<div class="title">Setting Required Action</div>
 <p><span class="image"><img src="./keycloak-images/user-required-action.png" alt="user required action"></span></p>
 </div>
-<div class="ulist">
-<div class="title">Prerequisite</div>
-<ul>
-<li>
-<p>You have administrator privileges and are logged into the admin console.</p>
-</li>
-</ul>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Navigate to the <strong>Required User Actions</strong> list.</p>
-</li>
-<li>
-<p>Select all the actions you want to add to the account.</p>
-</li>
-<li>
-<p>Click the <strong>X</strong> next to the action name to remove it.</p>
-</li>
-<li>
-<p>Click <strong>Save</strong> after you select which actions to add.</p>
-</li>
-</ol>
-</div>
-<div id="proc-setting-default-required-actions_server_administration_guide" class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-setting-default-required-actions.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-setting-default-required-actions.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<h1 id="setting-default-required-actions" class="sect0"><a class="anchor" href="#setting-default-required-actions"></a>Setting default required actions</h1>
 <div class="paragraph">
-<p>You can use the registration link or the <strong>Required Actions</strong> tab to specify the required actions that must be completed by a user before logging in.</p>
+<p>In the <code>Required User Actions</code> list box, select all the actions you want to add to the account.  If you want to remove one, click the <code>X</code> next to the
+action name.  Also remember to click the <code>Save</code> button after you&#8217;ve decided what actions to add.</p>
 </div>
-<div class="olist arabic">
-<div class="title">Using the user registration link</div>
-<ol class="arabic">
-<li>
-<p>Click <strong>Add User</strong> to navigate to the user list page.</p>
-</li>
-<li>
-<p>Click the <a href="#_user-registration">user registration</a> link on the login page.</p>
-</li>
-<li>
-<p>Specify the default required actions.</p>
-</li>
-</ol>
-</div>
-<div class="olist arabic">
-<div class="title">Using the Required Actions tab</div>
-<ol class="arabic">
-<li>
-<p>Click <strong>Authentication</strong> in the left menu.</p>
-</li>
-<li>
-<p>Click the <strong>Required Actions</strong> tab.</p>
-</li>
-<li>
-<p>Click the checkbox in the <strong>Default Action</strong> column for one or more required actions. When a new user logs in for the first time, the selected actions must be executed.</p>
-</li>
-</ol>
-</div>
-<div id="proc-enabling-terms-conditions_server_administration_guide" class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-enabling-terms-conditions.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-enabling-terms-conditions.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<h1 id="terms-and-conditions" class="sect0"><a class="anchor" href="#terms-and-conditions"></a>Terms and conditions</h1>
+<div class="sect3">
+<h4 id="default-required-actions"><a class="anchor" href="#default-required-actions"></a>Default Required Actions</h4>
 <div class="paragraph">
-<p>Keycloak requires new users to accept the terms and conditions before logging in for the first time.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Click the <strong>Required Actions</strong> tab.</p>
-</li>
-<li>
-<p>Enable the <strong>Terms and Conditions</strong> action.</p>
-</li>
-<li>
-<p>Edit the <code>terms.ftl</code> file in the <em>base</em> login theme.</p>
-</li>
-</ol>
+<p>You can also specify required actions that will be added to an account whenever a new user is created, i.e. through the <code>Add User</code> button the user
+list screen, or via the <a href="#_user-registration">user registration</a> link on the login page.  To specify
+the default required actions go to the <code>Authentication</code> left menu item and click on the <code>Required Actions</code> tab.</p>
 </div>
 <div class="paragraph">
-<div class="title">Additional resources</div>
-<p>For more information on extending and creating themes, see the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a>.</p>
+<div class="title">Default Required Actions</div>
+<p><span class="image"><img src="./keycloak-images/default-required-actions.png" alt="default required actions"></span></p>
+</div>
+<div class="paragraph">
+<p>Simply click the checkbox in the <code>Default Action</code> column of the required actions that you want to be executed when a brand new user logs in.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="terms-and-conditions"><a class="anchor" href="#terms-and-conditions"></a>Terms and Conditions</h4>
+<div class="paragraph">
+<p>Many organizations have a requirement that when a new user logs in for the first time, they need to agree to the terms and conditions
+of the website.  Keycloak has this functionality implemented as a required action, but it requires some configuration.  For one, you
+have to go to the <code>Required Actions</code> tab described earlier and enable the <code>Terms and Conditions</code> action.  You must also edit the
+<em>terms.ftl</em> file in the <em>base</em> login theme.  See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more information on extending and
+creating themes.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="impersonation"><a class="anchor" href="#impersonation"></a>Impersonation</h3>
@@ -2493,6 +2315,8 @@ for more information on extending and creating themes.</p>
 <p>With authorization services and UMA support enabled, Keycloak can hold information about some objects for which a particular user is the owner. For example, Keycloak can track that the user <strong>john</strong> is the owner of a photoalbum <strong>album with animals</strong> and a few photos called <strong>lion picture</strong> and <strong>cow picture</strong> in this album.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -5425,10 +5249,6 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 <p><strong>Signed JWT</strong></p>
 </div>
 <div class="paragraph">
-<div class="title">Signed JWT</div>
-<p><span class="image"><img src="./keycloak-images/client-credentials-jwt.png" alt="client credentials jwt"></span></p>
-</div>
-<div class="paragraph">
 <p><code>Signed JWT</code> is "Signed Json Web Token".</p>
 </div>
 <div class="paragraph">
@@ -5554,74 +5374,46 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 </li>
 </ul>
 </div>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/proc-using-a-service-account.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/proc-using-a-service-account.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
 </div>
 <div class="sect3">
-<h4 id="_service_accounts"><a class="anchor" href="#_service_accounts"></a>Using a Service Account</h4>
-<div class="paragraph">
-<p>Each OIDC client has a built-in <em>service account</em>, which allows it to obtain an access token.</p>
+<h4 id="service-accounts"><a class="anchor" href="#service-accounts"></a>Service Accounts</h4>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/service-accounts.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/service-accounts.adoc" target="_blank">Report an issue</a>
 </div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Select your client in Keycloak.</p>
-</li>
-<li>
-<p>Click on the <code>Settings</code> tab.</p>
-</li>
-<li>
-<p>Set the <a href="#_access-type">Access Type</a> of your client is set to <code>confidential</code>.</p>
-</li>
-<li>
-<p>Set the <code>Service Accounts Enabled</code> switch to ON.</p>
-</li>
-<li>
-<p>Click <strong>Save</strong>.</p>
-</li>
-<li>
-<p>Configure your <a href="#_client-credentials">client credentials</a>.</p>
-</li>
-<li>
-<p>Click on the <code>Scope</code> tab.</p>
-</li>
-<li>
-<p>Verify that you have roles or set Full Scope Allowed to ON.</p>
-</li>
-<li>
-<p>On the <code>Service Account Roles</code> tab, configure the roles available to this service account for your client.</p>
-</li>
-</ol>
 </div>
 <div class="paragraph">
-<p>Roles from access tokens are the intersection of:</p>
+<p>Each OIDC client has a built-in <em>service account</em> which allows it to obtain an access token.
+This is covered in the OAuth 2.0 specifiation under <a href="#_client_credentials_grant">Client Credentials Grant</a>.
+To use this feature you must set the <a href="#_access-type">Access Type</a> of your client to <code>confidential</code>.  When you do this,
+the <code>Service Accounts Enabled</code> switch will appear.  You need to turn on this switch.  Also make sure that you have
+configured your <a href="#_client-credentials">client credentials</a>.</p>
+</div>
+<div class="paragraph">
+<p>To use it you must have registered a valid <code>confidential</code> Client and you need to check the switch <code>Service Accounts Enabled</code> in Keycloak admin console for this client.
+In tab <code>Service Account Roles</code> you can configure the roles available to the service account retrieved on behalf of this client.
+Remember that you must have the roles available in Role Scope Mappings (tab <code>Scope</code>) of this client as well, unless you
+have <code>Full Scope Allowed</code> on. As in a normal login, roles from access token are the intersection of:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Role scope mappings of a client combined with the role scope mappings inherited from linked client scopes.</p>
+<p>Role scope mappings of particular client combined with the role scope mappings inherited from linked client scopes</p>
 </li>
 <li>
-<p>Service account roles.</p>
+<p>Service account roles</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The REST URL to invoke is <code>/auth/realms/{realm-name}/protocol/openid-connect/token</code>. This URL must be invoked as a POST request and requires that you post the client credentials with the request.</p>
+<p>The REST URL to invoke on is <code>/auth/realms/{realm-name}/protocol/openid-connect/token</code>.
+Invoking on this URL is a POST request and requires you to post the client credentials.
+By default, client credentials are represented by clientId and clientSecret of the client in <code>Authorization: Basic</code> header, but you can also authenticate the client with a signed JWT assertion or any other custom mechanism for client authentication.
+You also need to use the parameter <code>grant_type=client_credentials</code> as per the OAuth2 specification.</p>
 </div>
 <div class="paragraph">
-<p>By default, client credentials are represented by the clientId and clientSecret of the client in the <code>Authorization: Basic</code> header but you can also authenticate the client with a signed JWT assertion or any other custom mechanism for client authentication.</p>
-</div>
-<div class="paragraph">
-<p>You also need to set the <code>grant_type</code> parameter to "client_credentials" as per the OAuth2 specification.</p>
-</div>
-<div class="paragraph">
-<p>For example, the POST invocation to retrieve a service account can look like this:</p>
+<p>For example the POST invocation to retrieve a service account can look like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5633,7 +5425,7 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 </div>
 </div>
 <div class="paragraph">
-<p>The response would be similar to this <a href="https://tools.ietf.org/html/rfc6749#section-4.4.3">Access Token Response</a> from the OAuth 2.0 specification.</p>
+<p>The response would be this <a href="https://tools.ietf.org/html/rfc6749#section-4.4.3">standard JSON document</a> from the OAuth 2.0 specification.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13449,7 +13241,7 @@ You can perform user operations on this account as if it was a regular user.</p>
 </div>
 <div class="sect2">
 <h3 id="user-operations"><a class="anchor" href="#user-operations"></a>User operations</h3>
-<h4 id="creating-a-user-2" class="discrete">Creating a user</h4>
+<h4 id="creating-a-user" class="discrete">Creating a user</h4>
 <div class="paragraph">
 <p>Run the <code class="command">create</code> command on the <code class="filename">users</code> endpoint to create a new user.</p>
 </div>
@@ -13545,7 +13337,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 <pre>c:\&gt; kcadm update users/0ba7a3fd-6fd8-48cd-a60b-2e8fd82d56e2 -r demorealm -s "requiredActions=[\"VERIFY_EMAIL\",\"UPDATE_PROFILE\",\"CONFIGURE_TOTP\",\"UPDATE_PASSWORD\"]"</pre>
 </div>
 </div>
-<h4 id="deleting-a-user-2" class="discrete">Deleting a user</h4>
+<h4 id="deleting-a-user" class="discrete">Deleting a user</h4>
 <div class="paragraph">
 <p>Use the <code class="command">delete</code> command with the same endpoint URI that you used to get a specific user.</p>
 </div>
@@ -14710,7 +14502,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-15 15:56:02 UTC
+Last updated 2020-10-15 17:20:00 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
