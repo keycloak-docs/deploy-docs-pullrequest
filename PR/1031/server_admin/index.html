@@ -893,7 +893,7 @@ span.image img {
 <li><a href="#creating-an-open-id-connect-client">Creating an Open ID Connect Client</a></li>
 <li><a href="#advanced-settings">Advanced Settings</a></li>
 <li><a href="#_client-credentials">Confidential Client Credentials</a></li>
-<li><a href="#service-accounts">Service Accounts</a></li>
+<li><a href="#_service_accounts">Using a Service Account</a></li>
 <li><a href="#_audience">Audience Support</a></li>
 </ul>
 </li>
@@ -5554,46 +5554,74 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="service-accounts"><a class="anchor" href="#service-accounts"></a>Service Accounts</h4>
 <div class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/service-accounts.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/service-accounts.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/proc-using-a-service-account.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/proc-using-a-service-account.adoc" target="_blank">Report an issue</a>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_service_accounts"><a class="anchor" href="#_service_accounts"></a>Using a Service Account</h4>
+<div class="paragraph">
+<p>Each OIDC client has a built-in <em>service account</em>, which allows it to obtain an access token.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Select your client in Keycloak.</p>
+</li>
+<li>
+<p>Click on the <code>Settings</code> tab.</p>
+</li>
+<li>
+<p>Set the <a href="#_access-type">Access Type</a> of your client is set to <code>confidential</code>.</p>
+</li>
+<li>
+<p>Set the <code>Service Accounts Enabled</code> switch to ON.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+<li>
+<p>Configure your <a href="#_client-credentials">client credentials</a>.</p>
+</li>
+<li>
+<p>Click on the <code>Scope</code> tab.</p>
+</li>
+<li>
+<p>Verify that you have roles or set Full Scope Allowed to ON.</p>
+</li>
+<li>
+<p>On the <code>Service Account Roles</code> tab, configure the roles available to this service account for your client.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Each OIDC client has a built-in <em>service account</em> which allows it to obtain an access token.
-This is covered in the OAuth 2.0 specifiation under <a href="#_client_credentials_grant">Client Credentials Grant</a>.
-To use this feature you must set the <a href="#_access-type">Access Type</a> of your client to <code>confidential</code>.  When you do this,
-the <code>Service Accounts Enabled</code> switch will appear.  You need to turn on this switch.  Also make sure that you have
-configured your <a href="#_client-credentials">client credentials</a>.</p>
-</div>
-<div class="paragraph">
-<p>To use it you must have registered a valid <code>confidential</code> Client and you need to check the switch <code>Service Accounts Enabled</code> in Keycloak admin console for this client.
-In tab <code>Service Account Roles</code> you can configure the roles available to the service account retrieved on behalf of this client.
-Remember that you must have the roles available in Role Scope Mappings (tab <code>Scope</code>) of this client as well, unless you
-have <code>Full Scope Allowed</code> on. As in a normal login, roles from access token are the intersection of:</p>
+<p>Roles from access tokens are the intersection of:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Role scope mappings of particular client combined with the role scope mappings inherited from linked client scopes</p>
+<p>Role scope mappings of a client combined with the role scope mappings inherited from linked client scopes.</p>
 </li>
 <li>
-<p>Service account roles</p>
+<p>Service account roles.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The REST URL to invoke on is <code>/auth/realms/{realm-name}/protocol/openid-connect/token</code>.
-Invoking on this URL is a POST request and requires you to post the client credentials.
-By default, client credentials are represented by clientId and clientSecret of the client in <code>Authorization: Basic</code> header, but you can also authenticate the client with a signed JWT assertion or any other custom mechanism for client authentication.
-You also need to use the parameter <code>grant_type=client_credentials</code> as per the OAuth2 specification.</p>
+<p>The REST URL to invoke is <code>/auth/realms/{realm-name}/protocol/openid-connect/token</code>. This URL must be invoked as a POST request and requires that you post the client credentials with the request.</p>
 </div>
 <div class="paragraph">
-<p>For example the POST invocation to retrieve a service account can look like this:</p>
+<p>By default, client credentials are represented by the clientId and clientSecret of the client in the <code>Authorization: Basic</code> header but you can also authenticate the client with a signed JWT assertion or any other custom mechanism for client authentication.</p>
+</div>
+<div class="paragraph">
+<p>You also need to set the <code>grant_type</code> parameter to "client_credentials" as per the OAuth2 specification.</p>
+</div>
+<div class="paragraph">
+<p>For example, the POST invocation to retrieve a service account can look like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5605,7 +5633,7 @@ You also need to use the parameter <code>grant_type=client_credentials</code> as
 </div>
 </div>
 <div class="paragraph">
-<p>The response would be this <a href="https://tools.ietf.org/html/rfc6749#section-4.4.3">standard JSON document</a> from the OAuth 2.0 specification.</p>
+<p>The response would be similar to this <a href="https://tools.ietf.org/html/rfc6749#section-4.4.3">Access Token Response</a> from the OAuth 2.0 specification.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14682,7 +14710,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-15 13:25:16 UTC
+Last updated 2020-10-15 15:56:02 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
