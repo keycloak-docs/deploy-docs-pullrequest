@@ -797,14 +797,11 @@ span.image img {
 </ul>
 </li>
 <li><a href="#impersonation">Impersonation</a></li>
-</ul>
-</li>
-<li><a href="#_user-registration">User Registration</a>
-<ul class="sectlevel2">
+<li><a href="#_user-registration">User Registration</a></li>
 <li><a href="#_recaptcha">reCAPTCHA Support</a></li>
+<li><a href="#_personal_data">Personal data collected by Keycloak</a></li>
 </ul>
 </li>
-<li><a href="#_personal_data">Personal data collected by Keycloak</a></li>
 <li><a href="#login-page-settings">Login Page Settings</a>
 <ul class="sectlevel2">
 <li><a href="#forgot-password">Forgot Password</a></li>
@@ -1032,6 +1029,7 @@ span.image img {
 <li><a href="#_revocation-policy">Revocation Policies</a></li>
 <li><a href="#_timeouts">Session and Token Timeouts</a></li>
 <li><a href="#_offline-access">Offline Access</a></li>
+<li><a href="#_transient-session">Transient sessions</a></li>
 </ul>
 </li>
 <li><a href="#_user-storage-federation">User Storage Federation</a>
@@ -2362,11 +2360,8 @@ in as the user being impersonated.  If the admin and user are not in the same re
 <p>For more information on assigning administration permissions, see the <a href="#_admin_permissions">Admin Console Access Control</a> chapter.</p>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_user-registration"><a class="anchor" href="#_user-registration"></a>User Registration</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_user-registration"><a class="anchor" href="#_user-registration"></a>User Registration</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/user-registration.adoc" target="_blank">Edit this section</a>
@@ -2408,6 +2403,7 @@ and a new password.</p>
 <div class="paragraph">
 <p>You can change the look and feel of the registration form as well as removing or adding additional fields that must be entered.
 See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more information.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_recaptcha"><a class="anchor" href="#_recaptcha"></a>reCAPTCHA Support</h3>
@@ -2458,11 +2454,8 @@ theme to muck around with the placement and styling of the reCAPTCHA button.  Se
 for more information on extending and creating themes.</p>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_personal_data"><a class="anchor" href="#_personal_data"></a>Personal data collected by Keycloak</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_personal_data"><a class="anchor" href="#_personal_data"></a>Personal data collected by Keycloak</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/personal_data.adoc" target="_blank">Edit this section</a>
@@ -2500,6 +2493,7 @@ for more information on extending and creating themes.</p>
 <p>With authorization services and UMA support enabled, Keycloak can hold information about some objects for which a particular user is the owner. For example, Keycloak can track that the user <strong>john</strong> is the owner of a photoalbum <strong>album with animals</strong> and a few photos called <strong>lion picture</strong> and <strong>cow picture</strong> in this album.</p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -5019,6 +5013,20 @@ This flow assumes that a <code>docker login</code> command has already been perf
 <p>When the Docker registry receives the new request for the protected resource with the token from the Keycloak server, the registry validates the token and grants access to the requested resource (if appropriate).</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+No user session is created on the Keycloak side after successful authentication with the Docker protocol. The Docker protocol is
+not used in case of browser SSO session and it does not have a way to refresh token or ask Keycloak server if a particular token/session
+is still valid. So creating the session is unnecessary overhead for this protocol. For more details, see the <a href="#_transient-session">transient session</a> section.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -9199,6 +9207,10 @@ You must define the SAML configuration options as well.  They basically describe
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service Provider Entity ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is a required field and specifies the SAML Entity ID that the remote Identity Provider will use to identify requests coming from this Service Provider. By default it is set to the realm base URL <code>&lt;root&gt;/auth/realms/{realm-name}</code>.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Single Sign-On Service URL</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This is a required field and specifies the SAML endpoint to start the authentication process.  If your SAML IDP publishes an IDP entity descriptor, the value of
  this field will be specified there.</p></td>
@@ -9282,10 +9294,10 @@ This link is an XML document describing metadata about the IDP.</p>
 <div class="sect3">
 <h4 id="_identity_broker_saml_requested_authncontext"><a class="anchor" href="#_identity_broker_saml_requested_authncontext"></a>Requesting specific AuthnContexts</h4>
 <div class="paragraph">
-<p>Some Identity Providers let the clients specify particular constraints on the authentication method used to verify the user identity (e.g. asking for MFA, Kerberos authentication, security requirements, etc.). These are specified using particular AuthnContext criteria. A client can ask for one or more criteria and also specify how the Identity Provider should match the requested AuthnContext - exactly, or by satisfying same-or-better equivalents.</p>
+<p>Some Identity Providers let the clients specify particular constraints on the authentication method used to verify the user identity (such as asking for MFA, Kerberos authentication, security requirements, and so on). These constraints are specified using particular AuthnContext criteria. A client can ask for one or more criteria and also specify how the Identity Provider should match the requested AuthnContext - exactly, or by satisfying same-or-better equivalents.</p>
 </div>
 <div class="paragraph">
-<p>You can list the criteria your Service Provider requires by adding one or more ClassRef or DeclRef in the Requested AuthnContext Constraints section. Usually you will need to provide either ClassRefs or DeclRefs - you should check with your Identity Provider docs which values are supported. If no ClassRefs or DeclRefs are present, the Identity Provider will not enforce additional constraints.</p>
+<p>You can list the criteria your Service Provider requires by adding one or more ClassRef or DeclRef in the Requested AuthnContext Constraints section. Usually you need to provide either ClassRefs or DeclRefs; you should check with your Identity Provider documentation which values are supported. If no ClassRefs or DeclRefs are present, the Identity Provider will not enforce additional constraints.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 4. Requested AuthnContext Constraints</caption>
@@ -9978,6 +9990,25 @@ client scope</code> to it, which is done by default.</p>
 The Keycloak OIDC client adapter automatically adds this parameter when you use it to access secured URL of your application (i.e.
 http://localhost:8080/customer-portal/secured?scope=offline_access). The Direct Access Grant and Service Accounts also
 support offline tokens if you include <code>scope=offline_access</code> in the body of the authentication request.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_transient-session"><a class="anchor" href="#_transient-session"></a>Transient sessions</h3>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sessions/transient.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sessions/transient.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>Keycloak has concept of transient sessions. When transient sessions are used, there is no real user session created after successful authentication.
+Only a temporary transient session is created for the scope of the current request that successfully authenticated the user. This transient session allows Keycloak
+to run <a href="#_protocol-mappers">protocol mappers</a> after the authentication.</p>
+</div>
+<div class="paragraph">
+<p>When transient sessions are used, the client application has no way to refresh or introspect the token or check if a specific session is valid.
+In some situations, these actions are not needed, so you can avoid the additional overhead for persistence of user sessions.
+This would mean the save of performance, memory and network communication (in case of cluster and cross-datacenter environments).</p>
 </div>
 </div>
 </div>
@@ -14718,7 +14749,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-16 09:52:13 UTC
+Last updated 2020-10-16 09:59:14 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

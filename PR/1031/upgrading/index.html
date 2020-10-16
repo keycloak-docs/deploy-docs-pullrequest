@@ -792,6 +792,11 @@ span.image img {
 <li><a href="#upgrading-keycloak-admin-client">Upgrading Keycloak Admin Client</a></li>
 <li><a href="#migration-changes">Migration Changes</a>
 <ul class="sectlevel2">
+<li><a href="#migrating-to-12-0-0">Migrating to 12.0.0</a>
+<ul class="sectlevel3">
+<li><a href="#skip-creation-of-user-session-for-the-docker-protocol-authentication">Skip creation of user session for the Docker protocol authentication</a></li>
+</ul>
+</li>
 <li><a href="#migrating-to-11-0-0">Migrating to 11.0.0</a>
 <ul class="sectlevel3">
 <li><a href="#upgrade-to-wildfly-20">Upgrade to Wildfly 20</a></li>
@@ -1608,6 +1613,15 @@ Keycloak server version.</p>
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/upgrading/topics/keycloak/changes.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20upgrading/topics/keycloak/changes.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="sect2">
+<h3 id="migrating-to-12-0-0"><a class="anchor" href="#migrating-to-12-0-0"></a>Migrating to 12.0.0</h3>
+<div class="sect3">
+<h4 id="skip-creation-of-user-session-for-the-docker-protocol-authentication"><a class="anchor" href="#skip-creation-of-user-session-for-the-docker-protocol-authentication"></a>Skip creation of user session for the Docker protocol authentication</h4>
+<div class="paragraph">
+<p>No user session is created after successful authentication with the Docker protocol. For details, please refer to the <a href="https://www.keycloak.org/docs/11.0/server_admin/#_docker">Server Administration Guide</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -3137,7 +3151,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-16 09:52:24 UTC
+Last updated 2020-10-16 09:59:27 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
