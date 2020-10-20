@@ -776,23 +776,19 @@ span.image img {
 </li>
 </ul>
 </li>
-<li><a href="#user-management">User Management</a>
+<li><a href="#user-management">User Management</a></li>
+<li><a href="#searching-for-a-user">Searching for a user</a>
 <ul class="sectlevel2">
-<li><a href="#searching-for-a-user">Searching for a user</a></li>
 <li><a href="#creating-a-user">Creating a user</a></li>
 <li><a href="#deleting-a-user">Deleting a user</a></li>
-<li><a href="#configuring-user-attributes">Configuring user attributes</a></li>
-<li><a href="#_user-credentials">User Credentials</a>
+<li><a href="#configuring-user-attributes">Configuring user attributes</a>
 <ul class="sectlevel3">
-<li><a href="#creating-a-password-for-the-user">Creating a Password for the User</a></li>
-<li><a href="#creating-other-credentials">Creating other credentials</a></li>
-<li><a href="#creating-an-otp">Creating an OTP</a></li>
+<li><a href="#_user-credentials">User Credentials</a></li>
 </ul>
 </li>
 <li><a href="#required-actions">Required Actions</a>
-<ul class="sectlevel3">
+<ul class="sectlevel6">
 <li><a href="#setting-required-actions">Setting required actions</a></li>
-<li><a href="#setting-default-required-actions">Setting default required actions</a></li>
 <li><a href="#terms-and-conditions">Terms and conditions</a></li>
 </ul>
 </li>
@@ -800,8 +796,6 @@ span.image img {
 <li><a href="#_user-registration">User Registration</a></li>
 <li><a href="#_recaptcha">reCAPTCHA Support</a></li>
 <li><a href="#_personal_data">Personal data collected by Keycloak</a></li>
-</ul>
-</li>
 <li><a href="#login-page-settings">Login Page Settings</a>
 <ul class="sectlevel2">
 <li><a href="#forgot-password">Forgot Password</a></li>
@@ -1129,6 +1123,8 @@ span.image img {
 <li><a href="#storage-provider-operations">Storage provider operations</a></li>
 <li><a href="#adding-mappers">Adding mappers</a></li>
 <li><a href="#authentication-operations">Authentication operations</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1862,7 +1858,7 @@ this point.</p>
 </div>
 <div class="paragraph">
 <p>This section describes the administration functions for managing users.
-:leveloffset: +1</p>
+:leveloffset: +2</p>
 </div>
 <div id="proc-searching-user_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -1870,8 +1866,9 @@ this point.</p>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-searching-user.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="sect2">
-<h3 id="searching-for-a-user"><a class="anchor" href="#searching-for-a-user"></a>Searching for a user</h3>
+</div>
+</div>
+<h1 id="searching-for-a-user" class="sect0"><a class="anchor" href="#searching-for-a-user"></a>Searching for a user</h1>
 <div class="paragraph">
 <p>Search for a user to view detailed information about the user&#8217;s groups and roles.</p>
 </div>
@@ -1941,7 +1938,6 @@ This action searches only the local Keycloak database and not the federated data
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-creating-user.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-creating-user.adoc" target="_blank">Report an issue</a>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -2087,9 +2083,8 @@ Alternatively, you can use the search bar to find a user.
 </li>
 </ol>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_user-credentials"><a class="anchor" href="#_user-credentials"></a>User Credentials</h3>
+<div class="sect3">
+<h4 id="_user-credentials"><a class="anchor" href="#_user-credentials"></a>User Credentials</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/credentials.adoc" target="_blank">Edit this section</a>
@@ -2134,8 +2129,8 @@ credential.</p>
 </dd>
 </dl>
 </div>
-<div class="sect3">
-<h4 id="creating-a-password-for-the-user"><a class="anchor" href="#creating-a-password-for-the-user"></a>Creating a Password for the User</h4>
+<div class="sect4">
+<h5 id="creating-a-password-for-the-user"><a class="anchor" href="#creating-a-password-for-the-user"></a>Creating a Password for the User</h5>
 <div class="paragraph">
 <p>If a user doesn&#8217;t have a password, or if the password has been deleted, the <code>Set Password</code> section will be shown on the page.</p>
 </div>
@@ -2161,16 +2156,16 @@ The sent email contains a link that will bring the user to the update password s
 <p>Note that a user can only have a single credential of type password.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="creating-other-credentials"><a class="anchor" href="#creating-other-credentials"></a>Creating other credentials</h4>
+<div class="sect4">
+<h5 id="creating-other-credentials"><a class="anchor" href="#creating-other-credentials"></a>Creating other credentials</h5>
 <div class="paragraph">
 <p>You cannot configure other types of credentials for a specific user within the Admin Console. This is the responsibility of the user.
 You can only delete credentials for a user on the <code>Credentials</code> tab, for example if the user has lost an OTP device, or if a credential
 has been compromised.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="creating-an-otp"><a class="anchor" href="#creating-an-otp"></a>Creating an OTP</h4>
+<div class="sect4">
+<h5 id="creating-an-otp"><a class="anchor" href="#creating-an-otp"></a>Creating an OTP</h5>
 <div class="paragraph">
 <p>If OTP is conditional in your realm, the user will have to go to the User Account Management service to re-configure a new OTP generator. If OTP is required, then the user will be asked
 to re-configure a new OTP generator when they log in.</p>
@@ -2185,6 +2180,7 @@ and would like to set up some more.</p>
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/con-required-actions.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/con-required-actions.adoc" target="_blank">Report an issue</a>
+</div>
 </div>
 </div>
 </div>
@@ -2226,8 +2222,8 @@ and would like to set up some more.</p>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-setting-required-actions.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="sect3">
-<h4 id="setting-required-actions"><a class="anchor" href="#setting-required-actions"></a>Setting required actions</h4>
+<div class="sect6">
+<h7 id="setting-required-actions"><a class="anchor" href="#setting-required-actions"></a>Setting required actions</h7>
 <div class="paragraph">
 <p>You can add and remove the required actions for existing users in the admin console.</p>
 </div>
@@ -2265,9 +2261,8 @@ and would like to set up some more.</p>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-setting-default-required-actions.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="setting-default-required-actions"><a class="anchor" href="#setting-default-required-actions"></a>Setting default required actions</h4>
+<div class="sect7">
+<h8 id="setting-default-required-actions"><a class="anchor" href="#setting-default-required-actions"></a>Setting default required actions</h8>
 <div class="paragraph">
 <p>You can use the registration link or the <strong>Required Actions</strong> tab to specify the required actions that must be completed by a user before logging in.</p>
 </div>
@@ -2306,8 +2301,9 @@ and would like to set up some more.</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="terms-and-conditions"><a class="anchor" href="#terms-and-conditions"></a>Terms and conditions</h4>
+</div>
+<div class="sect6">
+<h7 id="terms-and-conditions"><a class="anchor" href="#terms-and-conditions"></a>Terms and conditions</h7>
 <div class="paragraph">
 <p>Keycloak requires new users to accept the terms and conditions before logging in for the first time.</p>
 </div>
@@ -2493,8 +2489,6 @@ for more information on extending and creating themes.</p>
 <p>With authorization services and UMA support enabled, Keycloak can hold information about some objects for which a particular user is the owner. For example, Keycloak can track that the user <strong>john</strong> is the owner of a photoalbum <strong>album with animals</strong> and a few photos called <strong>lion picture</strong> and <strong>cow picture</strong> in this album.</p>
 </li>
 </ul>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -5925,190 +5919,192 @@ which was the token issued for, unless any of the audience mappers added it.
 </tr>
 </table>
 </div>
+<div id="proc-creating-saml-client_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/proc-creating-saml-client.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/proc-creating-saml-client.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="saml-clients"><a class="anchor" href="#saml-clients"></a>SAML Clients</h3>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/client-saml.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-saml.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
 <div class="paragraph">
 <p>Keycloak supports <a href="#_saml">SAML 2.0</a> for registered applications.
-Both POST and Redirect bindings are supported.
-You can choose to require client signature validation and can have the server sign and/or encrypt responses as well.</p>
+POST and Redirect bindings are supported. You can choose to require client signature validation. You can have the server sign and/or encrypt responses as well.</p>
 </div>
-<div class="paragraph">
-<p>To create a SAML client go to the <code>Clients</code> left menu item.  On this page you&#8217;ll see a <code>Create</code> button on the right.</p>
-</div>
-<div class="paragraph">
-<div class="title">Clients</div>
-<p><span class="image"><img src="./keycloak-images/clients.png" alt="clients"></span></p>
-</div>
-<div class="paragraph">
-<p>This will bring you to the <code>Add Client</code> page.</p>
-</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click <code>Clients</code> in the left navigation pane.</p>
+</li>
+<li>
+<p>Click <strong>Create</strong> to go to the <code>Add Client</code> page.</p>
 <div class="paragraph">
 <div class="title">Add Client</div>
 <p><span class="image"><img src="./keycloak-images/add-client-saml.png" alt="add client saml"></span></p>
 </div>
-<div class="paragraph">
-<p>Enter in the <code>Client ID</code> of the client.  This is often a URL and will be the expected <code>issuer</code> value in SAML requests sent
-by the application.  Next select <code>saml</code> in the <code>Client Protocol</code> drop down box.
-Finally enter in the <code>Client SAML Endpoint</code> URL.  Enter the
-URL you want the Keycloak server to send SAML requests and responses to.  Usually applications have only one URL for processing SAML requests.
-If your application has different URLs for its bindings, don&#8217;t worry, you can fix this in the <code>Settings</code> tab of the client.
-Click <code>Save</code>.  This will create the client and bring you to the client <code>Settings</code>
-tab.</p>
-</div>
+</li>
+<li>
+<p>Enter the <code>Client ID</code> of the client. This is often a URL and is the expected <code>issuer</code> value in SAML requests sent by the application.</p>
+</li>
+<li>
+<p>Select <code>saml</code> in the <code>Client Protocol</code> drop down box.</p>
+</li>
+<li>
+<p>Enter the <code>Client SAML Endpoint</code> URL. This URL is where you want the Keycloak server to send SAML requests and responses. Generally, applications have one URL for processing SAML requests. Multiple URLs can be set in the <code>Settings</code> tab of the client.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.  This action creates the client and brings you to the <code>Settings</code> tab.</p>
 <div class="paragraph">
 <div class="title">Client Settings</div>
 <p><span class="image"><img src="./keycloak-images/client-settings-saml.png" alt="client settings saml"></span></p>
 </div>
+<div class="paragraph">
+<p>The following list describes each setting:</p>
+</div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Client ID</dt>
+<dt class="hdlist1"><code>Client ID</code></dt>
 <dd>
-<p>This value must match the issuer value sent with AuthNRequests.
-Keycloak will pull the issuer from the Authn SAML request and match it to a client by this value.</p>
+<p>The alpha-numeric ID string that is used in OIDC requests and in the Keycloak database to identify the client. This value must match the issuer value sent with AuthNRequests. Keycloak pulls the issuer from the Authn SAML request and match it to a client by this value.</p>
 </dd>
-<dt class="hdlist1">Name</dt>
+<dt class="hdlist1"><code>Name</code></dt>
 <dd>
-<p>This is the display name for the client whenever it is displayed in a Keycloak UI screen.  You can localize
-the value of this field by setting up a replacement string value i.e. ${myapp}.  See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a>
-for more information.</p>
+<p>The name for the client in a Keycloak UI screen. To localize
+the name, set up a replacement string value. For example, a string value such as ${myapp}.  See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more information.</p>
 </dd>
-<dt class="hdlist1">Description</dt>
+<dt class="hdlist1"><code>Description</code></dt>
 <dd>
-<p>This specifies the description of the client.  This can also be localized.</p>
+<p>The description of the client.  This setting can also be localized.</p>
 </dd>
-<dt class="hdlist1">Enabled</dt>
+<dt class="hdlist1"><code>Enabled</code></dt>
 <dd>
-<p>If this is turned off, the client will not be allowed to request authentication.</p>
+<p>When set to OFF, the client cannot request authentication.</p>
 </dd>
-<dt class="hdlist1">Consent Required</dt>
+<dt class="hdlist1"><code>Consent Required</code></dt>
 <dd>
-<p>If this is on, then users will get a consent page which asks the user if they grant access to that application.  It will also
-display the metadata that the client is interested in so that the user knows exactly what information the client is getting access to.
-If you&#8217;ve ever done a social login to Google, you&#8217;ll often see a similar page.  Keycloak provides the same functionality.</p>
+<p>When set to ON, users see a consent page that grants access to that application.  The page also displays the metadata of the information that the client can access. If you have ever done a social login to Facebook, you often see a similar page. Red Hat Single Sign-On provides the same functionality.</p>
 </dd>
-<dt class="hdlist1">Include AuthnStatement</dt>
+<dt class="hdlist1"><code>Include AuthnStatement</code></dt>
 <dd>
-<p>SAML login responses may specify the authentication method used (password, etc.) as well as timestamps of the login and the session expiration.
-This is enabled by default, which means that <code>AuthStatement</code> element will be included in login responses. Note that setting this to off
-would prevent the client from determining the maximum session length which could result into never expiring client session.</p>
+<p>SAML login responses may specify the  authentication method used, such as password, as well as timestamps of the login and the session expiration.
+This switch is enabled by default, so that the <code>AuthnStatement</code> element will be included in login responses. Setting this to OFF prevents clients from determining the maximum session length, which can create client sessions that do not expire.</p>
 </dd>
-<dt class="hdlist1">Sign Documents</dt>
+<dt class="hdlist1"><code>Sign Documents</code></dt>
 <dd>
-<p>When turned on, Keycloak will sign the document using the realm&#8217;s private key.</p>
+<p>When set to ON, Keycloak signs the document using the realms private key.</p>
 </dd>
-<dt class="hdlist1">Optimize REDIRECT signing key lookup</dt>
+<dt class="hdlist1"><code>Optimize REDIRECT signing key lookup</code></dt>
 <dd>
-<p>When turned on, the SAML protocol messages will include Keycloak
-native extension that contains a hint with signing key ID. When the SP
-understands this extension, it can use it for signature validation instead of
-attempting to validate signature with all known keys. This option only applies to
-REDIRECT bindings where the signature is transferred in query parameters where
-there is no place with this information in the signature information
-(contrary to POST binding messages where key ID is always included in
-document signature). Currently this is relevant to situations where both
-IDP and SP are provided by Keycloak server and adapter. This
-option is only relevant when <code>Sign Documents</code> is switched on.</p>
+<p>When set to ON, the SP messages include the Keycloak native extension. This extension contains a hint with the signing key ID. The SP uses the extension for signature validation instead of attempting to validate the signature using keys.</p>
+<div class="paragraph">
+<p>This option applies to REDIRECT bindings where the signature is transferred in query parameters and this information is not found in the signature information. This is contrary to POST binding messages where key ID is always included in document signature.</p>
+</div>
+<div class="paragraph">
+<p>This option is used when Keycloak server and adapter provide the IDP and SP. This option is only relevant when <code>Sign Documents</code> is set to ON.</p>
+</div>
 </dd>
-<dt class="hdlist1">Sign Assertions</dt>
+<dt class="hdlist1"><code>Sign Assertions</code></dt>
 <dd>
-<p>The <code>Sign Documents</code> switch signs the whole document.
-With this setting the assertion is also signed and embedded within the SAML XML Auth response.</p>
+<p>The assertion is signed and embedded in the SAML XML Auth response.</p>
 </dd>
-<dt class="hdlist1">Signature Algorithm</dt>
+<dt class="hdlist1"><code>Signature Algorithm</code></dt>
 <dd>
-<p>Choose between a variety of algorithms for signing SAML documents.</p>
+<p>The algorithm used in signing SAML documents.</p>
 </dd>
-<dt class="hdlist1">SAML Signature Key Name</dt>
+<dt class="hdlist1"><code>SAML Signature Key Name</code></dt>
 <dd>
-<p>Signed SAML documents sent via POST binding contain identification of signing key in <code>KeyName</code>
-element. This by default contains Keycloak key ID. However various vendors might
-expect a different key name or no key name at all. This switch controls whether <code>KeyName</code>
-contains key ID (option <code>KEY_ID</code>), subject from certificate corresponding to the realm key
-(option <code>CERT_SUBJECT</code> - expected for instance by Microsoft Active Directory Federation
-Services), or that the key name hint is completely omitted from the SAML message (option <code>NONE</code>).</p>
+<p>Signed SAML documents sent using POST binding contain the identification of the signing key in the <code>KeyName</code> element. This action can be controlled by the <code>SAML Signature Key Name</code> option. This option controls the contents of the <code>Keyname</code>.</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><em>KEY_ID</em>:: The <code>KeyName</code> contains the key ID. This option is the default option.</p>
+</li>
+<li>
+<p><em>CERT_SUBJECT</em>:: The <code>KeyName</code> contains the subject from the certificate corresponding to the realm key. This option is expected by Microsoft Active Directory Federation Services.</p>
+</li>
+<li>
+<p><em>NONE</em>:: The <code>KeyName</code> hint is completely omitted from the SAML message.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </dd>
-<dt class="hdlist1">Canonicalization Method</dt>
+<dt class="hdlist1"><code>Canonicalization Method</code></dt>
 <dd>
-<p>Canonicalization method for XML signatures.</p>
+<p>The canonicalization method for XML signatures.</p>
 </dd>
-<dt class="hdlist1">Encrypt Assertions</dt>
+<dt class="hdlist1"><code>Encrypt Assertions</code></dt>
 <dd>
-<p>Encrypt assertions in SAML documents with the realm&#8217;s private key.
-The AES algorithm is used with a key size of 128 bits.</p>
+<p>Encrypts the assertions in SAML documents with the realms private key. The AES algorithm uses a key size of 128 bits.</p>
 </dd>
-<dt class="hdlist1">Client Signature Required</dt>
+<dt class="hdlist1"><code>Client Signature Required</code></dt>
 <dd>
-<p>Expect that documents coming from a client are signed.
-Keycloak will validate this signature using the client public key or cert set up in the <code>SAML Keys</code> tab.</p>
+<p>If this switch is set to ON, documents coming from a client are expected to be signed. Keycloak validates this signature using the client public key or certificate set up in the <code>SAML Keys</code> tab.</p>
 </dd>
-<dt class="hdlist1">Force POST Binding</dt>
+<dt class="hdlist1"><code>Force POST Binding</code></dt>
 <dd>
-<p>By default, Keycloak will respond using the initial SAML binding of the original request.
-By turning on this switch, you will force Keycloak to always respond using the SAML POST Binding even if the original request was the Redirect binding.</p>
+<p>By default, Keycloak responds using the initial SAML binding of the original request. By setting this switch to ON, Keycloak responds using the SAML POST binding even if the original request used the redirect binding.</p>
 </dd>
-<dt class="hdlist1">Front Channel Logout</dt>
+<dt class="hdlist1"><code>Front Channel Logout</code></dt>
 <dd>
-<p>If true, this application requires a browser redirect to be able to perform a logout.
-For example, the application may require a cookie to be reset which could only be done via a redirect.
-If this switch is false, then Keycloak will invoke a background SAML request to logout the application.</p>
+<p>If this switch is set to ON, the application requires a browser redirect to perform a logout. For example, the application may require a cookie to be reset which could only be done via a redirect. If this switch is set to OFF, Keycloak invokes a background SAML request to log out of the application.</p>
 </dd>
-<dt class="hdlist1">Force Name ID Format</dt>
+<dt class="hdlist1"><code>Force Name ID Format</code></dt>
 <dd>
-<p>If the request has a name ID policy, ignore it and used the value configured in the admin console under Name ID Format</p>
+<p>If a request has a name ID policy, ignore it and use the value configured in the admin console under <code>Name ID Format</code>.</p>
 </dd>
-<dt class="hdlist1">Name ID Format</dt>
+<dt class="hdlist1"><code>Name ID Format</code></dt>
 <dd>
-<p>Name ID Format for the subject.
-If no name ID policy is specified in the request or if the Force Name ID Format attribute is true, this value is used.
-Properties used for each of the respective formats are defined below.</p>
+<p>The Name ID Format for the subject. This format is used if no name ID policy is specified in a request, or if the Force Name ID Format attribute is set to ON.</p>
 </dd>
-<dt class="hdlist1">Root URL</dt>
+<dt class="hdlist1"><code>Root URL</code></dt>
 <dd>
-<p>If Keycloak uses any configured relative URLs, this value is prepended to them.</p>
+<p>When Keycloak uses a configured relative URL, this value is prepended to the URL.</p>
 </dd>
-<dt class="hdlist1">Valid Redirect URIs</dt>
+<dt class="hdlist1"><code>Valid Redirect URIs</code></dt>
 <dd>
-<p>This is an optional field.  Enter in a URL pattern and click the + sign to add.  Click the - sign next to URLs you want to remove.
-Remember that you still have to click the <code>Save</code> button!
-Wildcards (*) are only allowed at the end of a URI, i.e. http://host.com/*.  This field is used when the exact SAML
-endpoints are not registered and Keycloak is pulling the Assertion Consumer URL from the request.</p>
+<p>Enter a URL pattern and click the + sign to add.  Click the - sign to remove. Click the <code>Save</code> button to save these changes.
+Wildcards values are allowed only at the end of a URL. For example, <a href="http://host.com/*$$" class="bare">http://host.com/*$$</a>.
+This field is used when the exact SAML endpoints are not registered and Keycloak pulls the Assertion Consumer URL from a request.</p>
 </dd>
-<dt class="hdlist1">Base URL</dt>
+<dt class="hdlist1"><code>Base URL</code></dt>
 <dd>
-<p>If Keycloak needs to link to the client, this URL would be used.</p>
+<p>If Keycloak needs to link to a client, this URL is used.</p>
 </dd>
-<dt class="hdlist1">Master SAML Processing URL</dt>
+<dt class="hdlist1"><code>Master SAML Processing URL</code></dt>
 <dd>
-<p>This URL will be used for all SAML requests and the response will be directed to the SP.
-It will be used as the Assertion Consumer Service URL and the Single Logout Service URL.
-If a login request contains the Assertion Consumer Service URL, that will take precedence, but this URL must be validated by a registered Valid Redirect URI pattern</p>
+<p>This URL is used for all SAML requests and the response is directed to the SP. It is used as the Assertion Consumer Service URL and the Single Logout Service URL.</p>
+<div class="paragraph">
+<p>If login requests contain the Assertion Consumer Service URL then those login requests will take precedence. This URL must be validated by a registered Valid Redirect URI pattern.</p>
+</div>
 </dd>
-<dt class="hdlist1">Assertion Consumer Service POST Binding URL</dt>
+<dt class="hdlist1"><code>Assertion Consumer Service POST Binding URL</code></dt>
 <dd>
 <p>POST Binding URL for the Assertion Consumer Service.</p>
 </dd>
-<dt class="hdlist1">Assertion Consumer Service Redirect Binding URL</dt>
+<dt class="hdlist1"><code>Assertion Consumer Service Redirect Binding URL</code></dt>
 <dd>
 <p>Redirect Binding URL for the Assertion Consumer Service.</p>
 </dd>
-<dt class="hdlist1">Logout Service POST Binding URL</dt>
+<dt class="hdlist1"><code>Logout Service POST Binding URL</code></dt>
 <dd>
 <p>POST Binding URL for the Logout Service.</p>
 </dd>
-<dt class="hdlist1">Logout Service Redirect Binding URL</dt>
+<dt class="hdlist1"><code>Logout Service Redirect Binding URL</code></dt>
 <dd>
 <p>Redirect Binding URL for the Logout Service.</p>
 </dd>
 </dl>
+</div>
+</li>
+</ol>
 </div>
 <div class="sect3">
 <h4 id="idp-initiated-login"><a class="anchor" href="#idp-initiated-login"></a>IDP Initiated Login</h4>
@@ -14749,7 +14745,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-16 09:59:14 UTC
+Last updated 2020-10-20 18:55:53 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
