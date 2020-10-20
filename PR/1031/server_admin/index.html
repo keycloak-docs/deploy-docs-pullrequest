@@ -776,26 +776,28 @@ span.image img {
 </li>
 </ul>
 </li>
-<li><a href="#user-management">User Management</a></li>
-<li><a href="#searching-for-a-user">Searching for a user</a>
+<li><a href="#user-management">User Management</a>
 <ul class="sectlevel2">
+<li><a href="#searching-for-a-user">Searching for a user</a></li>
 <li><a href="#creating-a-user">Creating a user</a></li>
 <li><a href="#deleting-a-user">Deleting a user</a></li>
-<li><a href="#configuring-user-attributes">Configuring user attributes</a>
+<li><a href="#configuring-user-attributes">Configuring user attributes</a></li>
+<li><a href="#_user-credentials">User Credentials</a>
 <ul class="sectlevel3">
-<li><a href="#_user-credentials">User Credentials</a></li>
+<li><a href="#creating-a-password-for-the-user">Creating a Password for the User</a></li>
+<li><a href="#creating-other-credentials">Creating other credentials</a></li>
+<li><a href="#creating-an-otp">Creating an OTP</a></li>
 </ul>
 </li>
 <li><a href="#required-actions">Required Actions</a>
-<ul class="sectlevel6">
+<ul class="sectlevel3">
 <li><a href="#setting-required-actions">Setting required actions</a></li>
+<li><a href="#setting-default-required-actions">Setting default required actions</a></li>
 <li><a href="#terms-and-conditions">Terms and conditions</a></li>
 </ul>
 </li>
-<li><a href="#impersonation">Impersonation</a></li>
-<li><a href="#_user-registration">User Registration</a></li>
-<li><a href="#_recaptcha">reCAPTCHA Support</a></li>
-<li><a href="#_personal_data">Personal data collected by Keycloak</a></li>
+</ul>
+</li>
 <li><a href="#login-page-settings">Login Page Settings</a>
 <ul class="sectlevel2">
 <li><a href="#forgot-password">Forgot Password</a></li>
@@ -1123,8 +1125,6 @@ span.image img {
 <li><a href="#storage-provider-operations">Storage provider operations</a></li>
 <li><a href="#adding-mappers">Adding mappers</a></li>
 <li><a href="#authentication-operations">Authentication operations</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -1857,8 +1857,7 @@ this point.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This section describes the administration functions for managing users.
-:leveloffset: +2</p>
+<p>This section describes the administration functions for managing users.</p>
 </div>
 <div id="proc-searching-user_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -1866,9 +1865,8 @@ this point.</p>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-searching-user.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-</div>
-<h1 id="searching-for-a-user" class="sect0"><a class="anchor" href="#searching-for-a-user"></a>Searching for a user</h1>
+<div class="sect2">
+<h3 id="searching-for-a-user"><a class="anchor" href="#searching-for-a-user"></a>Searching for a user</h3>
 <div class="paragraph">
 <p>Search for a user to view detailed information about the user&#8217;s groups and roles.</p>
 </div>
@@ -1938,6 +1936,7 @@ This action searches only the local Keycloak database and not the federated data
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-creating-user.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-creating-user.adoc" target="_blank">Report an issue</a>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -2083,8 +2082,9 @@ Alternatively, you can use the search bar to find a user.
 </li>
 </ol>
 </div>
-<div class="sect3">
-<h4 id="_user-credentials"><a class="anchor" href="#_user-credentials"></a>User Credentials</h4>
+</div>
+<div class="sect2">
+<h3 id="_user-credentials"><a class="anchor" href="#_user-credentials"></a>User Credentials</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/credentials.adoc" target="_blank">Edit this section</a>
@@ -2129,8 +2129,8 @@ credential.</p>
 </dd>
 </dl>
 </div>
-<div class="sect4">
-<h5 id="creating-a-password-for-the-user"><a class="anchor" href="#creating-a-password-for-the-user"></a>Creating a Password for the User</h5>
+<div class="sect3">
+<h4 id="creating-a-password-for-the-user"><a class="anchor" href="#creating-a-password-for-the-user"></a>Creating a Password for the User</h4>
 <div class="paragraph">
 <p>If a user doesn&#8217;t have a password, or if the password has been deleted, the <code>Set Password</code> section will be shown on the page.</p>
 </div>
@@ -2156,16 +2156,16 @@ The sent email contains a link that will bring the user to the update password s
 <p>Note that a user can only have a single credential of type password.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="creating-other-credentials"><a class="anchor" href="#creating-other-credentials"></a>Creating other credentials</h5>
+<div class="sect3">
+<h4 id="creating-other-credentials"><a class="anchor" href="#creating-other-credentials"></a>Creating other credentials</h4>
 <div class="paragraph">
 <p>You cannot configure other types of credentials for a specific user within the Admin Console. This is the responsibility of the user.
 You can only delete credentials for a user on the <code>Credentials</code> tab, for example if the user has lost an OTP device, or if a credential
 has been compromised.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="creating-an-otp"><a class="anchor" href="#creating-an-otp"></a>Creating an OTP</h5>
+<div class="sect3">
+<h4 id="creating-an-otp"><a class="anchor" href="#creating-an-otp"></a>Creating an OTP</h4>
 <div class="paragraph">
 <p>If OTP is conditional in your realm, the user will have to go to the User Account Management service to re-configure a new OTP generator. If OTP is required, then the user will be asked
 to re-configure a new OTP generator when they log in.</p>
@@ -2180,7 +2180,6 @@ and would like to set up some more.</p>
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/con-required-actions.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/con-required-actions.adoc" target="_blank">Report an issue</a>
-</div>
 </div>
 </div>
 </div>
@@ -2222,8 +2221,8 @@ and would like to set up some more.</p>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-setting-required-actions.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="sect6">
-<h7 id="setting-required-actions"><a class="anchor" href="#setting-required-actions"></a>Setting required actions</h7>
+<div class="sect3">
+<h4 id="setting-required-actions"><a class="anchor" href="#setting-required-actions"></a>Setting required actions</h4>
 <div class="paragraph">
 <p>You can add and remove the required actions for existing users in the admin console.</p>
 </div>
@@ -2261,8 +2260,9 @@ and would like to set up some more.</p>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-setting-default-required-actions.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="sect7">
-<h8 id="setting-default-required-actions"><a class="anchor" href="#setting-default-required-actions"></a>Setting default required actions</h8>
+</div>
+<div class="sect3">
+<h4 id="setting-default-required-actions"><a class="anchor" href="#setting-default-required-actions"></a>Setting default required actions</h4>
 <div class="paragraph">
 <p>You can use the registration link or the <strong>Required Actions</strong> tab to specify the required actions that must be completed by a user before logging in.</p>
 </div>
@@ -2301,9 +2301,8 @@ and would like to set up some more.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect6">
-<h7 id="terms-and-conditions"><a class="anchor" href="#terms-and-conditions"></a>Terms and conditions</h7>
+<div class="sect3">
+<h4 id="terms-and-conditions"><a class="anchor" href="#terms-and-conditions"></a>Terms and conditions</h4>
 <div class="paragraph">
 <p>Keycloak requires new users to accept the terms and conditions before logging in for the first time.</p>
 </div>
@@ -2331,10 +2330,8 @@ and would like to set up some more.</p>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/impersonation.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="impersonation"><a class="anchor" href="#impersonation"></a>Impersonation</h3>
+<div class="sect4">
+<h5 id="impersonation"><a class="anchor" href="#impersonation"></a>Impersonation</h5>
 <div class="paragraph">
 <p>It is often useful for an admin to impersonate a user.  For example, a user may be experiencing a bug in one of your applications and an admin may want to impersonate the user to see if they can duplicate the problem.  Admins with the appropriate permission can impersonate a user.</p>
 </div>
@@ -2356,8 +2353,8 @@ in as the user being impersonated.  If the admin and user are not in the same re
 <p>For more information on assigning administration permissions, see the <a href="#_admin_permissions">Admin Console Access Control</a> chapter.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_user-registration"><a class="anchor" href="#_user-registration"></a>User Registration</h3>
+<div class="sect4">
+<h5 id="_user-registration"><a class="anchor" href="#_user-registration"></a>User Registration</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/user-registration.adoc" target="_blank">Edit this section</a>
@@ -2401,8 +2398,8 @@ and a new password.</p>
 See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more information.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_recaptcha"><a class="anchor" href="#_recaptcha"></a>reCAPTCHA Support</h3>
+<div class="sect4">
+<h5 id="_recaptcha"><a class="anchor" href="#_recaptcha"></a>reCAPTCHA Support</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/recaptcha.adoc" target="_blank">Edit this section</a>
@@ -2450,8 +2447,8 @@ theme to muck around with the placement and styling of the reCAPTCHA button.  Se
 for more information on extending and creating themes.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_personal_data"><a class="anchor" href="#_personal_data"></a>Personal data collected by Keycloak</h3>
+<div class="sect4">
+<h5 id="_personal_data"><a class="anchor" href="#_personal_data"></a>Personal data collected by Keycloak</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/personal_data.adoc" target="_blank">Edit this section</a>
@@ -2489,6 +2486,10 @@ for more information on extending and creating themes.</p>
 <p>With authorization services and UMA support enabled, Keycloak can hold information about some objects for which a particular user is the owner. For example, Keycloak can track that the user <strong>john</strong> is the owner of a photoalbum <strong>album with animals</strong> and a few photos called <strong>lion picture</strong> and <strong>cow picture</strong> in this album.</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -14745,7 +14746,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-20 18:55:53 UTC
+Last updated 2020-10-20 20:05:28 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
