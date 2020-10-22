@@ -782,13 +782,7 @@ span.image img {
 <li><a href="#creating-a-user">Creating a user</a></li>
 <li><a href="#deleting-a-user">Deleting a user</a></li>
 <li><a href="#configuring-user-attributes">Configuring user attributes</a></li>
-<li><a href="#_user-credentials">User Credentials</a>
-<ul class="sectlevel3">
-<li><a href="#creating-a-password-for-the-user">Creating a Password for the User</a></li>
-<li><a href="#creating-other-credentials">Creating other credentials</a></li>
-<li><a href="#creating-an-otp">Creating an OTP</a></li>
-</ul>
-</li>
+<li><a href="#user-credentials">User Credentials</a></li>
 <li><a href="#required-actions">Required Actions</a>
 <ul class="sectlevel3">
 <li><a href="#setting-required-actions">Setting required actions</a></li>
@@ -2082,17 +2076,17 @@ Alternatively, you can use the search bar to find a user.
 </li>
 </ol>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_user-credentials"><a class="anchor" href="#_user-credentials"></a>User Credentials</h3>
-<div class="sidebarblock page-links">
+<div id="ref-user-credentials_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/credentials.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/credentials.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="user-credentials"><a class="anchor" href="#user-credentials"></a>User Credentials</h3>
 <div class="paragraph">
-<p>When viewing a user if you go to the <code>Credentials</code> tab you can manage a user&#8217;s credentials.</p>
+<p>You can manage credentials of a user in the <strong>Credentials</strong> tab.</p>
 </div>
 <div class="paragraph">
 <div class="title">Credential Management</div>
@@ -2105,82 +2099,38 @@ Alternatively, you can use the search bar to find a user.
 <dl>
 <dt class="hdlist1">Position</dt>
 <dd>
-<p>The arrow buttons in this column allows you to shift the priority of the credential for the user, with the topmost credential having the highest priority.
-This priority determines which credential will be shown first to a user in case of a choice during login. The highest priority of those available to the
-user will be the one selected.</p>
+<p>The arrow buttons in the <strong>Position</strong> column allow you to shift the priority of the credential for the user. The topmost credential has the highest priority. The priority determines which credential is displayed first after a user logs in.</p>
 </dd>
 <dt class="hdlist1">Type</dt>
 <dd>
-<p>This shows the type of the credential, for example <code>password</code> or <code>otp</code>.</p>
+<p>This shows the type of the credential, for example <strong>password</strong> or <strong>OTP</strong>.</p>
 </dd>
 <dt class="hdlist1">User Label</dt>
 <dd>
-<p>This is an assignable label to recognise the credential when presented as a selection option during login. It can be set to any value to describe the
+<p>This is an assignable label to recognize the credential when presented as a selection option during login. It can be set to any value to describe the
 credential.</p>
 </dd>
 <dt class="hdlist1">Data</dt>
 <dd>
-<p>This shows the non-confidential technical information about the credential. It is originally hidden, but you can press <code>Show data&#8230;&#8203;</code> to reveal it for a
+<p>This is the non-confidential technical information about the credential. It is hidden, by default. You can click <strong>Show data&#8230;&#8203;</strong> to display the data for a
 credential.</p>
 </dd>
 <dt class="hdlist1">Actions</dt>
 <dd>
-<p>This column has two buttons. <code>Save</code> records the value of the User Label, while <code>Delete</code> will remove the credential.</p>
+<p>This column has two actions. Click <strong>Save</strong> to record the value or the user field. Click <strong>Delete</strong> to remove the credential.</p>
 </dd>
 </dl>
 </div>
-<div class="sect3">
-<h4 id="creating-a-password-for-the-user"><a class="anchor" href="#creating-a-password-for-the-user"></a>Creating a Password for the User</h4>
 <div class="paragraph">
-<p>If a user doesn&#8217;t have a password, or if the password has been deleted, the <code>Set Password</code> section will be shown on the page.</p>
+<p>You cannot configure other types of credentials for a specific user in the admin console; this is the responsibility of the user.</p>
 </div>
 <div class="paragraph">
-<div class="title">Credential Management - Set Password</div>
-<p><span class="image"><img src="./images/user-credentials-set-password.png" alt="user credentials set password"></span></p>
-</div>
-<div class="paragraph">
-<p>To create a password for a user, type in a new one. Click on the <code>Set Password</code> button after you&#8217;ve typed everything in.
-If the <code>Temporary</code> switch is on, this new password can only be used once and the user will be asked to change their password after they have
-logged in.</p>
-</div>
-<div class="paragraph">
-<p>If a user already has a password, it can be reset in the <code>Reset Password</code> section.</p>
-</div>
-<div class="paragraph">
-<p>Alternatively, if you have <a href="#_email">email</a> set up, you can send an email to the user that asks
-them to reset their password.  Choose <code>Update Password</code> from the <code>Reset Actions</code> list box and click <code>Send Email</code>. You can optionally
-set the validity of the e-mail link which defaults to the one preset in <code>Tokens</code> tab in the realm settings.
-The sent email contains a link that will bring the user to the update password screen.</p>
-</div>
-<div class="paragraph">
-<p>Note that a user can only have a single credential of type password.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="creating-other-credentials"><a class="anchor" href="#creating-other-credentials"></a>Creating other credentials</h4>
-<div class="paragraph">
-<p>You cannot configure other types of credentials for a specific user within the Admin Console. This is the responsibility of the user.
-You can only delete credentials for a user on the <code>Credentials</code> tab, for example if the user has lost an OTP device, or if a credential
-has been compromised.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="creating-an-otp"><a class="anchor" href="#creating-an-otp"></a>Creating an OTP</h4>
-<div class="paragraph">
-<p>If OTP is conditional in your realm, the user will have to go to the User Account Management service to re-configure a new OTP generator. If OTP is required, then the user will be asked
-to re-configure a new OTP generator when they log in.</p>
-</div>
-<div class="paragraph">
-<p>Like passwords, you can alternatively send an email to the user that will ask them to reset their OTP generator.  Choose
-<code>Configure OTP</code> in the <code>Reset Actions</code> list box and click the <code>Send Email</code> button.  The sent email
-contains a link that will bring the user to the OTP setup screen. You can use this method even if the user already has an OTP credential,
-and would like to set up some more.</p>
+<p>You can delete the credentials of a user in the event a user loses an OTP device or if credentials have been compromised. You can only delete credentials of a user in the <strong>Credentials</strong> tab.</p>
 </div>
 <div id="con-required-actions_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/con-required-actions.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/con-required-actions.adoc" target="_blank">Report an issue</a>
-</div>
 </div>
 </div>
 </div>
@@ -14746,7 +14696,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-20 20:05:28 UTC
+Last updated 2020-10-22 21:59:48 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
