@@ -790,6 +790,10 @@ span.image img {
 <li><a href="#terms-and-conditions">Terms and conditions</a></li>
 </ul>
 </li>
+<li><a href="#impersonation">Impersonation</a></li>
+<li><a href="#_user-registration">User Registration</a></li>
+<li><a href="#_recaptcha">reCAPTCHA Support</a></li>
+<li><a href="#_personal_data">Personal data collected by Keycloak</a></li>
 </ul>
 </li>
 <li><a href="#login-page-settings">Login Page Settings</a>
@@ -1936,22 +1940,13 @@ This action searches only the local Keycloak database and not the federated data
 <div class="sect2">
 <h3 id="creating-a-user"><a class="anchor" href="#creating-a-user"></a>Creating a user</h3>
 <div class="paragraph">
-<p>Administrators can create users and applications that are owned by the users of a specified realm. In the console, you can add users and register applications to be secured by Keycloak.</p>
-</div>
-<div class="paragraph">
-<p>A user can use the console to access applications in a realm, update profile information, and change credentials.</p>
-</div>
-<div class="paragraph">
-<p>Create users in the same realm that contains the applications for the user. Every user in a realm has access to the console and the applications in that realm.</p>
+<p>You create users in the realm where you intend to have applications needed by those users. Avoid creating users in the master realm, which is only intended for creating other realms.</p>
 </div>
 <div class="ulist">
-<div class="title">Prerequisites</div>
+<div class="title">Prerequisite</div>
 <ul>
 <li>
-<p>You are not in the master realm. Use the master realm only to create other realms.</p>
-</li>
-<li>
-<p>You are in the realm that contains the applications for the user.</p>
+<p>You are in a realm other than the master realm.</p>
 </li>
 </ul>
 </div>
@@ -1994,7 +1989,7 @@ This action searches only the local Keycloak database and not the federated data
 <div class="sect2">
 <h3 id="deleting-a-user"><a class="anchor" href="#deleting-a-user"></a>Deleting a user</h3>
 <div class="paragraph">
-<p>You can delete a user, who no longer needs access to applications in the Keycloak console. If a user is deleted, the user profile and data is also deleted.</p>
+<p>You can delete a user, who no longer needs access to applications. If a user is deleted, the user profile and data is also deleted.</p>
 </div>
 <div class="ulist">
 <div class="title">Prerequisite</div>
@@ -2280,8 +2275,10 @@ credential.</p>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/impersonation.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="sect4">
-<h5 id="impersonation"><a class="anchor" href="#impersonation"></a>Impersonation</h5>
+</div>
+</div>
+<div class="sect2">
+<h3 id="impersonation"><a class="anchor" href="#impersonation"></a>Impersonation</h3>
 <div class="paragraph">
 <p>It is often useful for an admin to impersonate a user.  For example, a user may be experiencing a bug in one of your applications and an admin may want to impersonate the user to see if they can duplicate the problem.  Admins with the appropriate permission can impersonate a user.</p>
 </div>
@@ -2303,8 +2300,8 @@ in as the user being impersonated.  If the admin and user are not in the same re
 <p>For more information on assigning administration permissions, see the <a href="#_admin_permissions">Admin Console Access Control</a> chapter.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_user-registration"><a class="anchor" href="#_user-registration"></a>User Registration</h5>
+<div class="sect2">
+<h3 id="_user-registration"><a class="anchor" href="#_user-registration"></a>User Registration</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/user-registration.adoc" target="_blank">Edit this section</a>
@@ -2348,8 +2345,8 @@ and a new password.</p>
 See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more information.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_recaptcha"><a class="anchor" href="#_recaptcha"></a>reCAPTCHA Support</h5>
+<div class="sect2">
+<h3 id="_recaptcha"><a class="anchor" href="#_recaptcha"></a>reCAPTCHA Support</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/recaptcha.adoc" target="_blank">Edit this section</a>
@@ -2397,8 +2394,8 @@ theme to experiment with the placement and styling of the reCAPTCHA button.  See
 for more information on extending and creating themes.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_personal_data"><a class="anchor" href="#_personal_data"></a>Personal data collected by Keycloak</h5>
+<div class="sect2">
+<h3 id="_personal_data"><a class="anchor" href="#_personal_data"></a>Personal data collected by Keycloak</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/personal_data.adoc" target="_blank">Edit this section</a>
@@ -2436,8 +2433,6 @@ for more information on extending and creating themes.</p>
 <p>With authorization services and UMA support enabled, Keycloak can hold information about some objects for which a particular user is the owner. For example, Keycloak can track that the user <strong>john</strong> is the owner of a photoalbum <strong>album with animals</strong> and a few photos called <strong>lion picture</strong> and <strong>cow picture</strong> in this album.</p>
 </li>
 </ul>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -14696,7 +14691,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-26 18:36:28 UTC
+Last updated 2020-10-26 19:17:28 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
