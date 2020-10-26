@@ -790,6 +790,11 @@ span.image img {
 <li><a href="#terms-and-conditions">Terms and conditions</a></li>
 </ul>
 </li>
+<li><a href="#enabling-recaptcha-support">Enabling reCAPTCHA Support</a>
+<ul class="sectlevel4">
+<li><a href="#_personal_data">Personal data collected by Keycloak</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#login-page-settings">Login Page Settings</a>
@@ -2347,55 +2352,108 @@ and a new password.</p>
 <p>You can change the look and feel of the registration form as well as removing or adding additional fields that must be entered.
 See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more information.</p>
 </div>
-</div>
-<div class="sect4">
-<h5 id="_recaptcha"><a class="anchor" href="#_recaptcha"></a>reCAPTCHA Support</h5>
-<div class="sidebarblock page-links">
+<div id="proc-enabling-recaptcha-support_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/recaptcha.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/recaptcha.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>To safeguard registration against bots, Keycloak has integration with Google reCAPTCHA.
-To enable this you need to first go to <a href="https://developers.google.com/recaptcha/">Google Recaptcha Website</a>
-and create an API key so that you can get your reCAPTCHA site key and secret.
-(FYI, localhost works by default so you don&#8217;t have to specify a domain).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enabling-recaptcha-support"><a class="anchor" href="#enabling-recaptcha-support"></a>Enabling reCAPTCHA Support</h3>
+<div class="paragraph _abstract">
+<p>To safeguard registration against bots, Keycloak has integration with Google reCAPTCHA.</p>
 </div>
 <div class="paragraph">
-<p>Next, there are a few steps you need to perform in the Keycloak Admin Console.
-Click the <code>Authentication</code> left menu item and go to the <code>Flows</code> tab.  Select the <code>Registration</code> flow from the drop down
-list on this page.</p>
+<p>Once reCAPTCHA is enabled, you can edit <code>register.ftl</code> in your login theme to configure the placement and styling of the reCAPTCHA button on the registration page.</p>
 </div>
-<div class="paragraph">
-<div class="title">Registration Flow</div>
-<p><span class="image"><img src="./keycloak-images/registration-flow.png" alt="registration flow"></span></p>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Navigate to the <a href="https://developers.google.com/recaptcha/">Google Recaptcha website</a></p>
+</li>
+<li>
+<p>Create an API key to get your reCAPTCHA site key and secret. Note the reCAPTCHA site key and secret for future use in this procedure.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The localhost works by default. You do not have to specify a domain.
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">
-<p>Set the 'reCAPTCHA' requirement to <code>Required</code> by clicking the appropriate radio button.  This will enable
-reCAPTCHA on the screen.  Next, you have to enter in the reCAPTCHA site key and secret that you generated at the Google reCAPTCHA Website.
-Click on the 'Actions' button that is to the right of the reCAPTCHA flow entry, then "Config" link, and enter in the reCAPTCHA site key and secret on this config page.</p>
+</li>
+<li>
+<p>Navigate to the Keycloak Admin console.</p>
+</li>
+<li>
+<p>Click <strong>Authentication</strong> in the left menu.</p>
+</li>
+<li>
+<p>Click the <strong>Flows</strong> tab.</p>
+</li>
+<li>
+<p>Select <strong>Registration</strong> from the drop down menu.</p>
+</li>
+<li>
+<p>Set the <strong>reCAPTCHA</strong> requirement to <strong>Required</strong> by clicking the appropriate radio button. This enables
+reCAPTCHA.</p>
+</li>
+<li>
+<p>Click <strong>Actions</strong> to the right of the reCAPTCHA flow entry.</p>
+</li>
+<li>
+<p>Click the <strong>Config</strong> link to redirect to the config page.</p>
+</li>
+<li>
+<p>Enter the reCAPTCHA site key generated from the Google reCAPTCHA website, on the config page.</p>
+</li>
+<li>
+<p>Enter the secret generated from the Google reCAPTCHA website, on the config page.</p>
+</li>
+<li>
+<p>Authorize Google to use the registration page as an iframe.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Keycloak prevents websites from including a login page dialog in an iframe. This is to prevent clickjacking attacks. You need to change the default HTTP response headers that is set in Keycloak.
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">
-<div class="title">Recaptcha Config Page</div>
-<p><span class="image"><img src="./keycloak-images/recaptcha-config.png" alt="recaptcha config"></span></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click <strong>Realm Settings</strong> in the left menu.</p>
+</li>
+<li>
+<p>Click the <strong>Security Defenses</strong> tab.</p>
+</li>
+<li>
+<p>Enter <code>https://www.google.com</code> in the field for the <strong>X-Frame-Options</strong> header.</p>
+</li>
+<li>
+<p>Enter <code>https://www.google.com</code> in the field for the <strong>Content-Security-Policy</strong> header.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>The final step you have to do is to change some default HTTP response headers that Keycloak sets.  Keycloak
-will prevent a website from including any login page within an iframe.  This is to prevent clickjacking attacks.  You need to
-authorize Google to use the registration page within an iframe.  Go to
-the <code>Realm Settings</code> left menu item and then go to the <code>Security Defenses</code> tab.  You will need to add <code>https://www.google.com</code> to the
-values of both the <code>X-Frame-Options</code> and <code>Content-Security-Policy</code> headers.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<div class="title">Authorizing Iframes</div>
-<p><span class="image"><img src="./keycloak-images/security-headers.png" alt="security headers"></span></p>
-</div>
-<div class="paragraph">
-<p>Once you do this, reCAPTCHA should show up on your registration page.  You may want to edit <em>register.ftl</em> in your login
-theme to muck around with the placement and styling of the reCAPTCHA button.  See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a>
-for more information on extending and creating themes.</p>
-</div>
+<div class="paragraph _additional-resources">
+<div class="title">Additional resources</div>
+<p>For more information on extending and creating themes, see the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a>.</p>
 </div>
 <div class="sect4">
 <h5 id="_personal_data"><a class="anchor" href="#_personal_data"></a>Personal data collected by Keycloak</h5>
@@ -2436,7 +2494,6 @@ for more information on extending and creating themes.</p>
 <p>With authorization services and UMA support enabled, Keycloak can hold information about some objects for which a particular user is the owner. For example, Keycloak can track that the user <strong>john</strong> is the owner of a photoalbum <strong>album with animals</strong> and a few photos called <strong>lion picture</strong> and <strong>cow picture</strong> in this album.</p>
 </li>
 </ul>
-</div>
 </div>
 </div>
 </div>
@@ -14702,7 +14759,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-26 17:26:33 UTC
+Last updated 2020-10-26 17:38:09 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
