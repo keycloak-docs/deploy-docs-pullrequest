@@ -6111,84 +6111,128 @@ This field is used when the exact SAML endpoints are not registered and Keycloak
 </li>
 </ol>
 </div>
-<div class="sect3">
-<h4 id="idp-initiated-login"><a class="anchor" href="#idp-initiated-login"></a>IDP Initiated Login</h4>
 <div class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/idp-initiated-login.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/idp-initiated-login.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/con-idp-initiated-login.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/con-idp-initiated-login.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="sect3">
+<h4 id="idp-initiated-login"><a class="anchor" href="#idp-initiated-login"></a>IDP Initiated Login</h4>
+<div class="paragraph">
+<p>IDP Initiated Login allows you to set up an endpoint on the Keycloak server that logs you into a specific application or client.</p>
+</div>
+<div class="paragraph">
+<p>To use this feature, specify the <code>IDP Initiated SSO URL Name</code> in the <code>Settings</code> tab for your client. This must be a simple string with no whitespace in it. You can then reference your client at the following URL:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>root/auth/realms/{realm}/protocol/saml/clients/{url-name}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>IDP Initiated Login is a feature that allows you to set up an endpoint on the Keycloak server that will log you into a specific application/client.
-In the <code>Settings</code> tab for your client, you need to specify the <code>IDP Initiated SSO URL Name</code>.
-This is a simple string with no whitespace in it.
-After this you can reference your client at the following URL: <code>root/auth/realms/{realm}/protocol/saml/clients/{url-name}</code></p>
+<p>where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>realm</em> is the realm of your client.</p>
+</li>
+<li>
+<p><em>url-name</em> is the <code>IDP Initiated SSO URL Name</code>.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The IDP initiated login implementation prefers <em>POST</em> over <em>REDIRECT</em> binding (check <a href="#_saml">saml bindings</a> for more information).
-Therefore the final binding and SP URL are selected in the following way:</p>
+<p>The IDP Initiated Login implementation prioritises <em>POST</em> over <em>REDIRECT</em> binding (see <a href="#_saml">saml bindings</a> for more information). Keycloak selects the final binding and SP URL in the following way:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>If the specific <code>Assertion Consumer Service POST Binding URL</code> is defined (inside <code>Fine Grain SAML Endpoint Configuration</code> section
-of the client settings) <em>POST</em> binding is used through that URL.</p>
+<p>If the specific <code>Assertion Consumer Service POST Binding URL</code> is defined inside the <code>Fine Grain SAML Endpoint Configuration</code> section of the client settings, Keycloak uses <em>POST</em> binding through that URL.</p>
 </li>
 <li>
-<p>If the general <code>Master SAML Processing URL</code> is specified then <em>POST</em> binding is used again throught this general URL.</p>
+<p>If the general <code>Master SAML Processing URL</code> is specified, Keycloak uses <em>POST</em> binding through that URL.</p>
 </li>
 <li>
-<p>As the last resort, if the <code>Assertion Consumer Service Redirect Binding URL</code> is configured (inside
-<code>Fine Grain SAML Endpoint Configuration</code>) <em>REDIRECT</em> binding is used with this URL.</p>
+<p>If the <code>Assertion Consumer Service Redirect Binding URL</code> is configured inside the <code>Fine Grain SAML Endpoint Configuration</code>, Keycloak uses <em>REDIRECT</em> binding through that URL.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>If your client requires a special relay state, you can also configure this on the <code>Settings</code> tab in the <code>IDP Initiated SSO Relay State</code> field.
-Alternatively, browsers can specify the relay state in a <code>RelayState</code> query parameter, i.e.
-<code>root/auth/realms/{realm}/protocol/saml/clients/{url-name}?RelayState=thestate</code>.</p>
+<p>If your client requires a special relay state, you can configure this in the <code>Settings</code> tab in the <code>IDP Initiated SSO Relay State</code> field. Alternatively, browsers can specify the relay state in a <code>RelayState</code> query parameter. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>root/auth/realms/{realm}/protocol/saml/clients/{url-name}?RelayState=thestate</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>When using <a href="#_identity_broker">identity brokering</a>, it is possible to set up an IDP Initiated Login for a client from an
-external IDP. The actual client is set up for IDP Initiated Login at broker IDP as described above. The external IDP has
-to set up the client for application IDP Initiated Login that will point to a special URL pointing to the broker and
-representing IDP Initiated Login endpoint for a selected client at the brokering IDP. This means that in client settings
-at the external IDP:</p>
+<p>where:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>IDP Initiated SSO URL Name</code> is set to a name that will be published as IDP Initiated Login initial point,</p>
+<p><em>realm</em> is the realm of your client.</p>
 </li>
 <li>
-<p><code>Assertion Consumer Service POST Binding URL</code> in the <code>Fine Grain SAML Endpoint Configuration</code> section has
-to be set to the following URL:
-<code>broker-root/auth/realms/{broker-realm}/broker/{idp-name}/endpoint/clients/{client-id}</code>, where:</p>
+<p><em>url-name</em> is the <code>IDP Initiated SSO URL Name</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When using <a href="#_identity_broker">identity brokering</a>, you can set up an IDP Initiated Login for a client from an external IDP. The client sets up for IDP Initiated Login at broker IDP as described in <a href="#_identity_broker">identity brokering</a>. The external IDP must set up the client for application IDP Initiated Login. This client must point to a URL that points to the broker and the representing IDP Initiated Login endpoint for a selected client at the brokering IDP.</p>
+</div>
+<div class="paragraph">
+<p>In client settings of the external IDP:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><em>broker-root</em> is base broker URL</p>
+<p><code>IDP Initiated SSO URL Name</code> must be set to a name published as the IDP Initiated Login initial point.</p>
 </li>
 <li>
-<p><em>broker-realm</em> is name of the realm at broker where external IDP is declared</p>
+<p><code>Assertion Consumer Service POST Binding URL</code> in the <code>Fine Grain SAML Endpoint Configuration</code> section must be set to the following URL:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>{broker-root}/auth/realms/{broker-realm}/broker/{idp-name}/endpoint/clients/{client-id}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>broker-root</em> is the base broker URL.</p>
 </li>
 <li>
-<p><em>idp-name</em> is name of the external IDP at broker</p>
+<p><em>broker-realm</em> is the name of the realm of the broker where external IDP is declared.</p>
 </li>
 <li>
-<p><em>client-id</em> is the value of <code>IDP Initiated SSO URL Name</code> attribute of the SAML client defined at broker. It is
-this client, which will be made available for IDP Initiated Login from the external IDP.</p>
+<p><em>idp-name</em> is the name of the external IDP of the broker.</p>
+</li>
+<li>
+<p><em>client-id</em> is the value of the <code>IDP Initiated SSO URL Name</code> attribute of the SAML client defined in the broker. It is this client that is available for IDP Initiated Login from the external IDP.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Please note that you can import basic client settings from the brokering IDP into client settings of the external IDP -
-just use <a href="#_identity_broker_saml_sp_descriptor">SP Descriptor</a> available from the settings of the identity provider in
-the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoint URL.</p>
+<p>You can import basic client settings from the brokering IDP into client settings of the external IDP. Use the <a href="#_identity_broker_saml_sp_descriptor">SP Descriptor</a> available in the settings of the identity provider of the brokering IDP and add <code>clients/<em>client-id</em></code> to the endpoint URL.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -14756,7 +14800,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-26 17:45:52 UTC
+Last updated 2020-10-26 17:55:31 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
