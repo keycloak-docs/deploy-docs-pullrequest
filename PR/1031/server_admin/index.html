@@ -790,8 +790,6 @@ span.image img {
 <li><a href="#terms-and-conditions">Terms and conditions</a></li>
 </ul>
 </li>
-<li><a href="#enabling-recaptcha-support">Enabling reCAPTCHA Support</a></li>
-<li><a href="#personal-data-collected-by-keycloak">Personal data collected by Keycloak</a></li>
 </ul>
 </li>
 <li><a href="#login-page-settings">Login Page Settings</a>
@@ -1903,7 +1901,7 @@ This action searches only the local Keycloak database and not the federated data
 <p>To search users from a federated backend, the user list must be synced into the Keycloak database. Adjust the search criteria to sync the backend users to the Keycloak database.</p>
 </li>
 <li>
-<p>Alternatively, click the <strong>User Federation</strong> tab.</p>
+<p>Alternatively, click the <strong>User Federation</strong> in the left menu.</p>
 <div class="olist lowerroman">
 <ol class="lowerroman" type="i">
 <li>
@@ -2349,149 +2347,97 @@ and a new password.</p>
 <p>You can change the look and feel of the registration form as well as removing or adding additional fields that must be entered.
 See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more information.</p>
 </div>
-<div id="proc-enabling-recaptcha-support_server_administration_guide" class="sidebarblock page-links">
+</div>
+<div class="sect4">
+<h5 id="_recaptcha"><a class="anchor" href="#_recaptcha"></a>reCAPTCHA Support</h5>
+<div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/recaptcha.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/recaptcha.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="enabling-recaptcha-support"><a class="anchor" href="#enabling-recaptcha-support"></a>Enabling reCAPTCHA Support</h3>
-<div class="paragraph _abstract">
-<p>To safeguard registration against bots, Keycloak has integration with Google reCAPTCHA.</p>
+<div class="paragraph">
+<p>To safeguard registration against bots, Keycloak has integration with Google reCAPTCHA.
+To enable this you need to first go to <a href="https://developers.google.com/recaptcha/">Google Recaptcha Website</a>
+and create an API key so that you can get your reCAPTCHA site key and secret.
+(FYI, localhost works by default so you don&#8217;t have to specify a domain).</p>
 </div>
 <div class="paragraph">
-<p>Once reCAPTCHA is enabled, you can edit <code>register.ftl</code> in your login theme to configure the placement and styling of the reCAPTCHA button on the registration page.</p>
+<p>Next, there are a few steps you need to perform in the Keycloak admin console.
+Click the <code>Authentication</code> left menu item and go to the <code>Flows</code> tab.  Select the <code>Registration</code> flow from the drop down
+list on this page.</p>
 </div>
-<div class="olist arabic">
-<div class="title">Procedure</div>
-<ol class="arabic">
-<li>
-<p>Navigate to the <a href="https://developers.google.com/recaptcha/">Google Recaptcha website</a></p>
-</li>
-<li>
-<p>Create an API key to get your reCAPTCHA site key and secret. Note the reCAPTCHA site key and secret for future use in this procedure.</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The localhost works by default. You do not have to specify a domain.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<div class="title">Registration Flow</div>
+<p><span class="image"><img src="./keycloak-images/registration-flow.png" alt="registration flow"></span></p>
 </div>
-</li>
-<li>
-<p>Navigate to the Keycloak Admin console.</p>
-</li>
-<li>
-<p>Click <strong>Authentication</strong> in the left menu.</p>
-</li>
-<li>
-<p>Click the <strong>Flows</strong> tab.</p>
-</li>
-<li>
-<p>Select <strong>Registration</strong> from the drop down menu.</p>
-</li>
-<li>
-<p>Set the <strong>reCAPTCHA</strong> requirement to <strong>Required</strong> by clicking the appropriate radio button. This enables
-reCAPTCHA.</p>
-</li>
-<li>
-<p>Click <strong>Actions</strong> to the right of the reCAPTCHA flow entry.</p>
-</li>
-<li>
-<p>Click the <strong>Config</strong> link to redirect to the config page.</p>
-</li>
-<li>
-<p>Enter the reCAPTCHA site key generated from the Google reCAPTCHA website, on the config page.</p>
-</li>
-<li>
-<p>Enter the secret generated from the Google reCAPTCHA website, on the config page.</p>
-</li>
-<li>
-<p>Authorize Google to use the registration page as an iframe.</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Keycloak prevents websites from including a login page dialog in an iframe. This is to prevent clickjacking attacks. You need to change the default HTTP response headers that is set in Keycloak.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Set the 'reCAPTCHA' requirement to <code>Required</code> by clicking the appropriate radio button.  This will enable
+reCAPTCHA on the screen.  Next, you have to enter in the reCAPTCHA site key and secret that you generated at the Google reCAPTCHA Website.
+Click on the 'Actions' button that is to the right of the reCAPTCHA flow entry, then "Config" link, and enter in the reCAPTCHA site key and secret on this config page.</p>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Click <strong>Realm Settings</strong> in the left menu.</p>
-</li>
-<li>
-<p>Click the <strong>Security Defenses</strong> tab.</p>
-</li>
-<li>
-<p>Enter <code>https://www.google.com</code> in the field for the <strong>X-Frame-Options</strong> header.</p>
-</li>
-<li>
-<p>Enter <code>https://www.google.com</code> in the field for the <strong>Content-Security-Policy</strong> header.</p>
-</li>
-</ol>
+<div class="paragraph">
+<div class="title">Recaptcha Config Page</div>
+<p><span class="image"><img src="./keycloak-images/recaptcha-config.png" alt="recaptcha config"></span></p>
 </div>
-</li>
-</ol>
+<div class="paragraph">
+<p>The final step you have to do is to change some default HTTP response headers that Keycloak sets.  Keycloak
+will prevent a website from including any login page within an iframe.  This is to prevent clickjacking attacks.  You need to
+authorize Google to use the registration page within an iframe.  Go to
+the <code>Realm Settings</code> left menu item and then go to the <code>Security Defenses</code> tab.  You will need to add <code>https://www.google.com</code> to the
+values of both the <code>X-Frame-Options</code> and <code>Content-Security-Policy</code> headers.</p>
 </div>
-<div class="paragraph _additional-resources">
-<div class="title">Additional resources</div>
-<p>For more information on extending and creating themes, see the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a>.</p>
+<div class="paragraph">
+<div class="title">Authorizing Iframes</div>
+<p><span class="image"><img src="./keycloak-images/security-headers.png" alt="security headers"></span></p>
 </div>
-<div id="ref-personal-data-collected_server_administration_guide" class="sidebarblock page-links">
+<div class="paragraph">
+<p>Once you do this, reCAPTCHA should show up on your registration page.  You may want to edit <em>register.ftl</em> in your login
+theme to experiment with the placement and styling of the reCAPTCHA button.  See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a>
+for more information on extending and creating themes.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_personal_data"><a class="anchor" href="#_personal_data"></a>Personal data collected by Keycloak</h5>
+<div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/personal_data.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/personal_data.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="personal-data-collected-by-keycloak"><a class="anchor" href="#personal-data-collected-by-keycloak"></a>Personal data collected by Keycloak</h3>
 <div class="paragraph">
-<p>By default, Keycloak collects the following data:</p>
+<p>By default, Keycloak collects the following:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Basic user profile data, such as the user email, first name, and last name.</p>
+<p>Basic user profile, such as email, firstname, and lastname</p>
 </li>
 <li>
-<p>Basic user profile data used for social accounts and references to the social account when using a social login.</p>
+<p>Basic user profile used for social accounts and references to the social account when using a social login</p>
 </li>
 <li>
-<p>Device information collected for audit and security purposes, such as the IP address, operating system name, and the browser name.</p>
+<p>Device information collected for audit and security purposes, such as the IP address, operating system name, and browser name</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The information collected in Keycloak is highly customizable. The following guidelines apply when making customizations:</p>
+<p>The information collected in Keycloak is highly customizable.  Be aware of the following guidelines when making customizations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Registration and account forms can contain custom fields, such as birthday, gender, and nationality.  An administrator can configure Keycloak to retrieve data from a social provider or a user storage provider such as LDAP.</p>
+<p>Registration and account forms could contain custom fields, such as birthday, gender, and nationality.  An administrator could configure Keycloak to retrieve that data from a social provider or a user storage provider such as LDAP.</p>
 </li>
 <li>
-<p>Keycloak collects user credentials, such as password, OTP codes, and WebAuthn public keys. This information is encrypted and saved in a database, so it is not visible to Keycloak administrators. Each type of credential can include non-confidential metadata that is visible to administrators such as the algorithm that is used to hash the password and the number of hash iterations used to hash the password.</p>
+<p>Keycloak collects user credentials, such as password, OTP codes, and WebAuthn public keys. This information is encrypted and saved in a database, so it is not visible to Keycloak administrators. However, each type of credential can include non-confidential metadata that is visible to administrators such as the algorithm that is used to hash the password and the number of hash iterations used to hash the password.</p>
 </li>
 <li>
-<p>With authorization services and UMA support enabled, Keycloak can hold information about some objects for which a particular user is the owner.</p>
+<p>With authorization services and UMA support enabled, Keycloak can hold information about some objects for which a particular user is the owner. For example, Keycloak can track that the user <strong>john</strong> is the owner of a photoalbum <strong>album with animals</strong> and a few photos called <strong>lion picture</strong> and <strong>cow picture</strong> in this album.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3123,7 +3069,7 @@ password, and then his OTP. If the user has no OTP credential, he will be asked 
 <p>It is important to note that since the WebAuthn Passwordless execution is set to <em>Alternative</em> instead of <em>Required</em>, this flow will never ask the user to register a WebAuthn credential. For a user
 to have a Webauthn credential, that user must have a required action added by an administrator. This is done first by making sure that the <code>Webauthn Register Passwordless</code>
 required action is enabled in the realm (see the <a href="#_webauthn">WebAuthn</a> documentation), and then by setting the required action by using the <code>Credential Reset</code> part of a
-user&#8217;s <a href="#_user-credentials">Credentials</a> management menu.</p>
+user&#8217;s <a href="#ref-user-credentials_server_administration_guide">Credentials</a> management menu.</p>
 </div>
 <div class="paragraph">
 <p>Creating a more advanced flow such as this one can have some subtle side effects. For example, if you were to enable the ability to reset the password
@@ -4399,7 +4345,7 @@ assuming that authentication flow configuration above with the conditional subfl
 <div class="sect4">
 <h5 id="managing-credentials"><a class="anchor" href="#managing-credentials"></a>Managing Credentials</h5>
 <div class="paragraph">
-<p>WebAuthn credentials are managed in a similar manner as other credentials, such as OTP, from the <a href="#_user-credentials">User credential management</a>:</p>
+<p>WebAuthn credentials are managed in a similar manner as other credentials, such as OTP, from the <a href="#ref-user-credentials_server_administration_guide">User credential management</a>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -6111,128 +6057,84 @@ This field is used when the exact SAML endpoints are not registered and Keycloak
 </li>
 </ol>
 </div>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/con-idp-initiated-login.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/con-idp-initiated-login.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
 <div class="sect3">
 <h4 id="idp-initiated-login"><a class="anchor" href="#idp-initiated-login"></a>IDP Initiated Login</h4>
-<div class="paragraph">
-<p>IDP Initiated Login allows you to set up an endpoint on the Keycloak server that logs you into a specific application or client.</p>
-</div>
-<div class="paragraph">
-<p>To use this feature, specify the <code>IDP Initiated SSO URL Name</code> in the <code>Settings</code> tab for your client. This must be a simple string with no whitespace in it. You can then reference your client at the following URL:</p>
-</div>
-<div class="listingblock">
+<div class="sidebarblock page-links">
 <div class="content">
-<pre class="CodeRay highlight"><code>root/auth/realms/{realm}/protocol/saml/clients/{url-name}</code></pre>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/idp-initiated-login.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/idp-initiated-login.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
-<p>where:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><em>realm</em> is the realm of your client.</p>
-</li>
-<li>
-<p><em>url-name</em> is the <code>IDP Initiated SSO URL Name</code>.</p>
-</li>
-</ul>
+<p>IDP Initiated Login is a feature that allows you to set up an endpoint on the Keycloak server that will log you into a specific application/client.
+In the <code>Settings</code> tab for your client, you need to specify the <code>IDP Initiated SSO URL Name</code>.
+This is a simple string with no whitespace in it.
+After this you can reference your client at the following URL: <code>root/auth/realms/{realm}/protocol/saml/clients/{url-name}</code></p>
 </div>
 <div class="paragraph">
-<p>The IDP Initiated Login implementation prioritises <em>POST</em> over <em>REDIRECT</em> binding (see <a href="#_saml">saml bindings</a> for more information). Keycloak selects the final binding and SP URL in the following way:</p>
+<p>The IDP initiated login implementation prefers <em>POST</em> over <em>REDIRECT</em> binding (check <a href="#_saml">saml bindings</a> for more information).
+Therefore the final binding and SP URL are selected in the following way:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>If the specific <code>Assertion Consumer Service POST Binding URL</code> is defined inside the <code>Fine Grain SAML Endpoint Configuration</code> section of the client settings, Keycloak uses <em>POST</em> binding through that URL.</p>
+<p>If the specific <code>Assertion Consumer Service POST Binding URL</code> is defined (inside <code>Fine Grain SAML Endpoint Configuration</code> section
+of the client settings) <em>POST</em> binding is used through that URL.</p>
 </li>
 <li>
-<p>If the general <code>Master SAML Processing URL</code> is specified, Keycloak uses <em>POST</em> binding through that URL.</p>
+<p>If the general <code>Master SAML Processing URL</code> is specified then <em>POST</em> binding is used again throught this general URL.</p>
 </li>
 <li>
-<p>If the <code>Assertion Consumer Service Redirect Binding URL</code> is configured inside the <code>Fine Grain SAML Endpoint Configuration</code>, Keycloak uses <em>REDIRECT</em> binding through that URL.</p>
+<p>As the last resort, if the <code>Assertion Consumer Service Redirect Binding URL</code> is configured (inside
+<code>Fine Grain SAML Endpoint Configuration</code>) <em>REDIRECT</em> binding is used with this URL.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>If your client requires a special relay state, you can configure this in the <code>Settings</code> tab in the <code>IDP Initiated SSO Relay State</code> field. Alternatively, browsers can specify the relay state in a <code>RelayState</code> query parameter. For example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>root/auth/realms/{realm}/protocol/saml/clients/{url-name}?RelayState=thestate</code></pre>
-</div>
+<p>If your client requires a special relay state, you can also configure this on the <code>Settings</code> tab in the <code>IDP Initiated SSO Relay State</code> field.
+Alternatively, browsers can specify the relay state in a <code>RelayState</code> query parameter, i.e.
+<code>root/auth/realms/{realm}/protocol/saml/clients/{url-name}?RelayState=thestate</code>.</p>
 </div>
 <div class="paragraph">
-<p>where:</p>
+<p>When using <a href="#_identity_broker">identity brokering</a>, it is possible to set up an IDP Initiated Login for a client from an
+external IDP. The actual client is set up for IDP Initiated Login at broker IDP as described above. The external IDP has
+to set up the client for application IDP Initiated Login that will point to a special URL pointing to the broker and
+representing IDP Initiated Login endpoint for a selected client at the brokering IDP. This means that in client settings
+at the external IDP:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><em>realm</em> is the realm of your client.</p>
+<p><code>IDP Initiated SSO URL Name</code> is set to a name that will be published as IDP Initiated Login initial point,</p>
 </li>
 <li>
-<p><em>url-name</em> is the <code>IDP Initiated SSO URL Name</code>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>When using <a href="#_identity_broker">identity brokering</a>, you can set up an IDP Initiated Login for a client from an external IDP. The client sets up for IDP Initiated Login at broker IDP as described in <a href="#_identity_broker">identity brokering</a>. The external IDP must set up the client for application IDP Initiated Login. This client must point to a URL that points to the broker and the representing IDP Initiated Login endpoint for a selected client at the brokering IDP.</p>
-</div>
-<div class="paragraph">
-<p>In client settings of the external IDP:</p>
-</div>
+<p><code>Assertion Consumer Service POST Binding URL</code> in the <code>Fine Grain SAML Endpoint Configuration</code> section has
+to be set to the following URL:
+<code>broker-root/auth/realms/{broker-realm}/broker/{idp-name}/endpoint/clients/{client-id}</code>, where:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>IDP Initiated SSO URL Name</code> must be set to a name published as the IDP Initiated Login initial point.</p>
+<p><em>broker-root</em> is base broker URL</p>
 </li>
 <li>
-<p><code>Assertion Consumer Service POST Binding URL</code> in the <code>Fine Grain SAML Endpoint Configuration</code> section must be set to the following URL:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>{broker-root}/auth/realms/{broker-realm}/broker/{idp-name}/endpoint/clients/{client-id}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>where:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><em>broker-root</em> is the base broker URL.</p>
+<p><em>broker-realm</em> is name of the realm at broker where external IDP is declared</p>
 </li>
 <li>
-<p><em>broker-realm</em> is the name of the realm of the broker where external IDP is declared.</p>
+<p><em>idp-name</em> is name of the external IDP at broker</p>
 </li>
 <li>
-<p><em>idp-name</em> is the name of the external IDP of the broker.</p>
-</li>
-<li>
-<p><em>client-id</em> is the value of the <code>IDP Initiated SSO URL Name</code> attribute of the SAML client defined in the broker. It is this client that is available for IDP Initiated Login from the external IDP.</p>
+<p><em>client-id</em> is the value of <code>IDP Initiated SSO URL Name</code> attribute of the SAML client defined at broker. It is
+this client, which will be made available for IDP Initiated Login from the external IDP.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>You can import basic client settings from the brokering IDP into client settings of the external IDP. Use the <a href="#_identity_broker_saml_sp_descriptor">SP Descriptor</a> available in the settings of the identity provider of the brokering IDP and add <code>clients/<em>client-id</em></code> to the endpoint URL.</p>
-</div>
-</td>
-</tr>
-</table>
+<p>Please note that you can import basic client settings from the brokering IDP into client settings of the external IDP -
+just use <a href="#_identity_broker_saml_sp_descriptor">SP Descriptor</a> available from the settings of the identity provider in
+the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoint URL.</p>
 </div>
 </div>
 <div class="sect3">
@@ -6258,29 +6160,28 @@ There is an <code>Import</code> option on the Add Client page.</p>
 <p>Some SAML client adapters like <em>mod-auth-mellon</em> need the XML Entity Descriptor for the IDP.  You can obtain this by
 going to this public URL:  <code>root/auth/realms/{realm}/protocol/saml/descriptor</code></p>
 </div>
-<div id="con-client-links_server_administration_guide" class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/con-client-links.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/con-client-links.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="client-links"><a class="anchor" href="#client-links"></a>Client Links</h3>
-<div class="paragraph _abstract">
-<p>Keycloak provides a redirect endpoint for linking clients.</p>
-</div>
-<div class="listingblock">
+<div class="sidebarblock page-links">
 <div class="content">
-<pre class="CodeRay highlight"><code>/realms/{realm_name}/clients/{client-id}/redirect</code></pre>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/client-link.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-link.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
-<p>If a client accesses this endpoint using an <code>HTTP GET</code> request, Keycloak returns the configured base URL for the client and realm in the form of an <code>HTTP 307</code> (Temporary Redirect) in the response&#8217;s <code>Location</code> header. This indirection avoids hard-coding client base URLs.</p>
+<p>For scenarios where one wants to link from one client to another, Keycloak provides a special redirect endpoint: <code>/realms/realm_name/clients/{client-id}/redirect</code>.</p>
 </div>
 <div class="paragraph">
-<p>For example, for the realm <code>master</code> and the client-id <code>account</code>, the</p>
+<p>If a client accesses this endpoint via an <code>HTTP GET</code> request, Keycloak returns the configured base URL for the provided Client and Realm in the form of an <code>HTTP 307</code> (Temporary Redirect) via the response&#8217;s <code>Location</code> header.</p>
+</div>
+<div class="paragraph">
+<p>Thus, a client only needs to know the Realm name and the Client ID in order to link to them.
+This indirection helps avoid hard-coding client base URLs.</p>
+</div>
+<div class="paragraph">
+<p>As an example, given the realm <code>master</code> and the client-id <code>account</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6288,12 +6189,7 @@ going to this public URL:  <code>root/auth/realms/{realm}/protocol/saml/descript
 </div>
 </div>
 <div class="paragraph">
-<p>URL temporarily redirects to</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>http://host:port/auth/realms/master/account</code></pre>
-</div>
+<p>Would temporarily redirect to: <a href="http://host:port/auth/realms/master/account" class="bare">http://host:port/auth/realms/master/account</a></p>
 </div>
 </div>
 <div class="sect2">
@@ -14800,7 +14696,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-26 17:55:31 UTC
+Last updated 2020-10-26 18:36:28 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
