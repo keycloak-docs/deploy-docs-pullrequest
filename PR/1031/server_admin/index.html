@@ -6246,84 +6246,115 @@ This indirection helps avoid hard-coding client base URLs.</p>
 <div class="paragraph">
 <p>Would temporarily redirect to: <a href="http://host:port/auth/realms/master/account" class="bare">http://host:port/auth/realms/master/account</a></p>
 </div>
+<div id="con-protocol-mappers_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/con-protocol-mappers.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/con-protocol-mappers.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_protocol-mappers"><a class="anchor" href="#_protocol-mappers"></a>OIDC Token and SAML Assertion Mappings</h3>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/protocol-mappers.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/protocol-mappers.adoc" target="_blank">Report an issue</a>
-</div>
+<div class="paragraph _abstract">
+<p>Applications receiving ID tokens, access tokens, or SAML assertions may require different roles and user metadata.</p>
 </div>
 <div class="paragraph">
-<p>Applications that receive ID Tokens, Access Tokens, or SAML assertions may need or want different user metadata and roles.
-Keycloak allows you to define what exactly is transferred.
-You can hardcode roles, claims and custom attributes.
-You can pull user metadata into a token or assertion.
-You can rename roles.
-Basically you have a lot of control of what exactly goes back to the client.</p>
+<p>Keycloak allows you to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Hardcode roles, claims and custom attributes.</p>
+</li>
+<li>
+<p>Pull user metadata into a token or assertion.</p>
+</li>
+<li>
+<p>Rename roles.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Within the Admin Console, if you go to an application you&#8217;ve registered, you&#8217;ll see a <code>Mappers</code> tab.  Here&#8217;s one for
-an OIDC based client.</p>
+<p>You can do this in the <code>Mappers</code> tab in the Admin Console</p>
 </div>
 <div class="paragraph">
 <div class="title">Mappers Tab</div>
 <p><span class="image"><img src="./keycloak-images/mappers-oidc.png" alt="mappers oidc"></span></p>
 </div>
 <div class="paragraph">
-<p>The new client does not have any built-in mappers, however it usually inherits some mappers from the client scopes as described
-in the <a href="#_client_scopes">client scopes section</a>. Protocol mappers map things like, for example, email address to
-a specific claim in the identity and access token.  Their function should each be self explanatory from their name.  There
-are additional pre-configured mappers that are not attached to the client that you can add
-by clicking the <code>Add Builtin</code> button.</p>
+<p>New clients do not have built-in mappers but they can inherit some mappers from client scopes. See the <a href="#_client_scopes">client scopes section</a> for more details.</p>
 </div>
 <div class="paragraph">
-<p>Each mapper has common settings as well as additional ones depending on which type of mapper you are adding.  Click the <code>Edit</code> button
-next to one of the mappers in the list to get to the config screen.</p>
+<p>Protocol mappers map items (such as an email address, for example) to
+a specific claim in the identity and access token. The function of a mapper should be self explanatory from its name. You can add pre-configured mappers by clicking the <code>Add Builtin</code> button.</p>
+</div>
+<div class="paragraph">
+<p>Each mapper has a set of common settings. There are additional settings available, depending on the mapper type. Click the <code>Edit</code> button next to a mapper to access the configuration screen to adjust these settings.</p>
 </div>
 <div class="paragraph">
 <div class="title">Mapper Config</div>
 <p><span class="image"><img src="./keycloak-images/mapper-config.png" alt="mapper config"></span></p>
 </div>
 <div class="paragraph">
-<p>The best way to learn about a config option is to hover over its tooltip.</p>
+<p>Details on each option can be viewed by hovering over its tooltip.</p>
 </div>
 <div class="paragraph">
-<p>Most OIDC mappers also allow you to control where the claim gets put.  You can opt to include or exclude the claim from both the
-<em>id</em> and <em>access</em> tokens by fiddling with the <code>Add to ID token</code> and <code>Add to access token</code> switches.</p>
+<p>Many OIDC mappers allow you to control where the claim gets placed. You can opt to include or exclude the claim from the <em>id</em> and <em>access</em> tokens by adjusting the <code>Add to ID token</code> and <code>Add to access token</code> switches.</p>
 </div>
-<div class="paragraph">
-<p>Finally, you can also add other mapper types.  If you go back to the <code>Mappers</code> tab, click the <code>Create</code> button.</p>
+<div id="proc-creating-mappers_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/proc-creating-mappers.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/proc-creating-mappers.adoc" target="_blank">Report an issue</a>
 </div>
+</div>
+<div class="paragraph _abstract">
+<p>You can add mapper types as follows:</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Go to the <code>Mappers</code> tab.</p>
+</li>
+<li>
+<p>Click the <code>Create</code> button.</p>
 <div class="paragraph">
 <div class="title">Add Mapper</div>
 <p><span class="image"><img src="./keycloak-images/add-mapper.png" alt="add mapper"></span></p>
 </div>
-<div class="paragraph">
-<p>Pick a <code>Mapper Type</code> from the list box.  If you hover over the tooltip, you&#8217;ll see a description of what that mapper type does.
-Different config parameters will appear for different mapper types.</p>
+</li>
+<li>
+<p>Select a <code>Mapper Type</code> from the list box.</p>
+</li>
+</ol>
 </div>
 <div class="sect3">
 <h4 id="priority-order"><a class="anchor" href="#priority-order"></a>Priority order</h4>
 <div class="paragraph">
-<p>Mapper implementations have <em>priority order</em>. This priority order is not the configuration property of the mapper; rather, it is
-the property of the concrete implementation of the mapper.</p>
+<p>Mapper implementations have <em>priority order</em>. <em>Priority order</em> is not the configuration property of the mapper. It is the property of the concrete implementation of the mapper.</p>
 </div>
 <div class="paragraph">
-<p>Mappers are sorted in the admin console by the order in the list of mappers and the changes in the token or assertion will be
-applied using that order with the lowest being applied first. This means that implementations which are dependent on other
-implementations are processed in the needed order.</p>
+<p>Mappers are sorted by the order in the list of mappers. The changes in the token or assertion are applied in that order with the lowest applying first. This means that implementations that are dependent on other
+implementations are processed in the necessary order.</p>
 </div>
 <div class="paragraph">
-<p>For example, when we first want to compute the roles which will be included with a token, we first resolve audiences based on
-those roles. Then, we process a JavaScript script that uses the roles and audiences already available in the token.</p>
+<p>For example, to compute the roles which will be included with a token:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Resolve audiences based on those roles.</p>
+</li>
+<li>
+<p>Process a JavaScript script that uses the roles and audiences already available in the token.</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_protocol-mappers_oidc-user-session-note-mappers"><a class="anchor" href="#_protocol-mappers_oidc-user-session-note-mappers"></a>OIDC User Session Note Mappers</h4>
 <div class="paragraph">
-<p>User session details are defined via mappers and depend on various criteria. User session details are automatically included when you use or enable a feature on a client. You can also click the <code>Add builtin</code> button to include session details.</p>
+<p>User session details are defined using mappers and are automatically included when you use or enable a feature on a client. You can click the <code>Add builtin</code> button to include session details.</p>
 </div>
 <div class="paragraph">
 <p>Impersonated user sessions provide the following details:</p>
@@ -6331,10 +6362,10 @@ those roles. Then, we process a JavaScript script that uses the roles and audien
 <div class="ulist">
 <ul>
 <li>
-<p><code>IMPERSONATOR_ID</code>: The ID of an impersonating user</p>
+<p><code>IMPERSONATOR_ID</code>: The ID of an impersonating user.</p>
 </li>
 <li>
-<p><code>IMPERSONATOR_USERNAME</code>: The username of an impersonating user</p>
+<p><code>IMPERSONATOR_USERNAME</code>: The username of an impersonating user.</p>
 </li>
 </ul>
 </div>
@@ -6344,13 +6375,13 @@ those roles. Then, we process a JavaScript script that uses the roles and audien
 <div class="ulist">
 <ul>
 <li>
-<p><code>clientId</code>: The client ID of the service account</p>
+<p><code>clientId</code>: The client ID of the service account.</p>
 </li>
 <li>
-<p><code>clientAddress</code>: The remote host IP of the service account authenticated device</p>
+<p><code>clientAddress</code>: The remote host IP of the service account&#8217;s authenticated device.</p>
 </li>
 <li>
-<p><code>clientHost</code>: The remote host name of the service account authenticated device</p>
+<p><code>clientHost</code>: The remote host name of the service account&#8217;s authenticated device.</p>
 </li>
 </ul>
 </div>
@@ -6358,11 +6389,10 @@ those roles. Then, we process a JavaScript script that uses the roles and audien
 <div class="sect3">
 <h4 id="script-mapper"><a class="anchor" href="#script-mapper"></a>Script Mapper</h4>
 <div class="paragraph">
-<p>The <code>Script Mapper</code> allows you to map claims to tokens by running a user-defined JavaScript code. For more details about how to
-deploy scripts to the server, please take a look at <a href="https://www.keycloak.org/docs/11.0/server_development/#_script_providers">JavaScript Providers</a>.</p>
+<p>The <code>Script Mapper</code> allows you to map claims to tokens by running user-defined JavaScript code. For more details about deploying scripts to the server, see <a href="https://www.keycloak.org/docs/11.0/server_development/#_script_providers">JavaScript Providers</a>.</p>
 </div>
 <div class="paragraph">
-<p>Once you have your scripts deployed, you should be able to select the scripts you deployed from the list of available mappers.</p>
+<p>When scripts deploy, you should be able to select the deployed scripts from the list of available mappers.</p>
 </div>
 </div>
 </div>
@@ -14751,7 +14781,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-26 21:48:20 UTC
+Last updated 2020-10-27 21:13:46 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
