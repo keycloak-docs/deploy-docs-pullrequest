@@ -893,13 +893,12 @@ span.image img {
 <li><a href="#advanced-settings">Advanced Settings</a></li>
 <li><a href="#_client-credentials">Confidential Client Credentials</a></li>
 <li><a href="#_service_accounts">Using a Service Account</a></li>
-<li><a href="#_audience">Audience Support</a></li>
 </ul>
 </li>
 <li><a href="#saml-clients">SAML Clients</a>
 <ul class="sectlevel3">
 <li><a href="#idp-initiated-login">IDP Initiated Login</a></li>
-<li><a href="#saml-entity-descriptors">SAML Entity Descriptors</a></li>
+<li><a href="#using-an-entity-descriptor-to-create-a-client">Using an entity descriptor to create a client</a></li>
 </ul>
 </li>
 <li><a href="#client-links">Client Links</a></li>
@@ -5065,19 +5064,19 @@ This section discusses various aspects around configuring clients and various wa
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-oidc.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p><a href="#_oidc">OpenID Connect</a> is the preferred protocol to secure applications.  It was designed from the ground up to be web friendly
 and work best with HTML5/JavaScript applications.</p>
 </div>
 <div id="proc-creating-oidc-client_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/proc-creating-oidc-client.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/proc-creating-oidc-client.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/proc-creating-oidc-client.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/proc-creating-oidc-client.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="sect3">
 <h4 id="creating-an-open-id-connect-client"><a class="anchor" href="#creating-an-open-id-connect-client"></a>Creating an Open ID Connect Client</h4>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>To use <a href="#_oidc">OpenID Connect</a>, an existing application must be secured as an Open ID connect client.</p>
 </div>
 <div class="olist arabic">
@@ -5202,14 +5201,14 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 </div>
 <div id="con-advanced-settings_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/con-advanced-settings.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/con-advanced-settings.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/con-advanced-settings.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/con-advanced-settings.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="advanced-settings"><a class="anchor" href="#advanced-settings"></a>Advanced Settings</h4>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>When you click <em>Advanced Settings</em>, additional fields are displayed.</p>
 </div>
 <div id="_mtls-client-certificate-bound-tokens" class="paragraph">
@@ -5412,7 +5411,7 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 </li>
 </ol>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-confidential-client-credentials_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/con-confidential-client-credentials.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/con-confidential-client-credentials.adoc" target="_blank">Report an issue</a>
@@ -5421,7 +5420,7 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 </div>
 <div class="sect3">
 <h4 id="_client-credentials"><a class="anchor" href="#_client-credentials"></a>Confidential Client Credentials</h4>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>If the <a href="#_access-type">access type</a> of the client is set to <code>confidential</code>, the credentials of the client must be configured under the <code>Credentials</code> tab.</p>
 </div>
 <div class="paragraph">
@@ -5579,7 +5578,7 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/proc-using-a-service-account.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>Each OIDC client has a built-in <em>service account</em>, which allows it to obtain an access token.</p>
 </div>
 <div class="olist arabic">
@@ -5673,239 +5672,13 @@ Pragma: no-cache
 <div class="paragraph">
 <p>The retrieved access token can be refreshed or logged out by an out-of-bound request.</p>
 </div>
-<div id="con_audience_server_administration_guide" class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/con-audience.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/con-audience.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_audience"><a class="anchor" href="#_audience"></a>Audience Support</h4>
 <div class="paragraph">
-<p>Typically, the environment where Keycloak is deployed consists of a set of <em>confidential</em> or <em>public</em> client applications that use Keycloak for authentication.</p>
-</div>
-<div class="paragraph">
-<p>There are also <em>services</em> (<em>Resource Servers</em> in the <a href="https://tools.ietf.org/html/draft-ietf-oauth-mtls-08#section-4.2">OAuth 2 specification</a>) that serve requests from client applications and provide resources to these applications. These services require an <em>Access token</em> (Bearer token) to be sent to them to authenticate a request. This token is obtained by the frontend application upon login to Keycloak.</p>
-</div>
-<div class="paragraph">
-<p>In the environment where trust among services is low, you may encounter this scenario:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>A frontend client application requires authentication against Keycloak.</p>
-</li>
-<li>
-<p>Keycloak authenticates a user.</p>
-</li>
-<li>
-<p>Keycloak issues a token to the application.</p>
-</li>
-<li>
-<p>The application uses the token to invoke an untrusted service.</p>
-</li>
-<li>
-<p>The untrusted service returns the response to the application. However, it keeps the applications token.</p>
-</li>
-<li>
-<p>The untrusted service then invokes a trusted service using the applications token. This results in broken security as the untrusted service misuses the token to access other services on behalf of the client application.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>This scenario is unlikely in environments with a high level of trust between services but not in environments where trust is low. In some environments, this workflow may be correct as the untrusted service may have to retrieve data from a trusted service to return data to the original client application.</p>
-</div>
-<div class="paragraph">
-<p>An unlimited audience is useful when a high level of trust exists between services. Otherwise, the audience should be limited. You can limit the audience and, at the same time, allow untrusted services to retrieve data from trusted services. In this case, you must ensure that the untrusted service and the trusted service are added as audiences to the token.</p>
-</div>
-<div class="paragraph">
-<p>To prevent any misuse of the access token, limit the audience on the token and configure your services to verify the audience on the token. This will change the flow like this:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>A frontend application authenticates against Keycloak.</p>
-</li>
-<li>
-<p>Keycloak authenticates a user.</p>
-</li>
-<li>
-<p>Keycloak issues a token to the application. The application knows that it will need to invoke an untrusted service so it places <code>scope=&lt;untrusted service&gt;</code> in the authentication request sent to Keycloak (see <a href="#_client_scopes">Client Scopes section</a> for more details about the <em>scope</em> parameter).</p>
-<div class="paragraph">
-<p>The token issued to the application contains a reference to the untrusted service in its audience (<code>"audience": [ "&lt;untrusted service&gt;" ]</code>) which declares that the client uses this access token to invoke the untrusted service.</p>
-</div>
-</li>
-<li>
-<p>The untrusted service invokes a trusted service with the token. Invocation is not successful because the trusted service checks the audience on the token and find that its audience is only for the untrusted service. This is expected behavior and security is not broken.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>If the client wants to invoke the trusted service later, it must obtain another token by reissuing the SSO login with <code>scope=&lt;trusted service&gt;</code>. The returned token will then contain the trusted service as an audience:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="json"><span class="key"><span class="delimiter">&quot;</span><span class="content">audience</span><span class="delimiter">&quot;</span></span>: [ <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;trusted service&gt;</span><span class="delimiter">&quot;</span></span> ]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Use this to invoke the <code>&lt;trusted service&gt;</code>.</p>
-</div>
-<div class="sect4">
-<h5 id="setup-3"><a class="anchor" href="#setup-3"></a>Setup</h5>
-<div class="paragraph">
-<p>When setting up audience checking:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Ensure that services are configured to check audience on the access token sent to them by adding the flag <code><em>verify-token-audience</em></code> in the adapter configuration. See <a href="https://www.keycloak.org/docs/11.0/securing_apps/#_java_adapter_config">Adapter configuration</a> for details.</p>
-</li>
-<li>
-<p>Ensure that access tokens issued by Keycloak contain all necessary audiences. Audiences can be added using the client roles as described in the <a href="#_audience_resolve">next section</a> or hardcoded as described in <a href="#_audience_hardcoded">below</a>.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_audience_resolve"><a class="anchor" href="#_audience_resolve"></a>Automatically add audience</h5>
-<div class="paragraph">
-<p>An <em>Audience Resolve</em> protocol mapper is defined in the default client scope <em>roles</em>. The mapper checks for clients that have at least one client role available for the current token. The client ID of each client is then added as an audience. This is useful if your service (usually bearer-only) clients rely on client roles.</p>
-</div>
-<div class="paragraph">
-<p>For example, for a bearer-only client and a confidential client,
-you can use the access token issued for the confidential client to invoke the bearer-only client REST service. The bearer-only client will be automatically added as an audience to the access token issued for the confidential client if the following are true:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The bearer-only client has any client roles defined on itself.</p>
-</li>
-<li>
-<p>Target user has at least one of those client roles assigned.</p>
-</li>
-<li>
-<p>Confidential client has the role scope mappings for the assigned role.</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If you want to ensure that the audience is not added automatically, do not configure role scope mappings directly on the confidential client. Instead, you can create a dedicated client scope that contains the role scope mappings for the client roles of your dedicated client scope.</p>
-</div>
-<div class="paragraph">
-<p>Assuming that the client scope is added as an optional client scope to the confidential client, the client roles and the audience will be added to the token if explicitly requested by the <code>scope=&lt;trusted service&gt;</code>  parameter.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The frontend client itself is not automatically added to the access token audience. This allows for easy differentiation between
-the access token and the ID token, since the access token will not contain the client for which the token is issued as an audience.</p>
-</div>
-<div class="paragraph">
-<p>If you need the client itself as an audience, see the
-<a href="#_audience_hardcoded">hardcoded audience</a> option. However, using the same client as both frontend and REST service is not recommended.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_audience_hardcoded"><a class="anchor" href="#_audience_hardcoded"></a>Hardcoded audience</h5>
-<div class="paragraph">
-<p>When your service relies on realm roles or does not rely on the roles in the token at all, it can be useful to use a hardcoded audience. A hardcoded audience is a protocol mapper, that will add the client ID of the specified service client as an audience to the token.
-You can use any custom value, for example a URL, if you want to use a different audience than the client ID.</p>
-</div>
-<div class="paragraph">
-<p>You can add the protocol mapper directly to the frontend client. If the protocol mapper is added directly, the audience will be always added as well.</p>
-</div>
-<div class="paragraph">
-<p>For more control over the protocol mapper, you can create the protocol mapper on the dedicated client scope, which will be called for example <code>good-service</code>.</p>
-</div>
-<div class="paragraph">
-<div class="title">Audience Protocol Mapper</div>
-<p><span class="image"><img src="./keycloak-images/audience_mapper.png" alt="audience mapper"></span></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>From the <a href="#_client_installation">Installation tab</a> of the <code>good-service</code> client, you can generate the adapter configuration and you can confirm that <em>verify-token-audience</em> option will be set to <code>true</code>. This forces the adapter to verify the audience if you use this configuration.</p>
-</li>
-<li>
-<p>You need to ensure that the <code>my-app</code> frontend client is able to request <code>good-service</code> as an audience in its tokens.</p>
-<div class="paragraph">
-<p>On the <code>my-app</code> client:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Click the <em>Client Scopes</em> tab.</p>
-</li>
-<li>
-<p>Assign <code>good-service</code> as an optional (or default) client scope.</p>
-<div class="paragraph">
-<p>See <a href="#_client_scopes_linking">Client Scopes Linking section</a> for more details.</p>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>You can optionally <a href="#_client_scopes_evaluate">Evaluate Client Scopes</a> and generate an example access token. <code>good-service</code> will be added to the audience of the generated access token if <code>good-service</code> is included in the <em>scope</em> parameter, when you assigned it as an optional client scope.</p>
-</li>
-<li>
-<p>In your <code>my-app</code> application, you must ensure that the <em>scope</em> parameter is used. The value <code>good-service</code> must be included when you want to issue the token for accessing <code>good-service</code>.</p>
-<div class="paragraph">
-<p>See:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://www.keycloak.org/docs/11.0/securing_apps/#_params_forwarding">parameters forwarding section</a> if your application uses the servlet adapter.</p>
-</li>
-<li>
-<p><a href="https://www.keycloak.org/docs/11.0/securing_apps/#_javascript_adapter">javascript adapter section</a> if your application uses the javascript adapter.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Both the <em>Audience</em> and <em>Audience Resolve</em> protocol mappers add the audiences to the access token only, by default. The ID Token
-typically contains only a single audience, the client ID for which the token was issued. This is a requirement of the OpenID Connect specification. However, the access token does not necessarily have the client ID, which was the token issued for, unless the audience mappers added it.
-</td>
-</tr>
-</table>
+<p>Unresolved directive in topics/clients/client-oidc.adoc - include::oidc/audience.adoc[]</p>
 </div>
 <div id="proc-creating-saml-client_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/proc-creating-saml-client.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/proc-creating-saml-client.adoc" target="_blank">Report an issue</a>
-</div>
 </div>
 </div>
 </div>
@@ -6167,29 +5940,49 @@ this client, which will be made available for IDP Initiated Login from the exter
 just use <a href="#_identity_broker_saml_sp_descriptor">SP Descriptor</a> available from the settings of the identity provider in
 the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoint URL.</p>
 </div>
+<div id="proc-using-an-entity-descriptors_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/proc-using-an-entity-descriptor.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/proc-using-an-entity-descriptor.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="saml-entity-descriptors"><a class="anchor" href="#saml-entity-descriptors"></a>SAML Entity Descriptors</h4>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/entity-descriptors.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/entity-descriptors.adoc" target="_blank">Report an issue</a>
-</div>
+<h4 id="using-an-entity-descriptor-to-create-a-client"><a class="anchor" href="#using-an-entity-descriptor-to-create-a-client"></a>Using an entity descriptor to create a client</h4>
+<div class="paragraph">
+<p>Instead of registering a SAML 2.0 client manually, you can import the client using a standard SAML Entity Descriptor XML file.</p>
 </div>
 <div class="paragraph">
-<p>Instead of manually registering a SAML 2.0 client, you can import it via a standard SAML Entity Descriptor XML file.
-There is an <code>Import</code> option on the Add Client page.</p>
+<p>The Add Client page includes an <code>Import</code> option.</p>
 </div>
 <div class="paragraph">
 <div class="title">Add Client</div>
 <p><span class="image"><img src="./keycloak-images/add-client-saml.png" alt="add client saml"></span></p>
 </div>
-<div class="paragraph">
-<p>Click the <code>Select File</code> button and load your entity descriptor file.  You should review all the information there to make sure everything is set up correctly.</p>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click the <code>Select File</code> button.</p>
+</li>
+<li>
+<p>Load the file that contains the XML entity descriptor information.</p>
+</li>
+<li>
+<p>Review the information to ensure everything is set up correctly.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Some SAML client adapters like <em>mod-auth-mellon</em> need the XML Entity Descriptor for the IDP.  You can obtain this by
-going to this public URL:  <code>root/auth/realms/{realm}/protocol/saml/descriptor</code></p>
+<p>Some SAML client adapters, such as <em>mod-auth-mellon</em>, need the XML Entity Descriptor for the IDP.  You can find this descriptor by going to this URL:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>root/auth/realms/{realm}/protocol/saml/descriptor</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where <em>realm</em> is the realm of your client.</p>
 </div>
 </div>
 </div>
@@ -6370,27 +6163,34 @@ implementations are processed in the necessary order.</p>
 <div class="paragraph">
 <p>When scripts deploy, you should be able to select the deployed scripts from the list of available mappers.</p>
 </div>
+<div id="proc-generating-client-adapter-config_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/proc-generating-client-adapter-config.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/proc-generating-client-adapter-config.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_client_installation"><a class="anchor" href="#_client_installation"></a>Generating Client Adapter Config</h3>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/installation.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/installation.adoc" target="_blank">Report an issue</a>
+<div class="paragraph _abstract">
+<p>Keycloak can generate configuration files that you can use to install a client adapter in your application&#8217;s deployment environment. A number of adapter types are supported for OIDC and SAML.</p>
 </div>
-</div>
-<div class="paragraph">
-<p>The Keycloak can pre-generate configuration files that you can use to install a client adapter for in your application&#8217;s
-deployment environment.  A number of adapter types are supported for both OIDC and SAML.  Go to the <code>Installation</code> tab of the
-client you want to generate configuration for.</p>
-</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the <code>Installation</code> tab of the client you want to generate configuration for.</p>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/client-installation.png" alt="client installation"></span></p>
 </div>
+</li>
+<li>
+<p>Select the <code>Format Option</code> you want configuration generated for.</p>
+</li>
+</ol>
+</div>
 <div class="paragraph">
-<p>Select the <code>Format Option</code> you want configuration generated for.  All Keycloak client adapters for OIDC and SAML
-are supported.  The mod-auth-mellon Apache HTTPD adapter for SAML is supported as well as standard SAML entity descriptor files.</p>
+<p>All Keycloak client adapters for OIDC and SAML are supported. The mod-auth-mellon Apache HTTPD adapter for SAML is supported as well as standard SAML entity descriptor files.</p>
 </div>
 </div>
 <div class="sect2">
@@ -14757,7 +14557,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-28 15:45:14 UTC
+Last updated 2020-10-28 20:26:52 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
