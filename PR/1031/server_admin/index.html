@@ -770,8 +770,9 @@ span.image img {
 <li><a href="#_clear-cache">Clearing Server Caches</a></li>
 <li><a href="#_email">Email Settings</a></li>
 <li><a href="#_themes">Themes and Internationalization</a>
-<ul class="sectlevel5">
+<ul class="sectlevel3">
 <li><a href="#internationalization">Internationalization</a></li>
+<li><a href="#_user_locale_selection">User Locale selection</a></li>
 </ul>
 </li>
 </ul>
@@ -1802,8 +1803,8 @@ a theme go to the <code>Realm Settings</code> left menu item and click on the <c
 <div class="paragraph">
 <p>The <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> goes into how to create a new themes or modify existing ones.</p>
 </div>
-<div class="sect5">
-<h6 id="internationalization"><a class="anchor" href="#internationalization"></a>Internationalization</h6>
+<div class="sect3">
+<h4 id="internationalization"><a class="anchor" href="#internationalization"></a>Internationalization</h4>
 <div class="paragraph">
 <p>Every UI screen is internationalized in Keycloak.  The default language is English, but if you turn on the
 <code>Internationalization</code> switch on the <code>Theme</code> tab you can choose which locales you want to support and what the default locale
@@ -1811,8 +1812,9 @@ will be.  The next time a user logs in, they will be able to choose a language o
 User Account Management UI, and Admin Console.  The <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> explains
 how you can offer additional languages.</p>
 </div>
-<div class="sect6">
-<h7 id="_user_locale_selection"><a class="anchor" href="#_user_locale_selection"></a>User Locale selection</h7>
+</div>
+<div class="sect3">
+<h4 id="_user_locale_selection"><a class="anchor" href="#_user_locale_selection"></a>User Locale selection</h4>
 <div class="paragraph">
 <p>In order to select the best possible locale for a user there is a locale selector provider that handles deciding what
 is the best locale on the information available. One thing to note here is that it is not always known who the user is.
@@ -1850,7 +1852,6 @@ For this reason the previously authenticated users locale is remembered in a per
 <p>When a user is authenticated an action is triggered to update the locale in the persisted cookie mentioned earlier. If the
 user has actively switched the locale through the locale selector on the login pages the users locale is also updated at
 this point.</p>
-</div>
 </div>
 </div>
 </div>
@@ -14805,7 +14806,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-29 18:02:37 UTC
+Last updated 2020-10-29 18:08:18 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
