@@ -1980,7 +1980,7 @@ This action searches only the local Keycloak database and not the federated data
 <p>In the admin console, click <strong>Users</strong> in the left menu.</p>
 </li>
 <li>
-<p>Click <strong>Add User</strong>, located on the right side of the empty user list.</p>
+<p>Click <strong>Add User</strong> on the right side of the empty user list.</p>
 </li>
 <li>
 <p>Enter the details for the new user.</p>
@@ -5152,9 +5152,8 @@ is still valid. So creating the session is unnecessary overhead for this protoco
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>role="_abstract"]
-Clients are entities that can request authentication of a user.  Clients come in two forms.
+<div class="paragraph _abstract">
+<p>Clients are entities that can request authentication of a user.  Clients come in two forms.
 The first type of client is an application that wants
 to participate in single-sign-on.  These clients just want Keycloak to provide security for them.  The other type
 of client is one that is requesting an access token so that it can invoke other services on behalf of the authenticated user.
@@ -5196,7 +5195,7 @@ This section discusses various aspects around configuring clients and various wa
 </div>
 </li>
 <li>
-<p>Enter the <code>Client ID</code> of the client.</p>
+<p>Enter any name for <code>Client ID.</code></p>
 </li>
 <li>
 <p>Select <code>openid-connect</code> in the <code>Client Protocol</code> drop down box.</p>
@@ -5205,14 +5204,18 @@ This section discusses various aspects around configuring clients and various wa
 <p>Enter the base URL of your application in the <code>Root URL</code> field.</p>
 </li>
 <li>
-<p>Click <strong>Save</strong>.  This action creates the client and bring you to the <code>Settings</code>
-tab.</p>
-<div class="paragraph">
-<div class="title">Client Settings</div>
-<p><span class="image"><img src="./keycloak-images/client-settings-oidc.png" alt="Client Settings"></span></p>
-</div>
+<p>Click <strong>Save</strong>.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>This action creates the client and bring you to the <code>Settings</code>
+tab.</p>
+</div>
+<div class="paragraph">
+<p>+
+.Client Settings
+<span class="image"><img src="./keycloak-images/client-settings-oidc.png" alt="Client Settings"></span></p>
 </div>
 <div class="ulist _additional-resources">
 <div class="title">Additional resources</div>
@@ -14917,7 +14920,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-30 20:25:15 UTC
+Last updated 2020-10-30 21:59:30 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
