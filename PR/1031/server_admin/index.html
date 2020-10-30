@@ -777,18 +777,23 @@ span.image img {
 </li>
 </ul>
 </li>
-<li><a href="#user-management">User Management</a>
+<li><a href="#managing-users">Managing Users</a>
 <ul class="sectlevel2">
 <li><a href="#searching-for-a-user">Searching for a user</a></li>
 <li><a href="#creating-a-user">Creating a user</a></li>
 <li><a href="#deleting-a-user">Deleting a user</a></li>
 <li><a href="#configuring-user-attributes">Configuring user attributes</a></li>
-<li><a href="#user-credentials">User Credentials</a></li>
+<li><a href="#user-credentials">User Credentials</a>
+<ul class="sectlevel3">
+<li><a href="#setting-a-password-for-a-user">Setting a password for a user</a></li>
+<li><a href="#creating-an-otp">Creating an OTP</a></li>
+</ul>
+</li>
 <li><a href="#required-actions">Required Actions</a>
 <ul class="sectlevel3">
 <li><a href="#setting-required-actions">Setting required actions</a></li>
 <li><a href="#setting-default-required-actions">Setting default required actions</a></li>
-<li><a href="#terms-and-conditions">Terms and conditions</a></li>
+<li><a href="#enabling-terms-and-conditions">Enabling terms and conditions</a></li>
 </ul>
 </li>
 <li><a href="#impersonation">Impersonation</a></li>
@@ -1864,7 +1869,7 @@ this point.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="user-management"><a class="anchor" href="#user-management"></a>User Management</h2>
+<h2 id="managing-users"><a class="anchor" href="#managing-users"></a>Managing Users</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -1873,7 +1878,7 @@ this point.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This section describes the administration functions for managing users.</p>
+<p>From the admin console, you have a wide range actions you can perform to manage users.</p>
 </div>
 <div id="proc-searching-user_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -1884,7 +1889,7 @@ this point.</p>
 <div class="sect2">
 <h3 id="searching-for-a-user"><a class="anchor" href="#searching-for-a-user"></a>Searching for a user</h3>
 <div class="paragraph">
-<p>Search for a user to view detailed information about the user&#8217;s groups and roles.</p>
+<p>Search for a user to view detailed information about the user, such as the user&#8217;s groups and roles.</p>
 </div>
 <div class="ulist">
 <div class="title">Prerequisite</div>
@@ -1972,7 +1977,7 @@ This action searches only the local Keycloak database and not the federated data
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>In the console, click <strong>Users</strong> in the left menu.</p>
+<p>In the admin console, click <strong>Users</strong> in the left menu.</p>
 </li>
 <li>
 <p>Click <strong>Add User</strong>, located on the right side of the empty user list.</p>
@@ -2021,7 +2026,7 @@ This action searches only the local Keycloak database and not the federated data
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Click on <strong>Users</strong> in the left menu. This opens the user list page.</p>
+<p>Click on <strong>Users</strong> in the left menu. This action opens the user list page.</p>
 </li>
 <li>
 <p>Click <strong>View all users</strong> to find the user to delete.</p>
@@ -2053,7 +2058,7 @@ Alternatively, you can use the search bar to find a user.
 <div class="sect2">
 <h3 id="configuring-user-attributes"><a class="anchor" href="#configuring-user-attributes"></a>Configuring user attributes</h3>
 <div class="paragraph">
-<p>User attributes provide a customized experience for each user. Using user attributes, you can can create a personalized identity for each user in the console.</p>
+<p>User attributes provide a customized experience for each user. With user attributes, you can can create a personalized identity for each user in the console.</p>
 </div>
 <div class="ulist">
 <div class="title">Prerequisite</div>
@@ -2106,7 +2111,7 @@ Alternatively, you can use the search bar to find a user.
 <p><span class="image"><img src="./keycloak-images/user-credentials.png" alt="user credentials"></span></p>
 </div>
 <div class="paragraph">
-<p>The credentials are listed in a table, which has the following fields:</p>
+<p>This tab includes the following fields:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -2135,10 +2140,98 @@ credential.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p>You cannot configure other types of credentials for a specific user in the admin console; this is the responsibility of the user.</p>
+<p>You cannot configure other types of credentials for a specific user in the admin console; that task is the user&#8217;s responsibility.</p>
 </div>
 <div class="paragraph">
 <p>You can delete the credentials of a user in the event a user loses an OTP device or if credentials have been compromised. You can only delete credentials of a user in the <strong>Credentials</strong> tab.</p>
+</div>
+<div id="proc-setting-password-user_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-setting-password-user.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-setting-password-user.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-a-password-for-a-user"><a class="anchor" href="#setting-a-password-for-a-user"></a>Setting a password for a user</h4>
+<div class="paragraph _abstract">
+<p>If a user does not have a password, or if the password has been deleted, the <strong>Set Password</strong> section is displayed.
+If a user already has a password, it can be reset in the <strong>Reset Password</strong> section.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Type in a new password, in the <strong>Set Password</strong> section.</p>
+</li>
+<li>
+<p>Click <strong>Set Password</strong>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If <strong>Temporary</strong> is set to <strong>ON</strong>, the user must change the password at the first login. To allow users to keep the password supplied, set <strong>Temporary</strong> to <strong>OFF.</strong>  The user must click <strong>Set Password</strong> to change the password.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Alternatively, you can send an email to the user that requests the user reset the password.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Navigate to the <strong>Reset Actions</strong> list.</p>
+</li>
+<li>
+<p>Click <strong>Update Password</strong> from the list.</p>
+</li>
+<li>
+<p>Click <strong>Send Email</strong>. The sent email contains a link that directs the user to the <strong>Update Password</strong> window.</p>
+</li>
+<li>
+<p>Optionally, you can set the validity of the email link. This is set to the default preset in the <strong>Tokens</strong> tab in the realm setiings.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div id="proc_creating-otp_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-creating-otp.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-creating-otp.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-an-otp"><a class="anchor" href="#creating-an-otp"></a>Creating an OTP</h4>
+<div class="paragraph _abstract">
+<p>If OTP is conditional in your realm, the user must navigate to the <strong>User Account Management</strong> page to reconfigure a new OTP generator. If OTP is required, then the user must reconfigure a new OTP generator when logging in. You can use the following procedure if the user already has an OTP credential. Alternatively, you can send an email to the user that requests the user reset the OTP generator.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisite</div>
+<ul>
+<li>
+<p>You are logged in to the appropriate realm.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Navigate to the <strong>Reset Actions</strong> list.</p>
+</li>
+<li>
+<p>Click <strong>Configure OTP</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Send Email</strong>. The sent email contains a link that directs the user to the OTP setup page.</p>
+</li>
+</ol>
 </div>
 <div id="con-required-actions_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -2147,13 +2240,14 @@ credential.</p>
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="required-actions"><a class="anchor" href="#required-actions"></a>Required Actions</h3>
 <div class="paragraph">
-<p>A user must complete required actions before initially logging in. A user must provide credentials before required actions can be executed. Once a required action is completed, the user does not have to perform the action again.</p>
+<p>You can set the actions that a user must perform at the first login. These actions are required after the user provides credentials. After the first login, these actions are no longer required.</p>
 </div>
 <div class="paragraph">
-<p>Admins can add required actions for each user, in the <strong>Details</strong> tab of the admin console.</p>
+<p>You can add required actions for each user in the <strong>Details</strong> tab of the admin console.</p>
 </div>
 <div class="paragraph">
 <p>The following are examples of required action types:</p>
@@ -2187,24 +2281,22 @@ credential.</p>
 <div class="sect3">
 <h4 id="setting-required-actions"><a class="anchor" href="#setting-required-actions"></a>Setting required actions</h4>
 <div class="paragraph">
-<p>You can add and remove the required actions for existing users in the admin console.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="./keycloak-images/user-required-action.png" alt="user required action"></span></p>
-</div>
-<div class="ulist">
-<div class="title">Prerequisite</div>
-<ul>
-<li>
-<p>You have administrator privileges and are logged into the admin console.</p>
-</li>
-</ul>
+<p>You can set the actions that are required for any user.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
+<p>Click <strong>Users</strong> in the left column.</p>
+</li>
+<li>
+<p>Select a user from the list.</p>
+</li>
+<li>
 <p>Navigate to the <strong>Required User Actions</strong> list.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./keycloak-images/user-required-action.png" alt="user required action"></span></p>
+</div>
 </li>
 <li>
 <p>Select all the actions you want to add to the account.</p>
@@ -2227,7 +2319,7 @@ credential.</p>
 <div class="sect3">
 <h4 id="setting-default-required-actions"><a class="anchor" href="#setting-default-required-actions"></a>Setting default required actions</h4>
 <div class="paragraph">
-<p>You can use the registration link or the <strong>Required Actions</strong> tab to specify the required actions that must be completed by a user before logging in.</p>
+<p>You can determine what actions are required before the first login for any new user created. Once the user is created, these default required actions can be modified for that user.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Using the user registration link</div>
@@ -2265,9 +2357,9 @@ credential.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="terms-and-conditions"><a class="anchor" href="#terms-and-conditions"></a>Terms and conditions</h4>
+<h4 id="enabling-terms-and-conditions"><a class="anchor" href="#enabling-terms-and-conditions"></a>Enabling terms and conditions</h4>
 <div class="paragraph">
-<p>Keycloak requires new users to accept the terms and conditions before logging in for the first time.</p>
+<p>You can enable a required action that new users must accept the terms and conditions before logging into Keycloak for the first time.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
@@ -2327,13 +2419,14 @@ in as the user being impersonated.  If the admin and user are not in the same re
 <div class="sect2">
 <h3 id="user-registration"><a class="anchor" href="#user-registration"></a>User Registration</h3>
 <div class="paragraph _abstract">
-<p>You can use Keycloak as a third-party authorization server to manage application users. Administrators can add users or a users can self-register.</p>
+<p>You can use Keycloak as a third-party authorization server to manage application users, including users who self-register. If you enable self-registration, the login page displays a registration link so that user can create an account.</p>
 </div>
 <div class="paragraph">
-<p>You can enable Keycloak to allow user self-registration. When enabled, the login page displays a registration link that the user can click to create an account.</p>
+<div class="title">Registration Link</div>
+<p><span class="image"><img src="./keycloak-images/registration-link.png" alt="registration link"></span></p>
 </div>
 <div class="paragraph">
-<p>A user must add profile information to the registration form to complete registration. The registration form can be customized by removing or adding additional fields that must be completed by a user. A user can detect a valid username and email by using the registration form.</p>
+<p>A user must add profile information to the registration form to complete registration. The registration form can be customized by removing or adding the fields that must be completed by a user.</p>
 </div>
 <div id="proc-enabling-user-registration_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -2345,10 +2438,6 @@ in as the user being impersonated.  If the admin and user are not in the same re
 <h4 id="enabling-user-registration"><a class="anchor" href="#enabling-user-registration"></a>Enabling user registration</h4>
 <div class="paragraph _abstract">
 <p>Enable users to self-register. After you enable this setting, a <strong>Register</strong> link is displayed on the login page of the admin console.</p>
-</div>
-<div class="paragraph">
-<div class="title">Registration Link</div>
-<p><span class="image"><img src="./keycloak-images/registration-link.png" alt="registration link"></span></p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
@@ -2377,11 +2466,7 @@ in as the user being impersonated.  If the admin and user are not in the same re
 <div class="sect3">
 <h4 id="registering-as-a-new-user"><a class="anchor" href="#registering-as-a-new-user"></a>Registering as a new user</h4>
 <div class="paragraph _abstract">
-<p>As a new user, you must complete a registration form to log in for the first time. A user must add profile information and a password to the registration form to complete registration.</p>
-</div>
-<div class="paragraph">
-<div class="title">Registration Form</div>
-<p><span class="image"><img src="./keycloak-images/registration-form.png" alt="registration form"></span></p>
+<p>As a new user, you must complete a registration form to log in for the first time. You add profile information and a password to register.</p>
 </div>
 <div class="ulist">
 <div class="title">Prerequisite</div>
@@ -2396,6 +2481,10 @@ in as the user being impersonated.  If the admin and user are not in the same re
 <ol class="arabic">
 <li>
 <p>Click the <strong>Register</strong> link on the login page. You are directed to the registration page.</p>
+<div class="paragraph">
+<div class="title">Registration Form</div>
+<p><span class="image"><img src="./keycloak-images/registration-form.png" alt="registration form"></span></p>
+</div>
 </li>
 <li>
 <p>Enter the user profile information.</p>
@@ -2442,7 +2531,7 @@ list on this page.</p>
 <p><span class="image"><img src="./keycloak-images/registration-flow.png" alt="registration flow"></span></p>
 </div>
 <div class="paragraph">
-<p>Set the 'reCAPTCHA' requirement to <code>Required</code> by clicking the appropriate radio button.  This will enable
+<p>Set the <code>reCAPTCHA</code> requirement to <code>Required</code> by clicking the appropriate radio button.  This will enable
 reCAPTCHA on the screen.  Next, you have to enter in the reCAPTCHA site key and secret that you generated at the Google reCAPTCHA Website.
 Click on the 'Actions' button that is to the right of the reCAPTCHA flow entry, then "Config" link, and enter in the reCAPTCHA site key and secret on this config page.</p>
 </div>
@@ -14828,7 +14917,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-30 15:54:31 UTC
+Last updated 2020-10-30 20:25:15 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
