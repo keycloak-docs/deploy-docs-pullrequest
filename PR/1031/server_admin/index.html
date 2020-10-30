@@ -5058,7 +5058,8 @@ is still valid. So creating the session is unnecessary overhead for this protoco
 </div>
 </div>
 <div class="paragraph">
-<p>Clients are entities that can request authentication of a user.  Clients come in two forms.
+<p>role="_abstract"]
+Clients are entities that can request authentication of a user.  Clients come in two forms.
 The first type of client is an application that wants
 to participate in single-sign-on.  These clients just want Keycloak to provide security for them.  The other type
 of client is one that is requesting an access token so that it can invoke other services on behalf of the authenticated user.
@@ -5689,7 +5690,7 @@ Pragma: no-cache
 </div>
 <div class="sect3">
 <h4 id="_audience"><a class="anchor" href="#_audience"></a>Audience Support</h4>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>Typically, the environment where Keycloak is deployed consists of a set of <em>confidential</em> or <em>public</em> client applications that use Keycloak for authentication.</p>
 </div>
 <div class="paragraph">
@@ -5919,7 +5920,7 @@ typically contains only a single audience, the client ID for which the token was
 </div>
 <div class="sect2">
 <h3 id="saml-clients"><a class="anchor" href="#saml-clients"></a>SAML Clients</h3>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>Keycloak supports <a href="#_saml">SAML 2.0</a> for registered applications.
 POST and Redirect bindings are supported. You can choose to require client signature validation. You can have the server sign and/or encrypt responses as well.</p>
 </div>
@@ -6103,7 +6104,7 @@ This field is used when the exact SAML endpoints are not registered and Keycloak
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/idp-initiated-login.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>IDP Initiated Login is a feature that allows you to set up an endpoint on the Keycloak server that will log you into a specific application/client.
 In the <code>Settings</code> tab for your client, you need to specify the <code>IDP Initiated SSO URL Name</code>.
 This is a simple string with no whitespace in it.
@@ -6183,7 +6184,7 @@ the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoi
 </div>
 <div class="sect3">
 <h4 id="using-an-entity-descriptor-to-create-a-client"><a class="anchor" href="#using-an-entity-descriptor-to-create-a-client"></a>Using an entity descriptor to create a client</h4>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>Instead of registering a SAML 2.0 client manually, you can import the client using a standard SAML Entity Descriptor XML file.</p>
 </div>
 <div class="paragraph">
@@ -6228,15 +6229,11 @@ the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoi
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-link.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>For scenarios where one wants to link from one client to another, Keycloak provides a special redirect endpoint: <code>/realms/realm_name/clients/{client-id}/redirect</code>.</p>
+<div class="paragraph _abstract">
+<p>To link from one client to another, Keycloak provides a redirect endpoint: <code>/realms/realm_name/clients/{client-id}/redirect</code>.</p>
 </div>
 <div class="paragraph">
-<p>If a client accesses this endpoint via an <code>HTTP GET</code> request, Keycloak returns the configured base URL for the provided Client and Realm in the form of an <code>HTTP 307</code> (Temporary Redirect) via the response&#8217;s <code>Location</code> header.</p>
-</div>
-<div class="paragraph">
-<p>Thus, a client only needs to know the Realm name and the Client ID in order to link to them.
-This indirection helps avoid hard-coding client base URLs.</p>
+<p>If a client accesses this endpoint using a <code>HTTP GET</code> request, Keycloak returns the configured base URL for the provided Client and Realm in the form of an <code>HTTP 307</code> (Temporary Redirect) in the response&#8217;s <code>Location</code> header. As a result of this, a client needs only to know the Realm name and the Client ID to link to them. This indirection avoids hard-coding client base URLs.</p>
 </div>
 <div class="paragraph">
 <p>As an example, given the realm <code>master</code> and the client-id <code>account</code>:</p>
@@ -6247,7 +6244,7 @@ This indirection helps avoid hard-coding client base URLs.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Would temporarily redirect to: <a href="http://host:port/auth/realms/master/account" class="bare">http://host:port/auth/realms/master/account</a></p>
+<p>This URL temporarily redirects to: <a href="http://host:port/auth/realms/master/account" class="bare">http://host:port/auth/realms/master/account</a></p>
 </div>
 <div id="con-protocol-mappers_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -6435,6 +6432,12 @@ implementations are processed in the necessary order.</p>
 </div>
 <div class="sect2">
 <h3 id="_client_scopes"><a class="anchor" href="#_client_scopes"></a>Client Scopes</h3>
+<div class="paragraph _abstract">
+<p>Keycloak allows you to define a shared client configuration in an entity called a <em>client scope</em>. This entity allows you to configure <a href="#_protocol-mappers">protocol mappers</a> and <a href="#_role_scope_mappings">role scope mappings</a> for multiple clients.</p>
+</div>
+<div class="paragraph">
+<p>Client scopes also support the OAuth 2 <code>scope</code> parameter. This parameter allows client applications to request more or fewer claims or roles in the access token, depending on the requirement of the application.</p>
+</div>
 <div id="proc_creating_client_scopes_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/proc-creating-client-scopes.adoc" target="_blank">Edit this section</a>
@@ -6442,12 +6445,6 @@ implementations are processed in the necessary order.</p>
 </div>
 </div>
 <div class="paragraph _abstract">
-<p>Keycloak allows you to define a shared client configuration in an entity called a <em>client scope</em>. This entity allows you to configure <a href="#_protocol-mappers">protocol mappers</a> and <a href="#_role_scope_mappings">role scope mappings</a> for multiple clients.</p>
-</div>
-<div class="paragraph">
-<p>Client scopes also support the OAuth 2 <code>scope</code> parameter. This parameter allows client applications to request more or fewer claims or roles in the access token, depending on the requirement of the application.</p>
-</div>
-<div class="paragraph">
 <p>To create a client scope, follow these steps:</p>
 </div>
 <div class="olist arabic">
@@ -14806,7 +14803,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-29 18:08:18 UTC
+Last updated 2020-10-30 15:44:30 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
