@@ -865,7 +865,7 @@ span.image img {
 </li>
 <li><a href="#sso-protocols">SSO Protocols</a>
 <ul class="sectlevel2">
-<li><a href="#_oidc">OpenID Connect</a>
+<li><a href="#openid-connect">OpenID Connect</a>
 <ul class="sectlevel3">
 <li><a href="#_oidc-auth-flows">OIDC Auth Flows</a></li>
 <li><a href="#keycloak-server-oidc-uri-endpoints">Keycloak Server OIDC URI Endpoints</a></li>
@@ -890,7 +890,8 @@ span.image img {
 <ul class="sectlevel2">
 <li><a href="#oidc-clients">OIDC Clients</a>
 <ul class="sectlevel3">
-<li><a href="#creating-an-open-id-connect-client">Creating an Open ID Connect Client</a></li>
+<li><a href="#creating-an-openid-connect-client">Creating an OpenID Connect Client</a></li>
+<li><a href="#basic-settings">Basic Settings</a></li>
 <li><a href="#advanced-settings">Advanced Settings</a></li>
 <li><a href="#_client-credentials">Confidential Client Credentials</a></li>
 <li><a href="#_service_accounts">Using a Service Account</a></li>
@@ -1586,21 +1587,21 @@ chapter.</p>
 </div>
 <div id="proc-creating-a-realm_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/realms/create.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/create.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/realms/proc-creating-a-realm.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/realms/proc-creating-a-realm.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="creating-a-realm"><a class="anchor" href="#creating-a-realm"></a>Creating a realm</h3>
-<div class="paragraph">
-<p>You create a realm as a management space where you can create clients, which are applications or services, and create users who need those clients.</p>
+<div class="paragraph _abstract">
+<p>You create a realm to provide a management space where you can create users and give them permissions to use applications. At first login, you are typically in the <em>master</em> realm, the top-level realm from which you create other realms.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Point to the top of the left pane</p>
+<p>Point to the top of the left pane.</p>
 </li>
 <li>
 <p>Click <strong>Add Realm</strong>.</p>
@@ -1614,14 +1615,19 @@ chapter.</p>
 </li>
 <li>
 <p>Click <strong>Create</strong>.</p>
+<div class="paragraph">
+<div class="title">Create Realm</div>
+<p><span class="image"><img src="./keycloak-images/create-realm.png" alt="create realm"></span></p>
+</div>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>The current realm is now set to the realm you just created.  You can switch between managing different realms by doing a mouse over on the top left corner drop down menu.</p>
+<p>The current realm is now set to the realm you just created.  You can switch between managing different realms by pointing to the top left corner to click <strong>Select Realm</strong>.</p>
 </div>
-<div class="paragraph">
-<p>Alternatively you can import a JSON document that defines your new realm.  We&#8217;ll go over this in more detail in the <a href="#assembly-exporting-importing_server_administration_guide">Export and Import</a> chapter.</p>
+<div class="paragraph _additional-resources">
+<div class="title">Additional resources</div>
+<p>Alternatively you can import a JSON document that defines your new realm. For more detail, see the <a href="#assembly-exporting-importing_server_administration_guide">Export and Import</a> chapter.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1951,7 +1957,7 @@ This action searches only the local Keycloak database and not the federated data
 </div>
 <div class="sect2">
 <h3 id="creating-a-user"><a class="anchor" href="#creating-a-user"></a>Creating a user</h3>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>You create users in the realm where you intend to have applications needed by those users. Avoid creating users in the master realm, which is only intended for creating other realms.</p>
 </div>
 <div class="ulist">
@@ -4668,14 +4674,14 @@ provide the password and second-factor WebAuthn credential at all.</p>
 <p>The chapter gives a brief overview of the authentication protocols and how the Keycloak authentication server
 and the applications it secures interact with these protocols.</p>
 </div>
-<div class="sect2">
-<h3 id="_oidc"><a class="anchor" href="#_oidc"></a>OpenID Connect</h3>
-<div class="sidebarblock page-links">
+<div id="con-oidc_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/oidc.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/oidc.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
+<div class="sect2">
+<h3 id="openid-connect"><a class="anchor" href="#openid-connect"></a>OpenID Connect</h3>
 <div class="paragraph">
 <p><a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) is an authentication protocol that is an extension of <a href="https://tools.ietf.org/html/rfc6749">OAuth 2.0</a>.
 While OAuth 2.0 is only a framework for building authorization protocols and is mainly incomplete, OIDC is a full-fledged authentication and authorization
@@ -5074,8 +5080,7 @@ This section discusses various aspects around configuring clients and various wa
 </div>
 </div>
 <div class="paragraph _abstract">
-<p><a href="#_oidc">OpenID Connect</a> is the preferred protocol to secure applications.  It was designed from the ground up to be web friendly
-and work best with HTML5/JavaScript applications.</p>
+<p><a href="#con-oidc_server_administration_guide">OpenID Connect</a> is the recommended protocol to secure applications.  It was designed from the ground up to be web friendly and it works best with HTML5/JavaScript applications.</p>
 </div>
 <div id="proc-creating-oidc-client_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -5084,9 +5089,9 @@ and work best with HTML5/JavaScript applications.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="creating-an-open-id-connect-client"><a class="anchor" href="#creating-an-open-id-connect-client"></a>Creating an Open ID Connect Client</h4>
+<h4 id="creating-an-openid-connect-client"><a class="anchor" href="#creating-an-openid-connect-client"></a>Creating an OpenID Connect Client</h4>
 <div class="paragraph _abstract">
-<p>To use <a href="#_oidc">OpenID Connect</a>, an existing application must be secured as an Open ID connect client.</p>
+<p>To protect an application that uses the OpenID connect protocol, you create a client.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
@@ -5117,8 +5122,31 @@ tab.</p>
 <div class="title">Client Settings</div>
 <p><span class="image"><img src="./keycloak-images/client-settings-oidc.png" alt="Client Settings"></span></p>
 </div>
-<div class="paragraph">
-<p>The following list describes each setting:</p>
+</li>
+</ol>
+</div>
+<div class="ulist _additional-resources">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>For more information about fields on the <code>Settings</code> tab, see <a href="#con-basic-settings_server_administration_guide">Basic Settings</a>.</p>
+</li>
+<li>
+<p>For more information about the OIDC protocol, see <a href="#con-oidc_server_administration_guide">OpenID Connect</a>.</p>
+</li>
+</ul>
+</div>
+<div id="con-basic-settings_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/con-basic-settings.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/con-basic-settings.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="basic-settings"><a class="anchor" href="#basic-settings"></a>Basic Settings</h4>
+<div class="paragraph _abstract">
+<p>When you create an OIDC client, you see the following fields on the <code>Settings</code> tab.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -5204,9 +5232,6 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 </div>
 </dd>
 </dl>
-</div>
-</li>
-</ol>
 </div>
 <div id="con-advanced-settings_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -9097,7 +9122,7 @@ To obtain this click on <code>Show</code> under <code>App Secret</code>. Go back
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak can broker identity providers based on the OpenID Connect protocol.  These IDPs must support the <a href="#_oidc">Authorization Code Flow</a>
+<p>Keycloak can broker identity providers based on the OpenID Connect protocol.  These IDPs must support the <a href="#proc-creating-oidc-client_server_administration_guide">Authorization Code Flow</a>
 as defined by the specification in order to authenticate the user and authorize access.</p>
 </div>
 <div class="paragraph">
@@ -14803,7 +14828,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-30 15:44:30 UTC
+Last updated 2020-10-30 15:54:31 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
