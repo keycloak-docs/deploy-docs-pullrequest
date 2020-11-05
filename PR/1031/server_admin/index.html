@@ -796,15 +796,15 @@ span.image img {
 <li><a href="#enabling-terms-and-conditions">Enabling terms and conditions</a></li>
 </ul>
 </li>
-<li><a href="#impersonation">Impersonation</a></li>
+<li><a href="#user-impersonation">User Impersonation</a></li>
 <li><a href="#user-registration">User Registration</a>
 <ul class="sectlevel3">
 <li><a href="#enabling-user-registration">Enabling user registration</a></li>
 <li><a href="#registering-as-a-new-user">Registering as a new user</a></li>
 </ul>
 </li>
-<li><a href="#_recaptcha">reCAPTCHA Support</a></li>
-<li><a href="#_personal_data">Personal data collected by Keycloak</a></li>
+<li><a href="#enabling-recaptcha-support">Enabling reCAPTCHA Support</a></li>
+<li><a href="#personal-data-collected-by-keycloak">Personal data collected by Keycloak</a></li>
 </ul>
 </li>
 <li><a href="#login-page-settings">Login Page Settings</a>
@@ -1878,7 +1878,7 @@ this point.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>From the admin console, you have a wide range actions you can perform to manage users.</p>
+<p>From the admin console, you have a wide range of actions you can perform to manage users.</p>
 </div>
 <div id="proc-searching-user_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -1998,7 +1998,32 @@ This action searches only the local Keycloak database and not the federated data
 </div>
 </li>
 <li>
-<p>Click <strong>Save</strong>. After saving the details, the <strong>management page</strong> for the new user is displayed.</p>
+<p>Click <strong>Save</strong>. After saving the details, the <strong>Management</strong> page for the new user is displayed.</p>
+</li>
+<li>
+<p>Set <strong>Email Verified</strong> to <strong>ON</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Credentials</strong> tab, set the password in both fields.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Set <strong>Temporary</strong> to <strong>OFF</strong> to avoid resetting the password during the next log in.</p>
+</li>
+<li>
+<p>Click <strong>Reset Password</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Change Password</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
@@ -2058,7 +2083,7 @@ Alternatively, you can use the search bar to find a user.
 <div class="sect2">
 <h3 id="configuring-user-attributes"><a class="anchor" href="#configuring-user-attributes"></a>Configuring user attributes</h3>
 <div class="paragraph">
-<p>User attributes provide a customized experience for each user. With user attributes, you can can create a personalized identity for each user in the console.</p>
+<p>User attributes provide a customized experience for each user. You can create a personalized identity for each user in the console by configuring user attributes.</p>
 </div>
 <div class="ulist">
 <div class="title">Prerequisite</div>
@@ -2096,8 +2121,8 @@ Alternatively, you can use the search bar to find a user.
 </div>
 <div id="ref-user-credentials_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/credentials.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/credentials.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/ref-user-credentials.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/ref-user-credentials.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 </div>
@@ -2121,7 +2146,7 @@ Alternatively, you can use the search bar to find a user.
 </dd>
 <dt class="hdlist1">Type</dt>
 <dd>
-<p>This shows the type of the credential, for example <strong>password</strong> or <strong>OTP</strong>.</p>
+<p>This column displays the type of credential, for example <strong>password</strong> or <strong>OTP</strong>.</p>
 </dd>
 <dt class="hdlist1">User Label</dt>
 <dd>
@@ -2154,14 +2179,16 @@ credential.</p>
 <div class="sect3">
 <h4 id="setting-a-password-for-a-user"><a class="anchor" href="#setting-a-password-for-a-user"></a>Setting a password for a user</h4>
 <div class="paragraph _abstract">
-<p>If a user does not have a password, or if the password has been deleted, the <strong>Set Password</strong> section is displayed.
-If a user already has a password, it can be reset in the <strong>Reset Password</strong> section.</p>
+<p>If a user does not have a password, or if the password has been deleted, the <strong>Set Password</strong> section is displayed.</p>
+</div>
+<div class="paragraph">
+<p>If a user already has a password, it can be reset in the <strong>Reset Password</strong> section.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Type in a new password, in the <strong>Set Password</strong> section.</p>
+<p>Type a new password, in the <strong>Set Password</strong> section.</p>
 </li>
 <li>
 <p>Click <strong>Set Password</strong>.</p>
@@ -2192,7 +2219,7 @@ If <strong>Temporary</strong> is set to <strong>ON</strong>, the user must chang
 <p>Click <strong>Send Email</strong>. The sent email contains a link that directs the user to the <strong>Update Password</strong> window.</p>
 </li>
 <li>
-<p>Optionally, you can set the validity of the email link. This is set to the default preset in the <strong>Tokens</strong> tab in the realm setiings.</p>
+<p>Optionally, you can set the validity of the email link. This is set to the default preset in the <strong>Tokens</strong> tab, in the realm settings.</p>
 </li>
 </ol>
 </div>
@@ -2209,7 +2236,10 @@ If <strong>Temporary</strong> is set to <strong>ON</strong>, the user must chang
 <div class="sect3">
 <h4 id="creating-an-otp"><a class="anchor" href="#creating-an-otp"></a>Creating an OTP</h4>
 <div class="paragraph _abstract">
-<p>If OTP is conditional in your realm, the user must navigate to the <strong>User Account Management</strong> page to reconfigure a new OTP generator. If OTP is required, then the user must reconfigure a new OTP generator when logging in. You can use the following procedure if the user already has an OTP credential. Alternatively, you can send an email to the user that requests the user reset the OTP generator.</p>
+<p>If OTP is conditional in your realm, the user must navigate to the <strong>User Account Management</strong> page to reconfigure a new OTP generator. If OTP is required, then the user must reconfigure a new OTP generator when logging in. You can use the following procedure if the user already has an OTP credential.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can send an email to the user that requests the user reset the OTP generator.</p>
 </div>
 <div class="ulist">
 <div class="title">Prerequisite</div>
@@ -2264,7 +2294,7 @@ If <strong>Temporary</strong> is set to <strong>ON</strong>, the user must chang
 </dd>
 <dt class="hdlist1">Verify Email</dt>
 <dd>
-<p>The user must verify their email account.  An email will be sent to the user with a validation link that they must click.  Once this workflow is successfully completed, the user will be allowed to log in.</p>
+<p>The user must verify their email account. An email will be sent to the user with a validation link that they must click. Once this workflow is successfully completed, the user will be allowed to log in.</p>
 </dd>
 <dt class="hdlist1">Update Profile</dt>
 <dd>
@@ -2319,16 +2349,17 @@ If <strong>Temporary</strong> is set to <strong>ON</strong>, the user must chang
 <div class="sect3">
 <h4 id="setting-default-required-actions"><a class="anchor" href="#setting-default-required-actions"></a>Setting default required actions</h4>
 <div class="paragraph">
-<p>You can determine what actions are required before the first login for any new user created. Once the user is created, these default required actions can be modified for that user.</p>
+<p>You can specify what actions are required before the first login of any new user. The default required actions can be modified after a user is created.</p>
+</div>
+<div class="paragraph">
+<p>You can set default required actions in two ways. You
+can use the user registration link or the <strong>Required Actions</strong> tab.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Using the user registration link</div>
 <ol class="arabic">
 <li>
-<p>Click <strong>Add User</strong> to navigate to the user list page.</p>
-</li>
-<li>
-<p>Click the <a href="#assembly-user-registration_server_administration_guide">user registration</a> link on the login page.</p>
+<p>Click the <strong>User Registration</strong> link on the login page.</p>
 </li>
 <li>
 <p>Specify the default required actions.</p>
@@ -2359,7 +2390,7 @@ If <strong>Temporary</strong> is set to <strong>ON</strong>, the user must chang
 <div class="sect3">
 <h4 id="enabling-terms-and-conditions"><a class="anchor" href="#enabling-terms-and-conditions"></a>Enabling terms and conditions</h4>
 <div class="paragraph">
-<p>You can enable a required action that new users must accept the terms and conditions before logging into Keycloak for the first time.</p>
+<p>You can enable a required action that new users must accept the terms and conditions before logging in to Keycloak for the first time.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
@@ -2371,26 +2402,30 @@ If <strong>Temporary</strong> is set to <strong>ON</strong>, the user must chang
 <p>Enable the <strong>Terms and Conditions</strong> action.</p>
 </li>
 <li>
-<p>Edit the <code>terms.ftl</code> file in the <em>base</em> login theme.</p>
+<p>Edit the <code>terms.ftl</code> file in the base login theme.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
+<div class="ulist">
 <div class="title">Additional resources</div>
+<ul>
+<li>
 <p>For more information on extending and creating themes, see the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a>.</p>
+</li>
+</ul>
 </div>
-<div id="con-impersonating_server_administration_guide" class="sidebarblock page-links">
+<div id="con-user-impersonation_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/impersonation.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/impersonation.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/con-user-impersonation.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/con-user-impersonation.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="impersonation"><a class="anchor" href="#impersonation"></a>Impersonation</h3>
+<h3 id="user-impersonation"><a class="anchor" href="#user-impersonation"></a>User Impersonation</h3>
 <div class="paragraph">
-<p>It is often useful for an admin to impersonate a user.  For example, a user may be experiencing a bug in one of your applications and an admin may want to impersonate the user to see if they can duplicate the problem.  Admins with the appropriate permission can impersonate a user.</p>
+<p>An administrator with the appropriate permissions can impersonate a user. For example, if a user experiences a bug in an application, an administrator can impersonate the user to investigate or duplicate the issue.</p>
 </div>
 <div class="paragraph">
 <p>Any user with the <code>impersonation</code> role in the realm can impersonate a user.</p>
@@ -2398,21 +2433,34 @@ If <strong>Temporary</strong> is set to <strong>ON</strong>, the user must chang
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/user-details.png" alt="user details"></span></p>
 </div>
-<div class="paragraph">
-<p>When impersonating, if the admin and the user are in the same realm, then the admin will be logged out and automatically logged
-in as the user being impersonated.  If the admin and user are not in the same realm, the admin will remain logged in, but additionally be logged in as the user in that user&#8217;s realm.  In both cases, the browser will be redirected to the impersonated user&#8217;s User Account Management page.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the administrator and the user are in the same realm, then the administrator will be logged out and automatically logged in as the user being impersonated.</p>
+</li>
+<li>
+<p>If the administrator and user are not in the same realm, the administrator will remain logged in, and additionally will be logged in as the user in that user&#8217;s realm.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>There are two locations an admin can initiate impersonation.  The first is on the <code>Users</code> list tab.</p>
+<p>In both instances, the browser redirects to the impersonated user&#8217;s <strong>User Account Management</strong> page.</p>
 </div>
 <div class="paragraph">
+<p>You can access the <strong>Impersonate</strong> button from the <strong>Details</strong> tab on the <strong>Users</strong> page.</p>
+</div>
+<div class="ulist">
 <div class="title">Additional resources</div>
+<ul>
+<li>
 <p>For more information on assigning administration permissions, see the <a href="#_admin_permissions">Admin Console Access Control</a> chapter.</p>
+</li>
+</ul>
 </div>
-<div id="assembly-user-registration_server_administration_guide" class="sidebarblock page-links">
+<div id="con-user-registration_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/user-registration.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/user-registration.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/con-user-registration.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/con-user-registration.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 </div>
@@ -2466,7 +2514,11 @@ in as the user being impersonated.  If the admin and user are not in the same re
 <div class="sect3">
 <h4 id="registering-as-a-new-user"><a class="anchor" href="#registering-as-a-new-user"></a>Registering as a new user</h4>
 <div class="paragraph _abstract">
-<p>As a new user, you must complete a registration form to log in for the first time. You add profile information and a password to register.</p>
+<p>As a new user, you must complete a registration form to log in for the first time. You must add profile information and a password to register.</p>
+</div>
+<div class="paragraph">
+<div class="title">Registration Form</div>
+<p><span class="image"><img src="./keycloak-images/registration-form.png" alt="registration form"></span></p>
 </div>
 <div class="ulist">
 <div class="title">Prerequisite</div>
@@ -2481,10 +2533,6 @@ in as the user being impersonated.  If the admin and user are not in the same re
 <ol class="arabic">
 <li>
 <p>Click the <strong>Register</strong> link on the login page. You are directed to the registration page.</p>
-<div class="paragraph">
-<div class="title">Registration Form</div>
-<p><span class="image"><img src="./keycloak-images/registration-form.png" alt="registration form"></span></p>
-</div>
 </li>
 <li>
 <p>Enter the user profile information.</p>
@@ -2505,94 +2553,150 @@ in as the user being impersonated.  If the admin and user are not in the same re
 </li>
 </ul>
 </div>
+<div id="proc-enabling-recaptcha-support_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-enabling-recaptcha-support.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-enabling-recaptcha-support.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_recaptcha"><a class="anchor" href="#_recaptcha"></a>reCAPTCHA Support</h3>
-<div class="sidebarblock page-links">
+<h3 id="enabling-recaptcha-support"><a class="anchor" href="#enabling-recaptcha-support"></a>Enabling reCAPTCHA Support</h3>
+<div class="paragraph _abstract">
+<p>To safeguard registration against bots, Keycloak has integration with Google reCAPTCHA.</p>
+</div>
+<div class="paragraph">
+<p>Once reCAPTCHA is enabled, you can edit <code>register.ftl</code> in your login theme to configure the placement and styling of the reCAPTCHA button on the registration page.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Navigate to the <a href="https://developers.google.com/recaptcha/">Google Recaptcha website</a>.</p>
+</li>
+<li>
+<p>Create an API key to get your reCAPTCHA site key and secret. Note the reCAPTCHA site key and secret for future use in this procedure.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The localhost works by default. You do not have to specify a domain.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Navigate to the Keycloak admin console.</p>
+</li>
+<li>
+<p>Click <strong>Authentication</strong> in the left menu.</p>
+</li>
+<li>
+<p>Click the <strong>Flows</strong> tab.</p>
+</li>
+<li>
+<p>Select <strong>Registration</strong> from the drop down menu.</p>
+</li>
+<li>
+<p>Set the <strong>reCAPTCHA</strong> requirement to <strong>Required</strong> by clicking the appropriate radio button. This enables
+reCAPTCHA.</p>
+</li>
+<li>
+<p>Click <strong>Actions</strong> to the right of the reCAPTCHA flow entry.</p>
+</li>
+<li>
+<p>Click the <strong>Config</strong> link to redirect to the config page.</p>
+</li>
+<li>
+<p>Enter the reCAPTCHA site key generated from the Google reCAPTCHA website, on the config page.</p>
+</li>
+<li>
+<p>Enter the secret generated from the Google reCAPTCHA website, on the config page.</p>
+</li>
+<li>
+<p>Authorize Google to use the registration page as an iframe.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Keycloak prevents websites from including a login page dialog in an iframe. This restriction is to prevent clickjacking attacks. You need to change the default HTTP response headers that is set in Keycloak.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click <strong>Realm Settings</strong> in the left menu.</p>
+</li>
+<li>
+<p>Click the <strong>Security Defenses</strong> tab.</p>
+</li>
+<li>
+<p>Enter <code><a href="https://www.google.com" class="bare">https://www.google.com</a></code> in the field for the <strong>X-Frame-Options</strong> header.</p>
+</li>
+<li>
+<p>Enter <code><a href="https://www.google.com" class="bare">https://www.google.com</a></code> in the field for the <strong>Content-Security-Policy</strong> header.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="ulist _additional-resources">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>For more information on extending and creating themes, see the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a>.</p>
+</li>
+</ul>
+</div>
+<div id="ref-personal-data-collected_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/recaptcha.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/recaptcha.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/ref-personal-data-collected.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/ref-personal-data-collected.adoc" target="_blank">Report an issue</a>
 </div>
-</div>
-<div class="paragraph">
-<p>To safeguard registration against bots, Keycloak has integration with Google reCAPTCHA.
-To enable this you need to first go to <a href="https://developers.google.com/recaptcha/">Google Recaptcha Website</a>
-and create an API key so that you can get your reCAPTCHA site key and secret.
-(FYI, localhost works by default so you don&#8217;t have to specify a domain).</p>
-</div>
-<div class="paragraph">
-<p>Next, there are a few steps you need to perform in the Keycloak admin console.
-Click the <code>Authentication</code> left menu item and go to the <code>Flows</code> tab.  Select the <code>Registration</code> flow from the drop down
-list on this page.</p>
-</div>
-<div class="paragraph">
-<div class="title">Registration Flow</div>
-<p><span class="image"><img src="./keycloak-images/registration-flow.png" alt="registration flow"></span></p>
-</div>
-<div class="paragraph">
-<p>Set the <code>reCAPTCHA</code> requirement to <code>Required</code> by clicking the appropriate radio button.  This will enable
-reCAPTCHA on the screen.  Next, you have to enter in the reCAPTCHA site key and secret that you generated at the Google reCAPTCHA Website.
-Click on the 'Actions' button that is to the right of the reCAPTCHA flow entry, then "Config" link, and enter in the reCAPTCHA site key and secret on this config page.</p>
-</div>
-<div class="paragraph">
-<div class="title">Recaptcha Config Page</div>
-<p><span class="image"><img src="./keycloak-images/recaptcha-config.png" alt="recaptcha config"></span></p>
-</div>
-<div class="paragraph">
-<p>The final step you have to do is to change some default HTTP response headers that Keycloak sets.  Keycloak
-will prevent a website from including any login page within an iframe.  This is to prevent clickjacking attacks.  You need to
-authorize Google to use the registration page within an iframe.  Go to
-the <code>Realm Settings</code> left menu item and then go to the <code>Security Defenses</code> tab.  You will need to add <code>https://www.google.com</code> to the
-values of both the <code>X-Frame-Options</code> and <code>Content-Security-Policy</code> headers.</p>
-</div>
-<div class="paragraph">
-<div class="title">Authorizing Iframes</div>
-<p><span class="image"><img src="./keycloak-images/security-headers.png" alt="security headers"></span></p>
-</div>
-<div class="paragraph">
-<p>Once you do this, reCAPTCHA should show up on your registration page.  You may want to edit <em>register.ftl</em> in your login
-theme to experiment with the placement and styling of the reCAPTCHA button.  See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a>
-for more information on extending and creating themes.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_personal_data"><a class="anchor" href="#_personal_data"></a>Personal data collected by Keycloak</h3>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/personal_data.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/personal_data.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
+<h3 id="personal-data-collected-by-keycloak"><a class="anchor" href="#personal-data-collected-by-keycloak"></a>Personal data collected by Keycloak</h3>
 <div class="paragraph">
-<p>By default, Keycloak collects the following:</p>
+<p>By default, Keycloak collects the following data:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Basic user profile, such as email, firstname, and lastname</p>
+<p>Basic user profile data, such as the user email, first name, and last name.</p>
 </li>
 <li>
-<p>Basic user profile used for social accounts and references to the social account when using a social login</p>
+<p>Basic user profile data used for social accounts and references to the social account when using a social login.</p>
 </li>
 <li>
-<p>Device information collected for audit and security purposes, such as the IP address, operating system name, and browser name</p>
+<p>Device information collected for audit and security purposes, such as the IP address, operating system name, and the browser name.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The information collected in Keycloak is highly customizable.  Be aware of the following guidelines when making customizations:</p>
+<p>The information collected in Keycloak is highly customizable. The following guidelines apply when making customizations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Registration and account forms could contain custom fields, such as birthday, gender, and nationality.  An administrator could configure Keycloak to retrieve that data from a social provider or a user storage provider such as LDAP.</p>
+<p>Registration and account forms can contain custom fields, such as birthday, gender, and nationality.  An administrator can configure Keycloak to retrieve data from a social provider or a user storage provider such as LDAP.</p>
 </li>
 <li>
-<p>Keycloak collects user credentials, such as password, OTP codes, and WebAuthn public keys. This information is encrypted and saved in a database, so it is not visible to Keycloak administrators. However, each type of credential can include non-confidential metadata that is visible to administrators such as the algorithm that is used to hash the password and the number of hash iterations used to hash the password.</p>
+<p>Keycloak collects user credentials, such as password, OTP codes, and WebAuthn public keys. This information is encrypted and saved in a database, so it is not visible to Keycloak administrators. Each type of credential can include non-confidential metadata that is visible to administrators such as the algorithm that is used to hash the password and the number of hash iterations used to hash the password.</p>
 </li>
 <li>
-<p>With authorization services and UMA support enabled, Keycloak can hold information about some objects for which a particular user is the owner. For example, Keycloak can track that the user <strong>john</strong> is the owner of a photoalbum <strong>album with animals</strong> and a few photos called <strong>lion picture</strong> and <strong>cow picture</strong> in this album.</p>
+<p>With authorization services and UMA support enabled, Keycloak can hold information about some objects for which a particular user is the owner.</p>
 </li>
 </ul>
 </div>
@@ -14920,7 +15024,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-30 21:59:30 UTC
+Last updated 2020-11-05 17:32:10 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
