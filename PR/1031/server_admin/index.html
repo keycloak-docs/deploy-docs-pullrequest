@@ -934,7 +934,6 @@ span.image img {
 <li><a href="#roles">Roles</a>
 <ul class="sectlevel2">
 <li><a href="#realm-roles">Realm Roles</a></li>
-<li><a href="#client-roles">Client Roles</a></li>
 <li><a href="#_composite-roles">Composite Roles</a></li>
 <li><a href="#user-role-mappings">User Role Mappings</a>
 <ul class="sectlevel3">
@@ -6945,12 +6944,10 @@ add audiences for clients that have at least one client role. This is described 
 </div>
 </div>
 <div class="paragraph">
-<p>Roles identify a type or category of user.  <code>Admin</code>, <code>user</code>, <code>manager</code>, and <code>employee</code> are all typical roles that may exist
-in an organization.
-Applications often assign access and permissions to specific roles rather than individual users as dealing
-with users can be too fine grained and hard to manage.  For example, the Admin Console has specific roles which give permission to users
-to access parts of the Admin Console UI and perform certain actions.  There is a global namespace for roles and each client also has its own
-dedicated namespace where roles can be defined.</p>
+<p>A role typically applies to one type of user. Typical roles in an organization include <code>Admin</code>, <code>user</code>, <code>manager</code>, and <code>employee</code>. An application can assign access and permissions to a role and then assign multiple users to that role so the users share the same access and permissions. For example, the Admin Console has roles that give permission to users to access parts of the Admin Console.</p>
+</div>
+<div class="paragraph">
+<p>There is a global namespace for roles and each client also has its own dedicated namespace where roles can be defined.</p>
 </div>
 <div class="sect2">
 <h3 id="realm-roles"><a class="anchor" href="#realm-roles"></a>Realm Roles</h3>
@@ -6961,26 +6958,39 @@ dedicated namespace where roles can be defined.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Realm-level roles are a global namespace to define your roles. You can see the list of built-in and created roles by clicking the <code>Roles</code> left menu item.</p>
+<p>Realm-level roles are a namespace for defining your roles. To see the list of roles, click <code>Roles</code> in the left menu.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/roles.png" alt="roles"></span></p>
 </div>
 <div class="paragraph">
-<p>To create a role, click <strong>Add Role</strong> on this page, enter in the name and description of the role, and click <strong>Save</strong>.</p>
+<p>To create a role:</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click <strong>Add Role</strong>.</p>
+</li>
+<li>
+<p>Enter a <code>Role Name</code>.</p>
+</li>
+<li>
+<p>Enter a <code>Description</code>.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <div class="title">Add Role</div>
 <p><span class="image"><img src="./keycloak-images/role.png" alt="role"></span></p>
 </div>
 <div class="paragraph">
-<p>The value for the <code>description</code> field is localizable by specifying a substitution variable with <code>${var-name}</code> strings. The localized
-value is then configured within property files in your theme. See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more information
-on localization.</p>
+<p>The <code>description</code> field can be localizable by specifying a substitution variable with <code>${var-name}</code> strings. The localized value is configured to your theme within the themes property files. See the v<a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more details.
+=== Client Roles</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="client-roles"><a class="anchor" href="#client-roles"></a>Client Roles</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/client-roles.adoc" target="_blank">Edit this section</a>
@@ -6988,7 +6998,7 @@ on localization.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Client roles are basically a namespace dedicated to a client. Each client gets its own namespace. Client roles are managed under the <code>Roles</code> tab under each individual client. You interact with this UI the same way you do for realm-level roles.</p>
+<p>Client roles are namespaces dedicated to clients. Each client gets its own namespace. Client roles are managed under the <code>Roles</code> tab for each client. You interact with this UI the same way you do for realm-level roles.</p>
 </div>
 </div>
 <div class="sect2">
@@ -7000,23 +7010,33 @@ on localization.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Any realm or client level role can be turned into a <em>composite role</em>.
-A <em>composite role</em> is a role that has one or more additional roles associated with it.
-When a composite role is mapped to the user, the user also gains the roles associated with that composite.  This inheritance
-is recursive so any composite of composites also gets inherited.</p>
+<p>Any realm or client level role can be a <em>composite role</em>. A <em>composite role</em> is a role that has one or more additional roles associated with it. When a composite role is mapped to a user, the user also gains the roles associated with that composite.  This inheritance is recursive so users also inherit any composite of composites. However, we recommend that composite roles are not overused.</p>
 </div>
 <div class="paragraph">
-<p>To turn a regular role into a composite role, go to the role detail page and flip the <code>Composite Role</code> switch on.</p>
+<p>To convert a role to a composite role:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click <code>Roles</code> in the left menu.</p>
+</li>
+<li>
+<p>Click the role to access the roles detail page.</p>
+</li>
+<li>
+<p>Set <code>Composite Roles</code> to ON.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <div class="title">Composite Role</div>
 <p><span class="image"><img src="./keycloak-images/composite-role.png" alt="composite role"></span></p>
 </div>
 <div class="paragraph">
-<p>Once you flip this switch the role selection UI will be displayed lower on the page and you&#8217;ll be able to associate
-realm level and client level roles to the composite you are creating.  In this example, the <code>employee</code> realm-level
-role was associated with the <code>developer</code> composite role.  Any user with the <code>developer</code> role will now also inherit
-the <code>employee</code> role too.</p>
+<p>The role selection UI is displayed on the page and you can associate realm level and client level roles to the composite role you are creating.</p>
+</div>
+<div class="paragraph">
+<p>In this example, the <code>employee</code> realm-level role is associated with the <code>developer</code> composite role.  Any user with the <code>developer</code> role also inherits the <code>employee</code> role.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -7025,8 +7045,9 @@ the <code>employee</code> role too.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When tokens and SAML assertions are created, any composite will also have its associated roles added to the claims and
-      assertions of the authentication response sent back to the client.
+<div class="paragraph">
+<p>When creating tokens and SAML assertions, any composite also has its associated roles added to the claims and assertions of the authentication response sent back to the client.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -7041,23 +7062,41 @@ When tokens and SAML assertions are created, any composite will also have its as
 </div>
 </div>
 <div class="paragraph">
-<p>User role mappings can be assigned individually to each user through the <code>Role Mappings</code> tab for that single user.</p>
+<p>You can assign User role mappings to a user through the <code>Role Mappings</code> tab for that user.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click <code>Users</code> in the left menu.</p>
+</li>
+<li>
+<p>Click the user that you want to perform a role mapping on. If the user is not displayed, click <code>View all users</code>.</p>
+</li>
+<li>
+<p>Click the <code>Role Mappings</code> tab.</p>
+</li>
+<li>
+<p>Click the role you want to assign to the user in the <code>Available Roles</code> box.</p>
+</li>
+<li>
+<p>Click <code>Add selected</code>.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <div class="title">Role Mappings</div>
 <p><span class="image"><img src="./keycloak-images/user-role-mappings.png" alt="user role mappings"></span></p>
 </div>
 <div class="paragraph">
-<p>In the above example, we are about to assign the composite role <code>developer</code> that was created in the <a href="#_composite-roles">Composite Roles</a>
-chapter.</p>
+<p>In the above example, we are assigning the composite role <code>developer</code> that was created in the <a href="#_composite-roles">Composite Roles</a> chapter to a user.</p>
 </div>
 <div class="paragraph">
 <div class="title">Effective Role Mappings</div>
 <p><span class="image"><img src="./keycloak-images/effective-role-mappings.png" alt="effective role mappings"></span></p>
 </div>
 <div class="paragraph">
-<p>Once the <code>developer</code> role is assigned, you see that the <code>employee</code> role that is associated with the <code>developer</code> composite shows up in the <code>Effective Roles</code>.
-<code>Effective Roles</code> are all roles that are explicitly assigned to the user as well as any roles that are inherited from composites.</p>
+<p>When the <code>developer</code> role is assigned, the <code>employee</code> role associated with the <code>developer</code> composite is displayed in the <code>Effective Roles</code> box. <code>Effective Roles</code> are the roles explicitly assigned to users and roles that are inherited from composites.</p>
 </div>
 <div class="sect3">
 <h4 id="_default_roles"><a class="anchor" href="#_default_roles"></a>Default Roles</h4>
@@ -7077,7 +7116,7 @@ To specify default roles go to the <code>Roles</code> left menu item, and click 
 <p><span class="image"><img src="./keycloak-images/default-roles.png" alt="default roles"></span></p>
 </div>
 <div class="paragraph">
-<p>As you can see from the screenshot, there are already a number of <em>default roles</em> set up by default.</p>
+<p>This screenshot shows that some <em>default roles</em> already exist.</p>
 </div>
 </div>
 </div>
@@ -7090,29 +7129,20 @@ To specify default roles go to the <code>Roles</code> left menu item, and click 
 </div>
 </div>
 <div class="paragraph">
-<p>When an OIDC access token or SAML assertion is created, all the user role mappings of the user are, by default, added as claims
-within the token or assertion.  Applications use this information to make access decisions on the resources controlled by that
-application.  In Keycloak, access tokens are digitally signed and can actually be re-used by the application
-to invoke on other remotely secured REST services.  This means that if an application gets compromised or there is a rogue
-client registered with the realm, attackers can get access tokens that have a broad range of permissions and your whole
-network is compromised.  This is where <em>role scope mappings</em> becomes important.</p>
+<p>On creation of an OIDC access token or SAML assertion, the user role mappings become claims within the token or assertion.  Applications use these claims to make access decisions on the resources controlled by the application.  Keycloak digitally signs access tokens and applications re-use them to invoke remotely secured REST services.  However, these tokens have an associated risk. An attacker can obtain these tokens and use their permissions to compromise your networks. To prevent this situation, use <em>Role Scope Mappings</em>.</p>
 </div>
 <div class="paragraph">
-<p><em>Role Scope Mappings</em> is a way to limit the roles that get declared inside an access token.  When a client requests that a user
-be authenticated, the access token they receive back will only contain the role mappings you&#8217;ve explicitly specified
-for the client&#8217;s scope.  This allows you to limit the permissions each individual access token has rather than giving the
-client access to all of the user&#8217;s permissions.  By default, each client gets all the role mappings of the user.
-You can view this in the <code>Scope</code> tab of each client.</p>
+<p><em>Role Scope Mappings</em> limit the roles declared inside an access token.  When a client requests a user authentication, the access token they receive contains only the role mappings that are explicitly specified for the client&#8217;s scope.  The result is that you limit the permissions of each individual access token instead of giving the client access to all the users permissions.</p>
+</div>
+<div class="paragraph">
+<p>By default, each client gets all the role mappings of the user. You can view the role mappings in the <code>Scope</code> tab of each client.</p>
 </div>
 <div class="paragraph">
 <div class="title">Full Scope</div>
 <p><span class="image"><img src="./keycloak-images/full-client-scope.png" alt="full client scope"></span></p>
 </div>
 <div class="paragraph">
-<p>You can see from the picture that the effective roles of the scope are every declared role in the realm.
-To change this default behavior, you must explicitly turn off the <code>Full Scope Allowed</code> switch and declare the specific roles you want in each individual
-client.  Alternatively, you can also use <a href="#_client_scopes">client scopes</a>
-to define the same role scope mappings for a whole set of clients.</p>
+<p>By default, the effective roles of scopes are every declared role in the realm. To change this default behavior, set the <code>Full Scope Allowed</code> switch to ON and declare the specific roles you want in each client.  You can also use <a href="#_client_scopes">client scopes</a> to define the same role scope mappings for a set of clients.</p>
 </div>
 <div class="paragraph">
 <div class="title">Partial Scope</div>
@@ -7131,44 +7161,94 @@ to define the same role scope mappings for a whole set of clients.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Groups in Keycloak allow you to manage a common set of attributes and role mappings for a set of users.
-Users can be members of zero or more groups.
-Users inherit the attributes and role mappings assigned to each group.  To manage groups go to the <code>Groups</code> left menu
-item.</p>
+<p>Groups in Keycloak manage a common set of attributes and role mappings for each user. Users can be members of any number of groups and inherit the attributes and role mappings assigned to each group.</p>
+</div>
+<div class="paragraph">
+<p>To manage groups, click <code>Groups</code> in the left menu.</p>
 </div>
 <div class="paragraph">
 <div class="title">Groups</div>
 <p><span class="image"><img src="./keycloak-images/groups.png" alt="groups"></span></p>
 </div>
 <div class="paragraph">
-<p>Groups are hierarchical.
-A group can have many subgroups, but a group can only have one parent.
-Subgroups inherit the attributes and role mappings from the parent.
-This applies to the user as well.
-So, if you have a parent group and a child group and a user that only belongs to the child group, the user inherits the attributes and role mappings of both the parent and child.
-In this example, we have a top level <code>Sales</code> group and a child <code>North America</code> subgroup.  To add a group, click on the
-parent you want to add a new child to and click <code>New</code> button.  Select the <code>Groups</code> icon in the tree to make a top-level group.
-Entering in a group name in the <code>Create Group</code> screen and hitting <code>Save</code> will bring you to the individual group management page.</p>
+<p>Groups are hierarchical. A group can have multiple subgroups but a group can have only one parent. Subgroups inherit the attributes and role mappings from their parent. Users inherit the attributes and role mappings from their parent as well.</p>
 </div>
+<div class="paragraph">
+<p>If you have a parent group and a child group, and a user that belongs only to the child group, the user in the child group inherits the attributes and role mappings of both the parent group and the child group.</p>
+</div>
+<div class="paragraph">
+<p>The following example includes a top-level <code>Sales</code> group and a child <code>North America</code> subgroup.</p>
+</div>
+<div class="paragraph">
+<p>To add a group:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click the group.</p>
+</li>
+<li>
+<p>Click <code>New</code>.</p>
+</li>
+<li>
+<p>Select the <code>Groups</code> icon in the tree to make a top-level group.</p>
+</li>
+<li>
+<p>Enter a group name in the <code>Create Group</code> screen.</p>
+</li>
+<li>
+<p>Click <code>Save</code>. The group management page displays.</p>
 <div class="paragraph">
 <div class="title">Group</div>
 <p><span class="image"><img src="./keycloak-images/group.png" alt="group"></span></p>
 </div>
-<div class="paragraph">
-<p>The <code>Attributes</code> and <code>Role Mappings</code> tab work exactly as the tabs with similar names under a user.  Any attributes and role mappings
-you define will be inherited by the groups and users that are members of this group.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>To add a user to a group you need to go all the way back to the user detail page and click on the <code>Groups</code> tab there.</p>
+<p>Attributes and role mappings you define are inherited by the groups and users that are members of the group.</p>
 </div>
+<div class="paragraph">
+<p>To add a user to a group:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click <code>Users</code> in the left menu.</p>
+</li>
+<li>
+<p>Click the user that you want to perform a role mapping on. If the user is not displayed, click <code>View all users</code>.</p>
+</li>
+<li>
+<p>Click <code>Groups</code>.</p>
 <div class="paragraph">
 <div class="title">User Groups</div>
 <p><span class="image"><img src="./keycloak-images/user-groups.png" alt="user groups"></span></p>
 </div>
+</li>
+<li>
+<p>Select a group from the <code>Available Groups</code> tree.</p>
+</li>
+<li>
+<p>Click <code>Join</code>.</p>
+</li>
+</ol>
+</div>
 <div class="paragraph">
-<p>Select a group from the <code>Available Groups</code> tree and hit the <code>join</code> button to add the user to a group.  Vice versa to remove a group.
-Here we&#8217;ve added the user <em>Jim</em> to the <em>North America</em> sales group.  If you go back to the detail page for that group and
-select the <code>Membership</code> tab, <em>Jim</em> is now displayed there.</p>
+<p>To remove a group from a user:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select the group from the <code>Group Membership</code> tree.</p>
+</li>
+<li>
+<p>Click <code>Leave</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In this example, the user <em>jimlincoln</em> is in the <em>North America</em> group.  You can see <em>jimlincoln</em> displayed under the <code>Members</code> tab for the group.</p>
 </div>
 <div class="paragraph">
 <div class="title">Group Membership</div>
@@ -7183,16 +7263,16 @@ select the <code>Membership</code> tab, <em>Jim</em> is now displayed there.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In the IT world the concepts of Group and Role are often blurred and interchangeable.
-In Keycloak, Groups are just a collection of users that you can apply roles and attributes to in one place.
-Roles define a type of user and applications assign permission and access control to roles.</p>
+<p>Groups and roles have some similarities and differences. In Keycloak, groups are a collection of users to apply roles and attributes. Roles define types of users and applications assign permissions and access control to roles.</p>
 </div>
 <div class="paragraph">
-<p>Aren&#8217;t <a href="#_composite-roles">Composite Roles</a> also similar to Groups?
-Logically they provide the same exact functionality, but the difference is conceptual.
-Composite roles should be used to apply the permission model to your set of services and applications.
-Groups should focus on collections of users and their roles in your organization.
-Use groups to manage users.  Use composite roles to manage applications and services.</p>
+<p><a href="#_composite-roles">Composite Roles</a> are similar to Groups as they provide the same functionality. The difference between them is conceptual.</p>
+</div>
+<div class="paragraph">
+<p>Composite roles apply the permission model to a set of services and applications. Use composite roles to manage applications and services.</p>
+</div>
+<div class="paragraph">
+<p>Groups focus on collections of users and their roles in an organization. Use groups to manage users.</p>
 </div>
 </div>
 <div class="sect2">
@@ -7204,9 +7284,20 @@ Use groups to manage users.  Use composite roles to manage applications and serv
 </div>
 </div>
 <div class="paragraph">
-<p>Default groups allow you to automatically assign group membership whenever any new user is created or imported through
-<a href="#_identity_broker">Identity Brokering</a>.
-To specify default groups go to the <code>Groups</code> left menu item, and click the <code>Default Groups</code> tab.</p>
+<p>To automatically assign group membership to new users, that are created or imported through <a href="#_identity_broker">Identity Brokering</a>, you use default groups.</p>
+</div>
+<div class="paragraph">
+<p>To specify default groups:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click <code>Groups</code> in the left menu.</p>
+</li>
+<li>
+<p>Click the <code>Default Groups</code> tab.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <div class="title">Default Groups</div>
@@ -15024,7 +15115,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-05 17:32:10 UTC
+Last updated 2020-11-10 18:12:05 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
