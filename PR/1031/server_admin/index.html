@@ -931,9 +931,10 @@ span.image img {
 </li>
 </ul>
 </li>
-<li><a href="#roles">Roles</a>
+<li><a href="#roles-and-groups">Roles and Groups</a>
 <ul class="sectlevel2">
 <li><a href="#realm-roles">Realm Roles</a></li>
+<li><a href="#client-roles">Client Roles</a></li>
 <li><a href="#_composite-roles">Composite Roles</a></li>
 <li><a href="#user-role-mappings">User Role Mappings</a>
 <ul class="sectlevel3">
@@ -941,12 +942,12 @@ span.image img {
 </ul>
 </li>
 <li><a href="#_role_scope_mappings">Role Scope Mappings</a></li>
-</ul>
-</li>
 <li><a href="#groups">Groups</a>
-<ul class="sectlevel2">
+<ul class="sectlevel3">
 <li><a href="#groups-vs-roles">Groups vs. Roles</a></li>
 <li><a href="#default-groups">Default Groups</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_admin_permissions">Admin Console Access Control and Permissions</a>
@@ -6909,7 +6910,7 @@ add audiences for clients that have at least one client role. This is described 
 </div>
 </div>
 <div class="sect1">
-<h2 id="roles"><a class="anchor" href="#roles"></a>Roles</h2>
+<h2 id="roles-and-groups"><a class="anchor" href="#roles-and-groups"></a>Roles and Groups</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -6923,15 +6924,15 @@ add audiences for clients that have at least one client role. This is described 
 <div class="paragraph">
 <p>There is a global namespace for roles and each client also has its own dedicated namespace where roles can be defined.</p>
 </div>
+<div id="proc-creating-realm-roles_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/proc-creating-realm-roles.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/proc-creating-realm-roles.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 <div class="sect2">
 <h3 id="realm-roles"><a class="anchor" href="#realm-roles"></a>Realm Roles</h3>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/realm-roles.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/realm-roles.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>Realm-level roles are a namespace for defining your roles. To see the list of roles, click <code>Roles</code> in the left menu.</p>
 </div>
 <div class="paragraph">
@@ -6962,28 +6963,30 @@ add audiences for clients that have at least one client role. This is described 
 <p><span class="image"><img src="./keycloak-images/role.png" alt="role"></span></p>
 </div>
 <div class="paragraph">
-<p>The <code>description</code> field can be localizable by specifying a substitution variable with <code>${var-name}</code> strings. The localized value is configured to your theme within the themes property files. See the v<a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more details.
-=== Client Roles</p>
+<p>The <code>description</code> field can be localizable by specifying a substitution variable with <code>${var-name}</code> strings. The localized value is configured to your theme within the themes property files. See the v<a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more details.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-client-roles_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/client-roles.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/client-roles.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/con-client-roles.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/con-client-roles.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
+</div>
+<div class="sect2">
+<h3 id="client-roles"><a class="anchor" href="#client-roles"></a>Client Roles</h3>
+<div class="paragraph _abstract">
 <p>Client roles are namespaces dedicated to clients. Each client gets its own namespace. Client roles are managed under the <code>Roles</code> tab for each client. You interact with this UI the same way you do for realm-level roles.</p>
+</div>
+<div id="proc-converting-composite-roles_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/proc-converting-composite-roles.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/proc-converting-composite-roles.adoc" target="_blank">Report an issue</a>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_composite-roles"><a class="anchor" href="#_composite-roles"></a>Composite Roles</h3>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/composite.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/composite.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>Any realm or client level role can be a <em>composite role</em>. A <em>composite role</em> is a role that has one or more additional roles associated with it. When a composite role is mapped to a user, the user also gains the roles associated with that composite.  This inheritance is recursive so users also inherit any composite of composites. However, we recommend that composite roles are not overused.</p>
 </div>
 <div class="paragraph">
@@ -7026,16 +7029,16 @@ add audiences for clients that have at least one client role. This is described 
 </tr>
 </table>
 </div>
+<div id="proc-assigning-role-mappings_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/proc-assigning-role-mappings.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/proc-assigning-role-mappings.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="user-role-mappings"><a class="anchor" href="#user-role-mappings"></a>User Role Mappings</h3>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/user-role-mappings.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/user-role-mappings.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>You can assign User role mappings to a user through the <code>Role Mappings</code> tab for that user.</p>
 </div>
 <div class="olist arabic">
@@ -7072,15 +7075,15 @@ add audiences for clients that have at least one client role. This is described 
 <div class="paragraph">
 <p>When the <code>developer</code> role is assigned, the <code>employee</code> role associated with the <code>developer</code> composite is displayed in the <code>Effective Roles</code> box. <code>Effective Roles</code> are the roles explicitly assigned to users and roles that are inherited from composites.</p>
 </div>
+<div id="con-default-roles_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/con-default-roles.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/con-default-roles.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 <div class="sect3">
 <h4 id="_default_roles"><a class="anchor" href="#_default_roles"></a>Default Roles</h4>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/user-role-mappings/default-roles.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/user-role-mappings/default-roles.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>Default roles allow you to automatically assign user role mappings when any user is newly created or imported through
 <a href="#_identity_broker">Identity Brokering</a>.
 To specify default roles go to the <code>Roles</code> left menu item, and click the <code>Default Roles</code> tab.</p>
@@ -7092,17 +7095,17 @@ To specify default roles go to the <code>Roles</code> left menu item, and click 
 <div class="paragraph">
 <p>This screenshot shows that some <em>default roles</em> already exist.</p>
 </div>
+<div id="con-role-scope-mappings_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/con-role-scope-mappings.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/con-role-scope-mappings.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_role_scope_mappings"><a class="anchor" href="#_role_scope_mappings"></a>Role Scope Mappings</h3>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/role-scope-mappings.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/role-scope-mappings.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="paragraph">
+<div class="paragraph _abstract">
 <p>On creation of an OIDC access token or SAML assertion, the user role mappings become claims within the token or assertion.  Applications use these claims to make access decisions on the resources controlled by the application.  Keycloak digitally signs access tokens and applications re-use them to invoke remotely secured REST services.  However, these tokens have an associated risk. An attacker can obtain these tokens and use their permissions to compromise your networks. To prevent this situation, use <em>Role Scope Mappings</em>.</p>
 </div>
 <div class="paragraph">
@@ -7122,19 +7125,16 @@ To specify default roles go to the <code>Roles</code> left menu item, and click 
 <div class="title">Partial Scope</div>
 <p><span class="image"><img src="./keycloak-images/client-scope.png" alt="client scope"></span></p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="groups"><a class="anchor" href="#groups"></a>Groups</h2>
-<div class="sectionbody">
-<div class="sidebarblock page-links">
+<div id="proc-managing-groups_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/groups.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/groups.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/proc-managing-groups.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/proc-managing-groups.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
+</div>
+<div class="sect2">
+<h3 id="groups"><a class="anchor" href="#groups"></a>Groups</h3>
+<div class="paragraph _abstract">
 <p>Groups in Keycloak manage a common set of attributes and role mappings for each user. Users can be members of any number of groups and inherit the attributes and role mappings assigned to each group.</p>
 </div>
 <div class="paragraph">
@@ -7228,15 +7228,15 @@ To specify default roles go to the <code>Roles</code> left menu item, and click 
 <div class="title">Group Membership</div>
 <p><span class="image"><img src="./keycloak-images/group-membership.png" alt="group membership"></span></p>
 </div>
-<div class="sect2">
-<h3 id="groups-vs-roles"><a class="anchor" href="#groups-vs-roles"></a>Groups vs. Roles</h3>
-<div class="sidebarblock page-links">
+<div id="con-comparing-groups-roles_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/groups/groups-vs-roles.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/groups/groups-vs-roles.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/con-comparing-groups-roles.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/con-comparing-groups-roles.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
+<div class="sect3">
+<h4 id="groups-vs-roles"><a class="anchor" href="#groups-vs-roles"></a>Groups vs. Roles</h4>
+<div class="paragraph _abstract">
 <p>Groups and roles have some similarities and differences. In Keycloak, groups are a collection of users to apply roles and attributes. Roles define types of users and applications assign permissions and access control to roles.</p>
 </div>
 <div class="paragraph">
@@ -7248,16 +7248,16 @@ To specify default roles go to the <code>Roles</code> left menu item, and click 
 <div class="paragraph">
 <p>Groups focus on collections of users and their roles in an organization. Use groups to manage users.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="default-groups"><a class="anchor" href="#default-groups"></a>Default Groups</h3>
-<div class="sidebarblock page-links">
+<div id="proc-specifying-default-groups_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/groups/default-groups.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/groups/default-groups.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles/proc-specifying-default-groups.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles/proc-specifying-default-groups.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
+</div>
+<div class="sect3">
+<h4 id="default-groups"><a class="anchor" href="#default-groups"></a>Default Groups</h4>
+<div class="paragraph _abstract">
 <p>To automatically assign group membership to new users, that are created or imported through <a href="#_identity_broker">Identity Brokering</a>, you use default groups.</p>
 </div>
 <div class="paragraph">
@@ -7276,6 +7276,7 @@ To specify default roles go to the <code>Roles</code> left menu item, and click 
 <div class="paragraph">
 <div class="title">Default Groups</div>
 <p><span class="image"><img src="./keycloak-images/default-groups.png" alt="default groups"></span></p>
+</div>
 </div>
 </div>
 </div>
@@ -15089,7 +15090,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-11 16:01:35 UTC
+Last updated 2020-11-11 16:22:15 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
