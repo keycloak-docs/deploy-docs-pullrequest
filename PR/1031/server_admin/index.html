@@ -5264,7 +5264,7 @@ This section discusses various aspects around configuring clients and various wa
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Click <strong>Clients</strong> in the left navigation pane.</p>
+<p>Click <strong>Clients</strong> in the menu.</p>
 </li>
 <li>
 <p>Click <strong>Create</strong> to go to the <strong>Add Client</strong> page.</p>
@@ -5576,7 +5576,7 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 <p>Select <strong>Signed Jwt</strong> from the <strong>Client Authenticator</strong> menu.</p>
 </li>
 <li>
-<p>Set the <strong>JWKS URL</strong> switch to ON.</p>
+<p>Toggle <strong>JWKS URL</strong> to ON.</p>
 </li>
 <li>
 <p>Input the client&#8217;s public key URL in the <strong>JWKS URL</strong> textbox.</p>
@@ -5638,7 +5638,7 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 <p><strong>Client ID and Secret</strong></p>
 </div>
 <div class="paragraph">
-<p>This choice is the default setting. The secret is automatically generated for you and the <strong>Regenerate Secret</strong> button recreates the secret if necessary.</p>
+<p>This choice is the default setting. The secret is automatically generated for you and the clicking <strong>Regenerate Secret</strong>  recreates the secret if necessary.</p>
 </div>
 <div class="paragraph">
 <p><strong>Signed JWT</strong></p>
@@ -5651,7 +5651,7 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 <p><strong>Signed JWT</strong> is "Signed Json Web Token".</p>
 </div>
 <div class="paragraph">
-<p>To use the <strong>Signed JWT</strong> credential type, a private key and certificate must be generated for the client. The private key is used to sign the JWT and the certificate is used by the server to verify the signature. Click the <strong>Generate new keys and certificate</strong> button to begin this process.</p>
+<p>To use the <strong>Signed JWT</strong> credential type, a private key and certificate must be generated for the client. The private key is used to sign the JWT and the certificate is used by the server to verify the signature. Click <strong>Generate new keys and certificate</strong> to begin this process.</p>
 </div>
 <div class="paragraph">
 <div class="title">Generate Keys</div>
@@ -5674,10 +5674,10 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 </ol>
 </div>
 <div class="paragraph">
-<p>When you generate the keys, Keycloak will store the certificate and you must download the private key and certificate for your client.</p>
+<p>When you generate the keys, Keycloak will store the certificate and you download the private key and certificate for your client.</p>
 </div>
 <div class="paragraph">
-<p>You can also generate keys using an external tool and then import the client&#8217;s certificate by clicking the <strong>Import Certificate</strong> button.</p>
+<p>You can also generate keys using an external tool and then import the client&#8217;s certificate by clicking <strong>Import Certificate</strong>.</p>
 </div>
 <div class="paragraph">
 <div class="title">Import Certificate</div>
@@ -5692,7 +5692,7 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 <p>Enter the store password.</p>
 </li>
 <li>
-<p>Select the certificate file by clicking the <strong>Import File</strong> button.</p>
+<p>Select the certificate file by clicking <strong>Import File</strong>.</p>
 </li>
 <li>
 <p>Click <strong>Import</strong>.</p>
@@ -5700,7 +5700,7 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 </ol>
 </div>
 <div class="paragraph">
-<p>It is not necessary to import a certificate if you click the <strong>Use JWKS URL</strong> switch. In this case, you can provide the URL where the public key is published in <a href="https://self-issued.info/docs/draft-ietf-jose-json-web-key.html">JWK</a> format. With this option, if the key is ever changed, Keycloak reimports the key.</p>
+<p>Importing a certificate is unnecessary if you click <strong>Use JWKS URL</strong>. In this case, you can provide the URL where the public key is published in <a href="https://self-issued.info/docs/draft-ietf-jose-json-web-key.html">JWK</a> format. With this option, if the key is ever changed, Keycloak reimports the key.</p>
 </div>
 <div class="paragraph">
 <p>If you are using a client secured by Keycloak adapter, you can configure the JWKS URL in this format, assuming that <a href="https://myhost.com/myapp" class="bare">https://myhost.com/myapp</a> is the root URL of your client application:</p>
@@ -5720,7 +5720,7 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Keycloak caches public keys of OIDC clients. If the private key of your client is compromised, you must update your keys and clear the key cache. See <a href="#_clear-cache">Clearing the cache</a> section for more details.
+Keycloak caches public keys of OIDC clients. If the private key of your client is compromised, update your keys and clear the key cache. See <a href="#_clear-cache">Clearing the cache</a> section for more details.
 </td>
 </tr>
 </table>
@@ -5783,7 +5783,7 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 </div>
 </div>
 <div class="paragraph _abstract">
-<p>Each OIDC client has a built-in <em>service account</em>, which allows it to obtain an access token.</p>
+<p>Each OIDC client has a built-in <em>service account</em>. Use this <em>service account</em> to obtain an access token.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
@@ -5798,7 +5798,7 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 <p>Set the <a href="#_access-type">Access Type</a> of your client is set to <strong>confidential</strong>.</p>
 </li>
 <li>
-<p>Set the <strong>Service Accounts Enabled</strong> switch to ON.</p>
+<p>Toggle <strong>Service Accounts Enabled</strong> to ON.</p>
 </li>
 <li>
 <p>Click <strong>Save</strong>.</p>
@@ -5810,7 +5810,7 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 <p>Click on the <strong>Scope</strong> tab.</p>
 </li>
 <li>
-<p>Verify that you have roles or set Full Scope Allowed to ON.</p>
+<p>Verify that you have roles or toggle <strong>Full Scope Allowed</strong> to ON.</p>
 </li>
 <li>
 <p>On the <strong>Service Account Roles</strong> tab, configure the roles available to this service account for your client.</p>
@@ -5889,7 +5889,7 @@ Pragma: no-cache
 <p>Typically, the environment where Keycloak is deployed consists of a set of <em>confidential</em> or <em>public</em> client applications that use Keycloak for authentication.</p>
 </div>
 <div class="paragraph">
-<p>There are also <em>services</em> (<em>Resource Servers</em> in the <a href="https://tools.ietf.org/html/draft-ietf-oauth-mtls-08#section-4.2">OAuth 2 specification</a>) that serve requests from client applications and provide resources to these applications. These services require an <em>Access token</em> (Bearer token) to be sent to them to authenticate a request. This token is obtained by the frontend application upon login to Keycloak.</p>
+<p><em>Services</em> (<em>Resource Servers</em> in the <a href="https://tools.ietf.org/html/draft-ietf-oauth-mtls-08#section-4.2">OAuth 2 specification</a>) are also available that serve requests from client applications and provide resources to these applications. These services require an <em>Access token</em> (Bearer token) to be sent to them to authenticate a request. This token is obtained by the frontend application upon login to Keycloak.</p>
 </div>
 <div class="paragraph">
 <p>In the environment where trust among services is low, you may encounter this scenario:</p>
@@ -5920,10 +5920,10 @@ Pragma: no-cache
 <p>This scenario is unlikely in environments with a high level of trust between services but not in environments where trust is low. In some environments, this workflow may be correct as the untrusted service may have to retrieve data from a trusted service to return data to the original client application.</p>
 </div>
 <div class="paragraph">
-<p>An unlimited audience is useful when a high level of trust exists between services. Otherwise, the audience should be limited. You can limit the audience and, at the same time, allow untrusted services to retrieve data from trusted services. In this case, you must ensure that the untrusted service and the trusted service are added as audiences to the token.</p>
+<p>An unlimited audience is useful when a high level of trust exists between services. Otherwise, the audience should be limited. You can limit the audience and, at the same time, allow untrusted services to retrieve data from trusted services. In this case, ensure that the untrusted service and the trusted service are added as audiences to the token.</p>
 </div>
 <div class="paragraph">
-<p>To prevent any misuse of the access token, limit the audience on the token and configure your services to verify the audience on the token. This will change the flow like this:</p>
+<p>To prevent any misuse of the access token, limit the audience on the token and configure your services to verify the audience on the token. The flow will change as follows:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -5940,7 +5940,7 @@ Pragma: no-cache
 </div>
 </li>
 <li>
-<p>The untrusted service invokes a trusted service with the token. Invocation is not successful because the trusted service checks the audience on the token and find that its audience is only for the untrusted service. This is expected behavior and security is not broken.</p>
+<p>The untrusted service invokes a trusted service with the token. Invocation is not successful because the trusted service checks the audience on the token and find that its audience is only for the untrusted service. This behavior is expected and security is not broken.</p>
 </li>
 </ol>
 </div>
@@ -5953,7 +5953,7 @@ Pragma: no-cache
 </div>
 </div>
 <div class="paragraph">
-<p>Use this to invoke the <strong>&lt;trusted service&gt;</strong>.</p>
+<p>Use this value to invoke the <strong>&lt;trusted service&gt;</strong>.</p>
 </div>
 <div class="sect4">
 <h5 id="setup-3"><a class="anchor" href="#setup-3"></a>Setup</h5>
@@ -5974,7 +5974,7 @@ Pragma: no-cache
 <div class="sect4">
 <h5 id="_audience_resolve"><a class="anchor" href="#_audience_resolve"></a>Automatically add audience</h5>
 <div class="paragraph">
-<p>An <em>Audience Resolve</em> protocol mapper is defined in the default client scope <em>roles</em>. The mapper checks for clients that have at least one client role available for the current token. The client ID of each client is then added as an audience. This is useful if your service (usually bearer-only) clients rely on client roles.</p>
+<p>An <em>Audience Resolve</em> protocol mapper is defined in the default client scope <em>roles</em>. The mapper checks for clients that have at least one client role available for the current token. The client ID of each client is then added as an audience, which is useful if your service (usually bearer-only) clients rely on client roles.</p>
 </div>
 <div class="paragraph">
 <p>For example, for a bearer-only client and a confidential client,
@@ -6018,8 +6018,7 @@ you can use the access token issued for the confidential client to invoke the be
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The frontend client itself is not automatically added to the access token audience. This allows for easy differentiation between
-the access token and the ID token, since the access token will not contain the client for which the token is issued as an audience.</p>
+<p>The frontend client itself is not automatically added to the access token audience, therefore allowing easy differentiation between the access token and the ID token, since the access token will not contain the client for which the token is issued as an audience.</p>
 </div>
 <div class="paragraph">
 <p>If you need the client itself as an audience, see the
@@ -6074,7 +6073,7 @@ You can use any custom value, for example a URL, if you want to use a different 
 <p>You can optionally <a href="#_client_scopes_evaluate">Evaluate Client Scopes</a> and generate an example access token. <strong>good-service</strong> will be added to the audience of the generated access token if <strong>good-service</strong> is included in the <em>scope</em> parameter, when you assigned it as an optional client scope.</p>
 </li>
 <li>
-<p>In your <strong>my-app</strong> application, you must ensure that the <em>scope</em> parameter is used. The value <strong>good-service</strong> must be included when you want to issue the token for accessing <strong>good-service</strong>.</p>
+<p>In your <strong>my-app</strong> application, ensure that the <em>scope</em> parameter is used. The value <strong>good-service</strong> must be included when you want to issue the token for accessing <strong>good-service</strong>.</p>
 <div class="paragraph">
 <p>See:</p>
 </div>
@@ -6098,8 +6097,7 @@ You can use any custom value, for example a URL, if you want to use a different 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Both the <em>Audience</em> and <em>Audience Resolve</em> protocol mappers add the audiences to the access token only, by default. The ID Token
-typically contains only a single audience, the client ID for which the token was issued. This is a requirement of the OpenID Connect specification. However, the access token does not necessarily have the client ID, which was the token issued for, unless the audience mappers added it.
+Both the <em>Audience</em> and <em>Audience Resolve</em> protocol mappers add the audiences to the access token only, by default. The ID Token typically contains only a single audience, the client ID for which the token was issued, a requirement of the OpenID Connect specification. However, the access token does not necessarily have the client ID, which was the token issued for, unless the audience mappers added it.
 </td>
 </tr>
 </table>
@@ -6123,7 +6121,7 @@ POST and Redirect bindings are supported. You can choose to require client signa
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Click <strong>Clients</strong> in the left navigation pane.</p>
+<p>Click <strong>Clients</strong> in the menu.</p>
 </li>
 <li>
 <p>Click <strong>Create</strong> to go to the <strong>Add Client</strong> page.</p>
@@ -6176,7 +6174,7 @@ the name, set up a replacement string value. For example, a string value such as
 <dt class="hdlist1"><strong>Include AuthnStatement</strong></dt>
 <dd>
 <p>SAML login responses may specify the  authentication method used, such as password, as well as timestamps of the login and the session expiration.
-This switch is enabled by default, so that the <strong>AuthnStatement</strong> element will be included in login responses. Setting this to OFF prevents clients from determining the maximum session length, which can create client sessions that do not expire.</p>
+<strong>Include AuthnStatement</strong> is enabled by default, so that the <strong>AuthnStatement</strong> element will be included in login responses. Setting this to OFF prevents clients from determining the maximum session length, which can create client sessions that do not expire.</p>
 </dd>
 <dt class="hdlist1"><strong>Sign Documents</strong></dt>
 <dd>
@@ -6231,19 +6229,19 @@ This switch is enabled by default, so that the <strong>AuthnStatement</strong> e
 </dd>
 <dt class="hdlist1"><strong>Client Signature Required</strong></dt>
 <dd>
-<p>If this switch is set to ON, documents coming from a client are expected to be signed. Keycloak validates this signature using the client public key or certificate set up in the <strong>SAML Keys</strong> tab.</p>
+<p>If <strong>Client Signature Required</strong> is enabled, documents coming from a client are expected to be signed. Keycloak validates this signature using the client public key or certificate set up in the <strong>SAML Keys</strong> tab.</p>
 </dd>
 <dt class="hdlist1"><strong>Force POST Binding</strong></dt>
 <dd>
-<p>By default, Keycloak responds using the initial SAML binding of the original request. By setting this switch to ON, Keycloak responds using the SAML POST binding even if the original request used the redirect binding.</p>
+<p>By default, Keycloak responds using the initial SAML binding of the original request. By enabling <strong>Force POST Binding</strong>, Keycloak responds using the SAML POST binding even if the original request used the redirect binding.</p>
 </dd>
 <dt class="hdlist1"><strong>Front Channel Logout</strong></dt>
 <dd>
-<p>If this switch is set to ON, the application requires a browser redirect to perform a logout. For example, the application may require a cookie to be reset which could only be done via a redirect. If this switch is set to OFF, Keycloak invokes a background SAML request to log out of the application.</p>
+<p>If <strong>Front Channel Logout</strong> is enabled, the application requires a browser redirect to perform a logout. For example, the application may require a cookie to be reset which could only be done via a redirect. If <strong>Front Channel Logout</strong> is disabled, Keycloak invokes a background SAML request to log out of the application.</p>
 </dd>
 <dt class="hdlist1"><strong>Force Name ID Format</strong></dt>
 <dd>
-<p>If a request has a name ID policy, ignore it and use the value configured in the admin console under <strong>Name ID Format</strong>.</p>
+<p>If a request has a name ID policy, ignore it and use the value configured in the Admin Console under <strong>Name ID Format</strong>.</p>
 </dd>
 <dt class="hdlist1"><strong>Name ID Format</strong></dt>
 <dd>
@@ -6255,7 +6253,7 @@ This switch is enabled by default, so that the <strong>AuthnStatement</strong> e
 </dd>
 <dt class="hdlist1"><strong>Valid Redirect URIs</strong></dt>
 <dd>
-<p>Enter a URL pattern and click the + sign to add.  Click the - sign to remove. Click the <strong>Save</strong> button to save these changes.
+<p>Enter a URL pattern and click the + sign to add.  Click the - sign to remove. Click <strong>Save</strong> to save these changes.
 Wildcards values are allowed only at the end of a URL. For example, <a href="http://host.com/*$$" class="bare">http://host.com/*$$</a>.
 This field is used when the exact SAML endpoints are not registered and Keycloak pulls the Assertion Consumer URL from a request.</p>
 </dd>
@@ -6393,7 +6391,7 @@ the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoi
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Click the <strong>Select File</strong> button.</p>
+<p>Click <strong>Select File</strong>.</p>
 </li>
 <li>
 <p>Load the file that contains the XML entity descriptor information.</p>
@@ -6454,7 +6452,7 @@ the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoi
 <p>Applications receiving ID tokens, access tokens, or SAML assertions may require different roles and user metadata.</p>
 </div>
 <div class="paragraph">
-<p>Keycloak allows you to:</p>
+<p>You can use Keycloak to:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -6470,7 +6468,7 @@ the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoi
 </ul>
 </div>
 <div class="paragraph">
-<p>You can do this in the <strong>Mappers</strong> tab in the Admin Console</p>
+<p>You perform these actions in the <strong>Mappers</strong> tab in the Admin Console.</p>
 </div>
 <div class="paragraph">
 <div class="title">Mappers Tab</div>
@@ -6481,10 +6479,10 @@ the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoi
 </div>
 <div class="paragraph">
 <p>Protocol mappers map items (such as an email address, for example) to
-a specific claim in the identity and access token. The function of a mapper should be self explanatory from its name. You can add pre-configured mappers by clicking the <strong>Add Builtin</strong> button.</p>
+a specific claim in the identity and access token. The function of a mapper should be self explanatory from its name. You  add pre-configured mappers by clicking <strong>Add Builtin</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Each mapper has a set of common settings. There are additional settings available, depending on the mapper type. Click the <strong>Edit</strong> button next to a mapper to access the configuration screen to adjust these settings.</p>
+<p>Each mapper has a set of common settings. Additional settings are available, depending on the mapper type. Click <strong>Edit</strong> next to a mapper to access the configuration screen to adjust these settings.</p>
 </div>
 <div class="paragraph">
 <div class="title">Mapper Config</div>
@@ -6494,7 +6492,7 @@ a specific claim in the identity and access token. The function of a mapper shou
 <p>Details on each option can be viewed by hovering over its tooltip.</p>
 </div>
 <div class="paragraph">
-<p>Many OIDC mappers allow you to control where the claim gets placed. You can opt to include or exclude the claim from the <em>id</em> and <em>access</em> tokens by adjusting the <strong>Add to ID token</strong> and <strong>Add to access token</strong> switches.</p>
+<p>Use OIDC mappers to control where the claim gets placed. You opt to include or exclude the claim from the <em>id</em> and <em>access</em> tokens by adjusting the <strong>Add to ID token</strong> and <strong>Add to access token</strong> switches.</p>
 </div>
 <div id="proc-creating-mappers_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -6512,7 +6510,7 @@ a specific claim in the identity and access token. The function of a mapper shou
 <p>Go to the <strong>Mappers</strong> tab.</p>
 </li>
 <li>
-<p>Click the <strong>Create</strong> button.</p>
+<p>Click <strong>Create</strong>.</p>
 <div class="paragraph">
 <div class="title">Add Mapper</div>
 <p><span class="image"><img src="./keycloak-images/add-mapper.png" alt="add mapper"></span></p>
@@ -6529,8 +6527,7 @@ a specific claim in the identity and access token. The function of a mapper shou
 <p>Mapper implementations have <em>priority order</em>. <em>Priority order</em> is not the configuration property of the mapper. It is the property of the concrete implementation of the mapper.</p>
 </div>
 <div class="paragraph">
-<p>Mappers are sorted by the order in the list of mappers. The changes in the token or assertion are applied in that order with the lowest applying first. This means that implementations that are dependent on other
-implementations are processed in the necessary order.</p>
+<p>Mappers are sorted by the order in the list of mappers. The changes in the token or assertion are applied in that order with the lowest applying first. Therefore, the implementations that are dependent on other implementations are processed in the necessary order.</p>
 </div>
 <div class="paragraph">
 <p>For example, to compute the roles which will be included with a token:</p>
@@ -6549,7 +6546,7 @@ implementations are processed in the necessary order.</p>
 <div class="sect3">
 <h4 id="_protocol-mappers_oidc-user-session-note-mappers"><a class="anchor" href="#_protocol-mappers_oidc-user-session-note-mappers"></a>OIDC User Session Note Mappers</h4>
 <div class="paragraph">
-<p>User session details are defined using mappers and are automatically included when you use or enable a feature on a client. You can click the <strong>Add builtin</strong> button to include session details.</p>
+<p>User session details are defined using mappers and are automatically included when you use or enable a feature on a client. Click <strong>Add builtin</strong> to include session details.</p>
 </div>
 <div class="paragraph">
 <p>Impersonated user sessions provide the following details:</p>
@@ -6584,7 +6581,7 @@ implementations are processed in the necessary order.</p>
 <div class="sect3">
 <h4 id="script-mapper"><a class="anchor" href="#script-mapper"></a>Script Mapper</h4>
 <div class="paragraph">
-<p>The <strong>Script Mapper</strong> allows you to map claims to tokens by running user-defined JavaScript code. For more details about deploying scripts to the server, see <a href="https://www.keycloak.org/docs/11.0/server_development/#_script_providers">JavaScript Providers</a>.</p>
+<p>Use the <strong>Script Mapper</strong> to map claims to tokens by running user-defined JavaScript code. For more details about deploying scripts to the server, see <a href="https://www.keycloak.org/docs/11.0/server_development/#_script_providers">JavaScript Providers</a>.</p>
 </div>
 <div class="paragraph">
 <p>When scripts deploy, you should be able to select the deployed scripts from the list of available mappers.</p>
@@ -6628,10 +6625,10 @@ implementations are processed in the necessary order.</p>
 <div class="sect2">
 <h3 id="_client_scopes"><a class="anchor" href="#_client_scopes"></a>Client Scopes</h3>
 <div class="paragraph _abstract">
-<p>Keycloak allows you to define a shared client configuration in an entity called a <em>client scope</em>. This entity allows you to configure <a href="#_protocol-mappers">protocol mappers</a> and <a href="#_role_scope_mappings">role scope mappings</a> for multiple clients.</p>
+<p>Use Keycloak to define a shared client configuration in an entity called a <em>client scope</em>. A <em>client scope</em> configures <a href="#_protocol-mappers">protocol mappers</a> and <a href="#_role_scope_mappings">role scope mappings</a> for multiple clients.</p>
 </div>
 <div class="paragraph">
-<p>Client scopes also support the OAuth 2 <strong>scope</strong> parameter. This parameter allows client applications to request more or fewer claims or roles in the access token, depending on the requirement of the application.</p>
+<p>Client scopes also support the OAuth 2 <strong>scope</strong> parameter. Client applications use this parameter to request claims or roles in the access token, depending on the requirement of the application.</p>
 </div>
 <div id="proc_creating_client_scopes_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -6645,7 +6642,7 @@ implementations are processed in the necessary order.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Click <strong>Client Scopes</strong> in the left toolbar.</p>
+<p>Click <strong>Client Scopes</strong> in the menu.</p>
 <div class="paragraph">
 <div class="title">Client Scopes List</div>
 <p><span class="image"><img src="./keycloak-images/client-scopes-list.png" alt="client scopes list"></span></p>
@@ -6669,7 +6666,7 @@ define <a href="#_protocol-mappers">protocol mappers</a> and <a href="#_role_sco
 <div class="sect3">
 <h4 id="protocol"><a class="anchor" href="#protocol"></a>Protocol</h4>
 <div class="paragraph">
-<p>When you create a client scope, you must choose the <strong>Protocol</strong>. Clients linked in the same scope must have the same protocol.</p>
+<p>When you create a client scope, choose the <strong>Protocol</strong>. Clients linked in the same scope must have the same protocol.</p>
 </div>
 <div class="paragraph">
 <p>Each realm has a set of pre-defined built-in client scopes in the menu.</p>
@@ -6680,20 +6677,20 @@ define <a href="#_protocol-mappers">protocol mappers</a> and <a href="#_role_sco
 <p>SAML protocol: The <strong>role_list</strong>. This scope contains one protocol mapper for  the roles list in the SAML assertion.</p>
 </li>
 <li>
-<p>OpenID Connect protocol: There are several client scopes:</p>
+<p>OpenID Connect protocol: Several client scopes are available:</p>
 <div class="ulist">
 <ul>
 <li>
 <p><strong>roles</strong></p>
 <div class="paragraph">
-<p>This scope is not defined in the OpenID Connect specification and is not added automatically to the <strong>scope</strong> claim in the access token. This scope has  mappers, which are used to add the roles of the user to the access token and
-add audiences for clients that have at least one client role. This is described in more detail in the <a href="#_audience_resolve">Audience section</a>.</p>
+<p>This scope is not defined in the OpenID Connect specification and is not added automatically to the <strong>scope</strong> claim in the access token. This scope has mappers, which are used to add the roles of the user to the access token and
+add audiences for clients that have at least one client role. These mappers are described in more detail in the <a href="#_audience_resolve">Audience section</a>.</p>
 </div>
 </li>
 <li>
 <p><strong>web-origins</strong></p>
 <div class="paragraph">
-<p>This scope is also not defined in the OpenID Connect specification and not added to the <strong>scope</strong> claimin the access token. This scope is used to add allowed web origins to the access token <strong>allowed-origins</strong> claim.</p>
+<p>This scope is also not defined in the OpenID Connect specification and not added to the <strong>scope</strong> claiming the access token. This scope is used to add allowed web origins to the access token <strong>allowed-origins</strong> claim.</p>
 </div>
 </li>
 <li>
@@ -6745,13 +6742,13 @@ add audiences for clients that have at least one client role. This is described 
 <div class="sect3">
 <h4 id="consent-related-settings"><a class="anchor" href="#consent-related-settings"></a>Consent related settings</h4>
 <div class="paragraph">
-<p>Client scopes contain options related to the consent screen. Those options are useful if the linked client if the <strong>Consent Required</strong> switch is enabled on the client.</p>
+<p>Client scopes contain options related to the consent screen. Those options are useful if the linked client if <strong>Consent Required</strong> is enabled on the client.</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Display On Consent Screen</dt>
 <dd>
-<p>If this switch is set to ON, and the scope is added to a client that requires consent, the text specified in <strong>Consent Screen Text</strong> will be displayed on the consent screen. This text is shown when the user is authenticated and before the user is redirected from Keycloak to the client. If this switch is OFF, this client scope will not be displayed on the consent screen.</p>
+<p>If <strong>Display On Consent Screen</strong> is enabled, and the scope is added to a client that requires consent, the text specified in <strong>Consent Screen Text</strong> will be displayed on the consent screen. This text is shown when the user is authenticated and before the user is redirected from Keycloak to the client. If <strong>Display On Consent Screen</strong> is disabled, this client scope will not be displayed on the consent screen.</p>
 </dd>
 <dt class="hdlist1">Consent Screen Text</dt>
 <dd>
@@ -6763,17 +6760,17 @@ add audiences for clients that have at least one client role. This is described 
 <div class="sect3">
 <h4 id="_client_scopes_linking"><a class="anchor" href="#_client_scopes_linking"></a>Link Client Scope with the Client</h4>
 <div class="paragraph">
-<p>Linking between a client scope and a client is configured in the <strong>Client Scopes</strong> tab of the client. There are 2 ways of linking between client scope and client.</p>
+<p>Linking between a client scope and a client is configured in the <strong>Client Scopes</strong> tab of the client. Two ways of linking between client scope and client are available.</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Default Client Scopes</dt>
 <dd>
-<p>This is applicable to the OpenID Connect and SAML clients. Default client scopes are applied when issuing OpenID Connect tokens or SAML assertions for a client. The client will inherit Protocol Mappers and Role Scope Mappings that are defined on the client scope. For the OpenID Connect Protocol, the Mappers and Role Scope Mappings are always applied, regardless of the value used for the scope parameter in the OpenID Connect authorization request.</p>
+<p>This setting is applicable to the OpenID Connect and SAML clients. Default client scopes are applied when issuing OpenID Connect tokens or SAML assertions for a client. The client will inherit Protocol Mappers and Role Scope Mappings that are defined on the client scope. For the OpenID Connect Protocol, the Mappers and Role Scope Mappings are always applied, regardless of the value used for the scope parameter in the OpenID Connect authorization request.</p>
 </dd>
 <dt class="hdlist1">Optional Client Scopes</dt>
 <dd>
-<p>This is applicable only for OpenID Connect clients. Optional client scopes are applied when issuing tokens for this client but only when requested by the <strong>scope</strong> parameter in the OpenID Connect authorization request.</p>
+<p>This setting is applicable only for OpenID Connect clients. Optional client scopes are applied when issuing tokens for this client but only when requested by the <strong>scope</strong> parameter in the OpenID Connect authorization request.</p>
 </dd>
 </dl>
 </div>
@@ -6863,7 +6860,7 @@ add audiences for clients that have at least one client role. This is described 
 </div>
 </div>
 <div class="paragraph _abstract">
-<p><strong>Realm Default Client Scopes</strong> allow you to define sets of client scopes which are automatically linked to newly created clients.</p>
+<p>Use <strong>Realm Default Client Scopes</strong> to define sets of client scopes that are automatically linked to newly created clients.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
@@ -6897,7 +6894,7 @@ add audiences for clients that have at least one client role. This is described 
 </dd>
 <dt class="hdlist1">Role scope mapping</dt>
 <dd>
-<p>Available under the <strong>Scope</strong> tab of a client or client scope. Role scope mapping allows you to limit the roles which can be used in the access tokens. See the <a href="#_role_scope_mappings">Role Scope Mappings section</a> for more details.</p>
+<p>This is available under the <strong>Scope</strong> tab of a client or client scope. Use <strong>Role scope mapping</strong> to limit the roles that can be used in the access tokens. See the <a href="#_role_scope_mappings">Role Scope Mappings section</a> for more details.</p>
 </dd>
 <dt class="hdlist1">Authorization scopes</dt>
 <dd>
@@ -6936,7 +6933,7 @@ add audiences for clients that have at least one client role. This is described 
 <div class="sect2">
 <h3 id="realm-roles"><a class="anchor" href="#realm-roles"></a>Realm Roles</h3>
 <div class="paragraph _abstract">
-<p>Realm-level roles are a namespace for defining your roles. To see the list of roles, click <strong>Roles</strong> in the left menu.</p>
+<p>Realm-level roles are a namespace for defining your roles. To see the list of roles, click <strong>Roles</strong> in the menu.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/roles.png" alt="roles"></span></p>
@@ -6998,7 +6995,7 @@ add audiences for clients that have at least one client role. This is described 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Click <strong>Roles</strong> in the left menu.</p>
+<p>Click <strong>Roles</strong> in the menu.</p>
 </li>
 <li>
 <p>Click the role to access the roles detail page.</p>
@@ -7048,7 +7045,7 @@ add audiences for clients that have at least one client role. This is described 
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Click <strong>Users</strong> in the left menu.</p>
+<p>Click <strong>Users</strong> in the menu.</p>
 </li>
 <li>
 <p>Click the user that you want to perform a role mapping on. If the user is not displayed, click <strong>View all users</strong>.</p>
@@ -7087,9 +7084,9 @@ add audiences for clients that have at least one client role. This is described 
 <div class="sect3">
 <h4 id="_default_roles"><a class="anchor" href="#_default_roles"></a>Default Roles</h4>
 <div class="paragraph _abstract">
-<p>Default roles allow you to automatically assign user role mappings when any user is newly created or imported through
+<p>Use default roles to automatically assign user role mappings when any user is newly created or imported through
 <a href="#_identity_broker">Identity Brokering</a>.
-To specify default roles go to the <strong>Roles</strong> left menu item, and click the <strong>Default Roles</strong> tab.</p>
+To specify default roles, click <strong>Roles</strong> in the menu and click the <strong>Default Roles</strong> tab.</p>
 </div>
 <div class="paragraph">
 <div class="title">Default Roles</div>
@@ -7122,7 +7119,7 @@ To specify default roles go to the <strong>Roles</strong> left menu item, and cl
 <p><span class="image"><img src="./keycloak-images/full-client-scope.png" alt="full client scope"></span></p>
 </div>
 <div class="paragraph">
-<p>By default, the effective roles of scopes are every declared role in the realm. To change this default behavior, set the <strong>Full Scope Allowed</strong> switch to ON and declare the specific roles you want in each client.  You can also use <a href="#_client_scopes">client scopes</a> to define the same role scope mappings for a set of clients.</p>
+<p>By default, the effective roles of scopes are every declared role in the realm. To change this default behavior, toggle <strong>Full Scope Allowed</strong> to ON and declare the specific roles you want in each client.  You can also use <a href="#_client_scopes">client scopes</a> to define the same role scope mappings for a set of clients.</p>
 </div>
 <div class="paragraph">
 <div class="title">Partial Scope</div>
@@ -7141,7 +7138,7 @@ To specify default roles go to the <strong>Roles</strong> left menu item, and cl
 <p>Groups in Keycloak manage a common set of attributes and role mappings for each user. Users can be members of any number of groups and inherit the attributes and role mappings assigned to each group.</p>
 </div>
 <div class="paragraph">
-<p>To manage groups, click <strong>Groups</strong> in the left menu.</p>
+<p>To manage groups, click <strong>Groups</strong> in the menu.</p>
 </div>
 <div class="paragraph">
 <div class="title">Groups</div>
@@ -7191,7 +7188,7 @@ To specify default roles go to the <strong>Roles</strong> left menu item, and cl
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Click <strong>Users</strong> in the left menu.</p>
+<p>Click <strong>Users</strong> in the menu.</p>
 </li>
 <li>
 <p>Click the user that you want to perform a role mapping on. If the user is not displayed, click <strong>View all users</strong>.</p>
@@ -7269,7 +7266,7 @@ To specify default roles go to the <strong>Roles</strong> left menu item, and cl
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Click <strong>Groups</strong> in the left menu.</p>
+<p>Click <strong>Groups</strong> in the menu.</p>
 </li>
 <li>
 <p>Click the <strong>Default Groups</strong> tab.</p>
@@ -9374,7 +9371,7 @@ but the Facebook Developer Console requires both of them to be filled.</p>
 To obtain this click on <code>Show</code> under <code>App Secret</code>. Go back to Keycloak and specify those items and finally save your Instagram Identity Provider.</p>
 </div>
 <div class="paragraph">
-<p>After this it is necessary to make the Instagram app public. Click <code>App Review</code> left menu item and then <code>Requests</code>. After that follow the instructions on screen.</p>
+<p>Now you can make the Instagram app public. Click <code>App Review</code> left menu item and then <code>Requests</code>. After that follow the instructions on screen.</p>
 </div>
 </div>
 </div>
@@ -15093,7 +15090,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-11 17:11:42 UTC
+Last updated 2020-11-13 14:10:18 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
