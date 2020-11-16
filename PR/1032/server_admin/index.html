@@ -2337,7 +2337,7 @@ for more information on extending and creating themes.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Allowing the user to delete their account is done through an AIA (Application Initiated Action). You need first of all to enable the action from the admin console. In Authentication menu, go to the Required Actions tab and tick the enabled checkbox for the "Delete Account" action.</p>
+<p>Allowing the user to delete their account is done through an AIA (Application Initiated Action). You need first of all to enable the action from the admin console. In the Authentication menu, go to the Required Actions tab and tick the enabled checkbox for the "Delete Account" action.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/enable-delete-account-action.png" alt="enable delete account action"></span></p>
@@ -2345,22 +2345,27 @@ for more information on extending and creating themes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Making sure the Account Console client has the <code>delete-account</code> role:</p>
+<p>Making sure the user has the "delete-account" as a client role:</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The second requirement to enable the delete account functionality is to make sure the "account" client has the <code>delete-account</code> role. The <code>delete-account</code> role is assigned by default, unless removed by the Keycloak admin. To enable the delete account role, go to Clients menu, and click on the "account" client.
-Then go to the roles tab, and check if the <code>delete-account</code> is among the roles. In case it is not, you can add it by clicking on "Add Role".</p>
+<p>The delete account functionality is enabled on a per user basis. The second requirement to enable the delete account functionality is to make sure the user has the <code>delete-account</code> as a client role.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./keycloak-images/delete-account-role.png" alt="delete account role"></span></p>
+<p>To enable the delete account role for a user, go to the Users menu, and find the user for which the delete account functionality is to be enabled. In the "Role Mappings" Tab, select the "account" client from "Clients Role" list.</p>
+</div>
+<div class="paragraph">
+<p>Finally, select <code>delete-account</code> and click on add selected.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./keycloak-images/delete-account-client-role.png" alt="delete account client role"></span></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="deleting-a-user-in-action"><a class="anchor" href="#deleting-a-user-in-action"></a>Deleting a user in action</h3>
 <div class="paragraph">
-<p>Once the functionlity is enabled, the user will see a new section named "Delete Account" appear in the user&#8217;s account console</p>
+<p>Once the functionlity is enabled, the user will see a new section named "Delete Account" appear in the bottom of the "Personal Info" page</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/delete-account-landing-screen.png" alt="delete account landing screen"></span></p>
@@ -14498,7 +14503,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-09-13 18:14:33 UTC
+Last updated 2020-11-16 09:46:04 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
