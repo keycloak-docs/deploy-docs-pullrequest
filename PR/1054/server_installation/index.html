@@ -4674,7 +4674,7 @@ You can add your truststore configuration by using the following template:</p>
             <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">file</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path to your .jks file containing public certificates</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
             <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
             <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hostname-verification-policy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">WILDCARD</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">disabled</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">enabled</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
         <span class="tag">&lt;/properties&gt;</span>
     <span class="tag">&lt;/provider&gt;</span>
 <span class="tag">&lt;/spi&gt;</span></code></pre>
@@ -4692,12 +4692,12 @@ HTTPS requests need a way to verify the host of the server they are talking to.
 This is what the trustore does.
 The keystore contains one or more trusted host certificates or certificate authorities.
 This truststore file should only contain public certificates of your secured hosts.
-This is <em>REQUIRED</em> if <code>disabled</code> is not true.</p>
+This is <em>REQUIRED</em> if <code>enabled</code> is true.</p>
 </dd>
 <dt class="hdlist1">password</dt>
 <dd>
 <p>Password for the truststore.
-This is <em>REQUIRED</em> if <code>disabled</code> is not true.</p>
+This is <em>REQUIRED</em> if <code>enabled</code> is true.</p>
 </dd>
 <dt class="hdlist1">hostname-verification-policy</dt>
 <dd>
@@ -4706,10 +4706,10 @@ For HTTPS requests, this verifies the hostname of the server&#8217;s certificate
  <code>ANY</code> means that the hostname is not verified. <code>WILDCARD</code> Allows wildcards in subdomain names i.e.
 *.foo.com. <code>STRICT</code> CN must match hostname exactly.</p>
 </dd>
-<dt class="hdlist1">disabled</dt>
+<dt class="hdlist1">enabled</dt>
 <dd>
-<p>If true (default value), truststore configuration will be ignored, and certificate checking will fall back to JSSE configuration as described.
-If set to false, you must configure <code>file</code>, and <code>password</code> for the truststore.</p>
+<p>If false (default value), truststore configuration will be ignored, and certificate checking will fall back to JSSE configuration as described.
+If set to true, you must configure <code>file</code>, and <code>password</code> for the truststore.</p>
 </dd>
 </dl>
 </div>
@@ -7304,7 +7304,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-04 11:38:44 UTC
+Last updated 2020-11-18 11:27:54 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

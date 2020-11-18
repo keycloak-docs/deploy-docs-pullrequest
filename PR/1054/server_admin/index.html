@@ -869,7 +869,7 @@ span.image img {
 <li><a href="#_oidc">OpenID Connect</a>
 <ul class="sectlevel3">
 <li><a href="#_oidc-auth-flows">OIDC Auth Flows</a></li>
-<li><a href="#keycloak-server-oidc-uri-endpoints">Keycloak Server OIDC URI Endpoints</a></li>
+<li><a href="#_oidc-endpoints">Keycloak Server OIDC URI Endpoints</a></li>
 </ul>
 </li>
 <li><a href="#_saml">SAML</a>
@@ -4610,7 +4610,7 @@ More info together with example is in <a href="#_service_accounts">Service Accou
 </div>
 </div>
 <div class="sect3">
-<h4 id="keycloak-server-oidc-uri-endpoints"><a class="anchor" href="#keycloak-server-oidc-uri-endpoints"></a>Keycloak Server OIDC URI Endpoints</h4>
+<h4 id="_oidc-endpoints"><a class="anchor" href="#_oidc-endpoints"></a>Keycloak Server OIDC URI Endpoints</h4>
 <div class="paragraph">
 <p>Here&#8217;s a list of OIDC endpoints that the Keycloak publishes.  These URLs are useful if you are using a non-Keycloak client adapter to
 talk OIDC with the auth server.  These are all relative URLs and the root of the URL being the HTTP(S) protocol, hostname, and usually path prefixed with
@@ -5388,17 +5388,18 @@ Pragma: no-cache
 {
     "access_token":"2YotnFZFEjr1zCsicMWpAA",
     "token_type":"bearer",
-    "expires_in":60,
-    "refresh_token":"tGzv3JOkF0XG5Qx2TlKWIA",
-    "refresh_expires_in":600,
-    "id_token":"tGzv3JOkF0XG5Qx2TlKWIA",
-    "not-before-policy":0,
-    "session_state":"234234-234234-234234"
+    "expires_in":60
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The retrieved access token can be refreshed or logged out by an out-of-bound request.</p>
+<p>There is the only access token returned by default. There is no refresh token returned and there is also no user session created
+on the Keycloak side upon successful authentication by default. Due the lack of refresh token, there is a need to re-authenticate when access token expires,
+however this does not mean any additional overhead on  Keycloak server side due the fact that sessions are not created by default.</p>
+</div>
+<div class="paragraph">
+<p>Due to this, there is no need for logout, however issued access tokens can be revoked by sending request to the OAuth2 Revocation Endpoint described
+in the <a href="#_oidc-endpoints">OpenID Connect Endpoints</a> section.</p>
 </div>
 </div>
 <div class="sect3">
@@ -14477,7 +14478,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-04 11:38:37 UTC
+Last updated 2020-11-18 11:27:45 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
