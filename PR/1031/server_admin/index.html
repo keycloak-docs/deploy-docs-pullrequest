@@ -882,7 +882,7 @@ span.image img {
 <li><a href="#keycloak-server-saml-uri-endpoints">Keycloak Server SAML URI Endpoints</a></li>
 </ul>
 </li>
-<li><a href="#openid-connect-vs-saml">OpenID Connect vs. SAML</a></li>
+<li><a href="#openid-connect-compared-to-saml">OpenID Connect compared to SAML</a></li>
 <li><a href="#_docker">Docker Registry v2 Authentication</a>
 <ul class="sectlevel3">
 <li><a href="#docker-auth-flow">Docker Auth Flow</a></li>
@@ -5110,7 +5110,7 @@ This is used most often for REST or SOAP-based clients.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="openid-connect-vs-saml"><a class="anchor" href="#openid-connect-vs-saml"></a>OpenID Connect vs. SAML</h3>
+<h3 id="openid-connect-compared-to-saml"><a class="anchor" href="#openid-connect-compared-to-saml"></a>OpenID Connect compared to SAML</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/saml-vs-oidc.adoc" target="_blank">Edit this section</a>
@@ -5121,7 +5121,7 @@ This is used most often for REST or SOAP-based clients.</p>
 <p>Choosing between OpenID Connect and SAML is not just a matter of using a newer protocol (OIDC) instead of the older more mature protocol (SAML).</p>
 </div>
 <div class="paragraph">
-<p>In most cases Keycloak recommends using OIDC.</p>
+<p>For most purposes, Keycloak recommends using OIDC.</p>
 </div>
 <div class="paragraph">
 <p>SAML tends to be a bit more verbose than OIDC.</p>
@@ -5641,9 +5641,6 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 <p>This choice is the default setting. The secret is automatically generated for you and the clicking <strong>Regenerate Secret</strong>  recreates the secret if necessary.</p>
 </div>
 <div class="paragraph">
-<p><strong>Signed JWT</strong></p>
-</div>
-<div class="paragraph">
 <div class="title">Signed JWT</div>
 <p><span class="image"><img src="./keycloak-images/client-credentials-jwt.png" alt="client credentials jwt"></span></p>
 </div>
@@ -5773,15 +5770,15 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_service_accounts"><a class="anchor" href="#_service_accounts"></a>Using a Service Account</h4>
-<div class="sidebarblock page-links">
+<div id="proc-using-service-account_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/proc-using-a-service-account.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/proc-using-a-service-account.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_service_accounts"><a class="anchor" href="#_service_accounts"></a>Using a Service Account</h4>
 <div class="paragraph _abstract">
 <p>Each OIDC client has a built-in <em>service account</em>. Use this <em>service account</em> to obtain an access token.</p>
 </div>
@@ -5875,6 +5872,10 @@ Pragma: no-cache
 </div>
 <div class="paragraph">
 <p>The retrieved access token can be refreshed or logged out by an out-of-bound request.</p>
+</div>
+<div class="paragraph _additional-resources">
+<div class="title">Additional resources</div>
+<p>For more details, see <a href="#_client_credentials_grant">Client Credentials Grant</a>.</p>
 </div>
 <div id="con_audience_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -6182,7 +6183,7 @@ the name, set up a replacement string value. For example, a string value such as
 </dd>
 <dt class="hdlist1"><strong>Optimize REDIRECT signing key lookup</strong></dt>
 <dd>
-<p>When set to ON, the SP messages include the Keycloak native extension. This extension contains a hint with the signing key ID. The SP uses the extension for signature validation instead of attempting to validate the signature using keys.</p>
+<p>When set to ON, the SAML protocol messages include the Keycloak native extension. This extension contains a hint with the signing key ID. The SP uses the extension for signature validation instead of attempting to validate the signature using keys.</p>
 <div class="paragraph">
 <p>This option applies to REDIRECT bindings where the signature is transferred in query parameters and this information is not found in the signature information. This is contrary to POST binding messages where key ID is always included in document signature.</p>
 </div>
@@ -6492,7 +6493,7 @@ a specific claim in the identity and access token. The function of a mapper shou
 <p>Details on each option can be viewed by hovering over its tooltip.</p>
 </div>
 <div class="paragraph">
-<p>Use OIDC mappers to control where the claim gets placed. You opt to include or exclude the claim from the <em>id</em> and <em>access</em> tokens by adjusting the <strong>Add to ID token</strong> and <strong>Add to access token</strong> switches.</p>
+<p>You can use most OIDC mappers to control where the claim gets placed. You opt to include or exclude the claim from the <em>id</em> and <em>access</em> tokens by adjusting the <strong>Add to ID token</strong> and <strong>Add to access token</strong> switches.</p>
 </div>
 <div id="proc-creating-mappers_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -6615,7 +6616,7 @@ a specific claim in the identity and access token. The function of a mapper shou
 <div class="paragraph">
 <p>All Keycloak client adapters for OIDC and SAML are supported. The mod-auth-mellon Apache HTTPD adapter for SAML is supported as well as standard SAML entity descriptor files.</p>
 </div>
-<div id="client_scopes_server_administration_guide" class="sidebarblock page-links">
+<div id="con-client-scopes_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/con-client-scopes.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/con-client-scopes.adoc" target="_blank">Report an issue</a>
@@ -6779,10 +6780,10 @@ add audiences for clients that have at least one client role. These mappers are 
 <div class="paragraph">
 <p>For this example, assume the client has <strong>profile</strong> and <strong>email</strong> linked as default client scopes, and <strong>phone</strong> and <strong>address</strong> linked as optional client scopes. The client uses the value of the scope parameter when sending a request to the OpenID Connect authorization endpoint.</p>
 </div>
-<hr>
-<div class="paragraph">
-<p>scope=openid phone
-<strong>*</strong></p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">scope=openid phone</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>The scope parameter contains the string, with the scope values divided by spaces. The value <strong>openid</strong> is the meta-value used for all OpenID Connect requests. The token will contain mappers and role scope mappings from the default client scopes <strong>profile</strong> and <strong>email</strong> as well as <strong>phone</strong>, an optional client scope requested by the scope parameter.</p>
@@ -6916,10 +6917,10 @@ add audiences for clients that have at least one client role. These mappers are 
 </div>
 </div>
 <div class="paragraph">
-<p>Roles and groups have a similar purpose, which is to give users access and permissions to use applications. Groups are a collection of users to which you apply roles and attributes. Roles define specific applications permissions and access control. Groups are an optional capability.</p>
+<p>Roles and groups have a similar purpose, which is to give users access and permissions to use applications. Groups are a collection of users to which you apply roles and attributes. Roles define specific applications permissions and access control.</p>
 </div>
 <div class="paragraph">
-<p>A role typically applies to one type of user. Typical roles in an organization include <code>Admin</code>, <code>user</code>, <code>manager</code>, and <code>employee</code>. An application can assign access and permissions to a role and then assign multiple users to that role so the users share the same access and permissions. For example, the Admin Console has roles that give permission to users to access parts of the Admin Console.</p>
+<p>A role typically applies to one type of user. For example, an organization may include <code>admin</code>, <code>user</code>, <code>manager</code>, and <code>employee</code> roles. An application can assign access and permissions to a role and then assign multiple users to that role so the users have the same access and permissions. For example, the Admin Console has roles that give permission to users to access different parts of the Admin Console.</p>
 </div>
 <div class="paragraph">
 <p>There is a global namespace for roles and each client also has its own dedicated namespace where roles can be defined.</p>
@@ -6963,7 +6964,7 @@ add audiences for clients that have at least one client role. These mappers are 
 <p><span class="image"><img src="./keycloak-images/role.png" alt="role"></span></p>
 </div>
 <div class="paragraph">
-<p>The <strong>description</strong> field can be localizable by specifying a substitution variable with <code>${var-name}</code> strings. The localized value is configured to your theme within the themes property files. See the v<a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more details.</p>
+<p>The <strong>description</strong> field can be localizable by specifying a substitution variable with <code>${var-name}</code> strings. The localized value is configured to your theme within the themes property files. See the <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> for more details.</p>
 </div>
 <div id="con-client-roles_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
@@ -6987,7 +6988,7 @@ add audiences for clients that have at least one client role. These mappers are 
 <div class="sect2">
 <h3 id="_composite-roles"><a class="anchor" href="#_composite-roles"></a>Composite Roles</h3>
 <div class="paragraph _abstract">
-<p>Any realm or client level role can be a <em>composite role</em>. A <em>composite role</em> is a role that has one or more additional roles associated with it. When a composite role is mapped to a user, the user also gains the roles associated with that composite.  This inheritance is recursive so users also inherit any composite of composites. However, we recommend that composite roles are not overused.</p>
+<p>Any realm or client level role can be a <em>composite role</em>. A <em>composite role</em> is a role that has one or more additional roles associated with it. When a composite role is mapped to a user, the user gains the roles associated with the composite role.  This inheritance is recursive so users also inherit any composite of composites. However, we recommend that composite roles are not overused.</p>
 </div>
 <div class="paragraph">
 <p>To convert a role to a composite role:</p>
@@ -7001,7 +7002,7 @@ add audiences for clients that have at least one client role. These mappers are 
 <p>Click the role to access the roles detail page.</p>
 </li>
 <li>
-<p>Set <strong>Composite Roles</strong> to ON.</p>
+<p>Toggle <strong>Composite Roles</strong> to ON.</p>
 </li>
 </ol>
 </div>
@@ -7066,7 +7067,7 @@ add audiences for clients that have at least one client role. These mappers are 
 <p><span class="image"><img src="./keycloak-images/user-role-mappings.png" alt="user role mappings"></span></p>
 </div>
 <div class="paragraph">
-<p>In the above example, we are assigning the composite role <strong>developer</strong> that was created in the <a href="#_composite-roles">Composite Roles</a> chapter to a user.</p>
+<p>In the preceding example, we are assigning the composite role <strong>developer</strong> to a user. That role was created in the <a href="#_composite-roles">Composite Roles</a> topic.</p>
 </div>
 <div class="paragraph">
 <div class="title">Effective Role Mappings</div>
@@ -7084,8 +7085,7 @@ add audiences for clients that have at least one client role. These mappers are 
 <div class="sect3">
 <h4 id="_default_roles"><a class="anchor" href="#_default_roles"></a>Default Roles</h4>
 <div class="paragraph _abstract">
-<p>Use default roles to automatically assign user role mappings when any user is newly created or imported through
-<a href="#_identity_broker">Identity Brokering</a>.
+<p>Use default roles to automatically assign user role mappings when a user is created or imported through <a href="#_identity_broker">Identity Brokering</a>.
 To specify default roles, click <strong>Roles</strong> in the menu and click the <strong>Default Roles</strong> tab.</p>
 </div>
 <div class="paragraph">
@@ -7171,7 +7171,10 @@ To specify default roles, click <strong>Roles</strong> in the menu and click the
 <p>Enter a group name in the <strong>Create Group</strong> screen.</p>
 </li>
 <li>
-<p>Click <strong>Save</strong>. The group management page displays.</p>
+<p>Click <strong>Save</strong>.</p>
+<div class="paragraph">
+<p>The group management page is displayed.</p>
+</div>
 <div class="paragraph">
 <div class="title">Group</div>
 <p><span class="image"><img src="./keycloak-images/group.png" alt="group"></span></p>
@@ -7237,13 +7240,10 @@ To specify default roles, click <strong>Roles</strong> in the menu and click the
 <div class="sect3">
 <h4 id="groups-compared-to-roles"><a class="anchor" href="#groups-compared-to-roles"></a>Groups compared to Roles</h4>
 <div class="paragraph _abstract">
-<p>Groups and roles have some similarities and differences. In Keycloak, groups are a collection of users to apply roles and attributes. Roles define types of users and applications assign permissions and access control to roles.</p>
+<p>Groups and roles have some similarities and differences. In Keycloak, groups are a collection of users to which you apply roles and attributes. Roles define types of users and applications assign permissions and access control to roles.</p>
 </div>
 <div class="paragraph">
-<p><a href="#_composite-roles">Composite Roles</a> are similar to Groups as they provide the same functionality. The difference between them is conceptual.</p>
-</div>
-<div class="paragraph">
-<p>Composite roles apply the permission model to a set of services and applications. Use composite roles to manage applications and services.</p>
+<p><a href="#_composite-roles">Composite Roles</a> are similar to Groups as they provide the same functionality. The difference between them is conceptual. Composite roles apply the permission model to a set of services and applications. Use composite roles to manage applications and services.</p>
 </div>
 <div class="paragraph">
 <p>Groups focus on collections of users and their roles in an organization. Use groups to manage users.</p>
@@ -7258,7 +7258,7 @@ To specify default roles, click <strong>Roles</strong> in the menu and click the
 <div class="sect3">
 <h4 id="default-groups"><a class="anchor" href="#default-groups"></a>Default Groups</h4>
 <div class="paragraph _abstract">
-<p>To automatically assign group membership to new users, that are created or imported through <a href="#_identity_broker">Identity Brokering</a>, you use default groups.</p>
+<p>To automatically assign group membership to any users who is created or who is imported through <a href="#_identity_broker">Identity Brokering</a>, you use default groups.</p>
 </div>
 <div class="paragraph">
 <p>To specify default groups:</p>
@@ -15090,7 +15090,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-13 14:10:18 UTC
+Last updated 2020-11-18 16:39:19 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
