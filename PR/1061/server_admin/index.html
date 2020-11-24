@@ -4494,9 +4494,9 @@ If some executions included in the <em>Conditional</em> sub-flow evaluate as fal
 <dl>
 <dt class="hdlist1"><code>Condition - User Role</code></dt>
 <dd>
-<p>This execution has the ability to determine if the user has role defined by <em>User role</em> field.
+<p>This execution has the ability to determine if the user has a role defined by <em>User role</em> field.
 If the user has the required role, the execution is considered as true and other executions are evaluated.
-The administrator has to define following fields:</p>
+The administrator has to define the following fields:</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Alias</dt>
@@ -4506,7 +4506,7 @@ The administrator has to define following fields:</p>
 <dt class="hdlist1">User role</dt>
 <dd>
 <p>Role the user should have to execute this flow.
-To specify an application role the syntax is <code>appname.approle</code>, i.e. <code>myapp.myrole</code>.</p>
+To specify an application role the syntax is <code>appname.approle</code> (for example <code>myapp.myrole</code>).</p>
 </dd>
 </dl>
 </div>
@@ -4514,14 +4514,14 @@ To specify an application role the syntax is <code>appname.approle</code>, i.e. 
 <dt class="hdlist1"><code>Condition - User Configured</code></dt>
 <dd>
 <p>This checks if the other executions in the flow are configured for the user.
-There is an example in Execution requirements section with the OTP form.</p>
+The Execution requirements section includes an example of the OTP form.</p>
 </dd>
 <dt class="hdlist1"><code>Condition - User Attribute</code></dt>
 <dd>
-<p>This checks if the user has set up required attribute.
-There is a possibility to negate output, which means the user shouldn&#8217;t have the attribute.
-You can take a look at <a href="#_user-attributes">User Attributes</a> section how to add a custom attribute.
-There are some fields, which you can provide:</p>
+<p>This checks if the user has set up the required attribute.
+There is a possibility to negate output, which means the user should not have the attribute.
+The <a href="#_user-attributes">User Attributes</a> section shows how to add a custom attribute.
+You can provide these fields:</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Alias</dt>
@@ -4530,16 +4530,16 @@ There are some fields, which you can provide:</p>
 </dd>
 <dt class="hdlist1">Attribute name</dt>
 <dd>
-<p>Name of the attribute to check</p>
+<p>Name of the attribute to check.</p>
 </dd>
 <dt class="hdlist1">Expected attribute value</dt>
 <dd>
-<p>Expected value in the attribute</p>
+<p>Expected value in the attribute.</p>
 </dd>
 <dt class="hdlist1">Negate output</dt>
 <dd>
 <p>You can negate the output.
-It means, the attribute shouldn&#8217;t be present.</p>
+In other words, the attribute should not be present.</p>
 </dd>
 </dl>
 </div>
@@ -14557,7 +14557,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-20 08:37:24 UTC
+Last updated 2020-11-24 08:56:34 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
