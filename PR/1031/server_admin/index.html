@@ -891,7 +891,7 @@ span.image img {
 </li>
 </ul>
 </li>
-<li><a href="#_clients">Managing Clients</a>
+<li><a href="#managing-clients">Managing Clients</a>
 <ul class="sectlevel2">
 <li><a href="#oidc-clients">OIDC Clients</a>
 <ul class="sectlevel3">
@@ -900,10 +900,10 @@ span.image img {
 <li><a href="#advanced-settings">Advanced Settings</a></li>
 <li><a href="#_client-credentials">Confidential Client Credentials</a></li>
 <li><a href="#_service_accounts">Using a Service Account</a></li>
-<li><a href="#_audience">Audience Support</a></li>
+<li><a href="#audience-support">Audience Support</a></li>
 </ul>
 </li>
-<li><a href="#saml-clients">SAML Clients</a>
+<li><a href="#creating-a-saml-client">Creating a SAML Client</a>
 <ul class="sectlevel3">
 <li><a href="#idp-initiated-login">IDP Initiated Login</a></li>
 <li><a href="#using-an-entity-descriptor-to-create-a-client">Using an entity descriptor to create a client</a></li>
@@ -933,19 +933,16 @@ span.image img {
 </li>
 <li><a href="#assigning-permissions-and-access-using-roles-and-groups">Assigning permissions and access using roles and groups</a>
 <ul class="sectlevel2">
-<li><a href="#realm-roles">Realm Roles</a></li>
+<li><a href="#creating-a-realm-role">Creating a Realm Role</a></li>
 <li><a href="#client-roles">Client Roles</a></li>
-<li><a href="#_composite-roles">Composite Roles</a></li>
-<li><a href="#user-role-mappings">User Role Mappings</a>
-<ul class="sectlevel3">
-<li><a href="#_default_roles">Default Roles</a></li>
-</ul>
-</li>
+<li><a href="#_composite-roles">Converting a role to a composite role</a></li>
+<li><a href="#asssiging-role-mappings">Asssiging Role Mappings</a></li>
+<li><a href="#_default_roles">Using Default Roles</a></li>
 <li><a href="#_role_scope_mappings">Role Scope Mappings</a></li>
 <li><a href="#groups">Groups</a>
 <ul class="sectlevel3">
-<li><a href="#groups-compared-to-roles">Groups compared to Roles</a></li>
-<li><a href="#default-groups">Default Groups</a></li>
+<li><a href="#groups-compared-to-roles">Groups Compared to Roles</a></li>
+<li><a href="#using-default-groups">Using Default Groups</a></li>
 </ul>
 </li>
 </ul>
@@ -1864,6 +1861,12 @@ For this reason the previously authenticated users locale is remembered in a per
 user has actively switched the locale through the locale selector on the login pages the users locale is also updated at
 this point.</p>
 </div>
+<div id="assembly-managing-users_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/assembly-managing-users.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/assembly-managing-users.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1871,12 +1874,6 @@ this point.</p>
 <div class="sect1">
 <h2 id="managing-users"><a class="anchor" href="#managing-users"></a>Managing Users</h2>
 <div class="sectionbody">
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
 <div class="paragraph">
 <p>From the Admin Console, you have a wide range of actions you can perform to manage users.</p>
 </div>
@@ -4931,7 +4928,7 @@ to provide a client secret when they exchange the temporary codes for tokens.  <
 <em>Public</em> clients are perfectly fine so long as HTTPS is strictly enforced and you are very strict about what redirect URIs are registered for the
 client.  HTML5/JavaScript clients always have to be <em>public</em> clients because there is no way to transmit the client secret to them in a secure
 manner.  Again, this is ok so long as you use HTTPS and strictly enforce redirect URI registration.  This guide goes more detail
-into this in the <a href="#_clients">Managing Clients</a> chapter.</p>
+into this in the <a href="#assembly-managing-clients_server_administration_guide">Managing Clients</a> chapter.</p>
 </div>
 <div class="paragraph">
 <p>Keycloak also supports the optional <a href="https://tools.ietf.org/html/rfc7636">Proof Key for Code Exchange</a> specification.</p>
@@ -5233,19 +5230,19 @@ is still valid. So creating the session is unnecessary overhead for this protoco
 <div class="paragraph">
 <p><code>http(s)://authserver.host/auth/realms/{realm-name}/protocol/docker-v2</code></p>
 </div>
+<div id="assembly-managing-clients_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/assembly-managing-clients.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/assembly-managing-clients.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_clients"><a class="anchor" href="#_clients"></a>Managing Clients</h2>
+<h2 id="managing-clients"><a class="anchor" href="#managing-clients"></a>Managing Clients</h2>
 <div class="sectionbody">
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
 <div class="paragraph _abstract">
 <p>Clients are entities that can request authentication of a user.  Clients come in two forms.
 The first type of client is an application that wants
@@ -5253,14 +5250,14 @@ to participate in single-sign-on.  These clients just want Keycloak to provide s
 of client is one that is requesting an access token so that it can invoke other services on behalf of the authenticated user.
 This section discusses various aspects around configuring clients and various ways to do it.</p>
 </div>
+<div id="assembly-oidc-clients_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/assembly-client-oidc.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/assembly-client-oidc.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 <div class="sect2">
 <h3 id="oidc-clients"><a class="anchor" href="#oidc-clients"></a>OIDC Clients</h3>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/client-oidc.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-oidc.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
 <div class="paragraph _abstract">
 <p><a href="#con-oidc_server_administration_guide">OpenID Connect</a> is the recommended protocol to secure applications.  It was designed from the ground up to be web friendly and it works best with HTML5/JavaScript applications.</p>
 </div>
@@ -5675,10 +5672,10 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 <p>Select the archive format you want to use.</p>
 </li>
 <li>
-<p>Enter a key password.</p>
+<p>Enter a <strong>key password</strong>.</p>
 </li>
 <li>
-<p>Enter a store password.</p>
+<p>Enter a <strong>store password</strong>.</p>
 </li>
 <li>
 <p>Click <strong>Generate and Download</strong>.</p>
@@ -5801,16 +5798,19 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Select your client in Keycloak.</p>
+<p>Click <strong>Clients</strong> in the menu.</p>
 </li>
 <li>
-<p>Click on the <strong>Settings</strong> tab.</p>
+<p>Select your client.</p>
 </li>
 <li>
-<p>Set the <a href="#_access-type">Access Type</a> of your client is set to <strong>confidential</strong>.</p>
+<p>Click the <strong>Settings</strong> tab.</p>
 </li>
 <li>
-<p>Toggle <strong>Service Accounts Enabled</strong> to ON.</p>
+<p>Set the <a href="#_access-type">Access Type</a> of your client to <strong>confidential</strong>.</p>
+</li>
+<li>
+<p>Toggle <strong>Service Accounts Enabled</strong> to <strong>ON</strong>.</p>
 </li>
 <li>
 <p>Click <strong>Save</strong>.</p>
@@ -5819,13 +5819,16 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 <p>Configure your <a href="#_client-credentials">client credentials</a>.</p>
 </li>
 <li>
-<p>Click on the <strong>Scope</strong> tab.</p>
+<p>Click the <strong>Scope</strong> tab.</p>
 </li>
 <li>
-<p>Verify that you have roles or toggle <strong>Full Scope Allowed</strong> to ON.</p>
+<p>Verify that you have roles or toggle <strong>Full Scope Allowed</strong> to <strong>ON</strong>.</p>
 </li>
 <li>
-<p>On the <strong>Service Account Roles</strong> tab, configure the roles available to this service account for your client.</p>
+<p>Click the <strong>Service Account Roles</strong> tab</p>
+</li>
+<li>
+<p>Configure the roles available to this service account for your client.</p>
 </li>
 </ol>
 </div>
@@ -5892,7 +5895,7 @@ Pragma: no-cache
 <div class="title">Additional resources</div>
 <p>For more details, see <a href="#_client_credentials_grant">Client Credentials Grant</a>.</p>
 </div>
-<div id="con_audience_server_administration_guide" class="sidebarblock page-links">
+<div id="con-audience_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/con-audience.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/con-audience.adoc" target="_blank">Report an issue</a>
@@ -5900,7 +5903,7 @@ Pragma: no-cache
 </div>
 </div>
 <div class="sect3">
-<h4 id="_audience"><a class="anchor" href="#_audience"></a>Audience Support</h4>
+<h4 id="audience-support"><a class="anchor" href="#audience-support"></a>Audience Support</h4>
 <div class="paragraph _abstract">
 <p>Typically, the environment where Keycloak is deployed consists of a set of <em>confidential</em> or <em>public</em> client applications that use Keycloak for authentication.</p>
 </div>
@@ -6128,7 +6131,7 @@ Both the <em>Audience</em> and <em>Audience Resolve</em> protocol mappers add th
 </div>
 </div>
 <div class="sect2">
-<h3 id="saml-clients"><a class="anchor" href="#saml-clients"></a>SAML Clients</h3>
+<h3 id="creating-a-saml-client"><a class="anchor" href="#creating-a-saml-client"></a>Creating a SAML Client</h3>
 <div class="paragraph _abstract">
 <p>Keycloak supports <a href="#_saml">SAML 2.0</a> for registered applications.
 POST and Redirect bindings are supported. You can choose to require client signature validation. You can have the server sign and/or encrypt responses as well.</p>
@@ -6428,16 +6431,16 @@ the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoi
 <div class="paragraph">
 <p>where <em>realm</em> is the realm of your client.</p>
 </div>
+<div id="con-client-links_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/con-client-links.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/con-client-links.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="client-links"><a class="anchor" href="#client-links"></a>Client Links</h3>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/client-link.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/client-link.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
 <div class="paragraph _abstract">
 <p>To link from one client to another, Keycloak provides a redirect endpoint: <code>/realms/realm_name/clients/{client-id}/redirect</code>.</p>
 </div>
@@ -6927,8 +6930,8 @@ add audiences for clients that have at least one client role. These mappers are 
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles-groups.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles-groups.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/assembly-roles-groups.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/assembly-roles-groups.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="paragraph">
@@ -6947,15 +6950,12 @@ add audiences for clients that have at least one client role. These mappers are 
 </div>
 </div>
 <div class="sect2">
-<h3 id="realm-roles"><a class="anchor" href="#realm-roles"></a>Realm Roles</h3>
+<h3 id="creating-a-realm-role"><a class="anchor" href="#creating-a-realm-role"></a>Creating a Realm Role</h3>
 <div class="paragraph _abstract">
 <p>Realm-level roles are a namespace for defining your roles. To see the list of roles, click <strong>Roles</strong> in the menu.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./keycloak-images/roles.png" alt="roles"></span></p>
-</div>
-<div class="paragraph">
-<p>To create a role:</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
@@ -7001,23 +7001,21 @@ add audiences for clients that have at least one client role. These mappers are 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_composite-roles"><a class="anchor" href="#_composite-roles"></a>Composite Roles</h3>
+<h3 id="_composite-roles"><a class="anchor" href="#_composite-roles"></a>Converting a role to a composite role</h3>
 <div class="paragraph _abstract">
-<p>Any realm or client level role can be a <em>composite role</em>. A <em>composite role</em> is a role that has one or more additional roles associated with it. When a composite role is mapped to a user, the user gains the roles associated with the composite role.  This inheritance is recursive so users also inherit any composite of composites. However, we recommend that composite roles are not overused.</p>
-</div>
-<div class="paragraph">
-<p>To convert a role to a composite role:</p>
+<p>Any realm or client level role can become a <em>composite role</em>. A <em>composite role</em> is a role that has one or more additional roles associated with it. When a composite role is mapped to a user, the user gains the roles associated with the composite role.  This inheritance is recursive so users also inherit any composite of composites. However, we recommend that composite roles are not overused.</p>
 </div>
 <div class="olist arabic">
+<div class="title">Procedure</div>
 <ol class="arabic">
 <li>
 <p>Click <strong>Roles</strong> in the menu.</p>
 </li>
 <li>
-<p>Click the role to access the roles detail page.</p>
+<p>Click the role that you want to convert.</p>
 </li>
 <li>
-<p>Toggle <strong>Composite Roles</strong> to ON.</p>
+<p>Toggle <strong>Composite Roles</strong> to <strong>ON</strong>.</p>
 </li>
 </ol>
 </div>
@@ -7053,9 +7051,9 @@ add audiences for clients that have at least one client role. These mappers are 
 </div>
 </div>
 <div class="sect2">
-<h3 id="user-role-mappings"><a class="anchor" href="#user-role-mappings"></a>User Role Mappings</h3>
+<h3 id="asssiging-role-mappings"><a class="anchor" href="#asssiging-role-mappings"></a>Asssiging Role Mappings</h3>
 <div class="paragraph _abstract">
-<p>You can assign User role mappings to a user through the <strong>Role Mappings</strong> tab for that user.</p>
+<p>You can assign role mappings to a user through the <strong>Role Mappings</strong> tab for that user.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
@@ -7091,17 +7089,28 @@ add audiences for clients that have at least one client role. These mappers are 
 <div class="paragraph">
 <p>When the <strong>developer</strong> role is assigned, the <strong>employee</strong> role associated with the <strong>developer</strong> composite is displayed in the <strong>Effective Roles</strong> box. <strong>Effective Roles</strong> are the roles explicitly assigned to users and roles that are inherited from composites.</p>
 </div>
-<div id="con-default-roles_server_administration_guide" class="sidebarblock page-links">
+<div id="proc-using-default-roles_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles-groups/con-default-roles.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles-groups/con-default-roles.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles-groups/proc-using-default-roles.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles-groups/proc-using-default-roles.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_default_roles"><a class="anchor" href="#_default_roles"></a>Default Roles</h4>
+</div>
+<div class="sect2">
+<h3 id="_default_roles"><a class="anchor" href="#_default_roles"></a>Using Default Roles</h3>
 <div class="paragraph _abstract">
-<p>Use default roles to automatically assign user role mappings when a user is created or imported through <a href="#_identity_broker">Identity Brokering</a>.
-To specify default roles, click <strong>Roles</strong> in the menu and click the <strong>Default Roles</strong> tab.</p>
+<p>Use default roles to automatically assign user role mappings when a user is created or imported through <a href="#_identity_broker">Identity Brokering</a>.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click <strong>Roles</strong> in the menu</p>
+</li>
+<li>
+<p>Click the <strong>Default Roles</strong> tab.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <div class="title">Default Roles</div>
@@ -7114,7 +7123,6 @@ To specify default roles, click <strong>Roles</strong> in the menu and click the
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/roles-groups/con-role-scope-mappings.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/roles-groups/con-role-scope-mappings.adoc" target="_blank">Report an issue</a>
-</div>
 </div>
 </div>
 </div>
@@ -7253,7 +7261,7 @@ To specify default roles, click <strong>Roles</strong> in the menu and click the
 </div>
 </div>
 <div class="sect3">
-<h4 id="groups-compared-to-roles"><a class="anchor" href="#groups-compared-to-roles"></a>Groups compared to Roles</h4>
+<h4 id="groups-compared-to-roles"><a class="anchor" href="#groups-compared-to-roles"></a>Groups Compared to Roles</h4>
 <div class="paragraph _abstract">
 <p>Groups and roles have some similarities and differences. In Keycloak, groups are a collection of users to which you apply roles and attributes. Roles define types of users and applications assign permissions and access control to roles.</p>
 </div>
@@ -7271,12 +7279,9 @@ To specify default roles, click <strong>Roles</strong> in the menu and click the
 </div>
 </div>
 <div class="sect3">
-<h4 id="default-groups"><a class="anchor" href="#default-groups"></a>Default Groups</h4>
+<h4 id="using-default-groups"><a class="anchor" href="#using-default-groups"></a>Using Default Groups</h4>
 <div class="paragraph _abstract">
 <p>To automatically assign group membership to any users who is created or who is imported through <a href="#_identity_broker">Identity Brokering</a>, you use default groups.</p>
-</div>
-<div class="paragraph">
-<p>To specify default groups:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -7291,6 +7296,9 @@ To specify default roles, click <strong>Roles</strong> in the menu and click the
 <div class="paragraph">
 <div class="title">Default Groups</div>
 <p><span class="image"><img src="./keycloak-images/default-groups.png" alt="default groups"></span></p>
+</div>
+<div class="paragraph">
+<p>This screenshot shows that some <em>default groups</em> already exist.</p>
 </div>
 </div>
 </div>
@@ -12507,7 +12515,7 @@ Or alternatively, you can set role scope mappings at the Client Scope level and 
 <div class="paragraph">
 <p>In environments where the level of trust among services is low, it is a good practice to limit the audiences on the token. The
 motivation behind this is described in the <a href="https://tools.ietf.org/html/rfc6819#section-5.1.5.5">OAuth2 Threat Model</a> document and
-more details are in the <a href="#_audience">Audience Support section</a>.</p>
+more details are in the <a href="#con-audience_server_administration_guide">Audience Support</a> section.</p>
 </div>
 </div>
 <div class="sect2">
@@ -13315,7 +13323,7 @@ $ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm</pre>
 </div>
 <div class="sect2">
 <h3 id="role-operations"><a class="anchor" href="#role-operations"></a>Role operations</h3>
-<h4 id="creating-a-realm-role" class="discrete">Creating a realm role</h4>
+<h4 id="creating-a-realm-role-2" class="discrete">Creating a realm role</h4>
 <div class="paragraph">
 <p>Use the <code class="filename">roles</code> endpoint to create a realm role.</p>
 </div>
@@ -15105,7 +15113,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-25 22:54:14 UTC
+Last updated 2020-12-01 23:17:54 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
