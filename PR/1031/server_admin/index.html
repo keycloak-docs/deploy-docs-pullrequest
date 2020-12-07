@@ -782,6 +782,13 @@ span.image img {
 <li><a href="#searching-for-a-user">Searching for a user</a></li>
 <li><a href="#creating-a-user">Creating a user</a></li>
 <li><a href="#deleting-a-user">Deleting a user</a></li>
+<li><a href="#enabling-account-deletion-by-users">Enabling Account Deletion by Users</a>
+<ul class="sectlevel3">
+<li><a href="#enabling-the-delete-account-capability">Enabling the Delete Account Capability</a></li>
+<li><a href="#giving-a-user-the-strong-delete-account-strong-role">Giving a User the <strong>delete-account</strong> Role</a></li>
+<li><a href="#deleting-your-account">Deleting your account</a></li>
+</ul>
+</li>
 <li><a href="#configuring-user-attributes">Configuring user attributes</a></li>
 <li><a href="#user-credentials">User Credentials</a>
 <ul class="sectlevel3">
@@ -873,7 +880,7 @@ span.image img {
 <li><a href="#openid-connect">OpenID Connect</a>
 <ul class="sectlevel3">
 <li><a href="#_oidc-auth-flows">OIDC Auth Flows</a></li>
-<li><a href="#keycloak-server-oidc-uri-endpoints">Keycloak Server OIDC URI Endpoints</a></li>
+<li><a href="#_oidc-endpoints">Keycloak Server OIDC URI Endpoints</a></li>
 </ul>
 </li>
 <li><a href="#_saml">SAML</a>
@@ -1818,7 +1825,8 @@ a theme go to the <code>Realm Settings</code> left menu item and click on the <c
 <code>Internationalization</code> switch on the <code>Theme</code> tab you can choose which locales you want to support and what the default locale
 will be.  The next time a user logs in, they will be able to choose a language on the login page to use for the login screens,
 User Account Management UI, and Admin Console.  The <a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer Guide</a> explains
-how you can offer additional languages.</p>
+how you can offer additional languages. All internationalized texts which are provided by the theme can be overwritten
+by realm-specific texts on the <code>Localization</code> tab.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2037,10 +2045,120 @@ Alternatively, you can use the search bar to find a user.
 </li>
 </ol>
 </div>
+<div id="proc-allow-user-to-delete-account_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-allow-user-to-delete-account.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-allow-user-to-delete-account.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enabling-account-deletion-by-users"><a class="anchor" href="#enabling-account-deletion-by-users"></a>Enabling Account Deletion by Users</h3>
+<div class="paragraph">
+<p>End users and applications can delete their accounts in the Account Console if you enable this capability in the Admin Console. Once you enable this capability, you can give that capability to specific users.</p>
+</div>
+<div class="sect3">
+<h4 id="enabling-the-delete-account-capability"><a class="anchor" href="#enabling-the-delete-account-capability"></a>Enabling the Delete Account Capability</h4>
+<div class="paragraph">
+<p>You enable this capability on the <strong>Required Actions</strong> tab.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click <strong>Authentication</strong> in the menu.</p>
+</li>
+<li>
+<p>Click the <strong>Required Actions</strong> tab.</p>
+</li>
+<li>
+<p>Select <strong>Enabled</strong> on the <strong>Delete Account</strong> row.</p>
+<div class="paragraph">
+<div class="title">Delete Account on Required Actions tab</div>
+<p><span class="image"><img src="./images/enable-delete-account-action.png" alt="enable delete account action"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="giving-a-user-the-strong-delete-account-strong-role"><a class="anchor" href="#giving-a-user-the-strong-delete-account-strong-role"></a>Giving a User the <strong>delete-account</strong> Role</h4>
+<div class="paragraph">
+<p>You can give specific users a role that allows account deletion.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click <strong>Users</strong> in the menu.</p>
+</li>
+<li>
+<p>Select a user.</p>
+</li>
+<li>
+<p>Click the <strong>Role Mappings</strong> tab.</p>
+</li>
+<li>
+<p>From the <strong>Client Roles</strong> list, select <strong>account</strong>.</p>
+</li>
+<li>
+<p>Under <strong>Available Roles, select *delete-account</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Add selected</strong>.</p>
+<div class="paragraph">
+<div class="title">delete-account role</div>
+<p><span class="image"><img src="./images/delete-account-client-role.png" alt="delete account client role"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-your-account"><a class="anchor" href="#deleting-your-account"></a>Deleting your account</h4>
+<div class="paragraph">
+<p>Once you have the <strong>delete-account</strong> role, you can delete your own account.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log into the Account Console.</p>
+</li>
+<li>
+<p>At the bottom of the <strong>Personal Info</strong> page, click <strong>Delete Account</strong>.</p>
+<div class="paragraph">
+<div class="title">Delete Account Page</div>
+<p><span class="image"><img src="./images/delete-account-page.png" alt="delete account page"></span></p>
+</div>
+</li>
+<li>
+<p>Enter your credentials and confirm the deletion.</p>
+<div class="paragraph">
+<div class="title">Delete confirmation</div>
+<p><span class="image"><img src="./images/delete-account-confirm.png" alt="delete account confirm"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This action is irreversible. All your data in Keycloak will be removed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
 <div id="proc-configuring-user-attributes_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/proc-configuring-user-attributes.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/proc-configuring-user-attributes.adoc" target="_blank">Report an issue</a>
+</div>
 </div>
 </div>
 </div>
@@ -4018,7 +4136,7 @@ Usage of <code>Full certificate in PEM format</code> as an identity source is li
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:10.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:11.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         ....
     <span class="tag">&lt;server</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default-server</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
             <span class="tag">&lt;https-listener</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span>
@@ -4980,7 +5098,7 @@ More info together with example is in <a href="#_service_accounts">Service Accou
 </div>
 </div>
 <div class="sect3">
-<h4 id="keycloak-server-oidc-uri-endpoints"><a class="anchor" href="#keycloak-server-oidc-uri-endpoints"></a>Keycloak Server OIDC URI Endpoints</h4>
+<h4 id="_oidc-endpoints"><a class="anchor" href="#_oidc-endpoints"></a>Keycloak Server OIDC URI Endpoints</h4>
 <div class="paragraph">
 <p>Here&#8217;s a list of OIDC endpoints that the Keycloak publishes.  These URLs are useful if you are using a non-Keycloak client adapter to
 talk OIDC with the auth server.  These are all relative URLs and the root of the URL being the HTTP(S) protocol, hostname, and usually path prefixed with
@@ -5879,17 +5997,16 @@ Pragma: no-cache
 {
     "access_token":"2YotnFZFEjr1zCsicMWpAA",
     "token_type":"bearer",
-    "expires_in":60,
-    "refresh_token":"tGzv3JOkF0XG5Qx2TlKWIA",
-    "refresh_expires_in":600,
-    "id_token":"tGzv3JOkF0XG5Qx2TlKWIA",
-    "not-before-policy":0,
-    "session_state":"234234-234234-234234"
+    "expires_in":60
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The retrieved access token can be refreshed or logged out by an out-of-bound request.</p>
+<p>Only the access token is returned by default. No refresh token is returned and no user session is created
+on the Keycloak side upon successful authentication by default. Due to the lack of refresh token, re-authentication is required when the access token expires. However, this situation does not mean any additional overhead for the Keycloak server because sessions are not created by default.</p>
+</div>
+<div class="paragraph">
+<p>In this situation, logout is unnecessary. However, issued access tokens can be revoked by sending requests to the OAuth2 Revocation Endpoint as described in the <a href="#_oidc-endpoints">OpenID Connect Endpoints</a> section.</p>
 </div>
 <div class="paragraph _additional-resources">
 <div class="title">Additional resources</div>
@@ -8297,7 +8414,8 @@ configuration page for that identity provider type.</p>
 </div>
 <div class="paragraph">
 <p>Above is an example of configuring a Facebook social login provider.  Once you configure an IDP, it will appear on the Keycloak
-login page as an option.</p>
+login page as an option. It&#8217;s possible to have custom icons on login screen for each identity provider.
+For more details, please refer to the <a href="https://www.keycloak.org/docs/11.0/server_development/#custom-identity-providers-icons">custom icons</a>.</p>
 </div>
 <div class="paragraph">
 <div class="title">IDP login page</div>
@@ -9021,7 +9139,7 @@ grantMethod: prompt <i class="conum" data-value="4"></i><b>(4)</b>
 Go back to Keycloak and specify those items.</p>
 </div>
 <div class="paragraph">
-<p>Please refer to <a href="https://docs.okd.io/latest/authentication/configuring-internal-oauth.html#oauth-register-additional-client_configuring-internal-oauth">official OpenShift documentation</a> for more detailed guides.</p>
+<p>Please refer to <a href="https://docs.okd.io/latest/authentication/configuring-oauth-clients.html#oauth-register-additional-client_configuring-oauth-clients">official OpenShift documentation</a> for more detailed guides.</p>
 </div>
 </div>
 <div class="sect3">
@@ -9109,7 +9227,7 @@ The OpenShift API server returns <code>The client is not authorized to request a
 </table>
 </div>
 <div class="paragraph">
-<p>Please refer to <a href="https://docs.okd.io/latest/authentication/configuring-internal-oauth.html#oauth-register-additional-client_configuring-internal-oauth">official OpenShift documentation</a> for more detailed guides.</p>
+<p>Please refer to <a href="https://docs.okd.io/latest/authentication/configuring-oauth-clients.html#oauth-register-additional-client_configuring-oauth-clients">official OpenShift documentation</a> for more detailed guides.</p>
 </div>
 </div>
 <div class="sect3">
@@ -11989,7 +12107,7 @@ URL in the default hostname provider.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:10.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:11.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     ...
     <span class="tag">&lt;server</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default-server</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         ...
@@ -12038,7 +12156,7 @@ receives the client IP address and not the proxy IP address
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:10.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:domain:undertow:11.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     ...
     <span class="tag">&lt;server</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default-server</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         ...
@@ -15113,7 +15231,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-01 23:17:54 UTC
+Last updated 2020-12-07 22:40:40 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

@@ -758,7 +758,14 @@ span.image img {
 <ul class="sectlevel2">
 <li><a href="#highlights">Highlights</a>
 <ul class="sectlevel3">
+<li><a href="#keycloak-x-distribution-preview">Keycloak.X distribution preview</a></li>
+<li><a href="#new-account-console-is-now-the-default">New Account console is now the default</a></li>
+<li><a href="#openid-connect-back-channel-logout">OpenID Connect Back-Channel Logout</a></li>
+<li><a href="#upgrade-to-wildfly-21">Upgrade to Wildfly 21</a></li>
 <li><a href="#ability-to-request-authncontext-in-saml-identity-provider">Ability to request AuthnContext in SAML identity provider</a></li>
+<li><a href="#fapi-rw-support-and-initial-support-to-client-policies">FAPI RW support and initial support to Client policies</a></li>
+<li><a href="#upgrade-login-theme-to-patternfly-4">Upgrade login theme to PatternFly 4</a></li>
+<li><a href="#other-improvements">Other improvements</a></li>
 </ul>
 </li>
 </ul>
@@ -770,7 +777,7 @@ span.image img {
 <li><a href="#ldapv3-password-modify-operation">LDAPv3 password modify operation</a></li>
 <li><a href="#namespace-support-for-ldap-group-mapper">Namespace support for LDAP group mapper</a></li>
 <li><a href="#upgrade-to-wildfly-20">Upgrade to WildFly 20</a></li>
-<li><a href="#other-improvements">Other improvements</a></li>
+<li><a href="#other-improvements-2">Other improvements</a></li>
 </ul>
 </li>
 </ul>
@@ -784,7 +791,7 @@ span.image img {
 <li><a href="#oauth-2-0-token-revocation-rfc-7009">OAuth 2.0 Token Revocation (RFC 7009)</a></li>
 <li><a href="#security-headers-spi-and-response-filter">Security Headers SPI and Response Filter</a></li>
 <li><a href="#upgrade-to-wildfly-19">Upgrade to WildFly 19</a></li>
-<li><a href="#other-improvements-2">Other improvements</a></li>
+<li><a href="#other-improvements-3">Other improvements</a></li>
 </ul>
 </li>
 </ul>
@@ -796,7 +803,7 @@ span.image img {
 <li><a href="#promisetype-removed-from-javascript-adapter">PromiseType removed from JavaScript adapter</a></li>
 </ul>
 </li>
-<li><a href="#other-improvements-3">Other improvements</a>
+<li><a href="#other-improvements-4">Other improvements</a>
 <ul class="sectlevel3">
 <li><a href="#reverted-breaking-api-changes-to-localeselectorspi">Reverted breaking API changes to LocaleSelectorSPI</a></li>
 <li><a href="#fixed-the-automatic-resolution-of-code-keycloakconfigresolver-code-instances-for-spring-boot-applications">Fixed the automatic resolution of <code>KeycloakConfigResolver</code> instances for Spring Boot Applications</a></li>
@@ -813,7 +820,7 @@ span.image img {
 <li><a href="#new-elytron-credential-store-vault-provider">New Elytron Credential Store Vault Provider</a></li>
 <li><a href="#more-updates-to-w3c-webauthn-and-authentication-flows">More updates to W3C WebAuthn and Authentication flows</a></li>
 <li><a href="#improved-handling-of-user-locale">Improved handling of user locale</a></li>
-<li><a href="#other-improvements-4">Other improvements</a></li>
+<li><a href="#other-improvements-5">Other improvements</a></li>
 </ul>
 </li>
 </ul>
@@ -850,7 +857,7 @@ span.image img {
 <li><a href="#support-for-password-less-authentication-multi-factor-authentication-and-multiple-credentials-per-user">Support for password-less authentication, multi-factor authentication and multiple credentials per user</a></li>
 </ul>
 </li>
-<li><a href="#other-improvements-5">Other Improvements</a>
+<li><a href="#other-improvements-6">Other Improvements</a>
 <ul class="sectlevel3">
 <li><a href="#system-properties-and-environment-variables-support-in-theme-properties">System properties and environment variables support in theme.properties</a></li>
 <li><a href="#support-more-signing-algorithms-for-client-authentication-with-signed-jwt">Support more signing algorithms for client authentication with signed JWT</a></li>
@@ -879,7 +886,7 @@ span.image img {
 <li><a href="#testing-and-release-automation">Testing and release automation</a></li>
 </ul>
 </li>
-<li><a href="#other-improvements-6">Other improvements</a></li>
+<li><a href="#other-improvements-7">Other improvements</a></li>
 </ul>
 </li>
 <li><a href="#keycloak-6-0-0">Keycloak 6.0.0</a>
@@ -1045,12 +1052,73 @@ span.image img {
 <div class="sect2">
 <h3 id="highlights"><a class="anchor" href="#highlights"></a>Highlights</h3>
 <div class="sect3">
+<h4 id="keycloak-x-distribution-preview"><a class="anchor" href="#keycloak-x-distribution-preview"></a>Keycloak.X distribution preview</h4>
+<div class="paragraph">
+<p>Introduction a preview of the new and upcoming Keycloak.X distribution. This distribution is powered by Quarkus, bringing
+significant improvements to startup time and memory consumption, as well as making it a lot easier to configure Keycloak.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="new-account-console-is-now-the-default"><a class="anchor" href="#new-account-console-is-now-the-default"></a>New Account console is now the default</h4>
+<div class="paragraph">
+<p>The new account console is no longer a preview feature and is now the default account console in Keycloak. The old account
+console will stay around for a while. For those that have a custom theme for the old account console the old console
+will be used by default, giving you the time to update your custom theme to the new account console.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="openid-connect-back-channel-logout"><a class="anchor" href="#openid-connect-back-channel-logout"></a>OpenID Connect Back-Channel Logout</h4>
+<div class="paragraph">
+<p>Support for OpenID Connect Back-Channel Logout is no available, thanks to <a href="https://github.com/DaSmoo">DaSmoo</a> and
+<a href="https://github.com/benjamin37">benjamin37</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="upgrade-to-wildfly-21"><a class="anchor" href="#upgrade-to-wildfly-21"></a>Upgrade to Wildfly 21</h4>
+<div class="paragraph">
+<p>The Keycloak server was upgraded to use Wildfly 21 as the underlying container.</p>
+</div>
+</div>
+<div class="sect3">
 <h4 id="ability-to-request-authncontext-in-saml-identity-provider"><a class="anchor" href="#ability-to-request-authncontext-in-saml-identity-provider"></a>Ability to request AuthnContext in SAML identity provider</h4>
 <div class="paragraph">
 <p>Support for specification of AuthnContext section in authentication requests issued by SAML identity provider has been added.</p>
 </div>
 <div class="paragraph">
 <p>Thanks to <a href="https://github.com/lscorcia">lscorcia</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="fapi-rw-support-and-initial-support-to-client-policies"><a class="anchor" href="#fapi-rw-support-and-initial-support-to-client-policies"></a>FAPI RW support and initial support to Client policies</h4>
+<div class="paragraph">
+<p>There was lots of the work done to have support for Financial-grade API Read and Write API Security Profile (FAPI RW). This is available
+with the usage of Client policies and it is still in the preview state. You can expect more polishing in the next releases.
+Thanks to <a href="https://github.com/tnorimat">Takashi Norimatsu</a> and all the members of the <a href="https://github.com/keycloak/kc-sig-fapi">FAPI Special interest group</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="upgrade-login-theme-to-patternfly-4"><a class="anchor" href="#upgrade-login-theme-to-patternfly-4"></a>Upgrade login theme to PatternFly 4</h4>
+<div class="paragraph">
+<p>The Keycloak login theme components have been upgraded to PatternFly 4.
+The old PatternFly 3 runs simultaneously with the new one, so it&#8217;s possible to have PF3 components there.</p>
+</div>
+<div class="paragraph">
+<p>There are also design changes in login theme for better user experience.
+You can even define an icon for your custom Identity providers.
+For details, please refer to the <a href="https://www.keycloak.org/docs/11.0/server_development/#custom-identity-providers-icons">docs</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="other-improvements"><a class="anchor" href="#other-improvements"></a>Other improvements</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Support for OAuth2 Client Credentials grant without refresh token and without user session. Thanks to <a href="https://github.com/thomasdarimont">Thomas Darimont</a></p>
+</li>
+<li>
+<p>Support for send access tokens to the OAuth2 Revocation endpoint</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1089,7 +1157,7 @@ please take a look at <a href="https://www.keycloak.org/docs/latest/upgrading/">
 </div>
 </div>
 <div class="sect3">
-<h4 id="other-improvements"><a class="anchor" href="#other-improvements"></a>Other improvements</h4>
+<h4 id="other-improvements-2"><a class="anchor" href="#other-improvements-2"></a>Other improvements</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1165,7 +1233,7 @@ some response are missing headers.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="other-improvements-2"><a class="anchor" href="#other-improvements-2"></a>Other improvements</h4>
+<h4 id="other-improvements-3"><a class="anchor" href="#other-improvements-3"></a>Other improvements</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1195,7 +1263,7 @@ applications from the legacy/deprecated API to the native promise API.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="other-improvements-3"><a class="anchor" href="#other-improvements-3"></a>Other improvements</h3>
+<h3 id="other-improvements-4"><a class="anchor" href="#other-improvements-4"></a>Other improvements</h3>
 <div class="sect3">
 <h4 id="reverted-breaking-api-changes-to-localeselectorspi"><a class="anchor" href="#reverted-breaking-api-changes-to-localeselectorspi"></a>Reverted breaking API changes to LocaleSelectorSPI</h4>
 <div class="paragraph">
@@ -1262,7 +1330,7 @@ is updated for a user.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="other-improvements-4"><a class="anchor" href="#other-improvements-4"></a>Other improvements</h4>
+<h4 id="other-improvements-5"><a class="anchor" href="#other-improvements-5"></a>Other improvements</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1406,7 +1474,7 @@ to <a href="https://github.com/harture">harture</a> and <a href="https://github.
 </div>
 </div>
 <div class="sect2">
-<h3 id="other-improvements-5"><a class="anchor" href="#other-improvements-5"></a>Other Improvements</h3>
+<h3 id="other-improvements-6"><a class="anchor" href="#other-improvements-6"></a>Other Improvements</h3>
 <div class="sect3">
 <h4 id="system-properties-and-environment-variables-support-in-theme-properties"><a class="anchor" href="#system-properties-and-environment-variables-support-in-theme-properties"></a>System properties and environment variables support in theme.properties</h4>
 <div class="paragraph">
@@ -1519,7 +1587,7 @@ Red Hat Single Sign-On.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="other-improvements-6"><a class="anchor" href="#other-improvements-6"></a>Other improvements</h3>
+<h3 id="other-improvements-7"><a class="anchor" href="#other-improvements-7"></a>Other improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2093,7 +2161,7 @@ Thanks to <a href="https://github.com/looorent">loorent</a> for the contribution
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-01 23:17:02 UTC
+Last updated 2020-12-07 22:39:50 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
