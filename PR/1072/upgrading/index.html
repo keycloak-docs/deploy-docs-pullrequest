@@ -1355,8 +1355,12 @@ default connectionsJpa provider:</p>
 in the new version.</p>
 </div>
 <div class="paragraph">
-<p>To change the threshold (the number of records) for automated index creation, set the indexCreationThreshold property
-value for the default connectionsLiquibase provider:</p>
+<p>Creating an index on huge tables with millions of records can easily take a huge amount of time
+and potentially change major service disruption on upgrades.
+For those cases, we added the threshold (the number of records) for automated index creation.</p>
+</div>
+<div class="paragraph">
+<p>To change the threshold, set the indexCreationThreshold property, value for the default connectionsLiquibase provider:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3231,7 +3235,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-11 07:54:38 UTC
+Last updated 2020-12-17 23:31:42 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
