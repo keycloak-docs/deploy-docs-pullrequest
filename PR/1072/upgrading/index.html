@@ -1357,7 +1357,9 @@ in the new version.</p>
 <div class="paragraph">
 <p>Creating an index on huge tables with millions of records can easily take a huge amount of time
 and potentially change major service disruption on upgrades.
-For those cases, we added the threshold (the number of records) for automated index creation.</p>
+For those cases, we added the threshold (the number of records) for automated index creation.
+When the number of records is higher than the threshold, the index is not created automatically,
+and there will be a warning message in server logs including SQL commands which can be applied later manually.</p>
 </div>
 <div class="paragraph">
 <p>To change the threshold, set the indexCreationThreshold property, value for the default connectionsLiquibase provider:</p>
@@ -3235,7 +3237,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-17 23:31:42 UTC
+Last updated 2020-12-18 01:15:14 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
