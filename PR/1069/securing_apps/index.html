@@ -9190,6 +9190,47 @@ Otherwise this configuration is optional.</p>
 instance. This should not be enabled when using Keycloak.</p>
 </div>
 </div>
+<div class="sect4">
+<h5 id="_saml-jboss-adapter-samesite-setting"><a class="anchor" href="#_saml-jboss-adapter-samesite-setting"></a>Setting SameSite value for JSESSIONID cookie</h5>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/jboss-adapter/jboss-adapter-samesite-setting.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20securing_apps/topics/saml/java/jboss-adapter/jboss-adapter-samesite-setting.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>Browsers are planning to set the default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This setting means
+that cookies will be sent to applications only if the request originates in the same domain. This behavior can affect
+the SAML POST binding which may become non-functional. To preserve full functionality of the SAML adapter, we recommend
+setting the <code>SameSite</code> value to <code>None</code> for the <code>JSESSIONID</code> cookie created by your container. Not doing so may result in
+resetting the container&#8217;s session with each request to Keycloak.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To avoid setting the <code>SameSite</code> attribute to <code>None</code>, consider switching to the REDIRECT binding
+if it is acceptable, or to OIDC protocol where this workaround is not necessary.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To set the <code>SameSite</code> value to <code>None</code> for the <code>JSESSIONID</code> cookie in Wildfly/EAP, add a file <code>undertow-handlers.conf</code>
+with the following content to the <code>WEB-INF</code> directory of your application.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>samesite-cookie(mode=None, cookie-pattern=JSESSIONID)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The support for this configuration is available in Wildfly from version 19.1.0.</p>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_jboss_adapter_rpm_saml"><a class="anchor" href="#_jboss_adapter_rpm_saml"></a>3.1.3. Installing JBoss EAP Adapter from an RPM</h4>
@@ -9635,6 +9676,60 @@ Here&#8217;s an example:</p>
 </div>
 <div class="paragraph">
 <p>If the <code>keycloak-saml.xml</code> does not explicitly set <code>assertionConsumerServiceUrl</code>, the SAML adapter will implicitly listen for SAML assertions at the location <code>/my-context-path/saml</code>. This has to match <code>Master SAML Processing URL</code> in the IDP realm/client settings, e.g. <code>http://sp.domain.com/my-context-path/saml</code>. If not, Tomcat will probably redirect infinitely to the IDP login service, as it does not receive the SAML assertion after the user logged in.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_saml-tomcat-adapter-samesite-setting"><a class="anchor" href="#_saml-tomcat-adapter-samesite-setting"></a>Setting SameSite value for JSESSIONID cookie</h5>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/tomcat-adapter/tomcat-adapter-samesite-setting.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20securing_apps/topics/saml/java/tomcat-adapter/tomcat-adapter-samesite-setting.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>Browsers are planning to set the default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This setting means
+that cookies will be sent to applications only if the request originates in the same domain. This behavior can affect
+the SAML POST binding which may become non-functional. To preserve full functionality of the SAML adapter, we recommend
+setting the <code>SameSite</code> value to <code>None</code> for the <code>JSESSIONID</code> cookie created by your container. Not doing so may result in
+resetting the container&#8217;s session with each request to Keycloak.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To avoid setting the <code>SameSite</code> attribute to <code>None</code>, consider switching to the REDIRECT binding
+if it is acceptable, or to OIDC protocol where this workaround is not necessary.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To set the <code>SameSite</code> value to <code>None</code> for <code>JSESSIONID</code> cookie in Tomcat add following configuration to the`context.xml`
+of your application. Note, this will set the <code>SameSite</code> value to <code>None</code> for all cookies created by Tomcat container.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;CookieProcessor</span> <span class="attribute-name">sameSiteCookies</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">None</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+It is not possible to set the <code>SameSite</code> attribute only to a subset of cookies, therefore all cookies created
+for your application will have this attribute set to <code>None</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The support for this feature is available in Tomcat from versions 9.0.29 and 8.5.49.</p>
 </div>
 </div>
 </div>
@@ -12557,7 +12652,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-14 20:28:05 UTC
+Last updated 2020-12-21 21:55:14 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

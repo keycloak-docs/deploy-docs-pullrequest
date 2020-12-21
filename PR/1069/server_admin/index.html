@@ -800,7 +800,7 @@ span.image img {
 <ul class="sectlevel3">
 <li><a href="#setting-required-actions-for-one-user">Setting required actions for one user</a></li>
 <li><a href="#setting-required-actions-for-all-users">Setting required actions for all users</a></li>
-<li><a href="#enabling-terms-and-conditions">Enabling terms and conditions</a></li>
+<li><a href="#enabling-terms-and-conditions-as-a-required-action">Enabling terms and conditions as a required action</a></li>
 </ul>
 </li>
 <li><a href="#user-impersonation">User Impersonation</a></li>
@@ -873,14 +873,19 @@ span.image img {
 <li><a href="#passwordless-webauthn-together-with-two-factor">Passwordless WebAuthn together with Two-Factor</a></li>
 </ul>
 </li>
+<li><a href="#conditions-in-conditional-flows">Conditions in Conditional flows</a>
+<ul class="sectlevel3">
+<li><a href="#available-conditions">Available Conditions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#sso-protocols">SSO Protocols</a>
 <ul class="sectlevel2">
 <li><a href="#openid-connect">OpenID Connect</a>
 <ul class="sectlevel3">
-<li><a href="#_oidc-auth-flows">OIDC Auth Flows</a></li>
-<li><a href="#_oidc-endpoints">Keycloak Server OIDC URI Endpoints</a></li>
+<li><a href="#oidc-auth-flows">OIDC Auth Flows</a></li>
+<li><a href="#keycloak-server-oidc-uri-endpoints">Keycloak Server OIDC URI Endpoints</a></li>
 </ul>
 </li>
 <li><a href="#_saml">SAML</a>
@@ -889,10 +894,10 @@ span.image img {
 <li><a href="#keycloak-server-saml-uri-endpoints">Keycloak Server SAML URI Endpoints</a></li>
 </ul>
 </li>
-<li><a href="#openid-connect-compared-to-saml">OpenID Connect compared to SAML</a></li>
+<li><a href="#openid-connect-vs-saml">OpenID Connect vs. SAML</a></li>
 <li><a href="#_docker">Docker Registry v2 Authentication</a>
 <ul class="sectlevel3">
-<li><a href="#docker-auth-flow">Docker Auth Flow</a></li>
+<li><a href="#docker-authentication-flow">Docker Authentication Flow</a></li>
 <li><a href="#keycloak-docker-registry-v2-authentication-server-uri-endpoints">Keycloak Docker Registry v2 Authentication Server URI Endpoints</a></li>
 </ul>
 </li>
@@ -2474,7 +2479,7 @@ If <strong>Temporary</strong> is set to <strong>ON</strong>, the user must chang
 </div>
 </div>
 <div class="sect3">
-<h4 id="enabling-terms-and-conditions"><a class="anchor" href="#enabling-terms-and-conditions"></a>Enabling terms and conditions</h4>
+<h4 id="enabling-terms-and-conditions-as-a-required-action"><a class="anchor" href="#enabling-terms-and-conditions-as-a-required-action"></a>Enabling terms and conditions as a required action</h4>
 <div class="paragraph">
 <p>You can enable a required action that new users must accept the terms and conditions before logging in to Keycloak for the first time.</p>
 </div>
@@ -4957,6 +4962,80 @@ provide the password and second-factor WebAuthn credential at all.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="conditions-in-conditional-flows"><a class="anchor" href="#conditions-in-conditional-flows"></a>Conditions in Conditional flows</h3>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/authentication/conditions.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/authentication/conditions.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>As was mentioned in <a href="#_execution-requirements">Execution requirements</a>, <em>Condition</em> executions can be only contained in <em>Conditional</em> subflow.
+If all <em>Condition</em> executions evaluate as true, then the <em>Conditional</em> sub-flow acts as <em>Required</em>.
+You can process the next execution in the <em>Conditional</em> sub-flow.
+If some executions included in the <em>Conditional</em> sub-flow evaluate as false, then the whole sub-flow is considered as <em>Disabled</em>.</p>
+</div>
+<div class="sect3">
+<h4 id="available-conditions"><a class="anchor" href="#available-conditions"></a>Available Conditions</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>Condition - User Role</code></dt>
+<dd>
+<p>This execution has the ability to determine if the user has a role defined by <em>User role</em> field.
+If the user has the required role, the execution is considered as true and other executions are evaluated.
+The administrator has to define the following fields:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Alias</dt>
+<dd>
+<p>Describes a name of the execution, which will be shown in the authentication flow.</p>
+</dd>
+<dt class="hdlist1">User role</dt>
+<dd>
+<p>Role the user should have to execute this flow.
+To specify an application role the syntax is <code>appname.approle</code> (for example <code>myapp.myrole</code>).</p>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1"><code>Condition - User Configured</code></dt>
+<dd>
+<p>This checks if the other executions in the flow are configured for the user.
+The Execution requirements section includes an example of the OTP form.</p>
+</dd>
+<dt class="hdlist1"><code>Condition - User Attribute</code></dt>
+<dd>
+<p>This checks if the user has set up the required attribute.
+There is a possibility to negate output, which means the user should not have the attribute.
+The <a href="#proc-configuring-user-attributes_server_administration_guide">User Attributes</a> section shows how to add a custom attribute.
+You can provide these fields:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Alias</dt>
+<dd>
+<p>Describes a name of the execution, which will be shown in the authentication flow.</p>
+</dd>
+<dt class="hdlist1">Attribute name</dt>
+<dd>
+<p>Name of the attribute to check.</p>
+</dd>
+<dt class="hdlist1">Expected attribute value</dt>
+<dd>
+<p>Expected value in the attribute.</p>
+</dd>
+<dt class="hdlist1">Negate output</dt>
+<dd>
+<p>You can negate the output.
+In other words, the attribute should not be present.</p>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -4968,110 +5047,158 @@ provide the password and second-factor WebAuthn credential at all.</p>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>The chapter gives a brief overview of the authentication protocols and how the Keycloak authentication server
-and the applications it secures interact with these protocols.</p>
+<div class="paragraph _abstract">
+<p>This section discusses authentication protocols, the Keycloak authentication server and how applications, secured by the Keycloak authentication server, interact with these protocols.</p>
 </div>
 <div id="con-oidc_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/oidc.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/oidc.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-oidc.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-oidc.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
 <div class="sect2">
 <h3 id="openid-connect"><a class="anchor" href="#openid-connect"></a>OpenID Connect</h3>
-<div class="paragraph">
-<p><a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) is an authentication protocol that is an extension of <a href="https://tools.ietf.org/html/rfc6749">OAuth 2.0</a>.
-While OAuth 2.0 is only a framework for building authorization protocols and is mainly incomplete, OIDC is a full-fledged authentication and authorization
-protocol.  OIDC also makes heavy use of the <a href="https://jwt.io">Json Web Token</a> (JWT) set of standards.  These standards define an
-identity token JSON format and ways to digitally sign and encrypt that data in a compact and web-friendly way.</p>
+<div class="paragraph _abstract">
+<p><a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) is an authentication protocol that is an extension of <a href="https://tools.ietf.org/html/rfc6749">OAuth 2.0</a>.</p>
 </div>
 <div class="paragraph">
-<p>There are really two types of use cases when using OIDC.  The first is an application that asks the Keycloak server to authenticate
-a user for them.  After a successful login, the application will receive an <em>identity token</em> and an <em>access token</em>.  The <em>identity token</em>
-contains information about the user such as username, email, and other profile information.  The <em>access token</em> is digitally signed by
-the realm and contains access information (like user role mappings) that the application can use to determine what resources the user
-is allowed to access on the application.</p>
+<p>OAuth 2.0 is a framework for building authorization protocols and is incomplete. OIDC, however, is a full authentication and authorization protocol that uses the <a href="https://jwt.io">Json Web Token</a> (JWT) standards.  The JWT standards define an identity token JSON format and methods to digitally sign and encrypt data in a compact and web-friendly way.</p>
 </div>
 <div class="paragraph">
-<p>The second type of use cases is that of a client that wants to gain access to remote services.  In this case, the client asks Keycloak
-to obtain an <em>access token</em> it can use to invoke on other remote services on behalf of the user.  Keycloak authenticates the user
-then asks the user for consent to grant access to the client requesting it.  The client then receives the <em>access token</em>.  This <em>access token</em>
-is digitally signed by the realm.  The client can make REST invocations on remote services using this <em>access token</em>.  The REST service
-extracts the <em>access token</em>, verifies the signature of the token, then decides based on access information within the token whether or not to process
-the request.</p>
+<p>In general, OIDC implements two use cases. The first case is an application requesting that a  Keycloak server authenticates a user. Upon successful login, the application receives an <em>identity token</em> and an <em>access token</em>.
+The <em>identity token</em> contains user information including user name, email, and profile information. The realm digitally signs the <em>access token</em> which contains access information (such as user role mappings) that applications use to determine the resources users can access in the application.</p>
+</div>
+<div class="paragraph">
+<p>The second use case is a client accessing remote services.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The client requests an <em>access token</em> from Keycloak to invoke on remote services on behalf of the user.</p>
+</li>
+<li>
+<p>Keycloak authenticates the user and asks the user for consent to grant access to the requesting client.</p>
+</li>
+<li>
+<p>The client receives the <em>access token</em> which is digitally signed by the realm.</p>
+</li>
+<li>
+<p>The client makes REST requests on remote services using the <em>access token</em>.</p>
+</li>
+<li>
+<p>The remote REST service extracts the <em>access token</em>.</p>
+</li>
+<li>
+<p>The remote REST service verifies the tokens signature.</p>
+</li>
+<li>
+<p>The remote REST service decides, based on access information within the token, to process or reject the request.</p>
+</li>
+</ul>
+</div>
+<div id="con-oidc-auth-flows_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-oidc-auth-flows.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-oidc-auth-flows.adoc" target="_blank">Report an issue</a>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_oidc-auth-flows"><a class="anchor" href="#_oidc-auth-flows"></a>OIDC Auth Flows</h4>
-<div class="paragraph">
-<p>OIDC has different ways for a client or application to authenticate a user and receive an <em>identity</em> and <em>access</em> token.  Which
-path you use depends greatly on the type of application or client requesting access.  All of these flows are described in the
-OIDC and OAuth 2.0 specifications so only a brief overview will be provided here.</p>
+<h4 id="oidc-auth-flows"><a class="anchor" href="#oidc-auth-flows"></a>OIDC Auth Flows</h4>
+<div class="paragraph _abstract">
+<p>OIDC has several methods, or flows, that clients or applications can use to authenticate users and receive <em>identity</em> and <em>access</em> tokens.  The method depends on the type of application or client requesting access.</p>
 </div>
 <div class="sect4">
 <h5 id="_oidc-auth-flows-authorization"><a class="anchor" href="#_oidc-auth-flows-authorization"></a>Authorization Code Flow</h5>
 <div class="paragraph">
-<p>This is a browser-based protocol and it is what we recommend you use to authenticate and authorize browser-based applications.  It makes
-heavy use of browser redirects to obtain an <em>identity</em> and <em>access</em> token.  Here&#8217;s a brief summary:</p>
+<p>The Authorization Code Flow is a browser-based protocol and suits authenticating and authorizing browser-based applications. It uses browser redirects to obtain <em>identity</em> and <em>access</em> tokens.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Browser visits application.  The application notices the user is not logged in, so it redirects the browser to Keycloak
-to be authenticated.  The application passes along a callback URL (a redirect URL) as a query parameter in this browser redirect
-that Keycloak will use when it finishes authentication.</p>
+<p>A user connects to an application using a browser. The application detects the user is not logged into the application.</p>
 </li>
 <li>
-<p>Keycloak authenticates the user and creates a one-time, very short lived, temporary code.  Keycloak
-redirects back to the application using the callback URL provided earlier and additionally adds the temporary code
-as a query parameter in the callback URL.</p>
+<p>The application redirects the browser to Keycloak for authentication.</p>
 </li>
 <li>
-<p>The application extracts the temporary code and makes a background out of band REST invocation to Keycloak
-to exchange the code for an <em>identity</em>, <em>access</em> and <em>refresh</em> token.  Once this temporary code has been used once
-to obtain the tokens, it can never be used again.  This prevents potential replay attacks.</p>
+<p>The application passes a callback URL as a query parameter in the browser redirect. Keycloak uses the parameter upon successful authentication.</p>
+</li>
+<li>
+<p>Keycloak authenticates the user and creates a one-time, short lived, temporary code.</p>
+</li>
+<li>
+<p>Keycloak redirects to the application using the callback URL and adds the temporary code as a query parameter in the callback URL.</p>
+</li>
+<li>
+<p>The application extracts the temporary code and makes a background REST invocation to Keycloak
+to exchange the code for an <em>identity</em> and <em>access</em> and <em>refresh</em> token.  To prevent replay attacks, the temporary code cannot be used more than once.</p>
 </li>
 </ol>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>It is important to note that <em>access</em> tokens are usually short lived and often expired after only minutes.  The additional <em>refresh</em>
-token that was transmitted by the login protocol allows the application to obtain a new access token after it expires.  This
-refresh protocol is important in the situation of a compromised system.  If access tokens are short lived, the whole system is only
-vulnerable to a stolen token for the lifetime of the access token.  Future refresh token requests will fail if an admin
-has revoked access.  This makes things more secure and more scalable.</p>
+<p>A system is vulnerable to a stolen token for the lifetime of that token. For security and scalability reasons, access_ tokens are generally set to expire quickly so subsequent token requests fail. If a token expires, an application can obtain a new access token using the additional <em>refresh</em> token sent by the login protocol.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div id="_confidential-clients" class="paragraph">
-<p>Another important aspect of this flow is the concept of a <em>public</em> vs. a <em>confidential</em> client.  <em>Confidential</em> clients are required
-to provide a client secret when they exchange the temporary codes for tokens.  <em>Public</em> clients are not required to provide this client secret.
-<em>Public</em> clients are perfectly fine so long as HTTPS is strictly enforced and you are very strict about what redirect URIs are registered for the
-client.  HTML5/JavaScript clients always have to be <em>public</em> clients because there is no way to transmit the client secret to them in a secure
-manner.  Again, this is ok so long as you use HTTPS and strictly enforce redirect URI registration.  This guide goes more detail
-into this in the <a href="#assembly-managing-clients_server_administration_guide">Managing Clients</a> chapter.</p>
+<p><em>Confidential</em> clients provide client secrets when they exchange the temporary codes for tokens. <em>Public</em> clients are not required to provide client secrets.
+<em>Public</em> clients are secure when HTTPS is strictly enforced and redirect URIs registered for the client are strictly controlled.  HTML5/JavaScript clients have to be <em>public</em> clients because there is no way to securely transmit the client secret to HTML5/JavaScript clients. For more details, see the <a href="#assembly-managing-clients_server_administration_guide">Managing Clients</a> chapter.</p>
 </div>
 <div class="paragraph">
-<p>Keycloak also supports the optional <a href="https://tools.ietf.org/html/rfc7636">Proof Key for Code Exchange</a> specification.</p>
+<p>Keycloak also supports the <a href="https://tools.ietf.org/html/rfc7636">Proof Key for Code Exchange</a> specification.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_oidc-auth-flows-implicit"><a class="anchor" href="#_oidc-auth-flows-implicit"></a>Implicit Flow</h5>
 <div class="paragraph">
-<p>This is a browser-based protocol that is similar to Authorization Code Flow except there are fewer requests and no refresh tokens involved.
-We do not recommend this flow as there remains the possibility of <em>access</em> tokens being leaked in the browser history as tokens are transmitted
-via redirect URIs (see below).  Also, since this flow doesn&#8217;t provide the client with a refresh token, access tokens would either have to
-be long-lived or users would have to re-authenticate when they expired.  This flow is supported because it is in the OIDC and OAuth 2.0 specification.
-Here&#8217;s a brief summary of the protocol:</p>
+<p>The Implicit Flow is a browser-based protocol. It is similar to the Authorization Code Flow but with fewer requests and no refresh tokens.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The possibility exists of <em>access</em> tokens leaking in the browser history when tokens are transmitted via redirect URIs (see below).</p>
+</div>
+<div class="paragraph">
+<p>Also, this flow does not provide clients with refresh tokens. Therefore, access tokens have to be long-lived or users  have to re-authenticate when they expire.</p>
+</div>
+<div class="paragraph">
+<p>We do not advise using this flow. This flow is supported because it is in the OIDC and OAuth 2.0 specification.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The protocol works as follows:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Browser visits application.  The application notices the user is not logged in, so it redirects the browser to Keycloak
-to be authenticated.  The application passes along a callback URL (a redirect URL) as a query parameter in this browser redirect
-that Keycloak will use when it finishes authentication.</p>
+<p>A user connects to an application using a browser. The application detects the user is not logged into the application.</p>
 </li>
 <li>
-<p>Keycloak authenticates the user and creates an <em>identity</em> and <em>access</em> token.  Keycloak
-redirects back to the application using the callback URL provided earlier and additionally adding the <em>identity</em> and
-<em>access</em> tokens as query parameters in the callback URL.</p>
+<p>The application redirects the browser to Keycloak for authentication.</p>
+</li>
+<li>
+<p>The application passes a callback URL as a query parameter in the browser redirect. Keycloak uses the query parameter upon successful authentication.</p>
+</li>
+<li>
+<p>Keycloak authenticates the user and creates an <em>identity</em> and <em>access</em> token. Keycloak
+redirects to the application using the callback URL and additionally adds the <em>identity</em> and <em>access</em> tokens as a query parameter in the callback URL.</p>
 </li>
 <li>
 <p>The application extracts the <em>identity</em> and <em>access</em> tokens from the callback URL.</p>
@@ -5082,122 +5209,141 @@ redirects back to the application using the callback URL provided earlier and ad
 <div class="sect4">
 <h5 id="_oidc-auth-flows-direct"><a class="anchor" href="#_oidc-auth-flows-direct"></a>Resource Owner Password Credentials Grant (Direct Access Grants)</h5>
 <div class="paragraph">
-<p>This is referred to in the Admin Console as <em>Direct Access Grants</em>. This is used by REST clients that want to obtain a token on behalf of a user.  It is one HTTP POST request that contains
-the credentials of the user as well as the id of the client and the client&#8217;s secret (if it is a confidential client).  The user&#8217;s credentials
-are sent within form parameters.  The HTTP response contains
-<em>identity</em>, <em>access</em>, and <em>refresh</em> tokens.</p>
+<p><em>Direct Access Grants</em> are used by REST clients to obtain tokens on behalf of users.  It is a HTTP POST request that contains:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The credentials of the user. The credentials are sent within form parameters.</p>
+</li>
+<li>
+<p>The id of the client.</p>
+</li>
+<li>
+<p>The clients secret (if it is a confidential client).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The HTTP response contains the <em>identity</em>, <em>access</em>, and <em>refresh</em> tokens.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_client_credentials_grant"><a class="anchor" href="#_client_credentials_grant"></a>Client Credentials Grant</h5>
 <div class="paragraph">
-<p>This is also used by REST clients, but instead of obtaining a token that works on behalf
-of an external user, a token is created based on the metadata and permissions of a service account that is associated with the client.
-More info together with example is in <a href="#_service_accounts">Service Accounts</a> chapter.</p>
+<p>The <em>Client Credentials Grant</em> creates a token based on the metadata and permissions of a service account associated with the client instead of obtaining a token that works on behalf of an external user. <em>Client Credentials Grants</em> are used by REST clients.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="#_service_accounts">Service Accounts</a> chapter for more information.</p>
+</div>
+<div id="con-server-oidc-uri-endpoints_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-server-oidc-uri-endpoints.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-server-oidc-uri-endpoints.adoc" target="_blank">Report an issue</a>
+</div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_oidc-endpoints"><a class="anchor" href="#_oidc-endpoints"></a>Keycloak Server OIDC URI Endpoints</h4>
-<div class="paragraph">
-<p>Here&#8217;s a list of OIDC endpoints that the Keycloak publishes.  These URLs are useful if you are using a non-Keycloak client adapter to
-talk OIDC with the auth server.  These are all relative URLs and the root of the URL being the HTTP(S) protocol, hostname, and usually path prefixed with
-<em>/auth</em>:  i.e. https://localhost:8080/auth</p>
+<h4 id="keycloak-server-oidc-uri-endpoints"><a class="anchor" href="#keycloak-server-oidc-uri-endpoints"></a>Keycloak Server OIDC URI Endpoints</h4>
+<div class="paragraph _abstract">
+<p>The following is a list of OIDC endpoints that Keycloak publishes. These endpoints can be used when a non-Keycloak client adapter uses OIDC to communicate with the authentication server. They are all relative URLs. The root of the URL consists of the HTTP(S) protocol, hostname, and the path, which is usually prefixed with <em>/auth</em>:  For example</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>https://localhost:8080/auth</code></pre>
+</div>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/auth</dt>
 <dd>
-<p>This is the URL endpoint for obtaining a temporary code in the Authorization Code Flow or for obtaining tokens via the
-Implicit Flow, Direct Grants, or Client Grants.</p>
+<p>Used for obtaining a temporary code in the Authorization Code Flow or obtaining tokens using the Implicit Flow, Direct Grants, or Client Grants.</p>
 </dd>
 <dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/token</dt>
 <dd>
-<p>This is the URL endpoint for the Authorization Code Flow to turn a temporary code into a token.</p>
+<p>Used by the Authorization Code Flow to convert a temporary code into a token.</p>
 </dd>
 <dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/logout</dt>
 <dd>
-<p>This is the URL endpoint for performing logouts.</p>
+<p>Used for performing logouts.</p>
 </dd>
 <dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/userinfo</dt>
 <dd>
-<p>This is the URL endpoint for the User Info service described in the OIDC specification.</p>
+<p>Used for the User Info service described in the OIDC specification.</p>
 </dd>
 <dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/revoke</dt>
 <dd>
-<p>This is the URL endpoint for OAuth 2.0 Token Revocation described in <a href="https://tools.ietf.org/html/rfc7009">RFC7009</a>.</p>
+<p>Used for OAuth 2.0 Token Revocation described in <a href="https://tools.ietf.org/html/rfc7009">RFC7009</a>.</p>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>In all of these replace <em>{realm-name}</em> with the name of the realm.</p>
+<div id="con-saml_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-saml.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-saml.adoc" target="_blank">Report an issue</a>
+</div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_saml"><a class="anchor" href="#_saml"></a>SAML</h3>
-<div class="sidebarblock page-links">
+<div class="paragraph _abstract">
+<p><a href="http://saml.xml.org/saml-specifications">SAML 2.0</a> is a similar specification to OIDC but more mature.  It is descended from SOAP and web service messaging specifications so is generally more verbose than OIDC.  SAML 2.0 is an authentication protocol that exchanges XML documents between authentication servers and applications.  XML signatures and encryption are used to verify requests and responses.</p>
+</div>
+<div class="paragraph">
+<p>In general, SAML implements two use cases.</p>
+</div>
+<div class="paragraph">
+<p>The first use case is an application that requests the Keycloak server authenticates a user.  Upon successful login, the application will receive an XML document. This document contains an SAML assertion that specifies user attributes. The realm digitally signs the the document which contains access information (such as user role mappings) that applications use to determine the resources users are allowed to access in the application.</p>
+</div>
+<div class="paragraph">
+<p>The second use case is a client accessing remote services.  The client requests a SAML assertion from Keycloak to invoke on remote services on behalf of the user.</p>
+</div>
+<div id="con-saml-bindings_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/saml.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/saml.adoc" target="_blank">Report an issue</a>
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-saml-bindings.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-saml-bindings.adoc" target="_blank">Report an issue</a>
 </div>
-</div>
-<div class="paragraph">
-<p><a href="http://saml.xml.org/saml-specifications">SAML 2.0</a> is a similar specification to OIDC but a lot older and more mature.  It has its roots in SOAP and the plethora
-of WS-* specifications so it tends to be a bit more verbose than OIDC.  SAML 2.0 is primarily an authentication protocol
-that works by exchanging XML documents between the authentication server and the application.  XML signatures and encryption
-is used to verify requests and responses.</p>
-</div>
-<div class="paragraph">
-<p>There are really two types of use cases when using SAML.  The first is an application that asks the Keycloak server to authenticate
-a user for them.  After a successful login, the application will receive an XML document that contains
-something called a SAML assertion that specify various attributes about the user.  This XML document is digitally signed by
-the realm and contains access information (like user role mappings) that the application can use to determine what resources the user
-is allowed to access on the application.</p>
-</div>
-<div class="paragraph">
-<p>The second type of use cases is that of a client that wants to gain access to remote services.  In this case, the client asks Keycloak
-to obtain an SAML assertion it can use to invoke on other remote services on behalf of the user.</p>
 </div>
 <div class="sect3">
 <h4 id="saml-bindings"><a class="anchor" href="#saml-bindings"></a>SAML Bindings</h4>
-<div class="paragraph">
-<p>SAML defines a few different ways to exchange XML documents when executing the authentication protocol.  The <em>Redirect</em> and <em>Post</em> bindings
-cover browser based applications.  The <em>ECP</em> binding covers REST invocations.  There are other binding types but Keycloak only
-supports those three.</p>
+<div class="paragraph _abstract">
+<p>Keycloak supports three binding types.</p>
 </div>
 <div class="sect4">
 <h5 id="redirect-binding"><a class="anchor" href="#redirect-binding"></a>Redirect Binding</h5>
 <div class="paragraph">
-<p>The <em>Redirect</em> Binding uses a series of browser redirect URIs to exchange information.  This is a rough overview of
-how it works.</p>
+<p><em>Redirect</em> binding uses a series of browser redirect URIs to exchange information.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The user visits the application and the application finds the user is not authenticated.  It generates an XML authentication
-request document and encodes it as a query param in a URI that is used to redirect to the Keycloak server.
-Depending on your settings, the application may also digitally sign this XML document and also stuff this signature as a query
-param in the redirect URI to Keycloak.  This signature is used to validate the client that sent this
-request.</p>
+<p>A user connects to an application using a browser. The application detects the user is not authenticated.</p>
 </li>
 <li>
-<p>The browser is redirected to Keycloak.  The server extracts the XML auth request document and verifies
-the digital signature if required.  The user then has to enter in their credentials to be authenticated.</p>
+<p>The application generates an XML authentication request document and encodes it as a query parameter in a URI. The URI is used to redirect to the Keycloak server. Depending on your settings, the application can also digitally sign the XML document and include the signature as a query parameter in the redirect URI to Keycloak.  This signature is used to validate the client that sends the request.</p>
 </li>
 <li>
-<p>After authentication, the server generates an XML authentication response document.  This document contains
-a SAML assertion that holds metadata about the user like name, address, email, and any role mappings the user
-might have.  This document is almost always digitally signed using XML signatures, and may also be encrypted.</p>
+<p>The browser redirects to Keycloak.</p>
 </li>
 <li>
-<p>The XML auth response document is then encoded as a query param in a redirect URI that brings the browser back
-to the application.  The digital signature is also included as a query param.</p>
+<p>The server extracts the XML auth request document and verifies the digital signature, if required.</p>
 </li>
 <li>
-<p>The application receives the redirect URI and extracts the XML document and verifies the realm&#8217;s signature to make
-sure it is receiving a valid auth response.  The information inside the SAML assertion is then used to make
-access decisions or display user data.</p>
+<p>The user enters their authentication credentials.</p>
+</li>
+<li>
+<p>After authentication, the server generates an XML authentication response document. The document contains a SAML assertion that holds metadata about the user, including name, address, email, and any role mappings the user has.  The document is usually digitally signed using XML signatures, and may also be encrypted.</p>
+</li>
+<li>
+<p>The XML authentication response document is encoded as a query parameter in a redirect URI. The URI brings the browser back to the application.  The digital signature is also included as a query parameter.</p>
+</li>
+<li>
+<p>The application receives the redirect URI and extracts the XML document.</p>
+</li>
+<li>
+<p>The application verifies the realm&#8217;s signature to ensure it is receiving a valid authentication response.  The information inside the SAML assertion is used to make access decisions or display user data.</p>
 </li>
 </ol>
 </div>
@@ -5205,31 +5351,35 @@ access decisions or display user data.</p>
 <div class="sect4">
 <h5 id="post-binding"><a class="anchor" href="#post-binding"></a>POST Binding</h5>
 <div class="paragraph">
-<p>The SAML <em>POST</em> binding works almost the exact same way as the <em>Redirect</em> binding, but instead of GET requests, XML
-documents are exchanged by POST requests.  The <em>POST</em> Binding uses JavaScript to trick the browser into making a POST request to
-the Keycloak server or application when exchanging documents.  Basically HTTP responses contain an HTML document
-that contains an HTML form with embedded JavaScript.  When the page is loaded, the JavaScript automatically invokes the form.
-You really don&#8217;t need to know about this stuff, but it is a pretty clever trick.</p>
+<p><em>POST</em> binding is similar to <em>Redirect</em> binding but <em>POST</em> binding exchanges XML documents using POST requests instead of using GET requests. <em>POST</em> Binding uses JavaScript to make the browser send a POST request to the Keycloak server or application when exchanging documents. HTTP responds with an HTML document which contains an HTML form containing embedded JavaScript.  When the page loads, the JavaScript automatically invokes the form.</p>
 </div>
 <div class="paragraph">
-<p><em>POST</em> binding is usually recommended because of security and size restrictions. When using <em>REDIRECT</em> the SAML response
-is part of the URL (it is a query parameter as it was explained before), so it can be captured in logs and it is considered
-less secure. Regarding size, if the assertion contains a lot or large attributes sending the document inside the HTTP payload
-is always better than in the more limited URL.</p>
+<p><em>POST</em> binding is recommended due to two restrictions:</p>
+</div>
+<div class="paragraph">
+<p><strong>Security</strong></p>
+</div>
+<div class="paragraph">
+<p>With <em>Redirect</em> binding, the SAML response is part of the URL. It is less secure as it is possible to capture the response in logs.</p>
+</div>
+<div class="paragraph">
+<p><strong>Size</strong></p>
+</div>
+<div class="paragraph">
+<p>Sending the document in the HTTP payload provides more scope for large amounts of data than in a limited URL.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="ecp"><a class="anchor" href="#ecp"></a>ECP</h5>
 <div class="paragraph">
-<p>ECP stands for "Enhanced Client or Proxy", a SAML v.2.0 profile which allows for the exchange of SAML attributes outside the context of a web browser.
-This is used most often for REST or SOAP-based clients.</p>
+<p>Enhanced Client or Proxy (ECP) is a SAML v.2.0 profile which allows the exchange of SAML attributes outside the context of a web browser. It is often used by REST or SOAP-based clients.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="keycloak-server-saml-uri-endpoints"><a class="anchor" href="#keycloak-server-saml-uri-endpoints"></a>Keycloak Server SAML URI Endpoints</h4>
 <div class="paragraph">
-<p>Keycloak really only has one endpoint for all SAML requests.</p>
+<p>Keycloak has one endpoint for all SAML requests.</p>
 </div>
 <div class="paragraph">
 <p><code>http(s)://authserver.host/auth/realms/{realm-name}/protocol/saml</code></p>
@@ -5237,91 +5387,110 @@ This is used most often for REST or SOAP-based clients.</p>
 <div class="paragraph">
 <p>All bindings use this endpoint.</p>
 </div>
+<div id="ref-saml-vs-oidc_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/ref-saml-vs-oidc.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/ref-saml-vs-oidc.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="openid-connect-compared-to-saml"><a class="anchor" href="#openid-connect-compared-to-saml"></a>OpenID Connect compared to SAML</h3>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/saml-vs-oidc.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/saml-vs-oidc.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="paragraph">
-<p>Choosing between OpenID Connect and SAML is not just a matter of using a newer protocol (OIDC) instead of the older more mature protocol (SAML).</p>
+<h3 id="openid-connect-vs-saml"><a class="anchor" href="#openid-connect-vs-saml"></a>OpenID Connect vs. SAML</h3>
+<div class="paragraph _abstract">
+<p>The following lists a number of factors to consider when choosing a protocol.</p>
 </div>
 <div class="paragraph">
 <p>For most purposes, Keycloak recommends using OIDC.</p>
 </div>
 <div class="paragraph">
-<p>SAML tends to be a bit more verbose than OIDC.</p>
-</div>
-<div class="paragraph">
-<p>Beyond verbosity of exchanged data, if you compare the specifications you&#8217;ll find that OIDC was designed to work with the web while SAML was retrofitted to work on top of the web.  For example, OIDC is also more suited for HTML5/JavaScript applications because it is
-easier to implement on the client side than SAML. As tokens are in the JSON format,
-they are easier to consume by JavaScript. You will also find several nice features that
-make implementing security in your web applications easier. For example, check out the <a href="https://openid.net/specs/openid-connect-session-1_0.html#ChangeNotification">iframe trick</a> that the specification uses to easily determine if a user is still logged in or not.</p>
-</div>
-<div class="paragraph">
-<p>SAML has its uses though. As you see the OIDC specifications evolve you see they implement more and more features that SAML has had for years. What we often see is that people pick SAML over OIDC because of the perception that it is more mature and also because they already have existing applications that are secured with it.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_docker"><a class="anchor" href="#_docker"></a>Docker Registry v2 Authentication</h3>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/docker.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/docker.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Docker authentication is disabled by default. To enable see <a href="https://www.keycloak.org/docs/11.0/server_installation/#profiles">Profiles</a>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><a href="https://docs.docker.com/registry/spec/auth/">Docker Registry V2 Authentication</a> is an OIDC-Like protocol used to authenticate users against a Docker registry.  Keycloak&#8217;s implementation of this protocol allows for a Keycloak authentication server to be used by a Docker client to authenticate against a registry.  While this protocol uses fairly standard token and signature mechanisms, it has a few wrinkles that prevent it from being treated as a true OIDC implementation.  The largest deviations include a very specific JSON format for requests and responses as well as the ability to understand how to map repository names and permissions to the OAuth scope mechanism.</p>
-</div>
-<div class="sect3">
-<h4 id="docker-auth-flow"><a class="anchor" href="#docker-auth-flow"></a>Docker Auth Flow</h4>
-<div class="paragraph">
-<p>The <a href="https://docs.docker.com/registry/spec/auth/token/">Docker API documentation</a> best describes and illustrates this process, however a brief summary will be given below from the perspective of the Keycloak authentication server.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This flow assumes that a <code>docker login</code> command has already been performed
-</td>
-</tr>
-</table>
+<p><strong>OIDC</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The flow begins when the Docker client requests a resource from the Docker registry.  If the resource is protected and no auth token is present in the request, the Docker registry server will respond to the client with a 401 + some information on required permissions and where to find the authorization server.</p>
+<p>OIDC is specifically designed to work with the web.</p>
 </li>
 <li>
-<p>The Docker client will construct an authentication request based on the 401 response from the Docker registry.  The client will then use the locally cached credentials (from a previously run <code>docker login</code> command) as part of a <a href="https://tools.ietf.org/html/rfc2617">HTTP Basic Authentication</a> request to the Keycloak authentication server.</p>
+<p>OIDC is suited for HTML5/JavaScript applications because it is easier to implement on the client side than SAML.</p>
 </li>
 <li>
-<p>The Keycloak authentication server will attempt to authenticate the user and return a JSON body containing an OAuth-style Bearer token.</p>
+<p>OIDC tokens are in the JSON format which makes them easier for Javascript to consume.</p>
 </li>
 <li>
-<p>The Docker client will get the bearer token from the JSON response and use it in the Authorization header to request the protected resource.</p>
+<p>OIDC has features to make security implementation easier. For example, see the <a href="https://openid.net/specs/openid-connect-session-1_0.html#ChangeNotification">iframe trick</a> that the specification uses to determine a users login status.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>SAML</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SAML is designed as a layer to work on top of the web.</p>
 </li>
 <li>
-<p>When the Docker registry receives the new request for the protected resource with the token from the Keycloak server, the registry validates the token and grants access to the requested resource (if appropriate).</p>
+<p>SAML can be more verbose than OIDC.</p>
+</li>
+<li>
+<p>Users pick SAML over OIDC because there is a perception that it is mature.</p>
+</li>
+<li>
+<p>Users pick SAML over OIDC existing applications that are secured with it.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-sso-docker.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-sso-docker.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_docker"><a class="anchor" href="#_docker"></a>Docker Registry v2 Authentication</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Docker authentication is disabled by default. To enable docker authentication, see <a href="https://www.keycloak.org/docs/11.0/server_installation/#profiles">Profiles</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph _abstract">
+<p><a href="https://docs.docker.com/registry/spec/auth/">Docker Registry V2 Authentication</a> is a protocol, similar to OIDC, that authenticates users against Docker registries.  Keycloak&#8217;s implementation of this protocol lets Docker clients use a Keycloak authentication server authenticate against a registry. This protocol uses standard token and signature mechanisms but it does deviate from a true OIDC implementation. It deviates by using a very specific JSON format for requests and responses as well as mapping repository names and permissions to the OAuth scope mechanism.</p>
+</div>
+<div class="sect3">
+<h4 id="docker-authentication-flow"><a class="anchor" href="#docker-authentication-flow"></a>Docker Authentication Flow</h4>
+<div class="paragraph">
+<p>The authentication flow is described in the <a href="https://docs.docker.com/registry/spec/auth/token/">Docker API documentation</a>. The following is a summary from the perspective of the Keycloak authentication server:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Perform a <code>docker login</code>.</p>
+</li>
+<li>
+<p>The Docker client requests a resource from the Docker registry.  If the resource is protected and no authentication token is in the request, the Docker registry server responds with a 401 HTTP message with some information on the permissions that are required and the location of the authorization server.</p>
+</li>
+<li>
+<p>The Docker client constructs an authentication request based on the 401 HTTP message from the Docker registry. The client uses the locally cached credentials (from the <code>docker login</code> command) as part of the <a href="https://tools.ietf.org/html/rfc2617">HTTP Basic Authentication</a> request to the Keycloak authentication server.</p>
+</li>
+<li>
+<p>The Keycloak authentication server attempts to authenticate the user and return a JSON body containing an OAuth-style Bearer token.</p>
+</li>
+<li>
+<p>The Docker client receives a bearer token from the JSON response and uses it in the authorization header to request the protected resource.</p>
+</li>
+<li>
+<p>The Docker registry receives the new request for the protected resource with the token from the Keycloak server. The registry validates the token and grants access to the requested resource (if appropriate).</p>
 </li>
 </ul>
 </div>
@@ -5332,9 +5501,7 @@ This flow assumes that a <code>docker login</code> command has already been perf
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-No user session is created on the Keycloak side after successful authentication with the Docker protocol. The Docker protocol is
-not used in case of browser SSO session and it does not have a way to refresh token or ask Keycloak server if a particular token/session
-is still valid. So creating the session is unnecessary overhead for this protocol. For more details, see the <a href="#_transient-session">transient session</a> section.
+Keycloak does not create a browser SSO session after successful authentication with the Docker protocol. The browser SSO session does not use the Docker protocol as it cannot refresh tokens or obtain the status of a token or session from the Keycloak server; therefore a browser SSO session is not necessary. For more details, see the <a href="#_transient-session">transient session</a> section.
 </td>
 </tr>
 </table>
@@ -5343,7 +5510,7 @@ is still valid. So creating the session is unnecessary overhead for this protoco
 <div class="sect3">
 <h4 id="keycloak-docker-registry-v2-authentication-server-uri-endpoints"><a class="anchor" href="#keycloak-docker-registry-v2-authentication-server-uri-endpoints"></a>Keycloak Docker Registry v2 Authentication Server URI Endpoints</h4>
 <div class="paragraph">
-<p>Keycloak really only has one endpoint for all Docker auth v2 requests.</p>
+<p>Keycloak has one endpoint for all Docker auth v2 requests.</p>
 </div>
 <div class="paragraph">
 <p><code>http(s)://authserver.host/auth/realms/{realm-name}/protocol/docker-v2</code></p>
@@ -6006,7 +6173,7 @@ Pragma: no-cache
 on the Keycloak side upon successful authentication by default. Due to the lack of refresh token, re-authentication is required when the access token expires. However, this situation does not mean any additional overhead for the Keycloak server because sessions are not created by default.</p>
 </div>
 <div class="paragraph">
-<p>In this situation, logout is unnecessary. However, issued access tokens can be revoked by sending requests to the OAuth2 Revocation Endpoint as described in the <a href="#_oidc-endpoints">OpenID Connect Endpoints</a> section.</p>
+<p>In this situation, logout is unnecessary. However, issued access tokens can be revoked by sending requests to the OAuth2 Revocation Endpoint as described in the <a href="#con-oidc_server_administration_guide">OpenID Connect Endpoints</a> section.</p>
 </div>
 <div class="paragraph _additional-resources">
 <div class="title">Additional resources</div>
@@ -12518,7 +12685,7 @@ This query or form parameter is checked against the state cookie to verify that 
 <div class="sect2">
 <h3 id="unspecific-redirect-uris"><a class="anchor" href="#unspecific-redirect-uris"></a>Unspecific Redirect URIs</h3>
 <div class="paragraph">
-<p>For the <a href="#_oidc-auth-flows">Authorization Code Flow</a>, if you register redirect URIs that
+<p>For the <a href="#con-oidc-auth-flows_server_administration_guide">Authorization Code Flow</a>, if you register redirect URIs that
 are too general, then it would be possible for a rogue client to impersonate a different client that has a broader scope
 of access.  This could happen for instance if two clients live under the same domain.  So, it&#8217;s a good idea to make your
 registered redirect URIs as specific as feasible.</p>
@@ -12559,7 +12726,7 @@ More info in the  <a href="#realm_keys">keys chapter</a>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For the <a href="#_oidc-auth-flows">OIDC Auth Code Flow</a>, it would be very hard for an attacker to compromise Keycloak authorization codes.
+<p>For the <a href="#con-oidc-auth-flows_server_administration_guide">OIDC Auth Code Flow</a>, it would be very hard for an attacker to compromise Keycloak authorization codes.
 Keycloak generates a cryptographically strong random value for its authorization codes so it would be very hard to guess an access token.
 An authorization code can only be used once to obtain an access token.
 In the admin console you can specify how long an authorization code is valid for on the <a href="#_timeouts">timeouts page</a>.
@@ -15231,7 +15398,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-14 20:28:11 UTC
+Last updated 2020-12-21 21:55:20 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
