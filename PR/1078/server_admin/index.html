@@ -3495,9 +3495,9 @@ future versions and provide some more flexible mappings from Kerberos principals
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Note that it is the responsibility of the web container to validate certificate PKIX path and the certificate expiration. X.509 authenticator on the
-Keycloak side provides just the additional support for check the certificate revocation status and key usage. If you are
-using Keycloak deployed behind reverse proxy, make sure that your reverse proxy is configured to validate PKIX path and the certificate expiration. If you
+Note that it is the responsibility of the web container to validate certificate PKIX path. X.509 authenticator on the
+Keycloak side provides just the additional support for check the certificate expiration, certificate revocation status and key usage. If you are
+using Keycloak deployed behind reverse proxy, make sure that your reverse proxy is configured to validate PKIX path. If you
 do not use reverse proxy and users directly access the WildFly, you should be fine as WildFly makes sure that PKIX path is validated as long
 as it is configured as described below.
 </td>
@@ -14643,7 +14643,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-04 09:34:35 UTC
+Last updated 2021-01-04 10:10:53 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
