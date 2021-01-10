@@ -1356,20 +1356,20 @@ in the new version.</p>
 </div>
 <div class="paragraph">
 <p>Creating an index on huge tables with millions of records can easily take a huge amount of time
-and potentially change major service disruption on upgrades.
-For those cases, we added the threshold (the number of records) for automated index creation.
+and potentially cause major service disruption on upgrades.
+For those cases, we added a threshold (the number of records) for automated index creation.
 When the number of records is higher than the threshold, the index is not created automatically,
 and there will be a warning message in server logs including SQL commands which can be applied later manually.</p>
 </div>
 <div class="paragraph">
-<p>To change the threshold, set the indexCreationThreshold property, value for the default connectionsLiquibase provider:</p>
+<p>To change the threshold, set the <code>indexCreationThreshold</code> property, value for the default <code>connectionsLiquibase</code> provider:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;spi</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">connectionsLiquibase</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;provider</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;properties&gt;</span>
-            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">indexCreationThreshold</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">10000</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">indexCreationThreshold</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100000</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
         <span class="tag">&lt;/properties&gt;</span>
     <span class="tag">&lt;/provider&gt;</span>
 <span class="tag">&lt;/spi&gt;</span></code></pre>
@@ -1381,7 +1381,7 @@ and there will be a warning message in server logs including SQL commands which 
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">/subsystem=keycloak-server/spi=connectionsLiquibase/:add(default-provider=default)
-/subsystem=keycloak-server/spi=connectionsLiquibase/provider=default/:add(properties={indexCreationThreshold =&gt; &quot;10000&quot;},enabled=true)</code></pre>
+/subsystem=keycloak-server/spi=connectionsLiquibase/provider=default/:add(properties={indexCreationThreshold =&gt; &quot;100000&quot;},enabled=true)</code></pre>
 </div>
 </div>
 </div>
@@ -3237,7 +3237,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-18 01:15:14 UTC
+Last updated 2021-01-10 00:00:07 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
