@@ -1358,6 +1358,7 @@ in the new version.</p>
 <p>Creating an index on huge tables with millions of records can easily take a huge amount of time
 and potentially cause major service disruption on upgrades.
 For those cases, we added a threshold (the number of records) for automated index creation.
+By default, this threshold is <code>100000</code> records.
 When the number of records is higher than the threshold, the index is not created automatically,
 and there will be a warning message in server logs including SQL commands which can be applied later manually.</p>
 </div>
@@ -3237,7 +3238,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-10 00:00:07 UTC
+Last updated 2021-01-10 10:23:24 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
