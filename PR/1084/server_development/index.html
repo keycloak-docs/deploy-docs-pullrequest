@@ -955,6 +955,7 @@ span.image img {
 <li><a href="#upgrading-to-a-new-model">Upgrading to a New Model</a></li>
 </ul>
 </li>
+<li><a href="#stream-based-interfaces">Stream-based Interfaces</a></li>
 </ul>
 </li>
 <li><a href="#_vault-spi">Vault SPI</a>
@@ -6360,9 +6361,12 @@ users will work and be the same.</p>
 </div>
 <div class="paragraph">
 <p>If you have decided to get rid of the import strategy and rewrite your User Storage provider, we suggest that you remove the earlier provider
-before upgrading Keycloak. This will remove linked local imported copies of any user you imported.
-=== Stream-based Interfaces</p>
+before upgrading Keycloak. This will remove linked local imported copies of any user you imported.</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="stream-based-interfaces"><a class="anchor" href="#stream-based-interfaces"></a>Stream-based Interfaces</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/stream-interfaces.adoc" target="_blank">Edit this section</a>
@@ -6443,7 +6447,6 @@ when creating a custom provider. For example, the following code uses the <code>
     }
 ...
 }</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -6532,7 +6535,7 @@ plain byte and character arrays and buffers is preferable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-10 20:05:37 UTC
+Last updated 2021-01-11 14:20:05 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
