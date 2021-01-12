@@ -1925,10 +1925,10 @@ entered a bad password. The details are described <a href="https://www.keycloak.
 <div class="sect3">
 <h4 id="communication"><a class="anchor" href="#communication"></a>Communication details</h4>
 <div class="paragraph">
-<p>Keycloak uses multiple, separate clusters of Infinispan caches. Every Keycloak node is in the cluster with the other Keycloak nodes in same data center, but not with the Keycloak nodes in different data centers. A Keycloak node does not communicate directly with the Keycloak nodes from different data centers. Keycloak nodes use external JDG (actually Infinispan servers) for communication across data centers. This is done using the <a href="https://infinispan.org/docs/stable/titles/hotrod_java/hotrod_java.html">Infinispan HotRod protocol</a>.</p>
+<p>Keycloak uses multiple, separate clusters of Infinispan caches. Every Keycloak node is in the cluster with the other Keycloak nodes in same data center, but not with the Keycloak nodes in different data centers. A Keycloak node does not communicate directly with the Keycloak nodes from different data centers. Keycloak nodes use external JDG (actually Infinispan servers) for communication across data centers. This is done using the <a href="https://infinispan.org/docs/8.2.x/user_guide/user_guide.html#using_hot_rod_server">Infinispan HotRod protocol</a>.</p>
 </div>
 <div class="paragraph">
-<p>The Infinispan caches on the Keycloak side must be configured with the <a href="https://infinispan.org/docs/stable/titles/configuring/configuring.html#remote_cache_store">remoteStore</a> to ensure that data are saved to the remote cache. There is separate Infinispan cluster between JDG servers, so the data saved on JDG1 on <code>site1</code> are replicated to JDG2 on <code>site2</code> .</p>
+<p>The Infinispan caches on the Keycloak side must be configured with the <a href="https://infinispan.org/docs/8.2.x/user_guide/user_guide.html#remote_store">remoteStore</a> to ensure that data are saved to the remote cache. There is separate Infinispan cluster between JDG servers, so the data saved on JDG1 on <code>site1</code> are replicated to JDG2 on <code>site2</code> .</p>
 </div>
 <div class="paragraph">
 <p>Finally, the receiving JDG server notifies the Keycloak servers in its cluster through the Client Listeners, which are a feature of the HotRod protocol. Keycloak nodes on <code>site2</code> then update their Infinispan caches and the particular user session is also visible on Keycloak nodes on <code>site2</code>.</p>
@@ -5135,7 +5135,7 @@ but can be chosen according to some other criterias (client IP address etc). It 
 </li>
 <li>
 <p>Infinispan distributed cache assigns the primary owner of the session based on the hash of session ID.
-See <a href="https://infinispan.org/docs/stable/titles/configuring/configuring.html#distribution-configuring">Infinispan documentation</a> for more details around this.
+See <a href="https://infinispan.org/docs/8.2.x/user_guide/user_guide.html#distribution_mode">Infinispan documentation</a> for more details around this.
 Let&#8217;s assume that Infinispan assigned <code>node2</code> to be the owner of this session.</p>
 </li>
 <li>
@@ -7304,7 +7304,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-11 14:20:07 UTC
+Last updated 2021-01-12 18:00:32 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
