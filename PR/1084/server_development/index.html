@@ -1608,8 +1608,8 @@ usernameOrEmail=....</code></pre>
 <h4 id="custom-identity-providers-icons"><a class="anchor" href="#custom-identity-providers-icons"></a>Custom Identity providers icons</h4>
 <div class="paragraph">
 <p>Keycloak supports adding icons for custom Identity providers, which are displayed on the login screen.
-You just have to define an icon classes in your login <code>theme.properties</code> file (f.e. <code>themes/mytheme/login/theme.properties</code>) with key pattern <code>kcLogoIdP-&lt;alias&gt;</code>.
-For Identity provider with alias <code>myProvider</code>, you may add line, like below, to login theme properties of your custom theme.</p>
+You just have to define icon classes in your login <code>theme.properties</code> file (i.e. <code>themes/mytheme/login/theme.properties</code>) with key pattern <code>kcLogoIdP-&lt;alias&gt;</code>.
+For Identity provider with an alias <code>myProvider</code>, you may add a line, like below, to <code>theme.properties</code> file of your custom theme.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6426,7 +6426,7 @@ package and a few others that might be implemented depending on the scope of the
 </tbody>
 </table>
 <div class="paragraph">
-<p>(*) identify <em>capability interfaces</em></p>
+<p>(*) indicates the interface is a <em>capability interface</em></p>
 </div>
 <div class="paragraph">
 <p>To make use of the <code>Streams</code> variants, one has to simply implement these sub-interfaces instead of the original interfaces
@@ -6437,7 +6437,7 @@ when creating a custom provider. For example, the following code uses the <code>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CustomQueryProvider</span> <span class="directive">extends</span> UserQueryProvider.Streams {
 ...
     <span class="annotation">@Override</span>
-    Stream&lt;UserModel&gt; getUsersStream(RealmModel realm, <span class="type">int</span> firstResult, <span class="type">int</span> maxResults) {
+    Stream&lt;UserModel&gt; getUsersStream(RealmModel realm, <span class="predefined-type">Integer</span> firstResult, <span class="predefined-type">Integer</span> maxResults) {
         <span class="comment">// custom logic here</span>
     }
 
@@ -6535,7 +6535,7 @@ plain byte and character arrays and buffers is preferable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-12 18:00:30 UTC
+Last updated 2021-01-13 20:46:19 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
