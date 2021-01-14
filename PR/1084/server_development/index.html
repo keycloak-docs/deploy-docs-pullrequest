@@ -6375,23 +6375,23 @@ before upgrading Keycloak. This will remove linked local imported copies of any 
 </div>
 <div class="paragraph">
 <p>Many of the user storage interfaces in Keycloak contain query methods that can return potentially large sets of objects,
-which might lead to in significant impacts in terms of memory consumption and processing time - specially when only a small subset of the
-objects' internal state is used in the query method&#8217;s logic.</p>
+which might lead to significant impacts in terms of memory consumption and processing time. This is especially true when only
+a small subset of the objects' internal state is used in the query method&#8217;s logic.</p>
 </div>
 <div class="paragraph">
-<p>In order to provide developers with a more efficient alternative to process large data sets in these query methods, a <code>Streams</code>
+<p>To provide developers with a more efficient alternative to process large data sets in these query methods, a <code>Streams</code>
 sub-interface has been added to user storage interfaces. These <code>Streams</code> sub-interfaces replace the original collection-based
-methods in the super-interfaces with stream-based variants, making the collection-based methods default (they invoke their <code>Stream</code>
-counterpart and collect the result).</p>
+methods in the super-interfaces with stream-based variants, making the collection-based methods default. The default implementation
+of a collection-based query method invokes its <code>Stream</code> counterpart and collects the result into the proper collection type.</p>
 </div>
 <div class="paragraph">
-<p>The <code>Streams</code> sub-interfaces allows for implementations to focus on the stream-based approach for processing sets of data and
+<p>The <code>Streams</code> sub-interfaces allow for implementations to focus on the stream-based approach for processing sets of data and
 benefit from the potential memory and performance optimizations of that approach. The interfaces that offer a <code>Streams</code>
 sub-interface to be implemented include a few <em>capability interfaces</em>, all interfaces in the <code>org.keycloak.storage.federated</code>
 package and a few others that might be implemented depending on the scope of the custom storage implementation.</p>
 </div>
 <div class="paragraph">
-<p>You can find bellow a list of the interfaces that offer a <code>Streams</code> sub-interface to developers.</p>
+<p>See this list of the interfaces that offer a <code>Streams</code> sub-interface to developers.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -6429,8 +6429,9 @@ package and a few others that might be implemented depending on the scope of the
 <p>(*) indicates the interface is a <em>capability interface</em></p>
 </div>
 <div class="paragraph">
-<p>To make use of the <code>Streams</code> variants, one has to simply implement these sub-interfaces instead of the original interfaces
-when creating a custom provider. For example, the following code uses the <code>Streams</code> variant of the <code>UserQueryProvider</code> interface:</p>
+<p>Custom user storage implementation that want to benefit from the streams approach should simply implement the <code>Streams</code>
+sub-interfaces instead of the original interfaces. For example, the following code uses the <code>Streams</code> variant of the <code>UserQueryProvider</code>
+interface:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6535,7 +6536,7 @@ plain byte and character arrays and buffers is preferable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-13 20:46:19 UTC
+Last updated 2021-01-14 17:42:13 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
