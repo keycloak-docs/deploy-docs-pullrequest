@@ -7008,7 +7008,7 @@ simply use a no-argument version of <code>keycloak.protect()</code>:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">    app.get(<span class="string"><span class="delimiter">'</span><span class="content">/apis/me</span><span class="delimiter">'</span></span>, keycloak.enforcer(<span class="string"><span class="delimiter">'</span><span class="content">user:profile</span><span class="delimiter">'</span></span>, {<span class="key">response_mode</span>: <span class="string"><span class="delimiter">'</span><span class="content">token</span><span class="delimiter">'</span></span>}), <span class="keyword">function</span> (req, res) {
-        <span class="keyword">var</span> token = <span class="keyword">var</span> token = req.kauth.grant.access_token.content;
+        <span class="keyword">var</span> token = req.kauth.grant.access_token.content;
         <span class="keyword">var</span> permissions = token.authorization ? token.authorization.permissions : <span class="predefined-constant">undefined</span>;
 
         <span class="comment">// show user profile</span>
@@ -12652,7 +12652,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-12 22:53:23 UTC
+Last updated 2021-01-14 22:28:36 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
