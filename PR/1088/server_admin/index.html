@@ -4116,7 +4116,7 @@ all certificates in trusted-ca-list-for-client-auth.pem must be added to <a href
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak provides the limited support for <a href="https://www.w3.org/TR/webauthn/">W3C Web Authentication (WebAuthn)</a>. Keycloak works as a WebAuthn&#8217;s <a href="https://www.w3.org/TR/webauthn/#rp-operations">Relying Party (RP)</a>.</p>
+<p>Keycloak provides the limited support for <a href="https://www.w3.org/TR/webauthn/">W3C Web Authentication (WebAuthn)</a>. Keycloak works as a WebAuthn&#8217;s <a href="https://www.w3.org/TR/webauthn/#sctn-rp-operations">Relying Party (RP)</a>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -4368,7 +4368,7 @@ assuming that authentication flow configuration above with the conditional subfl
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Attestation Conveyance Preference</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">It tells the WebAuthn API implementation on the browser (<a href="https://www.w3.org/TR/webauthn/#webauthn-client">WebAuthn Client</a>) the preference of how to generate an Attestation Statement. This is an optional configuration item that is applied to the operation of registering a WebAuthn authenticator. If no option is selected, its behavior is the same as selecting "none".
- For more details, see <a href="https://www.w3.org/TR/webauthn/#attestation-convey">WebAuthn Specification</a>.</p></td>
+ For more details, see <a href="https://www.w3.org/TR/webauthn/#attestation-conveyance">WebAuthn Specification</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Authenticator Attachment</p></td>
@@ -4377,7 +4377,7 @@ assuming that authentication flow configuration above with the conditional subfl
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Require Resident Key</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the WebAuthn authenticator to generate the Public Key Credential as <a href="https://www.w3.org/TR/webauthn/#client-side-resident-public-key-credential-source">Client-side-resident Public Key Credential Source</a>. This is an optional configuration item that is applied to the operation of registering a WebAuthn authenticator. If no option is selected, its behavior is the same as selecting "No".
+<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the WebAuthn authenticator to generate the Public Key Credential as <a href="https://www.w3.org/TR/webauthn/#client-side-discoverable-public-key-credential-source">Client-side-resident Public Key Credential Source</a>. This is an optional configuration item that is applied to the operation of registering a WebAuthn authenticator. If no option is selected, its behavior is the same as selecting "No".
  For more details, see <a href="https://www.w3.org/TR/webauthn/#dom-authenticatorselectioncriteria-requireresidentkey">WebAuthn Specification</a>.</p></td>
 </tr>
 <tr>
@@ -14629,7 +14629,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-14 22:28:42 UTC
+Last updated 2021-01-15 19:12:36 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

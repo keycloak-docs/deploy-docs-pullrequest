@@ -1928,7 +1928,8 @@ entered a bad password. The details are described <a href="https://www.keycloak.
 <p>Keycloak uses multiple, separate clusters of Infinispan caches. Every Keycloak node is in the cluster with the other Keycloak nodes in same data center, but not with the Keycloak nodes in different data centers. A Keycloak node does not communicate directly with the Keycloak nodes from different data centers. Keycloak nodes use external Infinispan servers for communication across data centers. This is done using the link:[Infinispan Hot Rod protocol].</p>
 </div>
 <div class="paragraph">
-<p>The Infinispan caches on the Keycloak side must be configured with the <a href="https://infinispan.org/docs/stable/titles/configuring/configuring.html#remote_cache_store">remoteStore</a> to ensure that data are saved to the remote cache. There is separate Infinispan cluster between Infinispan servers, so the data saved on SERVER1 on <code>site1</code> are replicated to SERVER2 on <code>site2</code> .</p>
+<p>The Infinispan caches on the Keycloak side must be configured with the <a href="https://infinispan.org/docs/stable/titles/configuring/configuring.html#remote_cache_store">remoteStore</a> to ensure that data are saved to the remote cache. There is separate Infinispan cluster between Infinispan servers, so the data saved on SERVER1 on <code>site1</code> are replicated to SERVER2 on <code>site2</code> .
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; KEYCLOAK-16628 addressed more review comments</p>
 </div>
 <div class="paragraph">
 <p>Finally, the receiving Infinispan server notifies the Keycloak servers in its cluster through the Client Listeners, which are a feature of the Hot Rod protocol. Keycloak nodes on <code>site2</code> then update their Infinispan caches and the particular user session is also visible on Keycloak nodes on <code>site2</code>.</p>
@@ -2776,7 +2777,7 @@ The site name must be unique to each Infinispan cluster.</td>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;endpoints</span> <span class="attribute-name">socket-binding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">security-realm</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
    <span class="tag">&lt;hotrod-connector</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hotrod</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-      <span class="tag">&lt;authentication</span> <span class="attribute-name">security-realm</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;authentication&gt;</span>
          <span class="tag">&lt;sasl</span> <span class="attribute-name">mechanisms</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">SCRAM-SHA-512</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
                <span class="attribute-name">server-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">infinispan</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
       <span class="tag">&lt;/authentication&gt;</span>
@@ -2919,7 +2920,7 @@ The site name must be unique to each Infinispan cluster.</td>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Add the truststore to the Infinispan deployment.</p>
+<p>Add the truststore to the Keycloak deployment.</p>
 </li>
 <li>
 <p>Create a socket binding that points to your Infinispan cluster.</p>
@@ -5656,7 +5657,7 @@ but can be chosen according to some other criterias (client IP address etc). It 
 </li>
 <li>
 <p>Infinispan distributed cache assigns the primary owner of the session based on the hash of session ID.
-See <a href="https://infinispan.org/docs/8.2.x/user_guide/user_guide.html#distribution_mode">Infinispan documentation</a> for more details around this.
+See <a href="https://infinispan.org/docs/stable/titles/configuring/configuring.html#distribution-configuring">Infinispan documentation</a> for more details around this.
 Let&#8217;s assume that Infinispan assigned <code>node2</code> to be the owner of this session.</p>
 </li>
 <li>
@@ -7825,7 +7826,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-14 22:28:49 UTC
+Last updated 2021-01-15 19:12:44 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
