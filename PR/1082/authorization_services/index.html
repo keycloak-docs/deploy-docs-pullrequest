@@ -2585,6 +2585,19 @@ even more fine-grained role-based access control (RBAC) model for your applicati
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20authorization_services/topics/policy-js-policy.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If your policy implementation is using Attribute based access control (ABAC) as in the examples below, then please make sure that
+users are not able to edit the protected attributes and the corresponding attributes are read-only. See the details in the <a href="https://www.keycloak.org/docs/11.0/server_admin/#_read_only_user_attributes">Threat model mitigation chapter</a>.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>You can use this type of policy to define conditions for your permissions using JavaScript. It is one of the rule-based policy types
 supported by Keycloak, and provides flexibility to write any policy based on the <a href="#_policy_evaluation_api">Evaluation API</a>.</p>
@@ -6312,7 +6325,7 @@ It is strongly recommended that you enable TLS/HTTPS when accessing the Keycloak
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-08 14:47:38 UTC
+Last updated 2021-01-28 07:47:41 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

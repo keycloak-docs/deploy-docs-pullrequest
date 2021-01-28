@@ -4308,7 +4308,7 @@ Let&#8217;s go over these steps.</p>
 They are also available as a maven artifact.</p>
 </div>
 <div class="paragraph">
-<p>You must unzip the Jetty 9.x  distro into Jetty 9.x&#8217;s <a href="https://www.eclipse.org/jetty/documentation/current/startup-base-and-home.html">base directory</a>.
+<p>You must unzip the Jetty 9.x  distro into Jetty 9.x&#8217;s <a href="https://www.eclipse.org/jetty/documentation/jetty-9/index.html#startup-base-and-home">base directory</a>.
 Including adapter&#8217;s jars within your WEB-INF/lib directory will not work!
 In the example below, the Jetty base is named <code>your-base</code>:</p>
 </div>
@@ -7008,7 +7008,7 @@ simply use a no-argument version of <code>keycloak.protect()</code>:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">    app.get(<span class="string"><span class="delimiter">'</span><span class="content">/apis/me</span><span class="delimiter">'</span></span>, keycloak.enforcer(<span class="string"><span class="delimiter">'</span><span class="content">user:profile</span><span class="delimiter">'</span></span>, {<span class="key">response_mode</span>: <span class="string"><span class="delimiter">'</span><span class="content">token</span><span class="delimiter">'</span></span>}), <span class="keyword">function</span> (req, res) {
-        <span class="keyword">var</span> token = <span class="keyword">var</span> token = req.kauth.grant.access_token.content;
+        <span class="keyword">var</span> token = req.kauth.grant.access_token.content;
         <span class="keyword">var</span> permissions = token.authorization ? token.authorization.permissions : <span class="predefined-constant">undefined</span>;
 
         <span class="comment">// show user profile</span>
@@ -10877,7 +10877,7 @@ Docker authentication is disabled by default. To enable see <a href="https://www
 </div>
 </div>
 <div class="paragraph">
-<p>This output can then be copied into any existing registry config file.  See the <a href="https://docs.docker.com/registry/configuration/">registry config file specification</a> for more information on how the file should be set up, or start with <a href="https://github.com/docker/distribution/blob/master/cmd/registry/config-example.yml">a basic example</a>.</p>
+<p>This output can then be copied into any existing registry config file.  See the <a href="https://docs.docker.com/registry/configuration/">registry config file specification</a> for more information on how the file should be set up, or start with <a href="https://github.com/distribution/distribution/blob/master/cmd/registry/config-example.yml">a basic example</a>.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -12652,7 +12652,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-08 14:47:49 UTC
+Last updated 2021-01-28 07:47:48 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
