@@ -1951,13 +1951,13 @@ Infinispan clusters in separate data centers then replicate that data to ensure 
 <p>Use the following procedures for Infinispan 11.0.3 to perform a basic setup of Cross-Datacenter replication.</p>
 </div>
 <div class="paragraph">
-<p>This example for Infinispan 9.4.19 involves two data centers, <code>site1</code> and <code>site2</code>. Each data center consists of 1 Infinispan server and 2 Keycloak servers. We will end up with 2 Infinispan servers and 4 Keycloak servers in total.</p>
+<p>This example for Infinispan 11.0.3 involves two data centers, <code>site1</code> and <code>site2</code>. Each data center consists of 1 Infinispan server and 2 Keycloak servers. We will end up with 2 Infinispan servers and 4 Keycloak servers in total.</p>
+</div>
+<div class="paragraph">
+<p>*<code>Site1</code> consists of Infinispan server, <code>server1</code>, and 2 Keycloak servers, <code>node11</code> and <code>node12</code> .</p>
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p><code>Site1</code> consists of Infinispan server, <code>server1</code>, and 2 Keycloak servers, <code>node11</code> and <code>node12</code> .</p>
-</li>
 <li>
 <p><code>Site2</code> consists of Infinispan server, <code>server2</code>, and 2 Keycloak servers, <code>node21</code> and <code>node22</code> .</p>
 </li>
@@ -2566,6 +2566,131 @@ for descriptions of each property.</p>
 </div>
 </li>
 </ul>
+</div>
+</li>
+<li>
+<p>Copy the <code>NODE11</code> to 3 other directories referred later as <code>NODE12</code>, <code>NODE21</code> and <code>NODE22</code>.</p>
+</li>
+<li>
+<p>Start <code>NODE11</code> :</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>cd NODE11/bin
+./standalone.sh -c standalone-ha.xml -Djboss.node.name=node11 -Djboss.site.name=site1 \
+  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=server1 \
+  -Djava.net.preferIPv4Stack=true -b <em>PUBLIC_IP_ADDRESS</em></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start <code>NODE12</code> :</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>cd NODE12/bin
+./standalone.sh -c standalone-ha.xml -Djboss.node.name=node12 -Djboss.site.name=site1 \
+  -Djboss.default.multicast.address=234.56.78.1 -Dremote.cache.host=server1 \
+  -Djava.net.preferIPv4Stack=true -b <em>PUBLIC_IP_ADDRESS</em></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The cluster nodes should be connected. Something like this should be in the log of both NODE11 and NODE12:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Received new cluster view for channel keycloak: [node11|1] (2) [node11, node12]</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The channel name in the log might be different.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Start <code>NODE21</code> :</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>cd NODE21/bin
+./standalone.sh -c standalone-ha.xml -Djboss.node.name=node21 -Djboss.site.name=site2 \
+  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=server2 \
+  -Djava.net.preferIPv4Stack=true -b <em>PUBLIC_IP_ADDRESS</em></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It shouldn&#8217;t be connected to the cluster with <code>NODE11</code> and <code>NODE12</code>, but to separate one:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Received new cluster view for channel keycloak: [node21|0] (1) [node21]</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start <code>NODE22</code> :</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>cd NODE22/bin
+./standalone.sh -c standalone-ha.xml -Djboss.node.name=node22 -Djboss.site.name=site2 \
+  -Djboss.default.multicast.address=234.56.78.2 -Dremote.cache.host=server2 \
+  -Djava.net.preferIPv4Stack=true -b <em>PUBLIC_IP_ADDRESS</em></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It should be in cluster with <code>NODE21</code> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Received new cluster view for channel keycloak: [node21|1] (2) [node21, node22]</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The channel name in the log might be different.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Test:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Go to <code><a href="http://node11:8080/auth/" class="bare">http://node11:8080/auth/</a></code> and create the initial admin user.</p>
+</li>
+<li>
+<p>Go to <code><a href="http://node11:8080/auth/admin" class="bare">http://node11:8080/auth/admin</a></code> and login as admin to admin console.</p>
+</li>
+<li>
+<p>Open a second browser and go to any of nodes <code><a href="http://node12:8080/auth/admin" class="bare">http://node12:8080/auth/admin</a></code> or <code><a href="http://node21:8080/auth/admin" class="bare">http://node21:8080/auth/admin</a></code> or <code><a href="http://node22:8080/auth/admin" class="bare">http://node22:8080/auth/admin</a></code>. After login, you should be able to see
+the same sessions in tab <code>Sessions</code> of particular user, client or realm on all 4 servers.</p>
+</li>
+<li>
+<p>After doing any change in Keycloak admin console (eg. update some user or some realm), the update
+should be immediately visible on any of 4 nodes as caches should be properly invalidated everywhere.</p>
+</li>
+<li>
+<p>Check server.logs if needed. After login or logout, the message like this should be on all the nodes <code>NODEXY/standalone/log/server.log</code> :</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>2017-08-25 17:35:17,737 DEBUG [org.keycloak.models.sessions.infinispan.remotestore.RemoteCacheSessionListener] (Client-Listener-sessions-30012a77422542f5) Received event from remote store.
+Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', skip 'false'</code></pre>
+</div>
+</div>
+</li>
+</ol>
 </div>
 </li>
 <li>
@@ -7977,7 +8102,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-29 21:08:03 UTC
+Last updated 2021-02-01 16:18:07 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
