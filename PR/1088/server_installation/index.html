@@ -1953,11 +1953,11 @@ Infinispan clusters in separate data centers then replicate that data to ensure 
 <div class="paragraph">
 <p>This example for Infinispan 11.0.3 involves two data centers, <code>site1</code> and <code>site2</code>. Each data center consists of 1 Infinispan server and 2 Keycloak servers. We will end up with 2 Infinispan servers and 4 Keycloak servers in total.</p>
 </div>
-<div class="paragraph">
-<p>*<code>Site1</code> consists of Infinispan server, <code>server1</code>, and 2 Keycloak servers, <code>node11</code> and <code>node12</code> .</p>
-</div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>Site1</code> consists of Infinispan server, <code>server1</code>, and 2 Keycloak servers, <code>node11</code> and <code>node12</code> .</p>
+</li>
 <li>
 <p><code>Site2</code> consists of Infinispan server, <code>server2</code>, and 2 Keycloak servers, <code>node21</code> and <code>node22</code> .</p>
 </li>
@@ -2215,7 +2215,7 @@ They communicate with the Infinispan server <code>server1</code> using the Hot R
 <pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;endpoints</span> <span class="attribute-name">socket-binding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
    <span class="tag">&lt;hotrod-connector</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hotrod</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
       <span class="tag">&lt;authentication&gt;</span>
-         <span class="tag">&lt;sasl</span> <span class="attribute-name">mechanisms</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">SCRAM-SHA-512</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+         <span class="tag">&lt;sasl</span> <span class="attribute-name">mechanisms</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DIGEST-MD5</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
                <span class="attribute-name">server-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">infinispan</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
       <span class="tag">&lt;/authentication&gt;</span>
    <span class="tag">&lt;/hotrod-connector&gt;</span>
@@ -8102,7 +8102,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-01 16:18:07 UTC
+Last updated 2021-02-01 17:02:37 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
