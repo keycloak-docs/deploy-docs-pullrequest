@@ -1921,7 +1921,7 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </table>
 </div>
 <div class="paragraph">
-<p>You must subscribe to the WildFly 20 repository before you can install the WildFly 7 adapters from an RPM.</p>
+<p>You must subscribe to the WildFly 21 repository before you can install the WildFly 7 adapters from an RPM.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Prerequisites</div>
@@ -1935,7 +1935,7 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </ol>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise Linux 6, 7: Using Red Hat Subscription Manager, subscribe to the WildFly 20 repository using the following command. Replace &lt;RHEL_VERSION&gt; with either 6 or 7 depending on your Red Hat Enterprise Linux version.</p>
+<p>For Red Hat Enterprise Linux 6, 7: Using Red Hat Subscription Manager, subscribe to the WildFly 21 repository using the following command. Replace &lt;RHEL_VERSION&gt; with either 6 or 7 depending on your Red Hat Enterprise Linux version.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1943,11 +1943,11 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </div>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise Linux 8: Using Red Hat Subscription Manager, subscribe to the WildFly 20 repository using the following command:</p>
+<p>For Red Hat Enterprise Linux 8: Using Red Hat Subscription Manager, subscribe to the WildFly 21 repository using the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ sudo subscription-manager repos --enable=jb-eap-20-for-rhel-8-x86_64-rpms --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ sudo subscription-manager repos --enable=jb-eap-21-for-rhel-8-x86_64-rpms --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3162,7 +3162,7 @@ features:install keycloak</code></pre>
 <div class="paragraph">
 <p>JBoss Fuse 7 leverages Undertow adapter which is essentially the same as
 <a href="#_jboss_adapter">EAP 7 / WildFly Adapter</a>
-as JBoss Fuse 7.4.0 is bundled with <a href="http://undertow.io/">Undertow HTTP engine</a> under the covers and Undertow is used for running various kinds of web applications.</p>
+as JBoss Fuse 7.4.0 is bundled with <a href="https://undertow.io/">Undertow HTTP engine</a> under the covers and Undertow is used for running various kinds of web applications.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -4308,7 +4308,7 @@ Let&#8217;s go over these steps.</p>
 They are also available as a maven artifact.</p>
 </div>
 <div class="paragraph">
-<p>You must unzip the Jetty 9.x  distro into Jetty 9.x&#8217;s <a href="https://www.eclipse.org/jetty/documentation/current/startup-base-and-home.html">base directory</a>.
+<p>You must unzip the Jetty 9.x  distro into Jetty 9.x&#8217;s <a href="https://www.eclipse.org/jetty/documentation/jetty-9/index.html#startup-base-and-home">base directory</a>.
 Including adapter&#8217;s jars within your WEB-INF/lib directory will not work!
 In the example below, the Jetty base is named <code>your-base</code>:</p>
 </div>
@@ -4613,7 +4613,9 @@ for the Keycloak adapter.
         <span class="tag">&lt;constructor-arg</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/WEB-INF/keycloak.json</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
     <span class="tag">&lt;/bean&gt;</span>
 
-    <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationEntryPoint</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationEntryPoint</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationEntryPoint</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationEntryPoint</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;constructor-arg</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">adapterDeploymentContext</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;/bean&gt;</span>
     <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationProvider</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
     <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakPreAuthActionsFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.filter.KeycloakPreAuthActionsFilter</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
     <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationProcessingFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.filter.KeycloakAuthenticationProcessingFilter</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -5924,17 +5926,24 @@ is selected for <code>Access Type</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;head&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;html&gt;</span>
+<span class="tag">&lt;head&gt;</span>
     <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloak.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
     <span class="tag">&lt;script&gt;</span>
-<span class="inline">        <span class="keyword">var</span> keycloak = <span class="keyword">new</span> Keycloak();
-        keycloak.init().then(<span class="keyword">function</span>(authenticated) {
-            alert(authenticated ? <span class="string"><span class="delimiter">'</span><span class="content">authenticated</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">not authenticated</span><span class="delimiter">'</span></span>);
-        }).<span class="keyword">catch</span>(<span class="keyword">function</span>() {
-            alert(<span class="string"><span class="delimiter">'</span><span class="content">failed to initialize</span><span class="delimiter">'</span></span>);
-        });</span>
+<span class="inline">        <span class="keyword">function</span> <span class="function">initKeycloak</span>() {
+            <span class="keyword">var</span> keycloak = <span class="keyword">new</span> Keycloak();
+            keycloak.init().then(<span class="keyword">function</span>(authenticated) {
+                alert(authenticated ? <span class="string"><span class="delimiter">'</span><span class="content">authenticated</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">not authenticated</span><span class="delimiter">'</span></span>);
+            }).<span class="keyword">catch</span>(<span class="keyword">function</span>() {
+                alert(<span class="string"><span class="delimiter">'</span><span class="content">failed to initialize</span><span class="delimiter">'</span></span>);
+            });
+        }</span>
     <span class="tag">&lt;/script&gt;</span>
-<span class="tag">&lt;/head&gt;</span></code></pre>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body</span> <span class="attribute-name">onload</span>=<span class="string"><span class="delimiter">&quot;</span>initKeycloak()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="comment">&lt;!-- your page content goes here --&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6555,9 +6564,6 @@ provider instead. More info in the <a href="https://www.keycloak.org/docs/11.0/s
 <p>locale - Sets the 'ui_locales' query param in compliance with <a href="https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest">section 3.1.2.1 of the OIDC 1.0 specification</a>.</p>
 </li>
 <li>
-<p>kcLocale - Specifies the desired Keycloak locale for the UI.  This differs from the locale param in that it tells the Keycloak server to set a cookie and update the user&#8217;s profile to a new preferred locale.</p>
-</li>
-<li>
 <p>cordovaOptions - Specifies the arguments that are passed to the Cordova in-app-browser (if applicable). Options <code>hidden</code> and <code>location</code> are not affected by these arguments. All available options are defined at <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-inappbrowser/" class="bare">https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-inappbrowser/</a>. Example of use: <code>{ zoom: "no", hardwareback: "yes" }</code>;</p>
 </li>
 </ul>
@@ -7002,7 +7008,7 @@ simply use a no-argument version of <code>keycloak.protect()</code>:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript">    app.get(<span class="string"><span class="delimiter">'</span><span class="content">/apis/me</span><span class="delimiter">'</span></span>, keycloak.enforcer(<span class="string"><span class="delimiter">'</span><span class="content">user:profile</span><span class="delimiter">'</span></span>, {<span class="key">response_mode</span>: <span class="string"><span class="delimiter">'</span><span class="content">token</span><span class="delimiter">'</span></span>}), <span class="keyword">function</span> (req, res) {
-        <span class="keyword">var</span> token = <span class="keyword">var</span> token = req.kauth.grant.access_token.content;
+        <span class="keyword">var</span> token = req.kauth.grant.access_token.content;
         <span class="keyword">var</span> permissions = token.authorization ? token.authorization.permissions : <span class="predefined-constant">undefined</span>;
 
         <span class="comment">// show user profile</span>
@@ -7692,7 +7698,7 @@ X-Auth-Name: Beloved User</code></pre>
 <p>If a request for an access token contains a refresh token and  <code>--enable-refresh-tokens</code> is set to <code>true</code>, the proxy will automatically refresh the access token for you. The tokens themselves are kept either as an encrypted <strong>(--encryption-key=KEY)</strong> cookie <strong>(cookie name: kc-state).</strong> or a store <strong>(still requires encryption key)</strong>.</p>
 </div>
 <div class="paragraph">
-<p>At present the only store options supported are <a href="https://github.com/antirez/redis">Redis</a> and <a href="https://github.com/boltdb/bolt">Boltdb</a>.</p>
+<p>At present the only store options supported are <a href="https://github.com/redis/redis">Redis</a> and <a href="https://github.com/boltdb/bolt">Boltdb</a>.</p>
 </div>
 <div class="paragraph">
 <p>To enable a local boltdb store use <code>--store-url boltdb:///PATH</code> or using a relative path <code>boltdb://PATH</code>.</p>
@@ -7804,7 +7810,7 @@ X-Auth-Name: Beloved User</code></pre>
 <div class="sect3">
 <h4 id="limitations"><a class="anchor" href="#limitations"></a>2.4.28. Limitations</h4>
 <div class="paragraph">
-<p>Keep in mind <a href="http://browsercookielimits.squawky.net/">browser cookie limits</a> if you use access or refresh tokens in the browser cookie. Keycloak-generic-adapter divides the cookie automatically if your cookie is longer than 4093 bytes. Real size of the cookie depends on the content of the issued access token. Also, encryption might add additional bytes to the cookie size. If you have large cookies (&gt;200 KB), you might reach browser cookie limits.</p>
+<p>Keep in mind browser cookie limits if you use access or refresh tokens in the browser cookie. Keycloak-generic-adapter divides the cookie automatically if your cookie is longer than 4093 bytes. Real size of the cookie depends on the content of the issued access token. Also, encryption might add additional bytes to the cookie size. If you have large cookies (&gt;200 KB), you might reach browser cookie limits.</p>
 </div>
 <div class="paragraph">
 <p>All cookies are part of the header request, so you might find a problem with the max headers size limits in your infrastructure (some load balancers have very low this value, such as 8 KB). Be sure that all network devices have sufficient header size limits. Otherwise, your users won&#8217;t be able to obtain an access token.</p>
@@ -8029,7 +8035,7 @@ It can only be invoked by confidential clients.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The token revocation endpoint is used to revoke tokens.</p>
+<p>The token revocation endpoint is used to revoke tokens. Both refresh tokens and access tokens are supported by this endpoint.</p>
 </div>
 <div class="paragraph">
 <p>For more details on how to invoke on this endpoint, see <a href="https://tools.ietf.org/html/rfc7009">OAuth 2.0 Token Revocation specification</a>.</p>
@@ -9184,6 +9190,47 @@ Otherwise this configuration is optional.</p>
 instance. This should not be enabled when using Keycloak.</p>
 </div>
 </div>
+<div class="sect4">
+<h5 id="_saml-jboss-adapter-samesite-setting"><a class="anchor" href="#_saml-jboss-adapter-samesite-setting"></a>Setting SameSite value for JSESSIONID cookie</h5>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/jboss-adapter/jboss-adapter-samesite-setting.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20securing_apps/topics/saml/java/jboss-adapter/jboss-adapter-samesite-setting.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>Browsers are planning to set the default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This setting means
+that cookies will be sent to applications only if the request originates in the same domain. This behavior can affect
+the SAML POST binding which may become non-functional. To preserve full functionality of the SAML adapter, we recommend
+setting the <code>SameSite</code> value to <code>None</code> for the <code>JSESSIONID</code> cookie created by your container. Not doing so may result in
+resetting the container&#8217;s session with each request to Keycloak.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To avoid setting the <code>SameSite</code> attribute to <code>None</code>, consider switching to the REDIRECT binding
+if it is acceptable, or to OIDC protocol where this workaround is not necessary.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To set the <code>SameSite</code> value to <code>None</code> for the <code>JSESSIONID</code> cookie in Wildfly/EAP, add a file <code>undertow-handlers.conf</code>
+with the following content to the <code>WEB-INF</code> directory of your application.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>samesite-cookie(mode=None, cookie-pattern=JSESSIONID)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The support for this configuration is available in Wildfly from version 19.1.0.</p>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_jboss_adapter_rpm_saml"><a class="anchor" href="#_jboss_adapter_rpm_saml"></a>3.1.3. Installing JBoss EAP Adapter from an RPM</h4>
@@ -9223,7 +9270,7 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </ol>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise Linux 6, 7: Using Red Hat Subscription Manager, subscribe to the WildFly 20 repository using the following command. Replace &lt;RHEL_VERSION&gt; with either 6 or 7 depending on your Red Hat Enterprise Linux version.</p>
+<p>For Red Hat Enterprise Linux 6, 7: Using Red Hat Subscription Manager, subscribe to the WildFly 21 repository using the following command. Replace &lt;RHEL_VERSION&gt; with either 6 or 7 depending on your Red Hat Enterprise Linux version.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9231,11 +9278,11 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 </div>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise Linux 8: Using Red Hat Subscription Manager, subscribe to the WildFly 20 repository using the following command:</p>
+<p>For Red Hat Enterprise Linux 8: Using Red Hat Subscription Manager, subscribe to the WildFly 21 repository using the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ sudo subscription-manager repos --enable=jb-eap-20-for-rhel-8-x86_64-rpms --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ sudo subscription-manager repos --enable=jb-eap-21-for-rhel-8-x86_64-rpms --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9629,6 +9676,60 @@ Here&#8217;s an example:</p>
 </div>
 <div class="paragraph">
 <p>If the <code>keycloak-saml.xml</code> does not explicitly set <code>assertionConsumerServiceUrl</code>, the SAML adapter will implicitly listen for SAML assertions at the location <code>/my-context-path/saml</code>. This has to match <code>Master SAML Processing URL</code> in the IDP realm/client settings, e.g. <code>http://sp.domain.com/my-context-path/saml</code>. If not, Tomcat will probably redirect infinitely to the IDP login service, as it does not receive the SAML assertion after the user logged in.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_saml-tomcat-adapter-samesite-setting"><a class="anchor" href="#_saml-tomcat-adapter-samesite-setting"></a>Setting SameSite value for JSESSIONID cookie</h5>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/tomcat-adapter/tomcat-adapter-samesite-setting.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20securing_apps/topics/saml/java/tomcat-adapter/tomcat-adapter-samesite-setting.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>Browsers are planning to set the default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This setting means
+that cookies will be sent to applications only if the request originates in the same domain. This behavior can affect
+the SAML POST binding which may become non-functional. To preserve full functionality of the SAML adapter, we recommend
+setting the <code>SameSite</code> value to <code>None</code> for the <code>JSESSIONID</code> cookie created by your container. Not doing so may result in
+resetting the container&#8217;s session with each request to Keycloak.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To avoid setting the <code>SameSite</code> attribute to <code>None</code>, consider switching to the REDIRECT binding
+if it is acceptable, or to OIDC protocol where this workaround is not necessary.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To set the <code>SameSite</code> value to <code>None</code> for <code>JSESSIONID</code> cookie in Tomcat add following configuration to the`context.xml`
+of your application. Note, this will set the <code>SameSite</code> value to <code>None</code> for all cookies created by Tomcat container.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;CookieProcessor</span> <span class="attribute-name">sameSiteCookies</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">None</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+It is not possible to set the <code>SameSite</code> attribute only to a subset of cookies, therefore all cookies created
+for your application will have this attribute set to <code>None</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The support for this feature is available in Tomcat from versions 9.0.29 and 8.5.49.</p>
 </div>
 </div>
 </div>
@@ -12551,7 +12652,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-29 17:08:09 UTC
+Last updated 2021-02-16 10:47:26 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

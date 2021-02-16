@@ -779,6 +779,7 @@ span.image img {
 <li><a href="#images">Images</a></li>
 <li><a href="#messages">Messages</a></li>
 <li><a href="#internationalization">Internationalization</a></li>
+<li><a href="#custom-identity-providers-icons">Custom Identity providers icons</a></li>
 <li><a href="#html-templates">HTML Templates</a></li>
 <li><a href="#emails">Emails</a></li>
 </ul>
@@ -899,7 +900,7 @@ span.image img {
 <li><a href="#_user-storage-spi">User Storage SPI</a>
 <ul class="sectlevel2">
 <li><a href="#provider-interfaces">Provider Interfaces</a></li>
-<li><a href="#provider-capability-interfaces">Provider Capability Interfaces</a></li>
+<li><a href="#_provider_capability_interfaces">Provider Capability Interfaces</a></li>
 <li><a href="#model-interfaces">Model Interfaces</a>
 <ul class="sectlevel3">
 <li><a href="#storage-ids">Storage Ids</a></li>
@@ -954,6 +955,7 @@ span.image img {
 <li><a href="#upgrading-to-a-new-model">Upgrading to a New Model</a></li>
 </ul>
 </li>
+<li><a href="#stream-based-interfaces">Stream-based Interfaces</a></li>
 </ul>
 </li>
 <li><a href="#_vault-spi">Vault SPI</a>
@@ -1450,7 +1452,9 @@ to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>styles=node_modules/patternfly/dist/css/patternfly.css node_modules/patternfly/dist/css/patternfly-additions.css lib/zocial/zocial.css css/login.css css/styles.css</code></pre>
+<pre class="CodeRay highlight"><code>styles=web_modules/@fortawesome/fontawesome-free/css/icons/all.css web_modules/@patternfly/react-core/dist/styles/base.css
+web_modules/@patternfly/react-core/dist/styles/app.css node_modules/patternfly/dist/css/patternfly.min.css
+node_modules/patternfly/dist/css/patternfly-additions.min.css css/login.css css/styles.css</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1537,6 +1541,9 @@ override individual messages by adding <code>&lt;THEME TYPE&gt;/messages/message
 <p>Within a message values like <code>{0}</code> and <code>{1}</code> are replaced with arguments when the message is used. For example {0} in <code>Log in to {0}</code> is replaced with the name
 of the realm.</p>
 </div>
+<div class="paragraph">
+<p>Texts of these message bundles can be overwritten by realm-specific values. The realm-specific values are manageable via UI and API.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="internationalization"><a class="anchor" href="#internationalization"></a>Internationalization</h4>
@@ -1595,6 +1602,23 @@ usernameOrEmail=....</code></pre>
 </div>
 <div class="paragraph">
 <p>See <a href="#_locale_selector">Locale Selector</a> on details on how the current locale is selected.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="custom-identity-providers-icons"><a class="anchor" href="#custom-identity-providers-icons"></a>Custom Identity providers icons</h4>
+<div class="paragraph">
+<p>Keycloak supports adding icons for custom Identity providers, which are displayed on the login screen.
+You just have to define icon classes in your login <code>theme.properties</code> file (i.e. <code>themes/mytheme/login/theme.properties</code>) with key pattern <code>kcLogoIdP-&lt;alias&gt;</code>.
+For Identity provider with an alias <code>myProvider</code>, you may add a line, like below, to <code>theme.properties</code> file of your custom theme.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>kcLogoIdP-myProvider = fa fa-lock</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All icons are available on the official website of PatternFly4.
+Icons for social providers are already defined in base login theme properties (<code>themes/keycloak/login/theme.properties</code>), where you can inspire yourself.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2836,7 +2860,7 @@ Company myCompany = em.find(Company.class, <span class="string"><span class="del
 </div>
 </div>
 <div class="paragraph">
-<p>The methods <code>getChangelogLocation</code> and <code>getFactoryId</code> are important to support automatic updating of your entities by Liquibase. <a href="http://www.liquibase.org/">Liquibase</a>
+<p>The methods <code>getChangelogLocation</code> and <code>getFactoryId</code> are important to support automatic updating of your entities by Liquibase. <a href="https://www.liquibase.org/">Liquibase</a>
 is a framework for updating the database schema, which Keycloak internally uses to create the DB schema and update the DB schema among versions. You may need to use
 it as well and create a changelog for your entities. Note that versioning of your own Liquibase changelog is independent
 of Keycloak versions. In other words, when you update to a new Keycloak version, you are not forced to update your
@@ -2890,6 +2914,19 @@ There&#8217;s also an additional fine-grained SPI you can use to add specific va
 After the action is performed successfully, the user doesn&#8217;t have to perform the action again.
 Keycloak comes with some built in required actions like "reset password".  This action forces the user to change their password after they have logged in.
 You can write and plug in your own required actions.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If your authenticator or required action implementation is using some user attributes as the metadata attributes for linking/establishing the user identity,
+then please make sure that users are not able to edit the attributes and the corresponding attributes are read-only. See the details in the <a href="https://www.keycloak.org/docs/11.0/server_admin/#_read_only_user_attributes">Threat model mitigation chapter</a>.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="terms"><a class="anchor" href="#terms"></a>Terms</h3>
@@ -4612,6 +4649,20 @@ properly set in the adapter configuration.</p>
 <div class="paragraph">
 <p>User Storage SPI provider implementations are packaged and deployed similarly to (and often are) Java EE components. They are not enabled by default, but instead must be enabled and configured per realm under the <code>User Federation</code> tab in the administration console.</p>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If your user provider implementation is using some user attributes as the metadata attributes for linking/establishing the user identity,
+then please make sure that users are not able to edit the attributes and the corresponding attributes are read-only. The example is the <code>LDAP_ID</code> attribute, which the built-in Keycloak
+LDAP provider is using for to store the ID of the user on the LDAP server side. See the details in the <a href="https://www.keycloak.org/docs/11.0/server_admin/#_read_only_user_attributes">Threat model mitigation chapter</a>.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect2">
 <h3 id="provider-interfaces"><a class="anchor" href="#provider-interfaces"></a>Provider Interfaces</h3>
 <div class="sidebarblock page-links">
@@ -4740,7 +4791,7 @@ for it when you enabled through the admin console.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="provider-capability-interfaces"><a class="anchor" href="#provider-capability-interfaces"></a>Provider Capability Interfaces</h3>
+<h3 id="_provider_capability_interfaces"><a class="anchor" href="#_provider_capability_interfaces"></a>Provider Capability Interfaces</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/provider-capability-interfaces.adoc" target="_blank">Edit this section</a>
@@ -6341,6 +6392,92 @@ before upgrading Keycloak. This will remove linked local imported copies of any 
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="stream-based-interfaces"><a class="anchor" href="#stream-based-interfaces"></a>Stream-based Interfaces</h3>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/user-storage/stream-interfaces.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_development/topics/user-storage/stream-interfaces.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>Many of the user storage interfaces in Keycloak contain query methods that can return potentially large sets of objects,
+which might lead to significant impacts in terms of memory consumption and processing time. This is especially true when only
+a small subset of the objects' internal state is used in the query method&#8217;s logic.</p>
+</div>
+<div class="paragraph">
+<p>To provide developers with a more efficient alternative to process large data sets in these query methods, a <code>Streams</code>
+sub-interface has been added to user storage interfaces. These <code>Streams</code> sub-interfaces replace the original collection-based
+methods in the super-interfaces with stream-based variants, making the collection-based methods default. The default implementation
+of a collection-based query method invokes its <code>Stream</code> counterpart and collects the result into the proper collection type.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Streams</code> sub-interfaces allow for implementations to focus on the stream-based approach for processing sets of data and
+benefit from the potential memory and performance optimizations of that approach. The interfaces that offer a <code>Streams</code>
+sub-interface to be implemented include a few <em><a href="#_provider_capability_interfaces">capability interfaces</a></em>, all interfaces in the <code>org.keycloak.storage.federated</code>
+package and a few others that might be implemented depending on the scope of the custom storage implementation.</p>
+</div>
+<div class="paragraph">
+<p>See this list of the interfaces that offer a <code>Streams</code> sub-interface to developers.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Package</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Classes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.keycloak.credential</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CredentialInputUpdater</code>(*), <code>UserCredentialStore</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.keycloak.models</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GroupModel</code>, <code>RoleMapperModel</code>, <code>UserCredentialManager</code>, <code>UserModel</code>, <code>UserProvider</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.keycloak.models.cache</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CachedUserModel</code>, <code>UserCache</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.keycloak.storage.federated</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All interfaces</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.kecyloak.storage.user</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UserQueryProvider</code>(*)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>(*) indicates the interface is a <em><a href="#_provider_capability_interfaces">capability interface</a></em></p>
+</div>
+<div class="paragraph">
+<p>Custom user storage implementation that want to benefit from the streams approach should simply implement the <code>Streams</code>
+sub-interfaces instead of the original interfaces. For example, the following code uses the <code>Streams</code> variant of the <code>UserQueryProvider</code>
+interface:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CustomQueryProvider</span> <span class="directive">extends</span> UserQueryProvider.Streams {
+...
+    <span class="annotation">@Override</span>
+    Stream&lt;UserModel&gt; getUsersStream(RealmModel realm, <span class="predefined-type">Integer</span> firstResult, <span class="predefined-type">Integer</span> maxResults) {
+        <span class="comment">// custom logic here</span>
+    }
+
+    <span class="annotation">@Override</span>
+    Stream&lt;UserModel&gt; searchForUserStream(<span class="predefined-type">String</span> search, RealmModel realm) {
+        <span class="comment">// custom logic here</span>
+    }
+...
+}</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -6426,7 +6563,7 @@ plain byte and character arrays and buffers is preferable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-29 17:08:20 UTC
+Last updated 2021-02-16 10:47:37 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
