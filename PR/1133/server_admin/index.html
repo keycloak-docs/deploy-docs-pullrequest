@@ -904,7 +904,7 @@ span.image img {
 <li><a href="#_audience">Audience Support</a></li>
 </ul>
 </li>
-<li><a href="#saml-clients">SAML Clients</a>
+<li><a href="#_client_saml_configuration">SAML Clients</a>
 <ul class="sectlevel3">
 <li><a href="#idp-initiated-login">IDP Initiated Login</a></li>
 <li><a href="#saml-entity-descriptors">SAML Entity Descriptors</a></li>
@@ -5854,7 +5854,7 @@ which was the token issued for, unless any of the audience mappers added it.
 </div>
 </div>
 <div class="sect2">
-<h3 id="saml-clients"><a class="anchor" href="#saml-clients"></a>SAML Clients</h3>
+<h3 id="_client_saml_configuration"><a class="anchor" href="#_client_saml_configuration"></a>SAML Clients</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/client-saml.adoc" target="_blank">Edit this section</a>
@@ -5928,8 +5928,8 @@ would prevent the client from determining the maximum session length which could
 </dd>
 <dt class="hdlist1">Force Artifact Binding</dt>
 <dd>
-<p>When turned on, this will force Keycloak to send artifact messages instead of SAML messages via POST and redirect,
-even when the client hasn&#8217;t asked for the binding during login. This must be set if artifact binding is to used with
+<p>When turned on, this will force Keycloak to send artifact messages instead of SAML messages via <em>POST</em> and <em>Redirect</em>,
+even when the client has not asked for the binding during login. This must be set if <em>Artifact</em> binding is to be used with
 idp-initiated login. To use artifact messages also during logout, it is necessary to also configure <code>Logout Service Redirect Binding URL</code>.</p>
 </dd>
 <dt class="hdlist1">Sign Documents</dt>
@@ -6041,15 +6041,15 @@ If a login request contains the Assertion Consumer Service URL, that will take p
 </dd>
 <dt class="hdlist1">Logout Service Artifact Binding URL</dt>
 <dd>
-<p>Artifact Binding URL for the Logout Service. Artifact binding for logout is not used unless this property is set.</p>
+<p><em>Artifact</em> Binding URL for the Logout Service. When set together with the <code>Force Artifact Binding</code> option, <em>Artifact</em> binding is forced for both login and logout flows. <em>Artifact</em> binding is not used for logout unless this property is set.</p>
 </dd>
 <dt class="hdlist1">Artifact Binding URL</dt>
 <dd>
-<p>The URL to which to send HTTP Artifact messages.</p>
+<p>URL to send the HTTP artifact messages to.</p>
 </dd>
 <dt class="hdlist1">Artifact Resolution Service</dt>
 <dd>
-<p>The SOAP endpoint URL of the client to which to send ArtifactResolve messages.</p>
+<p>URL of the client SOAP endpoint where to send the <code>ArtifactResolve</code> messages to.</p>
 </dd>
 </dl>
 </div>
@@ -14855,7 +14855,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-09 13:29:21 UTC
+Last updated 2021-03-24 09:52:29 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
