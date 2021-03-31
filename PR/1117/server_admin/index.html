@@ -754,11 +754,11 @@ span.image img {
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#overview">Overview</a>
+<li><a href="#keycloak-features-and-concepts">Keycloak features and concepts</a>
 <ul class="sectlevel2">
 <li><a href="#features">Features</a></li>
-<li><a href="#how-does-security-work">How Does Security Work?</a></li>
-<li><a href="#core-concepts-and-terms">Core Concepts and Terms</a></li>
+<li><a href="#basic-keycloak-operations">Basic Keycloak operations</a></li>
+<li><a href="#core-concepts-and-terms">Core concepts and terms</a></li>
 </ul>
 </li>
 <li><a href="#server-initialization">Server Initialization</a></li>
@@ -1053,9 +1053,10 @@ span.image img {
 <li><a href="#sync-of-ldap-users-to-keycloak">Sync of LDAP users to Keycloak</a></li>
 <li><a href="#_ldap_mappers">LDAP Mappers</a></li>
 <li><a href="#_ldap_password_hashing">Password Hashing</a></li>
+<li><a href="#_ldap_troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
-<li><a href="#_sssd">SSSD and FreeIPA Identity Management Integration</a>
+<li><a href="#sssd-and-freeipa-identity-management-integration">SSSD and FreeIPA Identity Management Integration</a>
 <ul class="sectlevel3">
 <li><a href="#freeipa-idm-server">FreeIPA/IdM Server</a></li>
 <li><a href="#sssd-and-d-bus">SSSD and D-Bus</a></li>
@@ -1188,7 +1189,7 @@ span.image img {
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<h2 id="keycloak-features-and-concepts"><a class="anchor" href="#keycloak-features-and-concepts"></a>Keycloak features and concepts</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -1212,6 +1213,9 @@ party identity providers like Facebook and Google.</p>
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/overview/features.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/overview/features.adoc" target="_blank">Report an issue</a>
 </div>
+</div>
+<div class="paragraph">
+<p>Keycloak provides the following features:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1280,7 +1284,7 @@ protocol mappers and many more.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="how-does-security-work"><a class="anchor" href="#how-does-security-work"></a>How Does Security Work?</h3>
+<h3 id="basic-keycloak-operations"><a class="anchor" href="#basic-keycloak-operations"></a>Basic Keycloak operations</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/overview/how.adoc" target="_blank">Edit this section</a>
@@ -1292,7 +1296,7 @@ protocol mappers and many more.</p>
 be secured by this server.  Keycloak uses open protocol standards like <a href="https://openid.net/connect/">OpenID Connect</a>
 or <a href="http://saml.xml.org/saml-specifications">SAML 2.0</a> to secure
 your applications.  Browser applications redirect a user&#8217;s browser from the application to the Keycloak authentication
-server where they enter their credentials.  This is important because users are completely isolated from applications and
+server where they enter their credentials.  This redirection is important because users are completely isolated from applications and
 applications never see a user&#8217;s credentials.  Applications instead are given an identity token or assertion that is cryptographically
 signed.  These tokens can have identity information like username, address, email, and other profile data.  They can also
 hold permission data so that applications can make authorization decisions.  These tokens can also be used to make secure
@@ -1300,7 +1304,7 @@ invocations on REST-based services.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="core-concepts-and-terms"><a class="anchor" href="#core-concepts-and-terms"></a>Core Concepts and Terms</h3>
+<h3 id="core-concepts-and-terms"><a class="anchor" href="#core-concepts-and-terms"></a>Core concepts and terms</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/overview/concepts.adoc" target="_blank">Edit this section</a>
@@ -1308,8 +1312,7 @@ invocations on REST-based services.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>There are some key concepts and terms you should be aware of before attempting to use Keycloak to secure your web applications
-and REST services.</p>
+<p>Consider these core concepts and terms before attempting to use Keycloak to secure your web applications and REST services.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -1855,6 +1858,10 @@ For this reason the previously authenticated users locale is remembered in a per
 <p>When a user is authenticated an action is triggered to update the locale in the persisted cookie mentioned earlier. If the
 user has actively switched the locale through the locale selector on the login pages the users locale is also updated at
 this point.</p>
+</div>
+<div class="paragraph">
+<p>If you want to change the logic for selecting the locale, you have an option to create custom <code>LocaleSelectorProvider</code>. For details, please refer to the
+<a href="https://www.keycloak.org/docs/11.0/server_development/#_locale_selector">Server Developer Guide</a>.</p>
 </div>
 </div>
 </div>
@@ -3459,7 +3466,7 @@ future versions and provide some more flexible mappings from Kerberos principals
 <p>During SSL/TLS handshake, the server and the client exchange their x.509/v3 certificates</p>
 </li>
 <li>
-<p>The container (WildFly) validates the certificate PKIX path and the certificate expiration</p>
+<p>The web container (either the reverse proxy or WildFly where Keycloak is deployed) validates the certificate PKIX path and the certificate expiration</p>
 </li>
 <li>
 <p>The x.509 client certificate authenticator validates the client certificate as follows:</p>
@@ -3500,6 +3507,22 @@ future versions and provide some more flexible mappings from Kerberos principals
 </div>
 </li>
 </ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Note that it is the responsibility of the web container to validate certificate PKIX path. X.509 authenticator on the
+Keycloak side provides just the additional support for check the certificate expiration, certificate revocation status and key usage. If you are
+using Keycloak deployed behind reverse proxy, make sure that your reverse proxy is configured to validate PKIX path. If you
+do not use reverse proxy and users directly access the WildFly, you should be fine as WildFly makes sure that PKIX path is validated as long
+as it is configured as described below.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
 <h4 id="features-2"><a class="anchor" href="#features-2"></a>Features</h4>
@@ -4787,6 +4810,25 @@ of an external user, a token is created based on the metadata and permissions of
 More info together with example is in <a href="#_service_accounts">Service Accounts</a> chapter.</p>
 </div>
 </div>
+<div class="sect4">
+<h5 id="device-authorization-grant"><a class="anchor" href="#device-authorization-grant"></a>Device Authorization Grant</h5>
+<div class="paragraph">
+<p>This is used by clients running on internet-connected devices that have limited input capabilities or lack a suitable browser. Here&#8217;s a brief summary of the protocol:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The application requests Keycloak a device code and a user code. Keycloak creates a device code and a user code. Keycloak returns a response including the device code and the user code to the application.</p>
+</li>
+<li>
+<p>The application provides the user with the user code and the verification URI. The user accesses a verification URI to be authenticated by using another browser.</p>
+</li>
+<li>
+<p>The application repeatedly polls Keycloak to find out if the user completed the user authorization. If user authentication is complete, the application exchanges the device code for an <em>identity</em>, <em>access</em> and <em>refresh</em> token.</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_oidc-endpoints"><a class="anchor" href="#_oidc-endpoints"></a>Keycloak Server OIDC URI Endpoints</h4>
@@ -4824,6 +4866,10 @@ Implicit Flow, Direct Grants, or Client Grants.</p>
 <dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/certs</dt>
 <dd>
 <p>This is the URL endpoint for the JSON Web Key Set (JWKS) containing the public keys used to verify any JSON Web Token (jwks_uri)</p>
+</dd>
+<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/auth/device</dt>
+<dd>
+<p>This is the URL endpoint for Device Authorization Grant to obtain a device code and a user code.</p>
 </dd>
 </dl>
 </div>
@@ -5182,6 +5228,12 @@ If this is turned on, this application cannot participate in browser logins.</p>
 </div>
 <div class="paragraph">
 <p>If this is on, clients are allowed to use the OIDC <a href="#_oidc-auth-flows">Direct Access Grants</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>OAuth 2.0 Device Authorization Grant Enabled</strong></p>
+</div>
+<div class="paragraph">
+<p>If this is on, clients are allowed to use the OIDC <a href="#_oidc-auth-flows">Device Authorization Grant</a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Root URL</strong></p>
@@ -9025,6 +9077,11 @@ You must define the OpenID Connect configuration options as well.  They basicall
 <td class="tableblock halign-left valign-top"><p class="tableblock">This realm will need a client secret to use when using the Authorization Code Flow. The value of this field can refer a value from an external <a href="#_vault-administration">vault</a>.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Client Assertion Signature Algorithm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Signature algorithm to create JWT assertion as client authentication.
+In the case of JWT signed with private key or Client secret as jwt, it is required. If no algorithm is specified, the following algorithm is adapted. <code>RS256</code> is adapted in the case of JWT signed with private key.  <code>HS256</code> is adapted in the case of Client secret as jwt.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Issuer</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Responses from the IDP may contain an issuer claim.  This config value is optional.  If specified, this claim will be validated against the value you provide.</p></td>
 </tr>
@@ -9155,7 +9212,7 @@ You must define the SAML configuration options as well.  They basically describe
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allow create</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Control value of attribute AllowCreate during AuthN requests.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allow the external identity provider to create a new identifier to represent the principal.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HTTP-POST Binding Response</p></td>
@@ -10361,9 +10418,83 @@ directory entry using <code>ldapsearch</code> and base64 decode the <code>userPa
 </table>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_ldap_troubleshooting"><a class="anchor" href="#_ldap_troubleshooting"></a>Troubleshooting</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>It is useful to increase the logging level to TRACE for the category <code>org.keycloak.storage.ldap</code>. You increase this level in the logging
+subsystem in the <code>standalone(-ha).xml</code> file. With this setting, many logging messages are sent
+to the <code>server.log</code> file in the <code>TRACE</code> level, including the logging for all queries to the LDAP server and the parameters, which were
+used to send the queries. When you are creating any LDAP question on user forum or JIRA, consider attaching the server log with
+enabled TRACE logging. If it is too big, the good alternative is to include just the snippet from server log with the messages, which were
+added to the log during the operation, which causes the issues to you.</p>
+</li>
+<li>
+<p>When you create LDAP provider, message appear in the server log in the INFO level starting with:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Creating new LDAP Store for the LDAP storage provider: ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It shows the configuration of your LDAP provider. Before you are asking the questions or reporting bugs, it will be nice to include this
+message to show your LDAP configuration. Eventually feel free to replace some config changes, which you do not want to include, with some
+placeholder values. One example is <code>bindDn=some-placeholder</code> . For <code>connectionUrl</code>, feel free to replace it as well, but it is generally
+useful to include at least the protocol, which was used (<code>ldap</code> vs <code>ldaps</code>)`. Similarly it can be useful to include the details for
+configuration of your LDAP mappers, which are displayed with the message like this at the DEBUG level:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Mapper for provider: XXX, Mapper name: YYY, Provider: ZZZ ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note those messages are displayed just with the enabled DEBUG logging.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For tracking the performance or connection pooling issues, consider setting the value of property <code>Connection Pool Debug Level</code> of
+the LDAP provider to value <code>all</code>. This will add lots of additional messages to server log with the included logging for the LDAP connection
+pooling. This can be used to track the issues related to connection pooling or performance.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+After changing the configuration of connection pooling, you may need to restart the Keycloak server to enforce re-initialization
+of the LDAP provider connection.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If no more messages appear for connection pooling even after server restart, it can indicate that connection pooling does not work
+with your LDAP server.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For the case of reporting LDAP issue, you may consider to attach some part of your LDAP tree with the target data, which causes issues
+in your environment. For example if login of some user takes lot of time, you can consider attach his LDAP entry showing count of <code>member</code> attributes
+of various "group" entries. In this case, it might be useful to add if those group entries are mapped to some Group LDAP mapper (or Role LDAP Mapper)
+in Keycloak etc.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_sssd"><a class="anchor" href="#_sssd"></a>SSSD and FreeIPA Identity Management Integration</h3>
+<h3 id="sssd-and-freeipa-identity-management-integration"><a class="anchor" href="#sssd-and-freeipa-identity-management-integration"></a>SSSD and FreeIPA Identity Management Integration</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/user-federation/sssd.adoc" target="_blank">Edit this section</a>
@@ -14825,7 +14956,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-24 14:12:18 UTC
+Last updated 2021-03-31 08:26:27 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
