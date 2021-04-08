@@ -792,6 +792,12 @@ span.image img {
 <li><a href="#upgrading-keycloak-admin-client">Upgrading Keycloak Admin Client</a></li>
 <li><a href="#migration-changes">Migration Changes</a>
 <ul class="sectlevel2">
+<li><a href="#migrating-to-12-0-2">Migrating to 12.0.2</a>
+<ul class="sectlevel3">
+<li><a href="#read-only-attributes">Read-only attributes</a></li>
+<li><a href="#valid-request-uris">Valid Request URIs</a></li>
+</ul>
+</li>
 <li><a href="#migrating-to-12-0-0">Migrating to 12.0.0</a>
 <ul class="sectlevel3">
 <li><a href="#upgrade-to-wildfly-21">Upgrade to Wildfly 21</a></li>
@@ -1484,7 +1490,7 @@ you have successfully updated your customized template.</p>
 the updated info.ftl template from the new installation:</p>
 </div>
 <div class="paragraph">
-<div class="title">Comparison of an example custom Login theme template with the updated version of the Login theme template</div>
+<div class="title">Comparison of the Login theme template from the old installation with the updated version of the Login theme template</div>
 <p><span class="image"><img src="./images/theme-migration-meld-info-2.png" alt="theme migration meld info 2"></span></p>
 </div>
 <div class="paragraph">
@@ -1650,6 +1656,50 @@ Keycloak server version.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="migrating-to-12-0-2"><a class="anchor" href="#migrating-to-12-0-2"></a>Migrating to 12.0.2</h3>
+<div class="sect3">
+<h4 id="read-only-attributes"><a class="anchor" href="#read-only-attributes"></a>Read-only attributes</h4>
+<div class="paragraph">
+<p>There was added support for the read-only user attributes. This includes the user attributes, which are not supposed to be edited by the user
+or by the administrator when updating user with REST API or with the Keycloak user interfaces. It can be important especially if you
+use:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Custom user storage providers</p>
+</li>
+<li>
+<p>Custom authenticators</p>
+</li>
+<li>
+<p>Custom Javascript authorization policies, which establish authorization based on some user attribute</p>
+</li>
+<li>
+<p>X.509 authenticator with custom attribute for mapping the X.509 certificate to the user identity</p>
+</li>
+<li>
+<p>Any other custom functionality, where some of the user attributes are used as the metadata for storing authentication/authorization/identity context rather
+than simple user profile informations.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the details in the <a href="https://www.keycloak.org/docs/11.0/server_admin/#_read_only_user_attributes">Threat model mitigation chapter</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="valid-request-uris"><a class="anchor" href="#valid-request-uris"></a>Valid Request URIs</h4>
+<div class="paragraph">
+<p>If you use the OpenID Connect parameter <code>request_uri</code>, a requirement exists that your client needs to have <code>Valid Request URIs</code> configured.
+This can be configured through the admin console on the client details page or through the admin REST API or client registration API. Valid Request URIs need
+to contain the list of Request URI values, which are permitted for the particular client. This is to avoid SSRF attacks. There is possibility to use wildcards
+or relative paths similarly such as the <code>Valid Redirect URIs</code> option, however for security purposes, we typically recommend to use as specific value
+as possible.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="migrating-to-12-0-0"><a class="anchor" href="#migrating-to-12-0-0"></a>Migrating to 12.0.0</h3>
 <div class="sect3">
 <h4 id="upgrade-to-wildfly-21"><a class="anchor" href="#upgrade-to-wildfly-21"></a>Upgrade to Wildfly 21</h4>
@@ -1736,7 +1786,7 @@ section to handle the migration of configuration files automatically.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.19. The older version may still work, but it is
 not guaranteed as they are not tested anymore.</p>
 </li>
 <li>
@@ -1913,7 +1963,7 @@ section to handle the migration of configuration files automatically.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.19. The older version may still work, but it is
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 </ul>
@@ -2004,7 +2054,7 @@ section to handle the migration of configuration files automatically.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.19. The older version may still work, but it is
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 </ul>
@@ -2038,7 +2088,7 @@ section to handle the migration of configuration files automatically.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.19. The older version may still work, but it is
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 </ul>
@@ -2099,7 +2149,7 @@ section to handle the migration of configuration files automatically.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.19. The older version may still work, but it is
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 </ul>
@@ -2229,7 +2279,7 @@ section to handle the migration of configuration files automatically.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.19. The older version may still work, but it is
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 </ul>
@@ -2274,7 +2324,7 @@ changes on your own, here is a list of the most important changes:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will need to upgrade Infinispan server to version 9.4.18. The older version may still work, but it is
+<p>You will need to upgrade Infinispan server to version 9.4.19. The older version may still work, but it is
 not guaranteed as we don&#8217;t test it anymore.</p>
 </li>
 <li>
@@ -3238,7 +3288,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-15 09:13:46 UTC
+Last updated 2021-04-08 08:03:43 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
