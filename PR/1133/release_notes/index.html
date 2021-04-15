@@ -754,10 +754,11 @@ span.image img {
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#keycloak-14-0-0">Keycloak 14.0.0</a>
+<li><a href="#keycloak-13-0-0">Keycloak 13.0.0</a>
 <ul class="sectlevel2">
 <li><a href="#highlights">Highlights</a>
 <ul class="sectlevel3">
+<li><a href="#default-roles-processing-improvement">Default roles processing improvement</a></li>
 <li><a href="#saml-artifact-binding-in-server-to-client-communication">SAML Artifact binding in server to client communication</a></li>
 </ul>
 </li>
@@ -1058,10 +1059,19 @@ span.image img {
 </div>
 </div>
 <div class="sect1">
-<h2 id="keycloak-14-0-0"><a class="anchor" href="#keycloak-14-0-0"></a>Keycloak 14.0.0</h2>
+<h2 id="keycloak-13-0-0"><a class="anchor" href="#keycloak-13-0-0"></a>Keycloak 13.0.0</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="highlights"><a class="anchor" href="#highlights"></a>Highlights</h3>
+<div class="sect3">
+<h4 id="default-roles-processing-improvement"><a class="anchor" href="#default-roles-processing-improvement"></a>Default roles processing improvement</h4>
+<div class="paragraph">
+<p>Default roles are now internally stored as composite roles of a new role usually named <code>default-roles-${realmName}</code>. Instead of assigning
+both realm and all client default roles directly to newly created users or users imported through Identity Brokering, just the role is
+assigned to them and the rest of default roles are assigned as effective roles. This change improves performance of default roles processing,
+especially with larger number of clients, because it is no longer necessary to go through all clients.</p>
+</div>
+</div>
 <div class="sect3">
 <h4 id="saml-artifact-binding-in-server-to-client-communication"><a class="anchor" href="#saml-artifact-binding-in-server-to-client-communication"></a>SAML Artifact binding in server to client communication</h4>
 <div class="paragraph">
@@ -2209,7 +2219,7 @@ Thanks to <a href="https://github.com/looorent">loorent</a> for the contribution
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-24 09:51:43 UTC
+Last updated 2021-04-15 07:53:55 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
