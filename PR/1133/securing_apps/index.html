@@ -4588,6 +4588,8 @@ for the Keycloak adapter.
     <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationProcessingFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.filter.KeycloakAuthenticationProcessingFilter</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;constructor-arg</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">authenticationManager</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">authenticationManager</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
     <span class="tag">&lt;/bean&gt;</span>
+    <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakSecurityContextRequestFilter</span><span class="delimiter">&quot;</span></span>
+          <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.filter.KeycloakSecurityContextRequestFilter</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
     <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakLogoutHandler</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.keycloak.adapters.springsecurity.authentication.KeycloakLogoutHandler</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;constructor-arg</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">adapterDeploymentContext</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
@@ -4612,6 +4614,7 @@ for the Keycloak adapter.
     <span class="tag">&lt;security:http</span> <span class="attribute-name">auto-config</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">entry-point-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationEntryPoint</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;security:custom-filter</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakPreAuthActionsFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">before</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">LOGOUT_FILTER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
         <span class="tag">&lt;security:custom-filter</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationProcessingFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">before</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">FORM_LOGIN_FILTER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+        <span class="tag">&lt;security:custom-filter</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakSecurityContextRequestFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">after</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">FORM_LOGIN_FILTER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
         <span class="tag">&lt;security:intercept-url</span> <span class="attribute-name">pattern</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/customers**</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">access</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ROLE_USER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
         <span class="tag">&lt;security:intercept-url</span> <span class="attribute-name">pattern</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/admin**</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">access</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ROLE_ADMIN</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
         <span class="tag">&lt;security:custom-filter</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">logoutFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">position</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">LOGOUT_FILTER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
@@ -7323,6 +7326,20 @@ It can only be invoked by confidential clients.</p>
 <p>For more details on how to invoke on this endpoint, see <a href="https://tools.ietf.org/html/rfc7009">OAuth 2.0 Token Revocation specification</a>.</p>
 </div>
 </div>
+<div class="sect4">
+<h5 id="device-authorization-endpoint"><a class="anchor" href="#device-authorization-endpoint"></a>Device Authorization Endpoint</h5>
+<div class="literalblock">
+<div class="content">
+<pre>/realms/{realm-name}/protocol/openid-connect/auth/device</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The device authorization endpoint is used to obtain a device code and a user code. It can only be invoked by confidential clients.</p>
+</div>
+<div class="paragraph">
+<p>For more details on how to invoke on this endpoint, see <a href="https://tools.ietf.org/html/rfc8628">OAuth 2.0 Device Authorization Grant specification</a>.</p>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="validating-access-tokens"><a class="anchor" href="#validating-access-tokens"></a>2.5.2. Validating Access Tokens</h4>
@@ -7445,6 +7462,20 @@ for example be useful for background services that applies changes to the system
 </div>
 <div class="paragraph">
 <p>For more details refer to the <a href="https://tools.ietf.org/html/rfc6749#section-4.4">Client Credentials Grant</a> chapter in the OAuth 2.0 specification.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="device-authorization-grant"><a class="anchor" href="#device-authorization-grant"></a>Device Authorization Grant</h5>
+<div class="paragraph">
+<p>Device Authorization Grant is used by clients running on internet-connected devices that have limited input capabilities or lack a suitable browser.
+The application requests Keycloak a device code and a user code. Keycloak creates a device code and a user code.
+Keycloak returns a response including the device code and the user code to the application.
+Then the application provides the user with the user code and the verification URI. The user accesses a verification URI to be authenticated by using another browser.
+The application repeatedly polls Keycloak until Keycloak completes the user authorization.
+If user authentication is complete, the application obtains the device code. Then the application uses the device code along with its credentials to obtain an Access Token, Refresh Token and ID Token from Keycloak.</p>
+</div>
+<div class="paragraph">
+<p>For more details refer to the <a href="https://tools.ietf.org/html/rfc8628">OAuth 2.0 Device Authorization Grant specification</a>.</p>
 </div>
 </div>
 </div>
@@ -11934,7 +11965,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-04-15 07:54:36 UTC
+Last updated 2021-04-15 07:59:09 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

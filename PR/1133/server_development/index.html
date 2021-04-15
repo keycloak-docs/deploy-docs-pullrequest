@@ -808,11 +808,12 @@ span.image img {
 </li>
 <li><a href="#_providers">Service Provider Interfaces (SPI)</a>
 <ul class="sectlevel2">
-<li><a href="#implementing-an-spi">Implementing an SPI</a>
+<li><a href="#_implementing_spi">Implementing an SPI</a>
 <ul class="sectlevel3">
 <li><a href="#_providers_admin_console">Show info from your SPI implementation in admin console</a></li>
 </ul>
 </li>
+<li><a href="#_use_available_providers">Use available providers</a></li>
 <li><a href="#registering-provider-implementations">Registering provider implementations</a>
 <ul class="sectlevel3">
 <li><a href="#using-the-keycloak-deployer">Using the Keycloak Deployer</a></li>
@@ -1789,26 +1790,8 @@ provider.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>By default, the locale is selected using the <code>DefaultLocaleSelectorProvider</code> which implements the <code>LocaleSelectorProvider</code> interface. English is the default language when internationalization is disabled. With internationalization enabled, the locale is resolved in the following priority:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>KEYCLOAK_LOCALE</code> cookie value</p>
-</li>
-<li>
-<p>User&#8217;s preferred locale if a user instance is available</p>
-</li>
-<li>
-<p><code>ui_locales</code> query parameter</p>
-</li>
-<li>
-<p><code>Accept-Language</code> request header</p>
-</li>
-<li>
-<p>Realm&#8217;s default language</p>
-</li>
-</ol>
+<p>By default, the locale is selected using the <code>DefaultLocaleSelectorProvider</code> which implements the <code>LocaleSelectorProvider</code> interface. English is the default language when internationalization is disabled.
+With internationalization enabled, the locale is resolved according to the logic described in the <a href="https://www.keycloak.org/docs/11.0/server_admin/#_user_locale_selection">Server Administration Guide</a>.</p>
 </div>
 <div class="paragraph">
 <p>This behaviour can be changed through the <code>LocaleSelectorSPI</code> by implementing the <code>LocaleSelectorProvider</code> and <code>LocaleSelectorProviderFactory</code>.</p>
@@ -2104,7 +2087,7 @@ to the application.  If there is an error condition and the auth server deems it
 To achieve this Keycloak has a number of Service Provider Interfaces (SPI) for which you can implement your own providers.</p>
 </div>
 <div class="sect2">
-<h3 id="implementing-an-spi"><a class="anchor" href="#implementing-an-spi"></a>Implementing an SPI</h3>
+<h3 id="_implementing_spi"><a class="anchor" href="#_implementing_spi"></a>Implementing an SPI</h3>
 <div class="paragraph">
 <p>To implement an SPI you need to implement its ProviderFactory and Provider interfaces. You also need to create a service configuration file.</p>
 </div>
@@ -2272,6 +2255,51 @@ custom provider currently installed), current configuration of the provider (eg.
 }</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_available_providers"><a class="anchor" href="#_use_available_providers"></a>Use available providers</h3>
+<div class="paragraph">
+<p>In your provider implementation, you can use other providers available in Keycloak. The existing providers can be typically retrieved with the
+usage of the <code>KeycloakSession</code>, which is available to your provider as described in the section <a href="#_implementing_spi">Implementing an SPI</a>.</p>
+</div>
+<div class="paragraph">
+<p>Keycloak has two provider types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Single-implementation provider types</strong> - There can be only a single active implementation of the particular provider type in Keycloak runtime.
+For example <code>HostnameProvider</code> specifies the hostname to be used by Keycloak and that is shared for the whole Keycloak server.
+Hence there can be only single implementation of this provider active for the Keycloak server. If there are multiple provider implementations available to the server runtime,
+one of them needs to be specified in the keycloak subsystem configuration in the <code>standalone.xml</code> as the default one. For example such as:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;spi name="hostname"&gt;
+    &lt;default-provider&gt;default&lt;/default-provider&gt;
+    ...
+&lt;/spi&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The value <code>default</code> used as the value of <code>default-provider</code> must match the ID returned by the <code>ProviderFactory.getId()</code> of the particular provider factory implementation.
+In the code, you can obtain the provider such as <code>keycloakSession.getProvider(HostnameProvider.class)</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Multiple implementation provider types</strong> - Those are provider types, that allow multiple implementations available and working together
+in the Keycloak runtime. For example <code>EventListener</code> provider allows to have multiple implementations available and registered, which means
+that particular event can be sent to all the listeners (jboss-logging, sysout etc). In the code, you can obtain a specified instance of the provider
+for example such as <code>session.getProvider(EventListener.class, "jboss-logging")</code> . You need to specify <code>provider_id</code> of the provider as the second argument
+as there can be multiple instances of this provider type as described above. The provider ID must match the ID returned by the <code>ProviderFactory.getId()</code> of the
+particular provider factory implementation. Some provider types can be retrieved with the usage of <code>ComponentModel</code> as the second argument and some (for example <code>Authenticator</code>) even
+need to be retrieved with the usage of <code>KeycloakSessionFactory</code>. It is not recommended to implement your own providers this way as it may be deprecated in the future.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -6560,7 +6588,7 @@ plain byte and character arrays and buffers is preferable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-04-15 07:54:45 UTC
+Last updated 2021-04-15 07:59:18 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
