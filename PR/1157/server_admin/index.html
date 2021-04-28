@@ -4892,7 +4892,7 @@ More info together with example is in <a href="#_service_accounts">Service Accou
 </div>
 </div>
 <div class="sect4">
-<h5 id="client-initiated-backchannel-authentication-grant"><a class="anchor" href="#client-initiated-backchannel-authentication-grant"></a>Client Initiated Backchannel Authentication Grant</h5>
+<h5 id="_client_initiated_backchannel_authentication_grant"><a class="anchor" href="#_client_initiated_backchannel_authentication_grant"></a>Client Initiated Backchannel Authentication Grant</h5>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -4927,6 +4927,9 @@ or <code>-Dkeycloak.profile.feature.ciba=enabled</code>
 </div>
 <div class="paragraph">
 <p>An administrator can configure Client Initiated Backchannel Authentication (CIBA) related operations as <code>CIBA Policy</code> per realm.</p>
+</div>
+<div class="paragraph">
+<p>Also please refer to other places of Keycloak documentation like <a href="https://www.keycloak.org/docs/11.0/securing_apps/#_backchannel_authentication_endpoint">Backchannel Authentication Endpoint section</a> of Securing Applications and Services Guide and <a href="https://www.keycloak.org/docs/11.0/securing_apps/#_client_initiated_backchannel_authentication_grant">Client Initiated Backchannel Authentication Grant section</a> of Securing Applications and Services Guide.</p>
 </div>
 <div class="sect5">
 <h6 id="ciba-policy"><a class="anchor" href="#ciba-policy"></a>CIBA Policy</h6>
@@ -5005,7 +5008,7 @@ or <code>-Dkeycloak.profile.feature.ciba=enabled</code>
     <span class="tag">&lt;default-provider&gt;</span>ciba-http-auth-channel<span class="tag">&lt;/default-provider&gt;</span>
     <span class="tag">&lt;provider</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ciba-http-auth-channel</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;properties&gt;</span>
-            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">httpAuthenticationChannelUri</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://backend.internal.example.com/auth</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">httpAuthenticationChannelUri</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://backend.internal.example.com/auth</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
         <span class="tag">&lt;/properties&gt;</span>
     <span class="tag">&lt;/provider&gt;</span>
 <span class="tag">&lt;/spi&gt;</span></code></pre>
@@ -5032,6 +5035,351 @@ or <code>-Dkeycloak.profile.feature.ciba=enabled</code>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect5">
+<h6 id="authentication-channel-provider"><a class="anchor" href="#authentication-channel-provider"></a>Authentication Channel Provider</h6>
+<div class="paragraph">
+<p>CIBA standard document does not specify how to authenticate the user by AD. Therefore, it might be implemented at the discretion of products. Keycloak delegates this authentication to an external authentication entity. To communicate with the authentication entity, keycloak provides Authentication Channel Provider.</p>
+</div>
+<div class="paragraph">
+<p>Its implementation of keycloak assumes that the authentication entity is under the control of the keycloak&#8217;s administrator so that keycloak trusts the authentication entity. It is not recommended to use the authentication entity that the keycloak&#8217;s administrator cannot control.</p>
+</div>
+<div class="paragraph">
+<p>Authentication Channel Provider is provided as SPI provider so that keycloak&#8217;s users can implement their own provider in order to meet their environment. Keycloak provides its default provider called HTTP Authentication Channel Provider that uses HTTP to communicate with the authentication entity.</p>
+</div>
+<div class="paragraph">
+<p>If keycloak&#8217;s user want to use the HTTP Authentication Channel Provider, they need to know its contract between keycloak and the authentication entity consisting of the following two parts.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Authentication Delegation Request/Response</dt>
+<dd>
+<p>Keycloak sends an authentication request to the authentication entity.</p>
+</dd>
+<dt class="hdlist1">Authentication Result Notification/ACK</dt>
+<dd>
+<p>The authentication entity notifies the result of the authentication to keycloak.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Authentication Delegation Request/Response consists of the following messaging.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Authentication Delegation Request</dt>
+<dd>
+<p>The request is sent from keycloak to the authentication entity to ask it for user authentication by AD.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>POST {delegation_reception}</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Headers</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content-Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application/json</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The message body is json formatted.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Authorization</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bearer [token]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The [token] is used when the authentication entity notifies the result of the authentication to keycloak.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Parameters</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delegation_reception</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The endpoint provided by the authentication entity to receive the delegation request</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Body</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">login_hint</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the authentication entity who is authenticated by AD.<br>
+By default, it is the user&#8217;s "username".<br>
+This field is required and was defined by CIBA standard document.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scope</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It tells which scopes the authentication entity gets consent from the authenticated user.<br>
+This field is required and was defined by CIBA standard document.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is_consent_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It shows whether the authentication entity needs to get consent from the authenticated user about the scope.<br>
+ This field is required.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">binding_message</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Its value is intended to be shown in both CD and AD&#8217;s UI to make the user recognize that the authentication by AD is triggered by CD.<br>
+This field is optional and was defined by CIBA standard document.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">acr_values</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the requesting Authentication Context Class Reference from CD.<br>
+This field is optional and was defined by CIBA standard document.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Authentication Delegation Response</dt>
+<dd>
+<p>The response is returned from the authentication entity to keycloak to notify that the authentication entity received the authentication request from keycloak.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Responses</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Status Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">204</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It notifies keycloak of receiving the authentication delegation request.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Authentication Result Notification/ACK consists of the following messaging.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Authentication Result Notification</dt>
+<dd>
+<p>The authentication entity sends the result of the authentication request to keycloak.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>POST /auth/realms/{realm}/protocol/openid-connect/ext/ciba/auth/callback</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Headers</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content-Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application/json</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The message body is json formatted.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Authorization</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bearer [token]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The [token] must be the one the authentication entity has received from keycloak in Authentication Delegation Request.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Parameters</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">realm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The realm name</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Body</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the result of user authentication by AD.<br>
+It must be one of the following status.<br>
+  SUCCEED : The authentication by AD has been successfully completed.<br>
+  UNAUTHORIZED : The authentication by AD has not been completed.<br>
+  CANCELLED : The authentication by AD has been cancelled by the user.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Authentication Result ACK</dt>
+<dd>
+<p>The response is returned from keycloak to the authentication entity to notify keycloak received the result of user authentication by AD from the authentication entity.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Responses</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Status Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It notifies the authentication entity of receiving the notification of the authentication result.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="user-resolver-provider"><a class="anchor" href="#user-resolver-provider"></a>User Resolver Provider</h6>
+<div class="paragraph">
+<p>Even if the same user, its representation may differ in each CD, keycloak and the authentication entity.</p>
+</div>
+<div class="paragraph">
+<p>For CD, keycloak and the authentication entity to recognize the same user, this User Resolver Provider converts their own user representations among them.</p>
+</div>
+<div class="paragraph">
+<p>User Resolver Provider is provided as SPI provider so that keycloak&#8217;s users can implement their own provider in order to meet their environment. Keycloak provides its default provider called Default User Resolver Provider that has the following characteristics.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Only support <code>login_hint</code> parameter and is used as default.</p>
+</li>
+<li>
+<p><code>username</code> of UserModel in keycloak is used to represent the user on CD, keycloak and the authentication entity.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -15242,7 +15590,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-04-26 06:27:21 UTC
+Last updated 2021-04-28 23:54:55 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
