@@ -6605,9 +6605,19 @@ provider instead. More info in the <a href="https://www.keycloak.org/docs/11.0/s
 </div>
 </div>
 <div class="sect5">
-<h6 id="createaccounturl"><a class="anchor" href="#createaccounturl"></a>createAccountUrl()</h6>
+<h6 id="createaccounturl-options"><a class="anchor" href="#createaccounturl-options"></a>createAccountUrl(options)</h6>
 <div class="paragraph">
 <p>Returns the URL to the Account Management Console.</p>
+</div>
+<div class="paragraph">
+<p>Options is an Object, where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>redirectUri - Specifies the uri to redirect to when redirecting back to the application.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect5">
@@ -7996,6 +8006,14 @@ kc_user=roleZ</code></pre>
 assigned to the principal will be <code>roleC</code>, <code>roleX</code>, <code>roleY</code> and <code>roleZ</code> because <code>roleA</code> is being mapped into both <code>roleX</code>
 and <code>roleY</code>, <code>roleB</code> was mapped into an empty role - thus being discarded, <code>roleC</code> is used as is and finally an additional role
 was added to the <code>kc_user</code> principal (<code>roleZ</code>).</p>
+</div>
+<div class="paragraph">
+<p>Note: to use spaces in role names for mappings, use unicode replacements for space. For example, incoming 'role A' would appear as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>role\u0020A=roleX,roleY</code></pre>
+</div>
 </div>
 </div>
 <div class="sect5">
@@ -11965,7 +11983,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-04-26 14:46:25 UTC
+Last updated 2021-04-28 15:53:04 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
