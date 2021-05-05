@@ -794,6 +794,7 @@ span.image img {
 <ul class="sectlevel2">
 <li><a href="#migrating-to-13-0-0">Migrating to 13.0.0</a>
 <ul class="sectlevel3">
+<li><a href="#manual-migration-step-needed">Manual migration step needed</a></li>
 <li><a href="#upgrade-to-wildfly-23">Upgrade to Wildfly 23</a></li>
 <li><a href="#upgrade-to-wildfly-22">Upgrade to Wildfly 22</a></li>
 </ul>
@@ -1664,6 +1665,31 @@ Keycloak server version.</p>
 <div class="sect2">
 <h3 id="migrating-to-13-0-0"><a class="anchor" href="#migrating-to-13-0-0"></a>Migrating to 13.0.0</h3>
 <div class="sect3">
+<h4 id="manual-migration-step-needed"><a class="anchor" href="#manual-migration-step-needed"></a>Manual migration step needed</h4>
+<div class="paragraph">
+<p>Manual change is required when the standalone.xml contains references to any of the SmallRye modules.
+SmallRye modules were removed from the underlying WildFly distribution, and the server does not start
+if the configuration references them. Thus if the configuration in the <code>standalone.xml</code> refers to these modules,
+the server configuration migration via <code>migrate-standalone.cli</code> fails before any changes are made to the configuration.
+In such case, to perform server configuration migration, you have to manually remove all the lines that refer
+to SmallRye modules. In the default configuration, you need to remove specifically the following lines:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;extension</span> <span class="attribute-name">module</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.wildfly.extension.microprofile.config-smallrye</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;extension</span> <span class="attribute-name">module</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.wildfly.extension.microprofile.health-smallrye</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;extension</span> <span class="attribute-name">module</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.wildfly.extension.microprofile.metrics-smallrye</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:wildfly:microprofile-config-smallrye:1.0</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:wildfly:microprofile-health-smallrye:2.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">security-enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">empty-liveness-checks-status</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${env.MP_HEALTH_EMPTY_LIVENESS_CHECKS_STATUS:UP}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">empty-readiness-checks-status</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${env.MP_HEALTH_EMPTY_READINESS_CHECKS_STATUS:UP}</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:wildfly:microprofile-metrics-smallrye:2.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">security-enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">exposed-subsystems</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">*</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">prefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${wildfly.metrics.prefix:wildfly}</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="upgrade-to-wildfly-23"><a class="anchor" href="#upgrade-to-wildfly-23"></a>Upgrade to Wildfly 23</h4>
 <div class="paragraph">
 <p>The Keycloak server was upgraded to use Wildfly 23 as the underlying container. This does not directly involve any
@@ -1723,27 +1749,7 @@ if you made your own configuration changes:</p>
 </ul>
 </div>
 </dd>
-<dt class="hdlist1">Manual migration step needed</dt>
-<dd>
-<p>The keycloak migration script does not work out of the box after removal of SmallRye dependencies from the Wildfly container. Therefore,
-a manual step is required to successfully upgrade to the newer version. Before running the migration script, it is necessary to manually
-remove following lines from the configuration file.</p>
-</dd>
 </dl>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;extension</span> <span class="attribute-name">module</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.wildfly.extension.microprofile.config-smallrye</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-<span class="tag">&lt;extension</span> <span class="attribute-name">module</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.wildfly.extension.microprofile.health-smallrye</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-<span class="tag">&lt;extension</span> <span class="attribute-name">module</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.wildfly.extension.microprofile.metrics-smallrye</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:wildfly:microprofile-config-smallrye:1.0</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-<span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:wildfly:microprofile-health-smallrye:2.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">security-enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">empty-liveness-checks-status</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${env.MP_HEALTH_EMPTY_LIVENESS_CHECKS_STATUS:UP}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">empty-readiness-checks-status</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${env.MP_HEALTH_EMPTY_READINESS_CHECKS_STATUS:UP}</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-<span class="tag">&lt;subsystem</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:wildfly:microprofile-metrics-smallrye:2.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">security-enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">exposed-subsystems</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">*</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">prefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${wildfly.metrics.prefix:wildfly}</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -3381,7 +3387,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-05 10:10:07 UTC
+Last updated 2021-05-05 15:41:48 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
