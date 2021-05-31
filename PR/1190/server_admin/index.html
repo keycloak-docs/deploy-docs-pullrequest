@@ -13020,11 +13020,28 @@ more details are in the <a href="#_audience">Audience Support section</a>.
 </div>
 </div>
 <div class="paragraph">
-<p>There&#8217;s a possibility to configure maximum number of active authentication sessions to prevent a memory overflow. An authentication browser session is represented by <code>RootAuthenticationSession</code> in Keycloak.
-The maximum allowed number of <code>RootAuthenticationSession</code> should be addressed by limiting the request rate per time on the proxy or load balancer in front of Keycloak. Each browser session can have multiple authentication sessions (browser&#8217;s tabs) which count should be also limited. It can be configured in <code>authenticationSessions</code> SPI by setting property <code>authSessionsLimit</code>. The default value is set to 300 authentication sessions per a <code>RootAuthenticationSession</code>.</p>
+<p>Keycloak creates an authentication session for each authentication request within a realm. This session is internally represented by <code>RootAuthenticationSession</code>. Each <code>RootAuthenticationSession</code> can have multiple authentication sessions for a given client. In a browser authentication flow the browser session translates to <code>RootAuthenticationSession</code> while browser&#8217;s tabs translate to a collection of authentication sessions within the <code>RootAuthenticationSession</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This section describes deployments that use the infinispan provider for authentication sessions.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>The following example shows how to limit number of active authentication sessions per a <code>RootAuthenticationSession</code> to 100.</p>
+<p>Higher memory usage and a network overload in a cluster may occur for deployments where there&#8217;s many active <code>RootAuthenticationSession</code> with a lot of authentication sessions.</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s a possibility to mitigate the aforementioned threats. The maximum allowed number of <code>RootAuthenticationSession</code> should be addressed by limiting the request rate per time on the proxy or load balancer in front of Keycloak. Maximum number of authentication sessions per <code>RootAuthenticationSession</code> can be configured in <code>authenticationSessions</code> SPI by setting property <code>authSessionsLimit</code>. The default value is set to 300 authentication sessions per a <code>RootAuthenticationSession</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following example shows how to limit the number of active authentication sessions per a <code>RootAuthenticationSession</code> to 100.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13038,7 +13055,8 @@ The maximum allowed number of <code>RootAuthenticationSession</code> should be a
             <span class="tag">&lt;/properties&gt;</span>
         <span class="tag">&lt;/provider&gt;</span>
     <span class="tag">&lt;/spi&gt;</span>
-    ...</code></pre>
+    ...
+<span class="tag">&lt;/subsystem&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -15646,7 +15664,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-31 13:32:50 UTC
+Last updated 2021-05-31 16:05:01 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
