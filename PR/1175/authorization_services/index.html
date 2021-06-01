@@ -5157,7 +5157,7 @@ any user with a role <code>people-manager</code> should be granted with the <cod
 </div>
 </div>
 <div class="paragraph">
-<p>A requesting party token (RPT) is a <a href="https://tools.ietf.org/html/rfc7519">JSON web token (JWT)</a> digitally signed using <a href="https://tools.ietf.org/html/rfc7515">JSON web signature (JWS)</a>. The token is built based on the OAuth2 access token previously issued by Keycloak to a specific client acting on behalf of a user
+<p>A requesting party token (RPT) is a <a href="https://datatracker.ietf.org/doc/html/rfc7519">JSON web token (JWT)</a> digitally signed using <a href="https://datatracker.ietf.org/doc/html/rfc7515">JSON web signature (JWS)</a>. The token is built based on the OAuth2 access token previously issued by Keycloak to a specific client acting on behalf of a user
 or on its own behalf.</p>
 </div>
 <div class="paragraph">
@@ -5219,7 +5219,7 @@ the access control methods that were used to actually grant and issue these same
 <div class="sect3">
 <h4 id="obtaining-information-about-an-rpt"><a class="anchor" href="#obtaining-information-about-an-rpt"></a>Obtaining Information about an RPT</h4>
 <div class="paragraph">
-<p>The token introspection is essentially a <a href="https://tools.ietf.org/html/rfc7662">OAuth2 token introspection</a>-compliant endpoint from which you can obtain information about an RPT.</p>
+<p>The token introspection is essentially a <a href="https://datatracker.ietf.org/doc/html/rfc7662">OAuth2 token introspection</a>-compliant endpoint from which you can obtain information about an RPT.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5304,7 +5304,7 @@ The request above is using HTTP BASIC and passing the client&#8217;s credentials
 <h4 id="do-i-need-to-invoke-the-server-every-time-i-want-to-introspect-an-rpt"><a class="anchor" href="#do-i-need-to-invoke-the-server-every-time-i-want-to-introspect-an-rpt"></a>Do I Need to Invoke the Server Every Time I Want to Introspect an RPT?</h4>
 <div class="paragraph">
 <p>No. Just like a regular access token issued by a Keycloak server, RPTs also use the
- <a href="https://tools.ietf.org/html/rfc7519">JSON web token (JWT)</a> specification as the default format.</p>
+ <a href="https://datatracker.ietf.org/doc/html/rfc7519">JSON web token (JWT)</a> specification as the default format.</p>
 </div>
 <div class="paragraph">
 <p>If you want to validate these tokens without a call to the remote introspection endpoint, you can decode the RPT and query for its validity locally. Once you decode the token,
@@ -6414,7 +6414,7 @@ It is strongly recommended that you enable TLS/HTTPS when accessing the Keycloak
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-14 16:49:00 UTC
+Last updated 2021-06-01 18:31:15 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

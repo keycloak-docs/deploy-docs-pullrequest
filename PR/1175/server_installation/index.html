@@ -3525,7 +3525,7 @@ More info about state transfer is available in the <a href="https://infinispan.o
 <p>How bad are these inconsistencies? Usually only means that a user will need to re-authenticate.</p>
 </div>
 <div class="paragraph">
-<p>When using the <code>WARN</code> policy, it may happen that the single-use cache, which is provided by the <code>actionTokens</code> cache and which handles that particular key is really single use, but may "successfully" write the same key twice. But, for example, the OAuth2 specification <a href="https://tools.ietf.org/html/rfc6749#section-10.5">mentions</a> that code must be single-use. With the <code>WARN</code> policy, this may not be strictly guaranteed and the same code could be written twice if there is an attempt to write it concurrently in both sites.</p>
+<p>When using the <code>WARN</code> policy, it may happen that the single-use cache, which is provided by the <code>actionTokens</code> cache and which handles that particular key is really single use, but may "successfully" write the same key twice. But, for example, the OAuth2 specification <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-10.5">mentions</a> that code must be single-use. With the <code>WARN</code> policy, this may not be strictly guaranteed and the same code could be written twice if there is an attempt to write it concurrently in both sites.</p>
 </div>
 <div class="paragraph">
 <p>If there is a longer network outage or split-brain, then with both <code>FAIL</code> and <code>WARN</code>, the other site will be taken offline after some time and failures as described in <a href="#onoffline">Bringing sites offline and online</a>. With the default 1 minute timeout, it is usually 1-3 minutes until all the involved caches are taken offline. After that, all the operations will work fine from an end user perspective.
@@ -8100,7 +8100,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-14 16:49:19 UTC
+Last updated 2021-06-01 18:31:33 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

@@ -4287,13 +4287,13 @@ or during <code>Service account</code> authentication (represented by OAuth2 <co
 <dl>
 <dt class="hdlist1">Traditional authentication with client_id and client_secret</dt>
 <dd>
-<p>This is default mechanism mentioned in the <a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect</a>                                or <a href="https://tools.ietf.org/html/rfc6749">OAuth2</a> specification and Keycloak supports it since it&#8217;s early days.
+<p>This is default mechanism mentioned in the <a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect</a>                                or <a href="https://datatracker.ietf.org/doc/html/rfc6749">OAuth2</a> specification and Keycloak supports it since it&#8217;s early days.
 The public client needs to include <code>client_id</code> parameter with its ID in the POST request (so it&#8217;s defacto not authenticated) and the confidential client needs to include <code>Authorization: Basic</code> header with the clientId and clientSecret used as username and password.</p>
 </dd>
 <dt class="hdlist1">Authentication with signed JWT</dt>
 <dd>
-<p>This is based on the <a href="https://tools.ietf.org/html/rfc7523">JWT Bearer Token Profiles for OAuth 2.0</a> specification.
-The client/adapter generates the <a href="https://tools.ietf.org/html/rfc7519">JWT</a> and signs it with his private key.
+<p>This is based on the <a href="https://datatracker.ietf.org/doc/html/rfc7523">JWT Bearer Token Profiles for OAuth 2.0</a> specification.
+The client/adapter generates the <a href="https://datatracker.ietf.org/doc/html/rfc7519">JWT</a> and signs it with his private key.
 The Keycloak then verifies the signed JWT with the client&#8217;s public key and authenticates client based on it.</p>
 </dd>
 </dl>
@@ -6588,7 +6588,7 @@ plain byte and character arrays and buffers is preferable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-14 16:49:17 UTC
+Last updated 2021-06-01 18:31:30 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

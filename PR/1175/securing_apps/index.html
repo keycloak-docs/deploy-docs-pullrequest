@@ -1172,7 +1172,7 @@ require less boilerplate code than what is typically required by a library.</p>
 <div class="sect3">
 <h4 id="openid-connect-2"><a class="anchor" href="#openid-connect-2"></a>1.3.1. OpenID Connect</h4>
 <div class="paragraph">
-<p><a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) is an authentication protocol that is an extension of <a href="https://tools.ietf.org/html/rfc6749">OAuth 2.0</a>.
+<p><a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) is an authentication protocol that is an extension of <a href="https://datatracker.ietf.org/doc/html/rfc6749">OAuth 2.0</a>.
 While OAuth 2.0 is only a framework for building authorization protocols and is mainly incomplete, OIDC is a full-fledged authentication and authorization
 protocol.  OIDC also makes heavy use of the <a href="https://jwt.io">Json Web Token</a> (JWT) set of standards.  These standards define an
 identity token JSON format and ways to digitally sign and encrypt that data in a compact and web-friendly way.</p>
@@ -5490,7 +5490,7 @@ You can generate the secret for a particular client in the Keycloak administrati
 <div class="sect4">
 <h5 id="client-authentication-with-signed-jwt"><a class="anchor" href="#client-authentication-with-signed-jwt"></a>Client Authentication with Signed JWT</h5>
 <div class="paragraph">
-<p>This is based on the <a href="https://tools.ietf.org/html/rfc7523">RFC7523</a> specification. It works this way:</p>
+<p>This is based on the <a href="https://datatracker.ietf.org/doc/html/rfc7523">RFC7523</a> specification. It works this way:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5506,7 +5506,7 @@ the particular backchannel request (for example, code-to-token request) in the <
 </li>
 <li>
 <p>Keycloak must have the public key or certificate of the client so that it can verify the signature on JWT. In Keycloak you need to configure client credentials for your client. First you need to choose <code>Signed JWT</code> as the method of authenticating your client in the tab <code>Credentials</code> in administration console.
-Then you can choose to either:</p>
+Then you can choose to either in the tab <code>Keys</code>:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -5566,7 +5566,7 @@ you can point to any file on the file system where the client application is run
 </div>
 </div>
 <div class="paragraph">
-<p>The "algorithm" field specifies the algorithm for Signed JWT using Client Secret. It needs to be one of the following values : HS256, HS384, and HS512. For details, please refer to <a href="https://tools.ietf.org/html/rfc7518#section-3.2">JSON Web Algorithms (JWA)</a>.</p>
+<p>The "algorithm" field specifies the algorithm for Signed JWT using Client Secret. It needs to be one of the following values : HS256, HS384, and HS512. For details, please refer to <a href="https://datatracker.ietf.org/doc/html/rfc7518#section-3.2">JSON Web Algorithms (JWA)</a>.</p>
 </div>
 <div class="paragraph">
 <p>This "algorithm" field is optional so that HS256 is applied automatically if the "algorithm" field does not exist on the <code>keycloak.json</code> file.</p>
@@ -6479,7 +6479,7 @@ Available options:</p>
 <p>enableLogging - Enables logging messages from Keycloak to the console (default is <code>false</code>).</p>
 </li>
 <li>
-<p>pkceMethod - The method for Proof Key Code Exchange (<a href="https://tools.ietf.org/html/rfc7636">PKCE</a>) to use. Configuring this value enables the PKCE mechanism. Available options:</p>
+<p>pkceMethod - The method for Proof Key Code Exchange (<a href="https://datatracker.ietf.org/doc/html/rfc7636">PKCE</a>) to use. Configuring this value enables the PKCE mechanism. Available options:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -6519,9 +6519,9 @@ for the details and all the possible values of the <code>prompt</code> parameter
 <p>loginHint - Used to pre-fill the username/email field on the login form.</p>
 </li>
 <li>
-<p>scope - Used to forward the scope parameter to the Keycloak login endpoint. Use a space-delimited list of scopes. Those typically
+<p>scope - Used to forward the scope parameter to the Keycloak login endpoint. Use a space-delimited list of scopes. Those typically referenece
 <a href="https://www.keycloak.org/docs/14.0/server_admin/#_client_scopes">Client scopes</a>
-defined on particular client. Note that the scope <code>openid</code> will be
+defined on a particular client. Note that the scope <code>openid</code> will be
 always be added to the list of scopes by the adapter. For example, if you enter the scope options <code>address phone</code>, then the request
 to Keycloak will contain the scope parameter <code>scope=openid address phone</code>.</p>
 </li>
@@ -7221,7 +7221,7 @@ project page.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak can be secured by supplied adapters that are usually easier to use and provide better integration with Keycloak. However, if an adapter is not available for your programming language, framework, or platform you might opt to use a generic OpenID Connect Relying Party (RP) library instead. This chapter describes details specific to Keycloak and does not contain specific protocol details. For more information see the <a href="https://openid.net/connect/">OpenID Connect specifications</a> and <a href="https://tools.ietf.org/html/rfc6749">OAuth2 specification</a>.</p>
+<p>Keycloak can be secured by supplied adapters that are usually easier to use and provide better integration with Keycloak. However, if an adapter is not available for your programming language, framework, or platform you might opt to use a generic OpenID Connect Relying Party (RP) library instead. This chapter describes details specific to Keycloak and does not contain specific protocol details. For more information see the <a href="https://openid.net/connect/">OpenID Connect specifications</a> and <a href="https://datatracker.ietf.org/doc/html/rfc6749">OAuth2 specification</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="endpoints"><a class="anchor" href="#endpoints"></a>2.5.1. Endpoints</h4>
@@ -7310,7 +7310,7 @@ The token endpoint is also used to obtain new access tokens when they expire.</p
 </div>
 </div>
 <div class="paragraph">
-<p>The certificate endpoint returns the public keys enabled by the realm, encoded as a JSON Web Key (JWK). Depending on the realm settings there can be one or more keys enabled for verifying tokens. For more information see the <a href="https://www.keycloak.org/docs/14.0/server_admin/">Server Administration Guide</a> and the <a href="https://tools.ietf.org/html/rfc7517">JSON Web Key specification</a>.</p>
+<p>The certificate endpoint returns the public keys enabled by the realm, encoded as a JSON Web Key (JWK). Depending on the realm settings there can be one or more keys enabled for verifying tokens. For more information see the <a href="https://www.keycloak.org/docs/14.0/server_admin/">Server Administration Guide</a> and the <a href="https://datatracker.ietf.org/doc/html/rfc7517">JSON Web Key specification</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -7325,7 +7325,7 @@ The token endpoint is also used to obtain new access tokens when they expire.</p
 It can only be invoked by confidential clients.</p>
 </div>
 <div class="paragraph">
-<p>For more details on how to invoke on this endpoint, see <a href="https://tools.ietf.org/html/rfc7662">OAuth 2.0 Token Introspection specification</a>.</p>
+<p>For more details on how to invoke on this endpoint, see <a href="https://datatracker.ietf.org/doc/html/rfc7662">OAuth 2.0 Token Introspection specification</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -7354,7 +7354,7 @@ It can only be invoked by confidential clients.</p>
 <p>The token revocation endpoint is used to revoke tokens. Both refresh tokens and access tokens are supported by this endpoint.</p>
 </div>
 <div class="paragraph">
-<p>For more details on how to invoke on this endpoint, see <a href="https://tools.ietf.org/html/rfc7009">OAuth 2.0 Token Revocation specification</a>.</p>
+<p>For more details on how to invoke on this endpoint, see <a href="https://datatracker.ietf.org/doc/html/rfc7009">OAuth 2.0 Token Revocation specification</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -7368,7 +7368,7 @@ It can only be invoked by confidential clients.</p>
 <p>The device authorization endpoint is used to obtain a device code and a user code. It can only be invoked by confidential clients.</p>
 </div>
 <div class="paragraph">
-<p>For more details on how to invoke on this endpoint, see <a href="https://tools.ietf.org/html/rfc8628">OAuth 2.0 Device Authorization Grant specification</a>.</p>
+<p>For more details on how to invoke on this endpoint, see <a href="https://datatracker.ietf.org/doc/html/rfc8628">OAuth 2.0 Device Authorization Grant specification</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -7394,7 +7394,7 @@ It can only be invoked by confidential clients.</p>
 <div class="paragraph">
 <p>If you need to manually validate access tokens issued by Keycloak you can invoke the <a href="#_token_introspection_endpoint">Introspection Endpoint</a>.
 The downside to this approach is that you have to make a network invocation to the Keycloak server.  This can be slow and possibly overload the
-server if you have too many validation requests going on at the same time.  Keycloak issued access tokens are <a href="https://tools.ietf.org/html/rfc7519">JSON Web Tokens (JWT)</a> digitally signed and encoded using <a href="https://tools.ietf.org/html/rfc7515">JSON Web Signature (JWS)</a>.
+server if you have too many validation requests going on at the same time.  Keycloak issued access tokens are <a href="https://datatracker.ietf.org/doc/html/rfc7519">JSON Web Tokens (JWT)</a> digitally signed and encoded using <a href="https://datatracker.ietf.org/doc/html/rfc7515">JSON Web Signature (JWS)</a>.
 Because they are encoded in this way, this allows you to locally validate access tokens using the public key of the issuing realm.  You can either hard code the
 realm&#8217;s public key in your validation code, or lookup and cache the public key using the <a href="#_certificate_endpoint">certificate endpoint</a> with the Key ID (KID) embedded within the
 JWS.  Depending what language you code in, there are a multitude of third party libraries out there that can help you with JWS validation.</p>
@@ -7475,7 +7475,7 @@ to use this flow unless you absolutely need to. Examples where this could be use
 <p>This flow is not included in OpenID Connect, but is a part of the OAuth 2.0 specification.</p>
 </div>
 <div class="paragraph">
-<p>For more details refer to the <a href="https://tools.ietf.org/html/rfc6749#section-4.3">Resource Owner Password Credentials Grant</a> chapter in the OAuth 2.0 specification.</p>
+<p>For more details refer to the <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.3">Resource Owner Password Credentials Grant</a> chapter in the OAuth 2.0 specification.</p>
 </div>
 <div class="sect5">
 <h6 id="example-using-curl"><a class="anchor" href="#example-using-curl"></a>Example using CURL</h6>
@@ -7509,7 +7509,7 @@ for example be useful for background services that applies changes to the system
 <p>This flow is not included in OpenID Connect, but is a part of the OAuth 2.0 specification.</p>
 </div>
 <div class="paragraph">
-<p>For more details refer to the <a href="https://tools.ietf.org/html/rfc6749#section-4.4">Client Credentials Grant</a> chapter in the OAuth 2.0 specification.</p>
+<p>For more details refer to the <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.4">Client Credentials Grant</a> chapter in the OAuth 2.0 specification.</p>
 </div>
 </div>
 <div class="sect4">
@@ -7523,7 +7523,7 @@ The application repeatedly polls Keycloak until Keycloak completes the user auth
 If user authentication is complete, the application obtains the device code. Then the application uses the device code along with its credentials to obtain an Access Token, Refresh Token and ID Token from Keycloak.</p>
 </div>
 <div class="paragraph">
-<p>For more details refer to the <a href="https://tools.ietf.org/html/rfc8628">OAuth 2.0 Device Authorization Grant specification</a>.</p>
+<p>For more details refer to the <a href="https://datatracker.ietf.org/doc/html/rfc8628">OAuth 2.0 Device Authorization Grant specification</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -10529,7 +10529,7 @@ This means that for the JavaScript adapter you can load the client configuration
 <div class="sect2">
 <h3 id="openid-connect-dynamic-client-registration"><a class="anchor" href="#openid-connect-dynamic-client-registration"></a>5.4. OpenID Connect Dynamic Client Registration</h3>
 <div class="paragraph">
-<p>Keycloak implements <a href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration</a>, which extends <a href="https://tools.ietf.org/html/rfc7591">OAuth 2.0 Dynamic Client Registration Protocol</a> and <a href="https://tools.ietf.org/html/rfc7592">OAuth 2.0 Dynamic Client Registration Management Protocol</a>.</p>
+<p>Keycloak implements <a href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration</a>, which extends <a href="https://datatracker.ietf.org/doc/html/rfc7591">OAuth 2.0 Dynamic Client Registration Protocol</a> and <a href="https://datatracker.ietf.org/doc/html/rfc7592">OAuth 2.0 Dynamic Client Registration Management Protocol</a>.</p>
 </div>
 <div class="paragraph">
 <p>The endpoint to use these specifications to register clients in Keycloak is <code>/auth/realms/&lt;realm&gt;/clients-registrations/openid-connect[/&lt;client id&gt;]</code>.</p>
@@ -11395,7 +11395,7 @@ to impersonate a user.  Here&#8217;s a short summary of the current capabilities
 </ul>
 </div>
 <div class="paragraph">
-<p>Token exchange in Keycloak is a very loose implementation of the <a href="https://tools.ietf.org/html/rfc8693">OAuth Token Exchange</a> specification at the IETF.
+<p>Token exchange in Keycloak is a very loose implementation of the <a href="https://datatracker.ietf.org/doc/html/rfc8693">OAuth Token Exchange</a> specification at the IETF.
 We have extended it a little, ignored some of it, and loosely interpreted other parts of the specification.  It is
 a simple grant type invocation on a realm&#8217;s OpenID Connect token endpoint.</p>
 </div>
@@ -11487,7 +11487,7 @@ We currently only support OpenID Connect and OAuth exchanges.  Support for SAML 
 <div class="paragraph">
 <p>A successful response from an exchange invocation will return the HTTP 200 response code with a content type that
 depends on the <code>requested-token-type</code> and <code>requested_issuer</code> the client asks for.  OAuth requested token types will return
-a JSON document as described in the <a href="https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-16">OAuth Token Exchange</a> specification.</p>
+a JSON document as described in the <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-token-exchange-16">OAuth Token Exchange</a> specification.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12039,7 +12039,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-14 16:49:07 UTC
+Last updated 2021-06-01 18:31:22 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
