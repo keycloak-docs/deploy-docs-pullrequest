@@ -1371,7 +1371,7 @@ in the new version.</p>
 <p>Creating an index on huge tables with millions of records can easily take a huge amount of time
 and potentially cause major service disruption on upgrades.
 For those cases, we added a threshold (the number of records) for automated index creation.
-By default, this threshold is <code>100000</code> records.
+By default, this threshold is <code>300000</code> records.
 When the number of records is higher than the threshold, the index is not created automatically,
 and there will be a warning message in server logs including SQL commands which can be applied later manually.</p>
 </div>
@@ -1383,7 +1383,7 @@ and there will be a warning message in server logs including SQL commands which 
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;spi</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">connectionsLiquibase</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;provider</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;properties&gt;</span>
-            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">indexCreationThreshold</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100000</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">indexCreationThreshold</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">300000</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
         <span class="tag">&lt;/properties&gt;</span>
     <span class="tag">&lt;/provider&gt;</span>
 <span class="tag">&lt;/spi&gt;</span></code></pre>
@@ -1395,7 +1395,7 @@ and there will be a warning message in server logs including SQL commands which 
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">/subsystem=keycloak-server/spi=connectionsLiquibase/:add(default-provider=default)
-/subsystem=keycloak-server/spi=connectionsLiquibase/provider=default/:add(properties={indexCreationThreshold =&gt; &quot;100000&quot;},enabled=true)</code></pre>
+/subsystem=keycloak-server/spi=connectionsLiquibase/provider=default/:add(properties={indexCreationThreshold =&gt; &quot;300000&quot;},enabled=true)</code></pre>
 </div>
 </div>
 </div>
@@ -1949,7 +1949,7 @@ logs in.</p>
 <h4 id="non-standard-token-introspection-endpoint-removed"><a class="anchor" href="#non-standard-token-introspection-endpoint-removed"></a>Non-standard token introspection endpoint removed</h4>
 <div class="paragraph">
 <p>In previous versions, Keycloak advertized two introspection endpoints: <code>token_introspection_endpoint</code> and <code>introspection_endpoint</code>.
-The latter is the one defined by <a href="https://tools.ietf.org/html/rfc8414#section-2">RFC-8414</a>. The former, previously deprecated,
+The latter is the one defined by <a href="https://datatracker.ietf.org/doc/html/rfc8414#section-2">RFC-8414</a>. The former, previously deprecated,
 has now been removed.</p>
 </div>
 </div>
@@ -3387,7 +3387,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-14 18:43:14 UTC
+Last updated 2021-06-04 19:25:57 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
