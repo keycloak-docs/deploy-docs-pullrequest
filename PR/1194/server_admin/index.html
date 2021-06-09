@@ -7412,7 +7412,7 @@ the advanced security requirements. In the future, individual client configurati
 <p>The <em>Global client profiles</em> are client profiles pre-configured in Keycloak by default. They are pre-configured to be compliant with standard security profiles like <a href="https://www.keycloak.org/docs/14.0/securing_apps/#_fapi-support">FAPI</a>,
 which makes it easy for the administrator to secure their client application to be compliant with the particular security profile. At this moment, Keycloak has global
 profiles for the support of FAPI 1 specification. The administrator will just need to configure the client policies to specify which clients should
-be compliant with the FAPI. The administrators can configure their own client profiles and client policies, so that Keycloak clients can be easily made compliant with various other
+be compliant with the FAPI. The administrator can configure client profiles and client policies, so that Keycloak clients can be easily made compliant with various other
 security profiles like SPA, Native App, Open Banking and so on.</p>
 </dd>
 </dl>
@@ -7610,8 +7610,8 @@ executors of these profiles execute their task against the client that this poli
 </div>
 <div class="paragraph">
 <p>The <em>Global Client Profiles</em> are automatically available in each realm. However there are no client policies
-configured by default. This means that the administrators are always required to create any client policy if they want for example the clients of his realm to be FAPI compliant. Global
-profiles cannot be updated, but the administrators can easily use them as a template and create their own profile if they want to do some slight changes in the global profile configurations.
+configured by default. This means that the administrator is always required to create any client policy if they want for example the clients of his realm to be FAPI compliant. Global
+profiles cannot be updated, but the administrator can easily use them as a template and create their own profile if they want to do some slight changes in the global profile configurations.
 There is JSON Editor available in the Admin Console, which simplifies the creation of new profile based on some global profile.</p>
 </div>
 </div>
@@ -15969,7 +15969,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-06-09 06:25:33 UTC
+Last updated 2021-06-09 06:37:26 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

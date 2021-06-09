@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Server Installation and Configuration Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guide consists of information to install and configure Red Hat Single Sign-On 7.4"/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140482304590704"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On</span> <span class="productnumber">7.4</span></div><div><h1 class="title">Server Installation and Configuration Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On 7.4</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140482302194288">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Server Installation and Configuration Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guide consists of information to install and configure Red Hat Single Sign-On 7.4"/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140176784570480"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On</span> <span class="productnumber">7.4</span></div><div><h1 class="title">Server Installation and Configuration Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On 7.4</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140176784666528">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
 				This guide consists of information to install and configure Red Hat Single Sign-On 7.4
 			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></span></li><li><span class="chapter"><a href="#guide_overview">1. Guide Overview</a></span><ul><li><span class="section"><a href="#recommended_additional_external_documentation">1.1. Recommended Additional External Documentation</a></span></li></ul></li><li><span class="chapter"><a href="#installation">2. Installation</a></span><ul><li><span class="section"><a href="#system_requirements">2.1. System Requirements</a></span></li><li><span class="section"><a href="#installing_rh_sso_from_a_zip_file">2.2. Installing RH-SSO from a ZIP File</a></span></li><li><span class="section"><a href="#installing_rpm">2.3. Installing RH-SSO from an RPM</a></span><ul><li><span class="section"><a href="#subscribing_EAP_repo">2.3.1. Subscribing to the JBoss EAP 7.3 Repository</a></span></li><li><span class="section"><a href="#subscribing_to_the_rh_sso_7_4_repository_and_installing_rh_sso_7_4">2.3.2. Subscribing to the RH-SSO 7.4 Repository and Installing RH-SSO 7.4</a></span></li></ul></li><li><span class="section"><a href="#distribution_directory_structure">2.4. Distribution Directory Structure</a></span></li></ul></li><li><span class="chapter"><a href="#operating-mode">3. Choosing an Operating Mode</a></span><ul><li><span class="section"><a href="#standalone-mode">3.1. Standalone Mode</a></span><ul><li><span class="section"><a href="#standalone_boot_script">3.1.1. Standalone Boot Script</a></span></li><li><span class="section"><a href="#standalone_configuration">3.1.2. Standalone Configuration</a></span></li></ul></li><li><span class="section"><a href="#standalone-ha-mode">3.2. Standalone Clustered Mode</a></span><ul><li><span class="section"><a href="#standalone_clustered_configuration">3.2.1. Standalone Clustered Configuration</a></span></li><li><span class="section"><a href="#standalone_clustered_boot_script">3.2.2. Standalone Clustered Boot Script</a></span></li></ul></li><li><span class="section"><a href="#domain-mode">3.3. Domain Clustered Mode</a></span><ul><li><span class="section"><a href="#domain_configuration">3.3.1. Domain Configuration</a></span></li><li><span class="section"><a href="#host_controller_configuration">3.3.2. Host Controller Configuration</a></span></li><li><span class="section"><a href="#server_instance_working_directories">3.3.3. Server Instance Working Directories</a></span></li><li><span class="section"><a href="#domain_boot_script">3.3.4. Domain Boot Script</a></span></li><li><span class="section"><a href="#clustered-domain-example">3.3.5. Clustered Domain Example</a></span></li></ul></li><li><span class="section"><a href="#crossdc-mode">3.4. Cross-Datacenter Replication Mode</a></span><ul><li><span class="section"><a href="#prerequisites">3.4.1. Prerequisites</a></span></li><li><span class="section"><a href="#technicaldetails">3.4.2. Technical details</a></span></li><li><span class="section"><a href="#requestprocessing">3.4.3. Request processing</a></span></li><li><span class="section"><a href="#modes">3.4.4. Modes</a></span></li><li><span class="section"><a href="#database">3.4.5. Database</a></span></li><li><span class="section"><a href="#cache">3.4.6. Infinispan caches</a></span></li><li><span class="section"><a href="#communication">3.4.7. Communication details</a></span></li><li><span class="section"><a href="#assembly-setting-up-crossdc">3.4.8. Setting Up Cross DC with RHDG 8.1</a></span></li><li><span class="section"><a href="#setup">3.4.9. Setting up Cross DC with RHDG 7.3</a></span></li><li><span class="section"><a href="#administration">3.4.10. Administration of Cross DC deployment</a></span></li><li><span class="section"><a href="#onoffline">3.4.11. Bringing sites offline and online</a></span></li><li><span class="section"><a href="#statetransfer">3.4.12. State transfer</a></span></li><li><span class="section"><a href="#clearcache">3.4.13. Clear caches</a></span></li><li><span class="section"><a href="#tuningcache">3.4.14. Tuning the RHDG cache configuration</a></span></li><li><span class="section"><a href="#backups">3.4.15. SYNC or ASYNC backups</a></span></li><li><span class="section"><a href="#troubleshooting">3.4.16. Troubleshooting</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#manage_subsystem_configuration">4. Manage Subsystem Configuration</a></span><ul><li><span class="section"><a href="#config_spi_providers">4.1. Configure SPI Providers</a></span></li><li><span class="section"><a href="#start_cli">4.2. Start the JBoss EAP CLI</a></span></li><li><span class="section"><a href="#cli_embedded_mode">4.3. CLI Embedded Mode</a></span></li><li><span class="section"><a href="#cli_gui_mode">4.4. CLI GUI Mode</a></span></li><li><span class="section"><a href="#cli_scripting">4.5. CLI Scripting</a></span></li><li><span class="section"><a href="#cli_recipes">4.6. CLI Recipes</a></span><ul><li><span class="section"><a href="#change_the_web_context_of_the_server">4.6.1. Change the web context of the server</a></span></li><li><span class="section"><a href="#set_the_global_default_theme">4.6.2. Set the global default theme</a></span></li><li><span class="section"><a href="#add_a_new_spi_and_a_provider">4.6.3. Add a new SPI and a provider</a></span></li><li><span class="section"><a href="#disable_a_provider">4.6.4. Disable a provider</a></span></li><li><span class="section"><a href="#change_the_default_provider_for_an_spi">4.6.5. Change the default provider for an SPI</a></span></li><li><span class="section"><a href="#configure_the_dblock_spi">4.6.6. Configure the dblock SPI</a></span></li><li><span class="section"><a href="#add_or_change_a_single_property_value_for_a_provider">4.6.7. Add or change a single property value for a provider</a></span></li><li><span class="section"><a href="#remove_a_single_property_from_a_provider">4.6.8. Remove a single property from a provider</a></span></li><li><span class="section"><a href="#set_values_on_a_provider_property_of_type_literal_list_literal">4.6.9. Set values on a provider property of type <code class="literal">List</code></a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#profiles">5. Profiles</a></span></li><li><span class="chapter"><a href="#database-1">6. Relational Database Setup</a></span><ul><li><span class="section"><a href="#rdbms-setup-checklist">6.1. RDBMS Setup Checklist</a></span></li><li><span class="section"><a href="#package_the_jdbc_driver">6.2. Package the JDBC Driver</a></span></li><li><span class="section"><a href="#declare_and_load_jdbc_driver">6.3. Declare and Load JDBC Driver</a></span></li><li><span class="section"><a href="#modify_the_red_hat_single_sign_on_datasource">6.4. Modify the Red Hat Single Sign-On Datasource</a></span></li><li><span class="section"><a href="#database_configuration">6.5. Database Configuration</a></span></li><li><span class="section"><a href="#unicode_considerations_for_databases">6.6. Unicode Considerations for Databases</a></span><ul><li><span class="section"><a href="#oracle_database">6.6.1. Oracle Database</a></span></li><li><span class="section"><a href="#microsoft_sql_server_database">6.6.2. Microsoft SQL Server Database</a></span></li><li><span class="section"><a href="#mysql_database">6.6.3. MySQL Database</a></span></li><li><span class="section"><a href="#postgresql_database">6.6.4. PostgreSQL Database</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#hostname">7. Hostname</a></span><ul><li><span class="section"><a href="#default_provider">7.1. Default provider</a></span></li><li><span class="section"><a href="#custom_provider">7.2. Custom provider</a></span></li></ul></li><li><span class="chapter"><a href="#network">8. Network Setup</a></span><ul><li><span class="section"><a href="#bind-address">8.1. Bind Addresses</a></span></li><li><span class="section"><a href="#ports">8.2. Socket Port Bindings</a></span></li><li><span class="section"><a href="#setting_up_ssl">8.3. Setting up HTTPS/SSL</a></span><ul><li><span class="section"><a href="#enabling_ssl_https_for_the_red_hat_single_sign_on_server">8.3.1. Enabling SSL/HTTPS for the Red Hat Single Sign-On Server</a></span></li></ul></li><li><span class="section"><a href="#outgoing_http_requests">8.4. Outgoing HTTP Requests</a></span><ul><li><span class="section"><a href="#proxymappings">8.4.1. Proxy Mappings for Outgoing HTTP Requests</a></span></li><li><span class="section"><a href="#truststore">8.4.2. Outgoing HTTPS Request Truststore</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#clustering">9. Clustering</a></span><ul><li><span class="section"><a href="#recommended_network_architecture">9.1. Recommended Network Architecture</a></span></li><li><span class="section"><a href="#clustering_example">9.2. Clustering Example</a></span></li><li><span class="section"><a href="#setting-up-a-load-balancer-or-proxy">9.3. Setting Up a Load Balancer or Proxy</a></span><ul><li><span class="section"><a href="#identifying_client_ip_addresses">9.3.1. Identifying Client IP Addresses</a></span></li><li><span class="section"><a href="#enable_https_ssl_with_a_reverse_proxy">9.3.2. Enable HTTPS/SSL with a Reverse Proxy</a></span></li><li><span class="section"><a href="#verify_configuration">9.3.3. Verify Configuration</a></span></li><li><span class="section"><a href="#using_the_built_in_load_balancer">9.3.4. Using the Built-In Load Balancer</a></span></li><li><span class="section"><a href="#configuring_other_load_balancers">9.3.5. Configuring Other Load Balancers</a></span></li></ul></li><li><span class="section"><a href="#sticky-sessions">9.4. Sticky sessions</a></span><ul><li><span class="section"><a href="#disable_adding_the_route">9.4.1. Disable adding the route</a></span></li></ul></li><li><span class="section"><a href="#multicast_network_setup">9.5. Multicast Network Setup</a></span></li><li><span class="section"><a href="#securing_cluster_communication">9.6. Securing Cluster Communication</a></span></li><li><span class="section"><a href="#clustering_db_lock">9.7. Serialized Cluster Startup</a></span></li><li><span class="section"><a href="#booting_the_cluster">9.8. Booting the Cluster</a></span></li><li><span class="section"><a href="#troubleshooting-1">9.9. Troubleshooting</a></span></li></ul></li><li><span class="chapter"><a href="#cache-configuration">10. Server Cache Configuration</a></span><ul><li><span class="section"><a href="#eviction">10.1. Eviction and Expiration</a></span></li><li><span class="section"><a href="#replication">10.2. Replication and Failover</a></span></li><li><span class="section"><a href="#disabling_caching">10.3. Disabling Caching</a></span></li><li><span class="section"><a href="#clearing_caches_at_runtime">10.4. Clearing Caches at Runtime</a></span></li></ul></li><li><span class="chapter"><a href="#operator">11. Red Hat Single Sign-On Operator</a></span><ul><li><span class="section"><a href="#installing-operator">11.1. Installing the Red Hat Single Sign-On Operator on a cluster</a></span><ul><li><span class="section"><a href="#install_by_olm">11.1.1. Installing using the Operator Lifecycle Manager</a></span></li><li><span class="section"><a href="#install_by_command">11.1.2. Installing from the command line</a></span></li></ul></li><li><span class="section"><a href="#keycloak_cr">11.2. Red Hat Single Sign-On installation using a custom resource</a></span><ul><li><span class="section"><a href="#the_keycloak_custom_resource">11.2.1. The Keycloak custom resource</a></span></li><li><span class="section"><a href="#creating_a_keycloak_custom_resource_on_openshift">11.2.2. Creating a Keycloak custom resource on OpenShift</a></span></li></ul></li><li><span class="section"><a href="#realm-cr">11.3. Creating a realm custom resource</a></span></li><li><span class="section"><a href="#client-cr">11.4. Creating a client custom resource</a></span></li><li><span class="section"><a href="#user-cr">11.5. Creating a user custom resource</a></span></li><li><span class="section"><a href="#external_database">11.6. Connecting to an external database</a></span></li><li><span class="section"><a href="#backup-cr">11.7. Scheduling database backups</a></span></li><li><span class="section"><a href="#operator-extensions">11.8. Installing extensions and themes</a></span></li><li><span class="section"><a href="#command-options">11.9. Command options for managing custom resources</a></span></li></ul></li></ul></div><section class="preface" id="making-open-source-more-inclusive"><div class="titlepage"><div><div><h1 class="title">Making open source more inclusive</h1></div></div></div><p>
 			Red Hat is committed to replacing problematic language in our code, documentation, and web properties. We are beginning with these four terms: master, slave, blacklist, and whitelist. Because of the enormity of this endeavor, these changes will be implemented gradually over several upcoming releases. For more details, see <a class="link" href="https://www.redhat.com/en/blog/making-open-source-more-inclusive-eradicating-problematic-language">our CTO Chris Wright’s message</a>.
@@ -1331,195 +1331,195 @@ connect
 			There are features in Red Hat Single Sign-On that are not enabled by default, these include features that are not fully supported. In addition there are some features that are enabled by default, but that can be disabled.
 		</p><p>
 			The features that can be enabled and disabled are:
-		</p><div class="informaltable"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 25%; " class="col_1"/><col style="width: 25%; " class="col_2"/><col style="width: 25%; " class="col_3"/><col style="width: 25%; " class="col_4"/></colgroup><thead><tr><th align="left" valign="top" id="idm140482298889024" scope="col">Name</th><th align="left" valign="top" id="idm140482298887936" scope="col">Description</th><th align="left" valign="top" id="idm140482298886848" scope="col">Enabled by default</th><th align="left" valign="top" id="idm140482298885760" scope="col">Support level</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140482298889024">
+		</p><div class="informaltable"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 25%; " class="col_1"/><col style="width: 25%; " class="col_2"/><col style="width: 25%; " class="col_3"/><col style="width: 25%; " class="col_4"/></colgroup><thead><tr><th align="left" valign="top" id="idm140176778470992" scope="col">Name</th><th align="left" valign="top" id="idm140176778469904" scope="col">Description</th><th align="left" valign="top" id="idm140176778468816" scope="col">Enabled by default</th><th align="left" valign="top" id="idm140176778467728" scope="col">Support level</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140176778470992">
 						<p>
 							account2
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298887936">
+						</td><td align="left" valign="top" headers="idm140176778469904">
 						<p>
 							New Account Management Console
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298886848">
+						</td><td align="left" valign="top" headers="idm140176778468816">
 						<p>
 							Yes
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298885760">
+						</td><td align="left" valign="top" headers="idm140176778467728">
 						<p>
 							Supported
 						</p>
-						</td></tr><tr><td align="left" valign="top" headers="idm140482298889024">
+						</td></tr><tr><td align="left" valign="top" headers="idm140176778470992">
 						<p>
 							account_api
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298887936">
+						</td><td align="left" valign="top" headers="idm140176778469904">
 						<p>
 							Account Management REST API
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298886848">
+						</td><td align="left" valign="top" headers="idm140176778468816">
 						<p>
 							Yes
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298885760">
+						</td><td align="left" valign="top" headers="idm140176778467728">
 						<p>
 							Supported
 						</p>
-						</td></tr><tr><td align="left" valign="top" headers="idm140482298889024">
+						</td></tr><tr><td align="left" valign="top" headers="idm140176778470992">
 						<p>
 							admin_fine_grained_authz
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298887936">
+						</td><td align="left" valign="top" headers="idm140176778469904">
 						<p>
 							Fine-Grained Admin Permissions
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298886848">
+						</td><td align="left" valign="top" headers="idm140176778468816">
 						<p>
 							No
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298885760">
+						</td><td align="left" valign="top" headers="idm140176778467728">
 						<p>
 							Preview
 						</p>
-						</td></tr><tr><td align="left" valign="top" headers="idm140482298889024">
+						</td></tr><tr><td align="left" valign="top" headers="idm140176778470992">
 						<p>
 							ciba
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298887936">
+						</td><td align="left" valign="top" headers="idm140176778469904">
 						<p>
 							OpenID Connect Client Initiated Backchannel Authentication (CIBA)
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298886848">
+						</td><td align="left" valign="top" headers="idm140176778468816">
 						<p>
 							No
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298885760">
+						</td><td align="left" valign="top" headers="idm140176778467728">
 						<p>
 							Preview
 						</p>
-						</td></tr><tr><td align="left" valign="top" headers="idm140482298889024">
+						</td></tr><tr><td align="left" valign="top" headers="idm140176778470992">
 						<p>
 							client_policies
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298887936">
+						</td><td align="left" valign="top" headers="idm140176778469904">
 						<p>
 							Add client configuration policies
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298886848">
+						</td><td align="left" valign="top" headers="idm140176778468816">
 						<p>
 							Yes
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298885760">
+						</td><td align="left" valign="top" headers="idm140176778467728">
 						<p>
 							Supported
 						</p>
-						</td></tr><tr><td align="left" valign="top" headers="idm140482298889024">
+						</td></tr><tr><td align="left" valign="top" headers="idm140176778470992">
 						<p>
 							docker
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298887936">
+						</td><td align="left" valign="top" headers="idm140176778469904">
 						<p>
 							Docker Registry protocol
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298886848">
+						</td><td align="left" valign="top" headers="idm140176778468816">
 						<p>
 							No
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298885760">
+						</td><td align="left" valign="top" headers="idm140176778467728">
 						<p>
 							Supported
 						</p>
-						</td></tr><tr><td align="left" valign="top" headers="idm140482298889024">
+						</td></tr><tr><td align="left" valign="top" headers="idm140176778470992">
 						<p>
 							impersonation
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298887936">
+						</td><td align="left" valign="top" headers="idm140176778469904">
 						<p>
 							Ability for admins to impersonate users
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298886848">
+						</td><td align="left" valign="top" headers="idm140176778468816">
 						<p>
 							Yes
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298885760">
+						</td><td align="left" valign="top" headers="idm140176778467728">
 						<p>
 							Supported
 						</p>
-						</td></tr><tr><td align="left" valign="top" headers="idm140482298889024">
+						</td></tr><tr><td align="left" valign="top" headers="idm140176778470992">
 						<p>
 							openshift_integration
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298887936">
+						</td><td align="left" valign="top" headers="idm140176778469904">
 						<p>
 							Extension to enable securing OpenShift
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298886848">
+						</td><td align="left" valign="top" headers="idm140176778468816">
 						<p>
 							No
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298885760">
+						</td><td align="left" valign="top" headers="idm140176778467728">
 						<p>
 							Preview
 						</p>
-						</td></tr><tr><td align="left" valign="top" headers="idm140482298889024">
+						</td></tr><tr><td align="left" valign="top" headers="idm140176778470992">
 						<p>
 							scripts
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298887936">
+						</td><td align="left" valign="top" headers="idm140176778469904">
 						<p>
 							Write custom authenticators using JavaScript
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298886848">
+						</td><td align="left" valign="top" headers="idm140176778468816">
 						<p>
 							No
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298885760">
+						</td><td align="left" valign="top" headers="idm140176778467728">
 						<p>
 							Preview
 						</p>
-						</td></tr><tr><td align="left" valign="top" headers="idm140482298889024">
+						</td></tr><tr><td align="left" valign="top" headers="idm140176778470992">
 						<p>
 							token_exchange
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298887936">
+						</td><td align="left" valign="top" headers="idm140176778469904">
 						<p>
 							Token Exchange Service
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298886848">
+						</td><td align="left" valign="top" headers="idm140176778468816">
 						<p>
 							No
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298885760">
+						</td><td align="left" valign="top" headers="idm140176778467728">
 						<p>
 							Preview
 						</p>
-						</td></tr><tr><td align="left" valign="top" headers="idm140482298889024">
+						</td></tr><tr><td align="left" valign="top" headers="idm140176778470992">
 						<p>
 							upload_scripts
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298887936">
+						</td><td align="left" valign="top" headers="idm140176778469904">
 						<p>
 							Upload scripts through the Red Hat Single Sign-On REST API
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298886848">
+						</td><td align="left" valign="top" headers="idm140176778468816">
 						<p>
 							No
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298885760">
+						</td><td align="left" valign="top" headers="idm140176778467728">
 						<p>
 							Deprecated
 						</p>
-						</td></tr><tr><td align="left" valign="top" headers="idm140482298889024">
+						</td></tr><tr><td align="left" valign="top" headers="idm140176778470992">
 						<p>
 							web_authn
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298887936">
+						</td><td align="left" valign="top" headers="idm140176778469904">
 						<p>
 							W3C Web Authentication (WebAuthn)
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298886848">
+						</td><td align="left" valign="top" headers="idm140176778468816">
 						<p>
 							No
 						</p>
-						</td><td align="left" valign="top" headers="idm140482298885760">
+						</td><td align="left" valign="top" headers="idm140176778467728">
 						<p>
 							Preview
 						</p>
@@ -1718,7 +1718,7 @@ connect
 				</p></section><section class="section" id="microsoft_sql_server_database"><div class="titlepage"><div><div><h3 class="title">6.6.2. Microsoft SQL Server Database</h3></div></div></div><p>
 					Unicode characters are properly handled only for the special fields. No special settings of JDBC driver or database is necessary.
 				</p></section><section class="section" id="mysql_database"><div class="titlepage"><div><div><h3 class="title">6.6.3. MySQL Database</h3></div></div></div><p>
-					Unicode characters are properly handled provided the database was created with Unicode support in <code class="literal">VARCHAR</code> and <code class="literal">CHAR</code> fields in the <code class="literal">CREATE DATABASE</code> command (e.g. by using <code class="literal">utf8</code> character set as the default database character set in MySQL 5.5. Please note that <code class="literal">utf8mb4</code> character set does not work due to different storage requirements to <code class="literal">utf8</code> character set <a href="#ftn.idm140482297340880" class="footnote"><sup class="footnote" id="idm140482297340880">[1]</sup></a>). Note that in this case, length restriction to non-special fields does not apply because columns are created to accommodate given amount of characters, not bytes. If the database default character set does not allow storing Unicode, only the special fields allow storing Unicode values.
+					Unicode characters are properly handled provided the database was created with Unicode support in <code class="literal">VARCHAR</code> and <code class="literal">CHAR</code> fields in the <code class="literal">CREATE DATABASE</code> command (e.g. by using <code class="literal">utf8</code> character set as the default database character set in MySQL 5.5. Please note that <code class="literal">utf8mb4</code> character set does not work due to different storage requirements to <code class="literal">utf8</code> character set <a href="#ftn.idm140176801701632" class="footnote"><sup class="footnote" id="idm140176801701632">[1]</sup></a>). Note that in this case, length restriction to non-special fields does not apply because columns are created to accommodate given amount of characters, not bytes. If the database default character set does not allow storing Unicode, only the special fields allow storing Unicode values.
 				</p><p>
 					At the side of JDBC driver settings, it is necessary to add a connection property <code class="literal">characterEncoding=UTF-8</code> to the JDBC connection settings.
 				</p></section><section class="section" id="postgresql_database"><div class="titlepage"><div><div><h3 class="title">6.6.4. PostgreSQL Database</h3></div></div></div><p>
@@ -1727,7 +1727,7 @@ connect
 					The character set of a PostgreSQL database is determined at the time it is created. You can determine the default character set for a PostgreSQL cluster with the SQL command
 				</p><pre class="programlisting language-sql">show server_encoding;</pre><p>
 					If the default character set is not UTF 8, then you can create the database with UTF8 as its character set like this:
-				</p><pre class="programlisting language-sql">create database keycloak with encoding 'UTF8';</pre></section><div class="footnotes"><br/><hr width="100" align="left"/><div id="ftn.idm140482297340880" class="footnote"><div class="para"><a href="#idm140482297340880" class="simpara"><sup class="simpara">[1] </sup></a>
+				</p><pre class="programlisting language-sql">create database keycloak with encoding 'UTF8';</pre></section><div class="footnotes"><br/><hr width="100" align="left"/><div id="ftn.idm140176801701632" class="footnote"><div class="para"><a href="#idm140176801701632" class="simpara"><sup class="simpara">[1] </sup></a>
 						Tracked as <a class="link" href="https://issues.redhat.com/browse/KEYCLOAK-3873">https://issues.redhat.com/browse/KEYCLOAK-3873</a>
 					</div></div></div></section></section><section class="chapter" id="hostname"><div class="titlepage"><div><div><h1 class="title">Chapter 7. Hostname</h1></div></div></div><p>
 			Red Hat Single Sign-On uses the public hostname for a number of things. For example, in the token issuer fields and URLs sent in password reset emails.
@@ -2980,7 +2980,7 @@ spec:
 				A window opens where you can make changes.
 			</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
 					You can update the YAML file and changes appear in the Red Hat Single Sign-On admin console, however changes to the admin console do not update the custom resource.
-				</p></div></div></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140482302194288"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+				</p></div></div></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140176784666528"><h1 class="legalnotice">Legal Notice</h1><div class="para">
 				Copyright <span class="trademark"/>© 2020 Red Hat, Inc.
 			</div><div class="para">
 				Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
