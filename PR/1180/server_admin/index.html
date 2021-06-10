@@ -1091,8 +1091,8 @@ span.image img {
 <li><a href="#key-resolvers">Key Resolvers</a></li>
 <li><a href="#sample-configuration">Sample Configuration</a>
 <ul class="sectlevel3">
-<li><a href="#configuring-the-credential-store-and-vault-without-encryption">Configuring the credential store and vault without encryption</a></li>
-<li><a href="#adding-encryption-to-the-credential-store-and-vault">Adding encryption to the credential store and vault</a></li>
+<li><a href="#configuring-the-credential-store-and-vault-without-a-mask">Configuring the credential store and vault without a mask</a></li>
+<li><a href="#masking-the-password-in-the-credential-store-and-vault">Masking the password in the credential store and vault</a></li>
 </ul>
 </li>
 </ul>
@@ -12257,7 +12257,7 @@ the custom factory.</p>
 <p>Creating the credential store and a vault, where the credential store and vault passwords are in plain text.</p>
 </li>
 <li>
-<p>Updating the credential store and vault to have the password encrypted by using a mask provided by <code>elytron-tool.sh</code>.</p>
+<p>Updating the credential store and vault to have the password use a mask provided by <code>elytron-tool.sh</code>.</p>
 </li>
 </ul>
 </div>
@@ -12265,7 +12265,7 @@ the custom factory.</p>
 <p>In this example, the test target used is an LDAP instance with <code>BIND DN credential: secret12</code>. The target is mapped using user federation in the realm <code>ldaptest</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="configuring-the-credential-store-and-vault-without-encryption"><a class="anchor" href="#configuring-the-credential-store-and-vault-without-encryption"></a>Configuring the credential store and vault without encryption</h4>
+<h4 id="configuring-the-credential-store-and-vault-without-a-mask"><a class="anchor" href="#configuring-the-credential-store-and-vault-without-a-mask"></a>Configuring the credential store and vault without a mask</h4>
 <div class="paragraph">
 <p>You create the credential store and a vault where the credential store and vault passwords are in plain text.</p>
 </div>
@@ -12280,11 +12280,23 @@ the custom factory.</p>
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The resolver replaces underscore characters with double underscore characters in the realm and key names. For example, for the key <code>ldaptest_ldap_secret</code>, the final key will be <code>ldaptest_ldap__secret</code>.
+</td>
+</tr>
+</table>
+</div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Create the credential store.</p>
+<p>Create the Elytron credential store.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">[standalone@localhost:9990 /] /subsystem=elytron/credential-store=test-store:add(create=true, location=/home/test/test-store.p12, credential-reference={clear-text=testpwd1!},implementation-properties={keyStoreType=PKCS12})</code></pre>
@@ -12298,12 +12310,15 @@ the custom factory.</p>
 <pre class="CodeRay highlight"><code data-lang="bash">/subsystem=elytron/credential-store=test-store:add-alias(alias=ldaptest_ldap__secret,secret-value=secret12)</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Notice how the resolver causes the key <code>ldaptest_ldap__secret</code> to use double underscores.</p>
+</div>
 </li>
 <li>
-<p>List the aliases from the credential store.</p>
+<p>List the aliases from the credential store to inspect the contents of the keystore that is produced by Elytron.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">keytool -list -keystore ./test-store.p12 -storetype PKCS12 -storepass testpwd1!
+<pre class="CodeRay highlight"><code data-lang="bash">keytool -list -keystore /home/test/test-store.p12 -storetype PKCS12 -storepass testpwd1!
 Keystore type: PKCS12
 Keystore provider: SUN
 
@@ -12314,7 +12329,7 @@ ldaptest_ldap__secret/passwordcredential/clear/, Oct 12, 2020, SecretKeyEntry,</
 </div>
 </li>
 <li>
-<p>Configure the vault SPI.</p>
+<p>Configure the vault SPI in Keycloak.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">/subsystem=keycloak-server/spi=vault:add(default-provider=elytron-cs-keystore)
@@ -12323,7 +12338,7 @@ ldaptest_ldap__secret/passwordcredential/clear/, Oct 12, 2020, SecretKeyEntry,</
 </div>
 </div>
 <div class="paragraph">
-<p>At this point, the vault and credentials store passwords are not encrypted.</p>
+<p>At this point, the vault and credentials store passwords are not masked.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12363,9 +12378,9 @@ ldaptest_ldap__secret/passwordcredential/clear/, Oct 12, 2020, SecretKeyEntry,</
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-encryption-to-the-credential-store-and-vault"><a class="anchor" href="#adding-encryption-to-the-credential-store-and-vault"></a>Adding encryption to the credential store and vault</h4>
+<h4 id="masking-the-password-in-the-credential-store-and-vault"><a class="anchor" href="#masking-the-password-in-the-credential-store-and-vault"></a>Masking the password in the credential store and vault</h4>
 <div class="paragraph">
-<p>You can now update the credential store and vault to have passwords encrypted using a mask provided by <code>elytron-tool.sh</code>.</p>
+<p>You can now update the credential store and vault to have passwords that use a mask provided by <code>elytron-tool.sh</code>.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -12387,7 +12402,7 @@ MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123</code></pre>
 </div>
 </li>
 <li>
-<p>Store the masked password on the credential store.</p>
+<p>Update the Elytron credential store configuration to use the masked password.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">/subsystem=elytron/credential-store=cs-store:write-attribute(name=credential-reference.clear-text,value=&quot;MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123&quot;)</code></pre>
@@ -12395,7 +12410,7 @@ MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123</code></pre>
 </div>
 </li>
 <li>
-<p>Update the vault password.</p>
+<p>Update the Keycloak vault configuration to use the masked password.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">/subsystem=keycloak-server/spi=vault/provider=elytron-cs-keystore:remove()
@@ -12403,7 +12418,7 @@ MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The vault and credential store are now encrypted:</p>
+<p>The vault and credential store are now masked:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12437,7 +12452,7 @@ MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123</code></pre>
 </div>
 <div class="paragraph _additional-resources">
 <div class="title">Additional resources</div>
-<p>For more information about the Elytron tool, see <a href="https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html/how_to_configure_server_security/securely_storing_credentials#cred_store_elytron_client">Generate Masked Encrypted Strings Using the WildFly Elytron Tool</a>.</p>
+<p>For more information about the Elytron tool, see <a href="https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html/how_to_configure_server_security/securely_storing_credentials#cred_store_elytron_client">Using Credential Stores with Elytron Client</a>.</p>
 </div>
 </div>
 </div>
@@ -15806,7 +15821,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-20 21:09:05 UTC
+Last updated 2021-06-10 20:53:02 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
