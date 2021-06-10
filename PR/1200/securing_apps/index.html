@@ -772,7 +772,7 @@ span.image img {
 </li>
 </ul>
 </li>
-<li><a href="#openid-connect-3">2. OpenID Connect</a>
+<li><a href="#_oidc">2. OpenID Connect</a>
 <ul class="sectlevel2">
 <li><a href="#java-adapters">2.1. Java Adapters</a>
 <ul class="sectlevel3">
@@ -828,6 +828,7 @@ span.image img {
 <li><a href="#redirect-uris">2.5.4. Redirect URIs</a></li>
 </ul>
 </li>
+<li><a href="#_fapi-support">2.6. Financial-grade API (FAPI) Support</a></li>
 </ul>
 </li>
 <li><a href="#saml-2">3. SAML</a>
@@ -879,7 +880,7 @@ span.image img {
 <li><a href="#saml-entity-descriptors">5.5. SAML Entity Descriptors</a></li>
 <li><a href="#example-using-curl-2">5.6. Example using CURL</a></li>
 <li><a href="#example-using-java-client-registration-api">5.7. Example using Java Client Registration API</a></li>
-<li><a href="#client-registration-policies">5.8. Client Registration Policies</a></li>
+<li><a href="#_client_registration_policies">5.8. Client Registration Policies</a></li>
 </ul>
 </li>
 <li><a href="#_client_registration_cli">6. Client Registration CLI</a>
@@ -1240,7 +1241,7 @@ make implementing security in your web applications easier. For example, check o
 </div>
 </div>
 <div class="sect1">
-<h2 id="openid-connect-3"><a class="anchor" href="#openid-connect-3"></a>2. OpenID Connect</h2>
+<h2 id="_oidc"><a class="anchor" href="#_oidc"></a>2. OpenID Connect</h2>
 <div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
@@ -7587,6 +7588,26 @@ With this redirect uri it is also possible for a user to use a different device 
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_fapi-support"><a class="anchor" href="#_fapi-support"></a>2.6. Financial-grade API (FAPI) Support</h3>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/fapi-support.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20securing_apps/topics/oidc/fapi-support.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>Keycloak makes it easier for administrators to make sure that their clients are compliant with
+the <a href="https://openid.net/specs/openid-financial-api-part-1-1_0.html">Financial-grade API Security Profile 1.0 - Part 1: Baseline</a>
+and <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html">Financial-grade API Security Profile 1.0 - Part 2: Advanced</a>. This compliance means that the Keycloak server will verify the requirements
+for the authorization server, which are mentioned in the specifications. Keycloak adapters do not have any specific support for the FAPI, hence the required validations on the client (application)
+side may need to be still done manually or through some other third-party solutions.</p>
+</div>
+<div class="paragraph">
+<p>To make sure that your clients are FAPI compliant, you can configure Client Policies in your realm as described in the <a href="https://www.keycloak.org/docs/14.0/server_admin/#_client_policies">Server Administration Guide</a>
+and link them to the global client profiles for FAPI support, which are automatically available in each realm.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -10594,7 +10615,20 @@ client = reg.create(client);
 </div>
 </div>
 <div class="sect2">
-<h3 id="client-registration-policies"><a class="anchor" href="#client-registration-policies"></a>5.8. Client Registration Policies</h3>
+<h3 id="_client_registration_policies"><a class="anchor" href="#_client_registration_policies"></a>5.8. Client Registration Policies</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The current plans are for the Client Registration Policies to be removed in favor of the Client Policies described in the <a href="https://www.keycloak.org/docs/14.0/server_admin/#_client_policies">Server Administration Guide</a>.
+Client Policies are more flexible and support more use cases.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Keycloak currently supports two ways how new clients can be registered through Client Registration Service.</p>
 </div>
@@ -12037,7 +12071,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-06-08 15:33:31 UTC
+Last updated 2021-06-10 13:26:40 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
