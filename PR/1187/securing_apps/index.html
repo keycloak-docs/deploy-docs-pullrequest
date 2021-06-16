@@ -784,17 +784,16 @@ span.image img {
 <li><a href="#_spring_boot_adapter">2.1.6. Spring Boot Adapter</a></li>
 <li><a href="#_tomcat_adapter">2.1.7. Tomcat 7, 8 and 9 Adapters</a></li>
 <li><a href="#_jetty9_adapter">2.1.8. Jetty 9.x Adapters</a></li>
-<li><a href="#_spring_security_adapter">2.1.9. Spring Security Adapter</a></li>
-<li><a href="#_servlet_filter_adapter">2.1.10. Java Servlet Filter Adapter</a></li>
-<li><a href="#_jaas_adapter">2.1.11. JAAS plugin</a></li>
-<li><a href="#_installed_adapter">2.1.12. CLI / Desktop Applications</a></li>
-<li><a href="#security-context">2.1.13. Security Context</a></li>
-<li><a href="#_adapter_error_handling">2.1.14. Error Handling</a></li>
-<li><a href="#logout">2.1.15. Logout</a></li>
-<li><a href="#_params_forwarding">2.1.16. Parameters Forwarding</a></li>
-<li><a href="#_client_authentication_adapter">2.1.17. Client Authentication</a></li>
-<li><a href="#_multi_tenancy">2.1.18. Multi Tenancy</a></li>
-<li><a href="#_applicationclustering">2.1.19. Application Clustering</a></li>
+<li><a href="#_servlet_filter_adapter">2.1.9. Java Servlet Filter Adapter</a></li>
+<li><a href="#_jaas_adapter">2.1.10. JAAS plugin</a></li>
+<li><a href="#_installed_adapter">2.1.11. CLI / Desktop Applications</a></li>
+<li><a href="#security-context">2.1.12. Security Context</a></li>
+<li><a href="#_adapter_error_handling">2.1.13. Error Handling</a></li>
+<li><a href="#logout">2.1.14. Logout</a></li>
+<li><a href="#_params_forwarding">2.1.15. Parameters Forwarding</a></li>
+<li><a href="#_client_authentication_adapter">2.1.16. Client Authentication</a></li>
+<li><a href="#_multi_tenancy">2.1.17. Multi Tenancy</a></li>
+<li><a href="#_applicationclustering">2.1.18. Application Clustering</a></li>
 </ul>
 </li>
 <li><a href="#_javascript_adapter">2.2. JavaScript Adapter</a>
@@ -4416,10 +4415,10 @@ Here&#8217;s an example:</p>
 <span class="tag">&lt;/web-app&gt;</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>&lt;<a id="_spring_security_adapter"></a>
+==== Spring Security Adapter</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_spring_security_adapter"><a class="anchor" href="#_spring_security_adapter"></a>2.1.9. Spring Security Adapter</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/spring-security-adapter.adoc" target="_blank">Edit this section</a>
@@ -4463,6 +4462,7 @@ In order for Single Sign Out work properly you have to define a session listener
 public ServletListenerRegistrationBean&lt;HttpSessionEventPublisher&gt; httpSessionEventPublisher() {
     return new ServletListenerRegistrationBean&lt;HttpSessionEventPublisher&gt;(new HttpSessionEventPublisher());
 }</pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -4617,8 +4617,11 @@ for the Keycloak adapter.
     <span class="tag">&lt;security:http</span> <span class="attribute-name">auto-config</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">entry-point-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationEntryPoint</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;security:custom-filter</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakPreAuthActionsFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">before</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">LOGOUT_FILTER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
         <span class="tag">&lt;security:custom-filter</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakAuthenticationProcessingFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">before</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">FORM_LOGIN_FILTER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+<span class="error">&lt;</span><span class="error">&lt;</span><span class="error">&lt;</span><span class="error">&lt;</span><span class="error">&lt;</span><span class="error">&lt;</span><span class="error">&lt;</span> HEAD
         <span class="tag">&lt;security:custom-filter</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakSecurityContextRequestFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">after</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">FORM_LOGIN_FILTER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+=======
         <span class="tag">&lt;security:custom-filter</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keycloakSecurityContextRequestFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">after</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">FORM_LOGIN_FILTER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+<span class="error">&gt;</span><span class="error">&gt;</span><span class="error">&gt;</span><span class="error">&gt;</span><span class="error">&gt;</span><span class="error">&gt;</span><span class="error">&gt;</span> correction to themes
         <span class="tag">&lt;security:intercept-url</span> <span class="attribute-name">pattern</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/customers**</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">access</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ROLE_USER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
         <span class="tag">&lt;security:intercept-url</span> <span class="attribute-name">pattern</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/admin**</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">access</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ROLE_ADMIN</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
         <span class="tag">&lt;security:custom-filter</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">logoutFilter</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">position</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">LOGOUT_FILTER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
@@ -4807,7 +4810,7 @@ Therefore, when running the Keycloak Spring Security adapter in a Spring Boot en
 </div>
 </div>
 <div class="sect3">
-<h4 id="_servlet_filter_adapter"><a class="anchor" href="#_servlet_filter_adapter"></a>2.1.10. Java Servlet Filter Adapter</h4>
+<h4 id="_servlet_filter_adapter"><a class="anchor" href="#_servlet_filter_adapter"></a>2.1.9. Java Servlet Filter Adapter</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/servlet-filter-adapter.adoc" target="_blank">Edit this section</a>
@@ -5014,7 +5017,7 @@ karaf@root()&gt; config:update</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_jaas_adapter"><a class="anchor" href="#_jaas_adapter"></a>2.1.11. JAAS plugin</h4>
+<h4 id="_jaas_adapter"><a class="anchor" href="#_jaas_adapter"></a>2.1.10. JAAS plugin</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/jaas.adoc" target="_blank">Edit this section</a>
@@ -5071,7 +5074,7 @@ parameter in the Resource Owner Password Credentials Grant request.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_installed_adapter"><a class="anchor" href="#_installed_adapter"></a>2.1.12. CLI / Desktop Applications</h4>
+<h4 id="_installed_adapter"><a class="anchor" href="#_installed_adapter"></a>2.1.11. CLI / Desktop Applications</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/installed-adapter.adoc" target="_blank">Edit this section</a>
@@ -5281,7 +5284,7 @@ login / logout requests via the <code>loginResponseWriter</code> and <code>logou
 </div>
 </div>
 <div class="sect3">
-<h4 id="security-context"><a class="anchor" href="#security-context"></a>2.1.13. Security Context</h4>
+<h4 id="security-context"><a class="anchor" href="#security-context"></a>2.1.12. Security Context</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/adapter-context.adoc" target="_blank">Edit this section</a>
@@ -5312,7 +5315,7 @@ details from the token (such as user profile information) or you want to invoke 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_adapter_error_handling"><a class="anchor" href="#_adapter_error_handling"></a>2.1.14. Error Handling</h4>
+<h4 id="_adapter_error_handling"><a class="anchor" href="#_adapter_error_handling"></a>2.1.13. Error Handling</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/adapter_error_handling.adoc" target="_blank">Edit this section</a>
@@ -5355,7 +5358,7 @@ Reason reason = error.getReason();
 </div>
 </div>
 <div class="sect3">
-<h4 id="logout"><a class="anchor" href="#logout"></a>2.1.15. Logout</h4>
+<h4 id="logout"><a class="anchor" href="#logout"></a>2.1.14. Logout</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/logout.adoc" target="_blank">Edit this section</a>
@@ -5379,7 +5382,7 @@ the identity (alias) of the identity provider in question. This is useful when t
 </div>
 </div>
 <div class="sect3">
-<h4 id="_params_forwarding"><a class="anchor" href="#_params_forwarding"></a>2.1.16. Parameters Forwarding</h4>
+<h4 id="_params_forwarding"><a class="anchor" href="#_params_forwarding"></a>2.1.15. Parameters Forwarding</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/params_forwarding.adoc" target="_blank">Edit this section</a>
@@ -5466,7 +5469,7 @@ the Keycloak login page if you are already authenticated to the application <cod
 </div>
 </div>
 <div class="sect3">
-<h4 id="_client_authentication_adapter"><a class="anchor" href="#_client_authentication_adapter"></a>2.1.17. Client Authentication</h4>
+<h4 id="_client_authentication_adapter"><a class="anchor" href="#_client_authentication_adapter"></a>2.1.16. Client Authentication</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/client-authentication.adoc" target="_blank">Edit this section</a>
@@ -5583,7 +5586,7 @@ you can point to any file on the file system where the client application is run
 </div>
 </div>
 <div class="sect3">
-<h4 id="_multi_tenancy"><a class="anchor" href="#_multi_tenancy"></a>2.1.18. Multi Tenancy</h4>
+<h4 id="_multi_tenancy"><a class="anchor" href="#_multi_tenancy"></a>2.1.17. Multi Tenancy</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/multi-tenancy.adoc" target="_blank">Edit this section</a>
@@ -5650,7 +5653,7 @@ and you may also want to select the realm based on something else than context-p
 </div>
 </div>
 <div class="sect3">
-<h4 id="_applicationclustering"><a class="anchor" href="#_applicationclustering"></a>2.1.19. Application Clustering</h4>
+<h4 id="_applicationclustering"><a class="anchor" href="#_applicationclustering"></a>2.1.18. Application Clustering</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/java/application-clustering.adoc" target="_blank">Edit this section</a>
@@ -12041,7 +12044,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-06-03 20:27:23 UTC
+Last updated 2021-06-16 16:57:28 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
