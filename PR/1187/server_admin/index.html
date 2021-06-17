@@ -802,8 +802,8 @@ span.image img {
 </li>
 <li><a href="#_user-storage-federation">Using external storage</a>
 <ul class="sectlevel2">
-<li><a href="#adding-a-provider">Adding a Provider</a></li>
-<li><a href="#dealing-with-provider-failures">Dealing with Provider Failures</a></li>
+<li><a href="#adding-a-provider">Adding a provider</a></li>
+<li><a href="#dealing-with-provider-failures">Dealing with provider failures</a></li>
 <li><a href="#_ldap">Lightweight Directory Access Protocol (LDAP) and Active Directory</a>
 <ul class="sectlevel3">
 <li><a href="#configuring-federated-ldap-storage">Configuring Federated LDAP Storage</a></li>
@@ -913,7 +913,6 @@ span.image img {
 <li><a href="#_authentication-flows">Authentication Flows</a>
 <ul class="sectlevel3">
 <li><a href="#built-in-flows">Built-in flows</a></li>
-<li><a href="#_execution-requirements">Execution requirements</a></li>
 <li><a href="#creating-flows">Creating flows</a></li>
 <li><a href="#creating-a-password-less-browser-login-flow">Creating a password-less browser login flow</a></li>
 </ul>
@@ -949,10 +948,6 @@ span.image img {
 <li><a href="#attestation-statement-verification">Attestation Statement Verification</a></li>
 <li><a href="#managing-webauthn-credentials-as-a-user">Managing WebAuthn credentials as a user</a></li>
 <li><a href="#passwordless-webauthn-together-with-two-factor">Passwordless WebAuthn together with Two-Factor</a></li>
-</ul>
-</li>
-<li><a href="#conditions-in-conditional-flows">Conditions in Conditional flows</a>
-<ul class="sectlevel3">
 <li><a href="#available-conditions">Available Conditions</a></li>
 <li><a href="#explicitly-deny-allow-access-in-conditional-flows">Explicitly deny/allow access in conditional flows</a></li>
 </ul>
@@ -995,31 +990,10 @@ span.image img {
 <li><a href="#_identity_broker_first_login">First Login Flow</a>
 <ul class="sectlevel3">
 <li><a href="#default-first-login-flow-authenticators">Default First Login Flow Authenticators</a></li>
-<li><a href="#automatically-link-existing-first-login-flow">Automatically Link Existing First Login Flow</a></li>
-<li><a href="#_disabling_automatic_user_creation">Disabling Automatic User Creation</a></li>
-<li><a href="#_detect_existing_user_first_loging_flow">Detect Existing User First Login Flow</a></li>
 </ul>
 </li>
 <li><a href="#retrieving-external-idp-tokens">Retrieving External IDP Tokens</a></li>
 <li><a href="#identity-broker-logout">Identity broker logout</a></li>
-</ul>
-</li>
-<li><a href="#_admin_permissions">Controlling access to the Admin Console</a>
-<ul class="sectlevel2">
-<li><a href="#master-realm-access-control">Master Realm Access Control</a>
-<ul class="sectlevel3">
-<li><a href="#global-roles">Global Roles</a></li>
-<li><a href="#realm-specific-roles">Realm Specific Roles</a></li>
-</ul>
-</li>
-<li><a href="#_per_realm_admin_permissions">Dedicated Realm Admin Consoles</a></li>
-<li><a href="#_fine_grain_permissions">Fine Grain Admin Permissions</a>
-<ul class="sectlevel3">
-<li><a href="#managing-one-specific-client">Managing One Specific Client</a></li>
-<li><a href="#restrict-user-role-mapping">Restrict User Role Mapping</a></li>
-<li><a href="#full-list-of-permissions">Full List of Permissions</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><a href="#sso-protocols">SSO Protocols</a>
@@ -1041,6 +1015,24 @@ span.image img {
 <ul class="sectlevel3">
 <li><a href="#docker-authentication-flow">Docker Authentication Flow</a></li>
 <li><a href="#keycloak-docker-registry-v2-authentication-server-uri-endpoints">Keycloak Docker Registry v2 Authentication Server URI Endpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_admin_permissions">Controlling access to the Admin Console</a>
+<ul class="sectlevel2">
+<li><a href="#master-realm-access-control">Master Realm Access Control</a>
+<ul class="sectlevel3">
+<li><a href="#global-roles">Global Roles</a></li>
+<li><a href="#realm-specific-roles">Realm Specific Roles</a></li>
+</ul>
+</li>
+<li><a href="#_per_realm_admin_permissions">Dedicated Realm Admin Consoles</a></li>
+<li><a href="#_fine_grain_permissions">Fine Grain Admin Permissions</a>
+<ul class="sectlevel3">
+<li><a href="#managing-one-specific-client">Managing One Specific Client</a></li>
+<li><a href="#restrict-user-role-mapping">Restrict User Role Mapping</a></li>
+<li><a href="#full-list-of-permissions">Full List of Permissions</a></li>
 </ul>
 </li>
 </ul>
@@ -2359,7 +2351,7 @@ from the dropdown. You can change the priority to make sure the new keypair beco
 <p>Select the realm in the Admin Console.</p>
 </li>
 <li>
-<p>Click <strong>Realm settings</strong>.</p>
+<p>Click Realm settings.</p>
 </li>
 <li>
 <p>Click the <strong>Keys</strong> tab.</p>
@@ -2478,7 +2470,7 @@ then immediately remove the compromised keypair.</p>
 <p>External user databases rarely have the data necessary to support all the features of Keycloak, so the User Storage Provider can opt to store items locally in Keycloak user data storage. Providers can import users locally and sync periodically with external data storage. This approach depends on the capabilities of the provider and the configuration of the provider.  For example, your external user data storage may not support OTP. The OTP can be handled and stored by Keycloak, depending on the provider.</p>
 </div>
 <div class="sect2">
-<h3 id="adding-a-provider"><a class="anchor" href="#adding-a-provider"></a>Adding a Provider</h3>
+<h3 id="adding-a-provider"><a class="anchor" href="#adding-a-provider"></a>Adding a provider</h3>
 <div class="paragraph">
 <p>To add a storage provider, perform the following procedure:</p>
 </div>
@@ -2499,7 +2491,7 @@ then immediately remove the compromised keypair.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="dealing-with-provider-failures"><a class="anchor" href="#dealing-with-provider-failures"></a>Dealing with Provider Failures</h3>
+<h3 id="dealing-with-provider-failures"><a class="anchor" href="#dealing-with-provider-failures"></a>Dealing with provider failures</h3>
 <div class="paragraph">
 <p>If a User Storage Provider fails, you may not be able to log in and view users in the Admin Console. Keycloak does not detect failures when using a Storage Provider to look up a user, so it cancels the invocation. If you have a Storage Provider with a high priority that fails during user lookup, the login or user query fails with an exception and will not fail over to the next configured provider.</p>
 </div>
@@ -2785,6 +2777,13 @@ directory entry using <code>ldapsearch</code> and base64 decode the <code>userPa
 </div>
 <div class="sect3">
 <h4 id="_ldap_troubleshooting"><a class="anchor" href="#_ldap_troubleshooting"></a>Troubleshooting</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>It is useful to increase the logging level to TRACE for the category <code>org.keycloak.storage.ldap</code>. You increase this level in the logging</p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>It is useful to increase the logging level to TRACE for the category <code>org.keycloak.storage.ldap</code>. You increase this level in the logging
 subsystem in the <code>standalone(-ha).xml</code> file. With this setting, many logging messages are sent
@@ -2793,12 +2792,21 @@ used to send the queries. When you are creating any LDAP question on user forum 
 enabled TRACE logging. If it is too big, the good alternative is to include just the snippet from server log with the messages, which were
 added to the log during the operation, which causes the issues to you.</p>
 </div>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>When you create LDAP provider, message appear in the server log in the INFO level starting with:</p>
+<div class="literalblock">
+<div class="content">
+<pre>When you create LDAP provider, message appear in the server log in the INFO level starting with:</pre>
+</div>
+</div>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">Creating new LDAP Store for the LDAP storage provider: ...</code></pre>
+<pre class="CodeRay highlight"><code>Creating new LDAP Store for the LDAP storage provider: ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2810,11 +2818,18 @@ configuration of your LDAP mappers, which are displayed with the message like th
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">Mapper for provider: XXX, Mapper name: YYY, Provider: ZZZ ...</code></pre>
+<pre class="CodeRay highlight"><code>Mapper for provider: XXX, Mapper name: YYY, Provider: ZZZ ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Note those messages are displayed just with the enabled DEBUG logging.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For tracking the performance or connection pooling issues, consider setting the value of property <code>Connection Pool Debug Level</code> of</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>For tracking the performance or connection pooling issues, consider setting the value of property <code>Connection Pool Debug Level</code> of
@@ -2837,6 +2852,16 @@ of the LDAP provider connection.
 <div class="paragraph">
 <p>If no more messages appear for connection pooling even after server restart, it can indicate that connection pooling does not work
 with your LDAP server.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For the case of reporting LDAP issue, you may consider to attach some part of your LDAP tree with the target data, which causes issues
+in your environment. For example if login of some user takes lot of time, you can consider attach his LDAP entry showing count of <code>member</code> attributes
+of various "group" entries. In this case, it might be useful to add if those group entries are mapped to some Group LDAP mapper (or Role LDAP Mapper)
+in Keycloak etc.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>For the case of reporting LDAP issue, you may consider to attach some part of your LDAP tree with the target data, which causes issues
@@ -5079,36 +5104,29 @@ To view all the flows, actions, and checks, each flow requires:</p>
 <div class="paragraph">
 <p>Since this sub-flow is marked as <em>alternative</em>, it will not be executed if the <strong>Cookie</strong> authentication type passed. This sub-flow contains an additional authentication type that needs to be executed. Keycloak loads the executions for this sub-flow and processes them.</p>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
+</li>
+</ol>
+</div>
+<div class="paragraph">
 <p>The first execution is the <strong>Username Password Form</strong>, an authentication type that renders the username and password page. It is marked as <em>required</em>, so the user must enter a valid username and password.</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p>The second execution is the <strong>Browser - Conditional OTP</strong> sub-flow. This sub-flow is <em>conditional</em> and executes depending on the result of the <strong>Condition - User Configured</strong> execution. If the result is true, Keycloak loads the executions for this sub-flow and processes them.</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p>The next execution is the <strong>Condition - User Configured</strong> authentication. This authentication checks if Keycloak has configured other executions in the flow for the user. The <strong>Browser - Conditional OTP</strong> sub-flow executes only when the user has a configured OTP credential.</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p>The final execution is the <strong>OTP Form</strong>. Keycloak marks this execution as <em>required</em> but it runs only when the user has an OTP credential set up because of the setup in the <em>conditional</em> sub-flow. If not, the user does not see an OTP form.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_execution-requirements"><a class="anchor" href="#_execution-requirements"></a>Execution requirements</h4>
 <div class="sect4">
 <h5 id="requirement"><a class="anchor" href="#requirement"></a>Requirement</h5>
 <div class="paragraph">
 <p>A set of radio buttons that control the execution of an action executes.</p>
 </div>
 <div class="sect5">
-<h6 id="required"><a class="anchor" href="#required"></a>Required</h6>
+<h6 id="_execution-requirements"><a class="anchor" href="#_execution-requirements"></a>Required</h6>
 <div class="paragraph">
 <p>All <em>Required</em> elements in the flow must be successfully sequentially executed. The flow terminates if a required element fails.</p>
 </div>
@@ -5338,7 +5356,7 @@ Executions have a <strong>Config</strong> menu option to configure the execution
 </div>
 </li>
 <li>
-<p>Click <strong>Actions</strong> for the <strong>Forms</strong> execution.</p>
+<p>Click <strong>Actions for the *Forms</strong> execution.</p>
 </li>
 <li>
 <p>Select <strong>Add execution</strong>.</p>
@@ -6170,8 +6188,12 @@ as it is configured as described below.
 <div class="paragraph">
 <p>See <a href="https://docs.wildfly.org/19/Admin_Guide.html#https-listener">HTTPS Listener</a> for the instructions to enable HTTPS in WildFly.</p>
 </div>
-<div class="paragraph">
-<p>Add the &lt;https-listener&gt; element as shown below:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add the &lt;https-listener&gt; element.</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6277,15 +6299,15 @@ If set to <strong>REQUIRED</strong>, the server refuses inbound connections if n
 <dd>
 <p>Defines the method for extracting the user identity from a client certificate.</p>
 </dd>
-<dt class="hdlist1"><strong>Canonical DN representation enabled (optional)</strong></dt>
+<dt class="hdlist1"><strong>Canonical DN representation enabled</strong></dt>
 <dd>
 <p>Defines whether to use canonical format to determine a distinguished name. The official <a href="https://docs.oracle.com/javase/8/docs/api/javax/security/auth/x500/X500Principal.html#getName-java.lang.String-">Java API documentation</a> describes the format. This option affects the two User Identity Sources <em>Match SubjectDN using regular expression</em> and <em>Match IssuerDN using regular expression</em> only. Enable this option when you set up a new Keycloak instance. Disable this option to retain backward compatibility with existing Keycloak instances.</p>
 </dd>
-<dt class="hdlist1"><strong>Enable Serial Number hexadecimal representation (optional)</strong></dt>
+<dt class="hdlist1"><strong>Enable Serial Number hexadecimal representation</strong></dt>
 <dd>
 <p>Represent the <a href="https://tools.ietf.org/html/rfc5280#section-4.1.2.2">serial number</a> as hexadecimal. The serial number with the sign bit set to 1 must be left padded with 00 octet. For example, a serial number with decimal value <em>161</em>, or <em>a1</em> in hexadecimal representation is encoded as <em>00a1</em>, according to RFC5280. See <a href="https://tools.ietf.org/html/rfc5280#appendix-B">RFC5280, appendix-B</a> for more details.</p>
 </dd>
-<dt class="hdlist1"><strong>A regular expression (optional)</strong></dt>
+<dt class="hdlist1"><strong>A regular expression</strong></dt>
 <dd>
 <p>A regular expression to use as a filter for extracting the certificate identity. The expression must contain a single group.</p>
 </dd>
@@ -6293,53 +6315,36 @@ If set to <strong>REQUIRED</strong>, the server refuses inbound connections if n
 <dd>
 <p>Defines the method to match the certificate identity with an existing user. <em>Username or email</em> searches for existing users by username or email. <em>Custom Attribute Mapper</em> searches for existing users with a custom attribute that matches the certificate identity. The name of the custom attribute is configurable.</p>
 </dd>
-<dt class="hdlist1"><strong>A name of user attribute (optional)</strong></dt>
+<dt class="hdlist1"><strong>A name of user attribute</strong></dt>
 <dd>
 <p>A custom attribute whose value matches against the certificate identity. Use multiple custom attributes when attribute mapping is related to multiple values, For example,  'Certificate Serial Number and IssuerDN'.</p>
 </dd>
-</dl>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-It is highly recommended that attribute used here is read-only for the users. By default, only the <code>usercertificate</code> attribute is read-only by Keycloak.
-If you use a different attribute name, you may need to add it to the list of read-only attributes. See the details in the <a href="#_read_only_user_attributes">Threat model mitigation chapter</a>.
-</td>
-</tr>
-</table>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>CRL Checking Enabled (optional)</strong></dt>
+<dt class="hdlist1"><strong>CRL Checking Enabled</strong></dt>
 <dd>
 <p>Check the revocation status of the certificate by using the Certificate Revocation List. The location of the list is defined in the <strong>CRL file path</strong> attribute.</p>
 </dd>
-<dt class="hdlist1"><strong>Enable CRL Distribution Point to check certificate revocation status (optional)</strong></dt>
+<dt class="hdlist1"><strong>Enable CRL Distribution Point to check certificate revocation status</strong></dt>
 <dd>
 <p>Use CDP to check the certificate revocation status. Most PKI authorities include CDP in their certificates.</p>
 </dd>
-<dt class="hdlist1"><strong>CRL file path (optional)</strong></dt>
+<dt class="hdlist1"><strong>CRL file path</strong></dt>
 <dd>
 <p>The path to a file containing a CRL list. The value must be a path to a valid file if the <strong>CRL Checking Enabled</strong> option is enabled.</p>
 </dd>
-<dt class="hdlist1"><strong>OCSP Checking Enabled (optional)</strong></dt>
+<dt class="hdlist1"><strong>OCSP Checking Enabled</strong></dt>
 <dd>
 <p>Checks the certificate revocation status by using Online Certificate Status Protocol.</p>
 </dd>
-<dt class="hdlist1"><strong>OCSP Responder URI (optional)</strong></dt>
+<dt class="hdlist1"><strong>OCSP Responder URI</strong></dt>
 <dd>
 <p>Override the value of the OCSP responder URI in the certificate.</p>
 </dd>
-<dt class="hdlist1"><strong>Validate Key Usage (optional)</strong></dt>
+<dt class="hdlist1"><strong>Validate Key Usage</strong></dt>
 <dd>
 <p>Verifies the certificate&#8217;s KeyUsage extension bits are set. For example, "digitalSignature,KeyEncipherment" verifies if bits 0 and 2 in the KeyUsage extension are set.
 Leave this parameter empty to disable the Key Usage validation. See <a href="https://tools.ietf.org/html/rfc5280#section-4.2.1.3">RFC5280, Section-4.2.1.3</a> for more information. Keycloak raises an error when a key usage mismatch occurs.</p>
 </dd>
-<dt class="hdlist1"><strong>Validate Extended Key Usage (optional)</strong></dt>
+<dt class="hdlist1"><strong>Validate Extended Key Usage</strong></dt>
 <dd>
 <p>Verifies one or more purposes defined in the Extended Key Usage extension. See <a href="https://tools.ietf.org/html/rfc5280#section-4.2.1.12">RFC5280, Section-4.2.1.12</a> for more information. Leave this parameter empty to disable the Extended Key Usage validation. Keycloak raises an error when flagged as critical by the issuing CA and a key usage extension mismatch occurs.</p>
 </dd>
@@ -7126,13 +7131,9 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 <p><span class="image"><img src="./images/webauthn-passwordless-flow.png" alt="webauthn passwordless flow"></span></p>
 </div>
 <div class="paragraph">
-<p>You can now add <strong>WebAuthn Register Passwordless</strong> as the required action to a user, already known to Keycloak, to test this. During the first authentication, the user must use the password and second-factor WebAuthn credential. The user does not need to provide the password and second-factor WebAuthn credential if they use the WebAuthn Passwordless credential.</p>
+<p>You can now add <strong>WebAuthn Register Passwordless</strong> as the required action to a user, already known to Keycloak, to test this. During the first authentication, the user must use the password and second-factor WebAuthn credential. The user does not need to provide the password and second-factor WebAuthn credential if they use the WebAuthn Passwordless credential.
+=== Conditions in Conditional flows</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="conditions-in-conditional-flows"><a class="anchor" href="#conditions-in-conditional-flows"></a>Conditions in Conditional flows</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/authentication/conditions.adoc" target="_blank">Edit this section</a>
@@ -7144,6 +7145,8 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 If all <em>Condition</em> executions evaluate as true, then the <em>Conditional</em> sub-flow acts as <em>Required</em>.
 You can process the next execution in the <em>Conditional</em> sub-flow.
 If some executions included in the <em>Conditional</em> sub-flow evaluate as false, then the whole sub-flow is considered as <em>Disabled</em>.</p>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="available-conditions"><a class="anchor" href="#available-conditions"></a>Available Conditions</h4>
@@ -8563,58 +8566,59 @@ In the case of JWT signed with private key or Client secret as jwt, it is requir
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Principal Type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies which part of the SAML assertion will be used to identify and track external user identities. Can be either Subject NameID or SAML attribute (either by name or by friendly name). Subject NameID value can not be set together with 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient' NameID Policy Format value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies which part of the SAML assertion will be used to identify and track external user identities. Can be either Subject NameID or SAML attribute (either by name or by friendly name). Subject NameID value can not be set together with 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient' NameID Policy Format value.
+=======</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the part of the SAML assertion Keycloak uses to identify and track external user identities. The Principal Type can be Subject NameID or SAML attribute (by name or by friendly name).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Principal Attribute</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If a Principal type is non-blank, this field specifies the name ("Attribute [Name]") or the friendly name ("Attribute [Friendly Name]") of the identifying attribute.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allow create</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Allow the external identity provider to create a new identifier to represent the principal.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HTTP-POST Binding Response</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Controls the SAML binding in response to any SAML requests sent by an external IDP. When <strong>OFF</strong>, Keycloak uses Redirect Binding.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HTTP-POST Binding for AuthnRequest</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Controls the SAML binding when requesting authentication from an external IDP. When <strong>OFF</strong>, Keycloak uses Redirect Binding.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Want AuthnRequests Signed</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When <strong>ON</strong>, Keycloak uses the realm&#8217;s keypair to sign requests sent to the external SAML IDP.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Signature Algorithm</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If <strong>Want AuthnRequests Signed</strong> is <strong>ON</strong>, the signature algorithm to use.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <strong>Want AuthnRequests Signed</strong> is <strong>ON</strong>, the signature algorithm to use.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SAML Signature Key Name</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Signed SAML documents sent using POST binding contain the identification of signing key in <code>KeyName</code> element, which, by default, contains the Keycloak key ID. External SAML IDPs can expect a different key name. This switch controls whether <code>KeyName</code> contains:
 * <code>KEY_ID</code> - Key ID.
 * <code>CERT_SUBJECT</code> - the subject from the certificate corresponding to the realm key. Microsoft Active Directory Federation Services expect <code>CERT_SUBJECT</code>.
 * <code>NONE</code> - Keycloak omits the key name hint from the SAML message.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Force Authentication</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The user must enter their credentials at the external IDP even when the user is already logged in.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validate Signature</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When <strong>ON</strong>, the realm expects SAML requests and responses from the external IDP to be digitally signed.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validating X509 Certificate</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The public certificate Keycloak uses to validate the signatures of SAML requests and responses from the external IDP.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sign Service Provider Metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">When <strong>ON</strong>, Keycloak uses the realm&#8217;s key pair to sign the <a href="#_identity_broker_saml_sp_descriptor">SAML Service Provider Metadata descriptor</a>.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When <strong>ON</strong>, Keycloak uses the realm&#8217;s key pair to sign the <a href="#_identity_broker_saml_sp_descriptor">SAML Service Provider Metadata descriptor</a>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pass subject</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Controls if Keycloak forwards a <code>login_hint</code> query parameter to the IDP. Keycloak adds this field&#8217;s value to the login_hint parameter in the AuthnRequest&#8217;s Subject so destination providers can pre-fill their login form.</p></td>
 </tr>
 </tbody>
 </table>
@@ -8890,6 +8894,16 @@ keycloak.createLoginUrl({
 </dd>
 <dt class="hdlist1">Create User If Unique</dt>
 <dd>
+<p>This authenticator checks if there is already an existing Keycloak account with the same email or username like the account from the identity provider.
+If it&#8217;s not, then the authenticator just creates a new local Keycloak account and links it with the identity provider and the whole flow is finished.
+Otherwise it goes to the next <code>Handle Existing Account</code> subflow.
+If you always want to ensure that there is no duplicated account, you can mark this authenticator as <code>REQUIRED</code>. In this case, the user
+will see the error page if there is an existing Keycloak account and the user will need to link the identity provider account through Account management.</p>
+</dd>
+</dl>
+</div>
+<div class="exampleblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
@@ -8903,30 +8917,12 @@ keycloak.createLoginUrl({
 </li>
 <li>
 <p>To ensure there is no duplicated account, you can mark this authenticator as <code>REQUIRED</code>. The user sees the error page if a Keycloak account exists, and users must link their identity provider account through Account management.</p>
-</li>
-</ul>
-</div>
-</dd>
-</dl>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If you want to skip the ability to create new users, but you want that users authenticated from identity provider must already exists in Keycloak with same username or email like the user from identity provider, you can create new flow and replace <code>Create User If Exists</code> authenticator with <code>Detect Existing Broker User</code> . More details in the <a href="#_detect_existing_user_first_loging_flow">examples below</a>.
-</td>
-</tr>
-</table>
-</div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Confirm Link Existing Account</dt>
-<dd>
-<div class="ulist">
-<ul>
+</dl>
+</div>
+</li>
 <li>
 <p>On the information page, users see a Keycloak account with the same email. Users can review their profile again and use a different email or username. The flow restarts and goes back to the <code>Review Profile</code> authenticator.</p>
 </li>
@@ -8935,14 +8931,12 @@ If you want to skip the ability to create new users, but you want that users aut
 </li>
 <li>
 <p>Disable this authenticator if you do not want users to see this confirmation page and go straight to linking identity provider account by email verification or re-authentication.</p>
-</li>
-</ul>
-</div>
-</dd>
+<div class="dlist">
+<dl>
 <dt class="hdlist1">Verify Existing Account By Email</dt>
-<dd>
-<div class="ulist">
-<ul>
+</dl>
+</div>
+</li>
 <li>
 <p>This authenticator is <code>ALTERNATIVE</code> by default. Keycloak uses this authenticator if the realm has an SMTP setup configured.</p>
 </li>
@@ -8951,14 +8945,12 @@ If you want to skip the ability to create new users, but you want that users aut
 </li>
 <li>
 <p>Disable this authenticator if you do not want to confirm linking by email, but want users to reauthenticate with their password.</p>
-</li>
-</ul>
-</div>
-</dd>
+<div class="dlist">
+<dl>
 <dt class="hdlist1">Verify Existing Account By Re-authentication</dt>
-<dd>
-<div class="ulist">
-<ul>
+</dl>
+</div>
+</li>
 <li>
 <p>Use this authenticator if the email authenticator is not available. For example, you have not configured SMTP for your realm. This authenticator displays a login screen for users to authenticate to link their Keycloak account with the Identity Provider.</p>
 </li>
@@ -8970,12 +8962,9 @@ If you want to skip the ability to create new users, but you want that users aut
 </li>
 </ul>
 </div>
-</dd>
-</dl>
+<div class="paragraph">
+<p>==== Automatically Link Existing First Login Flow</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="automatically-link-existing-first-login-flow"><a class="anchor" href="#automatically-link-existing-first-login-flow"></a>Automatically Link Existing First Login Flow</h4>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -9021,11 +9010,9 @@ If you want to skip the ability to create new users, but you want that users aut
 </tr>
 </table>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_disabling_automatic_user_creation"><a class="anchor" href="#_disabling_automatic_user_creation"></a>Disabling Automatic User Creation</h4>
-<div class="paragraph">
-<p>The Default first login flow looks up the Keycloak account matching the external identity and offers to link them. If no matching Keycloak account exists, the flow  automatically creates one.</p>
+<div id="_disabling_automatic_user_creation" class="paragraph">
+<p>==== Disabling Automatic User Creation
+The Default first login flow looks up the Keycloak account matching the external identity and offers to link them. If no matching Keycloak account exists, the flow  automatically creates one.</p>
 </div>
 <div class="paragraph">
 <p>This default behavior may be unsuitable for some setups. One example is when you use a read-only LDAP user store, where all users are pre-created. In this case, you must switch off automatic user creation.</p>
@@ -9054,11 +9041,9 @@ If you want to skip the ability to create new users, but you want that users aut
 <p>This configuration also implies that Keycloak itself won&#8217;t be able to determine which internal account would correspond to the external identity.
 Therefore, the <code>Verify Existing Account By Re-authentication</code> authenticator will ask the user to provide both username and password.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_detect_existing_user_first_loging_flow"><a class="anchor" href="#_detect_existing_user_first_loging_flow"></a>Detect Existing User First Login Flow</h4>
-<div class="paragraph">
-<p>In order to configure a first login flow in which:</p>
+<div id="_detect_existing_user_first_loging_flow" class="paragraph">
+<p>==== Detect Existing User First Login Flow
+In order to configure a first login flow in which:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -9087,10 +9072,8 @@ Therefore, the <code>Verify Existing Account By Re-authentication</code> authent
 </div>
 <div class="paragraph">
 <p>You have to set the <code>First Login Flow</code> of the identity provider configuration to that flow.
-You could set the also set <code>Sync Mode</code> to <code>force</code> if you want to update the user profile (Last Name, First Name, and so on) with the identity provider attributes.</p>
+You could set the also set <code>Sync Mode</code> to <code>force</code> if you want to update the user profile (Last Name, First Name&#8230;&#8203;) with the identity provider attributes.</p>
 </div>
-<div class="exampleblock">
-<div class="content">
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -9098,7 +9081,7 @@ You could set the also set <code>Sync Mode</code> to <code>force</code> if you w
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This flow can be used if you want to delegate the identity to other identity providers (such as github, facebook, and so on) but you want to manage which users that can log in.
+This flow can be used if you want to delegate the identity to other identity providers (such as github, facebook &#8230;&#8203;) but you want to manage which users that can log in.
 </td>
 </tr>
 </table>
@@ -9148,6 +9131,517 @@ Authorization: Bearer &lt;KEYCLOAK ACCESS TOKEN&gt;</code></pre>
 </div>
 <div class="paragraph">
 <p>When logging out, Keycloak sends a request to the external identity provider that is used to log in initially and logs the user out of this identity provider. You can skip this behavior and avoid logging out of the external identity provider. See <a href="https://www.keycloak.org/docs/14.0/securing_apps/#_java_adapter_logout">adapter logout documentation</a> for more information.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sso-protocols"><a class="anchor" href="#sso-protocols"></a>SSO Protocols</h2>
+<div class="sectionbody">
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph _abstract">
+<p>This section discusses authentication protocols, the Keycloak authentication server and how applications, secured by the Keycloak authentication server, interact with these protocols.</p>
+</div>
+<div id="con-oidc_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-oidc.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-oidc.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="sect2">
+<h3 id="openid-connect"><a class="anchor" href="#openid-connect"></a>OpenID Connect</h3>
+<div class="paragraph _abstract">
+<p><a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) is an authentication protocol that is an extension of <a href="https://tools.ietf.org/html/rfc6749">OAuth 2.0</a>.</p>
+</div>
+<div class="paragraph">
+<p>OAuth 2.0 is a framework for building authorization protocols and is incomplete. OIDC, however, is a full authentication and authorization protocol that uses the <a href="https://jwt.io">Json Web Token</a> (JWT) standards.  The JWT standards define an identity token JSON format and methods to digitally sign and encrypt data in a compact and web-friendly way.</p>
+</div>
+<div class="paragraph">
+<p>In general, OIDC implements two use cases. The first case is an application requesting that a  Keycloak server authenticates a user. Upon successful login, the application receives an <em>identity token</em> and an <em>access token</em>.
+The <em>identity token</em> contains user information including user name, email, and profile information. The realm digitally signs the <em>access token</em> which contains access information (such as user role mappings) that applications use to determine the resources users can access in the application.</p>
+</div>
+<div class="paragraph">
+<p>The second use case is a client accessing remote services.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The client requests an <em>access token</em> from Keycloak to invoke on remote services on behalf of the user.</p>
+</li>
+<li>
+<p>Keycloak authenticates the user and asks the user for consent to grant access to the requesting client.</p>
+</li>
+<li>
+<p>The client receives the <em>access token</em> which is digitally signed by the realm.</p>
+</li>
+<li>
+<p>The client makes REST requests on remote services using the <em>access token</em>.</p>
+</li>
+<li>
+<p>The remote REST service extracts the <em>access token</em>.</p>
+</li>
+<li>
+<p>The remote REST service verifies the tokens signature.</p>
+</li>
+<li>
+<p>The remote REST service decides, based on access information within the token, to process or reject the request.</p>
+</li>
+</ul>
+</div>
+<div id="con-oidc-auth-flows_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-oidc-auth-flows.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-oidc-auth-flows.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="sect3">
+<h4 id="oidc-auth-flows"><a class="anchor" href="#oidc-auth-flows"></a>OIDC Auth Flows</h4>
+<div class="paragraph _abstract">
+<p>OIDC has several methods, or flows, that clients or applications can use to authenticate users and receive <em>identity</em> and <em>access</em> tokens.  The method depends on the type of application or client requesting access.</p>
+</div>
+<div class="sect4">
+<h5 id="_oidc-auth-flows-authorization"><a class="anchor" href="#_oidc-auth-flows-authorization"></a>Authorization Code Flow</h5>
+<div class="paragraph">
+<p>The Authorization Code Flow is a browser-based protocol and suits authenticating and authorizing browser-based applications. It uses browser redirects to obtain <em>identity</em> and <em>access</em> tokens.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A user connects to an application using a browser. The application detects the user is not logged into the application.</p>
+</li>
+<li>
+<p>The application redirects the browser to Keycloak for authentication.</p>
+</li>
+<li>
+<p>The application passes a callback URL as a query parameter in the browser redirect. Keycloak uses the parameter upon successful authentication.</p>
+</li>
+<li>
+<p>Keycloak authenticates the user and creates a one-time, short lived, temporary code.</p>
+</li>
+<li>
+<p>Keycloak redirects to the application using the callback URL and adds the temporary code as a query parameter in the callback URL.</p>
+</li>
+<li>
+<p>The application extracts the temporary code and makes a background REST invocation to Keycloak
+to exchange the code for an <em>identity</em> and <em>access</em> and <em>refresh</em> token.  To prevent replay attacks, the temporary code cannot be used more than once.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A system is vulnerable to a stolen token for the lifetime of that token. For security and scalability reasons, access_ tokens are generally set to expire quickly so subsequent token requests fail. If a token expires, an application can obtain a new access token using the additional <em>refresh</em> token sent by the login protocol.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="_confidential-clients" class="paragraph">
+<p><em>Confidential</em> clients provide client secrets when they exchange the temporary codes for tokens. <em>Public</em> clients are not required to provide client secrets.
+<em>Public</em> clients are secure when HTTPS is strictly enforced and redirect URIs registered for the client are strictly controlled.  HTML5/JavaScript clients have to be <em>public</em> clients because there is no way to securely transmit the client secret to HTML5/JavaScript clients. For more details, see the <a href="#assembly-managing-clients_server_administration_guide">Managing Clients</a> chapter.</p>
+</div>
+<div class="paragraph">
+<p>Keycloak also supports the <a href="https://tools.ietf.org/html/rfc7636">Proof Key for Code Exchange</a> specification.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_oidc-auth-flows-implicit"><a class="anchor" href="#_oidc-auth-flows-implicit"></a>Implicit Flow</h5>
+<div class="paragraph">
+<p>The Implicit Flow is a browser-based protocol. It is similar to the Authorization Code Flow but with fewer requests and no refresh tokens.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The possibility exists of <em>access</em> tokens leaking in the browser history when tokens are transmitted via redirect URIs (see below).</p>
+</div>
+<div class="paragraph">
+<p>Also, this flow does not provide clients with refresh tokens. Therefore, access tokens have to be long-lived or users  have to re-authenticate when they expire.</p>
+</div>
+<div class="paragraph">
+<p>We do not advise using this flow. This flow is supported because it is in the OIDC and OAuth 2.0 specification.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The protocol works as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A user connects to an application using a browser. The application detects the user is not logged into the application.</p>
+</li>
+<li>
+<p>The application redirects the browser to Keycloak for authentication.</p>
+</li>
+<li>
+<p>The application passes a callback URL as a query parameter in the browser redirect. Keycloak uses the query parameter upon successful authentication.</p>
+</li>
+<li>
+<p>Keycloak authenticates the user and creates an <em>identity</em> and <em>access</em> token. Keycloak
+redirects to the application using the callback URL and additionally adds the <em>identity</em> and <em>access</em> tokens as a query parameter in the callback URL.</p>
+</li>
+<li>
+<p>The application extracts the <em>identity</em> and <em>access</em> tokens from the callback URL.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_oidc-auth-flows-direct"><a class="anchor" href="#_oidc-auth-flows-direct"></a>Resource Owner Password Credentials Grant (Direct Access Grants)</h5>
+<div class="paragraph">
+<p><em>Direct Access Grants</em> are used by REST clients to obtain tokens on behalf of users.  It is a HTTP POST request that contains:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The credentials of the user. The credentials are sent within form parameters.</p>
+</li>
+<li>
+<p>The id of the client.</p>
+</li>
+<li>
+<p>The clients secret (if it is a confidential client).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The HTTP response contains the <em>identity</em>, <em>access</em>, and <em>refresh</em> tokens.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_client_credentials_grant"><a class="anchor" href="#_client_credentials_grant"></a>Client Credentials Grant</h5>
+<div class="paragraph">
+<p>The <em>Client Credentials Grant</em> creates a token based on the metadata and permissions of a service account associated with the client instead of obtaining a token that works on behalf of an external user. <em>Client Credentials Grants</em> are used by REST clients.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="#_service_accounts">Service Accounts</a> chapter for more information.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="device-authorization-grant"><a class="anchor" href="#device-authorization-grant"></a>Device Authorization Grant</h5>
+<div class="paragraph">
+<p>This is used by clients running on internet-connected devices that have limited input capabilities or lack a suitable browser. Here&#8217;s a brief summary of the protocol:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The application requests Keycloak a device code and a user code. Keycloak creates a device code and a user code. Keycloak returns a response including the device code and the user code to the application.</p>
+</li>
+<li>
+<p>The application provides the user with the user code and the verification URI. The user accesses a verification URI to be authenticated by using another browser.</p>
+</li>
+<li>
+<p>The application repeatedly polls Keycloak to find out if the user completed the user authorization. If user authentication is complete, the application exchanges the device code for an <em>identity</em>, <em>access</em> and <em>refresh</em> token.</p>
+</li>
+</ol>
+</div>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-server-oidc-uri-endpoints.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-server-oidc-uri-endpoints.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="keycloak-server-oidc-uri-endpoints"><a class="anchor" href="#keycloak-server-oidc-uri-endpoints"></a>Keycloak Server OIDC URI Endpoints</h4>
+<div class="paragraph _abstract">
+<p>The following is a list of OIDC endpoints that Keycloak publishes. These endpoints can be used when a non-Keycloak client adapter uses OIDC to communicate with the authentication server. They are all relative URLs. The root of the URL consists of the HTTP(S) protocol, hostname, and the path, which is usually prefixed with <em>/auth</em>:  For example</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>https://localhost:8080/auth</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/auth</dt>
+<dd>
+<p>Used for obtaining a temporary code in the Authorization Code Flow or obtaining tokens using the Implicit Flow, Direct Grants, or Client Grants.</p>
+</dd>
+<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/token</dt>
+<dd>
+<p>Used by the Authorization Code Flow to convert a temporary code into a token.</p>
+</dd>
+<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/logout</dt>
+<dd>
+<p>Used for performing logouts.</p>
+</dd>
+<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/userinfo</dt>
+<dd>
+<p>Used for the User Info service described in the OIDC specification.</p>
+</dd>
+<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/revoke</dt>
+<dd>
+<p>Used for OAuth 2.0 Token Revocation described in <a href="https://tools.ietf.org/html/rfc7009">RFC7009</a>.</p>
+</dd>
+<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/certs</dt>
+<dd>
+<p>Used for the JSON Web Key Set (JWKS) containing the public keys used to verify any JSON Web Token (jwks_uri)</p>
+</dd>
+<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/auth/device</dt>
+<dd>
+<p>Used for Device Authorization Grant to obtain a device code and a user code.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>In all of these, replace {realm-name} with the name of the realm.</p>
+</div>
+<div id="con-saml_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-saml.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-saml.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_saml"><a class="anchor" href="#_saml"></a>SAML</h3>
+<div class="paragraph _abstract">
+<p><a href="http://saml.xml.org/saml-specifications">SAML 2.0</a> is a similar specification to OIDC but more mature.  It is descended from SOAP and web service messaging specifications so is generally more verbose than OIDC.  SAML 2.0 is an authentication protocol that exchanges XML documents between authentication servers and applications.  XML signatures and encryption are used to verify requests and responses.</p>
+</div>
+<div class="paragraph">
+<p>In general, SAML implements two use cases.</p>
+</div>
+<div class="paragraph">
+<p>The first use case is an application that requests the Keycloak server authenticates a user.  Upon successful login, the application will receive an XML document. This document contains an SAML assertion that specifies user attributes. The realm digitally signs the the document which contains access information (such as user role mappings) that applications use to determine the resources users are allowed to access in the application.</p>
+</div>
+<div class="paragraph">
+<p>The second use case is a client accessing remote services.  The client requests a SAML assertion from Keycloak to invoke on remote services on behalf of the user.</p>
+</div>
+<div id="con-saml-bindings_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-saml-bindings.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-saml-bindings.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="sect3">
+<h4 id="saml-bindings"><a class="anchor" href="#saml-bindings"></a>SAML Bindings</h4>
+<div class="paragraph _abstract">
+<p>Keycloak supports three binding types.</p>
+</div>
+<div class="sect4">
+<h5 id="redirect-binding"><a class="anchor" href="#redirect-binding"></a>Redirect Binding</h5>
+<div class="paragraph">
+<p><em>Redirect</em> binding uses a series of browser redirect URIs to exchange information.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A user connects to an application using a browser. The application detects the user is not authenticated.</p>
+</li>
+<li>
+<p>The application generates an XML authentication request document and encodes it as a query parameter in a URI. The URI is used to redirect to the Keycloak server. Depending on your settings, the application can also digitally sign the XML document and include the signature as a query parameter in the redirect URI to Keycloak.  This signature is used to validate the client that sends the request.</p>
+</li>
+<li>
+<p>The browser redirects to Keycloak.</p>
+</li>
+<li>
+<p>The server extracts the XML auth request document and verifies the digital signature, if required.</p>
+</li>
+<li>
+<p>The user enters their authentication credentials.</p>
+</li>
+<li>
+<p>After authentication, the server generates an XML authentication response document. The document contains a SAML assertion that holds metadata about the user, including name, address, email, and any role mappings the user has.  The document is usually digitally signed using XML signatures, and may also be encrypted.</p>
+</li>
+<li>
+<p>The XML authentication response document is encoded as a query parameter in a redirect URI. The URI brings the browser back to the application.  The digital signature is also included as a query parameter.</p>
+</li>
+<li>
+<p>The application receives the redirect URI and extracts the XML document.</p>
+</li>
+<li>
+<p>The application verifies the realm&#8217;s signature to ensure it is receiving a valid authentication response.  The information inside the SAML assertion is used to make access decisions or display user data.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="post-binding"><a class="anchor" href="#post-binding"></a>POST Binding</h5>
+<div class="paragraph">
+<p><em>POST</em> binding is similar to <em>Redirect</em> binding but <em>POST</em> binding exchanges XML documents using POST requests instead of using GET requests. <em>POST</em> Binding uses JavaScript to make the browser send a POST request to the Keycloak server or application when exchanging documents. HTTP responds with an HTML document which contains an HTML form containing embedded JavaScript.  When the page loads, the JavaScript automatically invokes the form.</p>
+</div>
+<div class="paragraph">
+<p><em>POST</em> binding is recommended due to two restrictions:</p>
+</div>
+<div class="paragraph">
+<p><strong>Security</strong></p>
+</div>
+<div class="paragraph">
+<p>With <em>Redirect</em> binding, the SAML response is part of the URL. It is less secure as it is possible to capture the response in logs.</p>
+</div>
+<div class="paragraph">
+<p><strong>Size</strong></p>
+</div>
+<div class="paragraph">
+<p>Sending the document in the HTTP payload provides more scope for large amounts of data than in a limited URL.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="ecp"><a class="anchor" href="#ecp"></a>ECP</h5>
+<div class="paragraph">
+<p>Enhanced Client or Proxy (ECP) is a SAML v.2.0 profile which allows the exchange of SAML attributes outside the context of a web browser. It is often used by REST or SOAP-based clients.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="keycloak-server-saml-uri-endpoints"><a class="anchor" href="#keycloak-server-saml-uri-endpoints"></a>Keycloak Server SAML URI Endpoints</h4>
+<div class="paragraph">
+<p>Keycloak has one endpoint for all SAML requests.</p>
+</div>
+<div class="paragraph">
+<p><code>http(s)://authserver.host/auth/realms/{realm-name}/protocol/saml</code></p>
+</div>
+<div class="paragraph">
+<p>All bindings use this endpoint.</p>
+</div>
+<div id="ref-saml-vs-oidc_server_administration_guide" class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/ref-saml-vs-oidc.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/ref-saml-vs-oidc.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="openid-connect-compared-to-saml"><a class="anchor" href="#openid-connect-compared-to-saml"></a>OpenID Connect compared to SAML</h3>
+<div class="paragraph _abstract">
+<p>The following lists a number of factors to consider when choosing a protocol.</p>
+</div>
+<div class="paragraph">
+<p>For most purposes, Keycloak recommends using OIDC.</p>
+</div>
+<div class="paragraph">
+<p><strong>OIDC</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>OIDC is specifically designed to work with the web.</p>
+</li>
+<li>
+<p>OIDC is suited for HTML5/JavaScript applications because it is easier to implement on the client side than SAML.</p>
+</li>
+<li>
+<p>OIDC tokens are in the JSON format which makes them easier for Javascript to consume.</p>
+</li>
+<li>
+<p>OIDC has features to make security implementation easier. For example, see the <a href="https://openid.net/specs/openid-connect-session-1_0.html#ChangeNotification">iframe trick</a> that the specification uses to determine a users login status.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>SAML</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SAML is designed as a layer to work on top of the web.</p>
+</li>
+<li>
+<p>SAML can be more verbose than OIDC.</p>
+</li>
+<li>
+<p>Users pick SAML over OIDC because there is a perception that it is mature.</p>
+</li>
+<li>
+<p>Users pick SAML over OIDC existing applications that are secured with it.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-sso-docker.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-sso-docker.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_docker"><a class="anchor" href="#_docker"></a>Docker Registry v2 Authentication</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Docker authentication is disabled by default. To enable docker authentication, see <a href="https://www.keycloak.org/docs/14.0/server_installation/#profiles">Profiles</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph _abstract">
+<p><a href="https://docs.docker.com/registry/spec/auth/">Docker Registry V2 Authentication</a> is a protocol, similar to OIDC, that authenticates users against Docker registries.  Keycloak&#8217;s implementation of this protocol lets Docker clients use a Keycloak authentication server authenticate against a registry. This protocol uses standard token and signature mechanisms but it does deviate from a true OIDC implementation. It deviates by using a very specific JSON format for requests and responses as well as mapping repository names and permissions to the OAuth scope mechanism.</p>
+</div>
+<div class="sect3">
+<h4 id="docker-authentication-flow"><a class="anchor" href="#docker-authentication-flow"></a>Docker Authentication Flow</h4>
+<div class="paragraph">
+<p>The authentication flow is described in the <a href="https://docs.docker.com/registry/spec/auth/token/">Docker API documentation</a>. The following is a summary from the perspective of the Keycloak authentication server:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Perform a <code>docker login</code>.</p>
+</li>
+<li>
+<p>The Docker client requests a resource from the Docker registry.  If the resource is protected and no authentication token is in the request, the Docker registry server responds with a 401 HTTP message with some information on the permissions that are required and the location of the authorization server.</p>
+</li>
+<li>
+<p>The Docker client constructs an authentication request based on the 401 HTTP message from the Docker registry. The client uses the locally cached credentials (from the <code>docker login</code> command) as part of the <a href="https://tools.ietf.org/html/rfc2617">HTTP Basic Authentication</a> request to the Keycloak authentication server.</p>
+</li>
+<li>
+<p>The Keycloak authentication server attempts to authenticate the user and return a JSON body containing an OAuth-style Bearer token.</p>
+</li>
+<li>
+<p>The Docker client receives a bearer token from the JSON response and uses it in the authorization header to request the protected resource.</p>
+</li>
+<li>
+<p>The Docker registry receives the new request for the protected resource with the token from the Keycloak server. The registry validates the token and grants access to the requested resource (if appropriate).</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Keycloak does not create a browser SSO session after successful authentication with the Docker protocol. The browser SSO session does not use the Docker protocol as it cannot refresh tokens or obtain the status of a token or session from the Keycloak server; therefore a browser SSO session is not necessary. For more details, see the <a href="#_transient-session">transient session</a> section.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="keycloak-docker-registry-v2-authentication-server-uri-endpoints"><a class="anchor" href="#keycloak-docker-registry-v2-authentication-server-uri-endpoints"></a>Keycloak Docker Registry v2 Authentication Server URI Endpoints</h4>
+<div class="paragraph">
+<p>Keycloak has one endpoint for all Docker auth v2 requests.</p>
+</div>
+<div class="paragraph">
+<p><code>http(s)://authserver.host/auth/realms/{realm-name}/protocol/docker-v2</code></p>
+</div>
 </div>
 </div>
 </div>
@@ -9810,1013 +10304,11 @@ remove members from the group.</p>
 </dd>
 </dl>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="sso-protocols"><a class="anchor" href="#sso-protocols"></a>SSO Protocols</h2>
-<div class="sectionbody">
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="paragraph _abstract">
-<p>This section discusses authentication protocols, the Keycloak authentication server and how applications, secured by the Keycloak authentication server, interact with these protocols.</p>
-</div>
-<div id="con-oidc_server_administration_guide" class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-oidc.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-oidc.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="sect2">
-<h3 id="openid-connect"><a class="anchor" href="#openid-connect"></a>OpenID Connect</h3>
-<div class="paragraph _abstract">
-<p><a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) is an authentication protocol that is an extension of <a href="https://tools.ietf.org/html/rfc6749">OAuth 2.0</a>.</p>
-</div>
-<div class="paragraph">
-<p>OAuth 2.0 is a framework for building authorization protocols and is incomplete. OIDC, however, is a full authentication and authorization protocol that uses the <a href="https://jwt.io">Json Web Token</a> (JWT) standards.  The JWT standards define an identity token JSON format and methods to digitally sign and encrypt data in a compact and web-friendly way.</p>
-</div>
-<div class="paragraph">
-<p>In general, OIDC implements two use cases. The first case is an application requesting that a  Keycloak server authenticates a user. Upon successful login, the application receives an <em>identity token</em> and an <em>access token</em>.
-The <em>identity token</em> contains user information including user name, email, and profile information. The realm digitally signs the <em>access token</em> which contains access information (such as user role mappings) that applications use to determine the resources users can access in the application.</p>
-</div>
-<div class="paragraph">
-<p>The second use case is a client accessing remote services.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The client requests an <em>access token</em> from Keycloak to invoke on remote services on behalf of the user.</p>
-</li>
-<li>
-<p>Keycloak authenticates the user and asks the user for consent to grant access to the requesting client.</p>
-</li>
-<li>
-<p>The client receives the <em>access token</em> which is digitally signed by the realm.</p>
-</li>
-<li>
-<p>The client makes REST requests on remote services using the <em>access token</em>.</p>
-</li>
-<li>
-<p>The remote REST service extracts the <em>access token</em>.</p>
-</li>
-<li>
-<p>The remote REST service verifies the tokens signature.</p>
-</li>
-<li>
-<p>The remote REST service decides, based on access information within the token, to process or reject the request.</p>
-</li>
-</ul>
-</div>
-<div id="con-oidc-auth-flows_server_administration_guide" class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-oidc-auth-flows.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-oidc-auth-flows.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="sect3">
-<h4 id="oidc-auth-flows"><a class="anchor" href="#oidc-auth-flows"></a>OIDC Auth Flows</h4>
-<div class="paragraph _abstract">
-<p>OIDC has several methods, or flows, that clients or applications can use to authenticate users and receive <em>identity</em> and <em>access</em> tokens.  The method depends on the type of application or client requesting access.</p>
-</div>
-<div class="sect4">
-<h5 id="_oidc-auth-flows-authorization"><a class="anchor" href="#_oidc-auth-flows-authorization"></a>Authorization Code Flow</h5>
-<div class="paragraph">
-<p>The Authorization Code Flow is a browser-based protocol and suits authenticating and authorizing browser-based applications. It uses browser redirects to obtain <em>identity</em> and <em>access</em> tokens.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>A user connects to an application using a browser. The application detects the user is not logged into the application.</p>
-</li>
-<li>
-<p>The application redirects the browser to Keycloak for authentication.</p>
-</li>
-<li>
-<p>The application passes a callback URL as a query parameter in the browser redirect. Keycloak uses the parameter upon successful authentication.</p>
-</li>
-<li>
-<p>Keycloak authenticates the user and creates a one-time, short lived, temporary code.</p>
-</li>
-<li>
-<p>Keycloak redirects to the application using the callback URL and adds the temporary code as a query parameter in the callback URL.</p>
-</li>
-<li>
-<p>The application extracts the temporary code and makes a background REST invocation to Keycloak
-to exchange the code for an <em>identity</em> and <em>access</em> and <em>refresh</em> token.  To prevent replay attacks, the temporary code cannot be used more than once.</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>A system is vulnerable to a stolen token for the lifetime of that token. For security and scalability reasons, access_ tokens are generally set to expire quickly so subsequent token requests fail. If a token expires, an application can obtain a new access token using the additional <em>refresh</em> token sent by the login protocol.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div id="_confidential-clients" class="paragraph">
-<p><em>Confidential</em> clients provide client secrets when they exchange the temporary codes for tokens. <em>Public</em> clients are not required to provide client secrets.
-<em>Public</em> clients are secure when HTTPS is strictly enforced and redirect URIs registered for the client are strictly controlled.  HTML5/JavaScript clients have to be <em>public</em> clients because there is no way to securely transmit the client secret to HTML5/JavaScript clients. For more details, see the <a href="#assembly-managing-clients_server_administration_guide">Managing Clients</a> chapter.</p>
-</div>
-<div class="paragraph">
-<p>Keycloak also supports the <a href="https://tools.ietf.org/html/rfc7636">Proof Key for Code Exchange</a> specification.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_oidc-auth-flows-implicit"><a class="anchor" href="#_oidc-auth-flows-implicit"></a>Implicit Flow</h5>
-<div class="paragraph">
-<p>The Implicit Flow is a browser-based protocol. It is similar to the Authorization Code Flow but with fewer requests and no refresh tokens.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The possibility exists of <em>access</em> tokens leaking in the browser history when tokens are transmitted via redirect URIs (see below).</p>
-</div>
-<div class="paragraph">
-<p>Also, this flow does not provide clients with refresh tokens. Therefore, access tokens have to be long-lived or users  have to re-authenticate when they expire.</p>
-</div>
-<div class="paragraph">
-<p>We do not advise using this flow. This flow is supported because it is in the OIDC and OAuth 2.0 specification.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The protocol works as follows:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>A user connects to an application using a browser. The application detects the user is not logged into the application.</p>
-</li>
-<li>
-<p>The application redirects the browser to Keycloak for authentication.</p>
-</li>
-<li>
-<p>The application passes a callback URL as a query parameter in the browser redirect. Keycloak uses the query parameter upon successful authentication.</p>
-</li>
-<li>
-<p>Keycloak authenticates the user and creates an <em>identity</em> and <em>access</em> token. Keycloak
-redirects to the application using the callback URL and additionally adds the <em>identity</em> and <em>access</em> tokens as a query parameter in the callback URL.</p>
-</li>
-<li>
-<p>The application extracts the <em>identity</em> and <em>access</em> tokens from the callback URL.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_oidc-auth-flows-direct"><a class="anchor" href="#_oidc-auth-flows-direct"></a>Resource Owner Password Credentials Grant (Direct Access Grants)</h5>
-<div class="paragraph">
-<p><em>Direct Access Grants</em> are used by REST clients to obtain tokens on behalf of users.  It is a HTTP POST request that contains:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The credentials of the user. The credentials are sent within form parameters.</p>
-</li>
-<li>
-<p>The id of the client.</p>
-</li>
-<li>
-<p>The clients secret (if it is a confidential client).</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The HTTP response contains the <em>identity</em>, <em>access</em>, and <em>refresh</em> tokens.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_client_credentials_grant"><a class="anchor" href="#_client_credentials_grant"></a>Client Credentials Grant</h5>
-<div class="paragraph">
-<p>The <em>Client Credentials Grant</em> creates a token based on the metadata and permissions of a service account associated with the client instead of obtaining a token that works on behalf of an external user. <em>Client Credentials Grants</em> are used by REST clients.</p>
-</div>
-<div class="paragraph">
-<p>See the <a href="#_service_accounts">Service Accounts</a> chapter for more information.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="device-authorization-grant"><a class="anchor" href="#device-authorization-grant"></a>Device Authorization Grant</h5>
-<div class="paragraph">
-<p>This is used by clients running on internet-connected devices that have limited input capabilities or lack a suitable browser. Here&#8217;s a brief summary of the protocol:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The application requests Keycloak a device code and a user code. Keycloak creates a device code and a user code. Keycloak returns a response including the device code and the user code to the application.</p>
-</li>
-<li>
-<p>The application provides the user with the user code and the verification URI. The user accesses a verification URI to be authenticated by using another browser.</p>
-</li>
-<li>
-<p>The application repeatedly polls Keycloak to find out if the user completed the user authorization. If user authentication is complete, the application exchanges the device code for an <em>identity</em>, <em>access</em> and <em>refresh</em> token.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_client_initiated_backchannel_authentication_grant"><a class="anchor" href="#_client_initiated_backchannel_authentication_grant"></a>Client Initiated Backchannel Authentication Grant</h5>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Client Initiated Backchannel Authentication Grant is <strong>Technology Preview</strong> and is not fully supported. This feature is disabled by default.</p>
-</div>
-<div class="paragraph">
-<p>To enable start the server with <code>-Dkeycloak.profile=preview</code>
-or <code>-Dkeycloak.profile.feature.ciba=enabled</code>
-. For more details see <a href="https://www.keycloak.org/docs/14.0/server_installation/#profiles">Profiles</a>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>This is used by clients who want to initiate the authentication flow by communicating with the OpenID Provider directly without redirect through the user&#8217;s browser like OAuth 2.0&#8217;s authorization code grant. Here&#8217;s a brief summary of the protocol:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The client requests Keycloak an auth_req_id that identifies the authentication request made by the client. Keycloak creates the auth_req_id.</p>
-</li>
-<li>
-<p>After receiving this auth_req_id, this client repeatedly needs to poll Keycloak to obtain an Access Token, Refresh Token and ID Token from Keycloak in return for the auth_req_id until the user is authenticated.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>An administrator can configure Client Initiated Backchannel Authentication (CIBA) related operations as <code>CIBA Policy</code> per realm.</p>
-</div>
-<div class="paragraph">
-<p>Also please refer to other places of Keycloak documentation like <a href="https://www.keycloak.org/docs/14.0/securing_apps/#_backchannel_authentication_endpoint">Backchannel Authentication Endpoint section</a> of Securing Applications and Services Guide and <a href="https://www.keycloak.org/docs/14.0/securing_apps/#_client_initiated_backchannel_authentication_grant">Client Initiated Backchannel Authentication Grant section</a> of Securing Applications and Services Guide.</p>
-</div>
-<div class="sect5">
-<h6 id="ciba-policy"><a class="anchor" href="#ciba-policy"></a>CIBA Policy</h6>
-<div class="paragraph">
-<p>An administrator carries out the following operations on the <code>Admin Console</code> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Open the <code>Authentication &#8594; CIBA Policy</code> tab.</p>
-</li>
-<li>
-<p>Configure items and click <code>Save</code>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The configurable items and their description follow.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Configuration</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Backchannel Token Delivery Mode</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifying how the CD (Consumption Device) gets the authentication result and related tokens. There are three modes, "poll", "ping" and "push". Keycloak only supports "poll". The default setting is "poll". This configuration is required.
- For more details, see <a href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5">CIBA Specification</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Expires In</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The expiration time of the "auth_req_id" in seconds since the authentication request was received. The default setting is 120. This configuration is required.
- For more details, see <a href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#successful_authentication_request_acknowdlegment">CIBA Specification</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Interval</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The interval in seconds the CD (Consumption Device) needs to wait for between polling requests to the token endpoint. The default setting is 5. This configuration is optional.
- For more details, see <a href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#successful_authentication_request_acknowdlegment">CIBA Specification</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Authentication Requested User Hint</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The way of identifying the end-user for whom authentication is being requested. The default setting is "login_hint".  There are three modes, "login_hint", "login_hint_token" and "id_token_hint". Keycloak only supports "login_hint". This configuration is required.
- For more details, see <a href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.7.1">CIBA Specification</a>.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect5">
-<h6 id="provider-setting"><a class="anchor" href="#provider-setting"></a>Provider Setting</h6>
-<div class="paragraph">
-<p>The CIBA grant uses the following two providers.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Authentication Channel Provider : provides the communication between Keycloak and the entity that actually authenticates the user via AD (Authentication Device).</p>
-</li>
-<li>
-<p>User Resolver Provider : get <code>UserModel</code> of Keycloak from the information provided by the client to identify the user.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Keycloak has both default providers. However, the administrator needs to set up Authentication Channel Provider like this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;spi</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ciba-auth-channel</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;default-provider&gt;</span>ciba-http-auth-channel<span class="tag">&lt;/default-provider&gt;</span>
-    <span class="tag">&lt;provider</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ciba-http-auth-channel</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;properties&gt;</span>
-            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">httpAuthenticationChannelUri</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://backend.internal.example.com/auth</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-        <span class="tag">&lt;/properties&gt;</span>
-    <span class="tag">&lt;/provider&gt;</span>
-<span class="tag">&lt;/spi&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The configurable items and their description follow.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Configuration</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">httpAuthenticationChannelUri</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifying URI of the entity that actually authenticates the user via AD (Authentication Device).</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect5">
-<h6 id="authentication-channel-provider"><a class="anchor" href="#authentication-channel-provider"></a>Authentication Channel Provider</h6>
-<div class="paragraph">
-<p>CIBA standard document does not specify how to authenticate the user by AD. Therefore, it might be implemented at the discretion of products. Keycloak delegates this authentication to an external authentication entity. To communicate with the authentication entity, Keycloak provides Authentication Channel Provider.</p>
-</div>
-<div class="paragraph">
-<p>Its implementation of Keycloak assumes that the authentication entity is under the control of the administrator of Keycloak so that Keycloak trusts the authentication entity. It is not recommended to use the authentication entity that the administrator of Keycloak cannot control.</p>
-</div>
-<div class="paragraph">
-<p>Authentication Channel Provider is provided as SPI provider so that users of Keycloak can implement their own provider in order to meet their environment. Keycloak provides its default provider called HTTP Authentication Channel Provider that uses HTTP to communicate with the authentication entity.</p>
-</div>
-<div class="paragraph">
-<p>If a user of Keycloak user want to use the HTTP Authentication Channel Provider, they need to know its contract between Keycloak and the authentication entity consisting of the following two parts.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Authentication Delegation Request/Response</dt>
-<dd>
-<p>Keycloak sends an authentication request to the authentication entity.</p>
-</dd>
-<dt class="hdlist1">Authentication Result Notification/ACK</dt>
-<dd>
-<p>The authentication entity notifies the result of the authentication to Keycloak.</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>Authentication Delegation Request/Response consists of the following messaging.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Authentication Delegation Request</dt>
-<dd>
-<p>The request is sent from Keycloak to the authentication entity to ask it for user authentication by AD.</p>
-</dd>
-</dl>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>POST [delegation_reception]</pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Headers</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Content-Type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">application/json</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The message body is json formatted.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Authorization</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bearer [token]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The [token] is used when the authentication entity notifies the result of the authentication to Keycloak.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="ulist">
-<ul>
-<li>
-<p>Parameters</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Path</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delegation_reception</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The endpoint provided by the authentication entity to receive the delegation request</p></td>
-</tr>
-</tbody>
-</table>
-<div class="ulist">
-<ul>
-<li>
-<p>Body</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">login_hint</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the authentication entity who is authenticated by AD.<br>
-By default, it is the user&#8217;s "username".<br>
-This field is required and was defined by CIBA standard document.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">scope</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">It tells which scopes the authentication entity gets consent from the authenticated user.<br>
-This field is required and was defined by CIBA standard document.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">is_consent_required</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">It shows whether the authentication entity needs to get consent from the authenticated user about the scope.<br>
- This field is required.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">binding_message</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Its value is intended to be shown in both CD and AD&#8217;s UI to make the user recognize that the authentication by AD is triggered by CD.<br>
-This field is optional and was defined by CIBA standard document.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">acr_values</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the requesting Authentication Context Class Reference from CD.<br>
-This field is optional and was defined by CIBA standard document.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Authentication Delegation Response</dt>
-<dd>
-<p>The response is returned from the authentication entity to Keycloak to notify that the authentication entity received the authentication request from Keycloak.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Responses</p>
-</li>
-</ul>
-</div>
-</dd>
-</dl>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">HTTP Status Code</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">201</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">It notifies Keycloak of receiving the authentication delegation request.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Authentication Result Notification/ACK consists of the following messaging.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Authentication Result Notification</dt>
-<dd>
-<p>The authentication entity sends the result of the authentication request to Keycloak.</p>
-</dd>
-</dl>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>POST /auth/realms/[realm]/protocol/openid-connect/ext/ciba/auth/callback</pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Headers</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Content-Type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">application/json</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The message body is json formatted.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Authorization</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bearer [token]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The [token] must be the one the authentication entity has received from Keycloak in Authentication Delegation Request.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="ulist">
-<ul>
-<li>
-<p>Parameters</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Path</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">realm</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The realm name</p></td>
-</tr>
-</tbody>
-</table>
-<div class="ulist">
-<ul>
-<li>
-<p>Body</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">It tells the result of user authentication by AD.<br>
-It must be one of the following status.<br>
-  SUCCEED : The authentication by AD has been successfully completed.<br>
-  UNAUTHORIZED : The authentication by AD has not been completed.<br>
-  CANCELLED : The authentication by AD has been cancelled by the user.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Authentication Result ACK</dt>
-<dd>
-<p>The response is returned from Keycloak to the authentication entity to notify Keycloak received the result of user authentication by AD from the authentication entity.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Responses</p>
-</li>
-</ul>
-</div>
-</dd>
-</dl>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">HTTP Status Code</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">It notifies the authentication entity of receiving the notification of the authentication result.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect5">
-<h6 id="user-resolver-provider"><a class="anchor" href="#user-resolver-provider"></a>User Resolver Provider</h6>
-<div class="paragraph">
-<p>Even if the same user, its representation may differ in each CD, Keycloak and the authentication entity.</p>
-</div>
-<div class="paragraph">
-<p>For CD, Keycloak and the authentication entity to recognize the same user, this User Resolver Provider converts their own user representations among them.</p>
-</div>
-<div class="paragraph">
-<p>User Resolver Provider is provided as SPI provider so that users of Keycloak can implement their own provider in order to meet their environment. Keycloak provides its default provider called Default User Resolver Provider that has the following characteristics.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Only support <code>login_hint</code> parameter and is used as default.</p>
-</li>
-<li>
-<p><code>username</code> of UserModel in Keycloak is used to represent the user on CD, Keycloak and the authentication entity.</p>
-</li>
-</ul>
-</div>
-<div id="con-server-oidc-uri-endpoints_server_administration_guide" class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-server-oidc-uri-endpoints.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-server-oidc-uri-endpoints.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="keycloak-server-oidc-uri-endpoints"><a class="anchor" href="#keycloak-server-oidc-uri-endpoints"></a>Keycloak Server OIDC URI Endpoints</h4>
-<div class="paragraph _abstract">
-<p>The following is a list of OIDC endpoints that Keycloak publishes. These endpoints can be used when a non-Keycloak client adapter uses OIDC to communicate with the authentication server. They are all relative URLs. The root of the URL consists of the HTTP(S) protocol, hostname, and the path, which is usually prefixed with <em>/auth</em>:  For example</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>https://localhost:8080/auth</code></pre>
-</div>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/auth</dt>
-<dd>
-<p>Used for obtaining a temporary code in the Authorization Code Flow or obtaining tokens using the Implicit Flow, Direct Grants, or Client Grants.</p>
-</dd>
-<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/token</dt>
-<dd>
-<p>Used by the Authorization Code Flow to convert a temporary code into a token.</p>
-</dd>
-<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/logout</dt>
-<dd>
-<p>Used for performing logouts.</p>
-</dd>
-<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/userinfo</dt>
-<dd>
-<p>Used for the User Info service described in the OIDC specification.</p>
-</dd>
-<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/revoke</dt>
-<dd>
-<p>Used for OAuth 2.0 Token Revocation described in <a href="https://tools.ietf.org/html/rfc7009">RFC7009</a>.</p>
-</dd>
-<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/certs</dt>
-<dd>
-<p>Used for the JSON Web Key Set (JWKS) containing the public keys used to verify any JSON Web Token (jwks_uri)</p>
-</dd>
-<dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/auth/device</dt>
-<dd>
-<p>Used for Device Authorization Grant to obtain a device code and a user code.</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>In all of these, replace {realm-name} with the name of the realm.</p>
-</div>
-<div id="con-saml_server_administration_guide" class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-saml.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-saml.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_saml"><a class="anchor" href="#_saml"></a>SAML</h3>
-<div class="paragraph _abstract">
-<p><a href="http://saml.xml.org/saml-specifications">SAML 2.0</a> is a similar specification to OIDC but more mature.  It is descended from SOAP and web service messaging specifications so is generally more verbose than OIDC.  SAML 2.0 is an authentication protocol that exchanges XML documents between authentication servers and applications.  XML signatures and encryption are used to verify requests and responses.</p>
-</div>
-<div class="paragraph">
-<p>In general, SAML implements two use cases.</p>
-</div>
-<div class="paragraph">
-<p>The first use case is an application that requests the Keycloak server authenticates a user.  Upon successful login, the application will receive an XML document. This document contains an SAML assertion that specifies user attributes. The realm digitally signs the the document which contains access information (such as user role mappings) that applications use to determine the resources users are allowed to access in the application.</p>
-</div>
-<div class="paragraph">
-<p>The second use case is a client accessing remote services.  The client requests a SAML assertion from Keycloak to invoke on remote services on behalf of the user.</p>
-</div>
-<div id="con-saml-bindings_server_administration_guide" class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-saml-bindings.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-saml-bindings.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-<div class="sect3">
-<h4 id="saml-bindings"><a class="anchor" href="#saml-bindings"></a>SAML Bindings</h4>
-<div class="paragraph _abstract">
-<p>Keycloak supports three binding types.</p>
-</div>
-<div class="sect4">
-<h5 id="redirect-binding"><a class="anchor" href="#redirect-binding"></a>Redirect Binding</h5>
-<div class="paragraph">
-<p><em>Redirect</em> binding uses a series of browser redirect URIs to exchange information.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>A user connects to an application using a browser. The application detects the user is not authenticated.</p>
-</li>
-<li>
-<p>The application generates an XML authentication request document and encodes it as a query parameter in a URI. The URI is used to redirect to the Keycloak server. Depending on your settings, the application can also digitally sign the XML document and include the signature as a query parameter in the redirect URI to Keycloak.  This signature is used to validate the client that sends the request.</p>
-</li>
-<li>
-<p>The browser redirects to Keycloak.</p>
-</li>
-<li>
-<p>The server extracts the XML auth request document and verifies the digital signature, if required.</p>
-</li>
-<li>
-<p>The user enters their authentication credentials.</p>
-</li>
-<li>
-<p>After authentication, the server generates an XML authentication response document. The document contains a SAML assertion that holds metadata about the user, including name, address, email, and any role mappings the user has.  The document is usually digitally signed using XML signatures, and may also be encrypted.</p>
-</li>
-<li>
-<p>The XML authentication response document is encoded as a query parameter in a redirect URI. The URI brings the browser back to the application.  The digital signature is also included as a query parameter.</p>
-</li>
-<li>
-<p>The application receives the redirect URI and extracts the XML document.</p>
-</li>
-<li>
-<p>The application verifies the realm&#8217;s signature to ensure it is receiving a valid authentication response.  The information inside the SAML assertion is used to make access decisions or display user data.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect4">
-<h5 id="post-binding"><a class="anchor" href="#post-binding"></a>POST Binding</h5>
-<div class="paragraph">
-<p><em>POST</em> binding is similar to <em>Redirect</em> binding but <em>POST</em> binding exchanges XML documents using POST requests instead of using GET requests. <em>POST</em> Binding uses JavaScript to make the browser send a POST request to the Keycloak server or application when exchanging documents. HTTP responds with an HTML document which contains an HTML form containing embedded JavaScript.  When the page loads, the JavaScript automatically invokes the form.</p>
-</div>
-<div class="paragraph">
-<p><em>POST</em> binding is recommended due to two restrictions:</p>
-</div>
-<div class="paragraph">
-<p><strong>Security</strong></p>
-</div>
-<div class="paragraph">
-<p>With <em>Redirect</em> binding, the SAML response is part of the URL. It is less secure as it is possible to capture the response in logs.</p>
-</div>
-<div class="paragraph">
-<p><strong>Size</strong></p>
-</div>
-<div class="paragraph">
-<p>Sending the document in the HTTP payload provides more scope for large amounts of data than in a limited URL.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="ecp"><a class="anchor" href="#ecp"></a>ECP</h5>
-<div class="paragraph">
-<p>Enhanced Client or Proxy (ECP) is a SAML v.2.0 profile which allows the exchange of SAML attributes outside the context of a web browser. It is often used by REST or SOAP-based clients.</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="keycloak-server-saml-uri-endpoints"><a class="anchor" href="#keycloak-server-saml-uri-endpoints"></a>Keycloak Server SAML URI Endpoints</h4>
-<div class="paragraph">
-<p>Keycloak has one endpoint for all SAML requests.</p>
-</div>
-<div class="paragraph">
-<p><code>http(s)://authserver.host/auth/realms/{realm-name}/protocol/saml</code></p>
-</div>
-<div class="paragraph">
-<p>All bindings use this endpoint.</p>
-</div>
-<div id="ref-saml-vs-oidc_server_administration_guide" class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/ref-saml-vs-oidc.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/ref-saml-vs-oidc.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="openid-connect-compared-to-saml"><a class="anchor" href="#openid-connect-compared-to-saml"></a>OpenID Connect compared to SAML</h3>
-<div class="paragraph _abstract">
-<p>The following lists a number of factors to consider when choosing a protocol.</p>
-</div>
-<div class="paragraph">
-<p>For most purposes, Keycloak recommends using OIDC.</p>
-</div>
-<div class="paragraph">
-<p><strong>OIDC</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>OIDC is specifically designed to work with the web.</p>
-</li>
-<li>
-<p>OIDC is suited for HTML5/JavaScript applications because it is easier to implement on the client side than SAML.</p>
-</li>
-<li>
-<p>OIDC tokens are in the JSON format which makes them easier for Javascript to consume.</p>
-</li>
-<li>
-<p>OIDC has features to make security implementation easier. For example, see the <a href="https://openid.net/specs/openid-connect-session-1_0.html#ChangeNotification">iframe trick</a> that the specification uses to determine a users login status.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>SAML</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>SAML is designed as a layer to work on top of the web.</p>
-</li>
-<li>
-<p>SAML can be more verbose than OIDC.</p>
-</li>
-<li>
-<p>Users pick SAML over OIDC because there is a perception that it is mature.</p>
-</li>
-<li>
-<p>Users pick SAML over OIDC existing applications that are secured with it.</p>
-</li>
-</ul>
-</div>
-<div class="sidebarblock page-links">
-<div class="content">
-<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-sso-docker.adoc" target="_blank">Edit this section</a>
-<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-sso-docker.adoc" target="_blank">Report an issue</a>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_docker"><a class="anchor" href="#_docker"></a>Docker Registry v2 Authentication</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Docker authentication is disabled by default. To enable docker authentication, see <a href="https://www.keycloak.org/docs/14.0/server_installation/#profiles">Profiles</a>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph _abstract">
-<p><a href="https://docs.docker.com/registry/spec/auth/">Docker Registry V2 Authentication</a> is a protocol, similar to OIDC, that authenticates users against Docker registries.  Keycloak&#8217;s implementation of this protocol lets Docker clients use a Keycloak authentication server authenticate against a registry. This protocol uses standard token and signature mechanisms but it does deviate from a true OIDC implementation. It deviates by using a very specific JSON format for requests and responses as well as mapping repository names and permissions to the OAuth scope mechanism.</p>
-</div>
-<div class="sect3">
-<h4 id="docker-authentication-flow"><a class="anchor" href="#docker-authentication-flow"></a>Docker Authentication Flow</h4>
-<div class="paragraph">
-<p>The authentication flow is described in the <a href="https://docs.docker.com/registry/spec/auth/token/">Docker API documentation</a>. The following is a summary from the perspective of the Keycloak authentication server:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Perform a <code>docker login</code>.</p>
-</li>
-<li>
-<p>The Docker client requests a resource from the Docker registry.  If the resource is protected and no authentication token is in the request, the Docker registry server responds with a 401 HTTP message with some information on the permissions that are required and the location of the authorization server.</p>
-</li>
-<li>
-<p>The Docker client constructs an authentication request based on the 401 HTTP message from the Docker registry. The client uses the locally cached credentials (from the <code>docker login</code> command) as part of the <a href="https://tools.ietf.org/html/rfc2617">HTTP Basic Authentication</a> request to the Keycloak authentication server.</p>
-</li>
-<li>
-<p>The Keycloak authentication server attempts to authenticate the user and return a JSON body containing an OAuth-style Bearer token.</p>
-</li>
-<li>
-<p>The Docker client receives a bearer token from the JSON response and uses it in the authorization header to request the protected resource.</p>
-</li>
-<li>
-<p>The Docker registry receives the new request for the protected resource with the token from the Keycloak server. The registry validates the token and grants access to the requested resource (if appropriate).</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Keycloak does not create a browser SSO session after successful authentication with the Docker protocol. The browser SSO session does not use the Docker protocol as it cannot refresh tokens or obtain the status of a token or session from the Keycloak server; therefore a browser SSO session is not necessary. For more details, see the <a href="#_transient-session">transient session</a> section.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="keycloak-docker-registry-v2-authentication-server-uri-endpoints"><a class="anchor" href="#keycloak-docker-registry-v2-authentication-server-uri-endpoints"></a>Keycloak Docker Registry v2 Authentication Server URI Endpoints</h4>
-<div class="paragraph">
-<p>Keycloak has one endpoint for all Docker auth v2 requests.</p>
-</div>
-<div class="paragraph">
-<p><code>http(s)://authserver.host/auth/realms/{realm-name}/protocol/docker-v2</code></p>
-</div>
 <div id="assembly-managing-clients_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/assembly-managing-clients.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/assembly-managing-clients.adoc" target="_blank">Report an issue</a>
+</div>
 </div>
 </div>
 </div>
@@ -11254,8 +10746,14 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 <p><strong>Signed JWT</strong> is "Signed Json Web Token".</p>
 </div>
 <div class="paragraph">
-<p>When choosing this credential type you will have to also generate a private key and certificate for the client in the <strong>Keys</strong> tab. The private key will be used to sign the JWT, while the certificate is used by the server to verify the signature.
-Click <strong>Generate new keys and certificate</strong> to start this process.</p>
+<p>When choosing this credential type you will have to also generate a private key and certificate for the client in the tab <code>Keys</code>. The private key will be used to sign the JWT, while the certificate is used by the server to verify the signature.</p>
+</div>
+<div class="paragraph">
+<div class="title">Keys Tab</div>
+<p><span class="image"><img src="./keycloak-images/client-oidc-keys.png" alt="client oidc keys"></span></p>
+</div>
+<div class="paragraph">
+<p>Click on the <code>Generate new keys and certificate</code> button to start this process.</p>
 </div>
 <div class="paragraph">
 <div class="title">Generate Keys</div>
@@ -13225,7 +12723,7 @@ add audiences for clients that have at least one client role. These mappers are 
 <p>Keycloak includes the ability to export and import its entire database.</p>
 </div>
 <div class="paragraph">
-<p>You can migrate the whole Keycloak database from one environment to another or migrate to another database (for example from MySQL to Oracle). The export/import triggers at server boot time, and its parameters pass through Java properties.</p>
+<p>You can migrate the whole Keycloak database from one environment to another or migrate to another database. The export/import triggers at server boot time, and its parameters pass through Java properties.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -16897,7 +16395,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-06-16 16:57:33 UTC
+Last updated 2021-06-17 15:03:25 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
