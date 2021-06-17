@@ -806,26 +806,26 @@ span.image img {
 <li><a href="#dealing-with-provider-failures">Dealing with provider failures</a></li>
 <li><a href="#_ldap">Lightweight Directory Access Protocol (LDAP) and Active Directory</a>
 <ul class="sectlevel3">
-<li><a href="#configuring-federated-ldap-storage">Configuring Federated LDAP Storage</a></li>
-<li><a href="#storage-mode">Storage Mode</a></li>
-<li><a href="#edit-mode">Edit Mode</a></li>
+<li><a href="#configuring-federated-ldap-storage">Configuring federated LDAP storage</a></li>
+<li><a href="#storage-mode">Storage mode</a></li>
+<li><a href="#edit-mode">Edit mode</a></li>
 <li><a href="#other-configuration-options">Other configuration options</a></li>
 <li><a href="#connecting-to-ldap-over-ssl">Connecting to LDAP over SSL</a></li>
 <li><a href="#synchronizing-ldap-users-to-keycloak">Synchronizing LDAP users to Keycloak</a></li>
-<li><a href="#_ldap_mappers">LDAP Mappers</a></li>
-<li><a href="#_ldap_password_hashing">Password Hashing</a></li>
+<li><a href="#_ldap_mappers">LDAP mappers</a></li>
+<li><a href="#_ldap_password_hashing">Password hashing</a></li>
 <li><a href="#_ldap_troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
-<li><a href="#_sssd">SSSD and FreeIPA Identity Management Integration</a>
+<li><a href="#_sssd">SSSD and FreeIPA Identity Management integration</a>
 <ul class="sectlevel3">
-<li><a href="#freeipa-idm-server">FreeIPA/IdM Server</a></li>
+<li><a href="#freeipa-idm-server">FreeIPA/IdM server</a></li>
 <li><a href="#sssd-and-d-bus">SSSD and D-Bus</a></li>
-<li><a href="#enabling-the-sssd-federation-provider">Enabling the SSSD Federation Provider</a></li>
+<li><a href="#enabling-the-sssd-federation-provider">Enabling the SSSD federation provider</a></li>
 </ul>
 </li>
-<li><a href="#configuring-a-federated-sssd-store">Configuring a Federated SSSD Store</a></li>
-<li><a href="#custom-providers">Custom Providers</a></li>
+<li><a href="#configuring-a-federated-sssd-store">Configuring a federated SSSD store</a></li>
+<li><a href="#custom-providers">Custom providers</a></li>
 </ul>
 </li>
 <li><a href="#managing-users">Managing users</a>
@@ -2520,7 +2520,7 @@ then immediately remove the compromised keypair.</p>
 <p>By default, Keycloak maps the username, email, first name, and last name of the user account, but you can also configure additional <a href="#_ldap_mappers">mappings</a>. Keycloak&#8217;s LDAP/AD provider supports password validation using LDAP/AD protocols and storage, edit, and synchronization modes.</p>
 </div>
 <div class="sect3">
-<h4 id="configuring-federated-ldap-storage"><a class="anchor" href="#configuring-federated-ldap-storage"></a>Configuring Federated LDAP Storage</h4>
+<h4 id="configuring-federated-ldap-storage"><a class="anchor" href="#configuring-federated-ldap-storage"></a>Configuring federated LDAP storage</h4>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
@@ -2538,7 +2538,7 @@ then immediately remove the compromised keypair.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="storage-mode"><a class="anchor" href="#storage-mode"></a>Storage Mode</h4>
+<h4 id="storage-mode"><a class="anchor" href="#storage-mode"></a>Storage mode</h4>
 <div class="paragraph">
 <p>Keycloak imports users from LDAP into the local Keycloak user database. This copy of the user database synchronizes on-demand or through a periodic background task. An exception exists for synchronizing passwords. Keycloak never imports passwords. Password validation always occurs on the LDAP server.</p>
 </div>
@@ -2573,7 +2573,7 @@ then immediately remove the compromised keypair.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-mode"><a class="anchor" href="#edit-mode"></a>Edit Mode</h4>
+<h4 id="edit-mode"><a class="anchor" href="#edit-mode"></a>Edit mode</h4>
 <div class="paragraph">
 <p>Users and admins can modify user metadata, users through the <a href="#_account-service">Account Console</a>, and administrators through the Admin Console. The <code>Edit Mode</code> configuration on the LDAP configuration page defines the user&#8217;s LDAP update privileges.</p>
 </div>
@@ -2675,7 +2675,7 @@ then immediately remove the compromised keypair.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ldap_mappers"><a class="anchor" href="#_ldap_mappers"></a>LDAP Mappers</h4>
+<h4 id="_ldap_mappers"><a class="anchor" href="#_ldap_mappers"></a>LDAP mappers</h4>
 <div class="paragraph">
 <p>LDAP mappers are <code>listeners</code> triggered by the LDAP Provider. They provide another extension point to LDAP integration. LDAP mappers are triggered when:</p>
 </div>
@@ -2754,7 +2754,7 @@ then immediately remove the compromised keypair.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ldap_password_hashing"><a class="anchor" href="#_ldap_password_hashing"></a>Password Hashing</h4>
+<h4 id="_ldap_password_hashing"><a class="anchor" href="#_ldap_password_hashing"></a>Password hashing</h4>
 <div class="paragraph">
 <p>When Keycloak updates a password, Keycloak sends the password in plain-text format. This action is different from updating the password in the built-in Keycloak database, where Keycloak hashes and salts the password before sending it to the database. For LDAP, Keycloak relies on the LDAP server to hash and salt the password.</p>
 </div>
@@ -2872,7 +2872,7 @@ in Keycloak and so on.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sssd"><a class="anchor" href="#_sssd"></a>SSSD and FreeIPA Identity Management Integration</h3>
+<h3 id="_sssd"><a class="anchor" href="#_sssd"></a>SSSD and FreeIPA Identity Management integration</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/user-federation/sssd.adoc" target="_blank">Edit this section</a>
@@ -2906,7 +2906,7 @@ in Keycloak and so on.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="freeipa-idm-server"><a class="anchor" href="#freeipa-idm-server"></a>FreeIPA/IdM Server</h4>
+<h4 id="freeipa-idm-server"><a class="anchor" href="#freeipa-idm-server"></a>FreeIPA/IdM server</h4>
 <div class="paragraph">
 <p>A <a href="https://hub.docker.com/r/freeipa/freeipa-server/">FreeIPA Docker image</a> is available in Docker. To set up a FreeIPA server, see the <a href="https://www.freeipa.org/page/Quick_Start_Guide">FreeIPA documentation</a>.</p>
 </div>
@@ -3051,7 +3051,7 @@ allowed_uids = root, your_username</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enabling-the-sssd-federation-provider"><a class="anchor" href="#enabling-the-sssd-federation-provider"></a>Enabling the SSSD Federation Provider</h4>
+<h4 id="enabling-the-sssd-federation-provider"><a class="anchor" href="#enabling-the-sssd-federation-provider"></a>Enabling the SSSD federation provider</h4>
 <div class="paragraph">
 <p>Keycloak uses DBus-Java to communicate at a low level with D-Bus. D-Bus depends on the <a href="http://www.matthew.ath.cx/projects/java/">Unix Sockets Library</a>.</p>
 </div>
@@ -3095,7 +3095,7 @@ allowed_uids = root, your_username</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuring-a-federated-sssd-store"><a class="anchor" href="#configuring-a-federated-sssd-store"></a>Configuring a Federated SSSD Store</h3>
+<h3 id="configuring-a-federated-sssd-store"><a class="anchor" href="#configuring-a-federated-sssd-store"></a>Configuring a federated SSSD store</h3>
 <div class="paragraph">
 <p>After the installation, configure a federated SSSD store.</p>
 </div>
@@ -3118,7 +3118,7 @@ allowed_uids = root, your_username</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="custom-providers"><a class="anchor" href="#custom-providers"></a>Custom Providers</h3>
+<h3 id="custom-providers"><a class="anchor" href="#custom-providers"></a>Custom providers</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/user-federation/custom.adoc" target="_blank">Edit this section</a>
@@ -16395,7 +16395,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-06-17 15:14:43 UTC
+Last updated 2021-06-17 17:14:37 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
