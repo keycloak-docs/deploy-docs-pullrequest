@@ -758,7 +758,8 @@ span.image img {
 <li><a href="#_upgrading">Upgrading Keycloak Server</a>
 <ul class="sectlevel2">
 <li><a href="#_prep_migration">Preparing for upgrading</a></li>
-<li><a href="#_install_new_version">Upgrading the Keycloak server</a>
+<li><a href="#_install_new_version">Upgrading the Keycloak server</a></li>
+<li><a href="#upgrade-script">Run the server upgrade script</a>
 <ul class="sectlevel3">
 <li><a href="#standalone-mode">Running the Standalone Mode upgrade script</a></li>
 <li><a href="#standalone-ha">Running the Standalone-High Availability Mode upgrade script</a></li>
@@ -1226,6 +1227,28 @@ Files in the bin directory should not be overwritten by the files from previous 
 <p>Run the applicable upgrade script below.</p>
 </li>
 </ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrade-script"><a class="anchor" href="#upgrade-script"></a>Run the server upgrade script</h3>
+<div class="paragraph">
+<p>Based on your previous installation, run the appropriate upgrade script that applies to your situation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#standalone-mode">Standalone mode</a></p>
+</li>
+<li>
+<p><a href="#standalone-ha">Standalone high availability mode</a></p>
+</li>
+<li>
+<p><a href="#domain-mode">Domain mode</a></p>
+</li>
+<li>
+<p><a href="#domain-clustered">Domain-clustered mode</a></p>
+</li>
+</ul>
 </div>
 <div class="sect3">
 <h4 id="standalone-mode"><a class="anchor" href="#standalone-mode"></a>Running the Standalone Mode upgrade script</h4>
@@ -3426,7 +3449,7 @@ credentials tab in the administration console.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-06-18 01:06:32 UTC
+Last updated 2021-06-18 17:29:54 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
