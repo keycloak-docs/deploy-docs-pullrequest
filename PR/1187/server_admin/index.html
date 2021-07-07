@@ -863,6 +863,18 @@ span.image img {
 </li>
 <li><a href="#enabling-recaptcha">Enabling reCAPTCHA</a></li>
 <li><a href="#personal-data-collected-by-keycloak">Personal data collected by Keycloak</a></li>
+<li><a href="#user-profile">User Profile</a>
+<ul class="sectlevel5">
+<li><a href="#enabling-the-declarative-user-profile">Enabling the Declarative User Profile</a></li>
+<li><a href="#managing-the-user-profile">Managing the User Profile</a></li>
+<li><a href="#managing-attributes">Managing Attributes</a></li>
+<li><a href="#managing-permissions">Managing Permissions</a></li>
+<li><a href="#managing-validations">Managing Validations</a></li>
+<li><a href="#managing-annotations">Managing Annotations</a></li>
+<li><a href="#using-the-json-configuration">Using the JSON Configuration</a></li>
+<li><a href="#verifying-user-profile">Verifying User Profile</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#managing-user-sessions">Managing user sessions</a>
@@ -1117,6 +1129,39 @@ span.image img {
 </li>
 <li><a href="#_read_only_user_attributes">Read-only user attributes</a></li>
 <li><a href="#clickjacking">Clickjacking</a></li>
+<li><a href="#ssl-https-requirement">SSL/HTTPS requirement</a></li>
+<li><a href="#csrf-attacks">CSRF attacks</a></li>
+<li><a href="#unspecific-redirect-uris">Unspecific redirect URIs</a></li>
+<li><a href="#compromised-access-and-refresh-tokens">Compromised access and refresh tokens</a></li>
+<li><a href="#compromised-authorization-code">Compromised authorization code</a></li>
+<li><a href="#open-redirectors">Open redirectors</a></li>
+<li><a href="#password-database-compromised">Password database compromised</a></li>
+<li><a href="#limiting-scope">Limiting scope</a></li>
+<li><a href="#limit-token-audience">Limit token audience</a></li>
+<li><a href="#sql-injection-attacks">SQL injection attacks</a></li>
+</ul>
+</li>
+<li><a href="#_account-service">Account Console</a>
+<ul class="sectlevel2">
+<li><a href="#themeable">Themeable</a></li>
+</ul>
+</li>
+<li><a href="#admin-cli">Admin CLI</a>
+<ul class="sectlevel2">
+<li><a href="#installing-the-admin-cli">Installing the Admin CLI</a></li>
+<li><a href="#using-the-admin-cli">Using the Admin CLI</a></li>
+<li><a href="#authenticating">Authenticating</a></li>
+<li><a href="#_working_with_alternative_configurations">Working with alternative configurations</a></li>
+<li><a href="#basic-operations-and-resource-uris">Basic operations and resource URIs</a></li>
+<li><a href="#realm-operations">Realm operations</a></li>
+<li><a href="#role-operations">Role operations</a></li>
+<li><a href="#client-operations">Client operations</a></li>
+<li><a href="#user-operations">User operations</a></li>
+<li><a href="#_group_operations">Group operations</a></li>
+<li><a href="#identity-provider-operations">Identity provider operations</a></li>
+<li><a href="#storage-provider-operations">Storage provider operations</a></li>
+<li><a href="#adding-mappers">Adding mappers</a></li>
+<li><a href="#authentication-operations">Authentication operations</a></li>
 </ul>
 </li>
 </ul>
@@ -4044,6 +4089,460 @@ In Keycloak, websites cannot include a login page dialog in an iframe. This rest
 <p>With authorization services and UMA support enabled, Keycloak can hold information about some objects for which a particular user is the owner.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="user-profile"><a class="anchor" href="#user-profile"></a>User Profile</h3>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/users/user-profile.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/users/user-profile.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>In Keycloak a user is associated with a set of attributes. These attributes are used to better describe and identify users within Keycloak as well as to pass over additional information to applications about them.</p>
+</div>
+<div class="paragraph">
+<p>A user profile defines a well-defined schema for representing user attributes and how they are managed within a realm. By providing a consistent view over user information, it allows administrators to control the different aspects on how attributes are managed as well as to make a lot easier to extend Keycloak to support additional attributes.</p>
+</div>
+<div class="paragraph">
+<p>Among other capabilities, user profile enables administrators to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Define a schema for user attributes</p>
+</li>
+<li>
+<p>Define whether an attribute is required based on contextual information (e.g.: if required only for users, or admins, or both, or depending on the scope being requested.)</p>
+</li>
+<li>
+<p>Define specific permissions for viewing and editing user attributes, making possible to adhere to strong privacy requirements where some attributes can not be seen or be changed by third-parties (including administrators)</p>
+</li>
+<li>
+<p>Dynamically enforce user profile compliance so that user information is always updated and in compliance with the metadata and rules associated with attributes</p>
+</li>
+<li>
+<p>Define validation rules on a per-attribute basis by leveraging the built-in validators or writing custom ones</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The User Profile capabilities are backed by the User Profile SPI. By default, there are two providers you can choose from:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Legacy User Profile Provider (<code>legacy-user-profile</code>)</p>
+</li>
+<li>
+<p>Declarative User Profile Provider (<code>declarative-user-profile</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The legacy provider is enabled by default, and it provides a basic user profile configuration based on the user root attributes such as e-mail, first and last names.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, the declarative provider gives you a lot more flexibility to define the user profile configuration to a realm through the administration console and a well-defined JSON schema.</p>
+</div>
+<div class="paragraph">
+<p>In the next sections, we&#8217;ll be looking at how to use the declarative provider to define your own user profile configuration.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In the future, the <code>declarative-user-profile</code> provider is going to replace the legacy provider and become the default.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect5">
+<h6 id="enabling-the-declarative-user-profile"><a class="anchor" href="#enabling-the-declarative-user-profile"></a>Enabling the Declarative User Profile</h6>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Declarative User Profile is <strong>Technology Preview</strong> and is not fully supported. This feature is disabled by default.</p>
+</div>
+<div class="paragraph">
+<p>To enable start the server with <code>-Dkeycloak.profile=preview</code>
+or <code>-Dkeycloak.profile.feature.declarative_user_profile=enabled</code>
+. For more details see <a href="https://www.keycloak.org/docs/15.0/server_installation/#profiles">Profiles</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In addition to enabling the <code>declarative_user_profile</code> feature, you should use the <a href="https://www.keycloak.org/docs/15.0/server_installation/#_start_cli">CLI</a> to set the <code>declarative-user-profile</code> provider as the default provider as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>$ /subsystem=keycloak-server/spi=userProfile:add(default-provider=declarative-user-profile)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After setting the default provider, make sure to restart the server.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="managing-the-user-profile"><a class="anchor" href="#managing-the-user-profile"></a>Managing the User Profile</h6>
+<div class="paragraph">
+<p>The user profile configuration is managed on a per-realm basis. For that, click on the
+<code>Realm Settings</code> link on the left side menu and then click on the <code>User Profile</code> tab.</p>
+</div>
+<div class="paragraph">
+<div class="title">User Profile Attributes</div>
+<p><span class="image"><img src="./keycloak-images/user-profile-attributes.png" alt="user profile attributes"></span></p>
+</div>
+<div class="paragraph">
+<p>In the <code>Attributes</code> sub-tab you have a list of the attributes currently associated with the user profile. By default, Keycloak uses a configuration based on the user root attributes and very similar to the configuration used by the legacy provider.</p>
+</div>
+<div class="paragraph">
+<p>In the <code>JSON Editor</code> sub-tab you can view and edit the configuration using a well-defined JSON schema.</p>
+</div>
+<div class="paragraph">
+<p>In the next section, you are going to learn how to manage the configuration from the <code>Attributes</code> sub-tab.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="managing-attributes"><a class="anchor" href="#managing-attributes"></a>Managing Attributes</h6>
+<div class="paragraph">
+<p>At the <code>Attributes</code> sub-tab you should be able to create, edit, and delete the attributes associated with the user profile.</p>
+</div>
+<div class="paragraph">
+<p>To define a new attribute and associate it with the user profile, click on the <code>Create</code> button in the top-right corner of the attribute listing.</p>
+</div>
+<div class="paragraph">
+<div class="title">Attribute Configuration</div>
+<p><span class="image"><img src="./keycloak-images/user-profile-create-attribute.png" alt="user profile create attribute"></span></p>
+</div>
+<div class="paragraph">
+<p>When configuring the attribute you should be able to define the following settings:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Name</dt>
+<dd>
+<p>The name of the attribute. This setting is required.</p>
+</dd>
+<dt class="hdlist1">Required</dt>
+<dd>
+<p>Set the attribute as required. If enabled, the attribute must be set by users and administrators. Otherwise, the attribute is optional.</p>
+</dd>
+<dt class="hdlist1">Permission</dt>
+<dd>
+<p>In this section, you can define read and write permissions for users and administrators.</p>
+</dd>
+<dt class="hdlist1">Validation</dt>
+<dd>
+<p>In this section, you can define custom validations when updating the attribute.</p>
+</dd>
+<dt class="hdlist1">Annotation</dt>
+<dd>
+<p>In this section, you can associate annotations to the attribute.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect5">
+<h6 id="managing-permissions"><a class="anchor" href="#managing-permissions"></a>Managing Permissions</h6>
+<div class="paragraph">
+<p>In the <code>Permission</code> section, you can define the level of access users and administrators have to read and write to an attribute.</p>
+</div>
+<div class="paragraph">
+<div class="title">Attribute Permission</div>
+<p><span class="image"><img src="./keycloak-images/user-profile-permission.png" alt="user profile permission"></span></p>
+</div>
+<div class="paragraph">
+<p>For that, you should be able to use the following settings:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Can user view?</dt>
+<dd>
+<p>If enabled, users can view the attribute. Otherwise, users don&#8217;t have access to the attribute.</p>
+</dd>
+<dt class="hdlist1">Can user edit?</dt>
+<dd>
+<p>If enabled, users can view and edit the attribute. Otherwise, users don&#8217;t have access to write to the attribute.</p>
+</dd>
+<dt class="hdlist1">Can admin view?</dt>
+<dd>
+<p>If enabled, administrators can view the attribute. Otherwise, administrators don&#8217;t have access to the attribute.</p>
+</dd>
+<dt class="hdlist1">Can admin edit?</dt>
+<dd>
+<p>If enabled, administrators can view and edit the attribute. Otherwise, administrators don&#8217;t have access to write to the attribute.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect5">
+<h6 id="managing-validations"><a class="anchor" href="#managing-validations"></a>Managing Validations</h6>
+<div class="paragraph">
+<p>In the <code>Validation</code> section, you can choose from different forms of validation to make sure the attribute value conforms to specific rules.</p>
+</div>
+<div class="paragraph">
+<div class="title">Attribute Validation</div>
+<p><span class="image"><img src="./keycloak-images/user-profile-validation.png" alt="user profile validation"></span></p>
+</div>
+<div class="paragraph">
+<p>Keycloak provides different validators out of the box:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">not-empty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check that input value is not empty. It means it is not null for all data types.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">not-blank</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check that a string value is not empty. It means it is not null nor empty.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check the length of a string value based on a minimum and maximum length.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">integer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check if the value is an integer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">double</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check if the value is a number.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uri</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check if the value is a valid URI.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check if the value matches a specific RegEx pattern.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">email</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check if the value has a valid e-mail format.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">local-date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check if the value has a valid format based on the realm and/or user locale.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect5">
+<h6 id="managing-annotations"><a class="anchor" href="#managing-annotations"></a>Managing Annotations</h6>
+<div class="paragraph">
+<p>In order to pass additional information to frontends, attributes can be decorated with
+annotations to dictate how attributes should be rendered. This capability is mainly useful when extending Keycloak themes to render pages dynamically based on the annotations associated with attributes.</p>
+</div>
+<div class="paragraph">
+<div class="title">Attribute Annotation</div>
+<p><span class="image"><img src="./keycloak-images/user-profile-annotation.png" alt="user profile annotation"></span></p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="using-the-json-configuration"><a class="anchor" href="#using-the-json-configuration"></a>Using the JSON Configuration</h6>
+<div class="paragraph">
+<p>The user profile configuration is stored using a well-defined JSON schema. You can choose from editing the user profile configuration directly by clicking on the <code>JSON Editor</code> sub-tab.</p>
+</div>
+<div class="paragraph">
+<div class="title">JSON Configuration</div>
+<p><span class="image"><img src="./keycloak-images/user-profile-json-config.png" alt="user profile json config"></span></p>
+</div>
+<div class="paragraph">
+<p>The JSON schema is defined as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "attributes": [
+    {
+      "name": "myattribute",
+      "required": {
+        "roles": [ "user", "admin" ],
+        "scopes": [ "foo", "bar" ]
+      },
+      "permissions": {
+        "view": [ "admin", "user" ],
+        "edit": [ "admin", "user" ]
+      },
+      "annotations": {
+        "myannotation": "myannotation-value"
+      }
+    }
+  ]
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The schema supports as many attributes as you need.</p>
+</div>
+<div class="paragraph">
+<p>For each attribute you should define a <code>name</code> and, optionally, the <code>required</code>, <code>permission</code>, and the <code>annotations</code> settings.</p>
+</div>
+<div class="sect6">
+<h7 id="required-property"><a class="anchor" href="#required-property"></a>Required Property</h7>
+<div class="paragraph">
+<p>The <code>required</code> setting defines whether an attribute is required. Keycloak allows you to set an attribute as required based on different conditions.</p>
+</div>
+<div class="paragraph">
+<p>When the <code>required</code> setting is defined as an empty object, the attribute is always required.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "attributes": [
+    {
+      "name": "myattribute",
+      "required": {}
+  ]
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On the other hand, you can choose to make the attribute required only for users, or administrators, or both. As well as mark the attribute as required only in case a specific scope is requested when the user is authenticating in Keycloak.</p>
+</div>
+<div class="paragraph">
+<p>To mark an attribute as required for a user and/or administrator, set the <code>roles</code> property as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "attributes": [
+    {
+      "name": "myattribute",
+      "required": {
+        "roles": ["user"]
+      }
+  ]
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>roles</code> property expects an array whose values can be either <code>user</code> or <code>admin</code>, depending on whether the attribute should be required by the user or the administrator, respectively.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, you can choose to make the attribute required when a set of one or more scopes is requested by a client when authenticating a user. For that, you can use the <code>scopes</code> property as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "attributes": [
+    {
+      "name": "myattribute",
+      "required": {
+        "scopes": ["foo"]
+      }
+  ]
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>scopes</code> property is an array whose values can be any string representing a client scope.</p>
+</div>
+</div>
+<div class="sect6">
+<h7 id="permissions-property"><a class="anchor" href="#permissions-property"></a>Permissions Property</h7>
+<div class="paragraph">
+<p>The attribute-level <code>permissions</code> property can be used to define the read and write permissions to an attribute. The permissions are set based on whether these operations can be performed on the attribute by a user, or administrator, or both.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "attributes": [
+    {
+      "name": "myattribute",
+      "permissions": {
+        "view": ["admin"],
+        "edit": ["user"]
+      }
+  ]
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Both <code>view</code> and <code>edit</code> properties expect an array whose values can be either <code>user</code> or <code>admin</code>, depending on whether the attribute is viewable or editable by the user or the administrator, respectively.</p>
+</div>
+<div class="paragraph">
+<p>When the <code>edit</code> permission is granted, the <code>view</code> permission is implicitly granted.</p>
+</div>
+</div>
+<div class="sect6">
+<h7 id="annotations-property"><a class="anchor" href="#annotations-property"></a>Annotations Property</h7>
+<div class="paragraph">
+<p>The attribute-level <code>annotation</code> property can be used to associate additional metadata to attributes. Annotations are mainly useful for passing over additional information about attributes to frontends rendering user attributes based on the user profile configuration. Each annotation is a key/value pair.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "attributes": [
+    {
+      "name": "myattribute",
+      "annotations": {
+        "foo": ["foo-value"],
+        "bar": ["bar-value"]
+      }
+  ]
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="verifying-user-profile"><a class="anchor" href="#verifying-user-profile"></a>Verifying User Profile</h6>
+<div class="paragraph">
+<p>In order to make sure user profiles are in compliance with the configuration, administrators may use the <code>VerifyProfile</code> required action to eventually force users to update their profiles when authenticating to Keycloak.</p>
+</div>
+<div class="paragraph">
+<p>When enabled, the <code>VerifyProfile</code> action is going to perform the following steps when the user is authenticating:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Check whether the user profile is fully compliant with the user profile configuration set to the realm.</p>
+</li>
+<li>
+<p>If not, perform an additional step during the authentication so that the user can update his/her profile.</p>
+</li>
+<li>
+<p>If the user profile is compliant with the configuration, no additional step is performed, and the user continues with the authentication process.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>VerifyProfile</code> action is similar to the <code>UpdateProfile</code>. However, it leverages all the capabilities provided by the user profile configuration to dynamically render the attributes defined in the user profile configuration.</p>
+</div>
+<div class="paragraph">
+<p>By default, the <code>VerifyProfile</code> action is disabled. To enabled it, click on the
+<code>Authentication</code> link on the left side menu and then click on the <code>Required Actions</code> tab. At this tab, click on the <code>Register</code> button and select the <code>VerifyProfile</code> action.</p>
+</div>
+<div class="paragraph">
+<div class="title">Registring the VerifyProfile Required Action</div>
+<p><span class="image"><img src="./keycloak-images/user-profile-register-verify-profile-action.png" alt="user profile register verify profile action"></span></p>
+</div>
 </div>
 </div>
 </div>
@@ -13502,18 +14001,11 @@ as a normal character.</p>
 <p>Clickjacking is a technique of tricking users into clicking on a user interface element different from what users perceive. A malicious site loads the target site in a transparent iFrame, overlaid on top of a set of dummy buttons placed directly under important buttons on the target site. When a user clicks a visible button, they are clicking a button on the hidden page. An attacker can steal a user&#8217;s authentication credentials and access their resources by using this method.</p>
 </div>
 <div class="paragraph">
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-By default, every response by Keycloak sets some specific browser headers that can prevent this from happening.
+<p>By default, every response by Keycloak sets some specific browser headers that can prevent this from happening.
 Specifically, it sets <a href="https://datatracker.ietf.org/doc/html/rfc7034">X-FRAME_OPTIONS</a> and <a href="http://www.w3.org/TR/CSP/">Content-Security-Policy</a>.
 You should take a look at the definition of both of these headers as there is a lot of fine-grain browser access you can control.
 In the admin console you can specify the values these headers will have.  Go to the <code>Realm Settings</code> left menu item and
 click the <code>Security Defenses</code> tab and make sure you are on the <code>Headers</code> sub-tab.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>By default, every response by Keycloak sets the <a href="https://tools.ietf.org/html/rfc7034">X-FRAME_OPTIONS</a> and <a href="http://www.w3.org/TR/CSP/">Content-Security-Policy</a> browser headers to prevent clickjacking. See the documentation for these headers for details on fine-grain browser access.
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 88fa9a3a&#8230;&#8203; KEYCLOAK-15790 Security Threats rewrite (#57)</p>
 </div>
 <div class="paragraph">
 <div class="title">Procedure</div>
@@ -13527,7 +14019,7 @@ click the <code>Security Defenses</code> tab and make sure you are on the <code>
 <li>
 <p>Click the <strong>Security Defenses</strong> tab.</p>
 <div class="paragraph">
-<div class="title">Security defenses</div>
+<div class="title">Security Defenses</div>
 <p><span class="image"><img src="./keycloak-images/security-headers.png" alt="Security Defences"></span></p>
 </div>
 </li>
@@ -13536,9 +14028,9 @@ click the <code>Security Defenses</code> tab and make sure you are on the <code>
 <div class="paragraph">
 <p>By default, Keycloak only sets up a <em>same-origin</em> policy for iframes.</p>
 </div>
-<div class="paragraph">
-<p>=== SSL/HTTPS requirement</p>
 </div>
+<div class="sect2">
+<h3 id="ssl-https-requirement"><a class="anchor" href="#ssl-https-requirement"></a>SSL/HTTPS requirement</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/ssl.adoc" target="_blank">Edit this section</a>
@@ -13554,9 +14046,9 @@ click the <code>Security Defenses</code> tab and make sure you are on the <code>
 <div class="paragraph">
 <p>On the adapter/client-side, you can disable the SSL trust manager. The trust manager ensures the client&#8217;s identity that Keycloak communicates with is valid and ensures the DNS domain name against the server&#8217;s certificate. In production, ensure that each of your client adapters uses a truststore to prevent DNS man-in-the-middle attacks.</p>
 </div>
-<div class="paragraph">
-<p>=== CSRF attacks</p>
 </div>
+<div class="sect2">
+<h3 id="csrf-attacks"><a class="anchor" href="#csrf-attacks"></a>CSRF attacks</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/csrf.adoc" target="_blank">Edit this section</a>
@@ -13575,21 +14067,21 @@ click the <code>Security Defenses</code> tab and make sure you are on the <code>
 <div class="paragraph">
 <p>The user account management section in Keycloak can be vulnerable to CSRF. To prevent CSRF attacks, Keycloak sets a state cookie and embeds the value of this cookie in hidden form fields or query parameters within action links. Keycloak checks the query/form parameter against the state cookie to verify that the user makes the call.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="unspecific-redirect-uris_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/redirect.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/redirect.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Unspecific redirect URIs</p>
 </div>
+<div class="sect2">
+<h3 id="unspecific-redirect-uris"><a class="anchor" href="#unspecific-redirect-uris"></a>Unspecific redirect URIs</h3>
 <div class="paragraph">
 <p>Make your registered redirect URIs as specific as feasible. Registering vague redirect URIs for <a href="#con-oidc-auth-flows_server_administration_guide">Authorization Code Flows</a> can allow malicious clients to impersonate another client with broader access. Impersonation can happen if two clients live under the same domain, for example.</p>
 </div>
-<div class="paragraph">
-<p>=== Compromised access and refresh tokens</p>
 </div>
+<div class="sect2">
+<h3 id="compromised-access-and-refresh-tokens"><a class="anchor" href="#compromised-access-and-refresh-tokens"></a>Compromised access and refresh tokens</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/compromised-tokens.adoc" target="_blank">Edit this section</a>
@@ -13615,9 +14107,9 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>You can disable specific applications, clients, or users if they are compromised.</p>
 </div>
-<div class="paragraph">
-<p>=== Compromised authorization code</p>
 </div>
+<div class="sect2">
+<h3 id="compromised-authorization-code"><a class="anchor" href="#compromised-authorization-code"></a>Compromised authorization code</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/compromised-codes.adoc" target="_blank">Edit this section</a>
@@ -13633,9 +14125,9 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>You can also defend against leaked authorization codes by applying <a href="#_proof-key-for-code-exchange">Proof Key for Code Exchange (PKCE)</a> to clients.</p>
 </div>
-<div class="paragraph">
-<p>=== Open redirectors</p>
 </div>
+<div class="sect2">
+<h3 id="open-redirectors"><a class="anchor" href="#open-redirectors"></a>Open redirectors</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/open-redirect.adoc" target="_blank">Edit this section</a>
@@ -13648,9 +14140,9 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>Keycloak requires that all registered applications and clients register at least one redirection URI pattern. When a client requests that Keycloak performs a redirect, Keycloak checks the redirect URI against the list of valid registered URI patterns. Clients and applications must register as specific a URI pattern as possible to mitigate open redirector attacks.</p>
 </div>
-<div class="paragraph">
-<p>=== Password database compromised</p>
 </div>
+<div class="sect2">
+<h3 id="password-database-compromised"><a class="anchor" href="#password-database-compromised"></a>Password database compromised</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/password-db-compromised.adoc" target="_blank">Edit this section</a>
@@ -13660,9 +14152,9 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>Keycloak does not store passwords in raw text but as hashed text, using the PBKDF2 hashing algorithm. Keycloak performs 20,000 hashing iterations, the number of iterations recommended by the security community. This number of hashing iterations can adversely affect performance as PBKDF2 hashing uses a significant amount of CPU resources.</p>
 </div>
-<div class="paragraph">
-<p>=== Limiting scope</p>
 </div>
+<div class="sect2">
+<h3 id="limiting-scope"><a class="anchor" href="#limiting-scope"></a>Limiting scope</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/scope.adoc" target="_blank">Edit this section</a>
@@ -13675,9 +14167,9 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>Limit the roles of an access token by using the <a href="#_role_scope_mappings">Scope menu</a> for each client. Alternatively, you can set role scope mappings at the Client Scope level and assign Client Scopes to your client by using the <a href="#_client_scopes_linking">Client Scope menu</a>.</p>
 </div>
-<div class="paragraph">
-<p>=== Limit token audience</p>
 </div>
+<div class="sect2">
+<h3 id="limit-token-audience"><a class="anchor" href="#limit-token-audience"></a>Limit token audience</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/audience-limit.adoc" target="_blank">Edit this section</a>
@@ -13687,9 +14179,9 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>In environments with low levels of trust among services, limit the audiences on the token. See the <a href="https://tools.ietf.org/html/rfc6819#section-5.1.5.5">OAuth2 Threat Model</a> and the <a href="#con-audience_server_administration_guide">Audience Support</a> section for more information.</p>
 </div>
-<div class="paragraph">
-<p>=== SQL injection attacks</p>
 </div>
+<div class="sect2">
+<h3 id="sql-injection-attacks"><a class="anchor" href="#sql-injection-attacks"></a>SQL injection attacks</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/sql.adoc" target="_blank">Edit this section</a>
@@ -13699,9 +14191,12 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>Currently, Keycloak has no known SQL injection vulnerabilities.</p>
 </div>
-<div class="paragraph">
-<p>== Account Console</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_account-service"><a class="anchor" href="#_account-service"></a>Account Console</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/account.adoc" target="_blank">Edit this section</a>
@@ -13758,16 +14253,18 @@ accounts together).  This will show the list of external identity providers you 
 <div class="title">Applications</div>
 <p><span class="image"><img src="./keycloak-images/account-service-apps.png" alt="account service apps"></span></p>
 </div>
-<div class="paragraph">
-<p>=== Themeable</p>
-</div>
+<div class="sect2">
+<h3 id="themeable"><a class="anchor" href="#themeable"></a>Themeable</h3>
 <div class="paragraph">
 <p>Like all UIs in Keycloak, the Account Console is completely themeable and internationalizable.
 See the <a href="https://www.keycloak.org/docs/15.0/server_development/">Server Developer Guide</a> for more details.</p>
 </div>
-<div class="paragraph">
-<p>== Admin CLI</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="admin-cli"><a class="anchor" href="#admin-cli"></a>Admin CLI</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/admin-cli.adoc" target="_blank">Edit this section</a>
@@ -13777,9 +14274,8 @@ See the <a href="https://www.keycloak.org/docs/15.0/server_development/">Server 
 <div class="paragraph">
 <p>With Keycloak, you can perform administration tasks from the command-line interface (CLI) by using the Admin CLI command-line tool.</p>
 </div>
-<div class="paragraph">
-<p>=== Installing the Admin CLI</p>
-</div>
+<div class="sect2">
+<h3 id="installing-the-admin-cli"><a class="anchor" href="#installing-the-admin-cli"></a>Installing the Admin CLI</h3>
 <div class="paragraph">
 <p>Keycloak packages the Admin CLI server distribution with the execution scripts in the <code>bin</code> directory.</p>
 </div>
@@ -13832,9 +14328,9 @@ c:\&gt; kcadm</pre>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>=== Using the Admin CLI</p>
 </div>
+<div class="sect2">
+<h3 id="using-the-admin-cli"><a class="anchor" href="#using-the-admin-cli"></a>Using the Admin CLI</h3>
 <div class="paragraph">
 <p>The Admin CLI makes HTTP requests to Admin REST endpoints. Access to the Admin REST endpoints requires authentication.</p>
 </div>
@@ -13915,9 +14411,9 @@ c:\&gt; kcadm get clients/%CID%/installation/providers/keycloak-oidc-keycloak-js
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>=== Authenticating</p>
 </div>
+<div class="sect2">
+<h3 id="authenticating"><a class="anchor" href="#authenticating"></a>Authenticating</h3>
 <div class="paragraph">
 <p>When you log in with the Admin CLI, you specify:</p>
 </div>
@@ -13971,9 +14467,9 @@ c:\&gt; kcadm get clients/%CID%/installation/providers/keycloak-oidc-keycloak-js
 <div class="paragraph">
 <p>Run the <code>kcadm.sh config credentials --help</code> command for more information about starting an authenticated session.</p>
 </div>
-<div id="_working_with_alternative_configurations" class="paragraph">
-<p>=== Working with alternative configurations</p>
 </div>
+<div class="sect2">
+<h3 id="_working_with_alternative_configurations"><a class="anchor" href="#_working_with_alternative_configurations"></a>Working with alternative configurations</h3>
 <div class="paragraph">
 <p>By default, the Admin CLI maintains a configuration file named <code>kcadm.config</code>. Keycloak places this file in the user&#8217;s home directory.
 In Linux-based systems, the full pathname is <code>$HOME/.keycloak/kcadm.config</code>.
@@ -14002,9 +14498,9 @@ In Windows, the full pathname is <code>%HOMEPATH%\.keycloak\kcadm.config</code>.
 <div class="paragraph">
 <p>It is possible to avoid storing secrets inside a configuration file, but doing so is inconvenient and increases the number of token requests. Use the <code>--no-config</code> option with all commands and specify the authentication information the <code>config credentials</code> command requires with each invocation of <code>kcadm</code>.</p>
 </div>
-<div class="paragraph">
-<p>=== Basic operations and resource URIs</p>
 </div>
+<div class="sect2">
+<h3 id="basic-operations-and-resource-uris"><a class="anchor" href="#basic-operations-and-resource-uris"></a>Basic operations and resource URIs</h3>
 <div class="paragraph">
 <p>The Admin CLI can generically perform CRUD operations against Admin REST API endpoints with additional commands that simplify particular tasks.</p>
 </div>
@@ -14101,9 +14597,9 @@ $ kcadm.sh update realms/demorealm -f demorealm.json</pre>
 <div class="paragraph">
 <p>By default, the <code>update</code> command performs a <code>get</code> and then merges the new attribute values with existing values. In some cases, the endpoint may support the <code>put</code> command but not the <code>get</code> command. You can use the <code>-n</code> option to perform a no-merge update, which performs a <code>put</code> command without first running a <code>get</code> command.</p>
 </div>
-<div class="paragraph">
-<p>=== Realm operations</p>
 </div>
+<div class="sect2">
+<h3 id="realm-operations"><a class="anchor" href="#realm-operations"></a>Realm operations</h3>
 <h4 id="creating-a-new-realm" class="discrete">Creating a new realm</h4>
 <div class="paragraph">
 <p>Use the <code>create</code> command on the <code>realms</code> endpoint to create a new enabled realm. Set the attributes to <code>realm</code> and <code>enabled</code>.</p>
@@ -14602,9 +15098,9 @@ $ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm</pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>=== Role operations</p>
 </div>
+<div class="sect2">
+<h3 id="role-operations"><a class="anchor" href="#role-operations"></a>Role operations</h3>
 <h4 id="creating-a-realm-role-2" class="discrete">Creating a realm role</h4>
 <div class="paragraph">
 <p>Use the <code>roles</code> endpoint to create a realm role.</p>
@@ -14954,9 +15450,9 @@ $ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm</pre>
 <pre class="nowrap">$ kcadm.sh remove-roles -r demorealm --gname Group --cclientid realm-management --rolename create-client --rolename view-users</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Client operations</p>
 </div>
+<div class="sect2">
+<h3 id="client-operations"><a class="anchor" href="#client-operations"></a>Client operations</h3>
 <h4 id="creating-a-client" class="discrete">Creating a client</h4>
 <div class="olist arabic">
 <ol class="arabic">
@@ -15130,9 +15626,9 @@ $ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm</pre>
 <div class="paragraph">
 <p>A client&#8217;s service account is a user account with username <code>service-account-CLIENT_ID</code>. You can perform the same user operations on this account as a regular account.</p>
 </div>
-<div class="paragraph">
-<p>=== User operations</p>
 </div>
+<div class="sect2">
+<h3 id="user-operations"><a class="anchor" href="#user-operations"></a>User operations</h3>
 <h4 id="creating-a-user-2" class="discrete">Creating a user</h4>
 <div class="paragraph">
 <p>Run the <code>create</code> command on the <code>users</code> endpoint to create a new user.</p>
@@ -15462,9 +15958,9 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 <pre class="nowrap">$ kcadm.sh create users/6da5ab89-3397-4205-afaa-e201ff638f9e/logout -r demorealm -s realm=demorealm -s user=6da5ab89-3397-4205-afaa-e201ff638f9e</pre>
 </div>
 </div>
-<div id="_group_operations" class="paragraph">
-<p>=== Group operations</p>
 </div>
+<div class="sect2">
+<h3 id="_group_operations"><a class="anchor" href="#_group_operations"></a>Group operations</h3>
 <h4 id="creating-a-group" class="discrete">Creating a group</h4>
 <div class="paragraph">
 <p>Use the <code>create</code> command on the <code>groups</code> endpoint to create a new group.</p>
@@ -15680,9 +16176,9 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>=== Identity provider operations</p>
 </div>
+<div class="sect2">
+<h3 id="identity-provider-operations"><a class="anchor" href="#identity-provider-operations"></a>Identity provider operations</h3>
 <h4 id="listing-available-identity-providers" class="discrete">Listing available identity providers</h4>
 <div class="paragraph">
 <p>Use the <code>serverinfo</code> endpoint to list available identity providers.</p>
@@ -15920,9 +16416,9 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>=== Storage provider operations</p>
 </div>
+<div class="sect2">
+<h3 id="storage-provider-operations"><a class="anchor" href="#storage-provider-operations"></a>Storage provider operations</h3>
 <h4 id="configuring-a-kerberos-storage-provider" class="discrete">Configuring a Kerberos storage provider</h4>
 <div class="olist arabic">
 <ol class="arabic">
@@ -16074,9 +16570,9 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>=== Adding mappers</p>
 </div>
+<div class="sect2">
+<h3 id="adding-mappers"><a class="anchor" href="#adding-mappers"></a>Adding mappers</h3>
 <h4 id="adding-a-hard-coded-role-ldap-mapper" class="discrete">Adding a hard-coded role LDAP mapper</h4>
 <div class="olist arabic">
 <ol class="arabic">
@@ -16202,9 +16698,9 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>=== Authentication operations</p>
 </div>
+<div class="sect2">
+<h3 id="authentication-operations"><a class="anchor" href="#authentication-operations"></a>Authentication operations</h3>
 <h4 id="setting-a-password-policy" class="discrete">Setting a password policy</h4>
 <div class="olist arabic">
 <ol class="arabic">
@@ -16428,11 +16924,9 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 </div>
 </div>
-</div>
-</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-07 21:26:20 UTC
+Last updated 2021-07-07 21:39:05 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
