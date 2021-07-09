@@ -1008,6 +1008,164 @@ span.image img {
 <li><a href="#_detect_existing_user_first_loging_flow">Detect existing user first login flow</a></li>
 </ul>
 </li>
+<li><a href="#retrieving-external-idp-tokens">Retrieving external IDP tokens</a></li>
+<li><a href="#identity-broker-logout">Identity broker logout</a></li>
+</ul>
+</li>
+<li><a href="#sso-protocols">SSO protocols</a>
+<ul class="sectlevel2">
+<li><a href="#openid-connect">OpenID Connect</a>
+<ul class="sectlevel3">
+<li><a href="#oidc-auth-flows">OIDC auth flows</a></li>
+<li><a href="#_oidc-logout">OIDC Logout</a></li>
+<li><a href="#keycloak-server-oidc-uri-endpoints">Keycloak server OIDC URI endpoints</a></li>
+</ul>
+</li>
+<li><a href="#_saml">SAML</a>
+<ul class="sectlevel3">
+<li><a href="#saml-bindings">SAML Bindings</a></li>
+<li><a href="#keycloak-server-saml-uri-endpoints">Keycloak Server SAML URI Endpoints</a></li>
+</ul>
+</li>
+<li><a href="#openid-connect-compared-to-saml">OpenID Connect compared to SAML</a></li>
+<li><a href="#_docker">Docker registry v2 authentication</a>
+<ul class="sectlevel3">
+<li><a href="#docker-authentication-flow">Docker authentication flow</a></li>
+<li><a href="#keycloak-docker-registry-v2-authentication-server-uri-endpoints">Keycloak Docker Registry v2 Authentication Server URI Endpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_admin_permissions">Controlling access to the Admin Console</a>
+<ul class="sectlevel2">
+<li><a href="#master-realm-access-control">Master realm access control</a>
+<ul class="sectlevel3">
+<li><a href="#global-roles">Global roles</a></li>
+<li><a href="#realm-specific-roles">Realm specific roles</a></li>
+</ul>
+</li>
+<li><a href="#_per_realm_admin_permissions">Dedicated realm admin consoles</a></li>
+<li><a href="#_fine_grain_permissions">Fine grain admin permissions</a>
+<ul class="sectlevel3">
+<li><a href="#managing-one-specific-client">Managing one specific client</a></li>
+<li><a href="#restrict-user-role-mapping">Restrict user role mapping</a></li>
+<li><a href="#full-list-of-permissions">Full list of permissions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#managing-openid-connect-and-saml-clients">Managing OpenID Connect and SAML Clients</a>
+<ul class="sectlevel2">
+<li><a href="#oidc-clients">OIDC clients</a>
+<ul class="sectlevel3">
+<li><a href="#creating-an-openid-connect-client">Creating an OpenID Connect Client</a></li>
+<li><a href="#basic-settings">Basic settings</a></li>
+<li><a href="#advanced-settings">Advanced settings</a></li>
+<li><a href="#_client-credentials">Confidential client credentials</a></li>
+<li><a href="#_service_accounts">Using a service account</a></li>
+<li><a href="#audience-support">Audience Support</a></li>
+</ul>
+</li>
+<li><a href="#creating-a-saml-client">Creating a SAML client</a>
+<ul class="sectlevel3">
+<li><a href="#idp-initiated-login">IDP Initiated Login</a></li>
+<li><a href="#using-an-entity-descriptor-to-create-a-client">Using an entity descriptor to create a client</a></li>
+</ul>
+</li>
+<li><a href="#client-links">Client links</a></li>
+<li><a href="#_protocol-mappers">OIDC token and SAML assertion mappings</a>
+<ul class="sectlevel3">
+<li><a href="#priority-order">Priority order</a></li>
+<li><a href="#_protocol-mappers_oidc-user-session-note-mappers">OIDC user session note mappers</a></li>
+<li><a href="#script-mapper">Script mapper</a></li>
+</ul>
+</li>
+<li><a href="#_client_installation">Generating client adapter config</a></li>
+<li><a href="#_client_scopes">Client scopes</a>
+<ul class="sectlevel3">
+<li><a href="#protocol">Protocol</a></li>
+<li><a href="#consent-related-settings">Consent related settings</a></li>
+<li><a href="#_client_scopes_linking">Link client scope with the client</a></li>
+<li><a href="#_client_scopes_evaluate">Evaluating Client Scopes</a></li>
+<li><a href="#client-scopes-permissions">Client scopes permissions</a></li>
+<li><a href="#realm-default-client-scopes">Realm default client scopes</a></li>
+<li><a href="#scopes-explained">Scopes explained</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_vault-administration">Using vault to obtain secrets</a>
+<ul class="sectlevel2">
+<li><a href="#_providers">Kubernetes / OpenShift files plain-text vault provider</a></li>
+<li><a href="#elytron-credential-store-vault-provider">Elytron credential store vault provider</a></li>
+<li><a href="#key-resolvers">Key resolvers</a></li>
+</ul>
+</li>
+<li><a href="#configuring-auditing-to-track-events">Configuring auditing to track events</a>
+<ul class="sectlevel2">
+<li><a href="#login-events">Login events</a>
+<ul class="sectlevel3">
+<li><a href="#event-types">Event types</a></li>
+<li><a href="#event-listener">Event listener</a></li>
+</ul>
+</li>
+<li><a href="#admin-events">Admin events</a></li>
+</ul>
+</li>
+<li><a href="#importing-and-exporting-the-database">Importing and exporting the database</a>
+<ul class="sectlevel2">
+<li><a href="#admin-console-export-import">Admin console export/import</a></li>
+</ul>
+</li>
+<li><a href="#mitigating-security-threats">Mitigating security threats</a>
+<ul class="sectlevel2">
+<li><a href="#host">Host</a></li>
+<li><a href="#admin-endpoints-and-admin-console">Admin endpoints and Admin Console</a>
+<ul class="sectlevel3">
+<li><a href="#ip-restriction">IP restriction</a></li>
+<li><a href="#port-restriction">Port restriction</a></li>
+</ul>
+</li>
+<li><a href="#brute-force-attacks">Brute force attacks</a>
+<ul class="sectlevel3">
+<li><a href="#password-policies">Password policies</a></li>
+</ul>
+</li>
+<li><a href="#_read_only_user_attributes">Read-only user attributes</a></li>
+<li><a href="#clickjacking">Clickjacking</a></li>
+<li><a href="#ssl-https-requirement">SSL/HTTPS requirement</a></li>
+<li><a href="#csrf-attacks">CSRF attacks</a></li>
+<li><a href="#unspecific-redirect-uris">Unspecific redirect URIs</a></li>
+<li><a href="#compromised-access-and-refresh-tokens">Compromised access and refresh tokens</a></li>
+<li><a href="#compromised-authorization-code">Compromised authorization code</a></li>
+<li><a href="#open-redirectors">Open redirectors</a></li>
+<li><a href="#password-database-compromised">Password database compromised</a></li>
+<li><a href="#limiting-scope">Limiting scope</a></li>
+<li><a href="#limit-token-audience">Limit token audience</a></li>
+<li><a href="#sql-injection-attacks">SQL injection attacks</a></li>
+</ul>
+</li>
+<li><a href="#_account-service">Account Console</a>
+<ul class="sectlevel2">
+<li><a href="#themeable">Themeable</a></li>
+</ul>
+</li>
+<li><a href="#admin-cli">Admin CLI</a>
+<ul class="sectlevel2">
+<li><a href="#installing-the-admin-cli">Installing the Admin CLI</a></li>
+<li><a href="#using-the-admin-cli">Using the Admin CLI</a></li>
+<li><a href="#authenticating">Authenticating</a></li>
+<li><a href="#_working_with_alternative_configurations">Working with alternative configurations</a></li>
+<li><a href="#basic-operations-and-resource-uris">Basic operations and resource URIs</a></li>
+<li><a href="#realm-operations">Realm operations</a></li>
+<li><a href="#role-operations">Role operations</a></li>
+<li><a href="#client-operations">Client operations</a></li>
+<li><a href="#user-operations">User operations</a></li>
+<li><a href="#_group_operations">Group operations</a></li>
+<li><a href="#identity-provider-operations">Identity provider operations</a></li>
+<li><a href="#storage-provider-operations">Storage provider operations</a></li>
+<li><a href="#adding-mappers">Adding mappers</a></li>
+<li><a href="#authentication-operations">Authentication operations</a></li>
 </ul>
 </li>
 </ul>
@@ -9467,14 +9625,13 @@ This flow can be used if you want to delegate the identity to other identity pro
 </tr>
 </table>
 </div>
-<div class="exampleblock">
-<div class="content">
 <div class="paragraph">
 <p>With this configuration, Keycloak is unable to determine which internal account corresponds to the external identity. The <strong>Verify Existing Account By Re-authentication</strong> authenticator asks the provider for the username and password.</p>
 </div>
-<div class="paragraph">
-<p>=== Retrieving external IDP tokens</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="retrieving-external-idp-tokens"><a class="anchor" href="#retrieving-external-idp-tokens"></a>Retrieving external IDP tokens</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/tokens.adoc" target="_blank">Edit this section</a>
@@ -9500,9 +9657,9 @@ Authorization: Bearer &lt;KEYCLOAK ACCESS TOKEN&gt;</code></pre>
 <div class="paragraph">
 <p>These external tokens can be re-established by logging in again through the provider or using the client-initiated account linking API.</p>
 </div>
-<div class="paragraph">
-<p>=== Identity broker logout</p>
 </div>
+<div class="sect2">
+<h3 id="identity-broker-logout"><a class="anchor" href="#identity-broker-logout"></a>Identity broker logout</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/identity-broker/logout.adoc" target="_blank">Edit this section</a>
@@ -9512,9 +9669,12 @@ Authorization: Bearer &lt;KEYCLOAK ACCESS TOKEN&gt;</code></pre>
 <div class="paragraph">
 <p>When logging out, Keycloak sends a request to the external identity provider that is used to log in initially and logs the user out of this identity provider. You can skip this behavior and avoid logging out of the external identity provider. See <a href="https://www.keycloak.org/docs/15.0/securing_apps/#_java_adapter_logout">adapter logout documentation</a> for more information.</p>
 </div>
-<div class="paragraph">
-<p>== SSO protocols</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sso-protocols"><a class="anchor" href="#sso-protocols"></a>SSO protocols</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols.adoc" target="_blank">Edit this section</a>
@@ -9524,15 +9684,14 @@ Authorization: Bearer &lt;KEYCLOAK ACCESS TOKEN&gt;</code></pre>
 <div class="paragraph _abstract">
 <p>This section discusses authentication protocols, the Keycloak authentication server and how applications, secured by the Keycloak authentication server, interact with these protocols.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-oidc_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-oidc.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-oidc.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>=== OpenID Connect</p>
-</div>
+<div class="sect2">
+<h3 id="openid-connect"><a class="anchor" href="#openid-connect"></a>OpenID Connect</h3>
 <div class="paragraph _abstract">
 <p><a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) is an authentication protocol that is an extension of <a href="https://tools.ietf.org/html/rfc6749">OAuth 2.0</a>.</p>
 </div>
@@ -9571,21 +9730,19 @@ The <em>identity token</em> contains user information including user name, email
 </li>
 </ul>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-oidc-auth-flows_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-oidc-auth-flows.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-oidc-auth-flows.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>==== OIDC auth flows</p>
-</div>
+<div class="sect3">
+<h4 id="oidc-auth-flows"><a class="anchor" href="#oidc-auth-flows"></a>OIDC auth flows</h4>
 <div class="paragraph _abstract">
 <p>OIDC has several methods, or flows, that clients or applications can use to authenticate users and receive <em>identity</em> and <em>access</em> tokens.  The method depends on the type of application or client requesting access.</p>
 </div>
-<div class="paragraph">
-<p>===== Authorization code flow</p>
-</div>
+<div class="sect4">
+<h5 id="_oidc-auth-flows-authorization"><a class="anchor" href="#_oidc-auth-flows-authorization"></a>Authorization code flow</h5>
 <div class="paragraph">
 <p>The Authorization Code Flow is a browser-based protocol and suits authenticating and authorizing browser-based applications. It uses browser redirects to obtain <em>identity</em> and <em>access</em> tokens.</p>
 </div>
@@ -9633,9 +9790,9 @@ to exchange the code for an <em>identity</em> and <em>access</em> and <em>refres
 <div class="paragraph">
 <p>Keycloak also supports the <a href="https://tools.ietf.org/html/rfc7636">Proof Key for Code Exchange</a> specification.</p>
 </div>
-<div class="paragraph">
-<p>===== Implicit Flow</p>
 </div>
+<div class="sect4">
+<h5 id="_oidc-auth-flows-implicit"><a class="anchor" href="#_oidc-auth-flows-implicit"></a>Implicit Flow</h5>
 <div class="paragraph">
 <p>The Implicit Flow is a browser-based protocol. It is similar to the Authorization Code Flow but with fewer requests and no refresh tokens.</p>
 </div>
@@ -9682,9 +9839,9 @@ redirects to the application using the callback URL and additionally adds the <e
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>===== Resource owner password credentials grant (Direct Access Grants)</p>
 </div>
+<div class="sect4">
+<h5 id="_oidc-auth-flows-direct"><a class="anchor" href="#_oidc-auth-flows-direct"></a>Resource owner password credentials grant (Direct Access Grants)</h5>
 <div class="paragraph">
 <p><em>Direct Access Grants</em> are used by REST clients to obtain tokens on behalf of users.  It is a HTTP POST request that contains:</p>
 </div>
@@ -9704,18 +9861,18 @@ redirects to the application using the callback URL and additionally adds the <e
 <div class="paragraph">
 <p>The HTTP response contains the <em>identity</em>, <em>access</em>, and <em>refresh</em> tokens.</p>
 </div>
-<div id="_client_credentials_grant" class="paragraph">
-<p>===== Client credentials grant</p>
 </div>
+<div class="sect4">
+<h5 id="_client_credentials_grant"><a class="anchor" href="#_client_credentials_grant"></a>Client credentials grant</h5>
 <div class="paragraph">
 <p>The <em>Client Credentials Grant</em> creates a token based on the metadata and permissions of a service account associated with the client instead of obtaining a token that works on behalf of an external user. <em>Client Credentials Grants</em> are used by REST clients.</p>
 </div>
 <div class="paragraph">
 <p>See the <a href="#_service_accounts">Service Accounts</a> chapter for more information.</p>
 </div>
-<div class="paragraph">
-<p>===== Device authorization grant</p>
 </div>
+<div class="sect4">
+<h5 id="device-authorization-grant"><a class="anchor" href="#device-authorization-grant"></a>Device authorization grant</h5>
 <div class="paragraph">
 <p>This is used by clients running on internet-connected devices that have limited input capabilities or lack a suitable browser. Here&#8217;s a brief summary of the protocol:</p>
 </div>
@@ -9732,9 +9889,9 @@ redirects to the application using the callback URL and additionally adds the <e
 </li>
 </ol>
 </div>
-<div id="_client_initiated_backchannel_authentication_grant" class="paragraph">
-<p>===== Client initiated backchannel authentication grant</p>
 </div>
+<div class="sect4">
+<h5 id="_client_initiated_backchannel_authentication_grant"><a class="anchor" href="#_client_initiated_backchannel_authentication_grant"></a>Client initiated backchannel authentication grant</h5>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -9773,9 +9930,8 @@ or <code>-Dkeycloak.profile.feature.ciba=enabled</code>
 <div class="paragraph">
 <p>Also please refer to other places of Keycloak documentation like <a href="https://www.keycloak.org/docs/15.0/securing_apps/#_backchannel_authentication_endpoint">Backchannel Authentication Endpoint section</a> of Securing Applications and Services Guide and <a href="https://www.keycloak.org/docs/15.0/securing_apps/#_client_initiated_backchannel_authentication_grant">Client Initiated Backchannel Authentication Grant section</a> of Securing Applications and Services Guide.</p>
 </div>
-<div class="paragraph">
-<p>====== CIBA Policy</p>
-</div>
+<div class="sect5">
+<h6 id="ciba-policy"><a class="anchor" href="#ciba-policy"></a>CIBA Policy</h6>
 <div class="paragraph">
 <p>An administrator carries out the following operations on the <code>Admin Console</code> :</p>
 </div>
@@ -9826,9 +9982,9 @@ or <code>-Dkeycloak.profile.feature.ciba=enabled</code>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>====== Provider Setting</p>
 </div>
+<div class="sect5">
+<h6 id="provider-setting"><a class="anchor" href="#provider-setting"></a>Provider Setting</h6>
 <div class="paragraph">
 <p>The CIBA grant uses the following two providers.</p>
 </div>
@@ -9878,9 +10034,9 @@ or <code>-Dkeycloak.profile.feature.ciba=enabled</code>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>====== Authentication Channel Provider</p>
 </div>
+<div class="sect5">
+<h6 id="authentication-channel-provider"><a class="anchor" href="#authentication-channel-provider"></a>Authentication Channel Provider</h6>
 <div class="paragraph">
 <p>CIBA standard document does not specify how to authenticate the user by AD. Therefore, it might be implemented at the discretion of products. Keycloak delegates this authentication to an external authentication entity. To communicate with the authentication entity, Keycloak provides Authentication Channel Provider.</p>
 </div>
@@ -10201,9 +10357,9 @@ It must be one of the following status.<br>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>====== User Resolver Provider</p>
 </div>
+<div class="sect5">
+<h6 id="user-resolver-provider"><a class="anchor" href="#user-resolver-provider"></a>User Resolver Provider</h6>
 <div class="paragraph">
 <p>Even if the same user, its representation may differ in each CD, Keycloak and the authentication entity.</p>
 </div>
@@ -10223,9 +10379,11 @@ It must be one of the following status.<br>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>==== OIDC Logout</p>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_oidc-logout"><a class="anchor" href="#_oidc-logout"></a>OIDC Logout</h4>
 <div class="paragraph">
 <p>OIDC has three different specifications relevant to logout mechanisms, all of these are currently in draft status:</p>
 </div>
@@ -10245,38 +10403,38 @@ It must be one of the following status.<br>
 <div class="paragraph">
 <p>Again since all of this is described in the OIDC specification we will only give a brief overview here.</p>
 </div>
-<div class="paragraph">
-<p>===== Session Management</p>
-</div>
+<div class="sect4">
+<h5 id="session-management"><a class="anchor" href="#session-management"></a>Session Management</h5>
 <div class="paragraph">
 <p>This is a browser-based logout. The application obtains session status information from Keycloak at a regular basis.
 When the session is terminated at Keycloak the application will notice and trigger it&#8217;s own logout.</p>
 </div>
-<div class="paragraph">
-<p>===== Frontchannel Logout</p>
 </div>
+<div class="sect4">
+<h5 id="frontchannel-logout"><a class="anchor" href="#frontchannel-logout"></a>Frontchannel Logout</h5>
 <div class="paragraph">
 <p>This is also a browser-based logout. In contrast to the Session Managment based logout approach Keycloak will send logout
 requests to the clients. Applications or clients need to have a frontchannel logout URL registered at Keycloak.
 After triggering a logout at Keycloak, it will send logout requests to these registered URLs that will terminate the client sessions.</p>
 </div>
-<div class="paragraph">
-<p>===== Backchannel Logout</p>
 </div>
+<div class="sect4">
+<h5 id="backchannel-logout"><a class="anchor" href="#backchannel-logout"></a>Backchannel Logout</h5>
 <div class="paragraph">
 <p>This is a non browser-based logout that uses direct backchannel communication between Keycloak and clients.
 Keycloak sends a HTTP POST request containing a logout token to all clients logged into Keycloak. These
 requests are sent to a registered backchannel logout URLs at Keycloak and are supposed to trigger a logout at client side.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-server-oidc-uri-endpoints_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-server-oidc-uri-endpoints.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-server-oidc-uri-endpoints.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>====  Keycloak server OIDC URI endpoints</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="keycloak-server-oidc-uri-endpoints"><a class="anchor" href="#keycloak-server-oidc-uri-endpoints"></a>Keycloak server OIDC URI endpoints</h4>
 <div class="paragraph _abstract">
 <p>The following is a list of OIDC endpoints that Keycloak publishes. These endpoints can be used when a non-Keycloak client adapter uses OIDC to communicate with the authentication server. They are all relative URLs. The root of the URL consists of the HTTP(S) protocol, hostname, and the path, which is usually prefixed with <em>/auth</em>:  For example</p>
 </div>
@@ -10320,15 +10478,16 @@ requests are sent to a registered backchannel logout URLs at Keycloak and are su
 <div class="paragraph">
 <p>In all of these, replace {realm-name} with the name of the realm.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-saml_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-saml.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-saml.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>=== SAML</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_saml"><a class="anchor" href="#_saml"></a>SAML</h3>
 <div class="paragraph _abstract">
 <p><a href="http://saml.xml.org/saml-specifications">SAML 2.0</a> is a similar specification to OIDC but more mature.  It is descended from SOAP and web service messaging specifications so is generally more verbose than OIDC.  SAML 2.0 is an authentication protocol that exchanges XML documents between authentication servers and applications.  XML signatures and encryption are used to verify requests and responses.</p>
 </div>
@@ -10341,21 +10500,19 @@ requests are sent to a registered backchannel logout URLs at Keycloak and are su
 <div class="paragraph">
 <p>The second use case is a client accessing remote services.  The client requests a SAML assertion from Keycloak to invoke on remote services on behalf of the user.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-saml-bindings_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/con-saml-bindings.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-saml-bindings.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>==== SAML Bindings</p>
-</div>
+<div class="sect3">
+<h4 id="saml-bindings"><a class="anchor" href="#saml-bindings"></a>SAML Bindings</h4>
 <div class="paragraph _abstract">
 <p>Keycloak supports three binding types.</p>
 </div>
-<div class="paragraph">
-<p>===== Redirect binding</p>
-</div>
+<div class="sect4">
+<h5 id="redirect-binding"><a class="anchor" href="#redirect-binding"></a>Redirect binding</h5>
 <div class="paragraph">
 <p><em>Redirect</em> binding uses a series of browser redirect URIs to exchange information.</p>
 </div>
@@ -10390,9 +10547,9 @@ requests are sent to a registered backchannel logout URLs at Keycloak and are su
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>===== POST binding</p>
 </div>
+<div class="sect4">
+<h5 id="post-binding"><a class="anchor" href="#post-binding"></a>POST binding</h5>
 <div class="paragraph">
 <p><em>POST</em> binding is similar to <em>Redirect</em> binding but <em>POST</em> binding exchanges XML documents using POST requests instead of using GET requests. <em>POST</em> Binding uses JavaScript to make the browser send a POST request to the Keycloak server or application when exchanging documents. HTTP responds with an HTML document which contains an HTML form containing embedded JavaScript.  When the page loads, the JavaScript automatically invokes the form.</p>
 </div>
@@ -10409,15 +10566,16 @@ requests are sent to a registered backchannel logout URLs at Keycloak and are su
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>===== ECP</p>
 </div>
+<div class="sect4">
+<h5 id="ecp"><a class="anchor" href="#ecp"></a>ECP</h5>
 <div class="paragraph">
 <p>Enhanced Client or Proxy (ECP) is a SAML v.2.0 profile which allows the exchange of SAML attributes outside the context of a web browser. It is often used by REST or SOAP-based clients.</p>
 </div>
-<div class="paragraph">
-<p>====  Keycloak Server SAML URI Endpoints</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="keycloak-server-saml-uri-endpoints"><a class="anchor" href="#keycloak-server-saml-uri-endpoints"></a>Keycloak Server SAML URI Endpoints</h4>
 <div class="paragraph">
 <p>Keycloak has one endpoint for all SAML requests.</p>
 </div>
@@ -10427,15 +10585,16 @@ requests are sent to a registered backchannel logout URLs at Keycloak and are su
 <div class="paragraph">
 <p>All bindings use this endpoint.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="ref-saml-vs-oidc_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/sso-protocols/ref-saml-vs-oidc.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/ref-saml-vs-oidc.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>=== OpenID Connect compared to SAML</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="openid-connect-compared-to-saml"><a class="anchor" href="#openid-connect-compared-to-saml"></a>OpenID Connect compared to SAML</h3>
 <div class="paragraph _abstract">
 <p>The following lists a number of factors to consider when choosing a protocol.</p>
 </div>
@@ -10486,9 +10645,9 @@ requests are sent to a registered backchannel logout URLs at Keycloak and are su
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/sso-protocols/con-sso-docker.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Docker registry v2 authentication</p>
 </div>
+<div class="sect2">
+<h3 id="_docker"><a class="anchor" href="#_docker"></a>Docker registry v2 authentication</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -10506,9 +10665,10 @@ requests are sent to a registered backchannel logout URLs at Keycloak and are su
 <div class="paragraph _abstract">
 <p><a href="https://docs.docker.com/registry/spec/auth/">Docker Registry V2 Authentication</a> is a protocol, similar to OIDC, that authenticates users against Docker registries.  Keycloak&#8217;s implementation of this protocol lets Docker clients use a Keycloak authentication server authenticate against a registry. This protocol uses standard token and signature mechanisms but it does deviate from a true OIDC implementation. It deviates by using a very specific JSON format for requests and responses as well as mapping repository names and permissions to the OAuth scope mechanism.</p>
 </div>
+<div class="sect3">
+<h4 id="docker-authentication-flow"><a class="anchor" href="#docker-authentication-flow"></a>Docker authentication flow</h4>
 <div class="paragraph">
-<p>==== Docker authentication flow
-The authentication flow is described in the <a href="https://docs.docker.com/registry/spec/auth/token/">Docker API documentation</a>. The following is a summary from the perspective of the Keycloak authentication server:</p>
+<p>The authentication flow is described in the <a href="https://docs.docker.com/registry/spec/auth/token/">Docker API documentation</a>. The following is a summary from the perspective of the Keycloak authentication server:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -10544,18 +10704,22 @@ Keycloak does not create a browser SSO session after successful authentication w
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>====  Keycloak Docker Registry v2 Authentication Server URI Endpoints</p>
 </div>
+<div class="sect3">
+<h4 id="keycloak-docker-registry-v2-authentication-server-uri-endpoints"><a class="anchor" href="#keycloak-docker-registry-v2-authentication-server-uri-endpoints"></a>Keycloak Docker Registry v2 Authentication Server URI Endpoints</h4>
 <div class="paragraph">
 <p>Keycloak has one endpoint for all Docker auth v2 requests.</p>
 </div>
 <div class="paragraph">
 <p><code>http(s)://authserver.host/auth/realms/{realm-name}/protocol/docker-v2</code></p>
 </div>
-<div class="paragraph">
-<p>== Controlling access to the Admin Console</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_admin_permissions"><a class="anchor" href="#_admin_permissions"></a>Controlling access to the Admin Console</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/admin-console-permissions.adoc" target="_blank">Edit this section</a>
@@ -10567,9 +10731,8 @@ Keycloak does not create a browser SSO session after successful authentication w
 The <code>master</code> realm is a special realm that allows admins to manage more than one realm on the system.  You can also
 define fine-grained access to users in different realms to manage the server.  This chapter goes over all the scenarios for this.</p>
 </div>
-<div class="paragraph">
-<p>=== Master realm access control</p>
-</div>
+<div class="sect2">
+<h3 id="master-realm-access-control"><a class="anchor" href="#master-realm-access-control"></a>Master realm access control</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/admin-console-permissions/master-realm.adoc" target="_blank">Edit this section</a>
@@ -10583,9 +10746,8 @@ When a realm is created, Keycloak automatically creates various roles that grant
 Access to The Admin Console and Admin REST endpoints can be controlled by mapping these roles to users in the <code>master</code> realm.
 It&#8217;s possible to create multiple super users,  as well as users that can only manage specific realms.</p>
 </div>
-<div class="paragraph">
-<p>==== Global roles</p>
-</div>
+<div class="sect3">
+<h4 id="global-roles"><a class="anchor" href="#global-roles"></a>Global roles</h4>
 <div class="paragraph">
 <p>There are two realm-level roles in the <code>master</code> realm.
 These are:</p>
@@ -10604,9 +10766,9 @@ These are:</p>
 <p>Users with the <code>admin</code> role are super users and have full access to manage any realm on the server.  Users with the <code>create-realm</code> role
 are allowed to create new realms.  They will be granted full access to any new realm they create.</p>
 </div>
-<div class="paragraph">
-<p>==== Realm specific roles</p>
 </div>
+<div class="sect3">
+<h4 id="realm-specific-roles"><a class="anchor" href="#realm-specific-roles"></a>Realm specific roles</h4>
 <div class="paragraph">
 <p>Admin users within the <code>master</code> realm can be granted management privileges to one or more other realms in the system.
 Each realm in Keycloak is represented by a client in the <code>master</code> realm.
@@ -10671,9 +10833,10 @@ Admins with the <code>manage-users</code> role will only be able to assign admin
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>=== Dedicated realm admin consoles</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_per_realm_admin_permissions"><a class="anchor" href="#_per_realm_admin_permissions"></a>Dedicated realm admin consoles</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/admin-console-permissions/per-realm.adoc" target="_blank">Edit this section</a>
@@ -10731,9 +10894,9 @@ Users within that realm can be granted realm management permissions by assigning
 <div class="paragraph">
 <p>Assign the roles you want to your users and they will only be able to use that specific part of the administration console.</p>
 </div>
-<div class="paragraph">
-<p>=== Fine grain admin permissions</p>
 </div>
+<div class="sect2">
+<h3 id="_fine_grain_permissions"><a class="anchor" href="#_fine_grain_permissions"></a>Fine grain admin permissions</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/admin-console-permissions/fine-grain.adoc" target="_blank">Edit this section</a>
@@ -10812,9 +10975,8 @@ default behavior of the built in admin roles.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>==== Managing one specific client</p>
-</div>
+<div class="sect3">
+<h4 id="managing-one-specific-client"><a class="anchor" href="#managing-one-specific-client"></a>Managing one specific client</h4>
 <div class="paragraph">
 <p>Let&#8217;s look first at allowing
 an admin to manage one client and one client only.  In our example, we have a realm
@@ -10833,9 +10995,8 @@ You cannot do cross realm fine grain permissions.  Admins in the <code>master</c
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>===== Permission setup</p>
-</div>
+<div class="sect4">
+<h5 id="permission-setup"><a class="anchor" href="#permission-setup"></a>Permission setup</h5>
 <div class="paragraph">
 <p>The first thing we must do is login to the Admin Console so we can set up permissions for that client.  We navigate to the management section
 of the client, we want to define fine-grain permissions for.</p>
@@ -10923,9 +11084,9 @@ role tells the Admin Console that it should render client menus for the <code>sa
 <div class="paragraph">
 <p>IMPORTANT If you do not set the <code>query-clients</code> role, restricted admins like <code>sales-admin</code> will not see any menu options when they log into the Admin Console</p>
 </div>
-<div class="paragraph">
-<p>===== Testing it out</p>
 </div>
+<div class="sect4">
+<h5 id="testing-it-out"><a class="anchor" href="#testing-it-out"></a>Testing it out</h5>
 <div class="paragraph">
 <p>Next, we log out of the master realm and re-login to the <a href="#_per_realm_admin_permissions">dedicated admin console</a> for the <code>test</code> realm
 using the <code>sales-admin</code> as a username.  This is located under <code>/auth/admin/test/console</code>.</p>
@@ -10937,9 +11098,10 @@ using the <code>sales-admin</code> as a username.  This is located under <code>/
 <div class="paragraph">
 <p>This admin is now able to manage this one client.</p>
 </div>
-<div class="paragraph">
-<p>==== Restrict user role mapping</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="restrict-user-role-mapping"><a class="anchor" href="#restrict-user-role-mapping"></a>Restrict user role mapping</h4>
 <div class="paragraph">
 <p>Another thing you might want to do is to restrict the set of roles an admin is allowed
 to assign to a user.  Continuing our last example, let&#8217;s expand the permission set of the 'sales-admin'
@@ -11005,9 +11167,8 @@ allow the admin to view users in the realm he wants to add the <code>sales-appli
 <div class="title">Add view-users</div>
 <p><span class="image"><img src="./keycloak-images/fine-grain-add-view-users.png" alt="fine grain add view users"></span></p>
 </div>
-<div class="paragraph">
-<p>===== Testing it out</p>
-</div>
+<div class="sect4">
+<h5 id="testing-it-out-2"><a class="anchor" href="#testing-it-out-2"></a>Testing it out</h5>
 <div class="paragraph">
 <p>Next, we log out of the master realm and re-login to the <a href="#_per_realm_admin_permissions">dedicated admin console</a> for the <code>test</code> realm
 using the <code>sales-admin</code> as a username.  This is located under <code>/auth/admin/test/console</code>.</p>
@@ -11025,9 +11186,9 @@ map to the user except when we browse the <code>sales-application</code> roles.<
 <div class="paragraph">
 <p>We&#8217;ve only specified that the <code>sales-admin</code> can map the <code>viewLeads</code> role.</p>
 </div>
-<div class="paragraph">
-<p>===== Per client map-roles shortcut</p>
 </div>
+<div class="sect4">
+<h5 id="per-client-map-roles-shortcut"><a class="anchor" href="#per-client-map-roles-shortcut"></a>Per client map-roles shortcut</h5>
 <div class="paragraph">
 <p>It would be tedious if we had to do this for every client role that the <code>sales-application</code> published.
 to make things easier, there&#8217;s a way to specify that an admin can map any role defined
@@ -11042,17 +11203,17 @@ by a client.  If we log back into the admin console to our master realm admin an
 <p>If you grant access to this particular permission to an admin, that admin will be able
 map any role defined by the client.</p>
 </div>
-<div class="paragraph">
-<p>==== Full list of permissions</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="full-list-of-permissions"><a class="anchor" href="#full-list-of-permissions"></a>Full list of permissions</h4>
 <div class="paragraph">
 <p>You can do a lot more with fine grain permissions beyond managing a specific client or the specific roles of a client.
 This chapter defines the whole list of permission types that can be described for
 a realm.</p>
 </div>
-<div class="paragraph">
-<p>===== Role</p>
-</div>
+<div class="sect4">
+<h5 id="role"><a class="anchor" href="#role"></a>Role</h5>
 <div class="paragraph">
 <p>When going to the <code>Permissions</code> tab for a specific role, you will see these
 permission types listed.</p>
@@ -11082,9 +11243,9 @@ is granted.</p>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>===== Client</p>
 </div>
+<div class="sect4">
+<h5 id="client"><a class="anchor" href="#client"></a>Client</h5>
 <div class="paragraph">
 <p>When going to the <code>Permissions</code> tab for a specific client, you will see these
 permission types listed.</p>
@@ -11132,9 +11293,9 @@ for each and every role defined by the client.</p>
 </dd>
 </dl>
 </div>
-<div id="_users-permissions" class="paragraph">
-<p>===== Users</p>
 </div>
+<div class="sect4">
+<h5 id="_users-permissions"><a class="anchor" href="#_users-permissions"></a>Users</h5>
 <div class="paragraph">
 <p>When going to the <code>Permissions</code> tab for all users, you will see these
 permission types listed.</p>
@@ -11182,9 +11343,9 @@ privileges.</p>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>===== Group</p>
 </div>
+<div class="sect4">
+<h5 id="group"><a class="anchor" href="#group"></a>Group</h5>
 <div class="paragraph">
 <p>When going to the <code>Permissions</code> tab for a specific group, you will see these
 permission types listed.</p>
@@ -11214,15 +11375,20 @@ remove members from the group.</p>
 </dd>
 </dl>
 </div>
-<div class="sidebarblock page-links">
+<div id="assembly-managing-clients_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/assembly-managing-clients.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/assembly-managing-clients.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>== Managing OpenID Connect and SAML Clients</p>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="managing-openid-connect-and-saml-clients"><a class="anchor" href="#managing-openid-connect-and-saml-clients"></a>Managing OpenID Connect and SAML Clients</h2>
+<div class="sectionbody">
 <div class="paragraph _abstract">
 <p>Clients are entities that can request authentication of a user.  Clients come in two forms.
 The first type of client is an application that wants
@@ -11230,27 +11396,25 @@ to participate in single-sign-on.  These clients just want Keycloak to provide s
 of client is one that is requesting an access token so that it can invoke other services on behalf of the authenticated user.
 This section discusses various aspects around configuring clients and various ways to do it.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="assembly-oidc-clients_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/assembly-client-oidc.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/assembly-client-oidc.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>= OIDC clients</p>
-</div>
+<div class="sect2">
+<h3 id="oidc-clients"><a class="anchor" href="#oidc-clients"></a>OIDC clients</h3>
 <div class="paragraph _abstract">
 <p><a href="#con-oidc_server_administration_guide">OpenID Connect</a> is the recommended protocol to secure applications.  It was designed from the ground up to be web friendly and it works best with HTML5/JavaScript applications.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="proc-creating-oidc-client_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/proc-creating-oidc-client.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/proc-creating-oidc-client.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>= Creating an OpenID Connect Client</p>
-</div>
+<div class="sect3">
+<h4 id="creating-an-openid-connect-client"><a class="anchor" href="#creating-an-openid-connect-client"></a>Creating an OpenID Connect Client</h4>
 <div class="paragraph _abstract">
 <p>To protect an application that uses the OpenID connect protocol, you create a client.</p>
 </div>
@@ -11300,16 +11464,16 @@ tab.</p>
 </li>
 </ul>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-basic-settings_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/con-basic-settings.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/con-basic-settings.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>= Basic settings</p>
 </div>
-<div class="paragraph">
+<div class="sect3">
+<h4 id="basic-settings"><a class="anchor" href="#basic-settings"></a>Basic settings</h4>
+<div class="paragraph _abstract">
 <p>When you create an OIDC client, you see the following fields on the <strong>Settings</strong> tab.</p>
 </div>
 <div class="dlist">
@@ -11411,15 +11575,15 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 </dd>
 </dl>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-advanced-settings_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/con-advanced-settings.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/con-advanced-settings.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>= Advanced settings</p>
 </div>
+<div class="sect3">
+<h4 id="advanced-settings"><a class="anchor" href="#advanced-settings"></a>Advanced settings</h4>
 <div class="paragraph _abstract">
 <p>When you click <em>Advanced Settings</em>, additional fields are displayed.</p>
 </div>
@@ -11620,15 +11784,15 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 </li>
 </ol>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-confidential-client-credentials_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/con-confidential-client-credentials.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/con-confidential-client-credentials.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div id="_client-credentials" class="paragraph">
-<p>= Confidential client credentials</p>
 </div>
+<div class="sect3">
+<h4 id="_client-credentials"><a class="anchor" href="#_client-credentials"></a>Confidential client credentials</h4>
 <div class="paragraph _abstract">
 <p>If the <a href="#_access-type">access type</a> of the client is set to <strong>confidential</strong>, the credentials of the client must be configured under the <strong>Credentials</strong> tab.</p>
 </div>
@@ -11782,15 +11946,15 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 </li>
 </ul>
 </div>
-<div class="sidebarblock page-links">
+<div id="proc-using-service-account_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/proc-using-a-service-account.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/proc-using-a-service-account.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div id="_service_accounts" class="paragraph">
-<p>= Using a service account</p>
 </div>
+<div class="sect3">
+<h4 id="_service_accounts"><a class="anchor" href="#_service_accounts"></a>Using a service account</h4>
 <div class="paragraph _abstract">
 <p>Each OIDC client has a built-in <em>service account</em>. Use this <em>service account</em> to obtain an access token.</p>
 </div>
@@ -11894,15 +12058,15 @@ on the Keycloak side upon successful authentication by default. Due to the lack 
 <div class="title">Additional resources</div>
 <p>For more details, see <a href="#_client_credentials_grant">Client Credentials Grant</a>.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-audience_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/oidc/con-audience.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/oidc/con-audience.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>= Audience Support</p>
 </div>
+<div class="sect3">
+<h4 id="audience-support"><a class="anchor" href="#audience-support"></a>Audience Support</h4>
 <div class="paragraph _abstract">
 <p>Typically, the environment where Keycloak is deployed consists of a set of <em>confidential</em> or <em>public</em> client applications that use Keycloak for authentication.</p>
 </div>
@@ -11973,9 +12137,8 @@ on the Keycloak side upon successful authentication by default. Due to the lack 
 <div class="paragraph">
 <p>Use this value to invoke the <strong>&lt;trusted service&gt;</strong>.</p>
 </div>
-<div class="paragraph">
-<p>== Setup</p>
-</div>
+<div class="sect4">
+<h5 id="setup-3"><a class="anchor" href="#setup-3"></a>Setup</h5>
 <div class="paragraph">
 <p>When setting up audience checking:</p>
 </div>
@@ -11989,9 +12152,9 @@ on the Keycloak side upon successful authentication by default. Due to the lack 
 </li>
 </ul>
 </div>
-<div id="_audience_resolve" class="paragraph">
-<p>== Automatically add audience</p>
 </div>
+<div class="sect4">
+<h5 id="_audience_resolve"><a class="anchor" href="#_audience_resolve"></a>Automatically add audience</h5>
 <div class="paragraph">
 <p>An <em>Audience Resolve</em> protocol mapper is defined in the default client scope <em>roles</em>. The mapper checks for clients that have at least one client role available for the current token. The client ID of each client is then added as an audience, which is useful if your service (usually bearer-only) clients rely on client roles.</p>
 </div>
@@ -12047,9 +12210,9 @@ you can use the access token issued for the confidential client to invoke the be
 </tr>
 </table>
 </div>
-<div id="_audience_hardcoded" class="paragraph">
-<p>== Hardcoded audience</p>
 </div>
+<div class="sect4">
+<h5 id="_audience_hardcoded"><a class="anchor" href="#_audience_hardcoded"></a>Hardcoded audience</h5>
 <div class="paragraph">
 <p>When your service relies on realm roles or does not rely on the roles in the token at all, it can be useful to use a hardcoded audience. A hardcoded audience is a protocol mapper, that will add the client ID of the specified service client as an audience to the token.
 You can use any custom value, for example a URL, if you want to use a different audience than the client ID.</p>
@@ -12121,15 +12284,17 @@ Both the <em>Audience</em> and <em>Audience Resolve</em> protocol mappers add th
 </tr>
 </table>
 </div>
-<div class="sidebarblock page-links">
+<div id="proc-creating-saml-client_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/proc-creating-saml-client.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/proc-creating-saml-client.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>= Creating a SAML client</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-a-saml-client"><a class="anchor" href="#creating-a-saml-client"></a>Creating a SAML client</h3>
 <div class="paragraph _abstract">
 <p>Keycloak supports <a href="#_saml">SAML 2.0</a> for registered applications.
 POST and Redirect bindings are supported. You can choose to require client signature validation. You can have the server sign and/or encrypt responses as well.</p>
@@ -12306,9 +12471,8 @@ This field is used when the exact SAML endpoints are not registered and Keycloak
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>= IDP Initiated Login</p>
-</div>
+<div class="sect3">
+<h4 id="idp-initiated-login"><a class="anchor" href="#idp-initiated-login"></a>IDP Initiated Login</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/idp-initiated-login.adoc" target="_blank">Edit this section</a>
@@ -12386,15 +12550,15 @@ this client, which will be made available for IDP Initiated Login from the exter
 just use <a href="#_identity_broker_saml_sp_descriptor">SP Descriptor</a> available from the settings of the identity provider in
 the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoint URL.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="proc-using-an-entity-descriptors_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/saml/proc-using-an-entity-descriptor.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/saml/proc-using-an-entity-descriptor.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>= Using an entity descriptor to create a client</p>
 </div>
+<div class="sect3">
+<h4 id="using-an-entity-descriptor-to-create-a-client"><a class="anchor" href="#using-an-entity-descriptor-to-create-a-client"></a>Using an entity descriptor to create a client</h4>
 <div class="paragraph _abstract">
 <p>Instead of registering a SAML 2.0 client manually, you can import the client using a standard SAML Entity Descriptor XML file.</p>
 </div>
@@ -12430,15 +12594,16 @@ the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoi
 <div class="paragraph">
 <p>where <em>realm</em> is the realm of your client.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-client-links_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/con-client-links.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/con-client-links.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>= Client links</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="client-links"><a class="anchor" href="#client-links"></a>Client links</h3>
 <div class="paragraph _abstract">
 <p>To link from one client to another, Keycloak provides a redirect endpoint: <code>/realms/realm_name/clients/{client-id}/redirect</code>.</p>
 </div>
@@ -12456,15 +12621,15 @@ the brokering IDP, and add <code>clients/<em>client-id</em></code> to the endpoi
 <div class="paragraph">
 <p>This URL temporarily redirects to: <a href="http://host:port/auth/realms/master/account" class="bare">http://host:port/auth/realms/master/account</a></p>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-protocol-mappers_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/con-protocol-mappers.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/con-protocol-mappers.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>= OIDC token and SAML assertion mappings</p>
 </div>
+<div class="sect2">
+<h3 id="_protocol-mappers"><a class="anchor" href="#_protocol-mappers"></a>OIDC token and SAML assertion mappings</h3>
 <div class="paragraph _abstract">
 <p>Applications receiving ID tokens, access tokens, or SAML assertions may require different roles and user metadata.</p>
 </div>
@@ -12511,7 +12676,7 @@ a specific claim in the identity and access token. The function of a mapper shou
 <div class="paragraph">
 <p>You can use most OIDC mappers to control where the claim gets placed. You opt to include or exclude the claim from the <em>id</em> and <em>access</em> tokens by adjusting the <strong>Add to ID token</strong> and <strong>Add to access token</strong> switches.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="proc-creating-mappers_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/proc-creating-mappers.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/proc-creating-mappers.adoc" target="_blank">Report an issue</a>
@@ -12538,9 +12703,8 @@ a specific claim in the identity and access token. The function of a mapper shou
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>== Priority order</p>
-</div>
+<div class="sect3">
+<h4 id="priority-order"><a class="anchor" href="#priority-order"></a>Priority order</h4>
 <div class="paragraph">
 <p>Mapper implementations have <em>priority order</em>. <em>Priority order</em> is not the configuration property of the mapper. It is the property of the concrete implementation of the mapper.</p>
 </div>
@@ -12560,9 +12724,9 @@ a specific claim in the identity and access token. The function of a mapper shou
 </li>
 </ol>
 </div>
-<div id="_protocol-mappers_oidc-user-session-note-mappers" class="paragraph">
-<p>== OIDC user session note mappers</p>
 </div>
+<div class="sect3">
+<h4 id="_protocol-mappers_oidc-user-session-note-mappers"><a class="anchor" href="#_protocol-mappers_oidc-user-session-note-mappers"></a>OIDC user session note mappers</h4>
 <div class="paragraph">
 <p>User session details are defined using mappers and are automatically included when you use or enable a feature on a client. Click <strong>Add builtin</strong> to include session details.</p>
 </div>
@@ -12595,25 +12759,26 @@ a specific claim in the identity and access token. The function of a mapper shou
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>== Script mapper</p>
 </div>
+<div class="sect3">
+<h4 id="script-mapper"><a class="anchor" href="#script-mapper"></a>Script mapper</h4>
 <div class="paragraph">
 <p>Use the <strong>Script Mapper</strong> to map claims to tokens by running user-defined JavaScript code. For more details about deploying scripts to the server, see <a href="https://www.keycloak.org/docs/15.0/server_development/#_script_providers">JavaScript Providers</a>.</p>
 </div>
 <div class="paragraph">
 <p>When scripts deploy, you should be able to select the deployed scripts from the list of available mappers.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="proc-generating-client-adapter-config_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/proc-generating-client-adapter-config.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/proc-generating-client-adapter-config.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>= Generating client adapter config</p>
 </div>
-<div class="paragraph">
+</div>
+<div class="sect2">
+<h3 id="_client_installation"><a class="anchor" href="#_client_installation"></a>Generating client adapter config</h3>
+<div class="paragraph _abstract">
 <p>Keycloak can generate configuration files that you can use to install a client adapter in your application&#8217;s deployment environment. A number of adapter types are supported for OIDC and SAML.</p>
 </div>
 <div class="olist arabic">
@@ -12632,22 +12797,22 @@ a specific claim in the identity and access token. The function of a mapper shou
 <div class="paragraph">
 <p>All Keycloak client adapters for OIDC and SAML are supported. The mod-auth-mellon Apache HTTPD adapter for SAML is supported as well as standard SAML entity descriptor files.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="con-client-scopes_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/con-client-scopes.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/con-client-scopes.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div id="_client_scopes" class="paragraph">
-<p>= Client scopes</p>
 </div>
+<div class="sect2">
+<h3 id="_client_scopes"><a class="anchor" href="#_client_scopes"></a>Client scopes</h3>
 <div class="paragraph _abstract">
 <p>Use Keycloak to define a shared client configuration in an entity called a <em>client scope</em>. A <em>client scope</em> configures <a href="#_protocol-mappers">protocol mappers</a> and <a href="#_role_scope_mappings">role scope mappings</a> for multiple clients.</p>
 </div>
 <div class="paragraph">
 <p>Client scopes also support the OAuth 2 <strong>scope</strong> parameter. Client applications use this parameter to request claims or roles in the access token, depending on the requirement of the application.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="proc_creating_client_scopes_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/proc-creating-client-scopes.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/proc-creating-client-scopes.adoc" target="_blank">Report an issue</a>
@@ -12680,9 +12845,10 @@ a specific claim in the identity and access token. The function of a mapper shou
 <p>A <em>client scope</em> has similar tabs to regular clients. You can
 define <a href="#_protocol-mappers">protocol mappers</a> and <a href="#_role_scope_mappings">role scope mappings</a>. These mappings can be inherited by other clients and are configured to inherit from this client scope.</p>
 </div>
+<div class="sect3">
+<h4 id="protocol"><a class="anchor" href="#protocol"></a>Protocol</h4>
 <div class="paragraph">
-<p>== Protocol
-When you create a client scope, choose the <strong>Protocol</strong>. Clients linked in the same scope must have the same protocol.</p>
+<p>When you create a client scope, choose the <strong>Protocol</strong>. Clients linked in the same scope must have the same protocol.</p>
 </div>
 <div class="paragraph">
 <p>Each realm has a set of pre-defined built-in client scopes in the menu.</p>
@@ -12754,9 +12920,11 @@ add audiences for clients that have at least one client role. These mappers are 
 <div class="paragraph">
 <p>Built-in client scopes contain the protocol mappers as defined in the specification. You are free to edit client scopes and create, update, or remove any protocol mappers or role scope mappings.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="consent-related-settings"><a class="anchor" href="#consent-related-settings"></a>Consent related settings</h4>
 <div class="paragraph">
-<p>== Consent related settings
-Client scopes contain options related to the consent screen. Those options are useful if the linked client if <strong>Consent Required</strong> is enabled on the client.</p>
+<p>Client scopes contain options related to the consent screen. Those options are useful if the linked client if <strong>Consent Required</strong> is enabled on the client.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -12770,9 +12938,11 @@ Client scopes contain options related to the consent screen. Those options are u
 </dd>
 </dl>
 </div>
-<div id="_client_scopes_linking" class="paragraph">
-<p>== Link client scope with the client
-Linking between a client scope and a client is configured in the <strong>Client Scopes</strong> tab of the client. Two ways of linking between client scope and client are available.</p>
+</div>
+<div class="sect3">
+<h4 id="_client_scopes_linking"><a class="anchor" href="#_client_scopes_linking"></a>Link client scope with the client</h4>
+<div class="paragraph">
+<p>Linking between a client scope and a client is configured in the <strong>Client Scopes</strong> tab of the client. Two ways of linking between client scope and client are available.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -12786,9 +12956,10 @@ Linking between a client scope and a client is configured in the <strong>Client 
 </dd>
 </dl>
 </div>
+<div class="sect4">
+<h5 id="example"><a class="anchor" href="#example"></a>Example</h5>
 <div class="paragraph">
-<p>=== Example
-For this example, assume the client has <strong>profile</strong> and <strong>email</strong> linked as default client scopes, and <strong>phone</strong> and <strong>address</strong> linked as optional client scopes. The client uses the value of the scope parameter when sending a request to the OpenID Connect authorization endpoint.</p>
+<p>For this example, assume the client has <strong>profile</strong> and <strong>email</strong> linked as default client scopes, and <strong>phone</strong> and <strong>address</strong> linked as optional client scopes. The client uses the value of the scope parameter when sending a request to the OpenID Connect authorization endpoint.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12798,10 +12969,11 @@ For this example, assume the client has <strong>profile</strong> and <strong>ema
 <div class="paragraph">
 <p>The scope parameter contains the string, with the scope values divided by spaces. The value <strong>openid</strong> is the meta-value used for all OpenID Connect requests. The token will contain mappers and role scope mappings from the default client scopes <strong>profile</strong> and <strong>email</strong> as well as <strong>phone</strong>, an optional client scope requested by the scope parameter.</p>
 </div>
-<div id="_client_scopes_evaluate" class="paragraph">
-<p>== Evaluating Client Scopes</p>
 </div>
-<div class="sidebarblock page-links">
+</div>
+<div class="sect3">
+<h4 id="_client_scopes_evaluate"><a class="anchor" href="#_client_scopes_evaluate"></a>Evaluating Client Scopes</h4>
+<div id="proc_evaluating_client_scopes_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/proc-evaluating-client-scopes.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/proc-evaluating-client-scopes.adoc" target="_blank">Report an issue</a>
@@ -12848,9 +13020,9 @@ For this example, assume the client has <strong>profile</strong> and <strong>ema
 <div class="paragraph">
 <p>An example of a generated access token, specific to the user, client and <strong>scope</strong> parameter, is automatically generated under the <strong>Generated Access Token</strong> tab.</p>
 </div>
-<div class="paragraph">
-<p>== Client scopes permissions</p>
 </div>
+<div class="sect3">
+<h4 id="client-scopes-permissions"><a class="anchor" href="#client-scopes-permissions"></a>Client scopes permissions</h4>
 <div class="paragraph">
 <p>When issuing tokens to a user, the client scope applies only if the user is permitted to use it.</p>
 </div>
@@ -12860,10 +13032,10 @@ For this example, assume the client has <strong>profile</strong> and <strong>ema
 <div class="paragraph">
 <p>If a user is not permitted to use the client scope, no protocol mappers or role scope mappings will be used when generating tokens. The client scope will not appear in the <em>scope</em> value in the token.</p>
 </div>
-<div class="paragraph">
-<p>== Realm default client scopes</p>
 </div>
-<div class="sidebarblock page-links">
+<div class="sect3">
+<h4 id="realm-default-client-scopes"><a class="anchor" href="#realm-default-client-scopes"></a>Realm default client scopes</h4>
+<div id="proc_updating_client_scopes_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/clients/proc-updating-default-scopes.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/clients/proc-updating-default-scopes.adoc" target="_blank">Report an issue</a>
@@ -12893,13 +13065,15 @@ For this example, assume the client has <strong>profile</strong> and <strong>ema
 <div class="paragraph">
 <p>When a client is created, you can unlink the default client scopes, if needed. This is similar to removing <a href="#_default_roles">Default Roles</a>.</p>
 </div>
-<div class="paragraph">
-<p>== Scopes explained
-Client scope::
-Client scopes are entities in Keycloak that are configured at the realm level and can be linked to clients. Client scopes are referenced by their name when a request is sent to the Keycloak authorization endpoint with a corresponding value of the <strong>scope</strong> parameter. See the <a href="#_client_scopes_linking">client scopes linking</a> section for more details.</p>
 </div>
+<div class="sect3">
+<h4 id="scopes-explained"><a class="anchor" href="#scopes-explained"></a>Scopes explained</h4>
 <div class="dlist">
 <dl>
+<dt class="hdlist1">Client scope</dt>
+<dd>
+<p>Client scopes are entities in Keycloak that are configured at the realm level and can be linked to clients. Client scopes are referenced by their name when a request is sent to the Keycloak authorization endpoint with a corresponding value of the <strong>scope</strong> parameter. See the <a href="#_client_scopes_linking">client scopes linking</a> section for more details.</p>
+</dd>
 <dt class="hdlist1">Role scope mapping</dt>
 <dd>
 <p>This is available under the <strong>Scope</strong> tab of a client or client scope. Use <strong>Role scope mapping</strong> to limit the roles that can be used in the access tokens. See the <a href="#_role_scope_mappings">Role Scope Mappings section</a> for more details.</p>
@@ -12910,9 +13084,13 @@ Client scopes are entities in Keycloak that are configured at the realm level an
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>== Using vault to obtain secrets</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vault-administration"><a class="anchor" href="#_vault-administration"></a>Using vault to obtain secrets</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/vault.adoc" target="_blank">Edit this section</a>
@@ -12969,9 +13147,8 @@ Client scopes are entities in Keycloak that are configured at the realm level an
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>=== Kubernetes / OpenShift files plain-text vault provider</p>
-</div>
+<div class="sect2">
+<h3 id="_providers"><a class="anchor" href="#_providers"></a>Kubernetes / OpenShift files plain-text vault provider</h3>
 <div class="paragraph">
 <p>Keycloak supports vault implementation for <a href="https://kubernetes.io/docs/concepts/configuration/secret/">Kubernetes secrets</a>. You can mount Kubernetes secrets as data volumes, and they appear as a directory with a flat-file structure. Keycloak represents each secret as a file with the file&#8217;s name as the secret name and the file&#8217;s contents as the secret value.</p>
 </div>
@@ -13002,9 +13179,9 @@ Client scopes are entities in Keycloak that are configured at the realm level an
 /subsystem=keycloak-server/spi=vault/provider=files-plaintext/:add(enabled=true,properties={dir =&gt; &quot;${jboss.home.dir}/standalone/configuration/vault&quot;})</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Elytron credential store vault provider</p>
 </div>
+<div class="sect2">
+<h3 id="elytron-credential-store-vault-provider"><a class="anchor" href="#elytron-credential-store-vault-provider"></a>Elytron credential store vault provider</h3>
 <div class="paragraph">
 <p>Keycloak also provides support for reading secrets stored in an Elytron credential store. The <code>elytron-cs-keystore</code> vault provider can retrieve secrets from the credential store&#8217;s keystore based implementation, which is also the default implementation Elytron provides.</p>
 </div>
@@ -13073,9 +13250,9 @@ Client scopes are entities in Keycloak that are configured at the realm level an
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>=== Key resolvers</p>
 </div>
+<div class="sect2">
+<h3 id="key-resolvers"><a class="anchor" href="#key-resolvers"></a>Key resolvers</h3>
 <div class="paragraph">
 <p>All built-in providers support the configuration of key resolvers. A key resolver implements the algorithm or strategy for combining the realm name with the key, obtained from the <code>${vault.key}</code> expression, into the final entry name used to retrieve the secret from the vault. Keycloak uses the <code>keyResolvers</code> property to configure the resolvers that the provider uses. The value is a comma-separated list of resolver names. An example of the configuration for the <code>files-plaintext</code> provider follows:</p>
 </div>
@@ -13193,9 +13370,12 @@ Client scopes are entities in Keycloak that are configured at the realm level an
 <div class="paragraph">
 <p>This configuration makes Keycloak set up the custom Elytron provider and use the key resolver that the custom factory creates.</p>
 </div>
-<div class="paragraph">
-<p>== Configuring auditing to track events</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-auditing-to-track-events"><a class="anchor" href="#configuring-auditing-to-track-events"></a>Configuring auditing to track events</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/events.adoc" target="_blank">Edit this section</a>
@@ -13205,9 +13385,8 @@ Client scopes are entities in Keycloak that are configured at the realm level an
 <div class="paragraph _abstract">
 <p>Keycloak includes a suite of auditing capabilities. You can record every login and administrator action and review those actions in the Admin Console. Keycloak also includes a Listener SPI that listens for events and can trigger actions. Examples of built-in listeners include log files and sending emails if an event occurs.</p>
 </div>
-<div class="paragraph">
-<p>=== Login events</p>
-</div>
+<div class="sect2">
+<h3 id="login-events"><a class="anchor" href="#login-events"></a>Login events</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/events/login.adoc" target="_blank">Edit this section</a>
@@ -13268,9 +13447,8 @@ Client scopes are entities in Keycloak that are configured at the realm level an
 <div class="paragraph">
 <p>In this example, we filter only <code>Login</code> events. Click <strong>Update</strong> to run the filter.</p>
 </div>
-<div class="paragraph">
-<p>==== Event types</p>
-</div>
+<div class="sect3">
+<h4 id="event-types"><a class="anchor" href="#event-types"></a>Event types</h4>
 <div class="paragraph">
 <p><strong>Login events:</strong></p>
 </div>
@@ -13368,15 +13546,16 @@ Client scopes are entities in Keycloak that are configured at the realm level an
 <div class="paragraph">
 <p>Each event has a corresponding error event.</p>
 </div>
-<div class="paragraph">
-<p>==== Event listener</p>
 </div>
+<div class="sect3">
+<h4 id="event-listener"><a class="anchor" href="#event-listener"></a>Event listener</h4>
 <div class="paragraph">
 <p>Event listeners listen for events and perform actions based on that event. Keycloak includes two built-in listeners, the Logging Event Listener and Email Event Listener.</p>
 </div>
+<div class="sect4">
+<h5 id="the-logging-event-listener"><a class="anchor" href="#the-logging-event-listener"></a>The logging event listener</h5>
 <div class="paragraph">
-<p>===== The logging event listener
-When the Logging Event Listener is enabled, this listener writes to a log file when an error event occurs.</p>
+<p>When the Logging Event Listener is enabled, this listener writes to a log file when an error event occurs.</p>
 </div>
 <div class="paragraph">
 <p>An example log message from a Logging Event Listener:</p>
@@ -13460,9 +13639,9 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 <div class="paragraph">
 <p>The valid values for log levels are <code>debug</code>, <code>info</code>, <code>warn</code>, <code>error</code>, and <code>fatal</code>.</p>
 </div>
-<div class="paragraph">
-<p>===== The Email Event Listener</p>
 </div>
+<div class="sect4">
+<h5 id="the-email-event-listener"><a class="anchor" href="#the-email-event-listener"></a>The Email Event Listener</h5>
 <div class="paragraph">
 <p>The Email Event Listener sends an email to the user&#8217;s account when an event occurs and supports the following events:</p>
 </div>
@@ -13483,6 +13662,7 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 </ul>
 </div>
 <div class="paragraph">
+<div class="title">Procedure</div>
 <p>To enable the Email Listener:</p>
 </div>
 <div class="olist arabic">
@@ -13532,9 +13712,11 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 <div class="paragraph">
 <p>See the <a href="https://www.keycloak.org/docs/15.0/server_installation/">Server Installation and Configuration Guide</a> for more details on the location of the <code>standalone.xml</code>, <code>standalone-ha.xml</code>, or <code>domain.xml</code> files.</p>
 </div>
-<div class="paragraph">
-<p>=== Admin events</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="admin-events"><a class="anchor" href="#admin-events"></a>Admin events</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/events/admin.adoc" target="_blank">Edit this section</a>
@@ -13596,15 +13778,18 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 <div class="title">Admin event filter</div>
 <p><span class="image"><img src="./keycloak-images/admin-events-filter.png" alt="Admin Event Filter"></span></p>
 </div>
-<div class="sidebarblock page-links">
+<div id="assembly-exporting-importing_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/export-import.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/export-import.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>== Importing and exporting the database</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="importing-and-exporting-the-database"><a class="anchor" href="#importing-and-exporting-the-database"></a>Importing and exporting the database</h2>
+<div class="sectionbody">
 <div class="paragraph _abstract">
 <p>Keycloak includes the ability to export and import its entire database.</p>
 </div>
@@ -13788,9 +13973,8 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>=== Admin console export/import</p>
-</div>
+<div class="sect2">
+<h3 id="admin-console-export-import"><a class="anchor" href="#admin-console-export-import"></a>Admin console export/import</h3>
 <div class="paragraph">
 <p>Keycloak imports most resources from the Admin Console as well as exporting most resources. Keycloak does not support the export of users.</p>
 </div>
@@ -13853,9 +14037,12 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>== Mitigating security threats</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mitigating-security-threats"><a class="anchor" href="#mitigating-security-threats"></a>Mitigating security threats</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat.adoc" target="_blank">Edit this section</a>
@@ -13865,9 +14052,8 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 <div class="paragraph">
 <p>Security vulnerabilities exist in any authentication server. See the Internet Engineering Task Force&#8217;s (IETF) <a href="https://tools.ietf.org/html/rfc6819">OAuth 2.0 Threat Model</a> and the <a href="https://tools.ietf.org/html/draft-ietf-oauth-security-topics-15">OAuth 2.0 Security Best Current Practice</a> for more information.</p>
 </div>
-<div class="paragraph">
-<p>=== Host</p>
-</div>
+<div class="sect2">
+<h3 id="host"><a class="anchor" href="#host"></a>Host</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/host.adoc" target="_blank">Edit this section</a>
@@ -13883,9 +14069,9 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 <div class="paragraph">
 <p>The hostname&#8217;s Service Provider Interface (SPI) provides a way to configure the hostname for requests. You can use this built-in provider to set a fixed URL for frontend requests while allowing backend requests based on the request URI. If the built-in provider does not have the required capability, you can develop a customized provider.</p>
 </div>
-<div class="paragraph">
-<p>=== Admin endpoints and Admin Console</p>
 </div>
+<div class="sect2">
+<h3 id="admin-endpoints-and-admin-console"><a class="anchor" href="#admin-endpoints-and-admin-console"></a>Admin endpoints and Admin Console</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/admin.adoc" target="_blank">Edit this section</a>
@@ -13904,9 +14090,8 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 <div class="paragraph">
 <p>When the Admin Console becomes inaccessible on the frontend URL of Keycloak, configure a fixed admin URL in the default hostname provider.</p>
 </div>
-<div class="paragraph">
-<p>==== IP restriction</p>
-</div>
+<div class="sect3">
+<h4 id="ip-restriction"><a class="anchor" href="#ip-restriction"></a>IP restriction</h4>
 <div class="paragraph">
 <p>You can restrict access to <code>/auth/admin</code> to only specific IP addresses. For example, restrict access to <code>/auth/admin</code> to IP addresses in the range <code>10.0.0.1</code> to <code>10.0.0.255</code>.</p>
 </div>
@@ -13951,9 +14136,9 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>==== Port restriction</p>
 </div>
+<div class="sect3">
+<h4 id="port-restriction"><a class="anchor" href="#port-restriction"></a>Port restriction</h4>
 <div class="paragraph">
 <p>You can expose <code>/auth/admin</code> to a different unexposed port. For example, expose <code>/auth/admin</code> on port <code>8444</code> and prevent access to the default port <code>8443</code>.</p>
 </div>
@@ -13999,9 +14184,10 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 /subsystem=undertow/server=default-server/host=default-host/filter-ref=portAccess:add()</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Brute force attacks</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="brute-force-attacks"><a class="anchor" href="#brute-force-attacks"></a>Brute force attacks</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/brute-force.adoc" target="_blank">Edit this section</a>
@@ -14026,6 +14212,7 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 </table>
 </div>
 <div class="paragraph">
+<div class="title">Procedure</div>
 <p>To enable this protection:</p>
 </div>
 <div class="olist arabic">
@@ -14247,15 +14434,15 @@ When the Logging Event Listener is enabled, this listener writes to a log file w
 <div class="paragraph">
 <p>Consider using intrusion prevention software (IPS). Keycloak logs every login failure and client IP address failure. You can point the IPS to the Keycloak server&#8217;s log file, and the IPS can modify firewalls to block connections from these IP addresses.</p>
 </div>
-<div class="paragraph">
-<p>==== Password policies</p>
-</div>
+<div class="sect3">
+<h4 id="password-policies"><a class="anchor" href="#password-policies"></a>Password policies</h4>
 <div class="paragraph">
 <p>Ensure you have a complex password policy to force users to choose complex passwords. See the <a href="#_password-policies">Password Policies</a> chapter for more information. Prevent password guessing by setting up the Keycloak server to use one-time-passwords.</p>
 </div>
-<div id="_read_only_user_attributes" class="paragraph">
-<p>=== Read-only user attributes</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_read_only_user_attributes"><a class="anchor" href="#_read_only_user_attributes"></a>Read-only user attributes</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/read-only-attributes.adoc" target="_blank">Edit this section</a>
@@ -14345,9 +14532,9 @@ So for example <code>bar</code> or <code>barrier</code>. Configuration is case i
 only at the end of the attribute name, so the administrator can effectively deny all the attributes starting with the specified character. The <code>*</code> in the middle of the attribute is considered
 as a normal character.</p>
 </div>
-<div class="paragraph">
-<p>=== Clickjacking</p>
 </div>
+<div class="sect2">
+<h3 id="clickjacking"><a class="anchor" href="#clickjacking"></a>Clickjacking</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/clickjacking.adoc" target="_blank">Edit this section</a>
@@ -14385,9 +14572,9 @@ click the <code>Security Defenses</code> tab and make sure you are on the <code>
 <div class="paragraph">
 <p>By default, Keycloak only sets up a <em>same-origin</em> policy for iframes.</p>
 </div>
-<div class="paragraph">
-<p>=== SSL/HTTPS requirement</p>
 </div>
+<div class="sect2">
+<h3 id="ssl-https-requirement"><a class="anchor" href="#ssl-https-requirement"></a>SSL/HTTPS requirement</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/ssl.adoc" target="_blank">Edit this section</a>
@@ -14403,9 +14590,9 @@ click the <code>Security Defenses</code> tab and make sure you are on the <code>
 <div class="paragraph">
 <p>On the adapter/client-side, you can disable the SSL trust manager. The trust manager ensures the client&#8217;s identity that Keycloak communicates with is valid and ensures the DNS domain name against the server&#8217;s certificate. In production, ensure that each of your client adapters uses a truststore to prevent DNS man-in-the-middle attacks.</p>
 </div>
-<div class="paragraph">
-<p>=== CSRF attacks</p>
 </div>
+<div class="sect2">
+<h3 id="csrf-attacks"><a class="anchor" href="#csrf-attacks"></a>CSRF attacks</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/csrf.adoc" target="_blank">Edit this section</a>
@@ -14424,21 +14611,21 @@ click the <code>Security Defenses</code> tab and make sure you are on the <code>
 <div class="paragraph">
 <p>The user account management section in Keycloak can be vulnerable to CSRF. To prevent CSRF attacks, Keycloak sets a state cookie and embeds the value of this cookie in hidden form fields or query parameters within action links. Keycloak checks the query/form parameter against the state cookie to verify that the user makes the call.</p>
 </div>
-<div class="sidebarblock page-links">
+<div id="unspecific-redirect-uris_server_administration_guide" class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/redirect.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_admin/topics/threat/redirect.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Unspecific redirect URIs</p>
 </div>
+<div class="sect2">
+<h3 id="unspecific-redirect-uris"><a class="anchor" href="#unspecific-redirect-uris"></a>Unspecific redirect URIs</h3>
 <div class="paragraph">
 <p>Make your registered redirect URIs as specific as feasible. Registering vague redirect URIs for <a href="#con-oidc-auth-flows_server_administration_guide">Authorization Code Flows</a> can allow malicious clients to impersonate another client with broader access. Impersonation can happen if two clients live under the same domain, for example.</p>
 </div>
-<div class="paragraph">
-<p>=== Compromised access and refresh tokens</p>
 </div>
+<div class="sect2">
+<h3 id="compromised-access-and-refresh-tokens"><a class="anchor" href="#compromised-access-and-refresh-tokens"></a>Compromised access and refresh tokens</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/compromised-tokens.adoc" target="_blank">Edit this section</a>
@@ -14464,9 +14651,9 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>You can disable specific applications, clients, or users if they are compromised.</p>
 </div>
-<div class="paragraph">
-<p>=== Compromised authorization code</p>
 </div>
+<div class="sect2">
+<h3 id="compromised-authorization-code"><a class="anchor" href="#compromised-authorization-code"></a>Compromised authorization code</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/compromised-codes.adoc" target="_blank">Edit this section</a>
@@ -14482,9 +14669,9 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>You can also defend against leaked authorization codes by applying <a href="#_proof-key-for-code-exchange">Proof Key for Code Exchange (PKCE)</a> to clients.</p>
 </div>
-<div class="paragraph">
-<p>=== Open redirectors</p>
 </div>
+<div class="sect2">
+<h3 id="open-redirectors"><a class="anchor" href="#open-redirectors"></a>Open redirectors</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/open-redirect.adoc" target="_blank">Edit this section</a>
@@ -14497,9 +14684,9 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>Keycloak requires that all registered applications and clients register at least one redirection URI pattern. When a client requests that Keycloak performs a redirect, Keycloak checks the redirect URI against the list of valid registered URI patterns. Clients and applications must register as specific a URI pattern as possible to mitigate open redirector attacks.</p>
 </div>
-<div class="paragraph">
-<p>=== Password database compromised</p>
 </div>
+<div class="sect2">
+<h3 id="password-database-compromised"><a class="anchor" href="#password-database-compromised"></a>Password database compromised</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/password-db-compromised.adoc" target="_blank">Edit this section</a>
@@ -14509,9 +14696,9 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>Keycloak does not store passwords in raw text but as hashed text, using the PBKDF2 hashing algorithm. Keycloak performs 20,000 hashing iterations, the number of iterations recommended by the security community. This number of hashing iterations can adversely affect performance as PBKDF2 hashing uses a significant amount of CPU resources.</p>
 </div>
-<div class="paragraph">
-<p>=== Limiting scope</p>
 </div>
+<div class="sect2">
+<h3 id="limiting-scope"><a class="anchor" href="#limiting-scope"></a>Limiting scope</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/scope.adoc" target="_blank">Edit this section</a>
@@ -14524,9 +14711,9 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>Limit the roles of an access token by using the <a href="#_role_scope_mappings">Scope menu</a> for each client. Alternatively, you can set role scope mappings at the Client Scope level and assign Client Scopes to your client by using the <a href="#_client_scopes_linking">Client Scope menu</a>.</p>
 </div>
-<div class="paragraph">
-<p>=== Limit token audience</p>
 </div>
+<div class="sect2">
+<h3 id="limit-token-audience"><a class="anchor" href="#limit-token-audience"></a>Limit token audience</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/audience-limit.adoc" target="_blank">Edit this section</a>
@@ -14536,9 +14723,9 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>In environments with low levels of trust among services, limit the audiences on the token. See the <a href="https://tools.ietf.org/html/rfc6819#section-5.1.5.5">OAuth2 Threat Model</a> and the <a href="#con-audience_server_administration_guide">Audience Support</a> section for more information.</p>
 </div>
-<div class="paragraph">
-<p>=== SQL injection attacks</p>
 </div>
+<div class="sect2">
+<h3 id="sql-injection-attacks"><a class="anchor" href="#sql-injection-attacks"></a>SQL injection attacks</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/sql.adoc" target="_blank">Edit this section</a>
@@ -14548,9 +14735,12 @@ Pushing a new not-before policy ensures that applications must download new publ
 <div class="paragraph">
 <p>Currently, Keycloak has no known SQL injection vulnerabilities.</p>
 </div>
-<div class="paragraph">
-<p>== Account Console</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_account-service"><a class="anchor" href="#_account-service"></a>Account Console</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/account.adoc" target="_blank">Edit this section</a>
@@ -14607,16 +14797,18 @@ accounts together).  This will show the list of external identity providers you 
 <div class="title">Applications</div>
 <p><span class="image"><img src="./keycloak-images/account-service-apps.png" alt="account service apps"></span></p>
 </div>
-<div class="paragraph">
-<p>=== Themeable</p>
-</div>
+<div class="sect2">
+<h3 id="themeable"><a class="anchor" href="#themeable"></a>Themeable</h3>
 <div class="paragraph">
 <p>Like all UIs in Keycloak, the Account Console is completely themeable and internationalizable.
 See the <a href="https://www.keycloak.org/docs/15.0/server_development/">Server Developer Guide</a> for more details.</p>
 </div>
-<div class="paragraph">
-<p>== Admin CLI</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="admin-cli"><a class="anchor" href="#admin-cli"></a>Admin CLI</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/admin-cli.adoc" target="_blank">Edit this section</a>
@@ -14626,9 +14818,8 @@ See the <a href="https://www.keycloak.org/docs/15.0/server_development/">Server 
 <div class="paragraph">
 <p>With Keycloak, you can perform administration tasks from the command-line interface (CLI) by using the Admin CLI command-line tool.</p>
 </div>
-<div class="paragraph">
-<p>=== Installing the Admin CLI</p>
-</div>
+<div class="sect2">
+<h3 id="installing-the-admin-cli"><a class="anchor" href="#installing-the-admin-cli"></a>Installing the Admin CLI</h3>
 <div class="paragraph">
 <p>Keycloak packages the Admin CLI server distribution with the execution scripts in the <code>bin</code> directory.</p>
 </div>
@@ -14681,9 +14872,9 @@ c:\&gt; kcadm</pre>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>=== Using the Admin CLI</p>
 </div>
+<div class="sect2">
+<h3 id="using-the-admin-cli"><a class="anchor" href="#using-the-admin-cli"></a>Using the Admin CLI</h3>
 <div class="paragraph">
 <p>The Admin CLI makes HTTP requests to Admin REST endpoints. Access to the Admin REST endpoints requires authentication.</p>
 </div>
@@ -14764,9 +14955,9 @@ c:\&gt; kcadm get clients/%CID%/installation/providers/keycloak-oidc-keycloak-js
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>=== Authenticating</p>
 </div>
+<div class="sect2">
+<h3 id="authenticating"><a class="anchor" href="#authenticating"></a>Authenticating</h3>
 <div class="paragraph">
 <p>When you log in with the Admin CLI, you specify:</p>
 </div>
@@ -14820,9 +15011,9 @@ c:\&gt; kcadm get clients/%CID%/installation/providers/keycloak-oidc-keycloak-js
 <div class="paragraph">
 <p>Run the <code>kcadm.sh config credentials --help</code> command for more information about starting an authenticated session.</p>
 </div>
-<div id="_working_with_alternative_configurations" class="paragraph">
-<p>=== Working with alternative configurations</p>
 </div>
+<div class="sect2">
+<h3 id="_working_with_alternative_configurations"><a class="anchor" href="#_working_with_alternative_configurations"></a>Working with alternative configurations</h3>
 <div class="paragraph">
 <p>By default, the Admin CLI maintains a configuration file named <code>kcadm.config</code>. Keycloak places this file in the user&#8217;s home directory.
 In Linux-based systems, the full pathname is <code>$HOME/.keycloak/kcadm.config</code>.
@@ -14851,9 +15042,9 @@ In Windows, the full pathname is <code>%HOMEPATH%\.keycloak\kcadm.config</code>.
 <div class="paragraph">
 <p>It is possible to avoid storing secrets inside a configuration file, but doing so is inconvenient and increases the number of token requests. Use the <code>--no-config</code> option with all commands and specify the authentication information the <code>config credentials</code> command requires with each invocation of <code>kcadm</code>.</p>
 </div>
-<div class="paragraph">
-<p>=== Basic operations and resource URIs</p>
 </div>
+<div class="sect2">
+<h3 id="basic-operations-and-resource-uris"><a class="anchor" href="#basic-operations-and-resource-uris"></a>Basic operations and resource URIs</h3>
 <div class="paragraph">
 <p>The Admin CLI can generically perform CRUD operations against Admin REST API endpoints with additional commands that simplify particular tasks.</p>
 </div>
@@ -14950,9 +15141,9 @@ $ kcadm.sh update realms/demorealm -f demorealm.json</pre>
 <div class="paragraph">
 <p>By default, the <code>update</code> command performs a <code>get</code> and then merges the new attribute values with existing values. In some cases, the endpoint may support the <code>put</code> command but not the <code>get</code> command. You can use the <code>-n</code> option to perform a no-merge update, which performs a <code>put</code> command without first running a <code>get</code> command.</p>
 </div>
-<div class="paragraph">
-<p>=== Realm operations</p>
 </div>
+<div class="sect2">
+<h3 id="realm-operations"><a class="anchor" href="#realm-operations"></a>Realm operations</h3>
 <h4 id="creating-a-new-realm" class="discrete">Creating a new realm</h4>
 <div class="paragraph">
 <p>Use the <code>create</code> command on the <code>realms</code> endpoint to create a new enabled realm. Set the attributes to <code>realm</code> and <code>enabled</code>.</p>
@@ -15451,9 +15642,9 @@ $ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm</pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>=== Role operations</p>
 </div>
+<div class="sect2">
+<h3 id="role-operations"><a class="anchor" href="#role-operations"></a>Role operations</h3>
 <h4 id="creating-a-realm-role-2" class="discrete">Creating a realm role</h4>
 <div class="paragraph">
 <p>Use the <code>roles</code> endpoint to create a realm role.</p>
@@ -15803,9 +15994,9 @@ $ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm</pre>
 <pre class="nowrap">$ kcadm.sh remove-roles -r demorealm --gname Group --cclientid realm-management --rolename create-client --rolename view-users</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Client operations</p>
 </div>
+<div class="sect2">
+<h3 id="client-operations"><a class="anchor" href="#client-operations"></a>Client operations</h3>
 <h4 id="creating-a-client" class="discrete">Creating a client</h4>
 <div class="olist arabic">
 <ol class="arabic">
@@ -15979,9 +16170,9 @@ $ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm</pre>
 <div class="paragraph">
 <p>A client&#8217;s service account is a user account with username <code>service-account-CLIENT_ID</code>. You can perform the same user operations on this account as a regular account.</p>
 </div>
-<div class="paragraph">
-<p>=== User operations</p>
 </div>
+<div class="sect2">
+<h3 id="user-operations"><a class="anchor" href="#user-operations"></a>User operations</h3>
 <h4 id="creating-a-user-2" class="discrete">Creating a user</h4>
 <div class="paragraph">
 <p>Run the <code>create</code> command on the <code>users</code> endpoint to create a new user.</p>
@@ -16311,9 +16502,9 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 <pre class="nowrap">$ kcadm.sh create users/6da5ab89-3397-4205-afaa-e201ff638f9e/logout -r demorealm -s realm=demorealm -s user=6da5ab89-3397-4205-afaa-e201ff638f9e</pre>
 </div>
 </div>
-<div id="_group_operations" class="paragraph">
-<p>=== Group operations</p>
 </div>
+<div class="sect2">
+<h3 id="_group_operations"><a class="anchor" href="#_group_operations"></a>Group operations</h3>
 <h4 id="creating-a-group" class="discrete">Creating a group</h4>
 <div class="paragraph">
 <p>Use the <code>create</code> command on the <code>groups</code> endpoint to create a new group.</p>
@@ -16529,9 +16720,9 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>=== Identity provider operations</p>
 </div>
+<div class="sect2">
+<h3 id="identity-provider-operations"><a class="anchor" href="#identity-provider-operations"></a>Identity provider operations</h3>
 <h4 id="listing-available-identity-providers" class="discrete">Listing available identity providers</h4>
 <div class="paragraph">
 <p>Use the <code>serverinfo</code> endpoint to list available identity providers.</p>
@@ -16769,9 +16960,9 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>=== Storage provider operations</p>
 </div>
+<div class="sect2">
+<h3 id="storage-provider-operations"><a class="anchor" href="#storage-provider-operations"></a>Storage provider operations</h3>
 <h4 id="configuring-a-kerberos-storage-provider" class="discrete">Configuring a Kerberos storage provider</h4>
 <div class="olist arabic">
 <ol class="arabic">
@@ -16923,9 +17114,9 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>=== Adding mappers</p>
 </div>
+<div class="sect2">
+<h3 id="adding-mappers"><a class="anchor" href="#adding-mappers"></a>Adding mappers</h3>
 <h4 id="adding-a-hard-coded-role-ldap-mapper" class="discrete">Adding a hard-coded role LDAP mapper</h4>
 <div class="olist arabic">
 <ol class="arabic">
@@ -17051,9 +17242,9 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>=== Authentication operations</p>
 </div>
+<div class="sect2">
+<h3 id="authentication-operations"><a class="anchor" href="#authentication-operations"></a>Authentication operations</h3>
 <h4 id="setting-a-password-policy" class="discrete">Setting a password policy</h4>
 <div class="olist arabic">
 <ol class="arabic">
@@ -17277,12 +17468,9 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-08 22:12:27 UTC
+Last updated 2021-07-09 12:45:21 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
