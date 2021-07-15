@@ -798,7 +798,7 @@ span.image img {
 <li><a href="#database">Database</a></li>
 <li><a href="#cache">Infinispan caches</a></li>
 <li><a href="#communication">Communication details</a></li>
-<li><a href="#setting-up-cross-dc-with-infinispan-11-0-8">Setting Up Cross DC with Infinispan 11.0.8</a></li>
+<li><a href="#assembly-setting-up-crossdc">Setting Up Cross DC with Infinispan 11.0.8</a></li>
 <li><a href="#setup">Setting up Cross DC with Infinispan 9.4.19</a></li>
 <li><a href="#administration">Administration of Cross DC deployment</a></li>
 <li><a href="#onoffline">Bringing sites offline and online</a></li>
@@ -1937,15 +1937,15 @@ entered a bad password. The details are described <a href="https://www.keycloak.
 <div class="paragraph">
 <p>See the <a href="#archdiagram">Example Architecture Diagram</a> for more details.</p>
 </div>
-<div id="assembly-setting-up-crossdc" class="sidebarblock page-links">
+</div>
+<div class="sect3">
+<h4 id="assembly-setting-up-crossdc"><a class="anchor" href="#assembly-setting-up-crossdc"></a>Setting Up Cross DC with Infinispan 11.0.8</h4>
+<div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/crossdc/assembly-setting-up-crossdc.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/operating-mode/crossdc/assembly-setting-up-crossdc.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="setting-up-cross-dc-with-infinispan-11-0-8"><a class="anchor" href="#setting-up-cross-dc-with-infinispan-11-0-8"></a>Setting Up Cross DC with Infinispan 11.0.8</h4>
 <div class="paragraph _abstract">
 <p>Use the following procedures for Infinispan 11.0.8 to perform a basic setup of Cross-Datacenter replication.</p>
 </div>
@@ -1976,14 +1976,14 @@ They communicate with the Infinispan server <code>server1</code> using the Hot R
 <div class="paragraph">
 <p>Our example setup assumes that the four Keycloak servers talk to the same database. In production, we recommend that you use separate synchronously replicated databases across data centers as described in <a href="#database">Database</a>.</p>
 </div>
-<div id="setting-up-infinispan-xsite" class="sidebarblock page-links">
+<div class="sect4">
+<h5 id="setting-up-infinispan-xsite"><a class="anchor" href="#setting-up-infinispan-xsite"></a>Setting Up Infinispan Servers</h5>
+<div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/crossdc/proc-setting-up-infinispan.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/operating-mode/crossdc/proc-setting-up-infinispan.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="sect4">
-<h5 id="setting-up-infinispan-servers"><a class="anchor" href="#setting-up-infinispan-servers"></a>Setting Up Infinispan Servers</h5>
 <div class="paragraph">
 <p>For Cross-Datacenter replication, you start by creating remote Infinispan clusters that can back up Keycloak data.</p>
 </div>
@@ -2075,15 +2075,15 @@ They communicate with the Infinispan server <code>server1</code> using the Hot R
 </li>
 </ol>
 </div>
-<div id="configuring-infinispan-xsite" class="sidebarblock page-links">
+</div>
+<div class="sect4">
+<h5 id="configuring-infinispan-xsite"><a class="anchor" href="#configuring-infinispan-xsite"></a>Configuring Infinispan Clusters</h5>
+<div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/crossdc/proc-configuring-infinispan.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/operating-mode/crossdc/proc-configuring-infinispan.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-<div class="sect4">
-<h5 id="configuring-infinispan-clusters"><a class="anchor" href="#configuring-infinispan-clusters"></a>Configuring Infinispan Clusters</h5>
 <div class="paragraph">
 <p>Configure Infinispan clusters to replicate Keycloak data across data centers.</p>
 </div>
@@ -2321,15 +2321,15 @@ INFO  [org.infinispan.XSITE] (jgroups-7,${server.hostname}) ISPN000439: Received
 </li>
 </ol>
 </div>
-<div id="creating-infinispan-caches-xsite" class="sidebarblock page-links">
+</div>
+<div class="sect4">
+<h5 id="creating-infinispan-caches-xsite"><a class="anchor" href="#creating-infinispan-caches-xsite"></a>Creating Infinispan Caches</h5>
+<div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/crossdc/proc-creating-infinispan-caches.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/operating-mode/crossdc/proc-creating-infinispan-caches.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-<div class="sect4">
-<h5 id="creating-infinispan-caches"><a class="anchor" href="#creating-infinispan-caches"></a>Creating Infinispan Caches</h5>
 <div class="paragraph">
 <p>Create the Infinispan caches that Keycloak requires.</p>
 </div>
@@ -2395,15 +2395,15 @@ Instead of the <code>--trustall</code> argument you can specify the truststore w
 </li>
 </ol>
 </div>
-<div id="proc-configuring-remote-cache-xsite" class="sidebarblock page-links">
+</div>
+<div class="sect4">
+<h5 id="proc-configuring-remote-cache-xsite"><a class="anchor" href="#proc-configuring-remote-cache-xsite"></a>Configuring Remote Cache Stores on Keycloak</h5>
+<div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/crossdc/proc-configuring-remote-cache.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/operating-mode/crossdc/proc-configuring-remote-cache.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-<div class="sect4">
-<h5 id="configuring-remote-cache-stores-on-keycloak"><a class="anchor" href="#configuring-remote-cache-stores-on-keycloak"></a>Configuring Remote Cache Stores on Keycloak</h5>
 <div class="paragraph">
 <p>After you set up remote Infinispan clusters, you configure the Infinispan subsystem on Keycloak to externalize data to those clusters through remote stores.</p>
 </div>
@@ -8161,7 +8161,7 @@ with this strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-09 12:45:29 UTC
+Last updated 2021-07-15 15:42:29 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
