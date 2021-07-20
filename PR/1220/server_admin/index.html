@@ -6566,6 +6566,76 @@ Instead, keycloak adapters currently treat access and refresh tokens as bearer t
 </li>
 </ul>
 </div>
+<div id="_pushed_authorization_requests" class="paragraph">
+<p><strong>OAuth 2.0 Pushed Authorization Requests</strong></p>
+</div>
+<div class="paragraph">
+<p>Basic features of <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-par">OAuth 2.0 Pushed Authorization Requests</a> has been supported.</p>
+</div>
+<div class="paragraph">
+<p>For more details about PAR, see <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-par">PAR Specification</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>OAuth 2.0 Pushed Authorization Requests is <strong>Technology Preview</strong> and is not fully supported. This feature is disabled by default.</p>
+</div>
+<div class="paragraph">
+<p>To enable start the server with <code>-Dkeycloak.profile=preview</code>
+or <code>-Dkeycloak.profile.feature.par=enabled</code>
+. For more details see <a href="https://www.keycloak.org/docs/15.0/server_installation/#profiles">Profiles</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>There are two configuration parameters. The former can be set up on Advanced Settings per client for activating and deactivating PAR.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Configuration</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pushed Authorization Request Enabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean parameter indicating whether the authorization server accepts authorization request data only via the pushed authorization request method.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The latter can be set up on Realm Setting&#8217;s Token tab per realm for determining lifetime of PAR&#8217;s Request URI.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Configuration</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lifetime of the Request URI for Pushed Authorization Request</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number that represents the lifetime of the request URI in minutes or hours, the default value is 1 minute.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="_client-credentials"><a class="anchor" href="#_client-credentials"></a>Confidential Client Credentials</h4>
@@ -16538,7 +16608,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-06-30 08:29:11 UTC
+Last updated 2021-07-20 13:50:08 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>

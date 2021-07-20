@@ -1306,9 +1306,9 @@ This is what one might look like:</p>
    },
 
    <span class="key"><span class="delimiter">&quot;</span><span class="content">connection-pool-size</span><span class="delimiter">&quot;</span></span> : <span class="integer">20</span>,
-   <span class="key"><span class="delimiter">&quot;</span><span class="content">socket-timeout</span><span class="delimiter">&quot;</span></span>: <span class="integer">5000</span>,
-   <span class="key"><span class="delimiter">&quot;</span><span class="content">connection-timeout</span><span class="delimiter">&quot;</span></span>: <span class="integer">6000</span>,
-   <span class="key"><span class="delimiter">&quot;</span><span class="content">connectionTTL</span><span class="delimiter">&quot;</span></span>: <span class="integer">500</span>,
+   <span class="key"><span class="delimiter">&quot;</span><span class="content">socket-timeout-millis</span><span class="delimiter">&quot;</span></span>: <span class="integer">5000</span>,
+   <span class="key"><span class="delimiter">&quot;</span><span class="content">connection-timeout-millis</span><span class="delimiter">&quot;</span></span>: <span class="integer">6000</span>,
+   <span class="key"><span class="delimiter">&quot;</span><span class="content">connection-ttl-millis</span><span class="delimiter">&quot;</span></span>: <span class="integer">500</span>,
    <span class="key"><span class="delimiter">&quot;</span><span class="content">disable-trust-manager</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
    <span class="key"><span class="delimiter">&quot;</span><span class="content">allow-any-hostname</span><span class="delimiter">&quot;</span></span> : <span class="value">false</span>,
    <span class="key"><span class="delimiter">&quot;</span><span class="content">truststore</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/truststore.jks</span><span class="delimiter">&quot;</span></span>,
@@ -1456,18 +1456,18 @@ Currently password and jwt is supported. This is <em>REQUIRED</em> only for clie
 This is <em>OPTIONAL</em>.
 The default value is <code>20</code>.</p>
 </dd>
-<dt class="hdlist1">socket-timeout</dt>
+<dt class="hdlist1">socket-timeout-millis</dt>
 <dd>
 <p>Timeout for socket waiting for data after establishing the connection in milliseconds.
 Maximum time of inactivity between two data packets.
 This is <em>OPTIONAL</em>.</p>
 </dd>
-<dt class="hdlist1">connection-timeout</dt>
+<dt class="hdlist1">connection-timeout-millis</dt>
 <dd>
 <p>Timeout for establishing the connection with the remote host in milliseconds.
 This is <em>OPTIONAL</em>.</p>
 </dd>
-<dt class="hdlist1">connection-ttl</dt>
+<dt class="hdlist1">connection-ttl-millis</dt>
 <dd>
 <p>Connection time-to-live for client in milliseconds.
 This is <em>OPTIONAL</em>.</p>
@@ -8441,7 +8441,7 @@ verification via SAML descriptor of the IDP when
             <span class="attribute-name">proxyUrl</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://proxy/</span><span class="delimiter">&quot;</span></span>
             <span class="attribute-name">socketTimeout</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">5000</span><span class="delimiter">&quot;</span></span>
             <span class="attribute-name">connectionTimeout</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">6000</span><span class="delimiter">&quot;</span></span>
-            <span class="attribute-name">connectionTTL</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">500</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
+            <span class="attribute-name">connectionTtl</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">500</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
 </div>
 </div>
 <div class="dlist">
@@ -8512,7 +8512,7 @@ This is <em>OPTIONAL</em>.</p>
 <p>Timeout for establishing the connection with the remote host in milliseconds.
 This is <em>OPTIONAL</em>.</p>
 </dd>
-<dt class="hdlist1">connectionTTL</dt>
+<dt class="hdlist1">connectionTtl</dt>
 <dd>
 <p>Connection time-to-live for client in milliseconds.
 This is <em>OPTIONAL</em>.</p>
@@ -12140,7 +12140,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-06-30 08:29:06 UTC
+Last updated 2021-07-20 13:50:03 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
