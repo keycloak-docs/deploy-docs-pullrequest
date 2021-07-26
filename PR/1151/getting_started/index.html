@@ -794,25 +794,25 @@ span.image img {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/server_installation/">Server Installation</a></p>
+<p><a href="https://www.keycloak.org/docs/15.0/server_installation/">Server Installation</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/securing_apps/">Securing Apps</a></p>
+<p><a href="https://www.keycloak.org/docs/15.0/securing_apps/">Securing Apps</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/server_admin/">Server Administration</a></p>
+<p><a href="https://www.keycloak.org/docs/15.0/server_admin/">Server Administration</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer</a></p>
+<p><a href="https://www.keycloak.org/docs/15.0/server_development/">Server Developer</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/authorization_services/">Authorization Services</a></p>
+<p><a href="https://www.keycloak.org/docs/15.0/authorization_services/">Authorization Services</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/upgrading/">Upgrading</a></p>
+<p><a href="https://www.keycloak.org/docs/15.0/upgrading/">Upgrading</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/release_notes/">Release Notes</a></p>
+<p><a href="https://www.keycloak.org/docs/15.0/release_notes/">Release Notes</a></p>
 </li>
 </ul>
 </div>
@@ -821,7 +821,7 @@ span.image img {
 <div class="exampleblock top-menu-version">
 <div class="content">
 <div class="paragraph versionarchive">
-<p>Version <strong>11.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/getting_started/">Click here for latest</a></em></p>
+<p>Version <strong>15.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/getting_started/">Click here for latest</a></em></p>
 </div>
 </div>
 </div>
@@ -868,7 +868,7 @@ span.image img {
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Download <strong>keycloak-11.0.0.[zip|tar.gz]</strong> from  <a href="https://www.keycloak.org/downloads.html">Keycloak downloads</a>.</p>
+<p>Download <strong>keycloak-15.0.0.[zip|tar.gz]</strong> from  <a href="https://www.keycloak.org/downloads.html">Keycloak downloads</a>.</p>
 </li>
 <li>
 <p>Place the file in a directory you choose.</p>
@@ -878,17 +878,17 @@ span.image img {
 <div class="listingblock">
 <div class="title">Linux/Unix</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ unzip keycloak-11.0.0.zip
+<pre class="CodeRay highlight"><code data-lang="bash">$ unzip keycloak-15.0.0.zip
 
 or
 
-$ tar -xvzf keycloak-11.0.0.tar.gz</code></pre>
+$ tar -xvzf keycloak-15.0.0.tar.gz</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Windows</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; Expand-Archive -Path 'C:Downloads\keycloak-11.0.0.zip` -DestinationPath 'C:\Downloads'</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">&gt; Expand-Archive -Path 'C:Downloads\keycloak-15.0.0.zip' -DestinationPath 'C:\Downloads'</code></pre>
 </div>
 </div>
 </li>
@@ -1334,6 +1334,12 @@ $ ./standalone.sh -Djboss.socket.binding.port-offset=100</code></pre>
 <pre class="CodeRay highlight"><code data-lang="bash">&gt; ...\bin\standalone.bat -Djboss.socket.binding.port-offset=100</code></pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Windows Powershell</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">&gt; ...\bin\standalone.bat -D&quot;jboss.socket.binding.port-offset=100&quot;</code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Confirm that the Keycloak server is running. Go to <a href="http://localhost:8180/auth/admin/" class="bare">http://localhost:8180/auth/admin/</a> .</p>
@@ -1708,7 +1714,7 @@ $ cd keycloak-quickstarts/app-profile-jee-vanilla/config</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-04-12 03:29:43 UTC
+Last updated 2021-07-26 05:30:46 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
