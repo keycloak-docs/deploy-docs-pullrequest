@@ -13975,7 +13975,9 @@ more details are in the <a href="#_audience">Audience Support section</a>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak creates an authentication session for each authentication request within a realm. This session is internally represented by <code>RootAuthenticationSession</code>. Each <code>RootAuthenticationSession</code> can have multiple authentication sub-sessions for a given client (ie. browser). In a browser authentication flow, the browser session translates to <code>RootAuthenticationSession</code> while browser tabs translate to a collection of authentication sub-sessions within the <code>RootAuthenticationSession</code>. Keycloak stores authentication sessions in a dedicated Infinispan cache. The number of sub-sessions per <code>RootAuthenticationSession</code> contributes to the size of each cache entry.</p>
+<p>When a login page is opened for the first time in a web browser, Keycloak creates an object called authentication session that stores some useful information about the request.
+Whenever a new login page is opened from a different tab in the same browser, Keycloak creates a new record called authentication sub-session that is stored within the authentication session.
+Authentication requests can come from any type of clients e.g. Admin CLI. In that case a new authentication session is also created with one authentication sub-session.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -13990,13 +13992,19 @@ This section describes deployments that use the Infinispan provider for authenti
 </table>
 </div>
 <div class="paragraph">
-<p>Higher memory usage and a network overload in a cluster may occur for deployments where there are many active <code>RootAuthenticationSession</code> with a lot of authentication sub-sessions.</p>
+<p>Authentication session is internally stored as <code>RootAuthenticationSessionEntity</code>. Each <code>RootAuthenticationSessionEntity</code> can have multiple authentication sub-sessions stored within the
+<code>RootAuthenticationSessionEntity</code> as a collection of <code>AuthenticationSessionEntity</code>. Keycloak stores authentication sessions in a dedicated Infinispan cache.
+The number of <code>AuthenticationSessionEntity</code> per <code>RootAuthenticationSessionEntity</code> contributes to the size of each cache entry. Total memory footprint of authentication session cache is determined by
+number of stored <code>RootAuthenticationSessionEntity</code> and by number of <code>AuthenticationSessionEntity</code> within each <code>RootAuthenticationSessionEntity</code>.</p>
 </div>
 <div class="paragraph">
-<p>There is a possibility to mitigate the aforementioned threats. The maximum allowed number of <code>RootAuthenticationSession</code> should be addressed by limiting the request rate per time on the proxy or load balancer in front of Keycloak. The maximum number of authentication sub-sessions per <code>RootAuthenticationSession</code> can be configured in <code>authenticationSessions</code> SPI by setting property <code>authSessionsLimit</code>. The default value is set to 300 authentication sub-sessions per a <code>RootAuthenticationSession</code>. When this limit is reached, the oldest authentication sub-session will be removed after a new authentication session request.</p>
+<p>Higher memory usage and a network overload in a cluster may occur for deployments where there are many active <code>RootAuthenticationSessionEntity</code> with a lot of <code>AuthenticationSessionEntity</code>.</p>
 </div>
 <div class="paragraph">
-<p>The following example shows how to limit the number of active authentication sub-sessions per a <code>RootAuthenticationSession</code> to 100.</p>
+<p>There is a possibility to mitigate the aforementioned threats. The maximum allowed number of <code>RootAuthenticationSessionEntity</code> should be addressed by limiting the request rate per time on the proxy or load balancer in front of Keycloak. The maximum number of <code>AuthenticationSessionEntity</code> per <code>RootAuthenticationSessionEntity</code> can be configured in <code>authenticationSessions</code> SPI by setting property <code>authSessionsLimit</code>. The default value is set to 300 <code>AuthenticationSessionEntity</code> per a <code>RootAuthenticationSessionEntity</code>. When this limit is reached, the oldest authentication sub-session will be removed after a new authentication session request.</p>
+</div>
+<div class="paragraph">
+<p>The following example shows how to limit the number of active <code>AuthenticationSessionEntity</code> per a <code>RootAuthenticationSessionEntity</code> to 100.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -16619,7 +16627,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-27 14:49:54 UTC
+Last updated 2021-07-28 12:15:11 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
