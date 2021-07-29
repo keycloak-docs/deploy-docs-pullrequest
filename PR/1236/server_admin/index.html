@@ -13977,8 +13977,8 @@ more details are in the <a href="#_audience">Audience Support section</a>.</p>
 <div class="paragraph">
 <p>When a login page is opened for the first time in a web browser, Keycloak creates an object called authentication session that stores some useful information about the request.
 Whenever a new login page is opened from a different tab in the same browser, Keycloak creates a new record called authentication sub-session that is stored within the authentication session.
-Authentication requests can come from any type of clients e.g. Admin CLI. In that case a new authentication session is also created with one authentication sub-session.
-Please note that authentication sessions can be created also in other ways than via a browser flow. The text below is applicable regardless of the source flow.</p>
+Authentication requests can come from any type of clients such as the Admin CLI. In that case, a new authentication session is also created with one authentication sub-session.
+Please note that authentication sessions can be created also in other ways than using a browser flow. The text below is applicable regardless of the source flow.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -13996,7 +13996,7 @@ This section describes deployments that use the Infinispan provider for authenti
 <p>Authentication session is internally stored as <code>RootAuthenticationSessionEntity</code>. Each <code>RootAuthenticationSessionEntity</code> can have multiple authentication sub-sessions stored within the
 <code>RootAuthenticationSessionEntity</code> as a collection of <code>AuthenticationSessionEntity</code> objects. Keycloak stores authentication sessions in a dedicated Infinispan cache.
 The number of <code>AuthenticationSessionEntity</code> per <code>RootAuthenticationSessionEntity</code> contributes to the size of each cache entry. Total memory footprint of authentication session cache is determined by
-number of stored <code>RootAuthenticationSessionEntity</code> and by number of <code>AuthenticationSessionEntity</code> within each <code>RootAuthenticationSessionEntity</code>.</p>
+the number of stored <code>RootAuthenticationSessionEntity</code> and by the number of <code>AuthenticationSessionEntity</code> within each <code>RootAuthenticationSessionEntity</code>.</p>
 </div>
 <div class="paragraph">
 <p>The number of maintained <code>RootAuthenticationSessionEntity</code> objects corresponds to the number of unfinished login flows from the browser. To keep the number of <code>RootAuthenticationSessionEntity</code>
@@ -14005,7 +14005,7 @@ under control, using an advanced firewall control to limit ingress network traff
 <div class="paragraph">
 <p>Higher memory usage may occur for deployments where there are many active <code>RootAuthenticationSessionEntity</code> with a lot of <code>AuthenticationSessionEntity</code>.
 If the load balancer does not support or is not configured for <a href="https://www.keycloak.org/docs/15.0/server_installation/#sticky-sessions">session stickiness</a>, the load over network in a cluster can
-increase significantly. The reason for this load is that each request that lands to a node which does not own the appropriate authentication session needs to retrieve
+increase significantly. The reason for this load is that each request that lands on a node that does not own the appropriate authentication session needs to retrieve
 and update the authentication session record in the owner node which involves a separate network transmission for both the retrieval and the storage.</p>
 </div>
 <div class="paragraph">
@@ -16635,7 +16635,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-28 14:30:08 UTC
+Last updated 2021-07-29 18:35:25 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
