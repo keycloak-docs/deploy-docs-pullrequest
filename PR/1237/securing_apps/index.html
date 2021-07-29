@@ -7574,7 +7574,7 @@ If user authentication is complete, the application obtains the device code. The
 </div>
 <div class="paragraph">
 <p>In case that client uses <code>ping</code> mode, it does not need to repeatedly poll the token endpoint, but it can wait for the notification sent by Keycloak to the specified Client Notification Endpoint.
-The Client Notification Endpoint can be configured in the Keycloak admin console. The details of the contract for Client Notification Endpoint are described in the CIBA specification.</p>
+The Client Notification Endpoint can be configured in the Keycloak Admin Console. The details of the contract for Client Notification Endpoint are described in the CIBA specification.</p>
 </div>
 <div class="paragraph">
 <p>For more details refer to <a href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html">OpenID Connect Client Initiated Backchannel Authentication Flow specification</a>.</p>
@@ -7638,7 +7638,7 @@ With this redirect uri it is also possible for a user to use a different device 
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak makes it easier for administrators to make sure that their clients are compliant with the specifications:</p>
+<p>Keycloak makes it easier for administrators to make sure that their clients are compliant with these specifications:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7667,13 +7667,13 @@ profile you need your clients to conform with.</p>
 </div>
 <div class="paragraph">
 <p>In case you want to use <a href="https://www.keycloak.org/docs/15.0/server_admin/#_oidc_clients">Pushed Authorization Request (PAR)</a>, it is recommended that your client use
-both <code>fapi-1-baseline</code> profile and <code>fapi-1-advanced</code> for PAR requests. Specifically, the <code>fapi-1-baseline</code> profile contains <code>pkce-enforcer</code> executor, which makes sure
+both the <code>fapi-1-baseline</code> profile and <code>fapi-1-advanced</code> for PAR requests. Specifically, the <code>fapi-1-baseline</code> profile contains <code>pkce-enforcer</code> executor, which makes sure
 that client use PKCE with secured S256 algorithm. This is not required for FAPI Advanced clients unless they use PAR requests.</p>
 </div>
 <div class="paragraph">
 <p>In case you want to use <a href="#_backchannel_authentication_endpoint">CIBA</a> in a FAPI compliant way, make sure that your clients use both <code>fapi-1-advanced</code> and <code>fapi-ciba</code> client profiles.
-There is a need to use <code>fapi-1-advanced</code> profile, or other client profile containing the requested executors, as <code>fapi-ciba</code> profile contains just CIBA-specific executors.
-When for enforcing the requirements of the FAPI CIBA specification, there is a need for more requirements, like enforcement of confidential clients or certificate-bound access tokens.</p>
+There is a need to use the <code>fapi-1-advanced</code> profile, or other client profile containing the requested executors, as the <code>fapi-ciba</code> profile contains just CIBA-specific executors.
+When enforcing the requirements of the FAPI CIBA specification, there is a need for more requirements, such as enforcement of confidential clients or certificate-bound access tokens.</p>
 </div>
 </div>
 <div class="sect3">
@@ -7686,10 +7686,10 @@ in the more strict way to enforce some of the requirements. Especially:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>If your client does not use PAR, make sure that it uses encrypted OIDC request objects. This can be achieved by using client profile with <code>secure-request-object</code> executor configured with <code>Encryption Required</code> enabled.</p>
+<p>If your client does not use PAR, make sure that it uses encrypted OIDC request objects. This can be achieved by using a client profile with the <code>secure-request-object</code> executor configured with <code>Encryption Required</code> enabled.</p>
 </li>
 <li>
-<p>Make sure that for JWS, client uses <code>PS256</code> algorithm. For JWE, client shall use <code>RSA-OAEP</code> with <code>A256GCM</code>. This may need to be set in all the <a href="https://www.keycloak.org/docs/15.0/server_admin/#_oidc_clients">Client Settings</a> where these algorithms are applicable.</p>
+<p>Make sure that for JWS, the client uses the <code>PS256</code> algorithm. For JWE, the client should use the <code>RSA-OAEP</code> with <code>A256GCM</code>. This may need to be set in all the <a href="https://www.keycloak.org/docs/15.0/server_admin/#_oidc_clients">Client Settings</a> where these algorithms are applicable.</p>
 </li>
 </ul>
 </div>
@@ -12204,7 +12204,7 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-29 14:30:48 UTC
+Last updated 2021-07-29 21:30:35 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
