@@ -2875,9 +2875,21 @@ annotations to dictate how attributes should be rendered. This capability is mai
         "view": [ "admin", "user" ],
         "edit": [ "admin", "user" ]
       },
+      "validations": {
+        "email": {},
+        "length": {
+          "max": 255
+        }
+      },
       "annotations": {
         "myannotation": "myannotation-value"
       }
+    }
+  ],
+  "groups": [
+    {
+      "name": "personalInfo",
+      "displayHeader": "Personal Information"
     }
   ]
 }</pre>
@@ -16874,7 +16886,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-29 15:03:01 UTC
+Last updated 2021-07-29 15:27:00 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
