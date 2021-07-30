@@ -2507,7 +2507,7 @@ for more information on extending and creating themes.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In the future, the legacy behavior will no longer be supported on Keycloak. Ideally, you should start looking at the new capabilities provided by the User Profile and migrate your realms accordingly.</p>
+<p>In the future, the legacy behavior will no longer be supported in Keycloak. Ideally, you should start looking at the new capabilities provided by the User Profile and migrate your realms accordingly.</p>
 </div>
 </td>
 </tr>
@@ -2535,17 +2535,17 @@ or <code>-Dkeycloak.profile.feature.declarative_user_profile=enabled</code>
 </table>
 </div>
 <div class="paragraph">
-<p>In addition to enabling the <code>declarative_user_profile</code> feature, you should enable User Profile to a realm. For that, click on the <code>Realm Settings</code> link on
-the left side menu and then turn on the <code>User Profile Enabled</code> switch.</p>
+<p>In addition to enabling the <code>declarative_user_profile</code> feature, you should enable User Profile for a realm. To do that, click on the <code>Realm Settings</code> link on
+the left side menu and turn on the <code>User Profile Enabled</code> switch.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/user-profile-enabling.png" alt="user profile enabling"></span></p>
 </div>
 <div class="paragraph">
-<p>Once you enable it and click on the <code>Save</code> button, you should be able to access the <code>User Profile</code> tab from where you can manage the configuration for user attributes.</p>
+<p>Once you enable it and click on the <code>Save</code> button, you can access the <code>User Profile</code> tab from where you can manage the configuration for user attributes.</p>
 </div>
 <div class="paragraph">
-<p>By enabling the user profile to a realm, Keycloak is going to impose additional constraints on how attributes are managed based on the user profile configuration. In summary, here is the list of what you should expect when the feature is enabled:</p>
+<p>By enabling the user profile for a realm, Keycloak is going to impose additional constraints on how attributes are managed based on the user profile configuration. In summary, here is the list of what you should expect when the feature is enabled:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2558,7 +2558,7 @@ the left side menu and then turn on the <code>User Profile Enabled</code> switch
 </ul>
 </div>
 <div class="paragraph">
-<p>In the next topics, we&#8217;ll be exploring how to manage the user profile configuration and how does it affect your realm.</p>
+<p>In the next topics, we&#8217;ll be exploring how to manage the user profile configuration and how it affects your realm.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2592,7 +2592,7 @@ the left side menu and then turn on the <code>User Profile Enabled</code> switch
 </table>
 </div>
 <div class="paragraph">
-<p>In the <code>JSON Editor</code> sub-tab you can view and edit the configuration using a well-defined JSON schema. Any change you make when at any other tab should be reflected in the JSON configuration shown at this tab.</p>
+<p>In the <code>JSON Editor</code> sub-tab you can view and edit the configuration using a well-defined JSON schema. Any change you make when at any other tab are reflected in the JSON configuration shown at this tab.</p>
 </div>
 <div class="paragraph">
 <p>In the next section, you are going to learn how to manage the configuration from the <code>Attributes</code> sub-tab.</p>
@@ -2601,7 +2601,7 @@ the left side menu and then turn on the <code>User Profile Enabled</code> switch
 <div class="sect3">
 <h4 id="managing-attributes"><a class="anchor" href="#managing-attributes"></a>Managing Attributes</h4>
 <div class="paragraph">
-<p>At the <code>Attributes</code> sub-tab you should be able to create, edit, and delete the attributes associated with the user profile.</p>
+<p>At the <code>Attributes</code> sub-tab you can create, edit, and delete the attributes associated with the user profile.</p>
 </div>
 <div class="paragraph">
 <p>To define a new attribute and associate it with the user profile, click on the <code>Create</code> button in the top-right corner of the attribute listing.</p>
@@ -2611,7 +2611,7 @@ the left side menu and then turn on the <code>User Profile Enabled</code> switch
 <p><span class="image"><img src="./images/user-profile-create-attribute.png" alt="user profile create attribute"></span></p>
 </div>
 <div class="paragraph">
-<p>When configuring the attribute you should be able to define the following settings:</p>
+<p>When configuring the attribute you can define the following settings:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -2641,7 +2641,7 @@ the left side menu and then turn on the <code>User Profile Enabled</code> switch
 </dd>
 <dt class="hdlist1">Validation</dt>
 <dd>
-<p>In this section, you can define the validations that should be performed when managing the attribute value. Keycloak provides a set of built-in validators you can choose from with the possibility to add your own.</p>
+<p>In this section, you can define the validations that will be performed when managing the attribute value. Keycloak provides a set of built-in validators you can choose from with the possibility to add your own.</p>
 </dd>
 <dt class="hdlist1">Annotation</dt>
 <dd>
@@ -2659,7 +2659,7 @@ the left side menu and then turn on the <code>User Profile Enabled</code> switch
 <p><span class="image"><img src="./images/user-profile-permission.png" alt="user profile permission"></span></p>
 </div>
 <div class="paragraph">
-<p>For that, you should be able to use the following settings:</p>
+<p>For that, you can use the following settings:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -2742,7 +2742,7 @@ the left side menu and then turn on the <code>User Profile Enabled</code> switch
 <td class="tableblock halign-left valign-top"><p class="tableblock">Check the length of a string value based on a minimum and maximum length.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>min</strong>: an integer to define the minimum allowed length.
 </p><p class="tableblock"><strong>max</strong>: an integer to define the maximum allowed length.
-</p><p class="tableblock"><strong>trim-disabled</strong>: a boolean to define whether the value should be trimmed prior to validation.</p></td>
+</p><p class="tableblock"><strong>trim-disabled</strong>: a boolean to define whether the value is trimmed prior to validation.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">integer</p></td>
@@ -2794,7 +2794,7 @@ the left side menu and then turn on the <code>User Profile Enabled</code> switch
 <h5 id="managing-annotations"><a class="anchor" href="#managing-annotations"></a>Managing Annotations</h5>
 <div class="paragraph">
 <p>In order to pass additional information to frontends, attributes can be decorated with
-annotations to dictate how attributes should be rendered. This capability is mainly useful when extending Keycloak themes to render pages dynamically based on the annotations associated with attributes.</p>
+annotations to dictate how attributes are rendered. This capability is mainly useful when extending Keycloak themes to render pages dynamically based on the annotations associated with attributes.</p>
 </div>
 <div class="paragraph">
 <div class="title">Attribute Annotation</div>
@@ -2805,7 +2805,7 @@ annotations to dictate how attributes should be rendered. This capability is mai
 <div class="sect3">
 <h4 id="managing-attribute-groups"><a class="anchor" href="#managing-attribute-groups"></a>Managing Attribute Groups</h4>
 <div class="paragraph">
-<p>At the <code>Attribute Grousp</code> sub-tab you should be able to create, edit, and delete attribute groups. An attribute group allows you to define a container for correlated attributes so that they are rendered together when at the user-facing forms.</p>
+<p>At the <code>Attribute Groups</code> sub-tab you can create, edit, and delete attribute groups. An attribute group allows you to define a container for correlated attributes so that they are rendered together when at the user-facing forms.</p>
 </div>
 <div class="paragraph">
 <div class="title">Attribute Group List</div>
@@ -2833,7 +2833,7 @@ annotations to dictate how attributes should be rendered. This capability is mai
 <p><span class="image"><img src="./images/user-profile-create-attribute-group.png" alt="user profile create attribute group"></span></p>
 </div>
 <div class="paragraph">
-<p>When configuring the group you should be able to define the following settings:</p>
+<p>When configuring the group you can define the following settings:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -2847,7 +2847,7 @@ annotations to dictate how attributes should be rendered. This capability is mai
 </dd>
 <dt class="hdlist1">Display description</dt>
 <dd>
-<p>A user-friendly text that should be displayed as a tooltip when rendering user-facing forms.</p>
+<p>A user-friendly text that will be displayed as a tooltip when rendering user-facing forms.</p>
 </dd>
 <dt class="hdlist1">Annotation</dt>
 <dd>
@@ -2947,7 +2947,7 @@ annotations to dictate how attributes should be rendered. This capability is mai
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>roles</code> property expects an array whose values can be either <code>user</code> or <code>admin</code>, depending on whether the attribute should be required by the user or the administrator, respectively.</p>
+<p>The <code>roles</code> property expects an array whose values can be either <code>user</code> or <code>admin</code>, depending on whether the attribute is required by the user or the administrator, respectively.</p>
 </div>
 <div class="paragraph">
 <p>Similarly, you can choose to make the attribute required when a set of one or more scopes is requested by a client when authenticating a user. For that, you can use the <code>scopes</code> property as follows:</p>
@@ -3082,7 +3082,7 @@ annotations to dictate how attributes should be rendered. This capability is mai
 <p><span class="image"><img src="./images/user-profile-attribute-list-order.png" alt="user profile attribute list order"></span></p>
 </div>
 <div class="paragraph">
-<p>The order you set in this page should be respected when fields are rendered in dynamic forms.</p>
+<p>The order you set in this page is respected when fields are rendered in dynamic forms.</p>
 </div>
 </div>
 <div class="sect4">
@@ -3160,7 +3160,7 @@ annotations to dictate how attributes should be rendered. This capability is mai
 <p>Before enabling the User Profile capabilities to a realm, there are some important considerations you should be aware of. By providing a single place to manage attribute metadata, the feature is very strict about the attributes that can be set to users and how they are managed.</p>
 </div>
 <div class="paragraph">
-<p>In terms of user management, administrators should be able to manage only the attributes defined in the user profile configuration. Any other attribute set to the user and not yet defined in the user profile configuration won&#8217;t be accessible. It is recommended to update your user profile configuration with all the user attributes you want to expose either to users or administrators.</p>
+<p>In terms of user management, administrators are able to manage only the attributes defined in the user profile configuration. Any other attribute set to the user and not yet defined in the user profile configuration won&#8217;t be accessible. It is recommended to update your user profile configuration with all the user attributes you want to expose either to users or administrators.</p>
 </div>
 <div class="paragraph">
 <p>The same recommendation applies for those accessing the User REST API to query user information.</p>
@@ -17098,7 +17098,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-30 09:19:52 UTC
+Last updated 2021-07-30 09:35:26 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
