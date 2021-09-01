@@ -864,7 +864,7 @@ span.image img {
 <li><a href="#proc-enabling-recaptcha_server_administration_guide">Enabling reCAPTCHA</a></li>
 <li><a href="#ref-personal-data-collected_server_administration_guide">Personal data collected by Keycloak</a></li>
 <li><a href="#user-profile">User Profile</a>
-<ul class="sectlevel5">
+<ul class="sectlevel3">
 <li><a href="#enabling-the-user-profile">Enabling the User Profile</a></li>
 <li><a href="#managing-the-user-profile">Managing the User Profile</a></li>
 <li><a href="#managing-attributes">Managing Attributes</a></li>
@@ -956,6 +956,7 @@ span.image img {
 <li><a href="#managing-webauthn-as-an-administrator">Managing WebAuthn as an administrator</a></li>
 <li><a href="#attestation-statement-verification">Attestation statement verification</a></li>
 <li><a href="#managing-webauthn-credentials-as-a-user">Managing WebAuthn credentials as a user</a></li>
+<li><a href="#_webauthn_passwordless">Passwordless WebAuthn together with Two-Factor</a></li>
 <li><a href="#passwordless-webauthn-together-with-two-factor">Passwordless WebAuthn together with Two-Factor</a></li>
 <li><a href="#available-conditions">Available conditions</a></li>
 <li><a href="#explicitly-deny-allow-access-in-conditional-flows">Explicitly deny/allow access in conditional flows</a></li>
@@ -1151,7 +1152,17 @@ span.image img {
 </li>
 <li><a href="#_account-service">Account Console</a>
 <ul class="sectlevel2">
-<li><a href="#themeable">Themeable</a></li>
+<li><a href="#accessing-the-account-console">Accessing the Account Console</a></li>
+<li><a href="#configuring-ways-to-sign-in">Configuring ways to sign in</a>
+<ul class="sectlevel3">
+<li><a href="#two-factor-authentication-with-otp">Two-factor authentication with OTP</a></li>
+<li><a href="#two-factor-authentication-with-webauthn">Two-factor authentication with WebAuthn</a></li>
+<li><a href="#passwordless-authentication-with-webauthn">Passwordless authentication with WebAuthn</a></li>
+</ul>
+</li>
+<li><a href="#viewing-device-activity">Viewing device activity</a></li>
+<li><a href="#adding-an-identity-provider-acccount">Adding an identity provider acccount</a></li>
+<li><a href="#accessing-other-applications">Accessing other applications</a></li>
 </ul>
 </li>
 <li><a href="#admin-cli">Admin CLI</a>
@@ -4141,15 +4152,22 @@ In Keycloak, websites cannot include a login page dialog in an iframe. This rest
 <div class="paragraph">
 <p>The User Profile capabilities are backed by the User Profile SPI. By default, these capabilities are disabled and realms are configured to use a default configuration that keeps backward compatibility with the legacy behavior.</p>
 </div>
-<div class="exampleblock">
-<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>The legacy behavior is about keeping the default constraints used by Keycloak when managing users root attributes such as username, email, first and last name, without any restriction on how custom attributes are managed. Regarding user flows such as registration, profile update, brokering, and managing accounts through the account console, users are restricted to use the attributes aforementioned with the possibility to change theme templates to support additional attributes.</p>
 </div>
 <div class="paragraph">
 <p>If you are already using Keycloak, the legacy behavior is what you have been using so far.</p>
 </div>
-</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Differently than the legacy behavior, the declarative provider gives you a lot more flexibility to define the user profile configuration to a realm through the administration console and a well-defined JSON schema.</p>
@@ -4171,8 +4189,8 @@ In Keycloak, websites cannot include a login page dialog in an iframe. This rest
 </tr>
 </table>
 </div>
-<div class="sect5">
-<h6 id="enabling-the-user-profile"><a class="anchor" href="#enabling-the-user-profile"></a>Enabling the User Profile</h6>
+<div class="sect3">
+<h4 id="enabling-the-user-profile"><a class="anchor" href="#enabling-the-user-profile"></a>Enabling the User Profile</h4>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -4307,8 +4325,8 @@ the left side menu and turn on the <code>User Profile Enabled</code> switch.</p>
 </dd>
 </dl>
 </div>
-<div class="sect6">
-<h7 id="managing-permissions"><a class="anchor" href="#managing-permissions"></a>Managing Permissions</h7>
+<div class="sect4">
+<h5 id="managing-permissions"><a class="anchor" href="#managing-permissions"></a>Managing Permissions</h5>
 <div class="paragraph">
 <p>In the <code>Permission</code> section, you can define the level of access users and administrators have to read and write to an attribute.</p>
 </div>
@@ -4369,8 +4387,8 @@ the left side menu and turn on the <code>User Profile Enabled</code> switch.</p>
 <p>Make sure to set the correct permissions whenever you add a new attribute to the user profile configuration.</p>
 </div>
 </div>
-<div class="sect6">
-<h7 id="managing-validations"><a class="anchor" href="#managing-validations"></a>Managing Validations</h7>
+<div class="sect4">
+<h5 id="managing-validations"><a class="anchor" href="#managing-validations"></a>Managing Validations</h5>
 <div class="paragraph">
 <p>In the <code>Validation</code> section, you can choose from different forms of validation to make sure the attribute value conforms to specific rules.</p>
 </div>
@@ -4447,9 +4465,8 @@ the left side menu and turn on the <code>User Profile Enabled</code> switch.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="sect6">
-<h7 id="managing-annotations"><a class="anchor" href="#managing-annotations"></a>Managing Annotations</h7>
+<div class="sect5">
+<h6 id="managing-annotations"><a class="anchor" href="#managing-annotations"></a>Managing Annotations</h6>
 <div class="paragraph">
 <p>In order to pass additional information to frontends, attributes can be decorated with
 annotations to dictate how attributes are rendered. This capability is mainly useful when extending Keycloak themes to render pages dynamically based on the annotations associated with attributes.</p>
@@ -4511,6 +4528,7 @@ annotations to dictate how attributes are rendered. This capability is mainly us
 <p>In this section, you can associate annotations to the attribute. Annotations are mainly useful to pass over additional metadata to frontends for rendering purposes.</p>
 </dd>
 </dl>
+</div>
 </div>
 </div>
 </div>
@@ -7867,9 +7885,11 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 </div>
 <div class="sect4">
 <h5 id="existing-user"><a class="anchor" href="#existing-user"></a>Existing user</h5>
-<div class="paragraph">
-<p>If you have activated the <strong>WebAuthn Authenticator</strong>, existing users must register their WebAuthn authenticator when they attempt to log in.</p>
+
 </div>
+</div>
+<div class="sect3">
+<h4 id="_webauthn_passwordless"><a class="anchor" href="#_webauthn_passwordless"></a>Passwordless WebAuthn together with Two-Factor</h4>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
@@ -7889,7 +7909,6 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 </div>
 <div class="paragraph">
 <p>After successful registration, the user&#8217;s browser asks the user to enter the text of their WebAuthn authenticator&#8217;s label.</p>
-</div>
 </div>
 </div>
 <div class="sect3">
@@ -15333,60 +15352,241 @@ and update the authentication session record in the owner node which involves a 
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak has a built-in Account Console which every user has access to.  This service allows users to manage their account,
-change their credentials, update their profile, and view their login sessions.  The URL to this service is <code>&lt;server-root&gt;/auth/realms/{realm-name}/account</code>.</p>
+<p>Keycloak users can manage their accounts through the Account Console. Users can manage their profiles, add two-factor authentication, include identity provider acounts, and manage device activity.</p>
+</div>
+<div class="ulist _additional-resources">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>The Account Console is completely themeable and internationalizable as is the case with all Keycloak user interfaces. For example, you can add attributes to the <strong>Personal Info</strong> page. For more details, see the <a href="https://www.keycloak.org/docs/16.0/server_development/">Server Developer Guide</a>.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="accessing-the-account-console"><a class="anchor" href="#accessing-the-account-console"></a>Accessing the Account Console</h3>
+<div class="paragraph">
+<p>Any user can access the Account Console.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Make note of the realm name and IP address for the Keycloak server where your account exists.</p>
+</li>
+<li>
+<p>In a web browser, enter a URL in this format: <code>&lt;server-root&gt;/auth/realms/{realm-name}/account</code>.</p>
+</li>
+<li>
+<p>Enter your login name and password.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<div class="title">Account console</div>
-<p><span class="image"><img src="./keycloak-images/account-service-profile.png" alt="Account console"></span></p>
+<div class="title">Account Console</div>
+<p><span class="image"><img src="./images/account-console-intro.png" alt="Account Console"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-ways-to-sign-in"><a class="anchor" href="#configuring-ways-to-sign-in"></a>Configuring ways to sign in</h3>
+<div class="paragraph">
+<p>You can sign in to this console using basic authentication (a login name and password) or two-factor authentication. For two-factor authentication, use one of the following procedures.</p>
+</div>
+<div class="sect3">
+<h4 id="two-factor-authentication-with-otp"><a class="anchor" href="#two-factor-authentication-with-otp"></a>Two-factor authentication with OTP</h4>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>OTP is a valid authentication mechanism for your realm.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click <strong>Account Security</strong> in the menu.</p>
+</li>
+<li>
+<p>Click <strong>Signing In</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Set Up Authenticator Application</strong>.</p>
+<div class="paragraph">
+<div class="title">Signing In</div>
+<p><span class="image"><img src="./images/account-console-signing-in.png" alt="Signing In"></span></p>
+</div>
+</li>
+<li>
+<p>Follow the directions that appear on the screen to use either
+<a href="https://freeotp.github.io/">FreeOTP</a> or <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">Google Authenticator</a> on your mobile device as your OTP generator.</p>
+</li>
+<li>
+<p>Scan the QR code in the screen shot into the OTP generator on your mobile device.</p>
+</li>
+<li>
+<p>Log out and log in again.</p>
+</li>
+<li>
+<p>Respond to the prompt by entering an OTP that is provided on your mobile device.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="two-factor-authentication-with-webauthn"><a class="anchor" href="#two-factor-authentication-with-webauthn"></a>Two-factor authentication with WebAuthn</h4>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>WebAuthn is a valid two-factor authentication mechanism for your realm. Please follow the <a href="#_webauthn">WebAuthn section</a> for more details.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click <strong>Account Security</strong> in the menu.</p>
+</li>
+<li>
+<p>Click <strong>Signing In</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Set up Security Key</strong>.</p>
+<div class="paragraph">
+<div class="title">Signing In</div>
+<p><span class="image"><img src="./images/account-console-signing-in-webauthn-2factor.png" alt="Signing In With Security Key"></span></p>
+</div>
+</li>
+<li>
+<p>Prepare your WebAuthn Security Key. How you prepare this key depends on the type of WebAuthn security key you use. For example, for a USB based Yubikey, you may need to put your key into the USB port on your laptop.</p>
+</li>
+<li>
+<p>Click <strong>Register</strong> to register your security key.</p>
+</li>
+<li>
+<p>Log out and log in again.</p>
+</li>
+<li>
+<p>Assuming authentication flow was correctly set, a message appears asking you to authenticate with your Security Key as second factor.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="passwordless-authentication-with-webauthn"><a class="anchor" href="#passwordless-authentication-with-webauthn"></a>Passwordless authentication with WebAuthn</h4>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>WebAuthn is a valid passwordless authentication mechanism for your realm. Please follow the <a href="#_webauthn_passwordless">Passwordless WebAuthn section</a> for more details.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click <strong>Account Security</strong> in the menu.</p>
+</li>
+<li>
+<p>Click <strong>Signing In</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Set up Security Key</strong> in the <strong>Passwordless</strong> section.</p>
+<div class="paragraph">
+<div class="title">Signing In</div>
+<p><span class="image"><img src="./images/account-console-signing-in-webauthn-passwordless.png" alt="Signing In With Security Key"></span></p>
+</div>
+</li>
+<li>
+<p>Prepare your WebAuthn Security Key. How you prepare this key depends on the type of WebAuthn security key you use. For example, for a USB based Yubikey, you may need to put your key into the USB port on your laptop.</p>
+</li>
+<li>
+<p>Click <strong>Register</strong> to register your security key.</p>
+</li>
+<li>
+<p>Log out and log in again.</p>
+</li>
+<li>
+<p>Assuming authentication flow was correctly set, a message appears asking you to authenticate with your Security Key as second factor. You no longer need to provide your password to log in.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-device-activity"><a class="anchor" href="#viewing-device-activity"></a>Viewing device activity</h3>
+<div class="paragraph">
+<p>You can view the devices that are logged in to your account.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Click <strong>Account Security</strong> in the menu.</p>
+</li>
+<li>
+<p>Click <strong>Device Activity</strong>.</p>
+</li>
+<li>
+<p>Log out a device if it looks suspicious.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>The initial page is the user&#8217;s profile, which is the <code>Account</code> left menu item.  This is where they specify basic data about themselves.  This screen can be extended
-to allow the user to manage additional attributes.  See the <a href="https://www.keycloak.org/docs/16.0/server_development/">Server Developer Guide</a> for more details.</p>
+<div class="title">Devices</div>
+<p><span class="image"><img src="./images/account-console-device.png" alt="Devices"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-an-identity-provider-acccount"><a class="anchor" href="#adding-an-identity-provider-acccount"></a>Adding an identity provider acccount</h3>
+<div class="paragraph">
+<p>You can link your account with an <a href="#_identity_broker">identity broker</a>. This option is often used to link social provider accounts.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Log into the Admin Console.</p>
+</li>
+<li>
+<p>Click <strong>Identity Providers</strong> in the menu.</p>
+</li>
+<li>
+<p>Click <strong>Add provider</strong>.</p>
+</li>
+<li>
+<p>Select a provider and complete the fields.</p>
+</li>
+<li>
+<p>Return to the Account Console.</p>
+</li>
+<li>
+<p>Click <strong>Account Security</strong> in the menu.</p>
+</li>
+<li>
+<p>Click <strong>Linked Accounts</strong>.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>The <code>Password</code> left menu item allows the user to change their password.</p>
+<p>The identity provider you added appears in this page.</p>
 </div>
 <div class="paragraph">
-<div class="title">Password update</div>
-<p><span class="image"><img src="./keycloak-images/account-service-password.png" alt="account service password"></span></p>
+<div class="title">Linked Accounts</div>
+<p><span class="image"><img src="./images/account-console-linked.png" alt="Linked Accounts"></span></p>
 </div>
-<div class="paragraph">
-<p>The <code>Authenticator</code> menu item allows the user to set up OTP if they desire.  This will only show up if OTP is a valid authentication mechanism for your realm.
-Users are given directions to install <a href="https://freeotp.github.io/">FreeOTP</a> or <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">Google Authenticator</a> on their mobile device to be their OTP generator.
-The QR code you see in the screen shot can be scanned into the FreeOTP or Google Authenticator mobile application for nice and easy setup.</p>
 </div>
+<div class="sect2">
+<h3 id="accessing-other-applications"><a class="anchor" href="#accessing-other-applications"></a>Accessing other applications</h3>
 <div class="paragraph">
-<div class="title">OTP authenticator</div>
-<p><span class="image"><img src="./keycloak-images/account-service-authenticator.png" alt="account service authenticator"></span></p>
-</div>
-<div class="paragraph">
-<p>The <code>Federated Identity</code> menu item allows the user to link their account with an <a href="#_identity_broker">identity broker</a> (this is usually used to link social provider
-accounts together).  This will show the list of external identity providers you have configured for your realm.</p>
-</div>
-<div class="paragraph">
-<div class="title">Federated identity</div>
-<p><span class="image"><img src="./keycloak-images/account-service-federated-identity.png" alt="account service federated identity"></span></p>
-</div>
-<div class="paragraph">
-<p>The <code>Sessions</code> menu item allows the user to view and manage which devices are logged in and from where.  They can perform logout of these sessions from this screen too.</p>
-</div>
-<div class="paragraph">
-<div class="title">sessions</div>
-<p><span class="image"><img src="./keycloak-images/account-service-sessions.png" alt="account service sessions"></span></p>
-</div>
-<div class="paragraph">
-<p>The <code>Applications</code> menu item shows users which applications they have access to.</p>
+<p>The <strong>Applications</strong> menu item shows users which applications you can access. In this case, only the Account Console is available.</p>
 </div>
 <div class="paragraph">
 <div class="title">Applications</div>
-<p><span class="image"><img src="./keycloak-images/account-service-apps.png" alt="account service apps"></span></p>
-</div>
-<div class="sect2">
-<h3 id="themeable"><a class="anchor" href="#themeable"></a>Themeable</h3>
-<div class="paragraph">
-<p>Like all UIs in Keycloak, the Account Console is completely themeable and internationalizable.
-See the <a href="https://www.keycloak.org/docs/16.0/server_development/">Server Developer Guide</a> for more details.</p>
+<p><span class="image"><img src="./images/account-console-applications.png" alt="Applications"></span></p>
 </div>
 </div>
 </div>
@@ -18055,7 +18255,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-27 18:49:58 UTC
+Last updated 2021-09-01 21:01:32 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
