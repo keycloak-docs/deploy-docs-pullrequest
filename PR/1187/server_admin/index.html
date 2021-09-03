@@ -961,7 +961,10 @@ span.image img {
 <li><a href="#attestation-statement-verification">Attestation statement verification</a></li>
 <li><a href="#managing-webauthn-credentials-as-a-user">Managing WebAuthn credentials as a user</a></li>
 <li><a href="#_webauthn_passwordless">Passwordless WebAuthn together with Two-Factor</a></li>
-<li><a href="#passwordless-webauthn-together-with-two-factor">Passwordless WebAuthn together with Two-Factor</a></li>
+</ul>
+</li>
+<li><a href="#conditions-in-conditional-flows">Conditions in conditional flows</a>
+<ul class="sectlevel3">
 <li><a href="#available-conditions">Available conditions</a></li>
 <li><a href="#explicitly-deny-allow-access-in-conditional-flows">Explicitly deny/allow access in conditional flows</a></li>
 </ul>
@@ -1142,9 +1145,9 @@ span.image img {
 <li><a href="#port-restriction">Port restriction</a></li>
 </ul>
 </li>
-<li><a href="#brute-force-attacks">Brute force attacks</a>
+<li><a href="#password-guess-brute-force-attacks">Brute force attacks</a>
 <ul class="sectlevel3">
-<li><a href="#password-guess-brute-force-attacks">Password policies</a></li>
+<li><a href="#password-policies">Password policies</a></li>
 </ul>
 </li>
 <li><a href="#_read_only_user_attributes">Read-only user attributes</a></li>
@@ -7898,11 +7901,9 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 </div>
 <div class="sect4">
 <h5 id="existing-user"><a class="anchor" href="#existing-user"></a>Existing user</h5>
-
+<div class="paragraph">
+<p>If <code>WebAuthn Authenticator</code> is set up as required as shown in the first example, then when existing users try to log in, they are required to register their WebAuthn authenticator automatically:</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_webauthn_passwordless"><a class="anchor" href="#_webauthn_passwordless"></a>Passwordless WebAuthn together with Two-Factor</h4>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
@@ -7924,8 +7925,9 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 <p>After successful registration, the user&#8217;s browser asks the user to enter the text of their WebAuthn authenticator&#8217;s label.</p>
 </div>
 </div>
+</div>
 <div class="sect3">
-<h4 id="passwordless-webauthn-together-with-two-factor"><a class="anchor" href="#passwordless-webauthn-together-with-two-factor"></a>Passwordless WebAuthn together with Two-Factor</h4>
+<h4 id="_webauthn_passwordless"><a class="anchor" href="#_webauthn_passwordless"></a>Passwordless WebAuthn together with Two-Factor</h4>
 <div class="paragraph">
 <p>Keycloak uses WebAuthn for two-factor authentication, but you can use WebAuthn as the first-factor authentication. In this case, users with <code>passwordless</code> WebAuthn credentials can authenticate to Keycloak without a password. Keycloak can use WebAuthn as both the passwordless and two-factor authentication mechanism in the context of a realm and a single authentication flow.</p>
 </div>
@@ -7976,9 +7978,13 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 <p><span class="image"><img src="./images/webauthn-passwordless-flow.png" alt="webauthn passwordless flow"></span></p>
 </div>
 <div class="paragraph">
-<p>You can now add <strong>WebAuthn Register Passwordless</strong> as the required action to a user, already known to Keycloak, to test this. During the first authentication, the user must use the password and second-factor WebAuthn credential. The user does not need to provide the password and second-factor WebAuthn credential if they use the WebAuthn Passwordless credential.
-=== Conditions in conditional flows</p>
+<p>You can now add <strong>WebAuthn Register Passwordless</strong> as the required action to a user, already known to Keycloak, to test this. During the first authentication, the user must use the password and second-factor WebAuthn credential. The user does not need to provide the password and second-factor WebAuthn credential if they use the WebAuthn Passwordless credential.</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="conditions-in-conditional-flows"><a class="anchor" href="#conditions-in-conditional-flows"></a>Conditions in conditional flows</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/authentication/conditions.adoc" target="_blank">Edit this section</a>
@@ -7990,8 +7996,6 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 If all <em>Condition</em> executions evaluate as true, then the <em>Conditional</em> sub-flow acts as <em>Required</em>.
 You can process the next execution in the <em>Conditional</em> sub-flow.
 If some executions included in the <em>Conditional</em> sub-flow evaluate as false, then the whole sub-flow is considered as <em>Disabled</em>.</p>
-</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="available-conditions"><a class="anchor" href="#available-conditions"></a>Available conditions</h4>
@@ -14991,7 +14995,7 @@ MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="brute-force-attacks"><a class="anchor" href="#brute-force-attacks"></a>Brute force attacks</h3>
+<h3 id="password-guess-brute-force-attacks"><a class="anchor" href="#password-guess-brute-force-attacks"></a>Brute force attacks</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/threat/brute-force.adoc" target="_blank">Edit this section</a>
@@ -15239,7 +15243,7 @@ MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123</code></pre>
 <p>Consider using intrusion prevention software (IPS). Keycloak logs every login failure and client IP address failure. You can point the IPS to the Keycloak server&#8217;s log file, and the IPS can modify firewalls to block connections from these IP addresses.</p>
 </div>
 <div class="sect3">
-<h4 id="password-guess-brute-force-attacks"><a class="anchor" href="#password-guess-brute-force-attacks"></a>Password policies</h4>
+<h4 id="password-policies"><a class="anchor" href="#password-policies"></a>Password policies</h4>
 <div class="paragraph">
 <p>Ensure you have a complex password policy to force users to choose complex passwords. See the <a href="#_password-policies">Password Policies</a> chapter for more information. Prevent password guessing by setting up the Keycloak server to use one-time-passwords.</p>
 </div>
@@ -15537,7 +15541,8 @@ Pushing a new not-before policy ensures that applications must download new publ
 </div>
 </div>
 <div class="paragraph">
-<p>In environments with low levels of trust among services, limit the audiences on the token. See the <a href="https://tools.ietf.org/html/rfc6819#section-5.1.5.5">OAuth2 Threat Model</a> and the <a href="#con-audience_server_administration_guide">Audience Support</a> section for more information.</p>
+<p>In environments with low levels of trust among services, limit the audiences on the token. See the <a href="https://tools.ietf.org/html/rfc6819#section-5.1.5.5">OAuth2 Threat Model</a> and the
+<a href="#audience-support">Audience Support</a> section for more information.</p>
 </div>
 </div>
 <div class="sect2">
@@ -18541,7 +18546,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-03 19:53:26 UTC
+Last updated 2021-09-03 21:52:10 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
