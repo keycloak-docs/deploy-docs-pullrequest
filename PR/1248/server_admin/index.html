@@ -2803,282 +2803,13 @@ the left side menu and turn on the <code>User Profile Enabled</code> switch.</p>
 <h5 id="managing-annotations"><a class="anchor" href="#managing-annotations"></a>Managing Annotations</h5>
 <div class="paragraph">
 <p>In order to pass additional information to frontends, attributes can be decorated with
-annotations to dictate how attributes are rendered. This capability is mainly useful when extending Keycloak themes to render pages dynamically based on the annotations associated with attributes.</p>
+annotations to dictate how attributes are rendered. This capability is mainly useful when extending Keycloak themes
+to render pages dynamically based on the annotations associated with attributes.
+This mechanism is used for example to <a href="#_configurin_form_input_field_for_attribute">configure Form input filed for attribute</a>.</p>
 </div>
 <div class="paragraph">
 <div class="title">Attribute Annotation</div>
 <p><span class="image"><img src="./images/user-profile-annotation.png" alt="user profile annotation"></span></p>
-</div>
-<div class="sect5">
-<h6 id="configuring-form-input-filed-for-attribute"><a class="anchor" href="#configuring-form-input-filed-for-attribute"></a>Configuring form input filed for Attribute</h6>
-<div class="paragraph">
-<p>Keycloak provides built-in annotations to configure which input type will be used for the attribute in dynamic forms and other aspects of it&#8217;s visualization.</p>
-</div>
-<div class="paragraph">
-<p>Available annotations are:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputType</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the form input field. Available types are described in a table below.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputHelperTextBefore</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Helper text rendered before (above) the input field. Direct text or i18n patterns (like <code>${i18n.key}</code>) can be used here.
-Text is NOT html escaped when rendered into the page, so you can use html tags here to format the text, but you also have to correctly escape html control characters.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputHelperTextAfter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Helper text rendered after (under) the input field. Direct text or i18n patterns (like <code>${i18n.key}</code>) can be used here.
-Text is NOT html escaped when rendered into the page, so you can use html tags here to format the text, but you also have to correctly escape html control characters.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputOptions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Array of string values used as select option values for select and multiselect types. Order of values is preserved in the form input.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputOptionsFromValidation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of attribute validation to get input options from it???s configuration field called <code>options</code> (which has to be array of strings) - can be used instead
-of the <code>inputOptions</code> annotation to share same set of options between input and validation defined for the attribute. Compatible with <code>options</code> validator
-which can be used for validation.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputOptionLabels</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Object of i18n patterns (like <code>${i18n.key}</code> which allows to enter direct value also if i18n is not necessary) for option labels - key in the object is
-option value, and value in the object is i18n pattern. If not provided at all, or option is not mapped in this object, then the option value is
-used as a label too. See example below.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypePlaceholder</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>placeholder</code> attribute applied to the field - specifies a short hint that describes the expected value of an input field (e.g. a sample value
-or a short description of the expected format). The short hint is displayed in the input field before the user enters a value.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeSize</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>size</code> attribute applied to the field - specifies the width, in characters, of an single line input field. For fields based on HTML <code>select</code> type
-it specifies number of rows with options shown. May not work, depending on css in used theme!</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeCols</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>cols</code> attribute applied to the field - specifies the width, in characters, for <code>textarea</code> type. May not work, depending on css in used theme!</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeRows</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>rows</code> attribute applied to the field - specifies the height, in characters, for <code>textarea</code> type. For select fields it specifies number
-of rows with options shown. May not work, depending on css in used theme!</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypePattern</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>pattern</code> attribute applied to the field providing client side validation - specifies a regular expression that an input field&#8217;s value
-is checked against. Useful for single line inputs.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeMaxLength</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>maxlength</code> attribute applied to the field providing client side validation - maximal length of the text which can be entered into the input
-field. Useful for text fields.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeMinLength</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>minlength</code> attribute applied to the field providing client side validation - minimal length of the text which can be entered into the input
-field. Useful for text fields.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeMax</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>max</code> attribute applied to the field providing client side validation - maximal value which can be entered into the input field.
-Useful for numeric fields.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeMin</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>min</code> attribute applied to the field providing client side validation - minimal value which can be entered into the input field.
-Useful for numeric fields.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeStep</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>step</code> attribute applied to the field - Specifies the interval between legal numbers in an input field. Useful for numeric fields.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Field types use HTML form field tags and attributes applied to them - they behave based on the HTML specifications and browser support for them.</p>
-</div>
-<div class="paragraph">
-<p>Visual rendering also depends on css styles applied in the used theme.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Available <code>inputType</code> annotation values:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">HTML tag used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">text</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Single line text input.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">textarea</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Multiple line text input.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">textarea</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">select</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Common single select input.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">select</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">select-radiobuttons</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Single select input through group of radio buttons.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">group of input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">multiselect</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Common multiselect input.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">select</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">multiselect-checkboxes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Multiselect input through group of checkboxes.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">group of input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html5-email</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Single line text input for email address based on HTML 5 spec.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html5-tel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Single line text input for phone number based on HTML 5 spec.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html5-url</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Single line text input for URL based on HTML 5 spec.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html5-number</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Single line input for number (integer or float depending on <code>step</code>) based on HTML 5 spec.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html5-range</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Slider for number entering based on HTML 5 spec.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html5-datetime-local</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date Time input based on HTML 5 spec.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html5-date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date input based on HTML 5 spec.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html5-month</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Month input based on HTML 5 spec.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html5-week</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Week input based on HTML 5 spec.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html5-time</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Time input based on HTML 5 spec.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Example of the attribute rendered as select using options without validation and direct labels:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>"attributes": [
-...
-{
-  "name": "Job title",
-  ...
-  "annotations": {
-    "inputType": "select",
-    "inputOptions": [
-      "sweng",
-      "swarch"
-    ],
-    "inputOptionLabels": {
-      "sweng": "Software Engineer",
-      "swarch": "Software Architect"
-    }
-  }
-}
-]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Example of the attribute rendered as radiobutton select using options shared with validation and i18n labels:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>"attributes": [
-...
-{
-  "name": "Job title",
-  ...
-  "validations": {
-    "options": {
-      "options":[
-        "sweng",
-        "swarch"
-      ]},
-  },
-  "annotations": {
-    "inputType": "select-radiobuttons",
-    "inputOptionsFromValidation": "options",
-    "inputOptionLabels": {
-      "sweng": "${jobtitle.swengineer}",
-      "swarch": "${jobtitle.swarchitect}"
-    }
-  }
-}
-]</pre>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -3394,6 +3125,368 @@ Useful for numeric fields.</p></td>
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_configurin_form_input_field_for_attribute"><a class="anchor" href="#_configurin_form_input_field_for_attribute"></a>Configuring Form input filed for Attributes</h5>
+<div class="paragraph">
+<p>Keycloak provides built-in annotations to configure which input type will be used for the attribute in dynamic forms and other aspects of it&#8217;s visualization.</p>
+</div>
+<div class="paragraph">
+<p>Available annotations are:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the form input field. Available types are described in a table below.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputHelperTextBefore</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Helper text rendered before (above) the input field. Direct text or i18n patterns (like <code>${i18n.key}</code>) can be used here.
+Text is NOT html escaped when rendered into the page, so you can use html tags here to format the text, but you also have to correctly escape html control characters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputHelperTextAfter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Helper text rendered after (under) the input field. Direct text or i18n patterns (like <code>${i18n.key}</code>) can be used here.
+Text is NOT html escaped when rendered into the page, so you can use html tags here to format the text, but you also have to correctly escape html control characters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputOptionsFromValidation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Annotation for select and multiselect types. Optional name of custom attribute validation to get input options from. See <a href="#_managing_options_for_select_fields">detailed description</a> below.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputOptionLabels</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Annotation for select and multiselect types. Optional map to define UI labels for options. See <a href="#_managing_options_for_select_fields">detailed description</a> below.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypePlaceholder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>placeholder</code> attribute applied to the field - specifies a short hint that describes the expected value of an input field (e.g. a sample value
+or a short description of the expected format). The short hint is displayed in the input field before the user enters a value.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeSize</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>size</code> attribute applied to the field - specifies the width, in characters, of an single line input field. For fields based on HTML <code>select</code> type
+it specifies number of rows with options shown. May not work, depending on css in used theme!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeCols</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>cols</code> attribute applied to the field - specifies the width, in characters, for <code>textarea</code> type. May not work, depending on css in used theme!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeRows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>rows</code> attribute applied to the field - specifies the height, in characters, for <code>textarea</code> type. For select fields it specifies number
+of rows with options shown. May not work, depending on css in used theme!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypePattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>pattern</code> attribute applied to the field providing client side validation - specifies a regular expression that an input field&#8217;s value
+is checked against. Useful for single line inputs.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeMaxLength</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>maxlength</code> attribute applied to the field providing client side validation - maximal length of the text which can be entered into the input
+field. Useful for text fields.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeMinLength</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>minlength</code> attribute applied to the field providing client side validation - minimal length of the text which can be entered into the input
+field. Useful for text fields.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>max</code> attribute applied to the field providing client side validation - maximal value which can be entered into the input field.
+Useful for numeric fields.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeMin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>min</code> attribute applied to the field providing client side validation - minimal value which can be entered into the input field.
+Useful for numeric fields.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputTypeStep</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML input <code>step</code> attribute applied to the field - Specifies the interval between legal numbers in an input field. Useful for numeric fields.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Field types use HTML form field tags and attributes applied to them - they behave based on the HTML specifications and browser support for them.</p>
+</div>
+<div class="paragraph">
+<p>Visual rendering also depends on css styles applied in the used theme.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Available <code>inputType</code> annotation values:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">HTML tag used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single line text input.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">textarea</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiple line text input.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">textarea</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">select</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Common single select input. See <a href="#_managing_options_for_select_fields">description how to configure options</a> below.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">select</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">select-radiobuttons</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single select input through group of radio buttons. See <a href="#_managing_options_for_select_fields">description how to configure options</a> below.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">group of input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">multiselect</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Common multiselect input. See <a href="#_managing_options_for_select_fields">description how to configure options</a> below.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">select</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">multiselect-checkboxes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiselect input through group of checkboxes. See <a href="#_managing_options_for_select_fields">description how to configure options</a> below.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">group of input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html5-email</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single line text input for email address based on HTML 5 spec.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html5-tel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single line text input for phone number based on HTML 5 spec.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html5-url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single line text input for URL based on HTML 5 spec.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html5-number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single line input for number (integer or float depending on <code>step</code>) based on HTML 5 spec.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html5-range</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Slider for number entering based on HTML 5 spec.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html5-datetime-local</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date Time input based on HTML 5 spec.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html5-date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date input based on HTML 5 spec.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html5-month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Month input based on HTML 5 spec.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html5-week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Week input based on HTML 5 spec.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html5-time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time input based on HTML 5 spec.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect5">
+<h6 id="_managing_options_for_select_fields"><a class="anchor" href="#_managing_options_for_select_fields"></a>Defining options for select and multiselect fields</h6>
+<div class="paragraph">
+<p>Options for select and multiselect fields are taken from validation applied to the attribute to be
+sure validation and field options presented in UI are always consistent.</p>
+</div>
+<div class="paragraph">
+<p>By default, options are taken from built-in <code>options</code> validation, but custom validation can be used thanks
+to <code>inputOptionsFromValidation</code> annotation.</p>
+</div>
+<div class="paragraph">
+<p>Example of the attribute rendered as select using options from default validation called <code>options</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"attributes": [
+...
+{
+  "name": "jobTitle",
+  "validations": {
+    "options": {
+      "options":[
+        "sweng",
+        "swarch"
+      ]
+    }
+  },
+  "annotations": {
+    "inputType": "select"
+  }
+}
+...
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Example of the attribute rendered as radiobutton select using options from custom validation called <code>customOptionsValidator</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"attributes": [
+...
+{
+  "name": "jobTitle",
+  "validations": {
+    "customOptionsValidator": {
+      "options":[
+        "sweng",
+        "swarch"
+      ]
+    }
+  },
+  "annotations": {
+    "inputType": "select-radiobuttons",
+    "inputOptionsFromValidation": "customOptionsValidator"
+  }
+}
+...
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To provide nice human readable labels for options, you can use <code>inputOptionLabels</code> annotation.
+It contains map of i18n patterns (like <code>${i18n.key}</code> which allows to enter direct value also if i18n is not necessary) for option labels - key in the map is
+option value, and value in the map is i18n pattern. If annotation is not provided at all, or option value is not mapped in this map, then the option value itself is used as a label in UI.</p>
+</div>
+<div class="paragraph">
+<p>Example of directly entered labels for options without i18n:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"attributes": [
+...
+{
+  "name": "jobTitle",
+  "validations": {
+    "options": {
+      "options":[
+        "sweng",
+        "swarch"
+      ]
+    }
+  },
+  "annotations": {
+    "inputType": "select",
+    "inputOptionLabels": {
+      "sweng": "Software Engineer",
+      "swarch": "Software Architect"
+    }
+  }
+}
+...
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Example of the i18n labels for options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"attributes": [
+...
+{
+  "name": "jobTitle",
+  "validations": {
+    "options": {
+      "options":[
+        "sweng",
+        "swarch"
+      ]
+    }
+  },
+  "annotations": {
+    "inputType": "select-radiobuttons",
+    "inputOptionLabels": {
+      "sweng": "${jobtitle.swengineer}",
+      "swarch": "${jobtitle.swarchitect}"
+    }
+  }
+}
+...
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Localized texts have to be provided for <code>jobtitle.swengineer</code> and <code>jobtitle.swarchitect</code> keys then, using common localization mechanisms.</p>
+</div>
+<div class="paragraph">
+<p>Example for the simplest case where possible attribute values are same as labels:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"attributes": [
+...
+{
+  "name": "jobTitle",
+  "validations": {
+    "options": {
+      "options":[
+        "SW Engineer",
+        "SW architect"
+      ]
+    }
+  },
+  "annotations": {
+    "inputType": "select-radiobuttons"
+  }
+}
+...
+]</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -17405,7 +17498,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-07 10:38:42 UTC
+Last updated 2021-09-07 14:28:30 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
