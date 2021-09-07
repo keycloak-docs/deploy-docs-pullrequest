@@ -4562,36 +4562,36 @@ annotations to dictate how attributes are rendered. This capability is mainly us
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>{
-  "attributes": [
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">attributes</span><span class="delimiter">&quot;</span></span>: [
     {
-      "name": "myattribute",
-      "required": {
-        "roles": [ "user", "admin" ],
-        "scopes": [ "foo", "bar" ]
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myattribute</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">roles</span><span class="delimiter">&quot;</span></span>: [ <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">admin</span><span class="delimiter">&quot;</span></span> ],
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">scopes</span><span class="delimiter">&quot;</span></span>: [ <span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">bar</span><span class="delimiter">&quot;</span></span> ]
       },
-      "permissions": {
-        "view": [ "admin", "user" ],
-        "edit": [ "admin", "user" ]
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">permissions</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">view</span><span class="delimiter">&quot;</span></span>: [ <span class="string"><span class="delimiter">&quot;</span><span class="content">admin</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span> ],
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">edit</span><span class="delimiter">&quot;</span></span>: [ <span class="string"><span class="delimiter">&quot;</span><span class="content">admin</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span> ]
       },
-      "validations": {
-        "email": {},
-        "length": {
-          "max": 255
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">validations</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: {},
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">length</span><span class="delimiter">&quot;</span></span>: {
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">max</span><span class="delimiter">&quot;</span></span>: <span class="integer">255</span>
         }
       },
-      "annotations": {
-        "myannotation": "myannotation-value"
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">annotations</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">myannotation</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myannotation-value</span><span class="delimiter">&quot;</span></span>
       }
     }
   ],
-  "groups": [
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">groups</span><span class="delimiter">&quot;</span></span>: [
     {
-      "name": "personalInfo",
-      "displayHeader": "Personal Information"
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">personalInfo</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">displayHeader</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Personal Information</span><span class="delimiter">&quot;</span></span>
     }
   ]
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4610,13 +4610,13 @@ annotations to dictate how attributes are rendered. This capability is mainly us
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>{
-  "attributes": [
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">attributes</span><span class="delimiter">&quot;</span></span>: [
     {
-      "name": "myattribute",
-      "required": {}
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myattribute</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span>: {}
   ]
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4627,15 +4627,15 @@ annotations to dictate how attributes are rendered. This capability is mainly us
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>{
-  "attributes": [
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">attributes</span><span class="delimiter">&quot;</span></span>: [
     {
-      "name": "myattribute",
-      "required": {
-        "roles": ["user"]
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myattribute</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">roles</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>]
       }
   ]
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4646,15 +4646,15 @@ annotations to dictate how attributes are rendered. This capability is mainly us
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>{
-  "attributes": [
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">attributes</span><span class="delimiter">&quot;</span></span>: [
     {
-      "name": "myattribute",
-      "required": {
-        "scopes": ["foo"]
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myattribute</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">scopes</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>]
       }
   ]
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4668,16 +4668,16 @@ annotations to dictate how attributes are rendered. This capability is mainly us
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>{
-  "attributes": [
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">attributes</span><span class="delimiter">&quot;</span></span>: [
     {
-      "name": "myattribute",
-      "permissions": {
-        "view": ["admin"],
-        "edit": ["user"]
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myattribute</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">permissions</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">view</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">admin</span><span class="delimiter">&quot;</span></span>],
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">edit</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>]
       }
   ]
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4694,16 +4694,16 @@ annotations to dictate how attributes are rendered. This capability is mainly us
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>{
-  "attributes": [
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">attributes</span><span class="delimiter">&quot;</span></span>: [
     {
-      "name": "myattribute",
-      "annotations": {
-        "foo": ["foo-value"],
-        "bar": ["bar-value"]
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myattribute</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">annotations</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">foo-value</span><span class="delimiter">&quot;</span></span>],
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">bar</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">bar-value</span><span class="delimiter">&quot;</span></span>]
       }
   ]
-}</pre>
+}</code></pre>
 </div>
 </div>
 </div>
@@ -18546,7 +18546,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-04 09:56:02 UTC
+Last updated 2021-09-07 13:45:39 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
