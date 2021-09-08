@@ -3153,12 +3153,12 @@ This mechanism is used for example to <a href="#_configurin_form_input_field_for
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">inputHelperTextBefore</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Helper text rendered before (above) the input field. Direct text or i18n patterns (like <code>${i18n.key}</code>) can be used here.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Helper text rendered before (above) the input field. Direct text or internationalization pattern (like <code>${i18n.key}</code>) can be used here.
 Text is NOT html escaped when rendered into the page, so you can use html tags here to format the text, but you also have to correctly escape html control characters.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">inputHelperTextAfter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Helper text rendered after (under) the input field. Direct text or i18n patterns (like <code>${i18n.key}</code>) can be used here.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Helper text rendered after (under) the input field. Direct text or internationalization pattern (like <code>${i18n.key}</code>) can be used here.
 Text is NOT html escaped when rendered into the page, so you can use html tags here to format the text, but you also have to correctly escape html control characters.</p></td>
 </tr>
 <tr>
@@ -3166,8 +3166,12 @@ Text is NOT html escaped when rendered into the page, so you can use html tags h
 <td class="tableblock halign-left valign-top"><p class="tableblock">Annotation for select and multiselect types. Optional name of custom attribute validation to get input options from. See <a href="#_managing_options_for_select_fields">detailed description</a> below.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputOptionLabelsI18nPrefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Annotation for select and multiselect types. Internationalization key prefix to render options in UI. See <a href="#_managing_options_for_select_fields">detailed description</a> below.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">inputOptionLabels</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Annotation for select and multiselect types. Optional map to define UI labels for options. See <a href="#_managing_options_for_select_fields">detailed description</a> below.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Annotation for select and multiselect types. Optional map to define UI labels for options (directly or using internationalization). See <a href="#_managing_options_for_select_fields">detailed description</a> below.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">inputTypePlaceholder</p></td>
@@ -3397,12 +3401,85 @@ to <code>inputOptionsFromValidation</code> annotation.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>To provide nice human readable labels for options, you can use <code>inputOptionLabels</code> annotation.
-It contains map of i18n patterns (like <code>${i18n.key}</code> which allows to enter direct value also if i18n is not necessary) for option labels - key in the map is
-option value, and value in the map is i18n pattern. If annotation is not provided at all, or option value is not mapped in this map, then the option value itself is used as a label in UI.</p>
+<p>You can use various ways to provide nice human readable labels for select and multiselect options.</p>
 </div>
 <div class="paragraph">
-<p>Example of directly entered labels for options without i18n:</p>
+<p>Simplest case is when possible attribute values are same as UI labels. No any extra configuration is necessary in this case:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"attributes": [
+...
+{
+  "name": "jobTitle",
+  "validations": {
+    "options": {
+      "options":[
+        "SW Engineer",
+        "SW architect"
+      ]
+    }
+  },
+  "annotations": {
+    "inputType": "select-radiobuttons"
+  }
+}
+...
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When attribute value is kind of ID not suitable for UI, you can use simple internationalization support provided
+by <code>inputOptionLabelsI18nPrefix</code> annotation, which
+defines prefix for internationalization keys. Option value is dot appended to this prefix:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"attributes": [
+...
+{
+  "name": "jobTitle",
+  "validations": {
+    "options": {
+      "options":[
+        "sweng",
+        "swarch"
+      ]
+    }
+  },
+  "annotations": {
+    "inputType": "select-radiobuttons",
+    "inputOptionLabelsI18nPrefix" : "userprofile.jobtitle"
+  }
+}
+...
+]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Localized UI label texts for option value have to be provided for <code>userprofile.jobtitle.swengineer</code> and <code>userprofile.jobtitle.swarchitect</code>
+keys then, using common localization mechanisms.</p>
+</div>
+<div class="paragraph">
+<p>You can also use <code>inputOptionLabels</code> annotation to provide labels for individual options. It contains map of labels for option - key in the map is
+option value (defined in validation), and value in the map is UI label text itself or its internationalization pattern (like <code>${i18n.key}</code>) for that option.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You have to use User Profile <code>JSON Editor</code> to enter map as annotation value.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example of directly entered labels for individual options without internationalization:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3431,7 +3508,7 @@ option value, and value in the map is i18n pattern. If annotation is not provide
 </div>
 </div>
 <div class="paragraph">
-<p>Example of the i18n labels for options:</p>
+<p>Example of the internationalized labels for individual options:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3461,31 +3538,6 @@ option value, and value in the map is i18n pattern. If annotation is not provide
 </div>
 <div class="paragraph">
 <p>Localized texts have to be provided for <code>jobtitle.swengineer</code> and <code>jobtitle.swarchitect</code> keys then, using common localization mechanisms.</p>
-</div>
-<div class="paragraph">
-<p>Example for the simplest case where possible attribute values are same as labels:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>"attributes": [
-...
-{
-  "name": "jobTitle",
-  "validations": {
-    "options": {
-      "options":[
-        "SW Engineer",
-        "SW architect"
-      ]
-    }
-  },
-  "annotations": {
-    "inputType": "select-radiobuttons"
-  }
-}
-...
-]</pre>
-</div>
 </div>
 </div>
 </div>
@@ -17498,7 +17550,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-07 14:28:30 UTC
+Last updated 2021-09-08 09:20:00 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
