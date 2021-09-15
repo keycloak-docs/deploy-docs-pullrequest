@@ -948,7 +948,7 @@ span.image img {
 <li><a href="#enable-x-509-client-certificate-user-authentication">Enable X.509 client certificate user authentication</a></li>
 <li><a href="#_browser_flow">Adding X.509 client certificate authentication to browser flows</a></li>
 <li><a href="#configuring-x-509-client-certificate-authentication">Configuring X.509 client certificate authentication</a></li>
-<li><a href="#adding-x-509-client-certificate-authentication-to-a-direct-grant-flow">Adding X.509 client certificate authentication to a direct grant flow</a></li>
+<li><a href="#adding-x-509-client-certificate-authentication-to-a-direct-grant-flow">Adding X.509 Client Certificate Authentication to a Direct Grant Flow</a></li>
 <li><a href="#client-certificate-lookup">Client certificate lookup</a></li>
 <li><a href="#troubleshooting-2">Troubleshooting</a></li>
 </ul>
@@ -7199,11 +7199,15 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 <dd>
 <p>If enabled, X.509 client certificate authentication does not prompt the user to confirm the certificate identity. Keycloak signs in the user upon successful authentication.</p>
 </dd>
+<dt class="hdlist1"><code>Revalidate client certificate</code></dt>
+<dd>
+<p>If set, the client certificate trust chain will be always verified at the application level using the certificates present in the configured trust store. This can be useful if the underlying web server does not enforce client certificate chain validation, for example because it is behind a non-validating load balancer or reverse proxy, or when the number of allowed CAs is too large for the mutual SSL negotiation (most browsers cap the maximum SSL negotiation packet size at 32767 bytes, which corresponds to about 200 advertised CAs). By default this option is off.</p>
+</dd>
 </dl>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-x-509-client-certificate-authentication-to-a-direct-grant-flow"><a class="anchor" href="#adding-x-509-client-certificate-authentication-to-a-direct-grant-flow"></a>Adding X.509 client certificate authentication to a direct grant flow</h4>
+<h4 id="adding-x-509-client-certificate-authentication-to-a-direct-grant-flow"><a class="anchor" href="#adding-x-509-client-certificate-authentication-to-a-direct-grant-flow"></a>Adding X.509 Client Certificate Authentication to a Direct Grant Flow</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -18546,7 +18550,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-08 14:52:32 UTC
+Last updated 2021-09-15 15:25:25 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
