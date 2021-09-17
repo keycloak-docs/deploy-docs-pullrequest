@@ -961,10 +961,6 @@ span.image img {
 <li><a href="#attestation-statement-verification">Attestation statement verification</a></li>
 <li><a href="#managing-webauthn-credentials-as-a-user">Managing WebAuthn credentials as a user</a></li>
 <li><a href="#_webauthn_passwordless">Passwordless WebAuthn together with Two-Factor</a></li>
-</ul>
-</li>
-<li><a href="#conditions-in-conditional-flows">Conditions in conditional flows</a>
-<ul class="sectlevel3">
 <li><a href="#available-conditions">Available conditions</a></li>
 <li><a href="#explicitly-deny-allow-access-in-conditional-flows">Explicitly deny/allow access in conditional flows</a></li>
 </ul>
@@ -2807,7 +2803,7 @@ then immediately remove the compromised keypair.</p>
 <p>When Keycloak updates a password, Keycloak sends the password in plain-text format. This action is different from updating the password in the built-in Keycloak database, where Keycloak hashes and salts the password before sending it to the database. For LDAP, Keycloak relies on the LDAP server to hash and salt the password.</p>
 </div>
 <div class="paragraph">
-<p>By default, LDAP servers such as MSAD, RHDS, or FreeIPA hash and salt passwords. Other LDAP servers such as OpenLDAP or ApacheDS store the passwords in plain-text unless you use the <em>LDAPv3 Password Modify Extended Operation</em> as described in <a href="https://tools.ietf.org/html/rfc3062">RFC3062</a>. Enable the LDAPv3 Password Modify Extended Operation in the LDAP configuration page. See the documentation of your LDAP server for more details.</p>
+<p>By default, LDAP servers such as MSAD, RHDS, or FreeIPA hash and salt passwords. Other LDAP servers such as OpenLDAP or ApacheDS store the passwords in plain-text unless you use the <em>LDAPv3 Password Modify Extended Operation</em> as described in <a href="https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.3">RFC3062</a>. Enable the LDAPv3 Password Modify Extended Operation in the LDAP configuration page. See the documentation of your LDAP server for more details.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -7152,7 +7148,7 @@ If set to <strong>REQUIRED</strong>, the server refuses inbound connections if n
 </dd>
 <dt class="hdlist1"><strong>Enable Serial Number hexadecimal representation</strong></dt>
 <dd>
-<p>Represent the <a href="https://tools.ietf.org/html/rfc5280#section-4.1.2.2">serial number</a> as hexadecimal. The serial number with the sign bit set to 1 must be left padded with 00 octet. For example, a serial number with decimal value <em>161</em>, or <em>a1</em> in hexadecimal representation is encoded as <em>00a1</em>, according to RFC5280. See <a href="https://tools.ietf.org/html/rfc5280#appendix-B">RFC5280, appendix-B</a> for more details.</p>
+<p>Represent the <a href="https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.2">serial number</a> as hexadecimal. The serial number with the sign bit set to 1 must be left padded with 00 octet. For example, a serial number with decimal value <em>161</em>, or <em>a1</em> in hexadecimal representation is encoded as <em>00a1</em>, according to RFC5280. See <a href="https://datatracker.ietf.org/doc/html/rfc5280#appendix-B">RFC5280, appendix-B</a> for more details.</p>
 </dd>
 <dt class="hdlist1"><strong>A regular expression</strong></dt>
 <dd>
@@ -7189,11 +7185,11 @@ If set to <strong>REQUIRED</strong>, the server refuses inbound connections if n
 <dt class="hdlist1"><strong>Validate Key Usage</strong></dt>
 <dd>
 <p>Verifies the certificate&#8217;s KeyUsage extension bits are set. For example, "digitalSignature,KeyEncipherment" verifies if bits 0 and 2 in the KeyUsage extension are set.
-Leave this parameter empty to disable the Key Usage validation. See <a href="https://tools.ietf.org/html/rfc5280#section-4.2.1.3">RFC5280, Section-4.2.1.3</a> for more information. Keycloak raises an error when a key usage mismatch occurs.</p>
+Leave this parameter empty to disable the Key Usage validation. See <a href="https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.3">RFC5280, Section-4.2.1.3</a> for more information. Keycloak raises an error when a key usage mismatch occurs.</p>
 </dd>
 <dt class="hdlist1"><strong>Validate Extended Key Usage</strong></dt>
 <dd>
-<p>Verifies one or more purposes defined in the Extended Key Usage extension. See <a href="https://tools.ietf.org/html/rfc5280#section-4.2.1.12">RFC5280, Section-4.2.1.12</a> for more information. Leave this parameter empty to disable the Extended Key Usage validation. Keycloak raises an error when flagged as critical by the issuing CA and a key usage extension mismatch occurs.</p>
+<p>Verifies one or more purposes defined in the Extended Key Usage extension. See <a href="https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.12">RFC5280, Section-4.2.1.12</a> for more information. Leave this parameter empty to disable the Extended Key Usage validation. Keycloak raises an error when flagged as critical by the issuing CA and a key usage extension mismatch occurs.</p>
 </dd>
 <dt class="hdlist1"><strong>Bypass identity confirmation</strong></dt>
 <dd>
@@ -7502,7 +7498,7 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 </div>
 </div>
 <div class="paragraph">
-<p>Keycloak provides limited support for <a href="https://www.w3.org/TR/webauthn/">W3C Web Authentication (WebAuthn)</a>. Keycloak works as a WebAuthn&#8217;s <a href="https://www.w3.org/TR/webauthn/#rp-operations">Relying Party (RP)</a>.</p>
+<p>Keycloak provides limited support for <a href="https://www.w3.org/TR/webauthn/">W3C Web Authentication (WebAuthn)</a>. Keycloak works as a WebAuthn&#8217;s <a href="https://www.w3.org/TR/webauthn/#webauthn-relying-party">Relying Party (RP)</a>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -7822,15 +7818,15 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Signature Algorithms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The algorithms telling the WebAuthn authenticator which signature algorithms to use for the <a href="https://www.w3.org/TR/webauthn/#public-key-credential">Public Key Credential</a>. Keycloak uses the Public Key Credential to sign and verify <a href="https://www.w3.org/TR/webauthn/#authentication-assertion">Authentication Assertions</a>. If no algorithms exist, the default <a href="https://tools.ietf.org/html/rfc8152#section-8.1">ES256</a> is adapted. ES256 is an optional configuration item applying to the registration of WebAuthn authenticators. For more details, see <a href="https://www.w3.org/TR/webauthn/#dictdef-publickeycredentialparameters">WebAuthn Specification</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The algorithms telling the WebAuthn authenticator which signature algorithms to use for the <a href="https://www.w3.org/TR/webauthn/#public-key-credential">Public Key Credential</a>. Keycloak uses the Public Key Credential to sign and verify <a href="https://www.w3.org/TR/webauthn/#authentication-assertion">Authentication Assertions</a>. If no algorithms exist, the default <a href="https://datatracker.ietf.org/doc/html/rfc8152#section-8.1">ES256</a> is adapted. ES256 is an optional configuration item applying to the registration of WebAuthn authenticators. For more details, see <a href="https://www.w3.org/TR/webauthn/#dictdef-publickeycredentialparameters">WebAuthn Specification</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relying Party ID</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ID of a WebAuthn Relying Party that determines the scope of <a href="https://www.w3.org/TR/webauthn/#public-key-credential">Public Key Credentials</a>. The ID must be the origin&#8217;s effective domain. This ID is an optional configuration item applied to the registration of WebAuthn authenticators. If this entry is blank, Keycloak adapts the host part of Keycloak&#8217;s base URL. For more details, see <a href="https://www.w3.org/TR/webauthn/#rp-id">WebAuthn Specification</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The ID of a WebAuthn Relying Party that determines the scope of <a href="https://www.w3.org/TR/webauthn/#public-key-credential">Public Key Credentials</a>. The ID must be the origin&#8217;s effective domain. This ID is an optional configuration item applied to the registration of WebAuthn authenticators. If this entry is blank, Keycloak adapts the host part of Keycloak&#8217;s base URL. For more details, see <a href="https://www.w3.org/TR/webauthn/">WebAuthn Specification</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Attestation Conveyance Preference</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The WebAuthn API implementation on the browser (<a href="https://www.w3.org/TR/webauthn/#webauthn-client">WebAuthn Client</a>) is the preferential method to generate Attestation statements. This preference is an optional configuration item applying to the registration of the WebAuthn authenticator. If no option exists, its behavior is the same as selecting "none". For more details, see <a href="https://www.w3.org/TR/webauthn/#attestation-convey">WebAuthn Specification</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The WebAuthn API implementation on the browser (<a href="https://www.w3.org/TR/webauthn/#webauthn-client">WebAuthn Client</a>) is the preferential method to generate Attestation statements. This preference is an optional configuration item applying to the registration of the WebAuthn authenticator. If no option exists, its behavior is the same as selecting "none". For more details, see <a href="https://www.w3.org/TR/webauthn/">WebAuthn Specification</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Authenticator Attachment</p></td>
@@ -7982,13 +7978,9 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 <p><span class="image"><img src="./images/webauthn-passwordless-flow.png" alt="webauthn passwordless flow"></span></p>
 </div>
 <div class="paragraph">
-<p>You can now add <strong>WebAuthn Register Passwordless</strong> as the required action to a user, already known to Keycloak, to test this. During the first authentication, the user must use the password and second-factor WebAuthn credential. The user does not need to provide the password and second-factor WebAuthn credential if they use the WebAuthn Passwordless credential.</p>
+<p>You can now add <strong>WebAuthn Register Passwordless</strong> as the required action to a user, already known to Keycloak, to test this. During the first authentication, the user must use the password and second-factor WebAuthn credential. The user does not need to provide the password and second-factor WebAuthn credential if they use the WebAuthn Passwordless credential.
+=== Conditions in conditional flows</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="conditions-in-conditional-flows"><a class="anchor" href="#conditions-in-conditional-flows"></a>Conditions in conditional flows</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_admin/topics/authentication/conditions.adoc" target="_blank">Edit this section</a>
@@ -8000,6 +7992,8 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 If all <em>Condition</em> executions evaluate as true, then the <em>Conditional</em> sub-flow acts as <em>Required</em>.
 You can process the next execution in the <em>Conditional</em> sub-flow.
 If some executions included in the <em>Conditional</em> sub-flow evaluate as false, then the whole sub-flow is considered as <em>Disabled</em>.</p>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="available-conditions"><a class="anchor" href="#available-conditions"></a>Available conditions</h4>
@@ -8539,7 +8533,7 @@ If the user already exists, Keycloak may ask the user to link the identity retur
 <p>Copy the value of <strong>Redirect URI</strong> to your clipboard.</p>
 </li>
 <li>
-<p>In a separate browser tab, <a href="https://docs.github.com/en/developers/apps/creating-an-oauth-app">create an OAUTH app</a>.</p>
+<p>In a separate browser tab, <a href="https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app">create an OAUTH app</a>.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -10015,7 +10009,7 @@ Authorization: Bearer &lt;KEYCLOAK ACCESS TOKEN&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph _abstract">
-<p><a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) is an authentication protocol that is an extension of <a href="https://tools.ietf.org/html/rfc6749">OAuth 2.0</a>.</p>
+<p><a href="https://openid.net/connect/">OpenID Connect</a> (OIDC) is an authentication protocol that is an extension of <a href="https://datatracker.ietf.org/doc/html/rfc6749">OAuth 2.0</a>.</p>
 </div>
 <div class="paragraph">
 <p>OAuth 2.0 is a framework for building authorization protocols and is incomplete. OIDC, however, is a full authentication and authorization protocol that uses the <a href="https://jwt.io">Json Web Token</a> (JWT) standards.  The JWT standards define an identity token JSON format and methods to digitally sign and encrypt data in a compact and web-friendly way.</p>
@@ -10110,7 +10104,7 @@ to exchange the code for an <em>identity</em> and <em>access</em> and <em>refres
 <em>Public</em> clients are secure when HTTPS is strictly enforced and redirect URIs registered for the client are strictly controlled.  HTML5/JavaScript clients have to be <em>public</em> clients because there is no way to securely transmit the client secret to HTML5/JavaScript clients. For more details, see the <a href="#assembly-managing-clients_server_administration_guide">Managing Clients</a> chapter.</p>
 </div>
 <div class="paragraph">
-<p>Keycloak also supports the <a href="https://tools.ietf.org/html/rfc7636">Proof Key for Code Exchange</a> specification.</p>
+<p>Keycloak also supports the <a href="https://datatracker.ietf.org/doc/html/rfc7636">Proof Key for Code Exchange</a> specification.</p>
 </div>
 </div>
 <div class="sect4">
@@ -10785,7 +10779,7 @@ requests are sent to a registered backchannel logout URLs at Keycloak and are su
 </dd>
 <dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/revoke</dt>
 <dd>
-<p>Used for OAuth 2.0 Token Revocation described in <a href="https://tools.ietf.org/html/rfc7009">RFC7009</a>.</p>
+<p>Used for OAuth 2.0 Token Revocation described in <a href="https://datatracker.ietf.org/doc/html/rfc7009">RFC7009</a>.</p>
 </dd>
 <dt class="hdlist1">/realms/{realm-name}/protocol/openid-connect/certs</dt>
 <dd>
@@ -11001,7 +10995,7 @@ requests are sent to a registered backchannel logout URLs at Keycloak and are su
 <p>The Docker client requests a resource from the Docker registry.  If the resource is protected and no authentication token is in the request, the Docker registry server responds with a 401 HTTP message with some information on the permissions that are required and the location of the authorization server.</p>
 </li>
 <li>
-<p>The Docker client constructs an authentication request based on the 401 HTTP message from the Docker registry. The client uses the locally cached credentials (from the <code>docker login</code> command) as part of the <a href="https://tools.ietf.org/html/rfc2617">HTTP Basic Authentication</a> request to the Keycloak authentication server.</p>
+<p>The Docker client constructs an authentication request based on the 401 HTTP message from the Docker registry. The client uses the locally cached credentials (from the <code>docker login</code> command) as part of the <a href="https://datatracker.ietf.org/doc/html/rfc2617">HTTP Basic Authentication</a> request to the Keycloak authentication server.</p>
 </li>
 <li>
 <p>The Keycloak authentication server attempts to authenticate the user and return a JSON body containing an OAuth-style Bearer token.</p>
@@ -11966,7 +11960,7 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 </ul>
 </div>
 <div class="paragraph">
-<p>See <a href="https://tools.ietf.org/html/draft-ietf-oauth-mtls-08#section-3">Mutual TLS Client Certificate Bound Access Tokens</a> in the OAuth 2.0 Mutual TLS Client Authentication and Certificate Bound Access Tokens for more details.</p>
+<p>See <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-mtls-08#section-3">Mutual TLS Client Certificate Bound Access Tokens</a> in the OAuth 2.0 Mutual TLS Client Authentication and Certificate Bound Access Tokens for more details.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -12008,13 +12002,13 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 </dl>
 </div>
 <div class="paragraph">
-<p>See <a href="https://tools.ietf.org/html/rfc7636">RFC 7636 Proof Key for Code Exchange by OAuth Public Clients</a> for more details.</p>
+<p>See <a href="https://datatracker.ietf.org/doc/html/rfc7636">RFC 7636 Proof Key for Code Exchange by OAuth Public Clients</a> for more details.</p>
 </div>
 <div id="_jwe-id-token-encryption" class="paragraph">
 <p><strong>Signed and Encrypted ID Token Support</strong></p>
 </div>
 <div class="paragraph">
-<p>Keycloak can encrypt ID tokens according to the <a href="https://tools.ietf.org/html/rfc7516">Json Web Encryption (JWE)</a> specification. The administrator determines if ID tokens are encrypted for each client.</p>
+<p>Keycloak can encrypt ID tokens according to the <a href="https://datatracker.ietf.org/doc/html/rfc7516">Json Web Encryption (JWE)</a> specification. The administrator determines if ID tokens are encrypted for each client.</p>
 </div>
 <div class="paragraph">
 <p>The key used for encrypting the ID token is the Content Encryption Key (CEK). Keycloak and a client must negotiate which CEK is used and how it is delivered. The method used to determine the CEK is the Key Management Mode. The Key Management Mode that Keycloak supports is Key Encryption.</p>
@@ -12051,7 +12045,7 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 <p>No party, other than the client, can decrypt the ID token.</p>
 </div>
 <div class="paragraph">
-<p>The client must pass its public key for encrypting CEK to Keycloak. Keycloak supports downloading public keys from a URL provided by the client. The client must provide public keys according to the <a href="https://tools.ietf.org/html/rfc7517">Json Web Keys (JWK)</a> specification.</p>
+<p>The client must pass its public key for encrypting CEK to Keycloak. Keycloak supports downloading public keys from a URL provided by the client. The client must provide public keys according to the <a href="https://datatracker.ietf.org/doc/html/rfc7517">Json Web Keys (JWK)</a> specification.</p>
 </div>
 <div class="paragraph">
 <p>The procedure is:</p>
@@ -12070,7 +12064,7 @@ JavaScript code came from, the request must use CORS. The server must handle COR
 </ol>
 </div>
 <div class="paragraph">
-<p>Key Encryption&#8217;s algorithms are defined in the <a href="https://tools.ietf.org/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports:</p>
+<p>Key Encryption&#8217;s algorithms are defined in the <a href="https://datatracker.ietf.org/doc/html/rfc7518#section-4.1">Json Web Algorithm (JWA)</a> specification. Keycloak supports:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -12256,7 +12250,7 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>client_id</code> parameter in the query (described in Section 2.2 of the <a href="https://tools.ietf.org/html/rfc6749">OAuth 2.0 Specification</a>).</p>
+<p>The <code>client_id</code> parameter in the query (described in Section 2.2 of the <a href="https://datatracker.ietf.org/doc/html/rfc6749">OAuth 2.0 Specification</a>).</p>
 </li>
 <li>
 <p>Supply <code>client_id</code> as a form parameter.</p>
@@ -12348,7 +12342,7 @@ use cases, it is sufficient to accept all certificates. In that case, you can us
 </div>
 </div>
 <div class="paragraph">
-<p>The response would be similar to this <a href="https://tools.ietf.org/html/rfc6749#section-4.4.3">Access Token Response</a> from the OAuth 2.0 specification.</p>
+<p>The response would be similar to this <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.4.3">Access Token Response</a> from the OAuth 2.0 specification.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12388,7 +12382,7 @@ on the Keycloak side upon successful authentication by default. Due to the lack 
 <p>Typically, the environment where Keycloak is deployed consists of a set of <em>confidential</em> or <em>public</em> client applications that use Keycloak for authentication.</p>
 </div>
 <div class="paragraph">
-<p><em>Services</em> (<em>Resource Servers</em> in the <a href="https://tools.ietf.org/html/draft-ietf-oauth-mtls-08#section-4.2">OAuth 2 specification</a>) are also available that serve requests from client applications and provide resources to these applications. These services require an <em>Access token</em> (Bearer token) to be sent to them to authenticate a request. This token is obtained by the frontend application upon login to Keycloak.</p>
+<p><em>Services</em> (<em>Resource Servers</em> in the <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-mtls-08#section-4.2">OAuth 2 specification</a>) are also available that serve requests from client applications and provide resources to these applications. These services require an <em>Access token</em> (Bearer token) to be sent to them to authenticate a request. This token is obtained by the frontend application upon login to Keycloak.</p>
 </div>
 <div class="paragraph">
 <p>In the environment where trust among services is low, you may encounter this scenario:</p>
@@ -14862,7 +14856,7 @@ MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Security vulnerabilities exist in any authentication server. See the Internet Engineering Task Force&#8217;s (IETF) <a href="https://tools.ietf.org/html/rfc6819">OAuth 2.0 Threat Model</a> and the <a href="https://tools.ietf.org/html/draft-ietf-oauth-security-topics-15">OAuth 2.0 Security Best Current Practice</a> for more information.</p>
+<p>Security vulnerabilities exist in any authentication server. See the Internet Engineering Task Force&#8217;s (IETF) <a href="https://datatracker.ietf.org/doc/html/rfc6819">OAuth 2.0 Threat Model</a> and the <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-15">OAuth 2.0 Security Best Current Practice</a> for more information.</p>
 </div>
 <div class="sect2">
 <h3 id="host"><a class="anchor" href="#host"></a>Host</h3>
@@ -15545,7 +15539,7 @@ Pushing a new not-before policy ensures that applications must download new publ
 </div>
 </div>
 <div class="paragraph">
-<p>In environments with low levels of trust among services, limit the audiences on the token. See the <a href="https://tools.ietf.org/html/rfc6819#section-5.1.5.5">OAuth2 Threat Model</a> and the
+<p>In environments with low levels of trust among services, limit the audiences on the token. See the <a href="https://datatracker.ietf.org/doc/html/rfc6819#section-5.1.5.5">OAuth2 Threat Model</a> and the
 <a href="#audience-support">Audience Support</a> section for more information.</p>
 </div>
 </div>
@@ -18550,7 +18544,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-16 14:50:21 UTC
+Last updated 2021-09-17 20:08:53 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
