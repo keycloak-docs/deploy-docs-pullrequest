@@ -3343,122 +3343,27 @@ Useful for numeric fields.</p></td>
 <h6 id="_managing_options_for_select_fields"><a class="anchor" href="#_managing_options_for_select_fields"></a>Defining options for select and multiselect fields</h6>
 <div class="paragraph">
 <p>Options for select and multiselect fields are taken from validation applied to the attribute to be
-sure validation and field options presented in UI are always consistent.</p>
+sure validation and field options presented in UI are always consistent. By default, options are taken from built-in <code>options</code> validation.</p>
 </div>
 <div class="paragraph">
-<p>By default, options are taken from built-in <code>options</code> validation, but custom validation can be used thanks
-to <code>inputOptionsFromValidation</code> annotation.</p>
+<p>You can use various ways to provide nice human readable labels for select and multiselect options. The simplest
+case is when attribute values are same as UI labels. No any extra configuration is necessary in this case.</p>
 </div>
 <div class="paragraph">
-<p>Example of the attribute rendered as select using options from default validation called <code>options</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>"attributes": [
-...
-{
-  "name": "jobTitle",
-  "validations": {
-    "options": {
-      "options":[
-        "sweng",
-        "swarch"
-      ]
-    }
-  },
-  "annotations": {
-    "inputType": "select"
-  }
-}
-...
-]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Example of the attribute rendered as radiobutton select using options from custom validation called <code>customOptionsValidator</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>"attributes": [
-...
-{
-  "name": "jobTitle",
-  "validations": {
-    "customOptionsValidator": {
-      "options":[
-        "sweng",
-        "swarch"
-      ]
-    }
-  },
-  "annotations": {
-    "inputType": "select-radiobuttons",
-    "inputOptionsFromValidation": "customOptionsValidator"
-  }
-}
-...
-]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can use various ways to provide nice human readable labels for select and multiselect options.</p>
-</div>
-<div class="paragraph">
-<p>Simplest case is when possible attribute values are same as UI labels. No any extra configuration is necessary in this case:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>"attributes": [
-...
-{
-  "name": "jobTitle",
-  "validations": {
-    "options": {
-      "options":[
-        "SW Engineer",
-        "SW architect"
-      ]
-    }
-  },
-  "annotations": {
-    "inputType": "select-radiobuttons"
-  }
-}
-...
-]</pre>
-</div>
+<div class="title">Option values same as UI labels</div>
+<p><span class="image"><img src="./images/user-profile-select-options-simple.png" alt="user profile select options simple"></span></p>
 </div>
 <div class="paragraph">
 <p>When attribute value is kind of ID not suitable for UI, you can use simple internationalization support provided
-by <code>inputOptionLabelsI18nPrefix</code> annotation, which
-defines prefix for internationalization keys. Option value is dot appended to this prefix:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>"attributes": [
-...
-{
-  "name": "jobTitle",
-  "validations": {
-    "options": {
-      "options":[
-        "sweng",
-        "swarch"
-      ]
-    }
-  },
-  "annotations": {
-    "inputType": "select-radiobuttons",
-    "inputOptionLabelsI18nPrefix" : "userprofile.jobtitle"
-  }
-}
-...
-]</pre>
-</div>
+by <code>inputOptionLabelsI18nPrefix</code> annotation. It defines prefix for internationalization keys, option value is dot appended to this prefix.</p>
 </div>
 <div class="paragraph">
-<p>Localized UI label texts for option value have to be provided for <code>userprofile.jobtitle.swengineer</code> and <code>userprofile.jobtitle.swarchitect</code>
-keys then, using common localization mechanisms.</p>
+<div class="title">Simple internationalization for UI labels using i18n key prefix</div>
+<p><span class="image"><img src="./images/user-profile-select-options-simple-i18n.png" alt="user profile select options simple i18n"></span></p>
+</div>
+<div class="paragraph">
+<p>Localized UI label texts for option value have to be provided by <code>userprofile.jobtitle.sweng</code> and <code>userprofile.jobtitle.swarch</code>
+keys then, using common localization mechanism.</p>
 </div>
 <div class="paragraph">
 <p>You can also use <code>inputOptionLabels</code> annotation to provide labels for individual options. It contains map of labels for option - key in the map is
@@ -3472,7 +3377,7 @@ option value (defined in validation), and value in the map is UI label text itse
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You have to use User Profile <code>JSON Editor</code> to enter map as annotation value.</p>
+<p>You have to use User Profile <code>JSON Editor</code> to enter map as <code>inputOptionLabels</code> annotation value.</p>
 </div>
 </td>
 </tr>
@@ -3537,7 +3442,16 @@ option value (defined in validation), and value in the map is UI label text itse
 </div>
 </div>
 <div class="paragraph">
-<p>Localized texts have to be provided for <code>jobtitle.swengineer</code> and <code>jobtitle.swarchitect</code> keys then, using common localization mechanisms.</p>
+<p>Localized texts have to be provided by <code>jobtitle.swengineer</code> and <code>jobtitle.swarchitect</code> keys then, using common localization mechanism.</p>
+</div>
+<div class="paragraph">
+<p>Custom validator can be used to provide options thanks to <code>inputOptionsFromValidation</code> attribute annotation.
+This validation have to have <code>options</code> config providing array of options. Internationalization works the same way as for options
+provided by built-in <code>options</code> validation.</p>
+</div>
+<div class="paragraph">
+<div class="title">Options provided by custom validator</div>
+<p><span class="image"><img src="./images/user-profile-select-options-custom-validator.png" alt="user profile select options custom validator"></span></p>
 </div>
 </div>
 </div>
@@ -17550,7 +17464,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-08 09:20:00 UTC
+Last updated 2021-09-17 09:22:09 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
