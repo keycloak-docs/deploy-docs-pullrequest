@@ -7818,7 +7818,7 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Signature Algorithms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The algorithms telling the WebAuthn authenticator which signature algorithms to use for the <a href="https://www.w3.org/TR/webauthn/#public-key-credential">Public Key Credential</a>. Keycloak uses the Public Key Credential to sign and verify <a href="https://www.w3.org/TR/webauthn/#authentication-assertion">Authentication Assertions</a>. If no algorithms exist, the default <a href="https://datatracker.ietf.org/doc/html/rfc8152#section-8.1">ES256</a> is adapted. ES256 is an optional configuration item applying to the registration of WebAuthn authenticators. For more details, see <a href="https://www.w3.org/TR/webauthn/#dictdef-publickeycredentialparameters">WebAuthn Specification</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The algorithms telling the WebAuthn authenticator which signature algorithms to use for the <a href="https://www.w3.org/TR/webauthn/#iface-pkcredential">Public Key Credential</a>. Keycloak uses the Public Key Credential to sign and verify <a href="https://www.w3.org/TR/webauthn/#authentication-assertion">Authentication Assertions</a>. If no algorithms exist, the default <a href="https://datatracker.ietf.org/doc/html/rfc8152#section-8.1">ES256</a> is adapted. ES256 is an optional configuration item applying to the registration of WebAuthn authenticators. For more details, see <a href="https://www.w3.org/TR/webauthn/#dictdef-publickeycredentialparameters">WebAuthn Specification</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relying Party ID</p></td>
@@ -7834,7 +7834,7 @@ Leave this parameter empty to disable the Key Usage validation. See <a href="htt
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Require Resident Key</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The option requiring that the WebAuthn authenticator generates the Public Key Credential as <a href="https://www.w3.org/TR/webauthn/#client-side-resident-public-key-credential-source">Client-side-resident Public Key Credential Source</a>. This option applies to the registration of the WebAuthn authenticator. If left blank, its behavior is the same as selecting "No". For more details, see <a href="https://www.w3.org/TR/webauthn/#dom-authenticatorselectioncriteria-requireresidentkey">WebAuthn Specification</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The option requiring that the WebAuthn authenticator generates the Public Key Credential as <a href="https://www.w3.org/TR/webauthn/">Client-side-resident Public Key Credential Source</a>. This option applies to the registration of the WebAuthn authenticator. If left blank, its behavior is the same as selecting "No". For more details, see <a href="https://www.w3.org/TR/webauthn/#dom-authenticatorselectioncriteria-requireresidentkey">WebAuthn Specification</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User Verification Requirement</p></td>
@@ -18544,7 +18544,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-20 12:59:25 UTC
+Last updated 2021-09-20 15:06:37 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
