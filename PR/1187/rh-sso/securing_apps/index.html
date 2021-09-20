@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Securing Applications and Services Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guide consists of information for securing applications and services using Red Hat Single Sign-On 7.5"/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140152365611344"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On</span> <span class="productnumber">7.5</span></div><div><h1 class="title">Securing Applications and Services Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On 7.5</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140152371871504">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Securing Applications and Services Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guide consists of information for securing applications and services using Red Hat Single Sign-On 7.5"/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140304465075296"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On</span> <span class="productnumber">7.5</span></div><div><h1 class="title">Securing Applications and Services Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On 7.5</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140304461246320">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
 				This guide consists of information for securing applications and services using Red Hat Single Sign-On 7.5
 			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></span></li><li><span class="chapter"><a href="#overview">1. Overview</a></span><ul><li><span class="section"><a href="#what_are_client_adapters">1.1. What are Client Adapters?</a></span></li><li><span class="section"><a href="#supported_platforms">1.2. Supported Platforms</a></span><ul><li><span class="section"><a href="#openid_connect">1.2.1. OpenID Connect</a></span></li><li><span class="section"><a href="#saml">1.2.2. SAML</a></span></li></ul></li><li><span class="section"><a href="#supported_protocols">1.3. Supported Protocols</a></span><ul><li><span class="section"><a href="#openid_connect_2">1.3.1. OpenID Connect</a></span></li><li><span class="section"><a href="#saml_2_0">1.3.2. SAML 2.0</a></span></li><li><span class="section"><a href="#openid_connect_vs_saml">1.3.3. OpenID Connect vs. SAML</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#oidc">2. OpenID Connect</a></span><ul><li><span class="section"><a href="#java_adapters">2.1. Java Adapters</a></span><ul><li><span class="section"><a href="#java_adapter_config">2.1.1. Java Adapter Config</a></span></li><li><span class="section"><a href="#jboss_adapter">2.1.2. JBoss EAP Adapter</a></span></li><li><span class="section"><a href="#jboss_adapter_rpm">2.1.3. Installing JBoss EAP Adapter from an RPM</a></span></li><li><span class="section"><a href="#fuse_adapter">2.1.4. JBoss Fuse 6 Adapter</a></span></li><li><span class="section"><a href="#fuse7_adapter">2.1.5. JBoss Fuse 7 Adapter</a></span></li><li><span class="section"><a href="#spring_boot_adapter">2.1.6. Spring Boot Adapter</a></span></li><li><span class="section"><a href="#servlet_filter_adapter">2.1.7. Java Servlet Filter Adapter</a></span></li><li><span class="section"><a href="#security_context">2.1.8. Security Context</a></span></li><li><span class="section"><a href="#adapter_error_handling">2.1.9. Error Handling</a></span></li><li><span class="section"><a href="#logout">2.1.10. Logout</a></span></li><li><span class="section"><a href="#params_forwarding">2.1.11. Parameters Forwarding</a></span></li><li><span class="section"><a href="#client_authentication_adapter">2.1.12. Client Authentication</a></span></li><li><span class="section"><a href="#multi_tenancy">2.1.13. Multi Tenancy</a></span></li><li><span class="section"><a href="#applicationclustering">2.1.14. Application Clustering</a></span></li></ul></li><li><span class="section"><a href="#javascript_adapter">2.2. JavaScript Adapter</a></span><ul><li><span class="section"><a href="#session_status_iframe">2.2.1. Session Status iframe</a></span></li><li><span class="section"><a href="#javascript_implicit_flow">2.2.2. Implicit and Hybrid Flow</a></span></li><li><span class="section"><a href="#hybrid-apps-with-cordova">2.2.3. Hybrid Apps with Cordova</a></span></li><li><span class="section"><a href="#custom-adapters">2.2.4. Custom Adapters</a></span></li><li><span class="section"><a href="#earlier_browsers">2.2.5. Earlier Browsers</a></span></li><li><span class="section"><a href="#modern_browsers">2.2.6. Modern Browsers with Tracking Protection</a></span></li><li><span class="section"><a href="#javascript_adapter_reference">2.2.7. JavaScript Adapter Reference</a></span></li></ul></li><li><span class="section"><a href="#nodejs_adapter">2.3. Node.js Adapter</a></span><ul><li><span class="section"><a href="#installation">2.3.1. Installation</a></span></li><li><span class="section"><a href="#usage">2.3.2. Usage</a></span></li><li><span class="section"><a href="#installing_middleware">2.3.3. Installing Middleware</a></span></li><li><span class="section"><a href="#configuration_for_proxies">2.3.4. Configuration for Proxies</a></span></li><li><span class="section"><a href="#checking_authentication">2.3.5. Checking Authentication</a></span></li><li><span class="section"><a href="#protecting_resources">2.3.6. Protecting Resources</a></span></li><li><span class="section"><a href="#additional_urls">2.3.7. Additional URLs</a></span></li></ul></li><li><span class="section"><a href="#other_openid_connect_libraries">2.4. Other OpenID Connect Libraries</a></span><ul><li><span class="section"><a href="#endpoints">2.4.1. Endpoints</a></span></li><li><span class="section"><a href="#validating_access_tokens">2.4.2. Validating Access Tokens</a></span></li><li><span class="section"><a href="#flows">2.4.3. Flows</a></span></li><li><span class="section"><a href="#redirect_uris">2.4.4. Redirect URIs</a></span></li></ul></li><li><span class="section"><a href="#fapi-support">2.5. Financial-grade API (FAPI) Support</a></span><ul><li><span class="section"><a href="#fapi_client_profiles">2.5.1. FAPI client profiles</a></span></li><li><span class="section"><a href="#open_banking_brasil_financial_grade_api_security_profile">2.5.2. Open Banking Brasil Financial-grade API Security Profile</a></span></li><li><span class="section"><a href="#tls_considerations">2.5.3. TLS considerations</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#saml_2">3. SAML</a></span><ul><li><span class="section"><a href="#java_adapters_2">3.1. Java Adapters</a></span><ul><li><span class="section"><a href="#saml-general-config">3.1.1. General Adapter Config</a></span></li><li><span class="section"><a href="#saml_jboss_adapter">3.1.2. JBoss EAP Adapter</a></span></li><li><span class="section"><a href="#jboss_adapter_rpm_saml">3.1.3. Installing JBoss EAP Adapter from an RPM</a></span></li><li><span class="section"><a href="#java_servlet_filter_adapter">3.1.4. Java Servlet Filter Adapter</a></span></li><li><span class="section"><a href="#registering_with_an_identity_provider">3.1.5. Registering with an Identity Provider</a></span></li><li><span class="section"><a href="#logout_2">3.1.6. Logout</a></span></li><li><span class="section"><a href="#obtaining_assertion_attributes">3.1.7. Obtaining Assertion Attributes</a></span></li><li><span class="section"><a href="#error_handling">3.1.8. Error Handling</a></span></li><li><span class="section"><a href="#troubleshooting">3.1.9. Troubleshooting</a></span></li><li><span class="section"><a href="#saml_multi_tenancy">3.1.10. Multi Tenancy</a></span></li></ul></li><li><span class="section"><a href="#mod_auth_mellon">3.2. mod_auth_mellon Apache HTTPD Module</a></span><ul><li><span class="section"><a href="#configuring_mod_auth_mellon_with_red_hat_single_sign_on">3.2.1. Configuring mod_auth_mellon with Red Hat Single Sign-On</a></span></li><li><span class="section"><a href="#setting_the_samesite_value_for_the_cookie_used_by_mod_auth_mellon">3.2.2. Setting the SameSite value for the cookie used by mod_auth_mellon</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#docker_registry_configuration">4. Docker Registry Configuration</a></span><ul><li><span class="section"><a href="#docker_registry_configuration_file_installation">4.1. Docker Registry Configuration File Installation</a></span></li><li><span class="section"><a href="#docker_registry_environment_variable_override_installation">4.2. Docker Registry Environment Variable Override Installation</a></span></li><li><span class="section"><a href="#docker_compose_yaml_file">4.3. Docker Compose YAML File</a></span></li></ul></li><li><span class="chapter"><a href="#client_registration">5. Client Registration</a></span><ul><li><span class="section"><a href="#authentication">5.1. Authentication</a></span><ul><li><span class="section"><a href="#bearer_token">5.1.1. Bearer Token</a></span></li><li><span class="section"><a href="#initial_access_token">5.1.2. Initial Access Token</a></span></li><li><span class="section"><a href="#registration_access_token">5.1.3. Registration Access Token</a></span></li></ul></li><li><span class="section"><a href="#red_hat_single_sign_on_representations">5.2. Red Hat Single Sign-On Representations</a></span></li><li><span class="section"><a href="#red_hat_single_sign_on_adapter_configuration">5.3. Red Hat Single Sign-On Adapter Configuration</a></span></li><li><span class="section"><a href="#openid_connect_dynamic_client_registration">5.4. OpenID Connect Dynamic Client Registration</a></span></li><li><span class="section"><a href="#saml_entity_descriptors">5.5. SAML Entity Descriptors</a></span></li><li><span class="section"><a href="#example_using_curl_2">5.6. Example using CURL</a></span></li><li><span class="section"><a href="#example_using_java_client_registration_api">5.7. Example using Java Client Registration API</a></span></li><li><span class="section"><a href="#client_registration_policies">5.8. Client Registration Policies</a></span></li></ul></li><li><span class="chapter"><a href="#client_registration_cli">6. Client Registration CLI</a></span><ul><li><span class="section"><a href="#configuring_a_user_for_client_registration_cli">6.1. Configuring a new regular user for use with Client Registration CLI</a></span></li><li><span class="section"><a href="#configuring_a_client_for_use_with_client_registration_cli">6.2. Configuring a client for use with the Client Registration CLI</a></span></li><li><span class="section"><a href="#installing_client_registration_cli">6.3. Installing the Client Registration CLI</a></span></li><li><span class="section"><a href="#using_client_registration_cli">6.4. Using the Client Registration CLI</a></span><ul><li><span class="section"><a href="#logging_in">6.4.1. Logging in</a></span></li><li><span class="section"><a href="#working_with_alternative_configurations">6.4.2. Working with alternative configurations</a></span></li><li><span class="section"><a href="#initial_access_and_registration_access_tokens">6.4.3. Initial Access and Registration Access Tokens</a></span></li><li><span class="section"><a href="#performing_crud_operations">6.4.4. Creating a client configuration</a></span></li><li><span class="section"><a href="#retrieving_a_client_configuration">6.4.5. Retrieving a client configuration</a></span></li><li><span class="section"><a href="#modifying_a_client_configuration">6.4.6. Modifying a client configuration</a></span></li><li><span class="section"><a href="#deleting_a_client_configuration">6.4.7. Deleting a client configuration</a></span></li><li><span class="section"><a href="#refreshing_invalid_registration_access_tokens">6.4.8. Refreshing invalid Registration Access Tokens</a></span></li></ul></li><li><span class="section"><a href="#troubleshooting_2">6.5. Troubleshooting</a></span></li></ul></li><li><span class="chapter"><a href="#token-exchange">7. Token Exchange</a></span><ul><li><span class="section"><a href="#internal_token_to_internal_token_exchange">7.1. Internal Token to Internal Token Exchange</a></span><ul><li><span class="section"><a href="#client_to_client_permission">7.1.1. Granting Permission for the Exchange</a></span></li><li><span class="section"><a href="#making_the_request">7.1.2. Making the Request</a></span></li></ul></li><li><span class="section"><a href="#internal_token_to_external_token_exchange">7.2. Internal Token to External Token Exchange</a></span><ul><li><span class="section"><a href="#grant_permission_external_exchange">7.2.1. Granting Permission for the Exchange</a></span></li><li><span class="section"><a href="#internal_external_making_request">7.2.2. Making the Request</a></span></li></ul></li><li><span class="section"><a href="#external_token_to_internal_token_exchange">7.3. External Token to Internal Token Exchange</a></span><ul><li><span class="section"><a href="#granting_permission_for_the_exchange">7.3.1. Granting Permission for the Exchange</a></span></li><li><span class="section"><a href="#making_the_request_2">7.3.2. Making the Request</a></span></li></ul></li><li><span class="section"><a href="#impersonation">7.4. Impersonation</a></span><ul><li><span class="section"><a href="#granting_permission_for_the_exchange_2">7.4.1. Granting Permission for the Exchange</a></span></li><li><span class="section"><a href="#making_the_request_3">7.4.2. Making the Request</a></span></li></ul></li><li><span class="section"><a href="#direct_naked_impersonation">7.5. Direct Naked Impersonation</a></span><ul><li><span class="section"><a href="#granting_permission_for_the_exchange_3">7.5.1. Granting Permission for the Exchange</a></span></li><li><span class="section"><a href="#making_the_request_4">7.5.2. Making the Request</a></span></li></ul></li><li><span class="section"><a href="#expand_permission_model_with_service_accounts">7.6. Expand Permission Model With Service Accounts</a></span></li><li><span class="section"><a href="#exchange_vulnerabilities">7.7. Exchange Vulnerabilities</a></span></li></ul></li></ul></div><section class="preface" id="making-open-source-more-inclusive"><div class="titlepage"><div><div><h1 class="title">Making open source more inclusive</h1></div></div></div><p>
 			Red Hat is committed to replacing problematic language in our code, documentation, and web properties. We are beginning with these four terms: master, slave, blacklist, and whitelist. Because of the enormity of this endeavor, these changes will be implemented gradually over several upcoming releases. For more details, see <a class="link" href="https://www.redhat.com/en/blog/making-open-source-more-inclusive-eradicating-problematic-language">our CTO Chris Wright’s message</a>.
@@ -415,7 +415,7 @@ $ unzip rh-sso-7.5.0-eap6-adapter.zip</pre><p>
 							To install the keycloak feature using the Maven repository, complete the following steps:
 						</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
 									Start JBoss Fuse 6.3.0 Rollup 12; then in the Karaf terminal type:
-								</p><pre class="screen">features:addurl mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00002/xml/features
+								</p><pre class="screen">features:addurl mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00001/xml/features
 features:install keycloak</pre></li><li class="listitem"><p class="simpara">
 									You might also need to install the Jetty 9 feature:
 								</p><pre class="screen">features:install keycloak-jetty9-adapter</pre></li><li class="listitem">
@@ -433,7 +433,7 @@ features:install keycloak</pre></li><li class="listitem"><p class="simpara">
 								</p><pre class="screen">cd /path-to-fuse/jboss-fuse-6.3.0.redhat-254
 unzip -q /path-to-adapter-zip/rh-sso-7.5.0-fuse-adapter.zip</pre></li><li class="listitem"><p class="simpara">
 									Start Fuse and run these commands in the fuse/karaf terminal:
-								</p><pre class="screen">features:addurl mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00002/xml/features
+								</p><pre class="screen">features:addurl mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00001/xml/features
 features:install keycloak</pre></li><li class="listitem">
 									Install the corresponding Jetty adapter. Since the artifacts are available directly in the JBoss Fuse <code class="literal">system</code> directory, you do not need to use the Maven repository.
 								</li></ol></div></section></section><section class="section" id="fuse_adapter_classic_war"><div class="titlepage"><div><div><h4 class="title">2.1.4.3. Securing a Classic WAR Application</h4></div></div></div><p>
@@ -501,11 +501,11 @@ features:install keycloak</pre></li><li class="listitem">
 								Ensure your WAR application imports <code class="literal">org.keycloak.adapters.jetty</code> and maybe some more packages in the <code class="literal">META-INF/MANIFEST.MF</code> file, under the <code class="literal">Import-Package</code> header. Using <code class="literal">maven-bundle-plugin</code> in your project properly generates OSGI headers in manifest. Note that "*" resolution for the package does not import the <code class="literal">org.keycloak.adapters.jetty</code> package, since it is not used by the application or the Blueprint or Spring descriptor, but is rather used in the <code class="literal">jetty-web.xml</code> file.
 							</p><p class="simpara">
 								The list of the packages to import might look like this:
-							</p><pre class="screen">org.keycloak.adapters.jetty;version="15.0.2.redhat-00002",
-org.keycloak.adapters;version="15.0.2.redhat-00002",
-org.keycloak.constants;version="15.0.2.redhat-00002",
-org.keycloak.util;version="15.0.2.redhat-00002",
-org.keycloak.*;version="15.0.2.redhat-00002",
+							</p><pre class="screen">org.keycloak.adapters.jetty;version="15.0.2.redhat-00001",
+org.keycloak.adapters;version="15.0.2.redhat-00001",
+org.keycloak.constants;version="15.0.2.redhat-00001",
+org.keycloak.util;version="15.0.2.redhat-00001",
+org.keycloak.*;version="15.0.2.redhat-00001",
 *;resolution:=optional</pre></li></ol></div><section class="section" id="config_external_adapter"><div class="titlepage"><div><div><h5 class="title">2.1.4.3.1. Configuring the External Adapter</h5></div></div></div><p>
 							If you do not want the <code class="literal">keycloak.json</code> adapter configuration file to be bundled inside your WAR application, but instead made available externally and loaded based on naming conventions, use this configuration method.
 						</p><p>
@@ -572,11 +572,11 @@ org.keycloak.*;version="15.0.2.redhat-00002",
 										You might need to have the <code class="literal">WEB-INF</code> directory inside your project (even if your project is not a web application) and create the <code class="literal">/WEB-INF/jetty-web.xml</code> and <code class="literal">/WEB-INF/keycloak.json</code> files as in the <a class="link" href="#fuse_adapter_classic_war" title="2.1.4.3. Securing a Classic WAR Application">Classic WAR application</a> section. Note you don’t need the <code class="literal">web.xml</code> file as the security-constraints are declared in the blueprint configuration file.
 									</li></ul></div></li><li class="listitem"><p class="simpara">
 								The <code class="literal">Import-Package</code> in <code class="literal">META-INF/MANIFEST.MF</code> must contain at least these imports:
-							</p><pre class="screen">org.keycloak.adapters.jetty;version="15.0.2.redhat-00002",
-org.keycloak.adapters;version="15.0.2.redhat-00002",
-org.keycloak.constants;version="15.0.2.redhat-00002",
-org.keycloak.util;version="15.0.2.redhat-00002",
-org.keycloak.*;version="15.0.2.redhat-00002",
+							</p><pre class="screen">org.keycloak.adapters.jetty;version="15.0.2.redhat-00001",
+org.keycloak.adapters;version="15.0.2.redhat-00001",
+org.keycloak.constants;version="15.0.2.redhat-00001",
+org.keycloak.util;version="15.0.2.redhat-00001",
+org.keycloak.*;version="15.0.2.redhat-00001",
 *;resolution:=optional</pre></li></ol></div></section><section class="section" id="securing_an_apache_camel_application"><div class="titlepage"><div><div><h4 class="title">2.1.4.5. Securing an Apache Camel Application</h4></div></div></div><p>
 						You can secure Apache Camel endpoints implemented with the <a class="link" href="https://camel.apache.org/components/latest/jetty-component.html">camel-jetty</a> component by adding the securityHandler with <code class="literal">KeycloakJettyAuthenticator</code> and the proper security constraints injected. You can add the <code class="literal">OSGI-INF/blueprint/blueprint.xml</code> file to your Camel application with a similar configuration as below. The roles, security constraint mappings, and Red Hat Single Sign-On adapter configuration might differ slightly depending on your environment and needs.
 					</p><p>
@@ -654,7 +654,7 @@ org.apache.camel;version="[2.13,3)",
 org.eclipse.jetty.security;version="[9,10)",
 org.eclipse.jetty.server.nio;version="[9,10)",
 org.eclipse.jetty.util.security;version="[9,10)",
-org.keycloak.*;version="15.0.2.redhat-00002",
+org.keycloak.*;version="15.0.2.redhat-00001",
 org.osgi.service.blueprint,
 org.osgi.service.blueprint.container,
 org.osgi.service.event,</pre></section><section class="section" id="camel_restdsl"><div class="titlepage"><div><div><h4 class="title">2.1.4.6. Camel RestDSL</h4></div></div></div><p>
@@ -799,7 +799,7 @@ org.apache.cxf.*;version="[2.7,3.2)",
 org.springframework.beans.factory.config,
 org.eclipse.jetty.security;version="[9,10)",
 org.eclipse.jetty.util.security;version="[9,10)",
-org.keycloak.*;version="15.0.2.redhat-00002"</pre></section><section class="section" id="fuse_adapter_cxf_builtin"><div class="titlepage"><div><div><h4 class="title">2.1.4.8. Securing an Apache CXF Endpoint on the Default Jetty Engine</h4></div></div></div><p>
+org.keycloak.*;version="15.0.2.redhat-00001"</pre></section><section class="section" id="fuse_adapter_cxf_builtin"><div class="titlepage"><div><div><h4 class="title">2.1.4.8. Securing an Apache CXF Endpoint on the Default Jetty Engine</h4></div></div></div><p>
 						Some services automatically come with deployed servlets on startup. One such service is the CXF servlet running in the http://localhost:8181/cxf context. Securing such endpoints can be complicated. One approach, which Red Hat Single Sign-On is currently using, is ServletReregistrationService, which undeploys a built-in servlet at startup, enabling you to redeploy it on a context secured by Red Hat Single Sign-On.
 					</p><p>
 						The configuration file <code class="literal">OSGI-INF/blueprint/blueprint.xml</code> inside your application might resemble the one below. Note that it adds the JAX-RS <code class="literal">customerservice</code> endpoint, which is endpoint-specific to your application, but more importantly, secures the entire <code class="literal">/cxf</code> context.
@@ -875,8 +875,8 @@ org.apache.cxf.*;version="[2.7,3.2)",
 com.fasterxml.jackson.jaxrs.json;version="[2.5,3)",
 org.eclipse.jetty.security;version="[9,10)",
 org.eclipse.jetty.util.security;version="[9,10)",
-org.keycloak.*;version="15.0.2.redhat-00002",
-org.keycloak.adapters.jetty;version="15.0.2.redhat-00002",
+org.keycloak.*;version="15.0.2.redhat-00001",
+org.keycloak.adapters.jetty;version="15.0.2.redhat-00001",
 *;resolution:=optional</pre></section><section class="section" id="fuse_adapter_admin"><div class="titlepage"><div><div><h4 class="title">2.1.4.9. Securing Fuse Administration Services</h4></div></div></div><section class="section" id="using_ssh_authentication_to_fuse_terminal"><div class="titlepage"><div><div><h5 class="title">2.1.4.9.1. Using SSH Authentication to Fuse Terminal</h5></div></div></div><p>
 							Red Hat Single Sign-On mainly addresses use cases for authentication of web applications; however, if your other web services and applications are protected with Red Hat Single Sign-On, protecting non-web administration services such as SSH with Red Hat Single Sign-On credentials is a best pracrice. You can do this using the JAAS login module, which allows remote connection to Red Hat Single Sign-On and verifies credentials based on <a class="link" href="#resource_owner_password_credentials_flow" title="2.4.3.3. Resource Owner Password Credentials">Resource Owner Password Credentials</a>.
 						</p><p>
@@ -901,7 +901,7 @@ org.keycloak.adapters.jetty;version="15.0.2.redhat-00002",
 									Start Fuse and install the <code class="literal">keycloak</code> JAAS realm. The easiest way is to install the <code class="literal">keycloak-jaas</code> feature, which has the JAAS realm predefined. You can override the feature’s predefined realm by using your own <code class="literal">keycloak</code> JAAS realm with higher ranking. For details see the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_jboss_fuse/6.3/html-single/security_guide/#ESBSecureContainer">JBoss Fuse documentation</a>.
 								</p><p class="simpara">
 									Use these commands in the Fuse terminal:
-								</p><pre class="screen">features:addurl mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00002/xml/features
+								</p><pre class="screen">features:addurl mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00001/xml/features
 features:install keycloak-jaas</pre></li><li class="listitem"><p class="simpara">
 									Log in using SSH as <code class="literal">admin</code> user by typing the following in the terminal:
 								</p><pre class="screen">ssh -o PubkeyAuthentication=no -p 8101 admin@localhost</pre></li><li class="listitem">
@@ -951,7 +951,7 @@ hawtio.rolePrincipalClasses=org.keycloak.adapters.jaas.RolePrincipal,org.apache.
   "principal-attribute": "preferred_username"
 }</pre></li><li class="listitem"><p class="simpara">
 								Start JBoss Fuse 6.3.0 Rollup 12 and install the keycloak feature if you have not already done so. The commands in Karaf terminal are similar to this example:
-							</p><pre class="screen">features:addurl mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00002/xml/features
+							</p><pre class="screen">features:addurl mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00001/xml/features
 features:install keycloak</pre></li><li class="listitem"><p class="simpara">
 								Go to <a class="link" href="http://localhost:8181/hawtio">http://localhost:8181/hawtio</a> and log in as a user from your Red Hat Single Sign-On realm.
 							</p><p class="simpara">
@@ -1043,7 +1043,7 @@ feature:repo-refresh</pre><p>
 							To install the keycloak feature using the Maven repository, complete the following steps:
 						</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
 									Start JBoss Fuse 7.4.0; then in the Karaf terminal type:
-								</p><pre class="screen">feature:repo-add mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00002/xml/features
+								</p><pre class="screen">feature:repo-add mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00001/xml/features
 feature:install keycloak-pax-http-undertow keycloak-jaas</pre></li><li class="listitem"><p class="simpara">
 									You might also need to install the Undertow feature:
 								</p><pre class="screen">feature:install pax-http-undertow</pre></li><li class="listitem">
@@ -1061,7 +1061,7 @@ feature:install keycloak-pax-http-undertow keycloak-jaas</pre></li><li class="li
 								</p><pre class="screen">cd /path-to-fuse/fuse-karaf-7.z
 unzip -q /path-to-adapter-zip/rh-sso-7.5.0-fuse-adapter.zip</pre></li><li class="listitem"><p class="simpara">
 									Start Fuse and run these commands in the fuse/karaf terminal:
-								</p><pre class="screen">feature:repo-add mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00002/xml/features
+								</p><pre class="screen">feature:repo-add mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00001/xml/features
 feature:install keycloak-pax-http-undertow keycloak-jaas</pre></li><li class="listitem">
 									Install the corresponding Undertow adapter. Since the artifacts are available directly in the JBoss Fuse <code class="literal">system</code> directory, you do not need to use the Maven repository.
 								</li></ol></div></section></section><section class="section" id="fuse7_adapter_classic_war"><div class="titlepage"><div><div><h4 class="title">2.1.5.3. Securing a Classic WAR Application</h4></div></div></div><p>
@@ -1237,7 +1237,7 @@ javax.net.ssl,
 org.apache.camel.*,
 org.apache.camel;version="[2.13,3)",
 io.undertow.*,
-org.keycloak.*;version="15.0.2.redhat-00002",
+org.keycloak.*;version="15.0.2.redhat-00001",
 org.osgi.service.blueprint,
 org.osgi.service.blueprint.container</pre></section><section class="section" id="camel_restdsl_2"><div class="titlepage"><div><div><h4 class="title">2.1.5.6. Camel RestDSL</h4></div></div></div><p>
 						Camel RestDSL is a Camel feature used to define your REST endpoints in a fluent way. But you must still use specific implementation classes and provide instructions on how to integrate with Red Hat Single Sign-On.
@@ -1322,7 +1322,7 @@ org.apache.cxf.bus.resource;version="[2.7,3.3)",
 org.apache.cxf.transport.http;version="[2.7,3.3)",
 org.apache.cxf.*;version="[2.7,3.3)",
 org.springframework.beans.factory.config,
-org.keycloak.*;version="15.0.2.redhat-00002"</pre></section><section class="section" id="fuse7_adapter_cxf_builtin"><div class="titlepage"><div><div><h4 class="title">2.1.5.8. Securing an Apache CXF Endpoint on the Default Undertow Engine</h4></div></div></div><p>
+org.keycloak.*;version="15.0.2.redhat-00001"</pre></section><section class="section" id="fuse7_adapter_cxf_builtin"><div class="titlepage"><div><div><h4 class="title">2.1.5.8. Securing an Apache CXF Endpoint on the Default Undertow Engine</h4></div></div></div><p>
 						Some services automatically come with deployed servlets on startup. One such service is the CXF servlet running in the http://localhost:8181/cxf context. Fuse’s Pax Web supports altering existing contexts via configuration admin. This can be used to secure endpoints by Red Hat Single Sign-On.
 					</p><p>
 						The configuration file <code class="literal">OSGI-INF/blueprint/blueprint.xml</code> inside your application might resemble the one below. Note that it adds the JAX-RS <code class="literal">customerservice</code> endpoint, which is endpoint-specific to your application.
@@ -1398,7 +1398,7 @@ com.fasterxml.jackson.jaxrs.json;version="${jackson.version}"</pre></section><se
 									Start Fuse and install the <code class="literal">keycloak</code> JAAS realm. The easiest way is to install the <code class="literal">keycloak-jaas</code> feature, which has the JAAS realm predefined. You can override the feature’s predefined realm by using your own <code class="literal">keycloak</code> JAAS realm with higher ranking. For details see the <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_fuse/7.2/html-single/apache_karaf_security_guide/index#ESBSecureContainer">JBoss Fuse documentation</a>.
 								</p><p class="simpara">
 									Use these commands in the Fuse terminal:
-								</p><pre class="screen">features:addurl mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00002/xml/features
+								</p><pre class="screen">features:addurl mvn:org.keycloak/keycloak-osgi-features/15.0.2.redhat-00001/xml/features
 features:install keycloak-jaas</pre></li><li class="listitem"><p class="simpara">
 									Log in using SSH as <code class="literal">admin</code> user by typing the following in the terminal:
 								</p><pre class="screen">ssh -o PubkeyAuthentication=no -p 8101 admin@localhost</pre></li><li class="listitem">
@@ -1477,7 +1477,7 @@ restart io.hawt.hawtio-war</pre></li><li class="listitem"><p class="simpara">
     &lt;dependency&gt;
       &lt;groupId&gt;org.keycloak.bom&lt;/groupId&gt;
       &lt;artifactId&gt;keycloak-adapter-bom&lt;/artifactId&gt;
-      &lt;version&gt;15.0.2.redhat-00002&lt;/version&gt;
+      &lt;version&gt;15.0.2.redhat-00001&lt;/version&gt;
       &lt;type&gt;pom&lt;/type&gt;
       &lt;scope&gt;import&lt;/scope&gt;
     &lt;/dependency&gt;
@@ -1559,7 +1559,7 @@ keycloak.securityConstraints[1].securityCollections[0].patterns[0] = /admin</pre
 				</p><pre class="programlisting language-xml">&lt;dependency&gt;
     &lt;groupId&gt;org.keycloak&lt;/groupId&gt;
     &lt;artifactId&gt;keycloak-servlet-filter-adapter&lt;/artifactId&gt;
-    &lt;version&gt;15.0.2.redhat-00002&lt;/version&gt;
+    &lt;version&gt;15.0.2.redhat-00001&lt;/version&gt;
 &lt;/dependency&gt;</pre></section><section class="section" id="security_context"><div class="titlepage"><div><div><h3 class="title">2.1.8. Security Context</h3></div></div></div><p>
 					The <code class="literal">KeycloakSecurityContext</code> interface is available if you need to access to the tokens directly. This could be useful if you want to retrieve additional details from the token (such as user profile information) or you want to invoke a RESTful service that is protected by Red Hat Single Sign-On.
 				</p><p>
@@ -2187,7 +2187,7 @@ new Keycloak({ url: 'http://localhost/auth', realm: 'myrealm', clientId: 'myApp'
 				</p><pre class="literallayout">mkdir myapp &amp;&amp; cd myapp</pre><p>
 					Use <code class="literal">npm init</code> command to create a <code class="literal">package.json</code> for your application. Now add the Red Hat Single Sign-On connect adapter in the dependencies list:
 				</p><pre class="programlisting language-json">    "dependencies": {
-        "keycloak-connect": "file:keycloak-connect-15.0.2.redhat-00002.tgz"
+        "keycloak-connect": "file:keycloak-connect-15.0.2.redhat-00001.tgz"
     }</pre></section><section class="section" id="usage"><div class="titlepage"><div><div><h3 class="title">2.3.2. Usage</h3></div></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">Instantiate a Keycloak class</span></dt><dd>
 								The <code class="literal">Keycloak</code> class provides a central point for configuration and integration with your application. The simplest creation involves no arguments.
 							</dd></dl></div><pre class="programlisting language-javascript">    var session = require('express-session');
@@ -3027,7 +3027,7 @@ $ ./bin/boss-cli.sh -c --file=bin/adapter-install-saml.cli</pre>
 				</p><pre class="programlisting language-xml">&lt;dependency&gt;
    &lt;groupId&gt;org.keycloak&lt;/groupId&gt;
    &lt;artifactId&gt;keycloak-saml-servlet-filter-adapter&lt;/artifactId&gt;
-   &lt;version&gt;15.0.2.redhat-00002&lt;/version&gt;
+   &lt;version&gt;15.0.2.redhat-00001&lt;/version&gt;
 &lt;/dependency&gt;</pre><p>
 					In order to use <a class="link" href="#saml_multi_tenancy" title="3.1.10. Multi Tenancy">Multi Tenancy</a> the <code class="literal">keycloak.config.resolver</code> parameter should be passed as a filter parameter.
 				</p><pre class="programlisting language-xml">    &lt;filter&gt;
@@ -4075,7 +4075,7 @@ C:\&gt; kcreg update myclient -f myclient.json</pre><p>
 				It is possible to exchange social tokens provided by Facebook, Google, etc. for a realm token. Be careful and vigilante on what the exchange token is allowed to do as its not hard to create fake accounts on these social websites. Use default roles, groups, and identity provider mappers to control what attributes and roles are assigned to the external social user.
 			</p><p>
 				Direct naked exchanges are quite dangerous. You are putting a lot of trust in the calling client that it will never leak out its client credentials. If those credentials are leaked, then the thief can impersonate anybody in your system. This is in direct contrast to confidential clients that have existing tokens. You have two factors of authentication, the access token and the client credentials, and you’re only dealing with one user. So use direct naked exchanges sparingly.
-			</p></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140152371871504"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+			</p></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140304461246320"><h1 class="legalnotice">Legal Notice</h1><div class="para">
 				Copyright <span class="trademark"/>© 2019 Red Hat, Inc.
 			</div><div class="para">
 				Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at

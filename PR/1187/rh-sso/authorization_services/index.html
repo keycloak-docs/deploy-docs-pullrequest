@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Authorization Services Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guide consists of information for authorization services for Red Hat Single Sign-On 7.5"/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140225575408176"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On</span> <span class="productnumber">7.5</span></div><div><h1 class="title">Authorization Services Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On 7.5</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140225574425008">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Authorization Services Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guide consists of information for authorization services for Red Hat Single Sign-On 7.5"/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140085233205024"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On</span> <span class="productnumber">7.5</span></div><div><h1 class="title">Authorization Services Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On 7.5</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140085241427904">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
 				This guide consists of information for authorization services for Red Hat Single Sign-On 7.5
 			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></span></li><li><span class="chapter"><a href="#overview">1. Overview</a></span><ul><li><span class="section"><a href="#overview_architecture">1.1. Architecture</a></span><ul><li><span class="section"><a href="#the_authorization_process">1.1.1. The Authorization Process</a></span></li><li><span class="section"><a href="#authorization_services">1.1.2. Authorization Services</a></span></li></ul></li><li><span class="section"><a href="#overview_terminology">1.2. Terminology</a></span><ul><li><span class="section"><a href="#overview_terminology_resource_server">1.2.1. Resource Server</a></span></li><li><span class="section"><a href="#resource">1.2.2. Resource</a></span></li><li><span class="section"><a href="#scope">1.2.3. Scope</a></span></li><li><span class="section"><a href="#permission">1.2.4. Permission</a></span></li><li><span class="section"><a href="#policy">1.2.5. Policy</a></span></li><li><span class="section"><a href="#policy_provider">1.2.6. Policy Provider</a></span></li><li><span class="section"><a href="#overview_terminology_permission_ticket">1.2.7. Permission Ticket</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#getting_started_overview">2. Getting Started</a></span><ul><li><span class="section"><a href="#getting_started_hello_world_overview">2.1. Securing a Servlet Application</a></span></li><li><span class="section"><a href="#getting_started_hello_world_create_realm">2.2. Creating a Realm and a User</a></span></li><li><span class="section"><a href="#getting_started_hello_world_enabling_authz_services">2.3. Enabling Authorization Services</a></span></li><li><span class="section"><a href="#getting_started_hello_world_deploy">2.4. Build, Deploy, and Test Your Application</a></span><ul><li><span class="section"><a href="#obtaining_the_adapter_configuration">2.4.1. Obtaining the Adapter Configuration</a></span></li><li><span class="section"><a href="#building_and_deploying_the_application">2.4.2. Building and Deploying the Application</a></span></li><li><span class="section"><a href="#testing_the_application">2.4.3. Testing the Application</a></span></li><li><span class="section"><a href="#next_steps">2.4.4. Next Steps</a></span></li></ul></li><li><span class="section"><a href="#authorization_quickstarts">2.5. Authorization Quickstarts</a></span></li></ul></li><li><span class="chapter"><a href="#resource_server_overview">3. Managing Resource Servers</a></span><ul><li><span class="section"><a href="#resource_server_create_client">3.1. Creating a Client Application</a></span></li><li><span class="section"><a href="#resource_server_enable_authorization">3.2. Enabling Authorization Services</a></span><ul><li><span class="section"><a href="#resource_server_settings">3.2.1. Resource Server Settings</a></span></li></ul></li><li><span class="section"><a href="#resource_server_default_config">3.3. Default Configuration</a></span><ul><li><span class="section"><a href="#changing_the_default_configuration">3.3.1. Changing the Default Configuration</a></span></li></ul></li><li><span class="section"><a href="#resource_server_import_config">3.4. Export and Import Authorization Configuration</a></span><ul><li><span class="section"><a href="#exporting_a_configuration_file">3.4.1. Exporting a Configuration File</a></span></li><li><span class="section"><a href="#importing_a_configuration_file">3.4.2. Importing a Configuration File</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#resource_overview">4. Managing Resources and Scopes</a></span><ul><li><span class="section"><a href="#resource_view">4.1. Viewing Resources</a></span></li><li><span class="section"><a href="#resource_create">4.2. Creating Resources</a></span><ul><li><span class="section"><a href="#resource_attributes">4.2.1. Resource Attributes</a></span></li><li><span class="section"><a href="#typed_resources">4.2.2. Typed Resources</a></span></li><li><span class="section"><a href="#resource_owners">4.2.3. Resource Owners</a></span></li><li><span class="section"><a href="#managing_resources_remotely">4.2.4. Managing Resources Remotely</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#policy_overview">5. Managing Policies</a></span><ul><li><span class="section"><a href="#policy_user">5.1. User-Based Policy</a></span><ul><li><span class="section"><a href="#configuration">5.1.1. Configuration</a></span></li></ul></li><li><span class="section"><a href="#policy_rbac">5.2. Role-Based Policy</a></span><ul><li><span class="section"><a href="#configuration_2">5.2.1. Configuration</a></span></li><li><span class="section"><a href="#policy_rbac_required">5.2.2. Defining a Role as Required</a></span></li></ul></li><li><span class="section"><a href="#policy_js">5.3. JavaScript-Based Policy</a></span><ul><li><span class="section"><a href="#configuration_3">5.3.1. Configuration</a></span></li><li><span class="section"><a href="#creating_a_js_policy_from_a_deployed_jar_file">5.3.2. Creating a JS Policy from a Deployed JAR File</a></span></li><li><span class="section"><a href="#examples">5.3.3. Examples</a></span></li></ul></li><li><span class="section"><a href="#policy_time">5.4. Time-Based Policy</a></span><ul><li><span class="section"><a href="#configuration_4">5.4.1. Configuration</a></span></li></ul></li><li><span class="section"><a href="#policy_aggregated">5.5. Aggregated Policy</a></span><ul><li><span class="section"><a href="#configuration_5">5.5.1. Configuration</a></span></li><li><span class="section"><a href="#decision_strategy_for_aggregated_policies">5.5.2. Decision Strategy for Aggregated Policies</a></span></li></ul></li><li><span class="section"><a href="#policy_client">5.6. Client-Based Policy</a></span><ul><li><span class="section"><a href="#configuration_6">5.6.1. Configuration</a></span></li></ul></li><li><span class="section"><a href="#policy_group">5.7. Group-Based Policy</a></span><ul><li><span class="section"><a href="#configuration_7">5.7.1. Configuration</a></span></li><li><span class="section"><a href="#policy_group_extend_access_children">5.7.2. Extending Access to Child Groups</a></span></li></ul></li><li><span class="section"><a href="#policy_client_scope">5.8. Client Scope-Based Policy</a></span><ul><li><span class="section"><a href="#configuration_8">5.8.1. Configuration</a></span></li><li><span class="section"><a href="#policy_client_scope_required">5.8.2. Defining a Client Scope as Required</a></span></li></ul></li><li><span class="section"><a href="#policy_regex">5.9. Regex-Based Policy</a></span><ul><li><span class="section"><a href="#configuration_9">5.9.1. Configuration</a></span></li></ul></li><li><span class="section"><a href="#policy_logic">5.10. Positive and Negative Logic</a></span></li><li><span class="section"><a href="#policy_evaluation_api">5.11. Policy Evaluation API</a></span><ul><li><span class="section"><a href="#the_evaluation_context">5.11.1. The Evaluation Context</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#permission_overview">6. Managing Permissions</a></span><ul><li><span class="section"><a href="#permission_create_resource">6.1. Creating Resource-Based Permissions</a></span><ul><li><span class="section"><a href="#configuration_10">6.1.1. Configuration</a></span></li><li><span class="section"><a href="#permission_typed_resource">6.1.2. Typed Resource Permission</a></span></li></ul></li><li><span class="section"><a href="#permission_create_scope">6.2. Creating Scope-Based Permissions</a></span><ul><li><span class="section"><a href="#configuration_11">6.2.1. Configuration</a></span></li></ul></li><li><span class="section"><a href="#permission_decision_strategies">6.3. Policy Decision Strategies</a></span></li></ul></li><li><span class="chapter"><a href="#policy_evaluation_overview">7. Evaluating and Testing Policies</a></span><ul><li><span class="section"><a href="#providing_identity_information">7.1. Providing Identity Information</a></span></li><li><span class="section"><a href="#providing_contextual_information">7.2. Providing Contextual Information</a></span></li><li><span class="section"><a href="#providing_the_permissions">7.3. Providing the Permissions</a></span></li></ul></li><li><span class="chapter"><a href="#service_overview">8. Authorization Services</a></span><ul><li><span class="section"><a href="#service_authorization_api">8.1. Discovering Authorization Services Endpoints and Metadata</a></span></li><li><span class="section"><a href="#service_obtaining_permissions">8.2. Obtaining Permissions</a></span><ul><li><span class="section"><a href="#authentication_methods">8.2.1. Client Authentication Methods</a></span></li><li><span class="section"><a href="#service_pushing_claims">8.2.2. Pushing Claims</a></span></li></ul></li><li><span class="section"><a href="#service_user_managed_access">8.3. User-Managed Access</a></span><ul><li><span class="section"><a href="#service_uma_authorization_process">8.3.1. Authorization Process</a></span></li><li><span class="section"><a href="#service_authorization_aat">8.3.2. Submitting Permission Requests</a></span></li><li><span class="section"><a href="#service_authorization_my_resources">8.3.3. Managing Access to Users Resources</a></span></li></ul></li><li><span class="section"><a href="#service_protection_api">8.4. Protection API</a></span><ul><li><span class="section"><a href="#service_protection_whatis_obtain_pat">8.4.1. What is a PAT and How to Obtain It</a></span></li><li><span class="section"><a href="#service_protection_resources_api">8.4.2. Managing Resources</a></span></li><li><span class="section"><a href="#service_protection_permission_api_papi">8.4.3. Managing Permission Requests</a></span></li><li><span class="section"><a href="#service_authorization_uma_policy_api">8.4.4. Managing Resource Permissions using the Policy API</a></span></li></ul></li><li><span class="section"><a href="#service_rpt_overview">8.5. Requesting Party Token</a></span><ul><li><span class="section"><a href="#service_protection_token_introspection">8.5.1. Introspecting a Requesting Party Token</a></span></li><li><span class="section"><a href="#obtaining_information_about_an_rpt">8.5.2. Obtaining Information about an RPT</a></span></li><li><span class="section"><a href="#do_i_need_to_invoke_the_server_every_time_i_want_to_introspect_an_rpt">8.5.3. Do I Need to Invoke the Server Every Time I Want to Introspect an RPT?</a></span></li></ul></li><li><span class="section"><a href="#service_client_api">8.6. Authorization Client Java API</a></span><ul><li><span class="section"><a href="#maven_dependency">8.6.1. Maven Dependency</a></span></li><li><span class="section"><a href="#configuration_12">8.6.2. Configuration</a></span></li><li><span class="section"><a href="#creating_the_authorization_client">8.6.3. Creating the Authorization Client</a></span></li><li><span class="section"><a href="#obtaining_user_entitlements">8.6.4. Obtaining User Entitlements</a></span></li><li><span class="section"><a href="#creating_a_resource_using_the_protection_api">8.6.5. Creating a Resource Using the Protection API</a></span></li><li><span class="section"><a href="#introspecting_an_rpt">8.6.6. Introspecting an RPT</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#enforcer_overview">9. Policy Enforcers</a></span><ul><li><span class="section"><a href="#enforcer_filter">9.1. Configuration</a></span></li><li><span class="section"><a href="#enforcer_claim_information_point">9.2. Claim Information Point</a></span><ul><li><span class="section"><a href="#obtaining_information_from_the_http_request">9.2.1. Obtaining information from the HTTP Request</a></span></li><li><span class="section"><a href="#obtaining_information_from_an_external_http_service">9.2.2. Obtaining information from an External HTTP Service</a></span></li><li><span class="section"><a href="#static_claims">9.2.3. Static Claims</a></span></li><li><span class="section"><a href="#claim_information_provider_spi">9.2.4. Claim Information Provider SPI</a></span></li></ul></li><li><span class="section"><a href="#enforcer_authorization_context">9.3. Obtaining the Authorization Context</a></span></li><li><span class="section"><a href="#using_the_authorizationcontext_to_obtain_an_authorization_client_instance">9.4. Using the AuthorizationContext to obtain an Authorization Client Instance</a></span></li><li><span class="section"><a href="#enforcer_js_adapter">9.5. JavaScript Integration</a></span><ul><li><span class="section"><a href="#handling_authorization_responses_from_a_uma_protected_resource_server">9.5.1. Handling Authorization Responses from a UMA-Protected Resource Server</a></span></li><li><span class="section"><a href="#obtaining_entitlements">9.5.2. Obtaining Entitlements</a></span></li><li><span class="section"><a href="#authorization_request">9.5.3. Authorization Request</a></span></li><li><span class="section"><a href="#obtaining_the_rpt">9.5.4. Obtaining the RPT</a></span></li></ul></li><li><span class="section"><a href="#enforcer_filter_using_https">9.6. Setting Up TLS/HTTPS</a></span></li></ul></li></ul></div><section class="preface" id="making-open-source-more-inclusive"><div class="titlepage"><div><div><h1 class="title">Making open source more inclusive</h1></div></div></div><p>
 			Red Hat is committed to replacing problematic language in our code, documentation, and web properties. We are beginning with these four terms: master, slave, blacklist, and whitelist. Because of the enormity of this endeavor, these changes will be implemented gradually over several upcoming releases. For more details, see <a class="link" href="https://www.redhat.com/en/blog/making-open-source-more-inclusive-eradicating-problematic-language">our CTO Chris Wright’s message</a>.
@@ -360,43 +360,43 @@ $evaluation.deny();</pre><p>
 				The authorization quickstarts have been designed so that authorization services are displayed in different scenarios and using different technologies and integrations. It is not meant as a comprehensive set of all the possible use cases involving authorization but they should provide a starting point for users interested in understanding how the authorization services can be used in their own applications.
 			</p><p>
 				Each quickstart has a <code class="literal">README</code> file with instructions on how to build, deploy, and test the sample application. The following table provides a brief description of the available authorization quickstarts:
-			</p><div class="table" id="idm140225571633024"><p class="title"><strong>Table 2.1. Authorization Quickstarts</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140225571628224" scope="col">Name</th><th align="left" valign="top" id="idm140225571627136" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140225571628224">
+			</p><div class="table" id="idm140085237260096"><p class="title"><strong>Table 2.1. Authorization Quickstarts</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140085237255104" scope="col">Name</th><th align="left" valign="top" id="idm140085237254016" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140085237255104">
 							<p>
 								<a class="link" href="https://github.com/keycloak/keycloak-quickstarts/tree/latest/app-authz-jee-servlet">app-authz-jee-servlet</a>
 							</p>
-							</td><td align="left" valign="top" headers="idm140225571627136">
+							</td><td align="left" valign="top" headers="idm140085237254016">
 							<p>
 								Demonstrates how to enable fine-grained authorization to a Java EE application in order to protect specific resources and build a dynamic menu based on the permissions obtained from a Keycloak Server.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140225571628224">
+							</td></tr><tr><td align="left" valign="top" headers="idm140085237255104">
 							<p>
 								<a class="link" href="https://github.com/keycloak/keycloak-quickstarts/tree/latest/app-authz-jee-vanilla">app-authz-jee-vanilla</a>
 							</p>
-							</td><td align="left" valign="top" headers="idm140225571627136">
+							</td><td align="left" valign="top" headers="idm140085237254016">
 							<p>
 								Demonstrates how to enable fine-grained authorization to a Java EE application and use the default authorization settings to protect all resources in the application.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140225571628224">
+							</td></tr><tr><td align="left" valign="top" headers="idm140085237255104">
 							<p>
 								<a class="link" href="https://github.com/keycloak/keycloak-quickstarts/tree/latest/app-authz-rest-springboot">app-authz-rest-springboot</a>
 							</p>
-							</td><td align="left" valign="top" headers="idm140225571627136">
+							</td><td align="left" valign="top" headers="idm140085237254016">
 							<p>
 								Demonstrates how to protect a SpringBoot REST service using Keycloak Authorization Services.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140225571628224">
+							</td></tr><tr><td align="left" valign="top" headers="idm140085237255104">
 							<p>
 								<a class="link" href="https://github.com/keycloak/keycloak-quickstarts/tree/latest/app-authz-springboot">app-authz-springboot</a>
 							</p>
-							</td><td align="left" valign="top" headers="idm140225571627136">
+							</td><td align="left" valign="top" headers="idm140085237254016">
 							<p>
 								Demonstrates how to write a SpringBoot Web application where both authentication and authorization aspects are managed by Keycloak.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140225571628224">
+							</td></tr><tr><td align="left" valign="top" headers="idm140085237255104">
 							<p>
 								<a class="link" href="https://github.com/keycloak/keycloak-quickstarts/tree/latest/app-authz-uma-photoz">app-authz-uma-photoz</a>
 							</p>
-							</td><td align="left" valign="top" headers="idm140225571627136">
+							</td><td align="left" valign="top" headers="idm140085237254016">
 							<p>
 								A simple application based on HTML5+AngularJS+JAX-RS that demonstrates how to enable User-Managed Access to your application and let users to manage permissions for their resources.
 							</p>
@@ -1083,75 +1083,75 @@ if (identity.hasRealmRole('admin') || email.endsWith('@keycloak.org')) {
 					The <code class="literal">Identity</code> is built based on the OAuth2 Access Token that was sent along with the authorization request, and this construct has access to all claims extracted from the original token. For example, if you are using a <span class="emphasis"><em>Protocol Mapper</em></span> to include a custom claim in an OAuth2 Access Token you can also access this claim from a policy and use it to build your conditions.
 				</p><p>
 					The <code class="literal">EvaluationContext</code> also gives you access to attributes related to both the execution and runtime environments. For now, there only a few built-in attributes.
-				</p><div class="table" id="idm140225571160304"><p class="title"><strong>Table 5.1. Execution and Runtime Attributes</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140225571154576" scope="col">Name</th><th align="left" valign="top" id="idm140225571153488" scope="col">Description</th><th align="left" valign="top" id="idm140225571152400" scope="col">Type</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140225571154576">
+				</p><div class="table" id="idm140085234424128"><p class="title"><strong>Table 5.1. Execution and Runtime Attributes</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140085234418352" scope="col">Name</th><th align="left" valign="top" id="idm140085234417264" scope="col">Description</th><th align="left" valign="top" id="idm140085234416176" scope="col">Type</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140085234418352">
 								<p>
 									kc.time.date_time
 								</p>
-								</td><td align="left" valign="top" headers="idm140225571153488">
+								</td><td align="left" valign="top" headers="idm140085234417264">
 								<p>
 									Current date and time
 								</p>
-								</td><td align="left" valign="top" headers="idm140225571152400">
+								</td><td align="left" valign="top" headers="idm140085234416176">
 								<p>
 									String. Format <code class="literal">MM/dd/yyyy hh:mm:ss</code>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140225571154576">
+								</td></tr><tr><td align="left" valign="top" headers="idm140085234418352">
 								<p>
 									kc.client.network.ip_address
 								</p>
-								</td><td align="left" valign="top" headers="idm140225571153488">
+								</td><td align="left" valign="top" headers="idm140085234417264">
 								<p>
 									IPv4 address of the client
 								</p>
-								</td><td align="left" valign="top" headers="idm140225571152400">
+								</td><td align="left" valign="top" headers="idm140085234416176">
 								<p>
 									String
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140225571154576">
+								</td></tr><tr><td align="left" valign="top" headers="idm140085234418352">
 								<p>
 									kc.client.network.host
 								</p>
-								</td><td align="left" valign="top" headers="idm140225571153488">
+								</td><td align="left" valign="top" headers="idm140085234417264">
 								<p>
 									Client’s host name
 								</p>
-								</td><td align="left" valign="top" headers="idm140225571152400">
+								</td><td align="left" valign="top" headers="idm140085234416176">
 								<p>
 									String
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140225571154576">
+								</td></tr><tr><td align="left" valign="top" headers="idm140085234418352">
 								<p>
 									kc.client.id
 								</p>
-								</td><td align="left" valign="top" headers="idm140225571153488">
+								</td><td align="left" valign="top" headers="idm140085234417264">
 								<p>
 									The client id
 								</p>
-								</td><td align="left" valign="top" headers="idm140225571152400">
+								</td><td align="left" valign="top" headers="idm140085234416176">
 								<p>
 									String
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140225571154576">
+								</td></tr><tr><td align="left" valign="top" headers="idm140085234418352">
 								<p>
 									kc.client.user_agent
 								</p>
-								</td><td align="left" valign="top" headers="idm140225571153488">
+								</td><td align="left" valign="top" headers="idm140085234417264">
 								<p>
 									The value of the 'User-Agent' HTTP header
 								</p>
-								</td><td align="left" valign="top" headers="idm140225571152400">
+								</td><td align="left" valign="top" headers="idm140085234416176">
 								<p>
 									String[]
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140225571154576">
+								</td></tr><tr><td align="left" valign="top" headers="idm140085234418352">
 								<p>
 									kc.realm.name
 								</p>
-								</td><td align="left" valign="top" headers="idm140225571153488">
+								</td><td align="left" valign="top" headers="idm140085234417264">
 								<p>
 									The name of the realm
 								</p>
-								</td><td align="left" valign="top" headers="idm140225571152400">
+								</td><td align="left" valign="top" headers="idm140085234416176">
 								<p>
 									String
 								</p>
@@ -2595,7 +2595,7 @@ Identity.authorization.authorize(authorizationRequest).then(function (rpt) {
 				The configuration above enables TLS/HTTPS to the Authorization Client, making possible to access a Red Hat Single Sign-On Server remotely using the HTTPS scheme.
 			</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
 					It is strongly recommended that you enable TLS/HTTPS when accessing the Red Hat Single Sign-On Server endpoints.
-				</p></div></div></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140225574425008"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+				</p></div></div></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140085241427904"><h1 class="legalnotice">Legal Notice</h1><div class="para">
 				Copyright <span class="trademark"/>© 2019 Red Hat, Inc.
 			</div><div class="para">
 				Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
