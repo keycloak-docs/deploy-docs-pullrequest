@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Server Administration Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guide consists of information for administrators to configure Red Hat Single Sign-On 7.5"/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm140511926366448"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On</span> <span class="productnumber">7.5</span></div><div><h1 class="title">Server Administration Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On 7.5</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm140511910160160">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Server Administration Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.4"/><meta name="description" content="This guide consists of information for administrators to configure Red Hat Single Sign-On 7.5"/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm139987039681104"><div class="titlepage"><div><div class="producttitle"><span class="productname">Red Hat Single Sign-On</span> <span class="productnumber">7.5</span></div><div><h1 class="title">Server Administration Guide</h1></div><div><h2 class="subtitle">For Use with Red Hat Single Sign-On 7.5</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm139987041141952">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
 				This guide consists of information for administrators to configure Red Hat Single Sign-On 7.5
 			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></span></li><li><span class="chapter"><a href="#red_hat_single_sign_on_features_and_concepts">1. Red Hat Single Sign-On features and concepts</a></span><ul><li><span class="section"><a href="#features">1.1. Features</a></span></li><li><span class="section"><a href="#basic_red_hat_single_sign_on_operations">1.2. Basic Red Hat Single Sign-On operations</a></span></li><li><span class="section"><a href="#core_concepts_and_terms">1.3. Core concepts and terms</a></span></li></ul></li><li><span class="chapter"><a href="#creating-first-admin_server_administration_guide">2. Creating the first administrator</a></span><ul><li><span class="section"><a href="#creating_the_account_on_the_local_host">2.1. Creating the account on the local host</a></span></li><li><span class="section"><a href="#creating_the_account_remotely">2.2. Creating the account remotely</a></span></li></ul></li><li><span class="chapter"><a href="#configuring_realms">3. Configuring realms</a></span><ul><li><span class="section"><a href="#using_the_admin_console">3.1. Using the Admin Console</a></span></li><li><span class="section"><a href="#the_master_realm">3.2. The master realm</a></span></li><li><span class="section"><a href="#proc-creating-a-realm_server_administration_guide">3.3. Creating a realm</a></span></li><li><span class="section"><a href="#ssl_modes">3.4. Configuring SSL for a realm</a></span></li><li><span class="section"><a href="#clear-cache">3.5. Clearing server caches</a></span></li><li><span class="section"><a href="#email">3.6. Configuring email for a realm</a></span></li><li><span class="section"><a href="#themes">3.7. Configuring themes and internationalization</a></span><ul><li><span class="section"><a href="#enabling_internationalization">3.7.1. Enabling internationalization</a></span></li><li><span class="section"><a href="#user_locale_selection">3.7.2. User locale selection</a></span></li></ul></li><li><span class="section"><a href="#controlling_login_options">3.8. Controlling login options</a></span><ul><li><span class="section"><a href="#enabling_forgot_password">3.8.1. Enabling forgot password</a></span></li><li><span class="section"><a href="#enabling_remember_me">3.8.2. Enabling Remember Me</a></span></li></ul></li><li><span class="section"><a href="#realm_keys">3.9. Configuring realm keys</a></span><ul><li><span class="section"><a href="#rotating_keys">3.9.1. Rotating keys</a></span></li><li><span class="section"><a href="#adding_a_generated_keypair">3.9.2. Adding a generated keypair</a></span></li><li><span class="section"><a href="#adding_an_existing_keypair_and_certificate">3.9.3. Adding an existing keypair and certificate</a></span></li><li><span class="section"><a href="#loading_keys_from_a_java_keystore">3.9.4. Loading keys from a Java Keystore</a></span></li><li><span class="section"><a href="#making_keys_passive">3.9.5. Making keys passive</a></span></li><li><span class="section"><a href="#disabling_keys">3.9.6. Disabling keys</a></span></li><li><span class="section"><a href="#compromised_keys">3.9.7. Compromised keys</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#user-storage-federation">4. Using external storage</a></span><ul><li><span class="section"><a href="#adding_a_provider">4.1. Adding a provider</a></span></li><li><span class="section"><a href="#dealing_with_provider_failures">4.2. Dealing with provider failures</a></span></li><li><span class="section"><a href="#ldap">4.3. Lightweight Directory Access Protocol (LDAP) and Active Directory</a></span><ul><li><span class="section"><a href="#configuring_federated_ldap_storage">4.3.1. Configuring federated LDAP storage</a></span></li><li><span class="section"><a href="#storage_mode">4.3.2. Storage mode</a></span></li><li><span class="section"><a href="#edit_mode">4.3.3. Edit mode</a></span></li><li><span class="section"><a href="#other_configuration_options">4.3.4. Other configuration options</a></span></li><li><span class="section"><a href="#connecting_to_ldap_over_ssl">4.3.5. Connecting to LDAP over SSL</a></span></li><li><span class="section"><a href="#synchronizing_ldap_users_to_red_hat_single_sign_on">4.3.6. Synchronizing LDAP users to Red Hat Single Sign-On</a></span></li><li><span class="section"><a href="#ldap_mappers">4.3.7. LDAP mappers</a></span></li><li><span class="section"><a href="#ldap_password_hashing">4.3.8. Password hashing</a></span></li><li><span class="section"><a href="#ldap_troubleshooting">4.3.9. Troubleshooting</a></span></li></ul></li><li><span class="section"><a href="#sssd">4.4. SSSD and FreeIPA Identity Management integration</a></span><ul><li><span class="section"><a href="#freeipa_idm_server">4.4.1. FreeIPA/IdM server</a></span></li><li><span class="section"><a href="#sssd_and_d_bus">4.4.2. SSSD and D-Bus</a></span></li><li><span class="section"><a href="#enabling_the_sssd_federation_provider">4.4.3. Enabling the SSSD federation provider</a></span></li></ul></li><li><span class="section"><a href="#configuring_a_federated_sssd_store">4.5. Configuring a federated SSSD store</a></span></li><li><span class="section"><a href="#custom_providers">4.6. Custom providers</a></span></li></ul></li><li><span class="chapter"><a href="#assembly-managing-users_server_administration_guide">5. Managing users</a></span><ul><li><span class="section"><a href="#proc-searching-user_server_administration_guide">5.1. Searching for a user</a></span></li><li><span class="section"><a href="#proc-creating-user_server_administration_guide">5.2. Creating a user</a></span></li><li><span class="section"><a href="#proc-deleting-user_server_administration_guide">5.3. Deleting a user</a></span></li><li><span class="section"><a href="#proc-allow-user-to-delete-account_server_administration_guide">5.4. Enabling account deletion by users</a></span><ul><li><span class="section"><a href="#enabling_the_delete_account_capability">5.4.1. Enabling the Delete Account Capability</a></span></li><li><span class="section"><a href="#giving_a_user_the_emphasis_role_strong_delete_account_emphasis_role">5.4.2. Giving a user the <span class="strong strong"><strong>delete-account</strong></span> role</a></span></li><li><span class="section"><a href="#deleting_your_account">5.4.3. Deleting your account</a></span></li></ul></li><li><span class="section"><a href="#proc-configuring-user-attributes_server_administration_guide">5.5. Configuring user attributes</a></span></li><li><span class="section"><a href="#ref-user-credentials_server_administration_guide">5.6. User credentials</a></span><ul><li><span class="section"><a href="#proc-setting-password-user_server_administration_guide">5.6.1. Setting a password for a user</a></span></li><li><span class="section"><a href="#proc_creating-otp_server_administration_guide">5.6.2. Creating an OTP</a></span></li></ul></li><li><span class="section"><a href="#con-required-actions_server_administration_guide">5.7. Required actions</a></span><ul><li><span class="section"><a href="#proc-setting-required-actions_server_administration_guide">5.7.1. Setting required actions for one user</a></span></li><li><span class="section"><a href="#proc-setting-default-required-actions_server_administration_guide">5.7.2. Setting required actions for all users</a></span></li><li><span class="section"><a href="#proc-enabling-terms-conditions_server_administration_guide">5.7.3. Enabling terms and conditions as a required action</a></span></li></ul></li><li><span class="section"><a href="#con-user-impersonation_server_administration_guide">5.8. User impersonation</a></span></li><li><span class="section"><a href="#con-user-registration_server_administration_guide">5.9. User registration</a></span><ul><li><span class="section"><a href="#proc-enabling-user-registration_server_administration_guide">5.9.1. Enabling user registration</a></span></li><li><span class="section"><a href="#proc-registering-new-user_server_administration_guide">5.9.2. Registering as a new user</a></span></li></ul></li><li><span class="section"><a href="#proc-enabling-recaptcha_server_administration_guide">5.10. Enabling reCAPTCHA</a></span></li><li><span class="section"><a href="#ref-personal-data-collected_server_administration_guide">5.11. Personal data collected by Red Hat Single Sign-On</a></span></li><li><span class="section"><a href="#user_profile">5.12. User Profile</a></span><ul><li><span class="section"><a href="#enabling_the_user_profile">5.12.1. Enabling the User Profile</a></span></li><li><span class="section"><a href="#managing_the_user_profile">5.12.2. Managing the User Profile</a></span></li><li><span class="section"><a href="#managing_attributes">5.12.3. Managing Attributes</a></span></li><li><span class="section"><a href="#managing_attribute_groups">5.12.4. Managing Attribute Groups</a></span></li><li><span class="section"><a href="#using_the_json_configuration">5.12.5. Using the JSON configuration</a></span></li><li><span class="section"><a href="#using_dynamic_forms">5.12.6. Using dynamic forms</a></span></li><li><span class="section"><a href="#forcing_user_profile_compliance">5.12.7. Forcing User Profile compliance</a></span></li><li><span class="section"><a href="#migrating_to_user_profile">5.12.8. Migrating to User Profile</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#managing_user_sessions">6. Managing user sessions</a></span><ul><li><span class="section"><a href="#administering_sessions">6.1. Administering sessions</a></span><ul><li><span class="section"><a href="#the_emphasis_role_strong_logout_all_emphasis_operation">6.1.1. The <span class="strong strong"><strong>Logout all</strong></span> Operation</a></span></li><li><span class="section"><a href="#application_navigation">6.1.2. Application navigation</a></span></li><li><span class="section"><a href="#user_navigation">6.1.3. User navigation</a></span></li></ul></li><li><span class="section"><a href="#revocation-policy">6.2. Revocation policies</a></span></li><li><span class="section"><a href="#timeouts">6.3. Session and token timeouts</a></span></li><li><span class="section"><a href="#offline-access">6.4. Offline access</a></span></li><li><span class="section"><a href="#transient-session">6.5. Transient sessions</a></span></li></ul></li><li><span class="chapter"><a href="#assigning_permissions_and_access_using_roles_and_groups">7. Assigning permissions and access using roles and groups</a></span><ul><li><span class="section"><a href="#proc-creating-realm-roles_server_administration_guide">7.1. Creating a realm role</a></span></li><li><span class="section"><a href="#con-client-roles_server_administration_guide">7.2. Client roles</a></span></li><li><span class="section"><a href="#composite-roles">7.3. Converting a role to a composite role</a></span></li><li><span class="section"><a href="#proc-assigning-role-mappings_server_administration_guide">7.4. Asssiging role mappings</a></span></li><li><span class="section"><a href="#default_roles">7.5. Using default roles</a></span></li><li><span class="section"><a href="#role_scope_mappings">7.6. Role scope mappings</a></span></li><li><span class="section"><a href="#proc-managing-groups_server_administration_guide">7.7. Groups</a></span><ul><li><span class="section"><a href="#con-comparing-groups-roles_server_administration_guide">7.7.1. Groups compared to roles</a></span></li><li><span class="section"><a href="#proc-specifying-default-groups_server_administration_guide">7.7.2. Using default groups</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#configuring_authentication">8. Configuring authentication</a></span><ul><li><span class="section"><a href="#password-policies">8.1. Password policies</a></span><ul><li><span class="section"><a href="#password_policy_types">8.1.1. Password policy types</a></span></li></ul></li><li><span class="section"><a href="#one_time_password_otp_policies">8.2. One Time Password (OTP) policies</a></span><ul><li><span class="section"><a href="#time_based_or_counter_based_one_time_passwords">8.2.1. Time-based or counter-based one time passwords</a></span></li><li><span class="section"><a href="#totp_configuration_options">8.2.2. TOTP configuration options</a></span></li><li><span class="section"><a href="#hotp_configuration_options">8.2.3. HOTP configuration options</a></span></li></ul></li><li><span class="section"><a href="#authentication-flows">8.3. Authentication flows</a></span><ul><li><span class="section"><a href="#built_in_flows">8.3.1. Built-in flows</a></span></li><li><span class="section"><a href="#creating_flows">8.3.2. Creating flows</a></span></li><li><span class="section"><a href="#creating_a_password_less_browser_login_flow">8.3.3. Creating a password-less browser login flow</a></span></li></ul></li><li><span class="section"><a href="#kerberos">8.4. Kerberos</a></span><ul><li><span class="section"><a href="#setup_of_kerberos_server">8.4.1. Setup of Kerberos server</a></span></li><li><span class="section"><a href="#setup_and_configuration_of_red_hat_single_sign_on_server">8.4.2. Setup and configuration of Red Hat Single Sign-On server</a></span></li><li><span class="section"><a href="#setup_and_configuration_of_client_machines">8.4.3. Setup and configuration of client machines</a></span></li><li><span class="section"><a href="#credential_delegation">8.4.4. Credential delegation</a></span></li><li><span class="section"><a href="#cross_realm_trust">8.4.5. Cross-realm trust</a></span></li><li><span class="section"><a href="#troubleshooting">8.4.6. Troubleshooting</a></span></li></ul></li><li><span class="section"><a href="#x509">8.5. X.509 client certificate user authentication</a></span><ul><li><span class="section"><a href="#features_2">8.5.1. Features</a></span></li><li><span class="section"><a href="#enable_x_509_client_certificate_user_authentication">8.5.2. Enable X.509 client certificate user authentication</a></span></li><li><span class="section"><a href="#browser_flow">8.5.3. Adding X.509 client certificate authentication to browser flows</a></span></li><li><span class="section"><a href="#configuring_x_509_client_certificate_authentication">8.5.4. Configuring X.509 client certificate authentication</a></span></li><li><span class="section"><a href="#adding_x_509_client_certificate_authentication_to_a_direct_grant_flow">8.5.5. Adding X.509 Client Certificate Authentication to a Direct Grant Flow</a></span></li><li><span class="section"><a href="#client_certificate_lookup">8.5.6. Client certificate lookup</a></span></li><li><span class="section"><a href="#troubleshooting_2">8.5.7. Troubleshooting</a></span></li></ul></li><li><span class="section"><a href="#webauthn">8.6. W3C Web Authentication (WebAuthn)</a></span><ul><li><span class="section"><a href="#setup">8.6.1. Setup</a></span></li><li><span class="section"><a href="#authenticate_with_webauthn_authenticator">8.6.2. Authenticate with WebAuthn authenticator</a></span></li><li><span class="section"><a href="#managing_webauthn_as_an_administrator">8.6.3. Managing WebAuthn as an administrator</a></span></li><li><span class="section"><a href="#attestation_statement_verification">8.6.4. Attestation statement verification</a></span></li><li><span class="section"><a href="#managing_webauthn_credentials_as_a_user">8.6.5. Managing WebAuthn credentials as a user</a></span></li><li><span class="section"><a href="#webauthn_passwordless">8.6.6. Passwordless WebAuthn together with Two-Factor</a></span></li><li><span class="section"><a href="#available_conditions">8.6.7. Available conditions</a></span></li><li><span class="section"><a href="#explicitly_deny_allow_access_in_conditional_flows">8.6.8. Explicitly deny/allow access in conditional flows</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#identity_broker">9. Integrating identity providers</a></span><ul><li><span class="section"><a href="#identity_broker_overview">9.1. Brokering overview</a></span></li><li><span class="section"><a href="#default_identity_provider">9.2. Default Identity Provider</a></span></li><li><span class="section"><a href="#general-idp-config">9.3. General configuration</a></span></li><li><span class="section"><a href="#social_identity_providers">9.4. Social Identity Providers</a></span><ul><li><span class="section"><a href="#bitbucket">9.4.1. Bitbucket</a></span></li><li><span class="section"><a href="#facebook">9.4.2. Facebook</a></span></li><li><span class="section"><a href="#github">9.4.3. GitHub</a></span></li><li><span class="section"><a href="#gitlab">9.4.4. GitLab</a></span></li><li><span class="section"><a href="#google">9.4.5. Google</a></span></li><li><span class="section"><a href="#linkedin">9.4.6. LinkedIn</a></span></li><li><span class="section"><a href="#microsoft">9.4.7. Microsoft</a></span></li><li><span class="section"><a href="#openshift_3">9.4.8. OpenShift 3</a></span></li><li><span class="section"><a href="#openshift_4">9.4.9. OpenShift 4</a></span></li><li><span class="section"><a href="#paypal">9.4.10. PayPal</a></span></li><li><span class="section"><a href="#stackoverflow">9.4.11. Stack overflow</a></span></li><li><span class="section"><a href="#twitter">9.4.12. Twitter</a></span></li><li><span class="section"><a href="#instagram">9.4.13. Instagram</a></span></li></ul></li><li><span class="section"><a href="#identity_broker_oidc">9.5. OpenID Connect v1.0 identity providers</a></span></li><li><span class="section"><a href="#saml_v2_0_identity_providers">9.6. SAML v2.0 Identity Providers</a></span><ul><li><span class="section"><a href="#identity_broker_saml_requested_authncontext">9.6.1. Requesting specific AuthnContexts</a></span></li><li><span class="section"><a href="#identity_broker_saml_sp_descriptor">9.6.2. SP Descriptor</a></span></li><li><span class="section"><a href="#identity_broker_saml_login_hint">9.6.3. Send subject in SAML requests</a></span></li></ul></li><li><span class="section"><a href="#client_suggested_idp">9.7. Client-suggested Identity Provider</a></span></li><li><span class="section"><a href="#mappers">9.8. Mapping claims and assertions</a></span></li><li><span class="section"><a href="#available_user_session_data">9.9. Available user session data</a></span></li><li><span class="section"><a href="#identity_broker_first_login">9.10. First login flow</a></span><ul><li><span class="section"><a href="#default_first_login_flow_authenticators">9.10.1. Default first login flow authenticators</a></span></li><li><span class="section"><a href="#automatically_link_existing_first_login_flow">9.10.2. Automatically link existing first login flow</a></span></li><li><span class="section"><a href="#disabling_automatic_user_creation">9.10.3. Disabling automatic user creation</a></span></li><li><span class="section"><a href="#detect_existing_user_first_loging_flow">9.10.4. Detect existing user first login flow</a></span></li></ul></li><li><span class="section"><a href="#retrieving_external_idp_tokens">9.11. Retrieving external IDP tokens</a></span></li><li><span class="section"><a href="#identity_broker_logout">9.12. Identity broker logout</a></span></li></ul></li><li><span class="chapter"><a href="#sso_protocols">10. SSO protocols</a></span><ul><li><span class="section"><a href="#con-oidc_server_administration_guide">10.1. OpenID Connect</a></span><ul><li><span class="section"><a href="#con-oidc-auth-flows_server_administration_guide">10.1.1. OIDC auth flows</a></span></li><li><span class="section"><a href="#oidc-logout">10.1.2. OIDC Logout</a></span></li><li><span class="section"><a href="#con-server-oidc-uri-endpoints_server_administration_guide">10.1.3. Red Hat Single Sign-On server OIDC URI endpoints</a></span></li></ul></li><li><span class="section"><a href="#saml">10.2. SAML</a></span><ul><li><span class="section"><a href="#con-saml-bindings_server_administration_guide">10.2.1. SAML bindings</a></span></li><li><span class="section"><a href="#red_hat_single_sign_on_server_saml_uri_endpoints">10.2.2. Red Hat Single Sign-On Server SAML URI Endpoints</a></span></li></ul></li><li><span class="section"><a href="#ref-saml-vs-oidc_server_administration_guide">10.3. OpenID Connect compared to SAML</a></span></li><li><span class="section"><a href="#docker">10.4. Docker registry v2 authentication</a></span><ul><li><span class="section"><a href="#docker_authentication_flow">10.4.1. Docker authentication flow</a></span></li><li><span class="section"><a href="#red_hat_single_sign_on_docker_registry_v2_authentication_server_uri_endpoints">10.4.2. Red Hat Single Sign-On Docker Registry v2 Authentication Server URI Endpoints</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#admin_permissions">11. Controlling access to the Admin Console</a></span><ul><li><span class="section"><a href="#master_realm_access_control">11.1. Master realm access control</a></span><ul><li><span class="section"><a href="#global_roles">11.1.1. Global roles</a></span></li><li><span class="section"><a href="#realm_specific_roles">11.1.2. Realm specific roles</a></span></li></ul></li><li><span class="section"><a href="#per_realm_admin_permissions">11.2. Dedicated realm admin consoles</a></span></li><li><span class="section"><a href="#fine_grain_permissions">11.3. Fine grain admin permissions</a></span><ul><li><span class="section"><a href="#managing_one_specific_client">11.3.1. Managing one specific client</a></span></li><li><span class="section"><a href="#restrict_user_role_mapping">11.3.2. Restrict user role mapping</a></span></li><li><span class="section"><a href="#full_list_of_permissions">11.3.3. Full list of permissions</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#assembly-managing-clients_server_administration_guide">12. Managing OpenID Connect and SAML Clients</a></span><ul><li><span class="section"><a href="#oidc_clients">12.1. OIDC clients</a></span><ul><li><span class="section"><a href="#proc-creating-oidc-client_server_administration_guide">12.1.1. Creating an OpenID Connect Client</a></span></li><li><span class="section"><a href="#con-basic-settings_server_administration_guide">12.1.2. Basic settings</a></span></li><li><span class="section"><a href="#con-advanced-settings_server_administration_guide">12.1.3. Advanced settings</a></span></li><li><span class="section"><a href="#client-credentials">12.1.4. Confidential client credentials</a></span></li><li><span class="section"><a href="#service_accounts">12.1.5. Using a service account</a></span></li><li><span class="section"><a href="#audience-support">12.1.6. Audience support</a></span></li></ul></li><li><span class="section"><a href="#client-saml-configuration">12.2. Creating a SAML client</a></span><ul><li><span class="section"><a href="#idp_initiated_login">12.2.1. IDP Initiated login</a></span></li><li><span class="section"><a href="#proc-using-an-entity-descriptors_server_administration_guide">12.2.2. Using an entity descriptor to create a client</a></span></li></ul></li><li><span class="section"><a href="#con-client-links_server_administration_guide">12.3. Client links</a></span></li><li><span class="section"><a href="#protocol-mappers">12.4. OIDC token and SAML assertion mappings</a></span><ul><li><span class="section"><a href="#priority_order">12.4.1. Priority order</a></span></li><li><span class="section"><a href="#protocol-mappers_oidc-user-session-note-mappers">12.4.2. OIDC user session note mappers</a></span></li><li><span class="section"><a href="#script_mapper">12.4.3. Script mapper</a></span></li></ul></li><li><span class="section"><a href="#client_installation">12.5. Generating client adapter config</a></span></li><li><span class="section"><a href="#client_scopes">12.6. Client scopes</a></span><ul><li><span class="section"><a href="#protocol">12.6.1. Protocol</a></span></li><li><span class="section"><a href="#consent_related_settings">12.6.2. Consent related settings</a></span></li><li><span class="section"><a href="#client_scopes_linking">12.6.3. Link client scope with the client</a></span></li><li><span class="section"><a href="#client_scopes_evaluate">12.6.4. Evaluating Client Scopes</a></span></li><li><span class="section"><a href="#client_scopes_permissions">12.6.5. Client scopes permissions</a></span></li><li><span class="section"><a href="#realm_default_client_scopes">12.6.6. Realm default client scopes</a></span></li><li><span class="section"><a href="#scopes_explained">12.6.7. Scopes explained</a></span></li></ul></li><li><span class="section"><a href="#client_policies">12.7. Client Policies</a></span><ul><li><span class="section"><a href="#use_cases">12.7.1. Use-cases</a></span></li><li><span class="section"><a href="#protocol_2">12.7.2. Protocol</a></span></li><li><span class="section"><a href="#architecture">12.7.3. Architecture</a></span></li><li><span class="section"><a href="#configuration">12.7.4. Configuration</a></span></li><li><span class="section"><a href="#backward_compatibility">12.7.5. Backward Compatibility</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#vault-administration">13. Using a vault to obtain secrets</a></span><ul><li><span class="section"><a href="#providers">13.1. Kubernetes / OpenShift files plain-text vault provider</a></span></li><li><span class="section"><a href="#elytron_credential_store_vault_provider">13.2. Elytron credential store vault provider</a></span></li><li><span class="section"><a href="#key_resolvers">13.3. Key resolvers</a></span></li><li><span class="section"><a href="#sample_configuration">13.4. Sample Configuration</a></span><ul><li><span class="section"><a href="#configuring_the_credential_store_and_vault_without_a_mask">13.4.1. Configuring the credential store and vault without a mask</a></span></li><li><span class="section"><a href="#masking_the_password_in_the_credential_store_and_vault">13.4.2. Masking the password in the credential store and vault</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#configuring_auditing_to_track_events">14. Configuring auditing to track events</a></span><ul><li><span class="section"><a href="#login_events">14.1. Login events</a></span><ul><li><span class="section"><a href="#event_types">14.1.1. Event types</a></span></li><li><span class="section"><a href="#event_listener">14.1.2. Event listener</a></span></li></ul></li><li><span class="section"><a href="#admin_events">14.2. Admin events</a></span></li></ul></li><li><span class="chapter"><a href="#assembly-exporting-importing_server_administration_guide">15. Importing and exporting the database</a></span><ul><li><span class="section"><a href="#admin_console_export_import">15.1. Admin console export/import</a></span></li></ul></li><li><span class="chapter"><a href="#mitigating_security_threats">16. Mitigating security threats</a></span><ul><li><span class="section"><a href="#host">16.1. Host</a></span></li><li><span class="section"><a href="#admin_endpoints_and_admin_console">16.2. Admin endpoints and Admin Console</a></span><ul><li><span class="section"><a href="#ip_restriction">16.2.1. IP restriction</a></span></li><li><span class="section"><a href="#port_restriction">16.2.2. Port restriction</a></span></li></ul></li><li><span class="section"><a href="#password-guess-brute-force-attacks">16.3. Brute force attacks</a></span><ul><li><span class="section"><a href="#password_policies">16.3.1. Password policies</a></span></li></ul></li><li><span class="section"><a href="#read_only_user_attributes">16.4. Read-only user attributes</a></span></li><li><span class="section"><a href="#clickjacking">16.5. Clickjacking</a></span></li><li><span class="section"><a href="#ssl_https_requirement">16.6. SSL/HTTPS requirement</a></span></li><li><span class="section"><a href="#csrf_attacks">16.7. CSRF attacks</a></span></li><li><span class="section"><a href="#unspecific-redirect-uris_server_administration_guide">16.8. Unspecific redirect URIs</a></span></li><li><span class="section"><a href="#fapi_compliance">16.9. FAPI compliance</a></span></li><li><span class="section"><a href="#compromised_access_and_refresh_tokens">16.10. Compromised access and refresh tokens</a></span></li><li><span class="section"><a href="#compromised_authorization_code">16.11. Compromised authorization code</a></span></li><li><span class="section"><a href="#open_redirectors">16.12. Open redirectors</a></span></li><li><span class="section"><a href="#password_database_compromised">16.13. Password database compromised</a></span></li><li><span class="section"><a href="#limiting_scope">16.14. Limiting scope</a></span></li><li><span class="section"><a href="#limit_token_audience">16.15. Limit token audience</a></span></li><li><span class="section"><a href="#limit-authentication-sessions">16.16. Limit Authentication Sessions</a></span></li><li><span class="section"><a href="#sql_injection_attacks">16.17. SQL injection attacks</a></span></li></ul></li><li><span class="chapter"><a href="#account-service">17. Account Console</a></span><ul><li><span class="section"><a href="#accessing_the_account_console">17.1. Accessing the Account Console</a></span></li><li><span class="section"><a href="#configuring_ways_to_sign_in">17.2. Configuring ways to sign in</a></span><ul><li><span class="section"><a href="#two_factor_authentication_with_otp">17.2.1. Two-factor authentication with OTP</a></span></li><li><span class="section"><a href="#two_factor_authentication_with_webauthn">17.2.2. Two-factor authentication with WebAuthn</a></span></li><li><span class="section"><a href="#passwordless_authentication_with_webauthn">17.2.3. Passwordless authentication with WebAuthn</a></span></li></ul></li><li><span class="section"><a href="#viewing_device_activity">17.3. Viewing device activity</a></span></li><li><span class="section"><a href="#adding_an_identity_provider_acccount">17.4. Adding an identity provider acccount</a></span></li><li><span class="section"><a href="#accessing_other_applications">17.5. Accessing other applications</a></span></li></ul></li><li><span class="chapter"><a href="#admin_cli">18. Admin CLI</a></span><ul><li><span class="section"><a href="#installing_the_admin_cli">18.1. Installing the Admin CLI</a></span></li><li><span class="section"><a href="#using_the_admin_cli">18.2. Using the Admin CLI</a></span></li><li><span class="section"><a href="#authenticating">18.3. Authenticating</a></span></li><li><span class="section"><a href="#working_with_alternative_configurations">18.4. Working with alternative configurations</a></span></li><li><span class="section"><a href="#basic_operations_and_resource_uris">18.5. Basic operations and resource URIs</a></span></li><li><span class="section"><a href="#realm_operations">18.6. Realm operations</a></span></li><li><span class="section"><a href="#role_operations">18.7. Role operations</a></span></li><li><span class="section"><a href="#client_operations">18.8. Client operations</a></span></li><li><span class="section"><a href="#user_operations">18.9. User operations</a></span></li><li><span class="section"><a href="#group_operations">18.10. Group operations</a></span></li><li><span class="section"><a href="#identity_provider_operations">18.11. Identity provider operations</a></span></li><li><span class="section"><a href="#storage_provider_operations">18.12. Storage provider operations</a></span></li><li><span class="section"><a href="#adding_mappers">18.13. Adding mappers</a></span></li><li><span class="section"><a href="#authentication_operations">18.14. Authentication operations</a></span></li></ul></li></ul></div><section class="preface" id="making-open-source-more-inclusive"><div class="titlepage"><div><div><h1 class="title">Making open source more inclusive</h1></div></div></div><p>
 			Red Hat is committed to replacing problematic language in our code, documentation, and web properties. We are beginning with these four terms: master, slave, blacklist, and whitelist. Because of the enormity of this endeavor, these changes will be implemented gradually over several upcoming releases. For more details, see <a class="link" href="https://www.redhat.com/en/blog/making-open-source-more-inclusive-eradicating-problematic-language">our CTO Chris Wright’s message</a>.
@@ -1170,15 +1170,15 @@ allowed_uids = root, your_username</pre></li></ol></div></section><section class
 							<span class="inlinemediaobject"><img src="images/user-profile-validation.png" alt="user profile validation"/></span>
 						</p></div><p>
 						Red Hat Single Sign-On provides different validators out of the box:
-					</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511920350752" scope="col">Name</th><th align="left" valign="top" id="idm140511920349664" scope="col">Description</th><th align="left" valign="top" id="idm140511920348576" scope="col">Configuration</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511920350752">
+					</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987031975904" scope="col">Name</th><th align="left" valign="top" id="idm139987031974816" scope="col">Description</th><th align="left" valign="top" id="idm139987031973728" scope="col">Configuration</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987031975904">
 									<p>
 										length
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920349664">
+									</td><td align="left" valign="top" headers="idm139987031974816">
 									<p>
 										Check the length of a string value based on a minimum and maximum length.
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920348576">
+									</td><td align="left" valign="top" headers="idm139987031973728">
 									<p>
 										<span class="strong strong"><strong>min</strong></span>: an integer to define the minimum allowed length.
 									</p>
@@ -1188,108 +1188,108 @@ allowed_uids = root, your_username</pre></li></ol></div></section><section class
 									<p>
 										<span class="strong strong"><strong>trim-disabled</strong></span>: a boolean to define whether the value is trimmed prior to validation.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511920350752">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987031975904">
 									<p>
 										integer
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920349664">
+									</td><td align="left" valign="top" headers="idm139987031974816">
 									<p>
 										Check if the value is an integer and within a lower and/or upper range. If no range is defined, the validator only checks whether the value is a valid number.
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920348576">
+									</td><td align="left" valign="top" headers="idm139987031973728">
 									<p>
 										<span class="strong strong"><strong>min</strong></span>: an integer to define the lower range.
 									</p>
 									<p>
 										<span class="strong strong"><strong>max</strong></span>: an integer to define the upper range.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511920350752">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987031975904">
 									<p>
 										double
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920349664">
+									</td><td align="left" valign="top" headers="idm139987031974816">
 									<p>
 										Check if the value is a double and within a lower and/or upper range. If no range is defined, the validator only checks whether the value is a valid number.
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920348576">
+									</td><td align="left" valign="top" headers="idm139987031973728">
 									<p>
 										<span class="strong strong"><strong>min</strong></span>: an integer to define the lower range.
 									</p>
 									<p>
 										<span class="strong strong"><strong>max</strong></span>: an integer to define the upper range.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511920350752">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987031975904">
 									<p>
 										uri
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920349664">
+									</td><td align="left" valign="top" headers="idm139987031974816">
 									<p>
 										Check if the value is a valid URI.
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920348576">
+									</td><td align="left" valign="top" headers="idm139987031973728">
 									<p>
 										None
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511920350752">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987031975904">
 									<p>
 										pattern
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920349664">
+									</td><td align="left" valign="top" headers="idm139987031974816">
 									<p>
 										Check if the value matches a specific RegEx pattern.
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920348576">
+									</td><td align="left" valign="top" headers="idm139987031973728">
 									<p>
 										<span class="strong strong"><strong>pattern</strong></span>: the RegEx pattern to use when validating values.
 									</p>
 									<p>
 										<span class="strong strong"><strong>error-message</strong></span>: the key of the error message in i18n bundle. If not set a generic message is used.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511920350752">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987031975904">
 									<p>
 										email
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920349664">
+									</td><td align="left" valign="top" headers="idm139987031974816">
 									<p>
 										Check if the value has a valid e-mail format.
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920348576">
+									</td><td align="left" valign="top" headers="idm139987031973728">
 									<p>
 										None
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511920350752">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987031975904">
 									<p>
 										local-date
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920349664">
+									</td><td align="left" valign="top" headers="idm139987031974816">
 									<p>
 										Check if the value has a valid format based on the realm and/or user locale.
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920348576">
+									</td><td align="left" valign="top" headers="idm139987031973728">
 									<p>
 										None
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511920350752">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987031975904">
 									<p>
 										person-name-prohibited-characters
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920349664">
+									</td><td align="left" valign="top" headers="idm139987031974816">
 									<p>
 										Check if the value is a valid person name as an additional barrier for attacks such as script injection. The validation is based on a default RegEx pattern that blocks characters not common in person names.
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920348576">
+									</td><td align="left" valign="top" headers="idm139987031973728">
 									<p>
 										<span class="strong strong"><strong>error-message</strong></span>: the key of the error message in i18n bundle. If not set a generic message is used.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511920350752">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987031975904">
 									<p>
 										username-prohibited-characters
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920349664">
+									</td><td align="left" valign="top" headers="idm139987031974816">
 									<p>
 										Check if the value is a valid username as an additional barrier for attacks such as script injection. The validation is based on a default RegEx pattern that blocks characters not common in usernames.
 									</p>
-									</td><td align="left" valign="top" headers="idm140511920348576">
+									</td><td align="left" valign="top" headers="idm139987031973728">
 									<p>
 										<span class="strong strong"><strong>error-message</strong></span>: the key of the error message in i18n bundle. If not set a generic message is used.
 									</p>
@@ -1422,27 +1422,27 @@ allowed_uids = root, your_username</pre></li></ol></div></section><section class
 					One of the main capabilities of User Profile is the possibility to dynamically render user-facing forms based on attributes metadata. When you have the feature enabled to your realm, forms like registration and update profile are rendered using specific theme templates to dynamically render pages based on the user profile configuration.
 				</p><p>
 					That said, you shouldn’t need to customize templates at all if the default rendering mechanisms serves to your needs. In case you still need customizations to themes, here are the templates you should be looking at:
-				</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511924642688" scope="col">Template</th><th align="left" valign="top" id="idm140511922284672" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511924642688">
+				</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987031130384" scope="col">Template</th><th align="left" valign="top" id="idm139987029626304" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987031130384">
 								<p>
 									base/login/update-user-profile.ftl
 								</p>
-								</td><td align="left" valign="top" headers="idm140511922284672">
+								</td><td align="left" valign="top" headers="idm139987029626304">
 								<p>
 									The template that renders the update profile page.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511924642688">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987031130384">
 								<p>
 									base/login/register-user-profile.ftl
 								</p>
-								</td><td align="left" valign="top" headers="idm140511922284672">
+								</td><td align="left" valign="top" headers="idm139987029626304">
 								<p>
 									The template that renders the registration page.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511924642688">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987031130384">
 								<p>
 									base/login/idp-review-user-profile.ftl
 								</p>
-								</td><td align="left" valign="top" headers="idm140511922284672">
+								</td><td align="left" valign="top" headers="idm139987029626304">
 								<p>
 									The template that renders the page to review/update the user profile when federating users through brokering.
 								</p>
@@ -1538,183 +1538,183 @@ allowed_uids = root, your_username</pre></li></ol></div></section><section class
 				Red Hat Single Sign-On includes control of the session, cookie, and token timeouts through the <span class="strong strong"><strong>Tokens</strong></span> tab in the <span class="strong strong"><strong>Realm Settings</strong></span> menu.
 			</p><div class="formalpara"><p class="title"><strong>Tokens tab</strong></p><p>
 					<span class="inlinemediaobject"><img src="images/rhsso-images/tokens-tab.png" alt="tokens tab"/></span>
-				</p></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511920270176" scope="col">Configuration</th><th align="left" valign="top" id="idm140511920269088" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511920270176">
+				</p></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987030219616" scope="col">Configuration</th><th align="left" valign="top" id="idm139987030218528" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Default Signature Algorithm
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								The default algorithm used to assign tokens for the realm.
 							</p>
 							<p>
 								<span id="revoke-refresh-token"/>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Revoke Refresh Token
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								When <span class="strong strong"><strong>ON</strong></span>, Red Hat Single Sign-On revokes refresh tokens and issues another token that the client must use. This action applies to OIDC clients performing the refresh token flow.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								SSO Session Idle
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								This setting is for OIDC clients only. If a user is inactive for longer than this timeout, the user session is invalidated. This timeout value resets when clients request authentication or send a refresh token request. Red Hat Single Sign-On adds a window of time to the idle timeout before the session invalidation takes effect. See the <a class="link" href="#idle_timeouts_note" title="Note">note</a> later in this section.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								SSO Session Max
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								The maximum time before a user session expires.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								SSO Session Idle Remember Me
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								This setting is similar to the standard SSO Session Idle configuration but specific to logins with <span class="strong strong"><strong>Remember Me</strong></span> enabled. Users can specify longer session idle timeouts when they click <span class="strong strong"><strong>Remember Me</strong></span> when logging in. This setting is an optional configuration and, if its value is not greater than zero, it uses the same idle timeout as the SSO Session Idle configuration.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								SSO Session Max Remember Me
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								This setting is similar to the standard SSO Session Max but specific to <span class="strong strong"><strong>Remember Me</strong></span> logins. Users can specify longer sessions when they click <span class="strong strong"><strong>Remember Me</strong></span> when logging in. This setting is an optional configuration and, if its value is not greater than zero, it uses the same session lifespan as the SSO Session Max configuration.
 							</p>
 							<p>
 								<span id="offline-session-idle"/>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Offline Session Idle
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								This setting is for <a class="link" href="#offline-access" title="6.4. Offline access">offline access</a>. The amount of time the session remains idle before Red Hat Single Sign-On revokes its offline token. Red Hat Single Sign-On adds a window of time to the idle timeout before the session invalidation takes effect. See the <a class="link" href="#idle_timeouts_note" title="Note">note</a> later in this section.
 							</p>
 							<p>
 								<span id="offline-session-max-limited"/>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Offline Session Max Limited
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								This setting is for <a class="link" href="#offline-access" title="6.4. Offline access">offline access</a>. If this flag is <span class="strong strong"><strong>ON</strong></span>, Offline Session Max can control the maximum time the offline token remains active, regardless of user activity. Client Offline Session Idle and Client Offline Session Max are enabled.
 							</p>
 							<p>
 								<span id="offline-session-max"/>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Offline Session Max
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								This setting is for <a class="link" href="#offline-access" title="6.4. Offline access">offline access</a>, and it is the maximum time before Red Hat Single Sign-On revokes the corresponding offline token. This option controls the maximum amount of time the offline token remains active, regardless of user activity.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Client Offline Session Idle
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								This setting is for <a class="link" href="#offline-access" title="6.4. Offline access">offline access</a>. If a user is inactive for longer than this timeout, offline token requests bump the idle timeout. This setting specifies a shorter idle timeout of an offline token than the offline session idle. Users can override this setting for individual clients. This setting is an optional configuration and, when set to zero, uses the same idle timeout in the Offline Session Idle configuration.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Client Offline Session Max
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								This setting is for <a class="link" href="#offline-access" title="6.4. Offline access">offline access</a>. The maximum time before an offline token expires and invalidates. This setting specifies a shorter token timeout than an offline session timeout, but users can override it for individual clients. This setting is an optional configuration and, when set to zero, uses the same idle timeout in the Offline Session Max configuration.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Client Session Idle
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								If the user is inactive for longer than this timeout, refresh token requests bump the idle timeout. This setting specifies a shorter idle timeout of refresh tokens than the session idle timeout, but users can override it for individual clients. This setting is an optional configuration and, when set to zero, uses the same idle timeout in the SSO Session Idle configuration.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Client Session Max
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								The maximum time before a refresh token expires and invalidates. This setting specifies a shorter timeout of refresh tokens than the session timeout, but users can override it for individual clients. This setting is an optional configuration and, when set to zero, uses the same idle timeout in the SSO Session Max configuration.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Access Token Lifespan
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								When Red Hat Single Sign-On creates an OIDC access token, this value controls the lifetime of the token.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Access Token Lifespan For Implicit Flow
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								With the Implicit Flow, Red Hat Single Sign-On does not provide a refresh token. A separate timeout exists for access tokens created by the Implicit Flow.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Client login timeout
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								The maximum time before clients must finish the Authorization Code Flow in OIDC.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Login timeout
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								The total time a logging in must take. If authentication takes longer than this time, the user must start the authentication process again.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Login action timeout
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								The Maximum time users can spend on any one page during the authentication process.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								User-Initiated Action Lifespan
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								The maximum time before a user’s action permission expires. Keep this value short because users generally react to self-created actions quickly.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Default Admin-Initiated Action Lifespan
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								The maximum time before an action permission sent to a user by an administrator expires. Keep this value long to allow administrators to send e-mails to offline users. An administrator can override the default timeout before issuing the token.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511920270176">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987030219616">
 							<p>
 								Override User-Initiated Action Lifespan
 							</p>
-							</td><td align="left" valign="top" headers="idm140511920269088">
+							</td><td align="left" valign="top" headers="idm139987030218528">
 							<p>
 								Specifies independent timeouts per individual operation (for example, e-mail verification, forgot password, user actions, and Identity Provider E-mail Verification). This value defaults to the value configured at <span class="emphasis"><em>User-Initiated Action Lifespan</em></span>.
 							</p>
@@ -2863,83 +2863,83 @@ GSSContext context = gssManager.createContext(serviceName, krb5Oid,
 								Click <span class="strong strong"><strong>Save</strong></span>.
 							</li></ol></div><p>
 						The configurable items and their description are as follows:
-					</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511907078832" scope="col">Configuration</th><th align="left" valign="top" id="idm140511907077744" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511907078832">
+					</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987023162176" scope="col">Configuration</th><th align="left" valign="top" id="idm139987023161088" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987023162176">
 									<p>
 										Relying Party Entity Name
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907077744">
+									</td><td align="left" valign="top" headers="idm139987023161088">
 									<p>
 										The readable server name as a WebAuthn Relying Party. This item is mandatory and applies to the registration of the WebAuthn authenticator. The default setting is "keycloak". For more details, see <a class="link" href="https://www.w3.org/TR/webauthn/#dictionary-pkcredentialentity">WebAuthn Specification</a>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907078832">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987023162176">
 									<p>
 										Signature Algorithms
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907077744">
+									</td><td align="left" valign="top" headers="idm139987023161088">
 									<p>
 										The algorithms telling the WebAuthn authenticator which signature algorithms to use for the <a class="link" href="https://www.w3.org/TR/webauthn/#iface-pkcredential">Public Key Credential</a>. Red Hat Single Sign-On uses the Public Key Credential to sign and verify <a class="link" href="https://www.w3.org/TR/webauthn/#authentication-assertion">Authentication Assertions</a>. If no algorithms exist, the default <a class="link" href="https://datatracker.ietf.org/doc/html/rfc8152#section-8.1">ES256</a> is adapted. ES256 is an optional configuration item applying to the registration of WebAuthn authenticators. For more details, see <a class="link" href="https://www.w3.org/TR/webauthn/#dictdef-publickeycredentialparameters">WebAuthn Specification</a>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907078832">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987023162176">
 									<p>
 										Relying Party ID
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907077744">
+									</td><td align="left" valign="top" headers="idm139987023161088">
 									<p>
 										The ID of a WebAuthn Relying Party that determines the scope of <a class="link" href="https://www.w3.org/TR/webauthn/#public-key-credential">Public Key Credentials</a>. The ID must be the origin’s effective domain. This ID is an optional configuration item applied to the registration of WebAuthn authenticators. If this entry is blank, Red Hat Single Sign-On adapts the host part of Red Hat Single Sign-On’s base URL. For more details, see <a class="link" href="https://www.w3.org/TR/webauthn/">WebAuthn Specification</a>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907078832">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987023162176">
 									<p>
 										Attestation Conveyance Preference
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907077744">
+									</td><td align="left" valign="top" headers="idm139987023161088">
 									<p>
 										The WebAuthn API implementation on the browser (<a class="link" href="https://www.w3.org/TR/webauthn/#webauthn-client">WebAuthn Client</a>) is the preferential method to generate Attestation statements. This preference is an optional configuration item applying to the registration of the WebAuthn authenticator. If no option exists, its behavior is the same as selecting "none". For more details, see <a class="link" href="https://www.w3.org/TR/webauthn/">WebAuthn Specification</a>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907078832">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987023162176">
 									<p>
 										Authenticator Attachment
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907077744">
+									</td><td align="left" valign="top" headers="idm139987023161088">
 									<p>
 										The acceptable attachment pattern of a WebAuthn authenticator for the WebAuthn Client. This pattern is an optional configuration item applying to the registration of the WebAuthn authenticator. For more details, see <a class="link" href="https://www.w3.org/TR/webauthn/#enumdef-authenticatorattachment">WebAuthn Specification</a>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907078832">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987023162176">
 									<p>
 										Require Resident Key
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907077744">
+									</td><td align="left" valign="top" headers="idm139987023161088">
 									<p>
 										The option requiring that the WebAuthn authenticator generates the Public Key Credential as <a class="link" href="https://www.w3.org/TR/webauthn/">Client-side-resident Public Key Credential Source</a>. This option applies to the registration of the WebAuthn authenticator. If left blank, its behavior is the same as selecting "No". For more details, see <a class="link" href="https://www.w3.org/TR/webauthn/#dom-authenticatorselectioncriteria-requireresidentkey">WebAuthn Specification</a>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907078832">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987023162176">
 									<p>
 										User Verification Requirement
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907077744">
+									</td><td align="left" valign="top" headers="idm139987023161088">
 									<p>
 										The option requiring that the WebAuthn authenticator confirms the verification of a user. This is an optional configuration item applying to the registration of a WebAuthn authenticator and the authentication of a user by a WebAuthn authenticator. If no option exists, its behavior is the same as selecting "preferred". For more details, see <a class="link" href="https://www.w3.org/TR/webauthn/#dom-authenticatorselectioncriteria-userverification">WebAuthn Specification for registering a WebAuthn authenticator</a> and <a class="link" href="https://www.w3.org/TR/webauthn/#dom-publickeycredentialrequestoptions-userverification">WebAuthn Specification for authenticating the user by a WebAuthn authenticator</a>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907078832">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987023162176">
 									<p>
 										Timeout
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907077744">
+									</td><td align="left" valign="top" headers="idm139987023161088">
 									<p>
 										The timeout value, in seconds, for registering a WebAuthn authenticator and authenticating the user by using a WebAuthn authenticator. If set to zero, its behavior depends on the WebAuthn authenticator’s implementation. The default value is 0. For more details, see <a class="link" href="https://www.w3.org/TR/webauthn/#dom-publickeycredentialcreationoptions-timeout">WebAuthn Specification for registering a WebAuthn authenticator</a> and <a class="link" href="https://www.w3.org/TR/webauthn/#dom-publickeycredentialrequestoptions-timeout">WebAuthn Specification for authenticating the user by a WebAuthn authenticator</a>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907078832">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987023162176">
 									<p>
 										Avoid Same Authenticator Registration
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907077744">
+									</td><td align="left" valign="top" headers="idm139987023161088">
 									<p>
 										If enabled, Red Hat Single Sign-On cannot re-register an already registered WebAuthn authenticator.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907078832">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987023162176">
 									<p>
 										Acceptable AAGUIDs
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907077744">
+									</td><td align="left" valign="top" headers="idm139987023161088">
 									<p>
 										The white list of AAGUIDs which a WebAuthn authenticator must register against.
 									</p>
@@ -3127,91 +3127,91 @@ GSSContext context = gssManager.createContext(serviceName, krb5Oid,
 									Protocol-based providers rely on specific protocols to authenticate and authorize users. Using these providers, you can connect to any identity provider compliant with a specific protocol. Red Hat Single Sign-On provides support for SAML v2.0 and OpenID Connect v1.0 protocols. You can configure and broker any identity provider based on these open standards.
 								</dd></dl></div></li></ol></div><p>
 				Although each type of identity provider has its configuration options, all share a common configuration. The following configuration options available:
-			</p><div class="table" id="idm140511908583200"><p class="title"><strong>Table 9.1. Common Configuration</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511908578368" scope="col">Configuration</th><th align="left" valign="top" id="idm140511908577280" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511908578368">
+			</p><div class="table" id="idm139987062772064"><p class="title"><strong>Table 9.1. Common Configuration</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987062767232" scope="col">Configuration</th><th align="left" valign="top" id="idm139987062766144" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987062767232">
 							<p>
 								Alias
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908577280">
+							</td><td align="left" valign="top" headers="idm139987062766144">
 							<p>
 								The alias is a unique identifier for an identity provider and references an internal identity provider. Red Hat Single Sign-On uses the alias to build redirect URIs for OpenID Connect protocols that require a redirect URI or callback URL to communicate with an identity provider. All identity providers must have an alias. Alias examples include <code class="literal">facebook</code>, <code class="literal">google</code>, and <code class="literal">idp.acme.com</code>.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511908578368">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987062767232">
 							<p>
 								Enabled
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908577280">
+							</td><td align="left" valign="top" headers="idm139987062766144">
 							<p>
 								Toggles the provider ON or OFF.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511908578368">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987062767232">
 							<p>
 								Hide on Login Page
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908577280">
+							</td><td align="left" valign="top" headers="idm139987062766144">
 							<p>
 								When <span class="strong strong"><strong>ON</strong></span>, Red Hat Single Sign-On does not display this provider as a login option on the login page. Clients can request this provider by using the 'kc_idp_hint' parameter in the URL to request a login.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511908578368">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987062767232">
 							<p>
 								Account Linking Only
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908577280">
+							</td><td align="left" valign="top" headers="idm139987062766144">
 							<p>
 								When <span class="strong strong"><strong>ON</strong></span>, Red Hat Single Sign-On links existing accounts with this provider. This provider cannot log users in, and Red Hat Single Sign-On does not display this provider as an option on the login page.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511908578368">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987062767232">
 							<p>
 								Store Tokens
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908577280">
+							</td><td align="left" valign="top" headers="idm139987062766144">
 							<p>
 								When <span class="strong strong"><strong>ON</strong></span>, Red Hat Single Sign-On stores tokens from the identity provider.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511908578368">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987062767232">
 							<p>
 								Stored Tokens Readable
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908577280">
+							</td><td align="left" valign="top" headers="idm139987062766144">
 							<p>
 								When <span class="strong strong"><strong>ON</strong></span>, users can retrieve the stored identity provider token. This action also applies to the <span class="emphasis"><em>broker</em></span> client-level role <span class="emphasis"><em>read token</em></span>.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511908578368">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987062767232">
 							<p>
 								Trust Email
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908577280">
+							</td><td align="left" valign="top" headers="idm139987062766144">
 							<p>
 								When <span class="strong strong"><strong>ON</strong></span>, Red Hat Single Sign-On trusts email addresses from the identity provider. If the realm requires email validation, users that log in from this identity provider do not need to perform the email verification process.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511908578368">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987062767232">
 							<p>
 								GUI Order
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908577280">
+							</td><td align="left" valign="top" headers="idm139987062766144">
 							<p>
 								The sort order of the available identity providers on the login page.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511908578368">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987062767232">
 							<p>
 								First Login Flow
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908577280">
+							</td><td align="left" valign="top" headers="idm139987062766144">
 							<p>
 								The authentication flow Red Hat Single Sign-On triggers when users use this identity provider to log into Red Hat Single Sign-On for the first time.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511908578368">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987062767232">
 							<p>
 								Post Login Flow
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908577280">
+							</td><td align="left" valign="top" headers="idm139987062766144">
 							<p>
 								The authentication flow Red Hat Single Sign-On triggers when a user finishes logging in with the external identity provider.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511908578368">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987062767232">
 							<p>
 								Sync Mode
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908577280">
+							</td><td align="left" valign="top" headers="idm139987062766144">
 							<p>
 								Strategy to update user information from the identity provider through mappers. When choosing <span class="strong strong"><strong>legacy</strong></span>, Red Hat Single Sign-On used the current behavior. <span class="strong strong"><strong>Import</strong></span> does not update user data and <span class="strong strong"><strong>force</strong></span> updates user data when possible. See <a class="link" href="#mappers" title="9.8. Mapping claims and assertions">Identity Provider Mappers</a> for more information.
 							</p>
@@ -3609,150 +3609,150 @@ grantMethod: prompt <span id="CO2-4"/><span class="callout">4</span>
 							<span class="inlinemediaobject"><img src="images/rhsso-images/oidc-add-identity-provider.png" alt="Add Identity Provider"/></span>
 						</p></div></li><li class="listitem"><p class="simpara">
 						Enter your initial configuration options. See <a class="link" href="#general-idp-config" title="9.3. General configuration">General IDP Configuration</a> for more information about configuration options.
-					</p><div class="table" id="idm140511907500592"><p class="title"><strong>Table 9.2. OpenID connect config</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511907495760" scope="col">Configuration</th><th align="left" valign="top" id="idm140511907494672" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511907495760">
+					</p><div class="table" id="idm139987020829232"><p class="title"><strong>Table 9.2. OpenID connect config</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987020824400" scope="col">Configuration</th><th align="left" valign="top" id="idm139987020823312" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Authorization URL
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										The authorization URL endpoint the OIDC protocol requires.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Token URL
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										The token URL endpoint the OIDC protocol requires.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Logout URL
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										The logout URL endpoint in the OIDC protocol. This value is optional.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Backchannel Logout
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										A background, out-of-band, REST request to the IDP to log out the user. Some IDPs perform logout through browser redirects only, as they may identify sessions using a browser cookie.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										User Info URL
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										An endpoint the OIDC protocol defines. This endpoint points to user profile information.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Client Authentication
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										Defines the Client Authentication method Red Hat Single Sign-On uses with the Authorization Code Flow. In the case of JWT signed with a private key, Red Hat Single Sign-On uses the realm private key. In the other cases, define a client secret. See the <a class="link" href="https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication">Client Authentication specifications</a> for more information.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Client ID
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										A realm acting as an OIDC client to the external IDP. The realm must have an OIDC client ID if you use the Authorization Code Flow to interact with the external IDP.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Client Secret
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										Client secret from an external <a class="link" href="#vault-administration" title="Chapter 13. Using a vault to obtain secrets">vault</a>. This secret is necessary if you are using the Authorization Code Flow.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Client Assertion Signature Algorithm
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										Signature algorithm to create JWT assertion as client authentication. In the case of JWT signed with private key or Client secret as jwt, it is required. If no algorithm is specified, the following algorithm is adapted. <code class="literal">RS256</code> is adapted in the case of JWT signed with private key. <code class="literal">HS256</code> is adapted in the case of Client secret as jwt.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Issuer
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										Red Hat Single Sign-On validates issuer claims, in responses from the IDP, against this value.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Default Scopes
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										A list of OIDC scopes Red Hat Single Sign-On sends with the authentication request. The default value is <code class="literal">openid</code>. A space separates each scope.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Prompt
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										The prompt parameter in the OIDC specification. Through this parameter, you can force re-authentication and other options. See the specification for more details.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Accepts prompt=none forward from client
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										Specifies if the IDP accepts forwarded authentication requests containing the <code class="literal">prompt=none</code> query parameter. If a realm receives an auth request with <code class="literal">prompt=none</code>, the realm checks if the user is currently authenticated and returns a <code class="literal">login_required</code> error if the user has not logged in. When Red Hat Single Sign-On determines a default IDP for the auth request (using the <code class="literal">kc_idp_hint</code> query parameter or having a default IDP for the realm), you can forward the auth request with <code class="literal">prompt=none</code> to the default IDP. The default IDP checks the authentication of the user there. Because not all IDPs support requests with <code class="literal">prompt=none</code>, Red Hat Single Sign-On uses this switch to indicate that the default IDP supports the parameter before redirecting the authentication request.
 									</p>
 									<p>
 										If the user is unauthenticated in the IDP, the client still receives a <code class="literal">login_required</code> error. If the user is authentic in the IDP, the client can still receive an <code class="literal">interaction_required</code> error if Red Hat Single Sign-On must display authentication pages that require user interaction. This authentication includes required actions (for example, password change), consent screens, and screens set to display by the <code class="literal">first broker login</code> flow or <code class="literal">post broker login</code> flow.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Validate Signatures
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										Specifies if Red Hat Single Sign-On verifies signatures on the external ID Token signed by this IDP. If <span class="strong strong"><strong>ON</strong></span>, Red Hat Single Sign-On must know the public key of the external OIDC IDP. For performance purposes, Red Hat Single Sign-On caches the public key of the external OIDC identity provider. If your identity provider’s private key is compromised, update your keys and clear the keys cache. See <a class="link" href="#clear-cache" title="3.5. Clearing server caches">Clearing the cache</a> section for more details.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Use JWKS URL
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										This switch is applicable if <code class="literal">Validate Signatures</code> is <span class="strong strong"><strong>ON</strong></span>. If <span class="strong strong"><strong>Use JWKS URL</strong></span> is <span class="strong strong"><strong>ON</strong></span>, Red Hat Single Sign-On downloads the IDP’s public keys from the JWKS URL. New keys download when the identity provider generates a new keypair. If <span class="strong strong"><strong>OFF</strong></span>, Red Hat Single Sign-On uses the public key (or certificate) from its database, so when the IDP keypair changes, import the new key to the Red Hat Single Sign-On database as well.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										JWKS URL
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										The URL pointing to the location of the IDP JWK keys. For more information, see the <a class="link" href="https://self-issued.info/docs/draft-ietf-jose-json-web-key.html">JWK specification</a>. If you use an external Red Hat Single Sign-On as an IDP, you can use a URL such as <a class="link" href="http://broker-keycloak:8180/auth/realms/test/protocol/openid-connect/certs">http://broker-keycloak:8180/auth/realms/test/protocol/openid-connect/certs</a> if your brokered Red Hat Single Sign-On is running on <a class="link" href="http://broker-keycloak:8180">http://broker-keycloak:8180</a> and its realm is <code class="literal">test</code>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Validating Public Key
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										The public key in PEM format that Red Hat Single Sign-On uses to verify external IDP signatures. This key applies if <code class="literal">Use JWKS URL</code> is <span class="strong strong"><strong>OFF</strong></span>.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm140511907495760">
+									</td></tr><tr><td align="left" valign="top" headers="idm139987020824400">
 									<p>
 										Validating Public Key Id
 									</p>
-									</td><td align="left" valign="top" headers="idm140511907494672">
+									</td><td align="left" valign="top" headers="idm139987020823312">
 									<p>
 										This setting applies if <span class="strong strong"><strong>Use JWKS URL</strong></span> is <span class="strong strong"><strong>OFF</strong></span>. This setting specifies the ID of the public key in PEM format. Because there is no standard way for computing key ID from the key, external identity providers can use different algorithms from what Red Hat Single Sign-On uses. If this field’s value is not specified, Red Hat Single Sign-On uses the validating public key for all requests, regardless of the key ID sent by the external IDP. When <span class="strong strong"><strong>ON</strong></span>, this field’s value is the key ID used by Red Hat Single Sign-On for validating signatures from providers and must match the key ID specified by the IDP.
 									</p>
@@ -3768,147 +3768,147 @@ grantMethod: prompt <span id="CO2-4"/><span class="callout">4</span>
 							<span class="inlinemediaobject"><img src="images/rhsso-images/saml-add-identity-provider.png" alt="Add Identity Provider"/></span>
 						</p></div></li><li class="listitem">
 						Enter your initial configuration options. See <a class="link" href="#general-idp-config" title="9.3. General configuration">General IDP Configuration</a> for more information about configuration options. .SAML Config
-					</li></ol></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511907382064" scope="col">Configuration</th><th align="left" valign="top" id="idm140511907380976" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511907382064">
+					</li></ol></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987020710640" scope="col">Configuration</th><th align="left" valign="top" id="idm139987020709552" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								Service Provider Entity ID
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								The SAML Entity ID that the remote Identity Provider uses to identify requests from this Service Provider. By default, this setting is set to the realms base URL <code class="literal">&lt;root&gt;/auth/realms/{realm-name}</code>.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								Single Sign-On Service URL
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								The SAML endpoint that starts the authentication process. If your SAML IDP publishes an IDP entity descriptor, the value of this field is specified there.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								Single Logout Service URL
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								The SAML logout endpoint. If your SAML IDP publishes an IDP entity descriptor, the value of this field is specified there.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								Backchannel Logout
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								Toggle this switch to <span class="strong strong"><strong>ON</strong></span> if your SAML IDP supports back channel logout.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								NameID Policy Format
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								The URI reference corresponding to a name identifier format. By default, Red Hat Single Sign-On sets it to <code class="literal">urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</code>.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								Principal Type
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								Specifies which part of the SAML assertion will be used to identify and track external user identities. Can be either Subject NameID or SAML attribute (either by name or by friendly name). Subject NameID value can not be set together with 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient' NameID Policy Format value. =======
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								Specifies the part of the SAML assertion Red Hat Single Sign-On uses to identify and track external user identities. The Principal Type can be Subject NameID or SAML attribute (by name or by friendly name).
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								Principal Attribute
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								If a Principal type is non-blank, this field specifies the name ("Attribute [Name]") or the friendly name ("Attribute [Friendly Name]") of the identifying attribute.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								Allow create
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								Allow the external identity provider to create a new identifier to represent the principal.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								HTTP-POST Binding Response
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								Controls the SAML binding in response to any SAML requests sent by an external IDP. When <span class="strong strong"><strong>OFF</strong></span>, Red Hat Single Sign-On uses Redirect Binding.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								HTTP-POST Binding for AuthnRequest
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								Controls the SAML binding when requesting authentication from an external IDP. When <span class="strong strong"><strong>OFF</strong></span>, Red Hat Single Sign-On uses Redirect Binding.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								Want AuthnRequests Signed
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								When <span class="strong strong"><strong>ON</strong></span>, Red Hat Single Sign-On uses the realm’s keypair to sign requests sent to the external SAML IDP.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								Signature Algorithm
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								If <span class="strong strong"><strong>Want AuthnRequests Signed</strong></span> is <span class="strong strong"><strong>ON</strong></span>, the signature algorithm to use.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								SAML Signature Key Name
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								Signed SAML documents sent using POST binding contain the identification of signing key in <code class="literal">KeyName</code> element, which, by default, contains the Red Hat Single Sign-On key ID. External SAML IDPs can expect a different key name. This switch controls whether <code class="literal">KeyName</code> contains: * <code class="literal">KEY_ID</code> - Key ID. * <code class="literal">CERT_SUBJECT</code> - the subject from the certificate corresponding to the realm key. Microsoft Active Directory Federation Services expect <code class="literal">CERT_SUBJECT</code>. * <code class="literal">NONE</code> - Red Hat Single Sign-On omits the key name hint from the SAML message.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								Force Authentication
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								The user must enter their credentials at the external IDP even when the user is already logged in.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								Validate Signature
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								When <span class="strong strong"><strong>ON</strong></span>, the realm expects SAML requests and responses from the external IDP to be digitally signed.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								Validating X509 Certificate
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								The public certificate Red Hat Single Sign-On uses to validate the signatures of SAML requests and responses from the external IDP.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								Sign Service Provider Metadata
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511907382064">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020710640">
 							<p>
 								When <span class="strong strong"><strong>ON</strong></span>, Red Hat Single Sign-On uses the realm’s key pair to sign the <a class="link" href="#identity_broker_saml_sp_descriptor" title="9.6.2. SP Descriptor">SAML Service Provider Metadata descriptor</a>.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511907380976">
+							</td><td align="left" valign="top" headers="idm139987020709552">
 							<p>
 								Pass subject
 							</p>
@@ -3918,27 +3918,27 @@ grantMethod: prompt <span id="CO2-4"/><span class="callout">4</span>
 					Identity Providers facilitate clients specifying constraints on the authentication method verifying the user identity. For example, asking for MFA, Kerberos authentication, or security requirements. These constraints use particular AuthnContext criteria. A client can ask for one or more criteria and specify how the Identity Provider must match the requested AuthnContext, exactly, or by satisfying other equivalents.
 				</p><p>
 					You can list the criteria your Service Provider requires by adding ClassRefs or DeclRefs in the Requested AuthnContext Constraints section. Usually, you need to provide either ClassRefs or DeclRefs, so check with your Identity Provider documentation which values are supported. If no ClassRefs or DeclRefs are present, the Identity Provider does not enforce additional constraints.
-				</p><div class="table" id="idm140511906966416"><p class="title"><strong>Table 9.3. Requested AuthnContext Constraints</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511906961568" scope="col">Configuration</th><th align="left" valign="top" id="idm140511906960480" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511906961568">
+				</p><div class="table" id="idm139987020622832"><p class="title"><strong>Table 9.3. Requested AuthnContext Constraints</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987020617984" scope="col">Configuration</th><th align="left" valign="top" id="idm139987020616896" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987020617984">
 								<p>
 									Comparison
 								</p>
-								</td><td align="left" valign="top" headers="idm140511906960480">
+								</td><td align="left" valign="top" headers="idm139987020616896">
 								<p>
 									The method the Identity Provider uses to evaluate the context requirements. The available values are <code class="literal">Exact</code>, <code class="literal">Minimum</code>, <code class="literal">Maximum</code>, or <code class="literal">Better</code>. The default value is <code class="literal">Exact</code>.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511906961568">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020617984">
 								<p>
 									AuthnContext ClassRefs
 								</p>
-								</td><td align="left" valign="top" headers="idm140511906960480">
+								</td><td align="left" valign="top" headers="idm139987020616896">
 								<p>
 									The AuthnContext ClassRefs describing the required criteria.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511906961568">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020617984">
 								<p>
 									AuthnContext DeclRefs
 								</p>
-								</td><td align="left" valign="top" headers="idm140511906960480">
+								</td><td align="left" valign="top" headers="idm139987020616896">
 								<p>
 									The AuthnContext DeclRefs describing the required criteria.
 								</p>
@@ -4227,35 +4227,35 @@ Authorization: Bearer &lt;KEYCLOAK ACCESS TOKEN&gt;</pre><p>
 									Configure items and click <code class="literal">Save</code>.
 								</li></ul></div><p>
 							The configurable items and their description follow.
-						</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511907231872" scope="col">Configuration</th><th align="left" valign="top" id="idm140511907230784" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511907231872">
+						</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987023108960" scope="col">Configuration</th><th align="left" valign="top" id="idm139987023107872" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987023108960">
 										<p>
 											Backchannel Token Delivery Mode
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907230784">
+										</td><td align="left" valign="top" headers="idm139987023107872">
 										<p>
 											Specifying how the CD (Consumption Device) gets the authentication result and related tokens. There are three modes, "poll", "ping" and "push". Red Hat Single Sign-On only supports "poll". The default setting is "poll". This configuration is required. For more details, see <a class="link" href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5">CIBA Specification</a>.
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140511907231872">
+										</td></tr><tr><td align="left" valign="top" headers="idm139987023108960">
 										<p>
 											Expires In
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907230784">
+										</td><td align="left" valign="top" headers="idm139987023107872">
 										<p>
 											The expiration time of the "auth_req_id" in seconds since the authentication request was received. The default setting is 120. This configuration is required. For more details, see <a class="link" href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#successful_authentication_request_acknowdlegment">CIBA Specification</a>.
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140511907231872">
+										</td></tr><tr><td align="left" valign="top" headers="idm139987023108960">
 										<p>
 											Interval
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907230784">
+										</td><td align="left" valign="top" headers="idm139987023107872">
 										<p>
 											The interval in seconds the CD (Consumption Device) needs to wait for between polling requests to the token endpoint. The default setting is 5. This configuration is optional. For more details, see <a class="link" href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#successful_authentication_request_acknowdlegment">CIBA Specification</a>.
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140511907231872">
+										</td></tr><tr><td align="left" valign="top" headers="idm139987023108960">
 										<p>
 											Authentication Requested User Hint
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907230784">
+										</td><td align="left" valign="top" headers="idm139987023107872">
 										<p>
 											The way of identifying the end-user for whom authentication is being requested. The default setting is "login_hint". There are three modes, "login_hint", "login_hint_token" and "id_token_hint". Red Hat Single Sign-On only supports "login_hint". This configuration is required. For more details, see <a class="link" href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.7.1">CIBA Specification</a>.
 										</p>
@@ -4276,11 +4276,11 @@ Authorization: Bearer &lt;KEYCLOAK ACCESS TOKEN&gt;</pre><p>
     &lt;/provider&gt;
 &lt;/spi&gt;</pre><p>
 							The configurable items and their description follow.
-						</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511907196608" scope="col">Configuration</th><th align="left" valign="top" id="idm140511907195520" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511907196608">
+						</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987023073696" scope="col">Configuration</th><th align="left" valign="top" id="idm139987023072608" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987023073696">
 										<p>
 											httpAuthenticationChannelUri
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907195520">
+										</td><td align="left" valign="top" headers="idm139987023072608">
 										<p>
 											Specifying URI of the entity that actually authenticates the user via AD (Authentication Device).
 										</p>
@@ -4302,83 +4302,83 @@ Authorization: Bearer &lt;KEYCLOAK ACCESS TOKEN&gt;</pre><p>
 										The request is sent from Red Hat Single Sign-On to the authentication entity to ask it for user authentication by AD.
 									</dd></dl></div><pre class="screen">POST [delegation_reception]</pre><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 									Headers
-								</li></ul></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511907169680" scope="col">Name</th><th align="left" valign="top" id="idm140511907168592" scope="col">Value</th><th align="left" valign="top" id="idm140511907167504" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511907169680">
+								</li></ul></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987023046768" scope="col">Name</th><th align="left" valign="top" id="idm139987023045680" scope="col">Value</th><th align="left" valign="top" id="idm139987023044592" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987023046768">
 										<p>
 											Content-Type
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907168592">
+										</td><td align="left" valign="top" headers="idm139987023045680">
 										<p>
 											application/json
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907167504">
+										</td><td align="left" valign="top" headers="idm139987023044592">
 										<p>
 											The message body is json formatted.
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140511907169680">
+										</td></tr><tr><td align="left" valign="top" headers="idm139987023046768">
 										<p>
 											Authorization
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907168592">
+										</td><td align="left" valign="top" headers="idm139987023045680">
 										<p>
 											Bearer [token]
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907167504">
+										</td><td align="left" valign="top" headers="idm139987023044592">
 										<p>
 											The [token] is used when the authentication entity notifies the result of the authentication to Red Hat Single Sign-On.
 										</p>
 										</td></tr></tbody></table></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 									Parameters
-								</li></ul></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511907147952" scope="col">Type</th><th align="left" valign="top" id="idm140511907146864" scope="col">Name</th><th align="left" valign="top" id="idm140511907145776" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511907147952">
+								</li></ul></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987023025040" scope="col">Type</th><th align="left" valign="top" id="idm139987023023952" scope="col">Name</th><th align="left" valign="top" id="idm139987023022864" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987023025040">
 										<p>
 											Path
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907146864">
+										</td><td align="left" valign="top" headers="idm139987023023952">
 										<p>
 											delegation_reception
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907145776">
+										</td><td align="left" valign="top" headers="idm139987023022864">
 										<p>
 											The endpoint provided by the authentication entity to receive the delegation request
 										</p>
 										</td></tr></tbody></table></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 									Body
-								</li></ul></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511907132448" scope="col">Name</th><th align="left" valign="top" id="idm140511907131360" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511907132448">
+								</li></ul></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987023009536" scope="col">Name</th><th align="left" valign="top" id="idm139987023008448" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987023009536">
 										<p>
 											login_hint
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907131360">
+										</td><td align="left" valign="top" headers="idm139987023008448">
 										<p>
 											It tells the authentication entity who is authenticated by AD.<br/> By default, it is the user’s "username".<br/> This field is required and was defined by CIBA standard document.
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140511907132448">
+										</td></tr><tr><td align="left" valign="top" headers="idm139987023009536">
 										<p>
 											scope
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907131360">
+										</td><td align="left" valign="top" headers="idm139987023008448">
 										<p>
 											It tells which scopes the authentication entity gets consent from the authenticated user.<br/> This field is required and was defined by CIBA standard document.
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140511907132448">
+										</td></tr><tr><td align="left" valign="top" headers="idm139987023009536">
 										<p>
 											is_consent_required
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907131360">
+										</td><td align="left" valign="top" headers="idm139987023008448">
 										<p>
 											It shows whether the authentication entity needs to get consent from the authenticated user about the scope.<br/> This field is required.
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140511907132448">
+										</td></tr><tr><td align="left" valign="top" headers="idm139987023009536">
 										<p>
 											binding_message
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907131360">
+										</td><td align="left" valign="top" headers="idm139987023008448">
 										<p>
 											Its value is intended to be shown in both CD and AD’s UI to make the user recognize that the authentication by AD is triggered by CD.<br/> This field is optional and was defined by CIBA standard document.
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140511907132448">
+										</td></tr><tr><td align="left" valign="top" headers="idm139987023009536">
 										<p>
 											acr_values
 										</p>
-										</td><td align="left" valign="top" headers="idm140511907131360">
+										</td><td align="left" valign="top" headers="idm139987023008448">
 										<p>
 											It tells the requesting Authentication Context Class Reference from CD.<br/> This field is optional and was defined by CIBA standard document.
 										</p>
@@ -4386,11 +4386,11 @@ Authorization: Bearer &lt;KEYCLOAK ACCESS TOKEN&gt;</pre><p>
 										The response is returned from the authentication entity to Red Hat Single Sign-On to notify that the authentication entity received the authentication request from Red Hat Single Sign-On.
 									</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 												Responses
-											</li></ul></div></dd></dl></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511911118944" scope="col">HTTP Status Code</th><th align="left" valign="top" id="idm140511911117856" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511911118944">
+											</li></ul></div></dd></dl></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987022976560" scope="col">HTTP Status Code</th><th align="left" valign="top" id="idm139987022975472" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987022976560">
 										<p>
 											201
 										</p>
-										</td><td align="left" valign="top" headers="idm140511911117856">
+										</td><td align="left" valign="top" headers="idm139987022975472">
 										<p>
 											It notifies Red Hat Single Sign-On of receiving the authentication delegation request.
 										</p>
@@ -4400,51 +4400,51 @@ Authorization: Bearer &lt;KEYCLOAK ACCESS TOKEN&gt;</pre><p>
 										The authentication entity sends the result of the authentication request to Red Hat Single Sign-On.
 									</dd></dl></div><pre class="screen">POST /auth/realms/[realm]/protocol/openid-connect/ext/ciba/auth/callback</pre><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 									Headers
-								</li></ul></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511911101648" scope="col">Name</th><th align="left" valign="top" id="idm140511911100560" scope="col">Value</th><th align="left" valign="top" id="idm140511911099472" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511911101648">
+								</li></ul></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987022959168" scope="col">Name</th><th align="left" valign="top" id="idm139987022958080" scope="col">Value</th><th align="left" valign="top" id="idm139987022956992" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987022959168">
 										<p>
 											Content-Type
 										</p>
-										</td><td align="left" valign="top" headers="idm140511911100560">
+										</td><td align="left" valign="top" headers="idm139987022958080">
 										<p>
 											application/json
 										</p>
-										</td><td align="left" valign="top" headers="idm140511911099472">
+										</td><td align="left" valign="top" headers="idm139987022956992">
 										<p>
 											The message body is json formatted.
 										</p>
-										</td></tr><tr><td align="left" valign="top" headers="idm140511911101648">
+										</td></tr><tr><td align="left" valign="top" headers="idm139987022959168">
 										<p>
 											Authorization
 										</p>
-										</td><td align="left" valign="top" headers="idm140511911100560">
+										</td><td align="left" valign="top" headers="idm139987022958080">
 										<p>
 											Bearer [token]
 										</p>
-										</td><td align="left" valign="top" headers="idm140511911099472">
+										</td><td align="left" valign="top" headers="idm139987022956992">
 										<p>
 											The [token] must be the one the authentication entity has received from Red Hat Single Sign-On in Authentication Delegation Request.
 										</p>
 										</td></tr></tbody></table></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 									Parameters
-								</li></ul></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511911079904" scope="col">Type</th><th align="left" valign="top" id="idm140511911078816" scope="col">Name</th><th align="left" valign="top" id="idm140511911077728" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511911079904">
+								</li></ul></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987022937424" scope="col">Type</th><th align="left" valign="top" id="idm139987022936336" scope="col">Name</th><th align="left" valign="top" id="idm139987022935248" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987022937424">
 										<p>
 											Path
 										</p>
-										</td><td align="left" valign="top" headers="idm140511911078816">
+										</td><td align="left" valign="top" headers="idm139987022936336">
 										<p>
 											realm
 										</p>
-										</td><td align="left" valign="top" headers="idm140511911077728">
+										</td><td align="left" valign="top" headers="idm139987022935248">
 										<p>
 											The realm name
 										</p>
 										</td></tr></tbody></table></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 									Body
-								</li></ul></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511911064496" scope="col">Name</th><th align="left" valign="top" id="idm140511911063408" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511911064496">
+								</li></ul></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987022922016" scope="col">Name</th><th align="left" valign="top" id="idm139987022920928" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987022922016">
 										<p>
 											status
 										</p>
-										</td><td align="left" valign="top" headers="idm140511911063408">
+										</td><td align="left" valign="top" headers="idm139987022920928">
 										<p>
 											It tells the result of user authentication by AD.<br/> It must be one of the following status.<br/> SUCCEED : The authentication by AD has been successfully completed.<br/> UNAUTHORIZED : The authentication by AD has not been completed.<br/> CANCELLED : The authentication by AD has been cancelled by the user.
 										</p>
@@ -4452,11 +4452,11 @@ Authorization: Bearer &lt;KEYCLOAK ACCESS TOKEN&gt;</pre><p>
 										The response is returned from Red Hat Single Sign-On to the authentication entity to notify Red Hat Single Sign-On received the result of user authentication by AD from the authentication entity.
 									</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 												Responses
-											</li></ul></div></dd></dl></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511911047488" scope="col">HTTP Status Code</th><th align="left" valign="top" id="idm140511911046400" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511911047488">
+											</li></ul></div></dd></dl></div><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987022905008" scope="col">HTTP Status Code</th><th align="left" valign="top" id="idm139987022903920" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987022905008">
 										<p>
 											200
 										</p>
-										</td><td align="left" valign="top" headers="idm140511911046400">
+										</td><td align="left" valign="top" headers="idm139987022903920">
 										<p>
 											It notifies the authentication entity of receiving the notification of the authentication result.
 										</p>
@@ -5768,27 +5768,27 @@ Pragma: no-cache
 				In the previous example, Red Hat Single Sign-On uses the <code class="literal">REALM_UNDERSCORE_KEY</code> resolver first. If Red Hat Single Sign-On finds an entry in the vault that using that resolver, Red Hat Single Sign-On returns that entry. If not, Red Hat Single Sign-On searches again using the <code class="literal">KEY_ONLY</code> resolver. If Red Hat Single Sign-On finds an entry by using the <code class="literal">KEY_ONLY</code> resolver, Red Hat Single Sign-On returns that entry. If Red Hat Single Sign-On uses all resolvers, Red Hat Single Sign-On returns an empty secret.
 			</p><p>
 				A list of the currently available resolvers follows:
-			</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511908330224" scope="col">Name</th><th align="left" valign="top" id="idm140511908329136" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511908330224">
+			</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987020226144" scope="col">Name</th><th align="left" valign="top" id="idm139987020225056" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987020226144">
 							<p>
 								KEY_ONLY
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908329136">
+							</td><td align="left" valign="top" headers="idm139987020225056">
 							<p>
 								Red Hat Single Sign-On ignores the realm name and uses the key from the vault expression.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511908330224">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020226144">
 							<p>
 								REALM_UNDERSCORE_KEY
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908329136">
+							</td><td align="left" valign="top" headers="idm139987020225056">
 							<p>
 								Red Hat Single Sign-On combines the realm and key by using an underscore character. Red Hat Single Sign-On escapes occurrences of underscores in the realm or key with another underscore character. For example, if the realm is called <code class="literal">master_realm</code> and the key is <code class="literal">smtp_key</code>, the combined key is <code class="literal">master__realm_smtp__key</code>.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511908330224">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987020226144">
 							<p>
 								REALM_FILESEPARATOR_KEY
 							</p>
-							</td><td align="left" valign="top" headers="idm140511908329136">
+							</td><td align="left" valign="top" headers="idm139987020225056">
 							<p>
 								Red Hat Single Sign-On combines the realm and key by using the platform file separator character.
 							</p>
@@ -5925,125 +5925,125 @@ MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123</pre></li><li class="listitem"><p class
 				In this example, we filter only <code class="literal">Login</code> events. Click <span class="strong strong"><strong>Update</strong></span> to run the filter.
 			</p><section class="section" id="event_types"><div class="titlepage"><div><div><h3 class="title">14.1.1. Event types</h3></div></div></div><p>
 					<span class="strong strong"><strong>Login events:</strong></span>
-				</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511908205440" scope="col">Event</th><th align="left" valign="top" id="idm140511908204352" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511908205440">
+				</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987020101296" scope="col">Event</th><th align="left" valign="top" id="idm139987020100208" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987020101296">
 								<p>
 									Login
 								</p>
-								</td><td align="left" valign="top" headers="idm140511908204352">
+								</td><td align="left" valign="top" headers="idm139987020100208">
 								<p>
 									A user logs in.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511908205440">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020101296">
 								<p>
 									Register
 								</p>
-								</td><td align="left" valign="top" headers="idm140511908204352">
+								</td><td align="left" valign="top" headers="idm139987020100208">
 								<p>
 									A user registers.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511908205440">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020101296">
 								<p>
 									Logout
 								</p>
-								</td><td align="left" valign="top" headers="idm140511908204352">
+								</td><td align="left" valign="top" headers="idm139987020100208">
 								<p>
 									A user logs out.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511908205440">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020101296">
 								<p>
 									Code to Token
 								</p>
-								</td><td align="left" valign="top" headers="idm140511908204352">
+								</td><td align="left" valign="top" headers="idm139987020100208">
 								<p>
 									An application, or client, exchanges a code for a token.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511908205440">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020101296">
 								<p>
 									Refresh Token
 								</p>
-								</td><td align="left" valign="top" headers="idm140511908204352">
+								</td><td align="left" valign="top" headers="idm139987020100208">
 								<p>
 									An application, or client, refreshes a token.
 								</p>
 								</td></tr></tbody></table></div><p>
 					<span class="strong strong"><strong>Account events:</strong></span>
-				</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511910870864" scope="col">Event</th><th align="left" valign="top" id="idm140511910869776" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511910870864">
+				</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987020074064" scope="col">Event</th><th align="left" valign="top" id="idm139987020072976" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987020074064">
 								<p>
 									Social Link
 								</p>
-								</td><td align="left" valign="top" headers="idm140511910869776">
+								</td><td align="left" valign="top" headers="idm139987020072976">
 								<p>
 									A user account links to a social media provider.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511910870864">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020074064">
 								<p>
 									Remove Social Link
 								</p>
-								</td><td align="left" valign="top" headers="idm140511910869776">
+								</td><td align="left" valign="top" headers="idm139987020072976">
 								<p>
 									The link from a social media account to a user account severs.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511910870864">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020074064">
 								<p>
 									Update Email
 								</p>
-								</td><td align="left" valign="top" headers="idm140511910869776">
+								</td><td align="left" valign="top" headers="idm139987020072976">
 								<p>
 									An email address for an account changes.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511910870864">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020074064">
 								<p>
 									Update Profile
 								</p>
-								</td><td align="left" valign="top" headers="idm140511910869776">
+								</td><td align="left" valign="top" headers="idm139987020072976">
 								<p>
 									A profile for an account changes.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511910870864">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020074064">
 								<p>
 									Send Password Reset
 								</p>
-								</td><td align="left" valign="top" headers="idm140511910869776">
+								</td><td align="left" valign="top" headers="idm139987020072976">
 								<p>
 									Red Hat Single Sign-On sends a password reset email.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511910870864">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020074064">
 								<p>
 									Update Password
 								</p>
-								</td><td align="left" valign="top" headers="idm140511910869776">
+								</td><td align="left" valign="top" headers="idm139987020072976">
 								<p>
 									The password for an account changes.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511910870864">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020074064">
 								<p>
 									Update TOTP
 								</p>
-								</td><td align="left" valign="top" headers="idm140511910869776">
+								</td><td align="left" valign="top" headers="idm139987020072976">
 								<p>
 									The Time-based One-time Password (TOTP) settings for an account changes.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511910870864">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020074064">
 								<p>
 									Remove TOTP
 								</p>
-								</td><td align="left" valign="top" headers="idm140511910869776">
+								</td><td align="left" valign="top" headers="idm139987020072976">
 								<p>
 									Red Hat Single Sign-On removes TOTP from an account.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511910870864">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020074064">
 								<p>
 									Send Verify Email
 								</p>
-								</td><td align="left" valign="top" headers="idm140511910869776">
+								</td><td align="left" valign="top" headers="idm139987020072976">
 								<p>
 									Red Hat Single Sign-On sends an email verification email.
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm140511910870864">
+								</td></tr><tr><td align="left" valign="top" headers="idm139987020074064">
 								<p>
 									Verify Email
 								</p>
-								</td><td align="left" valign="top" headers="idm140511910869776">
+								</td><td align="left" valign="top" headers="idm139987020072976">
 								<p>
 									Red Hat Single Sign-On verifies the email address for an account.
 								</p>
@@ -6338,39 +6338,39 @@ MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123</pre></li><li class="listitem"><p class
 					When a user is temporarily locked and attempts to log in, Red Hat Single Sign-On displays the default <code class="literal">Invalid username or password</code> error message. This message is the same error message as the message displayed for an invalid username or invalid password to ensure the attacker is unaware the account is disabled.
 				</p></div></div><p>
 				<span class="strong strong"><strong>Common Parameters</strong></span>
-			</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511910625136" scope="col">Name</th><th align="left" valign="top" id="idm140511910624048" scope="col">Description</th><th align="left" valign="top" id="idm140511910622960" scope="col">Default</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511910625136">
+			</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987021530496" scope="col">Name</th><th align="left" valign="top" id="idm139987021529408" scope="col">Description</th><th align="left" valign="top" id="idm139987021528320" scope="col">Default</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987021530496">
 							<p>
 								Max Login Failures
 							</p>
-							</td><td align="left" valign="top" headers="idm140511910624048">
+							</td><td align="left" valign="top" headers="idm139987021529408">
 							<p>
 								The maximum number of login failures.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511910622960">
+							</td><td align="left" valign="top" headers="idm139987021528320">
 							<p>
 								30 failures.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511910625136">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987021530496">
 							<p>
 								Quick Login Check Milliseconds
 							</p>
-							</td><td align="left" valign="top" headers="idm140511910624048">
+							</td><td align="left" valign="top" headers="idm139987021529408">
 							<p>
 								The minimum time between login attempts.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511910622960">
+							</td><td align="left" valign="top" headers="idm139987021528320">
 							<p>
 								1000 milliseconds.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511910625136">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987021530496">
 							<p>
 								Minimum Quick Login Wait
 							</p>
-							</td><td align="left" valign="top" headers="idm140511910624048">
+							</td><td align="left" valign="top" headers="idm139987021529408">
 							<p>
 								The minimum time the user is disabled when login attempts are quicker than <span class="emphasis"><em>Quick Login Check Milliseconds</em></span>.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511910622960">
+							</td><td align="left" valign="top" headers="idm139987021528320">
 							<p>
 								1 minute.
 							</p>
@@ -6396,39 +6396,39 @@ MASK-3BUbFEyWu0lRAu8.fCqyUk;12345678;123</pre></li><li class="listitem"><p class
 				When Red Hat Single Sign-On disables a user, the user cannot log in until an administrator enables the user. Enabling an account resets the <code class="literal">count</code>.
 			</p></div><p>
 				<span class="strong strong"><strong>Temporary Lockout Parameters</strong></span>
-			</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm140511906449392" scope="col">Name</th><th align="left" valign="top" id="idm140511906448304" scope="col">Description</th><th align="left" valign="top" id="idm140511906447216" scope="col">Default</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm140511906449392">
+			</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm139987021485760" scope="col">Name</th><th align="left" valign="top" id="idm139987021484672" scope="col">Description</th><th align="left" valign="top" id="idm139987021483584" scope="col">Default</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm139987021485760">
 							<p>
 								Wait Increment
 							</p>
-							</td><td align="left" valign="top" headers="idm140511906448304">
+							</td><td align="left" valign="top" headers="idm139987021484672">
 							<p>
 								The time added to the time a user is temporarily disabled when the user’s login attempts exceed <span class="emphasis"><em>Max Login Failures</em></span>.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511906447216">
+							</td><td align="left" valign="top" headers="idm139987021483584">
 							<p>
 								1 minute.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511906449392">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987021485760">
 							<p>
 								Max Wait
 							</p>
-							</td><td align="left" valign="top" headers="idm140511906448304">
+							</td><td align="left" valign="top" headers="idm139987021484672">
 							<p>
 								The maximum time a user is temporarily disabled.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511906447216">
+							</td><td align="left" valign="top" headers="idm139987021483584">
 							<p>
 								15 minutes.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm140511906449392">
+							</td></tr><tr><td align="left" valign="top" headers="idm139987021485760">
 							<p>
 								Failure Reset Time
 							</p>
-							</td><td align="left" valign="top" headers="idm140511906448304">
+							</td><td align="left" valign="top" headers="idm139987021484672">
 							<p>
 								The time when the failure count resets. The timer runs from the last failed login.
 							</p>
-							</td><td align="left" valign="top" headers="idm140511906447216">
+							</td><td align="left" valign="top" headers="idm139987021483584">
 							<p>
 								12 hours.
 							</p>
@@ -7598,7 +7598,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre><div class="admoniti
 						Run the <code class="literal">delete</code> command on the <code class="literal">authentication/config/ID</code> endpoint.
 					</li></ol></div><p>
 				For example:
-			</p><pre class="screen">$ kcadm delete "authentication/config/dd91611a-d25c-421a-87e2-227c18421833" -r examplerealm</pre></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm140511910160160"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+			</p><pre class="screen">$ kcadm delete "authentication/config/dd91611a-d25c-421a-87e2-227c18421833" -r examplerealm</pre></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm139987041141952"><h1 class="legalnotice">Legal Notice</h1><div class="para">
 				Copyright <span class="trademark"/>© 2021 Red Hat, Inc.
 			</div><div class="para">
 				Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
