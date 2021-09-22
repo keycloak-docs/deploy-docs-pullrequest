@@ -1453,7 +1453,7 @@ to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>styles=web_modules/@fortawesome/fontawesome-free/css/icons/all.css web_modules/@patternfly/react-core/dist/styles/base.css
+<pre class="CodeRay highlight"><code>styles=web_modules/@fontawesome/fontawesome-free/css/icons/all.css web_modules/@patternfly/react-core/dist/styles/base.css
 web_modules/@patternfly/react-core/dist/styles/app.css node_modules/patternfly/dist/css/patternfly.min.css
 node_modules/patternfly/dist/css/patternfly-additions.min.css css/login.css css/styles.css</code></pre>
 </div>
@@ -1794,7 +1794,14 @@ provider.</p>
 With internationalization enabled, the locale is resolved according to the logic described in the <a href="https://www.keycloak.org/docs/16.0/server_admin/#_user_locale_selection">Server Administration Guide</a>.</p>
 </div>
 <div class="paragraph">
-<p>This behaviour can be changed through the <code>LocaleSelectorSPI</code> by implementing the <code>LocaleSelectorProvider</code> and <code>LocaleSelectorProviderFactory</code>.</p>
+<p>This behavior can be changed through the <code>LocaleSelectorSPI</code> by implementing the <code>LocaleSelectorProvider</code> and <code>LocaleSelectorProviderFactory</code>.</p>
+</div>
+<div class="paragraph">
+<p>By default, the locale is selected using the <code>DefaultLocaleSelectorProvider</code>, which implements the <code>LocaleSelectorProvider</code> interface. English is the default language when internationalization is disabled.
+With internationalization enabled, the locale is resolved according to the logic described in the <a href="https://www.keycloak.org/docs/16.0/server_admin/#_user_locale_selection">Server Administration Guide</a>.</p>
+</div>
+<div class="paragraph">
+<p>This behavior can be changed through the <code>LocaleSelectorSPI</code> by implementing the <code>LocaleSelectorProvider</code> and <code>LocaleSelectorProviderFactory</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>LocaleSelectorProvider</code> interface has a single method, <code>resolveLocale</code>, which must return a locale given a <code>RealmModel</code> and a nullable <code>UserModel</code>. The actual request is available from the <code>KeycloakSession#getContext</code> method.</p>
@@ -6588,7 +6595,7 @@ plain byte and character arrays and buffers is preferable.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-17 09:22:14 UTC
+Last updated 2021-09-22 09:02:33 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
