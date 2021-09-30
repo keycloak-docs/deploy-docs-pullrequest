@@ -867,6 +867,17 @@ span.image img {
 <li><a href="#_policy_group_extend_access_children">Extending Access to Child Groups</a></li>
 </ul>
 </li>
+<li><a href="#_policy_client_scope">Client Scope-Based Policy</a>
+<ul class="sectlevel3">
+<li><a href="#configuration-8">Configuration</a></li>
+<li><a href="#_policy_client_scope_required">Defining a Client Scope as Required</a></li>
+</ul>
+</li>
+<li><a href="#_policy_regex">Regex-Based Policy</a>
+<ul class="sectlevel3">
+<li><a href="#configuration-9">Configuration</a></li>
+</ul>
+</li>
 <li><a href="#_policy_logic">Positive and Negative Logic</a></li>
 <li><a href="#_policy_evaluation_api">Policy Evaluation API</a>
 <ul class="sectlevel3">
@@ -879,13 +890,13 @@ span.image img {
 <ul class="sectlevel2">
 <li><a href="#_permission_create_resource">Creating Resource-Based Permissions</a>
 <ul class="sectlevel3">
-<li><a href="#configuration-8">Configuration</a></li>
+<li><a href="#configuration-10">Configuration</a></li>
 <li><a href="#_permission_typed_resource">Typed Resource Permission</a></li>
 </ul>
 </li>
 <li><a href="#_permission_create_scope">Creating Scope-Based Permissions</a>
 <ul class="sectlevel3">
-<li><a href="#configuration-9">Configuration</a></li>
+<li><a href="#configuration-11">Configuration</a></li>
 </ul>
 </li>
 <li><a href="#_permission_decision_strategies">Policy Decision Strategies</a></li>
@@ -932,7 +943,7 @@ span.image img {
 <li><a href="#_service_client_api">Authorization Client Java API</a>
 <ul class="sectlevel3">
 <li><a href="#maven-dependency">Maven Dependency</a></li>
-<li><a href="#configuration-10">Configuration</a></li>
+<li><a href="#configuration-12">Configuration</a></li>
 <li><a href="#creating-the-authorization-client">Creating the Authorization Client</a></li>
 <li><a href="#obtaining-user-entitlements">Obtaining User Entitlements</a></li>
 <li><a href="#creating-a-resource-using-the-protection-api">Creating a Resource Using the Protection API</a></li>
@@ -979,25 +990,25 @@ span.image img {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/getting_started/">Getting Started</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/getting_started/">Getting Started</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/server_installation/">Server Installation</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/server_installation/">Server Installation</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/securing_apps/">Securing Apps</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/securing_apps/">Securing Apps</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/server_admin/">Server Administration</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/server_admin/">Server Administration</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/server_development/">Server Developer</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/server_development/">Server Developer</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/upgrading/">Upgrading</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/upgrading/">Upgrading</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/11.0/release_notes/">Release Notes</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/release_notes/">Release Notes</a></p>
 </li>
 </ul>
 </div>
@@ -1006,7 +1017,7 @@ span.image img {
 <div class="exampleblock top-menu-version">
 <div class="content">
 <div class="paragraph versionarchive">
-<p>Version <strong>11.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/authorization_services/">Click here for latest</a></em></p>
+<p>Version <strong>16.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/authorization_services/">Click here for latest</a></em></p>
 </div>
 </div>
 </div>
@@ -1488,7 +1499,7 @@ structure represents the resources and/or scopes being requested by a client, th
 </div>
 </div>
 <div class="paragraph">
-<p>Before you can use this tutorial, you need to complete the installation of Keycloak and create the initial admin user as shown in the <a href="https://www.keycloak.org/docs/11.0/getting_started/">Getting Started Guide</a> tutorial.
+<p>Before you can use this tutorial, you need to complete the installation of Keycloak and create the initial admin user as shown in the <a href="https://www.keycloak.org/docs/16.0/getting_started/">Getting Started Guide</a> tutorial.
 There is one caveat to this. You have to run a separate WildFly instance on the same machine as Keycloak Server. This separate instance will run your Java Servlet application. Because of this you will have to run the Keycloak under a different port so that there are no port conflicts when running on the same machine. Use the <code>jboss.socket.binding.port-offset</code> system property on the command line. The value of this property is a number that will be added to the base value of every port opened by Keycloak Server.</p>
 </div>
 <div class="paragraph">
@@ -1507,7 +1518,7 @@ There is one caveat to this. You have to run a separate WildFly instance on the 
 </div>
 </div>
 <div class="paragraph">
-<p>For more details about how to install and configure a WildFly, please follow the steps on the <a href="https://www.keycloak.org/docs/11.0/securing_apps/">Securing Applications and Services Guide</a> tutorial.</p>
+<p>For more details about how to install and configure a WildFly, please follow the steps on the <a href="https://www.keycloak.org/docs/16.0/securing_apps/">Securing Applications and Services Guide</a> tutorial.</p>
 </div>
 <div class="paragraph">
 <p>After installing and booting both servers you should be able to access Keycloak Admin Console at <a href="http://localhost:8180/auth/admin/" class="bare">http://localhost:8180/auth/admin/</a> and also the WildFly instance at
@@ -2248,7 +2259,7 @@ The default configuration defines a resource that maps to all paths in your appl
 </div>
 <div class="paragraph">
 <p>Resource management is straightforward and generic. After creating a resource server, you can start creating the resources and scopes that you want to protect.
-Resources and scopes can be managed by navigating to the <strong>Resource</strong> and <strong>Scope</strong> tabs, respectively.</p>
+Resources and scopes can be managed by navigating to the <strong>Resource</strong> and <strong>Authorization Scopes</strong> tabs, respectively.</p>
 </div>
 <div class="sect2">
 <h3 id="_resource_view"><a class="anchor" href="#_resource_view"></a>Viewing Resources</h3>
@@ -2585,6 +2596,19 @@ even more fine-grained role-based access control (RBAC) model for your applicati
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20authorization_services/topics/policy-js-policy.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If your policy implementation is using Attribute based access control (ABAC) as in the examples below, then please make sure that
+users are not able to edit the protected attributes and the corresponding attributes are read-only. See the details in the <a href="https://www.keycloak.org/docs/16.0/server_admin/#_read_only_user_attributes">Threat model mitigation chapter</a>.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>You can use this type of policy to define conditions for your permissions using JavaScript. It is one of the rule-based policy types
 supported by Keycloak, and provides flexibility to write any policy based on the <a href="#_policy_evaluation_api">Evaluation API</a>.</p>
@@ -2600,7 +2624,7 @@ supported by Keycloak, and provides flexibility to write any policy based on the
 </td>
 <td class="content">
 By default, JavaScript Policies can not be uploaded to the server. You should prefer deploying your JS Policies directly to
-the server as described in <a href="https://www.keycloak.org/docs/11.0/server_development/#_script_providers">JavaScript Providers</a>. If you still want to use the
+the server as described in <a href="https://www.keycloak.org/docs/16.0/server_development/#_script_providers">JavaScript Providers</a>. If you still want to use the
 Keycloak Administration Console to manage your JS policies you should enable the <code>Upload Scripts</code> feature.
 </td>
 </tr>
@@ -2645,7 +2669,7 @@ can identify them more easily.</p>
 <div class="sect3">
 <h4 id="creating-a-js-policy-from-a-deployed-jar-file"><a class="anchor" href="#creating-a-js-policy-from-a-deployed-jar-file"></a>Creating a JS Policy from a Deployed JAR File</h4>
 <div class="paragraph">
-<p>Keycloak allows you to deploy a JAR file in order to deploy scripts to the server. Please, take a look at <a href="https://www.keycloak.org/docs/11.0/server_development/#_script_providers">JavaScript Providers</a>
+<p>Keycloak allows you to deploy a JAR file in order to deploy scripts to the server. Please, take a look at <a href="https://www.keycloak.org/docs/16.0/server_development/#_script_providers">JavaScript Providers</a>
 for more details.</p>
 </div>
 <div class="paragraph">
@@ -3160,6 +3184,137 @@ added you can mark a checkbox <strong>Extend to Children</strong> in order to ex
 </div>
 </div>
 <div class="sect2">
+<h3 id="_policy_client_scope"><a class="anchor" href="#_policy_client_scope"></a>Client Scope-Based Policy</h3>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-client-scope-policy.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20authorization_services/topics/policy-client-scope-policy.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use this type of policy to define conditions for your permissions where a set of one or more client scopes is permitted to access an object.</p>
+</div>
+<div class="paragraph">
+<p>By default, client scopes added to this policy are not specified as required and the policy will grant access if the client requesting access has been granted any of these client scopes. However, you can specify a specific client scope as <a href="#_policy_client_scope_required">required</a> if you want to enforce a specific client scope.</p>
+</div>
+<div class="paragraph">
+<p>To create a new client scope-based policy, select <strong>Client Scope</strong> in the dropdown list in the upper right corner of the policy listing.</p>
+</div>
+<div class="paragraph">
+<div class="title">Add Client Scope-Based Policy</div>
+<p><span class="image"><img src="./images/policy/create-client-scope.png" alt="Add Client Scope-Based Policy"></span></p>
+</div>
+<div class="sect3">
+<h4 id="configuration-8"><a class="anchor" href="#configuration-8"></a>Configuration</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong></p>
+<div class="paragraph">
+<p>A human-readable and unique string describing the policy. A best practice is to use names that are closely related to your business and security requirements, so you can identify them more easily.</p>
+</div>
+</li>
+<li>
+<p><strong>Description</strong></p>
+<div class="paragraph">
+<p>A string containing details about this policy.</p>
+</div>
+</li>
+<li>
+<p><strong>Client Scopes</strong></p>
+<div class="paragraph">
+<p>Specifies which client scopes are permitted by this policy.</p>
+</div>
+</li>
+<li>
+<p><strong>Logic</strong></p>
+<div class="paragraph">
+<p>The <a href="#_policy_logic">Logic</a> of this policy to apply after the other conditions have been evaluated.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_policy_client_scope_required"><a class="anchor" href="#_policy_client_scope_required"></a>Defining a Client Scope as Required</h4>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-client-scope-policy-required-client-scope.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20authorization_services/topics/policy-client-scope-policy-required-client-scope.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>When creating a client scope-based policy, you can specify a specific client scope as <code>Required</code>. When you do that, the policy will grant access only if the client requesting access has been granted <strong>all</strong> the <strong>required</strong> client scopes.</p>
+</div>
+<div class="paragraph">
+<div class="title">Example of Required Client Scope</div>
+<p><span class="image"><img src="./images/policy/create-client-scope.png" alt="Example of Required Client Scope"></span></p>
+</div>
+<div class="paragraph">
+<p>To specify a client scope as required, select the <code>Required</code> checkbox for the client scope you want to configure as required.</p>
+</div>
+<div class="paragraph">
+<p>Required client scopes can be useful when your policy defines multiple client scopes but only a subset of them are mandatory.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_policy_regex"><a class="anchor" href="#_policy_regex"></a>Regex-Based Policy</h3>
+<div class="sidebarblock page-links">
+<div class="content">
+<a href="https://github.com/keycloak/keycloak-documentation/blob/master/authorization_services/topics/policy-regex-policy.adoc" target="_blank">Edit this section</a>
+<a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20authorization_services/topics/policy-regex-policy.adoc" target="_blank">Report an issue</a>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use this type of policy to define regex conditions for your permissions.</p>
+</div>
+<div class="paragraph">
+<p>To create a new regex-based policy, select <strong>Regex</strong> in the item list in the upper right corner of the policy listing.</p>
+</div>
+<div class="paragraph">
+<div class="title">Add Regex-Based Policy</div>
+<p><span class="image"><img src="./images/policy/create-regex.png" alt="Add Regex-Based Policy"></span></p>
+</div>
+<div class="sect3">
+<h4 id="configuration-9"><a class="anchor" href="#configuration-9"></a>Configuration</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong></p>
+<div class="paragraph">
+<p>A human-readable and unique string describing the policy. A best practice is to use names that are closely related to your business and security requirements, so you can identify them more easily.</p>
+</div>
+</li>
+<li>
+<p><strong>Description</strong></p>
+<div class="paragraph">
+<p>A string containing details about this policy.</p>
+</div>
+</li>
+<li>
+<p><strong>Target Claim</strong></p>
+<div class="paragraph">
+<p>Specifies the name of the target claim in the token.</p>
+</div>
+</li>
+<li>
+<p><strong>Regex Pattern</strong></p>
+<div class="paragraph">
+<p>Specifies the regex pattern.</p>
+</div>
+</li>
+<li>
+<p><strong>Logic</strong></p>
+<div class="paragraph">
+<p>The <a href="#_policy_logic">Logic</a> of this policy to apply after the other conditions have been evaluated.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_policy_logic"><a class="anchor" href="#_policy_logic"></a>Positive and Negative Logic</h3>
 <div class="sidebarblock page-links">
 <div class="content">
@@ -3253,7 +3408,7 @@ is the default behavior, the policy result will be kept as it is.</p>
 <p>Policies determine this by invoking the <code>grant()</code> or <code>deny()</code> methods on an <code>Evaluation</code> instance. By default, the state of the <code>Evaluation</code> instance is denied, which means that your policies must explicitly invoke the <code>grant()</code> method to indicate to the policy evaluation engine that permission should be granted.</p>
 </div>
 <div class="paragraph">
-<p>For more information about the Evaluation API see the <a href="https://www.keycloak.org/docs/11.0/api_documentation/">JavaDocs</a>.</p>
+<p>For more information about the Evaluation API see the <a href="https://www.keycloak.org/docs/16.0/api_documentation/">JavaDocs</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="the-evaluation-context"><a class="anchor" href="#the-evaluation-context"></a>The Evaluation Context</h4>
@@ -3407,7 +3562,7 @@ you can start managing permissions. To manage permissions, click the <strong>Per
 <p><span class="image"><img src="./keycloak-images/permission/create-resource.png" alt="Add Resource-Based Permission"></span></p>
 </div>
 <div class="sect3">
-<h4 id="configuration-8"><a class="anchor" href="#configuration-8"></a>Configuration</h4>
+<h4 id="configuration-10"><a class="anchor" href="#configuration-10"></a>Configuration</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3521,7 +3676,7 @@ you can specify the type that you want to protect as well as the policies that a
 <p><span class="image"><img src="./keycloak-images/permission/create-scope.png" alt="Add Scope-Based Permission"></span></p>
 </div>
 <div class="sect3">
-<h4 id="configuration-9"><a class="anchor" href="#configuration-9"></a>Configuration</h4>
+<h4 id="configuration-11"><a class="anchor" href="#configuration-11"></a>Configuration</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -3995,7 +4150,7 @@ the resources and scopes to which User A has access.</p>
 <li>
 <p><strong>Client Credentials</strong></p>
 <div class="paragraph">
-<p>Client can use any of the client authentication methods supported by Keycloak. For instance, client_id/client_secret or JWT.</p>
+<p>Clients can use any of the client authentication methods supported by Keycloak. For instance, client_id/client_secret or JWT.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example: an authorization request using client id and client secret to authenticate to the token endpoint</div>
@@ -4102,7 +4257,7 @@ Keycloak can then act as a sharing management service from which resource owners
 <p>Keycloak is a UMA 2.0 compliant authorization server that provides most UMA capabilities.</p>
 </div>
 <div class="paragraph">
-<p>As an example, consider a user Alice (resource owner) using an Internet Banking Service (resource server) to manage his Bank Account (resource). One day, Alice decides
+<p>As an example, consider a user Alice (resource owner) using an Internet Banking Service (resource server) to manage her Bank Account (resource). One day, Alice decides
 to open her bank account to Bob (requesting party), a accounting professional. However, Bob should only have access to view (scope) Alice&#8217;s account.</p>
 </div>
 <div class="paragraph">
@@ -4594,6 +4749,14 @@ specific user, you can send a request as follows:</p>
 </div>
 </div>
 <div class="paragraph">
+<p>By default, the <code>name</code> filter will match any resource with the given pattern. To restrict the query to only return resources with an exact match, use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">http://${host}:${port}/auth/realms/${realm_name}/authz/protection/resource_set?name=Alice Resource&amp;exactName=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>To query resources given an <code>uri</code>, send an HTTP GET request as follows:</p>
 </div>
 <div class="listingblock">
@@ -4942,7 +5105,7 @@ any user with a role <code>people-manager</code> should be granted with the <cod
 <div class="paragraph">
 <p>To enable start the server with
 <code>-Dkeycloak.profile.feature.upload_scripts=enabled</code>
-. For more details see <a href="https://www.keycloak.org/docs/11.0/server_installation/#profiles">Profiles</a>.</p>
+. For more details see <a href="https://www.keycloak.org/docs/16.0/server_installation/#profiles">Profiles</a>.</p>
 </div>
 </td>
 </tr>
@@ -5055,7 +5218,7 @@ any user with a role <code>people-manager</code> should be granted with the <cod
 </div>
 </div>
 <div class="paragraph">
-<p>A requesting party token (RPT) is a <a href="https://tools.ietf.org/html/rfc7519">JSON web token (JWT)</a> digitally signed using <a href="https://www.rfc-editor.org/rfc/rfc7515.txt">JSON web signature (JWS)</a>. The token is built based on the OAuth2 access token previously issued by Keycloak to a specific client acting on behalf of a user
+<p>A requesting party token (RPT) is a <a href="https://datatracker.ietf.org/doc/html/rfc7519">JSON web token (JWT)</a> digitally signed using <a href="https://datatracker.ietf.org/doc/html/rfc7515">JSON web signature (JWS)</a>. The token is built based on the OAuth2 access token previously issued by Keycloak to a specific client acting on behalf of a user
 or on its own behalf.</p>
 </div>
 <div class="paragraph">
@@ -5117,7 +5280,7 @@ the access control methods that were used to actually grant and issue these same
 <div class="sect3">
 <h4 id="obtaining-information-about-an-rpt"><a class="anchor" href="#obtaining-information-about-an-rpt"></a>Obtaining Information about an RPT</h4>
 <div class="paragraph">
-<p>The token introspection is essentially a <a href="https://tools.ietf.org/html/rfc7662">OAuth2 token introspection</a>-compliant endpoint from which you can obtain information about an RPT.</p>
+<p>The token introspection is essentially a <a href="https://datatracker.ietf.org/doc/html/rfc7662">OAuth2 token introspection</a>-compliant endpoint from which you can obtain information about an RPT.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5202,7 +5365,7 @@ The request above is using HTTP BASIC and passing the client&#8217;s credentials
 <h4 id="do-i-need-to-invoke-the-server-every-time-i-want-to-introspect-an-rpt"><a class="anchor" href="#do-i-need-to-invoke-the-server-every-time-i-want-to-introspect-an-rpt"></a>Do I Need to Invoke the Server Every Time I Want to Introspect an RPT?</h4>
 <div class="paragraph">
 <p>No. Just like a regular access token issued by a Keycloak server, RPTs also use the
- <a href="https://tools.ietf.org/html/rfc7519">JSON web token (JWT)</a> specification as the default format.</p>
+ <a href="https://datatracker.ietf.org/doc/html/rfc7519">JSON web token (JWT)</a> specification as the default format.</p>
 </div>
 <div class="paragraph">
 <p>If you want to validate these tokens without a call to the remote introspection endpoint, you can decode the RPT and query for its validity locally. Once you decode the token,
@@ -5253,7 +5416,7 @@ If you are using Java, you can access the Keycloak Authorization Services using 
 </div>
 </div>
 <div class="sect3">
-<h4 id="configuration-10"><a class="anchor" href="#configuration-10"></a>Configuration</h4>
+<h4 id="configuration-12"><a class="anchor" href="#configuration-12"></a>Configuration</h4>
 <div class="paragraph">
 <p>The client configuration is defined in a <code>keycloak.json</code> file as follows:</p>
 </div>
@@ -5496,7 +5659,7 @@ when you create a resource server, Keycloak creates a <a href="#_resource_server
 <pre class="CodeRay highlight"><code data-lang="json">{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">policy-enforcer</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">user-managed-access</span><span class="delimiter">&quot;</span></span> : {},
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">enforcement-mode</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">ENFORCING</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">enforcement-mode</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">ENFORCING</span><span class="delimiter">&quot;</span></span>,
     <span class="key"><span class="delimiter">&quot;</span><span class="content">paths</span><span class="delimiter">&quot;</span></span>: [
       {
         <span class="key"><span class="delimiter">&quot;</span><span class="content">path</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">/someUri/*</span><span class="delimiter">&quot;</span></span>,
@@ -5599,7 +5762,7 @@ unnecessary requests to a Keycloak server by caching associations between paths 
 <li>
 <p><strong>lifespan</strong></p>
 <div class="paragraph">
-<p>Defines the time in milliseconds when the entry should be expired. If not provided, default value is <strong>3000</strong>. A value equal to 0 can be set to completely disable the cache. A value equal to -1 can be set to disable the expiry of the cache.</p>
+<p>Defines the time in milliseconds when the entry should be expired. If not provided, default value is <strong>30000</strong>. A value equal to 0 can be set to completely disable the cache. A value equal to -1 can be set to disable the expiry of the cache.</p>
 </div>
 </li>
 <li>
@@ -6312,7 +6475,7 @@ It is strongly recommended that you enable TLS/HTTPS when accessing the Keycloak
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-03 16:40:37 UTC
+Last updated 2021-09-30 15:23:09 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
