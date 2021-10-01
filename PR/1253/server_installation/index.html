@@ -7847,16 +7847,14 @@ keycloak-postgresql-c8vv27m 1/1    Running   0          36m   192.0.2.3</code></
 <div class="ulist">
 <ul>
 <li>
-<p><code>recreate</code>: This is the default strategy. The operator removes all Keycloak replicas, optionally creates a backup
-and then creates the replicas based on a newer Keycloak image. This strategy is suitable for major upgrades as
+<p><code>recreate</code>: This is the default strategy. The operator removes all Keycloak replicas and then creates the replicas based on a newer Keycloak image. This strategy is suitable for major upgrades as
 a single Keycloak version is accessing the underlying database. The downside is Keycloak needs to be shut
 down during the upgrade.</p>
 </li>
 <li>
 <p><code>rolling</code>: The operator removes one replica at a time and creates it again based on a newer Keycloak image. This
 ensures a zero-downtime upgrade but is more suitable for minor version upgrades that do not require database migration
-since the database is accessed by multiple Keycloak versions concurrently. Automatic backups are not supported
-with this strategy.</p>
+since the database is accessed by multiple Keycloak versions concurrently.</p>
 </li>
 </ul>
 </div>
@@ -7899,7 +7897,7 @@ with this strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-30 20:31:51 UTC
+Last updated 2021-10-01 09:43:56 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
