@@ -7178,6 +7178,10 @@ If set to <strong>REQUIRED</strong>, the server refuses inbound connections if n
 <dd>
 <p>Checks the certificate revocation status by using Online Certificate Status Protocol.</p>
 </dd>
+<dt class="hdlist1"><strong>OCSP Fail-Open Behavior</strong></dt>
+<dd>
+<p>By default the OCSP check must return a positive response in order to continue with a successful authentication. Sometimes however this check can be inconclusive: for example, the OCSP server could be unreachable, overloaded, or the client certificate may not contain an OCSP responder URI. When this setting is turned ON, authentication will be denied only if an explicit negative response is received by the OCSP responder and the certificate is definitely revoked. If a valid OCSP response is not avalaible the authentication attempt will be accepted.</p>
+</dd>
 <dt class="hdlist1"><strong>OCSP Responder URI</strong></dt>
 <dd>
 <p>Override the value of the OCSP responder URI in the certificate.</p>
@@ -18552,7 +18556,7 @@ $ kcadm.sh get users -r demorealm -q username=testuser</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-10-01 09:43:47 UTC
+Last updated 2021-10-19 17:14:11 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
