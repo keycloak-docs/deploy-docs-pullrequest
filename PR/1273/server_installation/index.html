@@ -912,6 +912,7 @@ span.image img {
 <li><a href="#_installing-operator">Installing the Keycloak Operator on a cluster</a>
 <ul class="sectlevel3">
 <li><a href="#_install_by_olm">Installing using the Operator Lifecycle Manager</a></li>
+<li><a href="#_install_by_command">Installing from the command line</a></li>
 </ul>
 </li>
 <li><a href="#_monitoring-operator">The Application Monitoring Operator</a>
@@ -6493,6 +6494,9 @@ After you create custom resources for realms, clients, and users, you can manage
 <li>
 <p><a href="#_install_by_olm">The Operator Lifecycle Manager (OLM)</a></p>
 </li>
+<li>
+<p><a href="#_install_by_command">Command line installation</a></p>
+</li>
 </ul>
 </div>
 <div class="sect3">
@@ -6609,6 +6613,87 @@ However, if you want to start tracking all Operator activities before creating c
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_install_by_command"><a class="anchor" href="#_install_by_command"></a>Installing from the command line</h4>
+<div class="paragraph">
+<p>You can install the Keycloak Operator from the command line.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You have cluster-admin permission or an equivalent level of permissions granted by an administrator.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Obtain the software to install from this location: <a href="https://github.com/keycloak/keycloak-operator">Github repo</a>.</p>
+</li>
+<li>
+<p>Install all required custom resource definitions:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f deploy/crds/</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create a new namespace (or reuse an existing one) such as the namespace <code>myproject</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply namespace myproject</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Deploy a role, role binding, and service account for the Operator:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f deploy/role.yaml -n myproject
+$ kubectl apply -f deploy/role_binding.yaml -n myproject
+$ kubectl apply -f deploy/service_account.yaml -n myproject</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Deploy the Operator:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl apply -f deploy/operator.yaml -n myproject</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Confirm that the Operator is running:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get deployment keycloak-operator
+NAME                READY   UP-TO-DATE   AVAILABLE   AGE
+keycloak-operator   1/1     1            1           41s</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="ulist">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>When the Operator installation completes, you are ready to create your first custom resource. See <a href="#_keycloak_cr">Keycloak installation using a custom resource</a>.
+However, if you want to start tracking all Operator activities before creating custom resources, see the <a href="#_monitoring-operator">Application Monitoring Operator</a>.</p>
+</li>
+<li>
+<p>For more information on a Kubernetes installation, see <a href="https://operatorhub.io/how-to-install-an-operator">How to install an Operator from OperatorHub.io</a>.</p>
+</li>
+<li>
+<p>For more information on OpenShift Operators, see the <a href="https://docs.openshift.com/container-platform/4.4/operators/olm-what-operators-are.html">OpenShift Operators guide</a>.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -8082,7 +8167,7 @@ with this strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-10-19 09:24:00 UTC
+Last updated 2021-10-27 09:00:54 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
