@@ -6856,7 +6856,7 @@ or an Ingress for Kubernetes
 for the Keycloak cluster.</p>
 </li>
 <li>
-<p><code>externalDatabase</code> - in order to connect to an externally hosted database. That topic is covered in the <a href="#_external_database">external database</a> section of this guide. This is enabled by default, only for testing purposes you can disable it and this will install an embedded PostgreSQL database. Be aware that externalDatabase:false is <strong>NOT</strong> supported in prod environments.</p>
+<p><code>externalDatabase</code> - in order to connect to an externally hosted database. That topic is covered in the <a href="#_external_database">external database</a> section of this guide. Setting it to false should be used only for testing purposes and will install an embedded PostgreSQL database. Be aware that externalDatabase:false is <strong>NOT</strong> supported in prod environments.</p>
 </li>
 </ul>
 </div>
@@ -7107,7 +7107,7 @@ keycloak   keycloak.redhat.com   192.0.2.0   80      3m</code></pre>
 <p>Once the installation of Keycloak completes, you are ready to <a href="#_realm-cr">create a realm custom resource</a>.</p>
 </li>
 <li>
-<p>If you have an external database, you can modify the Keycloak custom resource to support it. See <a href="#_external_database">Connecting to an external database</a>.</p>
+<p>An external database is the supported option and needs to be enabled in the Keycloak custom resource. Only for testing purposes you can disable it. See <a href="#_external_database">Connecting to an external database</a>.</p>
 </li>
 </ul>
 </div>
@@ -8170,7 +8170,7 @@ with this strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-10-25 10:26:58 UTC
+Last updated 2021-10-27 08:28:49 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
