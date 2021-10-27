@@ -915,6 +915,7 @@ span.image img {
 <li><a href="#_install_by_command">Installing from the command line</a></li>
 </ul>
 </li>
+<li><a href="#_operator_prod_usage">Using the Keycloak Operator in production environment</a></li>
 <li><a href="#_monitoring-operator">The Application Monitoring Operator</a>
 <ul class="sectlevel3">
 <li><a href="#installing-the-application-monitoring-operator">Installing the Application Monitoring Operator</a></li>
@@ -6698,6 +6699,22 @@ However, if you want to start tracking all Operator activities before creating c
 </div>
 </div>
 <div class="sect2">
+<h3 id="_operator_prod_usage"><a class="anchor" href="#_operator_prod_usage"></a>Using the Keycloak Operator in production environment</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The usage of embedded DB is not supported in production environment.</p>
+</li>
+<li>
+<p>Backup CRD is deprecated and not supported in production environment.</p>
+</li>
+<li>
+<p>We fully support using the rest of the CRDs in prod, despite the <code>v1alpha1</code> version. We do not plan to make any breaking changes in this CRDs version.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_monitoring-operator"><a class="anchor" href="#_monitoring-operator"></a>The Application Monitoring Operator</h3>
 <div class="sidebarblock page-links">
 <div class="content">
@@ -8170,7 +8187,7 @@ with this strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-10-27 08:28:49 UTC
+Last updated 2021-10-27 12:42:27 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
