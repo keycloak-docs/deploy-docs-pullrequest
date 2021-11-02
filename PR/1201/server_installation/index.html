@@ -798,7 +798,7 @@ span.image img {
 <li><a href="#database">Database</a></li>
 <li><a href="#cache">Infinispan caches</a></li>
 <li><a href="#communication">Communication details</a></li>
-<li><a href="#setting-up-cross-site-with-infinispan-11-0-9">Setting up cross-site with Infinispan 11.0.9</a></li>
+<li><a href="#assembly-setting-up-crossdc">Setting up cross-site with Infinispan 11.0.8</a></li>
 <li><a href="#setup">Setting up cross-site replication with Infinispan 9.4.19</a></li>
 <li><a href="#administration">Administration of cross-site deployment</a></li>
 <li><a href="#onoffline">Bringing sites offline and online</a></li>
@@ -956,25 +956,25 @@ span.image img {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.keycloak.org/docs/14.0/getting_started/">Getting Started</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/getting_started/">Getting Started</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/14.0/securing_apps/">Securing Apps</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/securing_apps/">Securing Apps</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/14.0/server_admin/">Server Administration</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/server_admin/">Server Administration</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/14.0/server_development/">Server Developer</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/server_development/">Server Developer</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/14.0/authorization_services/">Authorization Services</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/authorization_services/">Authorization Services</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/14.0/upgrading/">Upgrading</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/upgrading/">Upgrading</a></p>
 </li>
 <li>
-<p><a href="https://www.keycloak.org/docs/14.0/release_notes/">Release Notes</a></p>
+<p><a href="https://www.keycloak.org/docs/16.0/release_notes/">Release Notes</a></p>
 </li>
 </ul>
 </div>
@@ -983,7 +983,7 @@ span.image img {
 <div class="exampleblock top-menu-version">
 <div class="content">
 <div class="paragraph versionarchive">
-<p>Version <strong>14.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/server_installation/">Click here for latest</a></em></p>
+<p>Version <strong>16.0.0</strong> <em><a href="https://www.keycloak.org/docs/latest/server_installation/">Click here for latest</a></em></p>
 </div>
 </div>
 </div>
@@ -1107,14 +1107,14 @@ system property on startup to <code>file:/dev/urandom</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>keycloak-14.0.0.[zip|tar.gz]</code></p>
+<p><code>keycloak-16.0.0.[zip|tar.gz]</code></p>
 <div class="paragraph">
 <p>This file is the server only distribution.  It contains nothing other than the scripts and binaries
 to run the Keycloak Server.</p>
 </div>
 </li>
 <li>
-<p><code>keycloak-overlay-14.0.0.[zip|tar.gz]</code></p>
+<p><code>keycloak-overlay-16.0.0.[zip|tar.gz]</code></p>
 <div class="paragraph">
 <p>This file is a WildFly add-on that you can use to install the Keycloak Server on top of an existing
 WildFly distribution.  We do not support users who want to run their applications and Keycloak on the same server instance.</p>
@@ -1126,7 +1126,7 @@ WildFly distribution.  We do not support users who want to run their application
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>To install the Keycloak server, run your operating system&#8217;s <code>unzip</code> or <code>gunzip</code> and <code>tar</code> utilities on the <code>keycloak-14.0.0.[zip|tar.gz]</code> file.</p>
+<p>To install the Keycloak server, run your operating system&#8217;s <code>unzip</code> or <code>gunzip</code> and <code>tar</code> utilities on the <code>keycloak-16.0.0.[zip|tar.gz]</code> file.</p>
 </li>
 <li>
 <p>To install the Keycloak Service Pack, it must be installed on a different server instance.</p>
@@ -1136,7 +1136,7 @@ WildFly distribution.  We do not support users who want to run their application
 <p>Change to the root directory of your WildFly distribution.</p>
 </li>
 <li>
-<p>Unzip the <code>keycloak-overlay-14.0.0.[zip|tar.gz]</code> file.</p>
+<p>Unzip the <code>keycloak-overlay-16.0.0.[zip|tar.gz]</code> file.</p>
 </li>
 <li>
 <p>Open the bin directory in a shell.</p>
@@ -1181,12 +1181,12 @@ WildFly distribution.  We do not support users who want to run their application
 </dd>
 <dt class="hdlist1"><em>standalone/deployments/</em></dt>
 <dd>
-<p>If you are writing extensions to Keycloak, you can put your extensions here.  See the <a href="https://www.keycloak.org/docs/14.0/server_development/">Server Developer Guide</a> for more information on this.</p>
+<p>If you are writing extensions to Keycloak, you can put your extensions here.  See the <a href="https://www.keycloak.org/docs/16.0/server_development/">Server Developer Guide</a> for more information on this.</p>
 </dd>
 <dt class="hdlist1"><em>themes/</em></dt>
 <dd>
 <p>This directory contains all the html, style sheets, JavaScript files, and images used to display any UI screen displayed by the server.
-Here you can modify an existing theme or create your own.  See the <a href="https://www.keycloak.org/docs/14.0/server_development/">Server Developer Guide</a> for more information on this.</p>
+Here you can modify an existing theme or create your own.  See the <a href="https://www.keycloak.org/docs/16.0/server_development/">Server Developer Guide</a> for more information on this.</p>
 </dd>
 </dl>
 </div>
@@ -1311,8 +1311,8 @@ Any changes you make to this file while the server is running will not take effe
 <div class="paragraph">
 <p>Standalone clustered operation mode applies when you want to run Keycloak within a cluster.  This mode
 requires that you have a copy of the Keycloak distribution on each machine where you want to run a server instance.
-This mode can be very easy to deploy initially, but can become quite cumbersome. To make a configuration change
-youhave to modify each distribution on each machine.  For a large cluster, this mode can become time consuming and error prone.</p>
+This mode can be very easy to deploy initially, but can become quite cumbersome. To make a configuration change,
+you modify each distribution on each machine.  For a large cluster, this mode can become time consuming and error prone.</p>
 </div>
 <div class="sect3">
 <h4 id="standalone-clustered-configuration"><a class="anchor" href="#standalone-clustered-configuration"></a>Standalone clustered configuration</h4>
@@ -1823,7 +1823,7 @@ The add-user.sh script does not add the user to the Keycloak server but to the u
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.keycloak.org/docs/14.0/server_installation/#_clustering">Clustering with Keycloak</a>
+<p><a href="https://www.keycloak.org/docs/16.0/server_installation/#_clustering">Clustering with Keycloak</a>
 When setting up for cross-site replication, you will use more independent Keycloak clusters, so you must understand how a cluster works and the basic concepts and requirements such as load balancing, shared databases, and multicasting.</p>
 </li>
 <li>
@@ -1877,10 +1877,10 @@ In some cases, the data may not be visible on <code>site2</code> at all.</p>
 <div class="sect3">
 <h4 id="requestprocessing"><a class="anchor" href="#requestprocessing"></a>Request processing</h4>
 <div class="paragraph">
-<p>An end user&#8217;s browser sends an HTTP request to the <a href="https://www.keycloak.org/docs/14.0/server_installation/#_setting-up-a-load-balancer-or-proxy">front end load balancer</a>. This load balancer is usually HTTPD or WildFly with mod_cluster, NGINX, HA Proxy, or perhaps some other kind of software or hardware load balancer.</p>
+<p>An end user&#8217;s browser sends an HTTP request to the <a href="https://www.keycloak.org/docs/16.0/server_installation/#_setting-up-a-load-balancer-or-proxy">front end load balancer</a>. This load balancer is usually HTTPD or WildFly with mod_cluster, NGINX, HA Proxy, or perhaps some other kind of software or hardware load balancer.</p>
 </div>
 <div class="paragraph">
-<p>The load balancer then forwards the HTTP requests it receives to the underlying Keycloak instances, which can be spread among multiple data centers. Load balancers typically offer support for <a href="https://www.keycloak.org/docs/14.0/server_installation/#sticky-sessions">sticky sessions</a>, which means that the load balancer is able to always forward all HTTP requests from the same user to the same Keycloak instance in same data center.</p>
+<p>The load balancer then forwards the HTTP requests it receives to the underlying Keycloak instances, which can be spread among multiple data centers. Load balancers typically offer support for <a href="https://www.keycloak.org/docs/16.0/server_installation/#sticky-sessions">sticky sessions</a>, which means that the load balancer is able to always forward all HTTP requests from the same user to the same Keycloak instance in same data center.</p>
 </div>
 <div class="paragraph">
 <p>HTTP requests that are sent from client applications to the load balancer are called <code>backchannel requests</code>.
@@ -1911,7 +1911,7 @@ It means that data need to be visible immediately on both sites and available to
 <div class="sect3">
 <h4 id="database"><a class="anchor" href="#database"></a>Database</h4>
 <div class="paragraph">
-<p>Keycloak uses a relational database management system (RDBMS) to persist some metadata about realms, clients, users, and so on. See <a href="https://www.keycloak.org/docs/14.0/server_installation/#_database">this chapter</a> of the server installation guide for more details. In a cross-site replication setup, we assume that either both data centers talk to the same database or that every data center has its own database node and both database nodes are synchronously replicated across the data centers. In both cases, it is required that when a Keycloak server on <code>site1</code> persists some data and commits the transaction, those data are immediately visible by subsequent DB transactions on <code>site2</code>.</p>
+<p>Keycloak uses a relational database management system (RDBMS) to persist some metadata about realms, clients, users, and so on. See <a href="https://www.keycloak.org/docs/16.0/server_installation/#_database">this chapter</a> of the server installation guide for more details. In a cross-site replication setup, we assume that either both data centers talk to the same database or that every data center has its own database node and both database nodes are synchronously replicated across the data centers. In both cases, it is required that when a Keycloak server on <code>site1</code> persists some data and commits the transaction, those data are immediately visible by subsequent DB transactions on <code>site2</code>.</p>
 </div>
 <div class="paragraph">
 <p>Details of DB setup are out-of-scope for Keycloak, however many RDBMS vendors like MariaDB and Oracle offer replicated databases and synchronous replication. We test Keycloak with these vendors:</p>
@@ -1938,7 +1938,7 @@ It means that data need to be visible immediately on both sites and available to
 </div>
 <div class="paragraph">
 <div class="title">Action tokens</div>
-<p>We also have the concept of <a href="https://www.keycloak.org/docs/14.0/server_development/#_action_token_spi">action tokens</a>, which are used typically for scenarios when the user needs to confirm an action asynchronously by email. For example, during the <code>forget password</code> flow the <code>actionTokens</code> Infinispan cache is used to track metadata about related action tokens, such as which action token was already used, so it can&#8217;t be reused second time. This usually needs to be replicated across data centers.</p>
+<p>We also have the concept of <a href="https://www.keycloak.org/docs/16.0/server_development/#_action_token_spi">action tokens</a>, which are used typically for scenarios when the user needs to confirm an action asynchronously by email. For example, during the <code>forget password</code> flow the <code>actionTokens</code> Infinispan cache is used to track metadata about related action tokens, such as which action token was already used, so it can&#8217;t be reused second time. This usually needs to be replicated across data centers.</p>
 </div>
 <div class="paragraph">
 <div class="title">Caching and invalidation of persistent data</div>
@@ -1959,7 +1959,7 @@ sessions, which are valid for the length of a user&#8217;s browser session. The 
 <div class="paragraph">
 <div class="title">Brute force protection</div>
 <p>Finally the <code>loginFailures</code> cache is used to track data about failed logins, such as how many times the user <code>john</code>
-entered a bad password. The details are described <a href="https://www.keycloak.org/docs/14.0/server_admin/#password-guess-brute-force-attacks">here</a>. It is up to the admin whether this cache should be replicated across data centers. To have an accurate count of login failures, the replication is needed. On the other hand, not replicating this data can save some performance. So if performance is more important than accurate counts of login failures, the replication can be avoided.</p>
+entered a bad password. The details are described <a href="https://www.keycloak.org/docs/16.0/server_admin/#password-guess-brute-force-attacks">here</a>. It is up to the admin whether this cache should be replicated across data centers. To have an accurate count of login failures, the replication is needed. On the other hand, not replicating this data can save some performance. So if performance is more important than accurate counts of login failures, the replication can be avoided.</p>
 </div>
 <div class="paragraph">
 <p>For more detail about how caches can be configured see <a href="#tuningcache">Tuning the Infinispan cache configuration</a>.</p>
@@ -1968,11 +1968,10 @@ entered a bad password. The details are described <a href="https://www.keycloak.
 <div class="sect3">
 <h4 id="communication"><a class="anchor" href="#communication"></a>Communication details</h4>
 <div class="paragraph">
-<p>Keycloak uses multiple, separate clusters of Infinispan caches. Every Keycloak node is in the cluster with the other Keycloak nodes in same data center, but not with the Keycloak nodes in different data centers. A Keycloak node does not communicate directly with the Keycloak nodes from different data centers. Keycloak nodes use external Infinispan servers for communication across data centers. This is done using the <a href="https://infinispan.org/docs/11.0.x/titles/hotrod_java/hotrod_java.html">Infinispan Hot Rod protocol</a>.</p>
+<p>Keycloak uses multiple, separate clusters of Infinispan caches. Every Keycloak node is in the cluster with the other Keycloak nodes in same data center, but not with the Keycloak nodes in different data centers. A Keycloak node does not communicate directly with the Keycloak nodes from different data centers. Keycloak nodes use external JDG (actually Infinispan servers) for communication across data centers. This is done using the <a href="https://infinispan.org/docs/10.1.x/titles/server/server.html#hot_rod">Infinispan HotRod protocol</a>.</p>
 </div>
 <div class="paragraph">
-<p>The Infinispan caches on the Keycloak side use <a href="https://infinispan.org/docs/stable/titles/configuring/configuring.html#remote_cache_store"><code>remoteStore</code></a> configuration to offload data to a remote Infinispan cluster.
-Infinispan clusters in separate data centers then replicate that data to ensure it is backed up.</p>
+<p>The Infinispan caches on the Keycloak side must be configured with the <a href="https://infinispan.org/docs/10.1.x/titles/configuring/configuring.html#remote_cache_store">remoteStore</a> to ensure that data are saved to the remote cache. There is separate Infinispan cluster between JDG servers, so the data saved on JDG1 on <code>site1</code> are replicated to JDG2 on <code>site2</code> .</p>
 </div>
 <div class="paragraph">
 <p>The receiving Infinispan server notifies the Keycloak servers in its cluster through Client Listeners, which are a feature of the Hot Rod protocol. Keycloak nodes on <code>site2</code> then update their Infinispan caches and the particular user session is also visible on Keycloak nodes on <code>site2</code>.</p>
@@ -1980,20 +1979,20 @@ Infinispan clusters in separate data centers then replicate that data to ensure 
 <div class="paragraph">
 <p>See the <a href="#archdiagram">Example Architecture Diagram</a> for more details.</p>
 </div>
-<div id="assembly-setting-up-crossdc" class="sidebarblock page-links">
+</div>
+<div class="sect3">
+<h4 id="assembly-setting-up-crossdc"><a class="anchor" href="#assembly-setting-up-crossdc"></a>Setting up cross-site with Infinispan 11.0.8</h4>
+<div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/crossdc/assembly-setting-up-crossdc.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/operating-mode/crossdc/assembly-setting-up-crossdc.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="setting-up-cross-site-with-infinispan-11-0-9"><a class="anchor" href="#setting-up-cross-site-with-infinispan-11-0-9"></a>Setting up cross-site with Infinispan 11.0.9</h4>
 <div class="paragraph _abstract">
-<p>Use the following procedures for Infinispan 11.0.9 to perform a basic setup of cross-site replication.</p>
+<p>Use the following procedures for Infinispan 11.0.8 to perform a basic setup of cross-site replication.</p>
 </div>
 <div class="paragraph">
-<p>This example for Infinispan 11.0.9 involves two data centers, <code>site1</code> and <code>site2</code>. Each data center consists of 1 Infinispan server and 2 Keycloak servers. We will end up with 2 Infinispan servers and 4 Keycloak servers in total.</p>
+<p>This example for Infinispan 11.0.8 involves two data centers, <code>site1</code> and <code>site2</code>. Each data center consists of 1 Infinispan server and 2 Keycloak servers. We will end up with 2 Infinispan servers and 4 Keycloak servers in total.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2005,7 +2004,7 @@ Infinispan clusters in separate data centers then replicate that data to ensure 
 </li>
 <li>
 <p>Infinispan servers <code>server1</code> and <code>server2</code> are connected to each other through the RELAY2 protocol and <code>backup</code> based Infinispan
-caches in a similar way as described in the <a href="https://infinispan.org/docs/11.0.x/titles/xsite/xsite.html">Infinispan documentation</a>.</p>
+caches in a similar way as described in the <a href="https://access.redhat.com/documentation/en-us/red_hat_data_grid/7.3/html/red_hat_data_grid_user_guide/x_site_replication">Infinispan documentation</a>.</p>
 </li>
 <li>
 <p>Keycloak servers <code>node11</code> and <code>node12</code> form a cluster with each other, but they do not communicate directly with any server in <code>site2</code>.
@@ -2019,14 +2018,14 @@ They communicate with the Infinispan server <code>server1</code> using the Hot R
 <div class="paragraph">
 <p>Our example setup assumes that the four Keycloak servers talk to the same database. In production, we recommend that you use separate synchronously replicated databases across data centers as described in <a href="#database">Database</a>.</p>
 </div>
-<div id="setting-up-infinispan-xsite" class="sidebarblock page-links">
+<div class="sect4">
+<h5 id="setting-up-infinispan-xsite"><a class="anchor" href="#setting-up-infinispan-xsite"></a>Setting Up Infinispan Servers</h5>
+<div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/crossdc/proc-setting-up-infinispan.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/operating-mode/crossdc/proc-setting-up-infinispan.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="sect4">
-<h5 id="setting-up-infinispan-servers"><a class="anchor" href="#setting-up-infinispan-servers"></a>Setting Up Infinispan Servers</h5>
 <div class="paragraph">
 <p>For cross-site replication, you start by creating remote Infinispan clusters that can back up Keycloak data.</p>
 </div>
@@ -2034,7 +2033,7 @@ They communicate with the Infinispan server <code>server1</code> using the Hot R
 <div class="title">Prerequisites</div>
 <ul>
 <li>
-<p>Download and install Infinispan Server 11.0.9.</p>
+<p>Download and install Infinispan Server 11.0.8.</p>
 </li>
 </ul>
 </div>
@@ -2046,7 +2045,7 @@ They communicate with the Infinispan server <code>server1</code> using the Hot R
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Infinispan Server 11.0.9 requires Java 11.</p>
+<p>Infinispan Server 11.0.8 requires Java 11.</p>
 </div>
 </td>
 </tr>
@@ -2118,15 +2117,15 @@ They communicate with the Infinispan server <code>server1</code> using the Hot R
 </li>
 </ol>
 </div>
-<div id="configuring-infinispan-xsite" class="sidebarblock page-links">
+</div>
+<div class="sect4">
+<h5 id="configuring-infinispan-xsite"><a class="anchor" href="#configuring-infinispan-xsite"></a>Configuring Infinispan Clusters</h5>
+<div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/crossdc/proc-configuring-infinispan.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/operating-mode/crossdc/proc-configuring-infinispan.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-<div class="sect4">
-<h5 id="configuring-infinispan-clusters"><a class="anchor" href="#configuring-infinispan-clusters"></a>Configuring Infinispan Clusters</h5>
 <div class="paragraph">
 <p>Configure Infinispan clusters to replicate Keycloak data across data centers.</p>
 </div>
@@ -2364,15 +2363,15 @@ INFO  [org.infinispan.XSITE] (jgroups-7,${server.hostname}) ISPN000439: Received
 </li>
 </ol>
 </div>
-<div id="creating-infinispan-caches-xsite" class="sidebarblock page-links">
+</div>
+<div class="sect4">
+<h5 id="creating-infinispan-caches-xsite"><a class="anchor" href="#creating-infinispan-caches-xsite"></a>Creating Infinispan Caches</h5>
+<div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/crossdc/proc-creating-infinispan-caches.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/operating-mode/crossdc/proc-creating-infinispan-caches.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-<div class="sect4">
-<h5 id="creating-infinispan-caches"><a class="anchor" href="#creating-infinispan-caches"></a>Creating Infinispan Caches</h5>
 <div class="paragraph">
 <p>Create the Infinispan caches that Keycloak requires.</p>
 </div>
@@ -2438,15 +2437,15 @@ Instead of the <code>--trustall</code> argument you can specify the truststore w
 </li>
 </ol>
 </div>
-<div id="proc-configuring-remote-cache-xsite" class="sidebarblock page-links">
+</div>
+<div class="sect4">
+<h5 id="proc-configuring-remote-cache-xsite"><a class="anchor" href="#proc-configuring-remote-cache-xsite"></a>Configuring Remote Cache Stores on Keycloak</h5>
+<div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operating-mode/crossdc/proc-configuring-remote-cache.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/operating-mode/crossdc/proc-configuring-remote-cache.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-</div>
-<div class="sect4">
-<h5 id="configuring-remote-cache-stores-on-keycloak"><a class="anchor" href="#configuring-remote-cache-stores-on-keycloak"></a>Configuring Remote Cache Stores on Keycloak</h5>
 <div class="paragraph">
 <p>After you set up remote Infinispan clusters, you configure the Infinispan subsystem on Keycloak to externalize data to those clusters through remote stores.</p>
 </div>
@@ -2782,7 +2781,7 @@ Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', 
 </li>
 <li>
 <p>Infinispan servers <code>server1</code> and <code>server2</code> are connected to each other through the RELAY2 protocol and <code>backup</code> based Infinispan
-caches in a similar way as described in the <a href="https://infinispan.org/docs/11.0.x/titles/xsite/xsite.html">Infinispan documentation</a>.</p>
+caches in a similar way as described in the <a href="https://access.redhat.com/documentation/en-us/red_hat_data_grid/7.3/html/red_hat_data_grid_user_guide/x_site_replication">Infinispan documentation</a>.</p>
 </li>
 <li>
 <p>Keycloak servers <code>node11</code> and <code>node12</code> form a cluster with each other, but they do not communicate directly with any server in <code>site2</code>.
@@ -3458,7 +3457,7 @@ Event 'CLIENT_CACHE_ENTRY_REMOVED', key '193489e7-e2bc-4069-afe8-f1dfa73084ea', 
 <p><strong>Manually by admin</strong> - Admin can use the <code>jconsole</code> or other tool and run some JMX operations to manually take the particular site offline.
 This is useful especially if the outage is planned. With <code>jconsole</code> or CLI, you can connect to the <code>server1</code> server and take the <code>site2</code> offline.
 More details about this are available in the
-<a href="https://infinispan.org/docs/11.0.x/titles/xsite/xsite.html">Infinispan documentation</a>.</p>
+<a href="https://access.redhat.com/documentation/en-us/red_hat_data_grid/7.3/html/red_hat_data_grid_user_guide/x_site_replication">Infinispan documentation</a>.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -3531,7 +3530,7 @@ Again, you may need to check all the caches and bring them online.</p>
 </div>
 <div class="paragraph">
 <p>The state transfer can be also done on the Infinispan server side through JMX. The operation name is <code>pushState</code>. There are few other operations to monitor status, cancel push state, and so on.
-More info about state transfer is available in the <a href="https://infinispan.org/docs/11.0.x/titles/xsite/xsite.html#cli_xsite_push-cli-ops">Infinispan docs</a>.</p>
+More info about state transfer is available in the <a href="https://access.redhat.com/documentation/en-us/red_hat_data_grid/7.3/html/red_hat_data_grid_user_guide/x_site_replication">Infinispan docs</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -3540,10 +3539,10 @@ More info about state transfer is available in the <a href="https://infinispan.o
 <p>After split-brain it is safe to manually clear caches in the Keycloak admin console. This is because there might be some data changed in the database on <code>site1</code> and because of the event, that the cache should be invalidated wasn&#8217;t transferred during split-brain to <code>site2</code>. Hence Keycloak nodes on <code>site2</code> may still have some stale data in their caches.</p>
 </div>
 <div class="paragraph">
-<p>To clear the caches, see <a href="https://www.keycloak.org/docs/14.0/server_admin/#_clear-cache">Clearing Server Caches</a>.</p>
+<p>To clear the caches, see <a href="https://www.keycloak.org/docs/16.0/server_admin/#_clear-cache">Clearing Server Caches</a>.</p>
 </div>
 <div class="paragraph">
-<p>When the network is back, it is sufficient to clear the cache just on one Keycloak node on any random site. The cache invalidation event will be sent to all the other Keycloak nodes in all sites. However, it needs to be done for all the caches (realms, users, keys). See <a href="https://www.keycloak.org/docs/14.0/server_admin/#_clear-cache">Clearing Server Caches</a> for more information.</p>
+<p>When the network is back, it is sufficient to clear the cache just on one Keycloak node on any random site. The cache invalidation event will be sent to all the other Keycloak nodes in all sites. However, it needs to be done for all the caches (realms, users, keys). See <a href="https://www.keycloak.org/docs/16.0/server_admin/#_clear-cache">Clearing Server Caches</a> for more information.</p>
 </div>
 </div>
 <div class="sect3">
@@ -3654,7 +3653,7 @@ The count of login failures also will not be accurate with the <code>ASYNC</code
 <p>You use active/passive mode as described <a href="#modes">Modes</a>.</p>
 </li>
 <li>
-<p>All your client applications are using the Keycloak <a href="https://www.keycloak.org/docs/14.0/securing_apps/#_javascript_adapter">JavaScript Adapter</a>. The JavaScript adapter sends the backchannel requests within the browser and hence they participate on the browser sticky session and will end on same cluster node (hence on same site) as the other browser requests of this user.</p>
+<p>All your client applications are using the Keycloak <a href="https://www.keycloak.org/docs/16.0/securing_apps/#_javascript_adapter">JavaScript Adapter</a>. The JavaScript adapter sends the backchannel requests within the browser and hence they participate on the browser sticky session and will end on same cluster node (hence on same site) as the other browser requests of this user.</p>
 </li>
 <li>
 <p>Your load balancer is able to serve the requests based on client IP address (location) and the client applications are deployed on both sites.</p>
@@ -3721,7 +3720,7 @@ Node name: node11, Site name: site1</code></pre>
 </li>
 <li>
 <p>Check that Keycloak servers are in cluster as expected, including that only the Keycloak servers from the same data center are in cluster with each other.
-This can be also checked in JConsole through the GMS view. See <a href="https://www.keycloak.org/docs/14.0/server_installation/#troubleshooting">cluster troubleshooting</a> for additional details.</p>
+This can be also checked in JConsole through the GMS view. See <a href="https://www.keycloak.org/docs/16.0/server_installation/#troubleshooting">cluster troubleshooting</a> for additional details.</p>
 </li>
 <li>
 <p>If there are exceptions during startup of Keycloak server like this:</p>
@@ -3756,7 +3755,7 @@ Caused by: org.infinispan.client.hotrod.exceptions.TransportException:: Could no
 <p>Enable DEBUG logging as described <a href="#serversetup">Setting up Keycloak servers</a>. For example, if you log in and you think that the new session is not available on the second site, it&#8217;s good to check the Keycloak server logs and check that listeners were triggered as described in the <a href="#serversetup">Setting up Keycloak servers</a>. If you do not know and want to ask on keycloak-user mailing list, it is helpful to send the log files from Keycloak servers on both datacenters in the email. Either add the log snippets to the mails or put the logs somewhere and reference them in the email.</p>
 </li>
 <li>
-<p>If you updated the entity, such as <code>user</code>, on Keycloak server on <code>site1</code> and you do not see that entity updated on the Keycloak server on <code>site2</code>, then the issue can be either in the replication of the synchronous database itself or that Keycloak caches are not properly invalidated. You may try to temporarily disable the Keycloak caches as described <a href="https://www.keycloak.org/docs/14.0/server_installation/#disabling-caching">here</a> to nail down if the issue is at the database replication level. Also it may help to manually connect to the database and check if data are updated as expected. This is specific to every database, so you will need to consult the documentation for your database.</p>
+<p>If you updated the entity, such as <code>user</code>, on Keycloak server on <code>site1</code> and you do not see that entity updated on the Keycloak server on <code>site2</code>, then the issue can be either in the replication of the synchronous database itself or that Keycloak caches are not properly invalidated. You may try to temporarily disable the Keycloak caches as described <a href="https://www.keycloak.org/docs/16.0/server_installation/#disabling-caching">here</a> to nail down if the issue is at the database replication level. Also it may help to manually connect to the database and check if data are updated as expected. This is specific to every database, so you will need to consult the documentation for your database.</p>
 </li>
 <li>
 <p>Sometimes you may see the exceptions related to locks like this in Infinispan server log:</p>
@@ -3979,7 +3978,7 @@ to the list, just separate each list element with a comma. Unfortunately,
 you do need to escape the quotes surrounding each list element with <code>&amp;quot;</code>.</p>
 </div>
 <div class="paragraph">
-<p>Follow the steps in <a href="https://www.keycloak.org/docs/14.0/server_development/#_providers">Server Developer Guide</a> for more details on custom providers and the configuration of providers.</p>
+<p>Follow the steps in <a href="https://www.keycloak.org/docs/16.0/server_development/#_providers">Server Developer Guide</a> for more details on custom providers and the configuration of providers.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4274,14 +4273,26 @@ supported. In addition there are some features that are enabled by default, but 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ciba</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OpenID Connect Client Initiated Backchannel Authentication (CIBA)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Preview</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client_policies</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Add client configuration policies</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">par</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OAuth 2.0 Pushed Authorization Requests (PAR)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">declarative_user_profile</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configure user profiles using a declarative style</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preview</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">docker</p></td>
@@ -4315,7 +4326,7 @@ supported. In addition there are some features that are enabled by default, but 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">upload_scripts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Upload scripts through the Keycloak REST API</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Upload scripts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deprecated</p></td>
 </tr>
@@ -4977,7 +4988,7 @@ well by setting <code>forceBackendUrlToFrontendUrl</code> to <code>true</code>.<
 <div class="paragraph">
 <p>If you do not want to expose the admin endpoints and console on the public domain use the property <code>adminUrl</code> to set
 a fixed URL for the admin console, which is different to the <code>frontendUrl</code>. It is also required to block access to
-<code>/auth/admin</code> externally, for details on how to do that refer to the <a href="https://www.keycloak.org/docs/14.0/server_admin/">Server Administration Guide</a>.</p>
+<code>/auth/admin</code> externally, for details on how to do that refer to the <a href="https://www.keycloak.org/docs/16.0/server_admin/">Server Administration Guide</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4987,7 +4998,7 @@ a fixed URL for the admin console, which is different to the <code>frontendUrl</
 <code>org.keycloak.urls.HostnameProvider</code>.</p>
 </div>
 <div class="paragraph">
-<p>Follow the instructions in the Service Provider Interfaces section in <a href="https://www.keycloak.org/docs/14.0/server_development/">Server Developer Guide</a>
+<p>Follow the instructions in the Service Provider Interfaces section in <a href="https://www.keycloak.org/docs/16.0/server_development/">Server Developer Guide</a>
 for more information on how to develop a custom provider.</p>
 </div>
 </div>
@@ -5196,7 +5207,7 @@ Keycloak is not set up by default to handle SSL/HTTPS.
 </div>
 <div class="paragraph">
 <p>This default behavior is defined by the SSL/HTTPS mode of each Keycloak realm.  This is discussed in more detail in the
-<a href="https://www.keycloak.org/docs/14.0/server_admin/">Server Administration Guide</a>, but let&#8217;s give some context and a brief overview of these modes.</p>
+<a href="https://www.keycloak.org/docs/16.0/server_admin/">Server Administration Guide</a>, but let&#8217;s give some context and a brief overview of these modes.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -6120,7 +6131,7 @@ but can be chosen according to some other criterias (client IP address etc). It 
 </li>
 <li>
 <p>Infinispan distributed cache assigns the primary owner of the session based on the hash of session ID.
-See <a href="https://infinispan.org/docs/stable/titles/configuring/configuring.html#distribution-configuring">Infinispan documentation</a> for more details around this.
+See <a href="https://infinispan.org/docs/10.1.x/titles/configuring/configuring.html#clustered_caches">Infinispan documentation</a> for more details around this.
 Let&#8217;s assume that Infinispan assigned <code>node2</code> to be the owner of this session.</p>
 </li>
 <li>
@@ -6466,7 +6477,7 @@ without limit. If you see memory issues due to a large number of sessions, you c
 </li>
 <li>
 <p>Decrease session timeouts, which could be done individually for each realm in Keycloak admin console. But this could affect
-usability for end users. See <a href="https://www.keycloak.org/docs/14.0/server_admin/#_timeouts">Timeouts</a> for more details.</p>
+usability for end users. See <a href="https://www.keycloak.org/docs/16.0/server_admin/#_timeouts">Timeouts</a> for more details.</p>
 </li>
 </ul>
 </div>
@@ -6596,7 +6607,7 @@ Here is a sample config file.</p>
 <p>Click <strong>Realm Settings</strong>.</p>
 </li>
 <li>
-<p>Click the <strong>Cache Config</strong> tab.</p>
+<p>Click the <strong>Cache</strong> tab.</p>
 </li>
 <li>
 <p>Clear the realm cache, the user cache or cache of external public keys.</p>
@@ -7692,10 +7703,10 @@ keycloak.keycloak.org/example-user created</code></pre>
 <li>
 <p>Search for the user that you defined in the YAML file.</p>
 <div class="paragraph">
-<p>The user is in the list.</p>
+<p>You may need to switch to a different realm to find the user.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./images/user_list.png" alt="user list"></span></p>
+<p><span class="image"><img src="./images/realm_user.png" alt="realm user"></span></p>
 </div>
 </li>
 </ol>
@@ -8231,7 +8242,7 @@ keycloak-postgresql-c824c6-vv27m   1/1      Running      0           71m</code><
 </div>
 </div>
 <div class="paragraph">
-<p>You can package and deploy themes in the same way as any other extensions. See <a href="https://www.keycloak.org/docs/14.0/server_development/#deploying-themes">Deploying Themes</a> manual entry for more information.</p>
+<p>You can package and deploy themes in the same way as any other extensions. See <a href="https://www.keycloak.org/docs/16.0/server_development/#deploying-themes">Deploying Themes</a> manual entry for more information.</p>
 </div>
 <div class="ulist">
 <div class="title">Prerequisites</div>
@@ -8378,7 +8389,7 @@ with this strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-06-09 21:10:03 UTC
+Last updated 2021-11-02 21:35:27 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
