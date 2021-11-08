@@ -831,8 +831,117 @@ span.image img {
 <ul class="sectlevel3">
 <li><a href="#fapi-client-profiles">2.6.1. FAPI client profiles</a></li>
 <li><a href="#open-banking-brasil-financial-grade-api-security-profile">2.6.2. Open Banking Brasil Financial-grade API Security Profile</a></li>
+<li><a href="#tls-considerations">2.6.3. TLS considerations</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#saml-2">3. SAML</a>
+<ul class="sectlevel2">
+<li><a href="#java-adapters-2">3.1. Java Adapters</a>
+<ul class="sectlevel3">
+<li><a href="#_saml-general-config">3.1.1. General Adapter Config</a></li>
+<li><a href="#_saml_jboss_adapter">3.1.2. JBoss EAP/WildFly Adapter</a></li>
+<li><a href="#_jboss_adapter_rpm_saml">3.1.3. Installing JBoss EAP Adapter from an RPM</a></li>
+<li><a href="#_saml-tomcat-adapter">3.1.4. Tomcat SAML adapters</a></li>
+<li><a href="#_jetty_saml_adapter">3.1.5. Jetty SAML Adapters</a></li>
+<li><a href="#java-servlet-filter-adapter">3.1.6. Java Servlet Filter Adapter</a></li>
+<li><a href="#registering-with-an-identity-provider">3.1.7. Registering with an Identity Provider</a></li>
+<li><a href="#logout-2">3.1.8. Logout</a></li>
+<li><a href="#obtaining-assertion-attributes">3.1.9. Obtaining Assertion Attributes</a></li>
+<li><a href="#error-handling">3.1.10. Error Handling</a></li>
+<li><a href="#troubleshooting">3.1.11. Troubleshooting</a></li>
+<li><a href="#_saml_multi_tenancy">3.1.12. Multi Tenancy</a></li>
+<li><a href="#migration-from-older-versions">3.1.13. Migration from older versions</a></li>
+</ul>
+</li>
+<li><a href="#_mod_auth_mellon">3.2. mod_auth_mellon Apache HTTPD Module</a>
+<ul class="sectlevel3">
+<li><a href="#configuring-mod_auth_mellon-with-keycloak">3.2.1. Configuring mod_auth_mellon with Keycloak</a></li>
+<li><a href="#setting-the-samesite-value-for-the-cookie-used-by-mod_auth_mellon">3.2.2. Setting the SameSite value for the cookie used by mod_auth_mellon</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#docker-registry-configuration">4. Docker Registry Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#docker-registry-configuration-file-installation">4.1. Docker Registry Configuration File Installation</a></li>
+<li><a href="#docker-registry-environment-variable-override-installation">4.2. Docker Registry Environment Variable Override Installation</a></li>
+<li><a href="#docker-compose-yaml-file">4.3. Docker Compose YAML File</a></li>
+</ul>
+</li>
+<li><a href="#_client_registration">5. Client Registration</a>
+<ul class="sectlevel2">
+<li><a href="#authentication">5.1. Authentication</a>
+<ul class="sectlevel3">
+<li><a href="#bearer-token">5.1.1. Bearer Token</a></li>
+<li><a href="#_initial_access_token">5.1.2. Initial Access Token</a></li>
+<li><a href="#_registration_access_token">5.1.3. Registration Access Token</a></li>
+</ul>
+</li>
+<li><a href="#keycloak-representations">5.2. Keycloak Representations</a></li>
+<li><a href="#keycloak-adapter-configuration">5.3. Keycloak Adapter Configuration</a></li>
+<li><a href="#openid-connect-dynamic-client-registration">5.4. OpenID Connect Dynamic Client Registration</a></li>
+<li><a href="#saml-entity-descriptors">5.5. SAML Entity Descriptors</a></li>
+<li><a href="#example-using-curl-2">5.6. Example using CURL</a></li>
+<li><a href="#example-using-java-client-registration-api">5.7. Example using Java Client Registration API</a></li>
+<li><a href="#_client_registration_policies">5.8. Client Registration Policies</a></li>
+</ul>
+</li>
+<li><a href="#_client_registration_cli">6. Client Registration CLI</a>
+<ul class="sectlevel2">
+<li><a href="#_configuring_a_user_for_client_registration_cli">6.1. Configuring a new regular user for use with Client Registration CLI</a></li>
+<li><a href="#_configuring_a_client_for_use_with_client_registration_cli">6.2. Configuring a client for use with the Client Registration CLI</a></li>
+<li><a href="#_installing_client_registration_cli">6.3. Installing the Client Registration CLI</a></li>
+<li><a href="#_using_client_registration_cli">6.4. Using the Client Registration CLI</a>
+<ul class="sectlevel3">
+<li><a href="#_logging_in">6.4.1. Logging in</a></li>
+<li><a href="#_working_with_alternative_configurations">6.4.2. Working with alternative configurations</a></li>
+<li><a href="#_initial_access_and_registration_access_tokens">6.4.3. Initial Access and Registration Access Tokens</a></li>
+<li><a href="#_performing_crud_operations">6.4.4. Creating a client configuration</a></li>
+<li><a href="#retrieving-a-client-configuration">6.4.5. Retrieving a client configuration</a></li>
+<li><a href="#modifying-a-client-configuration">6.4.6. Modifying a client configuration</a></li>
+<li><a href="#deleting-a-client-configuration">6.4.7. Deleting a client configuration</a></li>
+<li><a href="#_refreshing_invalid_registration_access_tokens">6.4.8. Refreshing invalid Registration Access Tokens</a></li>
+</ul>
+</li>
+<li><a href="#_troubleshooting_2">6.5. Troubleshooting</a></li>
+</ul>
+</li>
+<li><a href="#_token-exchange">7. Token Exchange</a>
+<ul class="sectlevel2">
+<li><a href="#internal-token-to-internal-token-exchange">7.1. Internal Token to Internal Token Exchange</a>
+<ul class="sectlevel3">
+<li><a href="#_client_to_client_permission">7.1.1. Granting Permission for the Exchange</a></li>
+<li><a href="#making-the-request">7.1.2. Making the Request</a></li>
+</ul>
+</li>
+<li><a href="#internal-token-to-external-token-exchange">7.2. Internal Token to External Token Exchange</a>
+<ul class="sectlevel3">
+<li><a href="#_grant_permission_external_exchange">7.2.1. Granting Permission for the Exchange</a></li>
+<li><a href="#_internal_external_making_request">7.2.2. Making the Request</a></li>
+</ul>
+</li>
+<li><a href="#external-token-to-internal-token-exchange">7.3. External Token to Internal Token Exchange</a>
+<ul class="sectlevel3">
+<li><a href="#granting-permission-for-the-exchange">7.3.1. Granting Permission for the Exchange</a></li>
+<li><a href="#making-the-request-2">7.3.2. Making the Request</a></li>
+</ul>
+</li>
+<li><a href="#impersonation">7.4. Impersonation</a>
+<ul class="sectlevel3">
+<li><a href="#granting-permission-for-the-exchange-2">7.4.1. Granting Permission for the Exchange</a></li>
+<li><a href="#making-the-request-3">7.4.2. Making the Request</a></li>
+</ul>
+</li>
+<li><a href="#direct-naked-impersonation">7.5. Direct Naked Impersonation</a>
+<ul class="sectlevel3">
+<li><a href="#granting-permission-for-the-exchange-3">7.5.1. Granting Permission for the Exchange</a></li>
+<li><a href="#making-the-request-4">7.5.2. Making the Request</a></li>
+</ul>
+</li>
+<li><a href="#expand-permission-model-with-service-accounts">7.6. Expand Permission Model With Service Accounts</a></li>
+<li><a href="#exchange-vulnerabilities">7.7. Exchange Vulnerabilities</a></li>
 </ul>
 </li>
 </ul>
@@ -7584,14 +7693,7 @@ When enforcing the requirements of the FAPI CIBA specification, there is a need 
 <div class="sect3">
 <h4 id="open-banking-brasil-financial-grade-api-security-profile"><a class="anchor" href="#open-banking-brasil-financial-grade-api-security-profile"></a>2.6.2. Open Banking Brasil Financial-grade API Security Profile</h4>
 <div class="paragraph">
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-Keycloak is compliant with the <a href="https://openbanking-brasil.github.io/specs-seguranca/open-banking-brasil-dynamic-client-registration-1_ID2-ptbr.html">Open Banking Brasil Financial-grade API Security Profile 1.0 Implementers Draft 2</a>.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>Keycloak is compliant with the <a href="https://openbanking-brasil.github.io/specs-seguranca/open-banking-brasil-dynamic-client-registration-1_ID2-ptbr.html">Open Banking Brasil Financial-grade API Security Profile 1.0 Implementers Draft 1</a>.
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 3e39beec&#8230;&#8203; Correcting variable definitions
+<p>Keycloak is compliant with the <a href="https://openbanking-brasil.github.io/specs-seguranca/open-banking-brasil-dynamic-client-registration-1_ID2-ptbr.html">Open Banking Brasil Financial-grade API Security Profile 1.0 Implementers Draft 2</a>.
 This one is more strict in some requirements than the <a href="#_fapi-support">FAPI 1 Advanced</a> specification and hence it may be needed to configure <a href="https://www.keycloak.org/docs/16.0/server_admin/#_client_policies">Client Policies</a>
 in the more strict way to enforce some of the requirements. Especially:</p>
 </div>
@@ -7605,9 +7707,9 @@ in the more strict way to enforce some of the requirements. Especially:</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>==== TLS considerations</p>
 </div>
+<div class="sect3">
+<h4 id="tls-considerations"><a class="anchor" href="#tls-considerations"></a>2.6.3. TLS considerations</h4>
 <div class="paragraph">
 <p>As confidential information is being exchanged, all interactions shall be encrypted with TLS (HTTPS). Moreover, there are some requirements in the FAPI specification for
 the cipher suites and TLS protocol versions used. To match these requirements, you can consider configure allowed ciphers. This configuration can be done in the
@@ -7624,9 +7726,13 @@ the cipher suites and TLS protocol versions used. To match these requirements, y
 <p>The references to <code>kcKeyManager</code> and <code>kcTrustManager</code> refers to the corresponding Keystore and Truststore. See the documentation of Wildfly Elytron subsystem for more details and also
 other parts of Keycloak documentation such as <a href="https://www.keycloak.org/docs/16.0/server_installation/#_network">Network Setup Section</a> or <a href="https://www.keycloak.org/docs/16.0/server_admin/#_x509">X.509 Authentication Section</a>.</p>
 </div>
-<div class="paragraph">
-<p>== SAML</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="saml-2"><a class="anchor" href="#saml-2"></a>3. SAML</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/saml-overview.adoc" target="_blank">Edit this section</a>
@@ -7637,9 +7743,8 @@ other parts of Keycloak documentation such as <a href="https://www.keycloak.org/
 <p>This section describes how you can secure applications and services with SAML using either Keycloak client adapters or generic
 SAML provider libraries.</p>
 </div>
-<div class="paragraph">
-<p>=== Java Adapters</p>
-</div>
+<div class="sect2">
+<h3 id="java-adapters-2"><a class="anchor" href="#java-adapters-2"></a>3.1. Java Adapters</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/java-adapters.adoc" target="_blank">Edit this section</a>
@@ -7649,9 +7754,8 @@ SAML provider libraries.</p>
 <div class="paragraph">
 <p>Keycloak comes with a range of different adapters for Java application. Selecting the correct adapter depends on the target platform.</p>
 </div>
-<div class="paragraph">
-<p>==== General Adapter Config</p>
-</div>
+<div class="sect3">
+<h4 id="_saml-general-config"><a class="anchor" href="#_saml-general-config"></a>3.1.1. General Adapter Config</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config.adoc" target="_blank">Edit this section</a>
@@ -7719,9 +7823,8 @@ This is what one might look like:</p>
 For Java adapters you can use <code>${&#8230;&#8203;}</code> enclosure as System property replacement.
 For example <code>${jboss.server.config.dir}</code>.</p>
 </div>
-<div class="paragraph">
-<p>===== SP Element</p>
-</div>
+<div class="sect4">
+<h5 id="sp-element"><a class="anchor" href="#sp-element"></a>SP Element</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/sp_element.adoc" target="_blank">Edit this section</a>
@@ -7812,9 +7915,9 @@ This setting is <em>OPTIONAL</em> and its default value is <em>false</em> (the d
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>===== Service Provider Keys and Key Elements</p>
 </div>
+<div class="sect4">
+<h5 id="_saml-sp-keys"><a class="anchor" href="#_saml-sp-keys"></a>Service Provider Keys and Key Elements</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/sp-keys.adoc" target="_blank">Edit this section</a>
@@ -7845,9 +7948,8 @@ When set to true these tell the adapter what the key will be used for.
 If both attributes are set to true, then the key will be used for both signing documents and decrypting encrypted assertions.
 You must set at least one of these attributes to true.</p>
 </div>
-<div class="paragraph">
-<p>====== KeyStore element</p>
-</div>
+<div class="sect5">
+<h6 id="_saml-keystore"><a class="anchor" href="#_saml-keystore"></a>KeyStore element</h6>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/sp-keys/keystore_element.adoc" target="_blank">Edit this section</a>
@@ -7897,9 +7999,9 @@ The <code>PrivateKey</code> and <code>Certificate</code> elements in the above e
 within the keystore.  Keystores require an additional password to access private keys.
 In the <code>PrivateKey</code> element you must define this password within a <code>password</code> attribute.</p>
 </div>
-<div class="paragraph">
-<p>====== Key PEMS</p>
 </div>
+<div class="sect5">
+<h6 id="key-pems"><a class="anchor" href="#key-pems"></a>Key PEMS</h6>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/sp-keys/key_pems.adoc" target="_blank">Edit this section</a>
@@ -7926,9 +8028,10 @@ You usually use this option if you are generating keys using <code>openssl</code
 <span class="tag">&lt;/Keys&gt;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>===== SP PrincipalNameMapping element</p>
 </div>
+</div>
+<div class="sect4">
+<h5 id="sp-principalnamemapping-element"><a class="anchor" href="#sp-principalnamemapping-element"></a>SP PrincipalNameMapping element</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/sp_principalname_mapping_element.adoc" target="_blank">Edit this section</a>
@@ -7967,9 +8070,9 @@ You&#8217;ll need to specify the name of the SAML assertion attribute to use wit
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>===== RoleIdentifiers Element</p>
 </div>
+<div class="sect4">
+<h5 id="roleidentifiers-element"><a class="anchor" href="#roleidentifiers-element"></a>RoleIdentifiers Element</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/roleidentifiers_element.adoc" target="_blank">Edit this section</a>
@@ -7994,9 +8097,9 @@ as role identifiers within the Java EE Security Context for the user.</p>
 Some IdPs send roles using a <code>member</code> or <code>memberOf</code> attribute assertion.
 You can define one or more <code>Attribute</code> elements to specify which SAML attributes must be converted into roles.</p>
 </div>
-<div class="paragraph">
-<p>===== RoleMappingsProvider Element</p>
 </div>
+<div class="sect4">
+<h5 id="rolemappingsprovider-element"><a class="anchor" href="#rolemappingsprovider-element"></a>RoleMappingsProvider Element</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/sp_role_mappings_provider_element.adoc" target="_blank">Edit this section</a>
@@ -8035,9 +8138,8 @@ mappings.</p>
 <p>The <code>id</code> attribute identifies which of the installed providers is to be used. The <code>Property</code> sub-element can be used multiple times
 to specify configuration properties for the provider.</p>
 </div>
-<div class="paragraph">
-<p>====== Properties Based Role Mappings Provider</p>
-</div>
+<div class="sect5">
+<h6 id="properties-based-role-mappings-provider"><a class="anchor" href="#properties-based-role-mappings-provider"></a>Properties Based Role Mappings Provider</h6>
 <div class="paragraph">
 <p>Keycloak includes a <code>RoleMappingsProvider</code> implementation that performs the role mappings using a <code>properties</code> file. This
 provider is identified by the id <code>properties-based-role-mapper</code> and is implemented by the <code>org.keycloak.adapters.saml.PropertiesBasedRoleMapper</code>
@@ -8108,16 +8210,17 @@ was added to the <code>kc_user</code> principal (<code>roleZ</code>).</p>
 <pre class="CodeRay highlight"><code>role\u0020A=roleX,roleY</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>====== Adding Your Own Role Mappings Provider</p>
 </div>
+<div class="sect5">
+<h6 id="adding-your-own-role-mappings-provider"><a class="anchor" href="#adding-your-own-role-mappings-provider"></a>Adding Your Own Role Mappings Provider</h6>
 <div class="paragraph">
 <p>To add a custom role mappings provider one simply needs to implement the <code>org.keycloak.adapters.saml.RoleMappingsProvider</code> SPI.
 For more details see the <code>SAML Role Mappings SPI</code> section in <a href="https://www.keycloak.org/docs/16.0/server_development/">Server Developer Guide</a>.</p>
 </div>
-<div class="paragraph">
-<p>===== IDP Element</p>
 </div>
+</div>
+<div class="sect4">
+<h5 id="idp-element"><a class="anchor" href="#idp-element"></a>IDP Element</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/idp_element.adoc" target="_blank">Edit this section</a>
@@ -8171,9 +8274,9 @@ The default value is <code>http://www.w3.org/2001/10/xml-exc-c14n#</code> and sh
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>===== IDP AllowedClockSkew sub element</p>
 </div>
+<div class="sect4">
+<h5 id="_sp-idp-allowedclockskew"><a class="anchor" href="#_sp-idp-allowedclockskew"></a>IDP AllowedClockSkew sub element</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/idp_allowedclockskew_subelement.adoc" target="_blank">Edit this section</a>
@@ -8200,9 +8303,9 @@ The default value is <code>SECONDS</code>.</p>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>===== IDP SingleSignOnService sub element</p>
 </div>
+<div class="sect4">
+<h5 id="_sp-idp-singlesignonservice"><a class="anchor" href="#_sp-idp-singlesignonservice"></a>IDP SingleSignOnService sub element</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/idp_singlesignonservice_subelement.adoc" target="_blank">Edit this section</a>
@@ -8262,9 +8365,9 @@ This property is typically  accompanied by the <code>responseBinding</code> attr
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>===== IDP SingleLogoutService sub element</p>
 </div>
+<div class="sect4">
+<h5 id="idp-singlelogoutservice-sub-element"><a class="anchor" href="#idp-singlelogoutservice-sub-element"></a>IDP SingleLogoutService sub element</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/idp_singlelogoutservice_subelement.adoc" target="_blank">Edit this section</a>
@@ -8327,9 +8430,9 @@ The default value is <code>POST</code>, but you can set it to <code>REDIRECT</co
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>===== IDP Keys sub element</p>
 </div>
+<div class="sect4">
+<h5 id="_sp-idp-keys"><a class="anchor" href="#_sp-idp-keys"></a>IDP Keys sub element</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/idp_keys_subelement.adoc" target="_blank">Edit this section</a>
@@ -8381,9 +8484,9 @@ verification keys.</p>
         <span class="tag">&lt;/IDP&gt;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>===== IDP HttpClient sub element</p>
 </div>
+<div class="sect4">
+<h5 id="_sp-idp-httpclient"><a class="anchor" href="#_sp-idp-httpclient"></a>IDP HttpClient sub element</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/general-config/idp_httpclient_subelement.adoc" target="_blank">Edit this section</a>
@@ -8494,9 +8597,10 @@ This is <em>OPTIONAL</em>.</p>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>==== JBoss EAP/WildFly Adapter</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_saml_jboss_adapter"><a class="anchor" href="#_saml_jboss_adapter"></a>3.1.2. JBoss EAP/WildFly Adapter</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/saml-jboss-adapter.adoc" target="_blank">Edit this section</a>
@@ -8510,9 +8614,8 @@ This is <em>OPTIONAL</em>.</p>
 <p>You then provide a keycloak config, <code>/WEB-INF/keycloak-saml.xml</code> file in your WAR and change the auth-method to KEYCLOAK-SAML within web.xml.
 Both methods are described in this section.</p>
 </div>
-<div id="_saml-jboss-adapter-installation" class="paragraph">
-<p>===== Adapter Installation</p>
-</div>
+<div class="sect4">
+<h5 id="_saml-jboss-adapter-installation"><a class="anchor" href="#_saml-jboss-adapter-installation"></a>Adapter Installation</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/jboss-adapter/jboss_adapter_installation.adoc" target="_blank">Edit this section</a>
@@ -8632,16 +8735,16 @@ Otherwise this configuration is optional.</p>
 <div class="paragraph">
 <p>The security context is propagated to the EJB tier automatically.</p>
 </div>
-<div class="paragraph">
-<p>===== JBoss SSO</p>
 </div>
+<div class="sect4">
+<h5 id="jboss-sso-2"><a class="anchor" href="#jboss-sso-2"></a>JBoss SSO</h5>
 <div class="paragraph">
 <p>WildFly has built-in support for single sign-on for web applications deployed to the same WildFly
 instance. This should not be enabled when using Keycloak.</p>
 </div>
-<div id="_saml-jboss-adapter-samesite-setting" class="paragraph">
-<p>===== Setting SameSite value for JSESSIONID cookie</p>
 </div>
+<div class="sect4">
+<h5 id="_saml-jboss-adapter-samesite-setting"><a class="anchor" href="#_saml-jboss-adapter-samesite-setting"></a>Setting SameSite value for JSESSIONID cookie</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/jboss-adapter/jboss-adapter-samesite-setting.adoc" target="_blank">Edit this section</a>
@@ -8680,9 +8783,10 @@ with the following content to the <code>WEB-INF</code> directory of your applica
 <div class="paragraph">
 <p>The support for this configuration is available in Wildfly from version 19.1.0.</p>
 </div>
-<div id="_jboss_adapter_rpm_saml" class="paragraph">
-<p>==== Installing JBoss EAP Adapter from an RPM</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_jboss_adapter_rpm_saml"><a class="anchor" href="#_jboss_adapter_rpm_saml"></a>3.1.3. Installing JBoss EAP Adapter from an RPM</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/jboss-adapter/jboss-adapter-rpms.adoc" target="_blank">Edit this section</a>
@@ -8708,6 +8812,7 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 <p>You must subscribe to the JBoss EAP 7 repository before you can install the EAP 7 adapters from an RPM.</p>
 </div>
 <div class="olist arabic">
+<div class="title">Prerequisites</div>
 <ol class="arabic">
 <li>
 <p>Ensure that your Red Hat Enterprise Linux system is registered to your account using Red Hat Subscription Manager. For more information see the <a href="https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html-single/quick_registration_for_rhel/index">Red Hat Subscription Management documentation</a>.</p>
@@ -8794,6 +8899,7 @@ With Red Hat Enterprise Linux 7, the term channel was replaced with the term rep
 <p>You must subscribe to the JBoss EAP 6 repository before you can install the EAP 6 adapters from an RPM.</p>
 </div>
 <div class="olist arabic">
+<div class="title">Prerequisites</div>
 <ol class="arabic">
 <li>
 <p>Ensure that your Red Hat Enterprise Linux system is registered to your account using Red Hat Subscription Manager. For more information see the <a href="https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html-single/quick_registration_for_rhel/index">Red Hat Subscription Management documentation</a>.</p>
@@ -8845,9 +8951,8 @@ The default EAP_HOME path for the RPM installation is /opt/rh/eap6/root/usr/shar
 <div class="paragraph">
 <p>Your installation is complete.</p>
 </div>
-<div class="paragraph">
-<p>===== Per WAR Configuration</p>
-</div>
+<div class="sect4">
+<h5 id="per-war-configuration"><a class="anchor" href="#per-war-configuration"></a>Per WAR Configuration</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/jboss-adapter/required_per_war_configuration.adoc" target="_blank">Edit this section</a>
@@ -8917,9 +9022,9 @@ Here&#8217;s an example <em>web.xml</em> file:</p>
 <div class="paragraph">
 <p>All standard servlet settings except the <code>auth-method</code> setting.</p>
 </div>
-<div class="paragraph">
-<p>===== Securing WARs via Keycloak SAML Subsystem</p>
 </div>
+<div class="sect4">
+<h5 id="securing-wars-via-keycloak-saml-subsystem"><a class="anchor" href="#securing-wars-via-keycloak-saml-subsystem"></a>Securing WARs via Keycloak SAML Subsystem</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/jboss-adapter/securing_wars.adoc" target="_blank">Edit this section</a>
@@ -9007,9 +9112,10 @@ The rest of the configuration uses the same XML syntax as <code>keycloak-saml.xm
 <span class="tag">&lt;/subsystem&gt;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Tomcat SAML adapters</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_saml-tomcat-adapter"><a class="anchor" href="#_saml-tomcat-adapter"></a>3.1.4. Tomcat SAML adapters</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/tomcat-adapter.adoc" target="_blank">Edit this section</a>
@@ -9021,9 +9127,8 @@ The rest of the configuration uses the same XML syntax as <code>keycloak-saml.xm
 You then have to provide some extra configuration in each WAR you deploy to Tomcat.
 Let&#8217;s go over these steps.</p>
 </div>
-<div id="_saml-tomcat-adapter-installation" class="paragraph">
-<p>===== Adapter Installation</p>
-</div>
+<div class="sect4">
+<h5 id="_saml-tomcat-adapter-installation"><a class="anchor" href="#_saml-tomcat-adapter-installation"></a>Adapter Installation</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/tomcat-adapter/tomcat_adapter_installation.adoc" target="_blank">Edit this section</a>
@@ -9058,9 +9163,9 @@ $ unzip keycloak-saml-tomcat7-adapter-dist.zip</code></pre>
 $ unzip keycloak-saml-tomcat-adapter-dist.zip</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>===== Per WAR Configuration</p>
 </div>
+<div class="sect4">
+<h5 id="per-war-configuration-2"><a class="anchor" href="#per-war-configuration-2"></a>Per WAR Configuration</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/tomcat-adapter/tomcat_adapter_per_war_config.adoc" target="_blank">Edit this section</a>
@@ -9125,9 +9230,9 @@ Here&#8217;s an example:</p>
 <div class="paragraph">
 <p>If the <code>keycloak-saml.xml</code> does not explicitly set <code>assertionConsumerServiceUrl</code>, the SAML adapter will implicitly listen for SAML assertions at the location <code>/my-context-path/saml</code>. This has to match <code>Master SAML Processing URL</code> in the IDP realm/client settings, e.g. <code>http://sp.domain.com/my-context-path/saml</code>. If not, Tomcat will probably redirect infinitely to the IDP login service, as it does not receive the SAML assertion after the user logged in.</p>
 </div>
-<div id="_saml-tomcat-adapter-samesite-setting" class="paragraph">
-<p>===== Setting SameSite value for JSESSIONID cookie</p>
 </div>
+<div class="sect4">
+<h5 id="_saml-tomcat-adapter-samesite-setting"><a class="anchor" href="#_saml-tomcat-adapter-samesite-setting"></a>Setting SameSite value for JSESSIONID cookie</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/tomcat-adapter/tomcat-adapter-samesite-setting.adoc" target="_blank">Edit this section</a>
@@ -9179,9 +9284,10 @@ for your application will have this attribute set to <code>None</code>.
 <div class="paragraph">
 <p>The support for this feature is available in Tomcat from versions 9.0.29 and 8.5.49.</p>
 </div>
-<div class="paragraph">
-<p>==== Jetty SAML Adapters</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_jetty_saml_adapter"><a class="anchor" href="#_jetty_saml_adapter"></a>3.1.5. Jetty SAML Adapters</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/jetty-adapter.adoc" target="_blank">Edit this section</a>
@@ -9193,9 +9299,8 @@ for your application will have this attribute set to <code>None</code>.
 You then have to provide some extra configuration in each WAR you deploy to Jetty.
 Let&#8217;s go over these steps.</p>
 </div>
-<div class="paragraph">
-<p>===== Jetty 9 Adapter Installation</p>
-</div>
+<div class="sect4">
+<h5 id="_jetty9_saml_adapter_installation"><a class="anchor" href="#_jetty9_saml_adapter_installation"></a>Jetty 9 Adapter Installation</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/jetty-adapter/jetty9_installation.adoc" target="_blank">Edit this section</a>
@@ -9230,9 +9335,9 @@ $ unzip keycloak-saml-jetty92-adapter-dist.zip</code></pre>
 $ java -jar $JETTY_HOME/start.jar --add-to-startd=keycloak</code></pre>
 </div>
 </div>
-<div id="_saml-jetty9-per-war" class="paragraph">
-<p>===== Jetty 9 Per WAR Configuration</p>
 </div>
+<div class="sect4">
+<h5 id="_saml-jetty9-per-war"><a class="anchor" href="#_saml-jetty9-per-war"></a>Jetty 9 Per WAR Configuration</h5>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/jetty-adapter/jetty9_per_war_config.adoc" target="_blank">Edit this section</a>
@@ -9304,9 +9409,10 @@ Here&#8217;s an example:</p>
 <span class="tag">&lt;/web-app&gt;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Java Servlet Filter Adapter</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="java-servlet-filter-adapter"><a class="anchor" href="#java-servlet-filter-adapter"></a>3.1.6. Java Servlet Filter Adapter</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/servlet-filter-adapter.adoc" target="_blank">Edit this section</a>
@@ -9418,9 +9524,9 @@ You must have a filter mapping that covers <code>/saml</code>.
     <span class="tag">&lt;/filter&gt;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Registering with an Identity Provider</p>
 </div>
+<div class="sect3">
+<h4 id="registering-with-an-identity-provider"><a class="anchor" href="#registering-with-an-identity-provider"></a>3.1.7. Registering with an Identity Provider</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/idp-registration.adoc" target="_blank">Edit this section</a>
@@ -9431,9 +9537,9 @@ You must have a filter mapping that covers <code>/saml</code>.
 <p>For each servlet-based adapter, the endpoint you register for the assert consumer service URL and single logout service
 must be the base URL of your servlet application with <code>/saml</code> appended to it, that is, <code>https://example.com/contextPath/saml</code>.</p>
 </div>
-<div class="paragraph">
-<p>==== Logout</p>
 </div>
+<div class="sect3">
+<h4 id="logout-2"><a class="anchor" href="#logout-2"></a>3.1.8. Logout</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/logout.adoc" target="_blank">Edit this section</a>
@@ -9446,9 +9552,8 @@ For Java EE servlet containers, you can call <code>HttpServletRequest.logout()</
 the browser at any url of your web application that has a security constraint and pass in a query parameter GLO, i.e. <code>http://myapp?GLO=true</code>.
 This will log you out if you have an SSO session with your browser.</p>
 </div>
-<div id="_saml_logout_in_cluster" class="paragraph">
-<p>===== Logout in Clustered Environment</p>
-</div>
+<div class="sect4">
+<h5 id="_saml_logout_in_cluster"><a class="anchor" href="#_saml_logout_in_cluster"></a>Logout in Clustered Environment</h5>
 <div class="paragraph">
 <p>Internally, the SAML adapter stores a mapping between the SAML session index, principal name (when known), and HTTP session ID.
 This mapping can be maintained in JBoss application server family (WildFly 10/11, EAP 6/7) across cluster for distributable
@@ -9496,9 +9601,9 @@ be manually overridden in cache configuration section of the server just the sam
 Using distributed cache may lead to results where the SAML logout request would land to a node with no access
 to SAML session index to HTTP session mapping which would lead to unsuccessful logout.</p>
 </div>
-<div id="_saml_logout_in_cross_dc" class="paragraph">
-<p>===== Logout in Cross DC Scenario</p>
 </div>
+<div class="sect4">
+<h5 id="_saml_logout_in_cross_dc"><a class="anchor" href="#_saml_logout_in_cross_dc"></a>Logout in Cross DC Scenario</h5>
 <div class="paragraph">
 <p>The cross DC scenario only applies to WildFly 10 and higher, and EAP 7 and higher.</p>
 </div>
@@ -9538,9 +9643,10 @@ not only within individual clusters but across all the data centers e.g.
 <p>Once remote store is found to be present on SAML session cache during deployment, it is watched for changes
 and the local SAML session cache is updated accordingly.</p>
 </div>
-<div class="paragraph">
-<p>==== Obtaining Assertion Attributes</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="obtaining-assertion-attributes"><a class="anchor" href="#obtaining-assertion-attributes"></a>3.1.9. Obtaining Assertion Attributes</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/assertion-api.adoc" target="_blank">Edit this section</a>
@@ -9652,9 +9758,9 @@ This object allows you to look at the raw assertion and also has convenience fun
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Error Handling</p>
 </div>
+<div class="sect3">
+<h4 id="error-handling"><a class="anchor" href="#error-handling"></a>3.1.10. Error Handling</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/error_handling.adoc" target="_blank">Edit this section</a>
@@ -9700,9 +9806,9 @@ If this attribute is not set, then the adapter was not responsible for the error
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Troubleshooting</p>
 </div>
+<div class="sect3">
+<h4 id="troubleshooting"><a class="anchor" href="#troubleshooting"></a>3.1.11. Troubleshooting</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/debugging.adoc" target="_blank">Edit this section</a>
@@ -9712,9 +9818,9 @@ If this attribute is not set, then the adapter was not responsible for the error
 <div class="paragraph">
 <p>The best way to troubleshoot problems is to turn on debugging for SAML in both the client adapter and Keycloak Server. Using your logging framework, set the log level to <code>DEBUG</code> for the <code>org.keycloak.saml</code> package. Turning this on allows you to see the SAML requests and response documents being sent to and from the server.</p>
 </div>
-<div id="_saml_multi_tenancy" class="paragraph">
-<p>==== Multi Tenancy</p>
 </div>
+<div class="sect3">
+<h4 id="_saml_multi_tenancy"><a class="anchor" href="#_saml_multi_tenancy"></a>3.1.12. Multi Tenancy</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/multi-tenancy.adoc" target="_blank">Edit this section</a>
@@ -9797,29 +9903,30 @@ If this attribute is not set, then the adapter was not responsible for the error
 <span class="tag">&lt;/web-app&gt;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Migration from older versions</p>
 </div>
+<div class="sect3">
+<h4 id="migration-from-older-versions"><a class="anchor" href="#migration-from-older-versions"></a>3.1.13. Migration from older versions</h4>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/java/MigrationFromOlderVersions.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20securing_apps/topics/saml/java/MigrationFromOlderVersions.adoc" target="_blank">Report an issue</a>
 </div>
 </div>
-<div class="paragraph">
-<p>===== Migrating to 1.9.0</p>
-</div>
-<div class="paragraph">
-<p>====== SAML SP Client Adapter Changes</p>
-</div>
+<div class="sect4">
+<h5 id="migrating-to-1-9-0"><a class="anchor" href="#migrating-to-1-9-0"></a>Migrating to 1.9.0</h5>
+<div class="sect5">
+<h6 id="saml-sp-client-adapter-changes"><a class="anchor" href="#saml-sp-client-adapter-changes"></a>SAML SP Client Adapter Changes</h6>
 <div class="paragraph">
 <p>Keycloak SAML SP Client Adapter now requires a specific endpoint, <code>/saml</code> to be registered with your IdP.
 The SamlFilter must also be bound to /saml in addition to any other binding it has.
 This had to be done because SAML POST binding would eat the request input stream and this would be really bad for clients that relied on it.</p>
 </div>
-<div class="paragraph">
-<p>=== mod_auth_mellon Apache HTTPD Module</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mod_auth_mellon"><a class="anchor" href="#_mod_auth_mellon"></a>3.2. mod_auth_mellon Apache HTTPD Module</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/saml/mod-auth-mellon.adoc" target="_blank">Edit this section</a>
@@ -9871,9 +9978,8 @@ This had to be done because SAML POST binding would eat the request input stream
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>==== Configuring mod_auth_mellon with Keycloak</p>
-</div>
+<div class="sect3">
+<h4 id="configuring-mod_auth_mellon-with-keycloak"><a class="anchor" href="#configuring-mod_auth_mellon-with-keycloak"></a>3.2.1. Configuring mod_auth_mellon with Keycloak</h4>
 <div class="paragraph">
 <p>There are two hosts involved:</p>
 </div>
@@ -9890,9 +9996,8 @@ This had to be done because SAML POST binding would eat the request input stream
 <div class="paragraph">
 <p>All of the following steps need to performed on $sp_host with root privileges.</p>
 </div>
-<div class="paragraph">
-<p>===== Installing the Packages</p>
-</div>
+<div class="sect4">
+<h5 id="installing-the-packages"><a class="anchor" href="#installing-the-packages"></a>Installing the Packages</h5>
 <div class="paragraph">
 <p>To install the necessary packages, you will need:</p>
 </div>
@@ -9917,9 +10022,9 @@ This had to be done because SAML POST binding would eat the request input stream
 <pre>yum install httpd mod_auth_mellon mod_ssl openssl</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>===== Creating a Configuration Directory for Apache SAML</p>
 </div>
+<div class="sect4">
+<h5 id="creating-a-configuration-directory-for-apache-saml"><a class="anchor" href="#creating-a-configuration-directory-for-apache-saml"></a>Creating a Configuration Directory for Apache SAML</h5>
 <div class="paragraph">
 <p>It is advisable to keep configuration files related to Apache&#8217;s use of SAML in one location.</p>
 </div>
@@ -9931,9 +10036,9 @@ This had to be done because SAML POST binding would eat the request input stream
 <pre>mkdir /etc/httpd/saml2</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>===== Configuring the Mellon Service Provider</p>
 </div>
+<div class="sect4">
+<h5 id="configuring-the-mellon-service-provider"><a class="anchor" href="#configuring-the-mellon-service-provider"></a>Configuring the Mellon Service Provider</h5>
 <div class="paragraph">
 <p>Configuration files for Apache add-on modules are located in the /etc/httpd/conf.d directory and have a file name extension of .conf. You need to create the /etc/httpd/conf.d/mellon.conf file and place Mellon&#8217;s configuration directives in it.</p>
 </div>
@@ -9995,9 +10100,10 @@ Some of the files referenced in the code above are created in later steps.
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>==== Setting the SameSite value for the cookie used by mod_auth_mellon</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="setting-the-samesite-value-for-the-cookie-used-by-mod_auth_mellon"><a class="anchor" href="#setting-the-samesite-value-for-the-cookie-used-by-mod_auth_mellon"></a>3.2.2. Setting the SameSite value for the cookie used by mod_auth_mellon</h4>
 <div class="paragraph">
 <p>Browsers are planning to set the default value for the <code>SameSite</code> attribute for cookies to <code>Lax</code>. This setting means
 that cookies will be sent to applications only if the request originates in the same domain. This behavior can affect
@@ -10018,9 +10124,8 @@ MellonCookieSameSite none</code></pre>
 <div class="paragraph">
 <p>The support for this configuration is available in the <em>mod_auth_mellon</em> module from version 0.16.0.</p>
 </div>
-<div class="paragraph">
-<p>===== Creating the Service Provider Metadata</p>
-</div>
+<div class="sect4">
+<h5 id="creating-the-service-provider-metadata"><a class="anchor" href="#creating-the-service-provider-metadata"></a>Creating the Service Provider Metadata</h5>
 <div class="paragraph">
 <p>In SAML IdPs and SPs exchange SAML metadata, which is in XML format. The schema for the metadata is a standard, thus assuring participating SAML entities can consume each other&#8217;s metadata. You need:</p>
 </div>
@@ -10102,9 +10207,9 @@ mv ${file_prefix}.xml /etc/httpd/saml2/mellon_metadata.xml</code></pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>===== Adding the Mellon Service Provider to the Keycloak Identity Provider</p>
 </div>
+<div class="sect4">
+<h5 id="adding-the-mellon-service-provider-to-the-keycloak-identity-provider"><a class="anchor" href="#adding-the-mellon-service-provider-to-the-keycloak-identity-provider"></a>Adding the Mellon Service Provider to the Keycloak Identity Provider</h5>
 <div class="paragraph">
 <p>Assumption: The Keycloak IdP has already been installed on the $idp_host.</p>
 </div>
@@ -10133,9 +10238,8 @@ mv ${file_prefix}.xml /etc/httpd/saml2/mellon_metadata.xml</code></pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>====== Adding the Mellon Service Provider as a Client of the Realm</p>
-</div>
+<div class="sect5">
+<h6 id="adding-the-mellon-service-provider-as-a-client-of-the-realm"><a class="anchor" href="#adding-the-mellon-service-provider-as-a-client-of-the-realm"></a>Adding the Mellon Service Provider as a Client of the Realm</h6>
 <div class="paragraph">
 <p>In Keycloak SAML SPs are known as clients. To add the SP we must be in the Clients section of the realm.</p>
 </div>
@@ -10146,9 +10250,9 @@ mv ${file_prefix}.xml /etc/httpd/saml2/mellon_metadata.xml</code></pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>====== Adding the Mellon SP Client</p>
 </div>
+<div class="sect5">
+<h6 id="adding-the-mellon-sp-client"><a class="anchor" href="#adding-the-mellon-sp-client"></a>Adding the Mellon SP Client</h6>
 <div class="paragraph">
 <p>To add the Mellon SP client, complete the following steps:</p>
 </div>
@@ -10165,9 +10269,9 @@ mv ${file_prefix}.xml /etc/httpd/saml2/mellon_metadata.xml</code></pre>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>====== Editing the Mellon SP Client</p>
 </div>
+<div class="sect5">
+<h6 id="editing-the-mellon-sp-client"><a class="anchor" href="#editing-the-mellon-sp-client"></a>Editing the Mellon SP Client</h6>
 <div class="paragraph">
 <p>There are several client configuration parameters we suggest setting:</p>
 </div>
@@ -10225,9 +10329,9 @@ mv ${file_prefix}.xml /etc/httpd/saml2/mellon_metadata.xml</code></pre>
 <div class="paragraph">
 <p>The remaining steps are performed on $sp_host.</p>
 </div>
-<div class="paragraph">
-<p>====== Retrieving the Identity Provider Metadata</p>
 </div>
+<div class="sect5">
+<h6 id="retrieving-the-identity-provider-metadata"><a class="anchor" href="#retrieving-the-identity-provider-metadata"></a>Retrieving the Identity Provider Metadata</h6>
 <div class="paragraph">
 <p>Now that you have created the realm on the IdP you need to retrieve the IdP metadata associated with it so the Mellon SP recognizes it. In the /etc/httpd/conf.d/mellon.conf file created previously, the MellonIdPMetadataFile is specified as /etc/httpd/saml2/idp_metadata.xml but until now that file has not existed on $sp_host. To get that file we will retrieve it from the IdP.</p>
 </div>
@@ -10278,9 +10382,15 @@ Configtest is equivalent to the -t argument to apachectl. If the configuration t
 <div class="paragraph">
 <p>You have now set up both Keycloak as a SAML IdP in the test_realm and mod_auth_mellon as SAML SP protecting the URL $sp_host/protected (and everything beneath it) by authenticating against the <code>$idp_host</code> IdP.</p>
 </div>
-<div class="paragraph">
-<p>== Docker Registry Configuration</p>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="docker-registry-configuration"><a class="anchor" href="#docker-registry-configuration"></a>4. Docker Registry Configuration</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/docker/docker-overview.adoc" target="_blank">Edit this section</a>
@@ -10305,9 +10415,8 @@ Docker authentication is disabled by default. To enable see <a href="https://www
 <div class="paragraph">
 <p>For more information on how to set up and configure a Docker registry, see the <a href="https://docs.docker.com/registry/configuration/">Docker Registry Configuration Guide</a>.</p>
 </div>
-<div class="paragraph">
-<p>=== Docker Registry Configuration File Installation</p>
-</div>
+<div class="sect2">
+<h3 id="docker-registry-configuration-file-installation"><a class="anchor" href="#docker-registry-configuration-file-installation"></a>4.1. Docker Registry Configuration File Installation</h3>
 <div class="paragraph">
 <p>For users with more advanced Docker registry configurations, it is generally recommended to provide your own registry configuration file.  The Keycloak Docker provider supports this mechanism via the <em>Registry Config File</em> Format Option.  Choosing this option will generate output similar to the following:</p>
 </div>
@@ -10335,9 +10444,9 @@ Don&#8217;t forget to configure the <code>rootcertbundle</code> field with the l
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>=== Docker Registry Environment Variable Override Installation</p>
 </div>
+<div class="sect2">
+<h3 id="docker-registry-environment-variable-override-installation"><a class="anchor" href="#docker-registry-environment-variable-override-installation"></a>4.2. Docker Registry Environment Variable Override Installation</h3>
 <div class="paragraph">
 <p>Often times it is appropriate to use a simple environment variable override for develop or POC Docker registries.  While this approach is usually not recommended for production use, it can be helpful when one requires quick-and-dirty way to stand up a registry.  Simply use the <em>Variable Override</em> Format Option from the client installation tab, and an output should appear like the one below:</p>
 </div>
@@ -10360,9 +10469,9 @@ Don&#8217;t forget to configure the <code>REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE</co
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>=== Docker Compose YAML File</p>
 </div>
+<div class="sect2">
+<h3 id="docker-compose-yaml-file"><a class="anchor" href="#docker-compose-yaml-file"></a>4.3. Docker Compose YAML File</h3>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -10416,9 +10525,12 @@ Password: *******
 Login Succeeded</pre>
 </div>
 </div>
-<div id="_client_registration" class="paragraph">
-<p>== Client Registration</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_client_registration"><a class="anchor" href="#_client_registration"></a>5. Client Registration</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/client-registration.adoc" target="_blank">Edit this section</a>
@@ -10456,16 +10568,14 @@ The Client Registration Service endpoint is <code>/auth/realms/&lt;realm&gt;/cli
 <div class="paragraph">
 <p>The following sections will describe how to use the different providers.</p>
 </div>
-<div class="paragraph">
-<p>=== Authentication</p>
-</div>
+<div class="sect2">
+<h3 id="authentication"><a class="anchor" href="#authentication"></a>5.1. Authentication</h3>
 <div class="paragraph">
 <p>To invoke the Client Registration Services you usually need a token. The token can be a bearer token, an initial access token or a registration access token.
 There is an alternative to register new client without any token as well, but then you need to configure Client Registration Policies (see below).</p>
 </div>
-<div class="paragraph">
-<p>==== Bearer Token</p>
-</div>
+<div class="sect3">
+<h4 id="bearer-token"><a class="anchor" href="#bearer-token"></a>5.1.1. Bearer Token</h4>
 <div class="paragraph">
 <p>The bearer token can be issued on behalf of a user or a Service Account. The following permissions are required to invoke the endpoints (see <a href="https://www.keycloak.org/docs/16.0/server_admin/">Server Administration Guide</a> for more details):</p>
 </div>
@@ -10485,9 +10595,9 @@ There is an alternative to register new client without any token as well, but th
 <div class="paragraph">
 <p>If you are using a bearer token to create clients it&#8217;s recommend to use a token from a Service Account with only the <code>create-client</code> role (see <a href="https://www.keycloak.org/docs/16.0/server_admin/">Server Administration Guide</a> for more details).</p>
 </div>
-<div id="_initial_access_token" class="paragraph">
-<p>==== Initial Access Token</p>
 </div>
+<div class="sect3">
+<h4 id="_initial_access_token"><a class="anchor" href="#_initial_access_token"></a>5.1.2. Initial Access Token</h4>
 <div class="paragraph">
 <p>The recommended approach to registering new clients is by using initial access tokens.
 An initial access token can only be used to create clients and has a configurable expiration as well as a configurable limit on how many clients can be created.</p>
@@ -10514,9 +10624,9 @@ For example:</p>
 <pre class="CodeRay highlight"><code>Authorization: bearer eyJhbGciOiJSUz...</code></pre>
 </div>
 </div>
-<div id="_registration_access_token" class="paragraph">
-<p>==== Registration Access Token</p>
 </div>
+<div class="sect3">
+<h4 id="_registration_access_token"><a class="anchor" href="#_registration_access_token"></a>5.1.3. Registration Access Token</h4>
 <div class="paragraph">
 <p>When you create a client through the Client Registration Service the response will include a registration access token.
 The registration access token provides access to retrieve the client configuration later, but also to update or delete the client.
@@ -10528,9 +10638,10 @@ Registration access tokens are only valid once, when it&#8217;s used the respons
 You can create one through the admin console. This can also be useful if you lose the token for a particular client.
 To create a new token find the client in the admin console and click on <code>Credentials</code>. Then click on <code>Generate registration access token</code>.</p>
 </div>
-<div class="paragraph">
-<p>=== Keycloak Representations</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="keycloak-representations"><a class="anchor" href="#keycloak-representations"></a>5.2. Keycloak Representations</h3>
 <div class="paragraph">
 <p>The <code>default</code> client registration provider can be used to create, retrieve, update and delete a client.
 It uses Keycloak Client Representation format which provides support for configuring clients exactly as they can be configured through the admin
@@ -10560,9 +10671,9 @@ You should save the registration access token somewhere if you want to retrieve 
 <p>To delete the Client Representation perform an HTTP DELETE request to:
 <code>/auth/realms/&lt;realm&gt;/clients-registrations/default/&lt;client id&gt;</code></p>
 </div>
-<div class="paragraph">
-<p>=== Keycloak Adapter Configuration</p>
 </div>
+<div class="sect2">
+<h3 id="keycloak-adapter-configuration"><a class="anchor" href="#keycloak-adapter-configuration"></a>5.3. Keycloak Adapter Configuration</h3>
 <div class="paragraph">
 <p>The <code>installation</code> client registration provider can be used to retrieve the adapter configuration for a client.
 In addition to token authentication you can also authenticate with client credentials using HTTP basic authentication.
@@ -10580,9 +10691,9 @@ To do this include the following header in the request:</p>
 <p>No authentication is required for public clients.
 This means that for the JavaScript adapter you can load the client configuration directly from Keycloak using the above URL.</p>
 </div>
-<div class="paragraph">
-<p>=== OpenID Connect Dynamic Client Registration</p>
 </div>
+<div class="sect2">
+<h3 id="openid-connect-dynamic-client-registration"><a class="anchor" href="#openid-connect-dynamic-client-registration"></a>5.4. OpenID Connect Dynamic Client Registration</h3>
 <div class="paragraph">
 <p>Keycloak implements <a href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration</a>, which extends <a href="https://datatracker.ietf.org/doc/html/rfc7591">OAuth 2.0 Dynamic Client Registration Protocol</a> and <a href="https://datatracker.ietf.org/doc/html/rfc7592">OAuth 2.0 Dynamic Client Registration Management Protocol</a>.</p>
 </div>
@@ -10592,9 +10703,9 @@ This means that for the JavaScript adapter you can load the client configuration
 <div class="paragraph">
 <p>This endpoint can also be found in the OpenID Connect Discovery endpoint for the realm, <code>/auth/realms/&lt;realm&gt;/.well-known/openid-configuration</code>.</p>
 </div>
-<div class="paragraph">
-<p>=== SAML Entity Descriptors</p>
 </div>
+<div class="sect2">
+<h3 id="saml-entity-descriptors"><a class="anchor" href="#saml-entity-descriptors"></a>5.5. SAML Entity Descriptors</h3>
 <div class="paragraph">
 <p>The SAML Entity Descriptor endpoint only supports using SAML v2 Entity Descriptors to create clients.
 It doesn&#8217;t support retrieving, updating or deleting clients.
@@ -10604,9 +10715,9 @@ When creating a client a Keycloak Client Representation is returned with details
 <div class="paragraph">
 <p>To create a client perform an HTTP POST request with the SAML Entity Descriptor to <code>/auth/realms/&lt;realm&gt;/clients-registrations/saml2-entity-descriptor</code>.</p>
 </div>
-<div class="paragraph">
-<p>=== Example using CURL</p>
 </div>
+<div class="sect2">
+<h3 id="example-using-curl-2"><a class="anchor" href="#example-using-curl-2"></a>5.6. Example using CURL</h3>
 <div class="paragraph">
 <p>The following example creates a client with the clientId <code>myclient</code> using CURL. You need to replace <code>eyJhbGciOiJSUz&#8230;&#8203;</code> with a proper initial access token or
 bearer token.</p>
@@ -10620,9 +10731,9 @@ bearer token.</p>
     http://localhost:8080/auth/realms/master/clients-registrations/default</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Example using Java Client Registration API</p>
 </div>
+<div class="sect2">
+<h3 id="example-using-java-client-registration-api"><a class="anchor" href="#example-using-java-client-registration-api"></a>5.7. Example using Java Client Registration API</h3>
 <div class="paragraph">
 <p>The Client Registration Java API makes it easy to use the Client Registration Service using Java.
 To use include the dependency <code>org.keycloak:keycloak-client-registration-api:&gt;VERSION&lt;</code> from Maven.</p>
@@ -10649,9 +10760,9 @@ client = reg.create(client);
 <span class="predefined-type">String</span> registrationAccessToken = client.getRegistrationAccessToken();</code></pre>
 </div>
 </div>
-<div id="_client_registration_policies" class="paragraph">
-<p>=== Client Registration Policies</p>
 </div>
+<div class="sect2">
+<h3 id="_client_registration_policies"><a class="anchor" href="#_client_registration_policies"></a>5.8. Client Registration Policies</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -10739,9 +10850,12 @@ This policy is not used by default even for anonymous registration.</p>
 </li>
 </ul>
 </div>
-<div id="_client_registration_cli" class="paragraph">
-<p>== Client Registration CLI</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_client_registration_cli"><a class="anchor" href="#_client_registration_cli"></a>6. Client Registration CLI</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/client-registration/client-registration-cli.adoc" target="_blank">Edit this section</a>
@@ -10760,9 +10874,8 @@ This policy is not used by default even for anonymous registration.</p>
 <div class="paragraph">
 <p>To allow a particular user to use <code>Client Registration CLI</code> the Keycloak administrator typically uses the Admin Console to configure a new user with proper roles or to configure a new client and client secret to grant access to the Client Registration REST API.</p>
 </div>
-<div id="_configuring_a_user_for_client_registration_cli" class="paragraph">
-<p>=== Configuring a new regular user for use with Client Registration CLI</p>
-</div>
+<div class="sect2">
+<h3 id="_configuring_a_user_for_client_registration_cli"><a class="anchor" href="#_configuring_a_user_for_client_registration_cli"></a>6.1. Configuring a new regular user for use with Client Registration CLI</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -10802,9 +10915,9 @@ This policy is not used by default even for anonymous registration.</p>
 <div class="paragraph">
 <p>The Administrator can issue Initial Access Tokens from the Admin Console through the <strong>Realm Settings &gt; Client Registration &gt; Initial Access Token</strong> menu.</p>
 </div>
-<div id="_configuring_a_client_for_use_with_client_registration_cli" class="paragraph">
-<p>=== Configuring a client for use with the Client Registration CLI</p>
 </div>
+<div class="sect2">
+<h3 id="_configuring_a_client_for_use_with_client_registration_cli"><a class="anchor" href="#_configuring_a_client_for_use_with_client_registration_cli"></a>6.2. Configuring a client for use with the Client Registration CLI</h3>
 <div class="paragraph">
 <p>By default, the server recognizes the Client Registration CLI as the <code class="filename">admin-cli</code> client, which is configured automatically for every new realm. No additional client configuration is necessary when logging in with a user name.</p>
 </div>
@@ -10841,7 +10954,7 @@ This policy is not used by default even for anonymous registration.</p>
 <p>Under <strong>Settings</strong>, change the <strong>Access Type</strong> to <strong>Confidential</strong>, toggle the <strong>Service Accounts Enabled</strong> setting to <strong>On</strong>, and click <strong>Save</strong>.</p>
 </li>
 <li>
-<p>Click <strong>Service Account Roles</strong> and select desired roles to configure the access for the service account. For the details on what roles to select, see <a href="#_configuring_a_user_for_client_registration_cli">[_configuring_a_user_for_client_registration_cli]</a>.</p>
+<p>Click <strong>Service Account Roles</strong> and select desired roles to configure the access for the service account. For the details on what roles to select, see <a href="#_configuring_a_user_for_client_registration_cli">Configuring a new regular user for use with Client Registration CLI</a>.</p>
 </li>
 </ol>
 </div>
@@ -10860,9 +10973,9 @@ This policy is not used by default even for anonymous registration.</p>
 </li>
 </ol>
 </div>
-<div id="_installing_client_registration_cli" class="paragraph">
-<p>=== Installing the Client Registration CLI</p>
 </div>
+<div class="sect2">
+<h3 id="_installing_client_registration_cli"><a class="anchor" href="#_installing_client_registration_cli"></a>6.3. Installing the Client Registration CLI</h3>
 <div class="paragraph">
 <p>The Client Registration CLI is packaged inside the Keycloak Server distribution. You can find execution scripts inside the <code class="filename">bin</code> directory. The Linux script is called <code class="filename">kcreg.sh</code>, and the Windows script is called <code class="filename">kcreg.bat</code>.</p>
 </div>
@@ -10901,9 +11014,9 @@ c:\&gt; kcreg</pre>
 <div class="paragraph">
 <p><code class="filename">KEYCLOAK_HOME</code> refers to a directory where the Keycloak Server distribution was unpacked.</p>
 </div>
-<div id="_using_client_registration_cli" class="paragraph">
-<p>=== Using the Client Registration CLI</p>
 </div>
+<div class="sect2">
+<h3 id="_using_client_registration_cli"><a class="anchor" href="#_using_client_registration_cli"></a>6.4. Using the Client Registration CLI</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -10981,9 +11094,8 @@ c:\&gt; kcreg get my_client</pre>
 </li>
 </ol>
 </div>
-<div id="_logging_in" class="paragraph">
-<p>==== Logging in</p>
-</div>
+<div class="sect3">
+<h4 id="_logging_in"><a class="anchor" href="#_logging_in"></a>6.4.1. Logging in</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -11001,7 +11113,7 @@ c:\&gt; kcreg get my_client</pre>
 <p>You cannot configure users with the Client Registration CLI. Use the Admin Console web interface or the Admin Client CLI to configure users. See <a href="https://www.keycloak.org/docs/16.0/server_admin/">Server Administration Guide</a> for more details.</p>
 </div>
 <div class="paragraph">
-<p>When <code class="filename">kcreg</code> successfully logs in, it receives authorization tokens and saves them in a private configuration file so the tokens can be used for subsequent invocations. See <a href="#_working_with_alternative_configurations">[_working_with_alternative_configurations]</a> for more information on configuration files.</p>
+<p>When <code class="filename">kcreg</code> successfully logs in, it receives authorization tokens and saves them in a private configuration file so the tokens can be used for subsequent invocations. See <a href="#_working_with_alternative_configurations">Working with alternative configurations</a> for more information on configuration files.</p>
 </div>
 <div class="paragraph">
 <p>See the built-in help for more information on using the Client Registration CLI.</p>
@@ -11036,9 +11148,9 @@ c:\&gt; kcreg get my_client</pre>
 <div class="paragraph">
 <p>See <code class="filename">kcreg config credentials --help</code> for more information about starting an authenticated session.</p>
 </div>
-<div id="_working_with_alternative_configurations" class="paragraph">
-<p>==== Working with alternative configurations</p>
 </div>
+<div class="sect3">
+<h4 id="_working_with_alternative_configurations"><a class="anchor" href="#_working_with_alternative_configurations"></a>6.4.2. Working with alternative configurations</h4>
 <div class="paragraph">
 <p>By default, the Client Registration CLI automatically maintains a configuration file at a default location, <code class="filename">./.keycloak/kcreg.config</code>, under the user&#8217;s home directory. You can use the <code class="command">--config</code> option to point to a different file or location to maintain multiple authenticated sessions in parallel. It is the safest way to perform operations tied to a single configuration file from a single thread.</p>
 </div>
@@ -11059,9 +11171,9 @@ c:\&gt; kcreg get my_client</pre>
 <div class="paragraph">
 <p>You might want to avoid storing secrets inside a configuration file by using the <code class="command">--no-config</code> option with all of your commands, even though it is less convenient and requires more token requests to do so. Specify all authentication information with each <code class="command">kcreg</code> invocation.</p>
 </div>
-<div id="_initial_access_and_registration_access_tokens" class="paragraph">
-<p>==== Initial Access and Registration Access Tokens</p>
 </div>
+<div class="sect3">
+<h4 id="_initial_access_and_registration_access_tokens"><a class="anchor" href="#_initial_access_and_registration_access_tokens"></a>6.4.3. Initial Access and Registration Access Tokens</h4>
 <div class="paragraph">
 <p>Developers who do not have an account configured at the Keycloak server they want to use can use the Client Registration CLI. This is possible only when the realm administrator issues a developer an Initial Access Token. It is up to the realm administrator to decide how and when to issue and distribute these tokens. The realm administrator can limit the maximum age of the Initial Access Token and the total number of clients that can be created with it.</p>
 </div>
@@ -11125,9 +11237,9 @@ c:\&gt; kcreg create -s clientId=myclient</pre>
 <div class="paragraph">
 <p>Run the <code class="command">kcreg config initial-token --help</code> and <code class="command">kcreg config registration-token --help</code> commands for more information on how to configure tokens with the Client Registration CLI.</p>
 </div>
-<div id="_performing_crud_operations" class="paragraph">
-<p>==== Creating a client configuration</p>
 </div>
+<div class="sect3">
+<h4 id="_performing_crud_operations"><a class="anchor" href="#_performing_crud_operations"></a>6.4.4. Creating a client configuration</h4>
 <div class="paragraph">
 <p>The first task after authenticating with credentials or configuring an Initial Access Token is usually to create a new client. Often you might want to use a prepared JSON file as a template and set or override some of the attributes.</p>
 </div>
@@ -11165,9 +11277,9 @@ c:\&gt; kcreg create -s clientId=myclient</pre>
 <p>You can use <code class="command">kcreg attrs</code> to list available attributes. Keep in mind that many configuration attributes are not checked for validity or consistency. It is up to you to specify proper values. Remember that you should not have any id fields in your
 template and should not specify them as arguments to the <code class="command">kcreg create</code> command.</p>
 </div>
-<div class="paragraph">
-<p>==== Retrieving a client configuration</p>
 </div>
+<div class="sect3">
+<h4 id="retrieving-a-client-configuration"><a class="anchor" href="#retrieving-a-client-configuration"></a>6.4.5. Retrieving a client configuration</h4>
 <div class="paragraph">
 <p>You can retrieve an existing client by using the <code class="command">kcreg get</code> command.</p>
 </div>
@@ -11231,9 +11343,9 @@ template and should not specify them as arguments to the <code class="command">k
 <div class="paragraph">
 <p>Run the <code class="command">kcreg get --help</code> command for more information about the <code class="command">kcreg get</code> command.</p>
 </div>
-<div class="paragraph">
-<p>==== Modifying a client configuration</p>
 </div>
+<div class="sect3">
+<h4 id="modifying-a-client-configuration"><a class="anchor" href="#modifying-a-client-configuration"></a>6.4.6. Modifying a client configuration</h4>
 <div class="paragraph">
 <p>There are two methods for updating a client configuration.</p>
 </div>
@@ -11334,9 +11446,9 @@ C:\&gt; kcreg update myclient -f myclient.json</pre>
 <div class="paragraph">
 <p>Run the <code class="command">kcreg update --help</code> command for more information about the <code class="command">kcreg update</code> command.</p>
 </div>
-<div class="paragraph">
-<p>==== Deleting a client configuration</p>
 </div>
+<div class="sect3">
+<h4 id="deleting-a-client-configuration"><a class="anchor" href="#deleting-a-client-configuration"></a>6.4.7. Deleting a client configuration</h4>
 <div class="paragraph">
 <p>Use the following example to delete a client.</p>
 </div>
@@ -11367,9 +11479,9 @@ C:\&gt; kcreg update myclient -f myclient.json</pre>
 <div class="paragraph">
 <p>Run the <code class="command">kcreg delete --help</code> command for more information about the <code class="command">kcreg delete</code> command.</p>
 </div>
-<div id="_refreshing_invalid_registration_access_tokens" class="paragraph">
-<p>==== Refreshing invalid Registration Access Tokens</p>
 </div>
+<div class="sect3">
+<h4 id="_refreshing_invalid_registration_access_tokens"><a class="anchor" href="#_refreshing_invalid_registration_access_tokens"></a>6.4.8. Refreshing invalid Registration Access Tokens</h4>
 <div class="paragraph">
 <p>When performing a create, read, update, and delete (CRUD) operation using the <code class="command">--no-config</code> mode, the Client Registration CLI cannot handle Registration Access Tokens for you. In that case, it is possible to lose track of the most recently issued Registration Access Token for a client, which makes it impossible to perform any further CRUD operations on that client without authenticating with an account that has <strong>manage-clients</strong> permissions.</p>
 </div>
@@ -11379,9 +11491,10 @@ C:\&gt; kcreg update myclient -f myclient.json</pre>
 <div class="paragraph">
 <p>Run the <code class="command">kcreg update-token --help</code> command for more information about the <code class="command">kcreg update-token</code> command.</p>
 </div>
-<div id="_troubleshooting_2" class="paragraph">
-<p>=== Troubleshooting</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_troubleshooting_2"><a class="anchor" href="#_troubleshooting_2"></a>6.5. Troubleshooting</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -11392,9 +11505,12 @@ C:\&gt; kcreg update myclient -f myclient.json</pre>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>== Token Exchange</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_token-exchange"><a class="anchor" href="#_token-exchange"></a>7. Token Exchange</h2>
+<div class="sectionbody">
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/token-exchange/token-exchange.adoc" target="_blank">Edit this section</a>
@@ -11413,6 +11529,7 @@ C:\&gt; kcreg update myclient -f myclient.json</pre>
 </div>
 <div class="paragraph">
 <p>To enable start the server with <code>-Dkeycloak.profile=preview</code>
+or <code>-Dkeycloak.profile.feature.token_exchange=enabled</code>
 . For more details see <a href="https://www.keycloak.org/docs/16.0/server_installation/#profiles">Profiles</a>.</p>
 </div>
 </td>
@@ -11601,9 +11718,8 @@ Token exchange setup requires knowledge of fine grain admin permissions (See the
 For simplicity&#8217;s sake, let&#8217;s call a token minted by the current realm as an <em>internal</em> token and a token minted by
 an external realm or identity provider as an <em>external</em> token.</p>
 </div>
-<div class="paragraph">
-<p>=== Internal Token to Internal Token Exchange</p>
-</div>
+<div class="sect2">
+<h3 id="internal-token-to-internal-token-exchange"><a class="anchor" href="#internal-token-to-internal-token-exchange"></a>7.1. Internal Token to Internal Token Exchange</h3>
 <div class="paragraph">
 <p>With an internal token to token exchange you have an existing token minted to a specific client and you want to exchange
 this token for a new one minted for a different target client.  Why would you want to do this?  This generally happens
@@ -11612,9 +11728,8 @@ claims and permissions within the access token.  Other reasons this type of exch
 need to perform a "permission downgrade" where your app needs to invoke on a less trusted app and you don&#8217;t want
 to propagate your current access token.</p>
 </div>
-<div id="_client_to_client_permission" class="paragraph">
-<p>==== Granting Permission for the Exchange</p>
-</div>
+<div class="sect3">
+<h4 id="_client_to_client_permission"><a class="anchor" href="#_client_to_client_permission"></a>7.1.1. Granting Permission for the Exchange</h4>
 <div class="paragraph">
 <p>Clients that want to exchange tokens for a different client need to be authorized in the admin console to do so.
 You&#8217;ll need to define a <code>token-exchange</code> fine grain permission in the target client you want permission to exchange to.</p>
@@ -11659,9 +11774,9 @@ defined.</p>
 <p>Your client now has permission to invoke.  If you do not do this correctly, you will get a 403 Forbidden response if you
 try to make an exchange.</p>
 </div>
-<div class="paragraph">
-<p>==== Making the Request</p>
 </div>
+<div class="sect3">
+<h4 id="making-the-request"><a class="anchor" href="#making-the-request"></a>7.1.2. Making the Request</h4>
 <div class="paragraph">
 <p>When your client is exchanging an existing token for a token targeting another client, you must use the <code>audience</code> parameter.
 This parameter must be the client identifier for the target client that you configured in the admin console.</p>
@@ -11692,9 +11807,10 @@ an example JSON response you get back from this call.</p>
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Internal Token to External Token Exchange</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="internal-token-to-external-token-exchange"><a class="anchor" href="#internal-token-to-external-token-exchange"></a>7.2. Internal Token to External Token Exchange</h3>
 <div class="paragraph">
 <p>You can exchange a realm token for an externl token minted by an external identity provider.  This external identity provider
 must be configured within the <code>Identity Provider</code> section of the admin console.  Currently only OAuth/OpenID Connect based external
@@ -11723,9 +11839,8 @@ have been performed with the same user session as the internal token you are exc
 <p>If the account is not linked, the exchange response will contain a link you can use to establish it.  This is
 discussed more in the <a href="#_internal_external_making_request">Making the Request</a> section.</p>
 </div>
-<div id="_grant_permission_external_exchange" class="paragraph">
-<p>==== Granting Permission for the Exchange</p>
-</div>
+<div class="sect3">
+<h4 id="_grant_permission_external_exchange"><a class="anchor" href="#_grant_permission_external_exchange"></a>7.2.1. Granting Permission for the Exchange</h4>
 <div class="paragraph">
 <p>Internal to external token exchange requests will be denied with a 403, Forbidden response until you grant
 permission for the calling client to exchange tokens with the external identity provider.  To grant permission
@@ -11771,9 +11886,9 @@ defined.</p>
 <p>Your client now has permission to invoke.  If you do not do this correctly, you will get a 403 Forbidden response if you
 try to make an exchange.</p>
 </div>
-<div id="_internal_external_making_request" class="paragraph">
-<p>==== Making the Request</p>
 </div>
+<div class="sect3">
+<h4 id="_internal_external_making_request"><a class="anchor" href="#_internal_external_making_request"></a>7.2.2. Making the Request</h4>
 <div class="paragraph">
 <p>When your client is exchanging an existing internal token to an external one, you must provide the
 <code>requested_issuer</code> parameter.  The parameter must be the alias of a configured identity provider.</p>
@@ -11824,9 +11939,10 @@ so that the client can perform <a href="https://www.keycloak.org/docs/16.0/serve
 providers are requiring linking through browser OAuth protocol.  With the <code>account-link-url</code> just add a <code>redirect_uri</code>
 query parameter to it and you can forward browsers to perform the link.</p>
 </div>
-<div class="paragraph">
-<p>=== External Token to Internal Token Exchange</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="external-token-to-internal-token-exchange"><a class="anchor" href="#external-token-to-internal-token-exchange"></a>7.3. External Token to Internal Token Exchange</h3>
 <div class="paragraph">
 <p>You can trust and exchange external tokens minted by external identity providers for internal tokens.  This can be
 used to bridge between realms or just to trust tokens from your social provider.  It works similarly to an identity provider
@@ -11867,9 +11983,8 @@ SAML identity providers are not supported at this time.  Twitter tokens cannot b
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>==== Granting Permission for the Exchange</p>
-</div>
+<div class="sect3">
+<h4 id="granting-permission-for-the-exchange"><a class="anchor" href="#granting-permission-for-the-exchange"></a>7.3.1. Granting Permission for the Exchange</h4>
 <div class="paragraph">
 <p>Before external token exchanges can be done, you must grant permission for the calling client to make the exchange.  This
 permission is granted in the same manner as <a href="#_grant_permission_external_exchange">internal to external permission is granted</a>.</p>
@@ -11879,9 +11994,9 @@ permission is granted in the same manner as <a href="#_grant_permission_external
 must also grant the calling client permission to exchange to the target client specific in the <code>audience</code> parameter.  How
 to do this is <a href="#_client_to_client_permission">discussed earlier</a> in this section.</p>
 </div>
-<div class="paragraph">
-<p>==== Making the Request</p>
 </div>
+<div class="sect3">
+<h4 id="making-the-request-2"><a class="anchor" href="#making-the-request-2"></a>7.3.2. Making the Request</h4>
 <div class="paragraph">
 <p>The <code>subject_token_type</code> must either be <code>urn:ietf:params:oauth:token-type:access_token</code> or <code>urn:ietf:params:oauth:token-type:jwt</code>.
 If the type is <code>urn:ietf:params:oauth:token-type:access_token</code> you must specify the <code>subject_issuer</code> parameter and it must be the
@@ -11925,25 +12040,25 @@ an example JSON response you get back from this call.</p>
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Impersonation</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="impersonation"><a class="anchor" href="#impersonation"></a>7.4. Impersonation</h3>
 <div class="paragraph">
 <p>For internal and external token exchanges, the client can request on behalf of a user to impersonate a different user.
 For example, you may have an admin application that needs to impersonate a user so that a support engineer can debug
 a problem.</p>
 </div>
-<div class="paragraph">
-<p>==== Granting Permission for the Exchange</p>
-</div>
+<div class="sect3">
+<h4 id="granting-permission-for-the-exchange-2"><a class="anchor" href="#granting-permission-for-the-exchange-2"></a>7.4.1. Granting Permission for the Exchange</h4>
 <div class="paragraph">
 <p>The user that the subject token represents must have permission to impersonate other users.  See the
 <a href="https://www.keycloak.org/docs/16.0/server_admin/">Server Administration Guide</a> on how to enable this permission.  It can be done through a role or through
 fine grain admin permissions.</p>
 </div>
-<div class="paragraph">
-<p>==== Making the Request</p>
 </div>
+<div class="sect3">
+<h4 id="making-the-request-3"><a class="anchor" href="#making-the-request-3"></a>7.4.2. Making the Request</h4>
 <div class="paragraph">
 <p>Make the request as described in other chapters except additionally specify the <code>requested_subject</code> parameter.  The
 value of this parameter must be a username or user id.</p>
@@ -11961,9 +12076,10 @@ value of this parameter must be a username or user id.</p>
     http://localhost:8080/auth/realms/myrealm/protocol/openid-connect/token</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Direct Naked Impersonation</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="direct-naked-impersonation"><a class="anchor" href="#direct-naked-impersonation"></a>7.5. Direct Naked Impersonation</h3>
 <div class="paragraph">
 <p>You can make an internal token exchange request without providing a <code>subject_token</code>.  This is called a direct
 naked impersonation because it places a lot of trust in a client as that client can impersonate any user in the realm.
@@ -11984,9 +12100,8 @@ It is very risky to enable direct naked impersonation for a client.  If the clie
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>==== Granting Permission for the Exchange</p>
-</div>
+<div class="sect3">
+<h4 id="granting-permission-for-the-exchange-3"><a class="anchor" href="#granting-permission-for-the-exchange-3"></a>7.5.1. Granting Permission for the Exchange</h4>
 <div class="paragraph">
 <p>If the <code>audience</code> parameter is provided, then the calling client must have permission to exchange to the client.  How
 to set this up is discussed earlier in this chapter.</p>
@@ -12047,9 +12162,9 @@ Public clients are not allowed to do direct naked impersonations.
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>==== Making the Request</p>
 </div>
+<div class="sect3">
+<h4 id="making-the-request-4"><a class="anchor" href="#making-the-request-4"></a>7.5.2. Making the Request</h4>
 <div class="paragraph">
 <p>To make the request, simply specify the <code>requested_subject</code> parameter.  This must be the username or user id of
 a valid user.  You can also specify an <code>audience</code> parameter if you wish.</p>
@@ -12064,18 +12179,19 @@ a valid user.  You can also specify an <code>audience</code> parameter if you wi
     http://localhost:8080/auth/realms/myrealm/protocol/openid-connect/token</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Expand Permission Model With Service Accounts</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="expand-permission-model-with-service-accounts"><a class="anchor" href="#expand-permission-model-with-service-accounts"></a>7.6. Expand Permission Model With Service Accounts</h3>
 <div class="paragraph">
 <p>When granting clients permission to exchange, you don&#8217;t necessarily have to manually enable those permissions for each and every client.
 If the client has a service account associated with it, you can use a role to group permissions together and assign exchange permissions
 by assigning a role to the client&#8217;s service account.  For example, you might define a <code>naked-exchange</code> role and any service account that has that
 role can do a naked exchange.</p>
 </div>
-<div class="paragraph">
-<p>=== Exchange Vulnerabilities</p>
 </div>
+<div class="sect2">
+<h3 id="exchange-vulnerabilities"><a class="anchor" href="#exchange-vulnerabilities"></a>7.7. Exchange Vulnerabilities</h3>
 <div class="paragraph">
 <p>When you start allowing token exchanges, there&#8217;s various things you have to both be aware of and careful of.</p>
 </div>
@@ -12100,12 +12216,9 @@ credentials, and you&#8217;re only dealing with one user.  So use direct naked e
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-08 21:26:10 UTC
+Last updated 2021-11-08 22:04:44 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
