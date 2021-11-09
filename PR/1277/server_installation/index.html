@@ -915,7 +915,7 @@ span.image img {
 <li><a href="#_install_by_command">Installing from the command line</a></li>
 </ul>
 </li>
-<li><a href="#_operator_prod_usage">Using the Keycloak Operator in production environment</a></li>
+<li><a href="#_operator_production_usage">Using the Keycloak Operator in production environment</a></li>
 <li><a href="#_monitoring-operator">The Application Monitoring Operator</a>
 <ul class="sectlevel3">
 <li><a href="#installing-the-application-monitoring-operator">Installing the Application Monitoring Operator</a></li>
@@ -933,7 +933,7 @@ span.image img {
 <li><a href="#_client-cr">Creating a client custom resource</a></li>
 <li><a href="#_user-cr">Creating a user custom resource</a></li>
 <li><a href="#_external_database">Connecting to an external database</a></li>
-<li><a href="#scheduling-database-backups">Scheduling database backups</a>
+<li><a href="#_backup-cr">Scheduling database backups</a>
 <ul class="sectlevel3">
 <li><a href="#_backups-cr-aws">Backing up to AWS S3 storage</a></li>
 <li><a href="#_backups-local-cr">Backing up to Local Storage</a></li>
@@ -958,7 +958,7 @@ span.image img {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.keycloak.org/docs/16.0/getting_started/">Getting Started</a></p>
+<p><a href="https://www.keycloak.org/getting-started">Getting Started</a></p>
 </li>
 <li>
 <p><a href="https://www.keycloak.org/docs/16.0/securing_apps/">Securing Apps</a></p>
@@ -6678,11 +6678,7 @@ NAME                READY   UP-TO-DATE   AVAILABLE   AGE
 keycloak-operator   1/1     1            1           41s</code></pre>
 </div>
 </div>
-</li>
-</ol>
-</div>
 <div class="ulist">
-<div class="title">Additional resources</div>
 <ul>
 <li>
 <p>When the Operator installation completes, you are ready to create your first custom resource. See <a href="#_keycloak_cr">Keycloak installation using a custom resource</a>.
@@ -6696,20 +6692,23 @@ However, if you want to start tracking all Operator activities before creating c
 </li>
 </ul>
 </div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_operator_prod_usage"><a class="anchor" href="#_operator_prod_usage"></a>Using the Keycloak Operator in production environment</h3>
+<h3 id="_operator_production_usage"><a class="anchor" href="#_operator_production_usage"></a>Using the Keycloak Operator in production environment</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>The usage of embedded DB is not supported in production environment.</p>
+<p>The usage of embedded DB is not supported in a production environment.</p>
 </li>
 <li>
-<p>Backup CRD is deprecated and not supported in production environment.</p>
+<p>Backup CRD is deprecated and not supported in a production environment.</p>
 </li>
 <li>
-<p>We fully support using the rest of the CRDs in prod, despite the <code>v1alpha1</code> version. We do not plan to make any breaking changes in this CRDs version.</p>
+<p>We fully support using the rest of the CRDs in production, despite the <code>v1alpha1</code> version. We do not plan to make any breaking changes in this CRDs version.</p>
 </li>
 </ul>
 </div>
@@ -6873,7 +6872,7 @@ or an Ingress for Kubernetes
 for the Keycloak cluster.</p>
 </li>
 <li>
-<p><code>externalDatabase</code> - in order to connect to an externally hosted database. That topic is covered in the <a href="#_external_database">external database</a> section of this guide. Setting it to false should be used only for testing purposes and will install an embedded PostgreSQL database. Be aware that externalDatabase:false is <strong>NOT</strong> supported in prod environments.</p>
+<p><code>externalDatabase</code> - in order to connect to an externally hosted database. That topic is covered in the <a href="#_external_database">external database</a> section of this guide. Setting it to false should be used only for testing purposes and will install an embedded PostgreSQL database. Be aware that externalDatabase:false is <strong>NOT</strong> supported in production environments.</p>
 </li>
 </ul>
 </div>
@@ -7124,7 +7123,7 @@ keycloak   keycloak.redhat.com   192.0.2.0   80      3m</code></pre>
 <p>Once the installation of Keycloak completes, you are ready to <a href="#_realm-cr">create a realm custom resource</a>.</p>
 </li>
 <li>
-<p>An external database is the supported option and needs to be enabled in the Keycloak custom resource. Only for testing purposes you can disable it. See <a href="#_external_database">Connecting to an external database</a>.</p>
+<p>An external database is the supported option and needs to be enabled in the Keycloak custom resource. Use this option only for testing and disable it when you switch to a production environment. See <a href="#_external_database">Connecting to an external database</a>.</p>
 </li>
 </ul>
 </div>
@@ -7759,17 +7758,28 @@ keycloak-postgresql-c8vv27m 1/1    Running   0          36m   192.0.2.3</code></
 </li>
 </ul>
 </div>
-<div id="_backup-cr" class="paragraph">
-<p>Backup CR is <strong>deprecated</strong> and could be removed in future releases.</p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="scheduling-database-backups"><a class="anchor" href="#scheduling-database-backups"></a>Scheduling database backups</h3>
+<h3 id="_backup-cr"><a class="anchor" href="#_backup-cr"></a>Scheduling database backups</h3>
 <div class="sidebarblock page-links">
 <div class="content">
 <a href="https://github.com/keycloak/keycloak-documentation/blob/master/server_installation/topics/operator/keycloak-backup-cr.adoc" target="_blank">Edit this section</a>
 <a href="https://issues.redhat.com/secure/CreateIssueDetails!init.jspa?pid=12313920&amp;components=12323375&amp;issuetype=1&amp;priority=3&amp;description=File:%20server_installation/topics/operator/keycloak-backup-cr.adoc" target="_blank">Report an issue</a>
 </div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Backup CR is <strong>deprecated</strong> and could be removed in future releases.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>You can use the Operator to schedule automatic backups of the database as defined by custom resources. The custom resource triggers a backup job
@@ -8187,7 +8197,7 @@ with this strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-10-28 12:23:07 UTC
+Last updated 2021-11-09 09:47:09 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
