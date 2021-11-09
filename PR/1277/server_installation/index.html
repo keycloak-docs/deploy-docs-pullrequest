@@ -7123,7 +7123,7 @@ keycloak   keycloak.redhat.com   192.0.2.0   80      3m</code></pre>
 <p>Once the installation of Keycloak completes, you are ready to <a href="#_realm-cr">create a realm custom resource</a>.</p>
 </li>
 <li>
-<p>An external database is the supported option and needs to be enabled in the Keycloak custom resource. Use this option only for testing and disable it when you switch to a production environment. See <a href="#_external_database">Connecting to an external database</a>.</p>
+<p>An external database is the supported option and needs to be enabled in the Keycloak custom resource. You can disable this option only for testing and enable it when you switch to a production environment. See <a href="#_external_database">Connecting to an external database</a>.</p>
 </li>
 </ul>
 </div>
@@ -7578,7 +7578,7 @@ following naming pattern: <code>credential-&lt;realm name&gt;-&lt;username&gt;-&
 </div>
 </div>
 <div class="paragraph">
-<p>You can use the Operator to connect to an external PostgreSQL database by creating a <code>keycloak-db-secret</code> YAML file and setting Keycloak CR externalDatabase property enabled (this is the default value). Note that values are Base64 encoded.</p>
+<p>You can use the Operator to connect to an external PostgreSQL database by creating a <code>keycloak-db-secret</code> YAML file and setting Keycloak CR externalDatabase property enabled. Note that values are Base64 encoded.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example YAML file for <code>keycloak-db-secret</code></div>
@@ -8197,7 +8197,7 @@ with this strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-09 09:47:09 UTC
+Last updated 2021-11-09 15:21:56 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
