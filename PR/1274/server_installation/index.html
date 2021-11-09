@@ -7616,7 +7616,7 @@ This address needs be resolvable in a Kubernetes cluster.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The Keycloak Operator will create a Service that connects to an external database, such as <code>keycloak-postgresql</code>, that connects Keycloak to the Database that contains the IP address or Service name that is specified by the POSTGRES_EXTERNAL_ADDRESS.</p>
+<p>The Operator will create a Service named <code>keycloak-postgresql</code>. This Service is configured by the Operator to expose the external database based on the content of <code>POSTGRES_EXTERNAL_ADDRESS</code>. Keycloak uses this Service to connect to the Database, which means it does not connect to the Database directly but rather through this Service.</p>
 </div>
 <div class="paragraph">
 <p>The Keycloak custom resource requires updates to enable external database support.</p>
@@ -8164,7 +8164,7 @@ with this strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-08 15:01:59 UTC
+Last updated 2021-11-09 14:47:13 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
